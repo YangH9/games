@@ -4,11 +4,6 @@
   "eslint.format.enable": true,
   "editor.tabSize": 2,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  "vetur.format.defaultFormatter.css": "prettier",
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.format.defaultFormatter.js": "prettier",
-  "vetur.format.defaultFormatter.less": "prettier",
   "dart.lineLength": 150,
-  "vetur.format.options.tabSize": 2,
   "typescript.tsdk": "node_modules/typescript/lib"
 }

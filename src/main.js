@@ -8,6 +8,8 @@ import "./assets/main.css";
 
 const app = createApp(App);
 
+app.config.globalProperties.getEnv = import.meta.env
+
 app.use(createPinia());
 app.use(router);
 

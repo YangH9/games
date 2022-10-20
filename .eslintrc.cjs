@@ -17,8 +17,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'no-var': 2,//禁用var 
-    semi: 2,//开启结尾分号
+    'no-var': 1,//禁用var 
+    semi: 0,
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "space-before-function-paren": 0, // 方法空格

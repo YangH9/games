@@ -9,8 +9,8 @@
     >
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      {{ baseurl }}
-      {{ env }}
+      {{ baseurl }}、
+      {{ mode }}、
       {{ title }}
       <nav>
         <RouterLink to="/">
@@ -22,16 +22,17 @@
       </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
-const baseurl = import.meta.env.VITE_BASE_URL;
-const env = import.meta.env.VITE_ENV;
-const title = import.meta.env.VITE_TITLE;
+import { getCurrentInstance } from 'vue';
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+console.log(getCurrentInstance().proxy.getEnv)
+const baseurl = import.meta.env.VITE_BASE_URL
+const mode = import.meta.env.MODE
+const title = import.meta.env.VITE_TITLE
 </script>
 
 <style scoped>
