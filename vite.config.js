@@ -13,9 +13,13 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url))
     },
   },
+  preview: {
+    host: '0.0.0.0'
+  },
   build: {
     target: "modules",
     outDir: "../dist",
+    emptyOutDir: true,
     assetsDir: "assets",
     minify: "terser",
   },
