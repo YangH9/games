@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite --mode production",
-    "build": "vite build --mode development",
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
