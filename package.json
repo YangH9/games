@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --mode production",
+    "build": "vite build --mode development",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
@@ -20,6 +20,7 @@
     "@rushstack/eslint-patch": "^1.1.4",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/test-utils": "^2.0.2",
+    "@types/node": "^18.11.2",
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.0",

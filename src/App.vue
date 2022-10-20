@@ -1,8 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
   <header>
     <img
@@ -12,10 +7,11 @@ import HelloWorld from "./components/HelloWorld.vue";
       width="125"
       height="125"
     >
-
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-
+      {{ baseurl }}
+      {{ env }}
+      {{ title }}
       <nav>
         <RouterLink to="/">
           Home
@@ -29,6 +25,14 @@ import HelloWorld from "./components/HelloWorld.vue";
 
   <RouterView />
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+import HelloWorld from './components/HelloWorld.vue';
+const baseurl = import.meta.env.VITE_BASE_URL;
+const env = import.meta.env.VITE_ENV;
+const title = import.meta.env.VITE_TITLE;
+</script>
 
 <style scoped>
 header {

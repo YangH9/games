@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 require("@rushstack/eslint-patch/modern-module-resolution");
 
 module.exports = {
@@ -34,5 +32,6 @@ module.exports = {
     "no-unreachable": "off",
     "no-empty": "off",
     "no-undef": "off",
+    'vue/multi-word-component-names': 'off' // 关闭组件名称校验
   },
 };
