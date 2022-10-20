@@ -7,14 +7,16 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   root: "./public",
-  base: "/minesweeper/",
+  base: "minesweeper",
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url))
     },
   },
-  preview: {
-    host: '0.0.0.0'
+  server: {
+    host: '0.0.0.0',
+    port: 6060,
+    strictPort: true,
   },
   build: {
     target: "modules",
