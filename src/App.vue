@@ -30,9 +30,10 @@ import { getCurrentInstance } from "vue"
 import { RouterLink, RouterView } from "vue-router"
 import HelloWorld from "./components/HelloWorld.vue"
 console.log(getCurrentInstance().proxy.getEnv)
-const baseurl = import.meta.env.VITE_BASE_URL
-const mode = import.meta.env.MODE
-const title = import.meta.env.VITE_TITLE
+const env = getCurrentInstance().proxy.getEnv
+const baseurl = env.VITE_BASE_URL
+const mode = env.MODE
+const title = env.VITE_TITLE
 </script>
 
 <style scoped>

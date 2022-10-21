@@ -21,11 +21,12 @@ export default ({ mode }) => {
       strictPort: true,
     },
     build: {
+      // https://terser.org/docs/api-reference
+      minify: "terser",
       target: "modules",
       outDir: env.VITE_OUTDIR_URL,
       emptyOutDir: true,
       assetsDir: "assets",
-      minify: "terser",
       terserOptions: {
         compress: {
           // 生产环境时移除 console
@@ -36,6 +37,6 @@ export default ({ mode }) => {
     },
   }
 
-  // console.log(config)
+  console.log(config)
   return defineConfig(config)
 }
