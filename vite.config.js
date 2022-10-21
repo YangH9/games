@@ -1,7 +1,7 @@
-import { fileURLToPath, URL } from "node:url";
+import { fileURLToPath, URL } from "node:url"
 
-import { defineConfig, loadEnv } from "vite";
-import vue from "@vitejs/plugin-vue";
+import { defineConfig, loadEnv } from "vite"
+import vue from "@vitejs/plugin-vue"
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -16,7 +16,7 @@ export default ({ mode }) => {
       },
     },
     server: {
-      host: '0.0.0.0',
+      host: "0.0.0.0",
       port: 6060,
       strictPort: true,
     },
@@ -29,6 +29,6 @@ export default ({ mode }) => {
     },
   }
 
-  console.log(config)
+  // console.log(config)
   return defineConfig(config)
-};
+}

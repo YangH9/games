@@ -26,9 +26,9 @@
 </template>
 
 <script setup>
-import { getCurrentInstance } from 'vue';
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { getCurrentInstance } from "vue"
+import { RouterLink, RouterView } from "vue-router"
+import HelloWorld from "./components/HelloWorld.vue"
 console.log(getCurrentInstance().proxy.getEnv)
 const baseurl = import.meta.env.VITE_BASE_URL
 const mode = import.meta.env.MODE
