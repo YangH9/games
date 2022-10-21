@@ -26,6 +26,13 @@ export default ({ mode }) => {
       emptyOutDir: true,
       assetsDir: "assets",
       minify: "terser",
+      terserOptions: {
+        compress: {
+          // 生产环境时移除 console
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
     },
   }
 
