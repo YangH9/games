@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -7,15 +7,15 @@ const router = createRouter({
       path: "/",
       name: "home",
       meta: {
-        title: '首页',
+        title: "首页",
       },
-      component: () => import("../views/HomeView.vue"),
+      component: () => import("../views/home.vue"),
     },
     {
       path: "/about",
       name: "about",
       meta: {
-        title: '关于',
+        title: "关于",
       },
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -23,7 +23,7 @@ const router = createRouter({
       component: () => import("../views/AboutView.vue"),
     },
   ],
-});
+})
 
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
@@ -32,4 +32,4 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-export default router;
+export default router

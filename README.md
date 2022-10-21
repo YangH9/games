@@ -1,42 +1,23 @@
 # minesweeper
-扫雷
+# 扫雷
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+``` sh
+# 安装
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
+# 运行
+npm start
+# 格式化
+npm run lint
+# 打包
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+[Vue](https://cn.vuejs.org/)
+[Vite](https://cn.vitejs.dev/)
+[Pinia](https://pinia.vuejs.org/zh/)
+[VueRouter](https://router.vuejs.org/zh/)
+[AntDesignVue](https://www.antdv.com/docs/vue/introduce-cn)
+[terser](https://terser.org/)
+[VSCode](https://code.visualstudio.com/)
 
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+[Eslint](http://eslint.cn/docs/rules/)、[Vue-Eslint](https://eslint.vuejs.org/rules/)

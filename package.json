@@ -11,6 +11,7 @@
     "push": "git subtree push --prefix dist origin dist"
   },
   "dependencies": {
+    "ant-design-vue": "^3.2.13",
     "pinia": "^2.0.21",
     "terser": "^5.15.1",
     "vue": "^3.2.41",
@@ -24,6 +25,7 @@
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.0",
+    "unplugin-vue-components": "^0.19.3",
     "vite": "^3.0.9",
     "vitest": "^0.23.0"
   }
