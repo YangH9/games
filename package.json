@@ -7,7 +7,7 @@
     "build": "vite build --mode production",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .eslintignore",
     "push": "git subtree push --prefix dist origin dist"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^18.11.3",
+    "@vitejs/plugin-legacy": "^2.2.0",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/test-utils": "^2.0.2",
     "eslint": "^8.22.0",
