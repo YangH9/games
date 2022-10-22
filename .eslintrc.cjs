@@ -44,8 +44,9 @@ module.exports = {
     "switch-colon-spacing": [ "error", { "after": true, "before": false } ], // 强制冒号后又空格
     "comma-spacing": [ "error", { "before": false, "after": true } ],
     
+    "vue/valid-v-model": 0,
     "vue/html-self-closing": 0,
-    "vue/no-v-model-argument": 1,
+    "vue/no-v-model-argument": 0,
     "vue/no-unused-components": 0,
     "vue/no-multiple-template-root": 0,
     "vue/multi-word-component-names": 0,

@@ -1,5 +1,7 @@
-# minesweeper
-# 扫雷
+# games
+
+## minesweeper
+## 扫雷
 
 ``` sh
 # 安装

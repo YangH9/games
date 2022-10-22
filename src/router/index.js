@@ -12,6 +12,14 @@ const router = createRouter({
       component: () => import("../views/home.vue"),
     },
     {
+      path: "/minesweeper",
+      name: "minesweeper",
+      meta: {
+        title: "扫雷",
+      },
+      component: () => import("../views/minesweeper.vue"),
+    },
+    {
       path: "/about",
       name: "about",
       meta: {
