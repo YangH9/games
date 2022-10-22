@@ -1,5 +1,5 @@
 {
-  "name": "minesweeper",
+  "name": "games",
   "version": "0.0.0",
   "scripts": {
     "start": "npm run dev",

@@ -1,6 +1,6 @@
 <template>
   <div>
-    棋盘
+    首页
     <div>
       {{ baseurl }}、{{ mode }}、{{ title }}
     </div>
