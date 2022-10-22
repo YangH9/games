@@ -20,7 +20,6 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^18.11.3",
-    "@vitejs/plugin-legacy": "^2.2.0",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/test-utils": "^2.0.2",
     "eslint": "^8.22.0",

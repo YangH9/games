@@ -3,7 +3,6 @@ import { defineConfig, loadEnv } from "vite"
 import Components from "unplugin-vue-components/vite"
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers"
 import vue from "@vitejs/plugin-vue"
-import legacy from "@vitejs/plugin-legacy"
 
 export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
@@ -12,9 +11,6 @@ export default ({ mode }) => {
       vue(),
       Components({
         resolvers: [ AntDesignVueResolver() ],
-      }),
-      legacy({
-        targets: [ "defaults", "not IE 11" ]
       })
     ],
     root: env.VITE_ROOT_URL,
