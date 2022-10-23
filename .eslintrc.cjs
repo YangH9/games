@@ -18,10 +18,6 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
-    // "off"或0-关闭规则
-    // "warn"或1-将该规则作为警告打开（不影响退出代码）
-    // "error"或2-将规则作为错误打开（触发时退出代码为1）
-
     quotes: 2, // 强制使用一致的反勾号、双引号或单引号
     semi: [ 2, "never" ], // 要求或禁止使用分号代替 ASI
     indent: [ "error", 2 ], // 强制使用一致的缩进

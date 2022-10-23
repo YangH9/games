@@ -14,12 +14,13 @@ npm run lint
 npm run build
 ```
 
-[Vue](https://cn.vuejs.org/)
-[Vite](https://cn.vitejs.dev/)
-[Pinia](https://pinia.vuejs.org/zh/)
-[VueRouter](https://router.vuejs.org/zh/)
-[AntDesignVue](https://www.antdv.com/docs/vue/introduce-cn)
-[terser](https://terser.org/)
+[Vue](https://cn.vuejs.org/)、
+[Vite](https://cn.vitejs.dev/)、
+[Pinia](https://pinia.vuejs.org/zh/)、
+[VueRouter](https://router.vuejs.org/zh/)、
+[AntDesignVue](https://www.antdv.com/docs/vue/introduce-cn)、
+[terser](https://terser.org/)、
 [VSCode](https://code.visualstudio.com/)
 
-[Eslint](http://eslint.cn/docs/rules/)、[Vue-Eslint](https://eslint.vuejs.org/rules/)
+[Eslint](http://eslint.cn/docs/rules/)、
+[Vue-Eslint](https://eslint.vuejs.org/rules/)
