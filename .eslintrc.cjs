@@ -11,11 +11,11 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    es2020: true,
+    es2020: true
   },
   parserOptions: {
     ecmaVersion: "latest",
-    sourceType: "module",
+    sourceType: "module"
   },
   rules: {
     quotes: 2, // 强制使用一致的反勾号、双引号或单引号
@@ -35,11 +35,22 @@ module.exports = {
     "no-undef": 0, // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
     "no-mixed-spaces-and-tabs": 2, // 禁止空格和 tab 的混合缩进
     "space-before-function-paren": 1, // 强制在 function 的左括号之前使用一致的空格
-    "array-bracket-spacing": [ "error", "always" ], // 数组两端空格
+    "arrow-parens": [ "error", "as-needed" ],
+    "implicit-arrow-linebreak": [ "error", "beside" ],
+    "comma-dangle": [ "error", "never" ],
+    "arrow-body-style": [ "error", "as-needed" ],
+    "array-bracket-spacing": [ "error", "always", { "singleValue": false, "objectsInArrays": false, "arraysInArrays": false }], // 数组两端空格
     "object-curly-spacing": [ "error", "always" ], // 对象两端空格
-    "switch-colon-spacing": [ "error", { "after": true, "before": false } ], // 强制冒号后又空格
-    "comma-spacing": [ "error", { "before": false, "after": true } ],
+    "computed-property-spacing": [ "error", "always" ],
+    "switch-colon-spacing": [ "error", { "before": true, "after": false }], // 强制冒号后又空格
+    "comma-spacing": [ "error", { "before": false, "after": true }],
+    "arrow-spacing": [ "error", { "before": true, "after": true }],
+    "block-spacing": [ "error", "always" ],
+    "key-spacing": [ "error", { "mode": "strict" }],
+    "no-multi-spaces": "error",
     
+    "vue/comma-spacing": 1,
+    "vue/attribute-hyphenation": 0,
     "vue/valid-v-model": 0,
     "vue/html-self-closing": 0,
     "vue/no-v-model-argument": 0,
@@ -47,6 +58,6 @@ module.exports = {
     "vue/no-multiple-template-root": 0,
     "vue/multi-word-component-names": 0,
     "vue/html-closing-bracket-newline": 0,
-    "vue/singleline-html-element-content-newline": 0,
-  },
+    "vue/singleline-html-element-content-newline": 0
+  }
 }

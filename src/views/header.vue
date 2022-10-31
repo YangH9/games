@@ -2,12 +2,10 @@
   <a-layout-header class="header">
     <div class="logo">游戏</div>
     <a-menu
-      v-model:selectedKeys="selectedKeys"
+      :selectedKeys="selectedKeys"
       theme="dark"
       mode="horizontal"
-      :style="{ lineHeight: '64px' }"
-      @click="click"
-    >
+      @click="click">
       <a-menu-item key="/">首页</a-menu-item>
       <a-menu-item key="/minesweeper">扫雷</a-menu-item>
     </a-menu>
@@ -16,27 +14,29 @@
 
 <script setup>
 import { useRoute, useRouter } from "vue-router"
-import { ref } from "vue"
+import { ref, computed } from "vue"
 const $router = useRouter()
 const $route = useRoute()
 
-const selectedKeys = ref([ $route.path ])
+const selectedKeys = computed(() => [`/${$route.path.split("/")[ 1 ]}`])
 
-const click = (data) => {
+const click = data => {
   $router.push(data.key)
 }
 </script>
 
 <style scoped>
-.logo{
-  width: 100px;
-  margin-right: 50px;
-  display: inline-block;
-  color: #fff;
-  background: #444;
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+  line-height: 32px;
   text-align: center;
 }
-.logo ~ ul{
-  display: inline-block;
+
+.logo~ul {
+  float: left;
 }
 </style>

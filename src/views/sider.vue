@@ -3,16 +3,24 @@
     width="200"
     style="background: #fff">
     <a-menu
+      :selectedKeys="[ $route.path ]"
       mode="inline"
-      :style="{ height: '100%', borderRight: 0 }">
-      <a-menu-item key="1">菜单1</a-menu-item>
-      <a-menu-item key="2">菜单2</a-menu-item>
+      :style="{ height: '100%', borderRight: 0 }"
+      @click="click">
+      <a-menu-item key="/minesweeper">home</a-menu-item>
+      <a-menu-item key="/minesweeper/setting">setting</a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
 
 <script setup>
+import { useRoute, useRouter } from "vue-router"
+const $router = useRouter()
+const $route = useRoute()
 
+const click = data => {
+  $router.push(data.key)
+}
 </script>
 
 <style scoped>
