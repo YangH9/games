@@ -42,6 +42,6 @@ export default ({ mode }) => {
     }
   }
 
-  console.log(config)
+  // console.log(config)
   return defineConfig(config)
 }
