@@ -6,7 +6,7 @@ import vue from "@vitejs/plugin-vue"
 
 export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
-  let config = {
+  const config = {
     plugins: [
       vue(),
       Components({
@@ -42,6 +42,6 @@ export default ({ mode }) => {
     }
   }
 
-  // console.log(config)
+  // Console.log(config)
   return defineConfig(config)
 }

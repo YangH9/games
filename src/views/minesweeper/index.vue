@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import Breadcrumb from "../breadcrumb.vue"
+import Breadcrumb from "../../components/Breadcrumb.vue"
 import Sider from "../sider.vue"
 
 </script>

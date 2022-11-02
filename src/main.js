@@ -3,14 +3,17 @@ import { createPinia } from "pinia"
 
 import App from "./App.vue"
 import router from "./router"
+import Container from "@/components/Container.vue"
 
 import "./assets/main.css"
 
-const app = createApp(App)
+const Vue = createApp(App)
 
-app.config.globalProperties.getEnv = import.meta.env
+Vue.config.globalProperties.getEnv = import.meta.env
 
-app.use(createPinia())
-app.use(router)
+Vue.component("Container", Container)
 
-app.mount("#app")
+Vue.use(createPinia())
+Vue.use(router)
+
+Vue.mount("#app")

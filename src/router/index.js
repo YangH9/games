@@ -1,23 +1,15 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 
 const router = createRouter({
-  history: createWebHashHistory (import.meta.env.VITE_BASE_URL),
+  history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
       path: "/",
+      name: "home",
       meta: {
         title: "首页"
       },
-      children: [
-        {
-          path: "/",
-          name: "home",
-          meta: {
-            title: "首页home"
-          },
-          component: () => import("@/views/home/index.vue")
-        }
-      ]
+      component: () => import("@/views/home/index.vue")
     },
     {
       path: "/minesweeper",
@@ -51,13 +43,37 @@ const router = createRouter({
       meta: {
         title: "关于"
       },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue")
+      component: () => import("@/views/about/index.vue")
     },
-    // { path: "/404", component: () => import("@/error.vue") },
-    // { path: "/:catchAll(.*)", redirect:"/404" },
+    {
+      path: "/games",
+      name: "games",
+      meta: {
+        title: "游戏"
+      },
+      component: () => import("@/views/games/index.vue")
+    },
+    {
+      path: "/links",
+      name: "links",
+      meta: {
+        title: "链接"
+      },
+      component: () => import("@/views/links/index.vue")
+    },
+    {
+      path: "/resources",
+      name: "resources",
+      meta: {
+        title: "资源分享"
+      },
+      component: () => import("@/views/resources/index.vue")
+    },
+
+    /*
+     * { path: "/404", component: () => import("@/error.vue") },
+     * { path: "/:catchAll(.*)", redirect:"/404" },
+     */
     { path: "/:catchAll(.*)", component: () => import("@/error.vue") }
   ]
 })

@@ -1,14 +1,16 @@
 <template>
   <a-layout-header class="header">
-    <div class="logo">游戏</div>
-    <a-menu
-      :selectedKeys="selectedKeys"
-      theme="dark"
-      mode="horizontal"
-      @click="click">
-      <a-menu-item key="/">首页</a-menu-item>
-      <a-menu-item key="/minesweeper">扫雷</a-menu-item>
-    </a-menu>
+    <Container>
+      <div class="logo">瀚海</div>
+      <a-menu
+        :selectedKeys="selectedKeys"
+        theme="dark"
+        mode="horizontal"
+        @click="click">
+        <a-menu-item key="/">首页</a-menu-item>
+        <a-menu-item key="/minesweeper">扫雷</a-menu-item>
+      </a-menu>
+    </Container>
   </a-layout-header>
 </template>
 
@@ -25,7 +27,11 @@ const click = data => {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.header{
+  padding: 0;
+}
+
 .logo {
   float: left;
   width: 120px;
@@ -34,9 +40,9 @@ const click = data => {
   background: rgba(255, 255, 255, 0.3);
   line-height: 32px;
   text-align: center;
+  & ~ ul {
+    float: right;
+  }
 }
 
-.logo~ul {
-  float: left;
-}
 </style>

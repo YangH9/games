@@ -1,5 +1,7 @@
 <template>
-  <div>error</div>
+  <Container>
+    资源
+  </Container>
 </template>
 
 <script setup>

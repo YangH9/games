@@ -1,5 +1,7 @@
 <template>
-  <div>error</div>
+  <Container>
+    关于
+  </Container>
 </template>
 
 <script setup>

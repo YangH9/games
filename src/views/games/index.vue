@@ -1,5 +1,7 @@
 <template>
-  <div>error</div>
+  <Container>
+    游戏
+  </Container>
 </template>
 
 <script setup>

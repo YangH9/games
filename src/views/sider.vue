@@ -17,7 +17,6 @@
 import { useRoute, useRouter } from "vue-router"
 const $router = useRouter()
 const $route = useRoute()
-
 const click = data => {
   $router.push(data.key)
 }
