@@ -1,11 +1,11 @@
 <template>
-  <Container>
+  <div class="container">
     <Breadcrumb />
     首页
     <div>
       {{ baseurl }}、{{ mode }}、{{ title }}
     </div>
-  </Container>
+  </div>
 </template>
 
 <script setup>

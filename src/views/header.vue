@@ -1,7 +1,7 @@
 <template>
   <a-layout-header class="header">
-    <Container>
-      <div class="logo">瀚海</div>
+    <div class="container">
+      <div class="logo">瀚</div>
       <a-menu
         :selectedKeys="selectedKeys"
         theme="dark"
@@ -12,9 +12,9 @@
         <a-menu-item key="/resources">资源分享</a-menu-item>
         <a-menu-item key="/links">链接</a-menu-item>
         <a-menu-item key="/about">关于</a-menu-item>
-        <!-- <a-menu-item key="/minesweeper">扫雷</a-menu-item> -->
+      <!-- <a-menu-item key="/minesweeper">扫雷</a-menu-item> -->
       </a-menu>
-    </Container>
+    </div>
   </a-layout-header>
 </template>
 
@@ -42,6 +42,7 @@ const click = data => {
   height: 31px;
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
+  color: #f2f2f2;
   line-height: 32px;
   text-align: center;
   & ~ ul {

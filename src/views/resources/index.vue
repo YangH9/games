@@ -1,8 +1,8 @@
 <template>
-  <Container>
+  <div class="container">
     <Breadcrumb />
     资源
-  </Container>
+  </div>
 </template>
 
 <script setup>

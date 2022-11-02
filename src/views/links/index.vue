@@ -1,8 +1,8 @@
 <template>
-  <Container>
+  <div class="container">
     <Breadcrumb />
     链接
-  </Container>
+  </div>
 </template>
 
 <script setup>

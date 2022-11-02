@@ -1,8 +1,8 @@
 <template>
-  <Container>
+  <div class="container">
     <Breadcrumb />
     游戏
-  </Container>
+  </div>
 </template>
 
 <script setup>
