@@ -8,7 +8,11 @@
         mode="horizontal"
         @click="click">
         <a-menu-item key="/">首页</a-menu-item>
-        <a-menu-item key="/minesweeper">扫雷</a-menu-item>
+        <a-menu-item key="/games">游戏</a-menu-item>
+        <a-menu-item key="/resources">资源分享</a-menu-item>
+        <a-menu-item key="/links">链接</a-menu-item>
+        <a-menu-item key="/about">关于</a-menu-item>
+        <!-- <a-menu-item key="/minesweeper">扫雷</a-menu-item> -->
       </a-menu>
     </Container>
   </a-layout-header>
