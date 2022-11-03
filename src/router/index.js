@@ -12,32 +12,6 @@ const router = createRouter({
       component: () => import("@/views/home/index.vue")
     },
     {
-      path: "/minesweeper",
-      name: "minesweeper",
-      meta: {
-        title: "扫雷"
-      },
-      component: () => import("@/views/minesweeper/index.vue"),
-      children: [
-        {
-          path: "/minesweeper",
-          name: "minesweeper_home",
-          meta: {
-            title: "扫雷home"
-          },
-          component: () => import("@/views/minesweeper/home.vue")
-        },
-        {
-          path: "/minesweeper/setting",
-          name: "minesweeper_setting",
-          meta: {
-            title: "扫雷setting"
-          },
-          component: () => import("@/views/minesweeper/setting.vue")
-        }
-      ]
-    },
-    {
       path: "/about",
       name: "about",
       meta: {
@@ -51,7 +25,27 @@ const router = createRouter({
       meta: {
         title: "游戏"
       },
-      component: () => import("@/views/games/index.vue")
+      component: () => import("@/views/games/index.vue"),
+      children: [
+        {
+          path: "/games/minesweeper",
+          name: "minesweeper",
+          meta: {
+            title: "扫雷"
+          },
+          component: () => import("@/views/games/minesweeper/index.vue"),
+          children: [
+            {
+              path: "/games/minesweeper/setting",
+              name: "minesweeper_setting",
+              meta: {
+                title: "扫雷setting"
+              },
+              component: () => import("@/views/games/minesweeper/setting.vue")
+            }
+          ]
+        }
+      ]
     },
     {
       path: "/links",
@@ -70,19 +64,22 @@ const router = createRouter({
       component: () => import("@/views/resources/index.vue")
     },
 
-    /*
-     * { path: "/404", component: () => import("@/error.vue") },
-     * { path: "/:catchAll(.*)", redirect:"/404" },
-     */
-    { path: "/:catchAll(.*)", component: () => import("@/error.vue") }
+    // { path: "/404", component: () => import("@/error.vue") },
+    // { path: "/:catchAll(.*)", redirect:"/404" },
+    { path: "/:catchAll(.*)", component: () => import("@/views/Error.vue") }
   ]
 })
 
+// 当路由跳转开始前
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
   }
   next()
 })
+
+// 当路由跳转结束后
+// router.afterEach((to, from) => {
+// })
 
 export default router

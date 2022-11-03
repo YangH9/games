@@ -3,16 +3,16 @@
     <div class="container">
       <div class="logo">瀚</div>
       <a-menu
-        :selectedKeys="selectedKeys"
+        :selectedKeys="[`/${$route.path.split('/')[ 1 ]}`]"
         theme="dark"
         mode="horizontal"
-        @click="click">
+        @click="click"
+      >
         <a-menu-item key="/">首页</a-menu-item>
         <a-menu-item key="/games">游戏</a-menu-item>
         <a-menu-item key="/resources">资源分享</a-menu-item>
         <a-menu-item key="/links">链接</a-menu-item>
         <a-menu-item key="/about">关于</a-menu-item>
-      <!-- <a-menu-item key="/minesweeper">扫雷</a-menu-item> -->
       </a-menu>
     </div>
   </a-layout-header>
@@ -20,11 +20,8 @@
 
 <script setup>
 import { useRoute, useRouter } from "vue-router"
-import { ref, computed } from "vue"
 const $router = useRouter()
 const $route = useRoute()
-
-const selectedKeys = computed(() => [`/${$route.path.split("/")[ 1 ]}`])
 
 const click = data => {
   $router.push(data.key)

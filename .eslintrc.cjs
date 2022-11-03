@@ -86,7 +86,7 @@ module.exports = {
     "no-fallthrough": "error", // 禁止 case 语句落空
     "no-floating-decimal": "error", // 禁止数字字面量中使用前导和末尾小数点
     "no-global-assign": "error", // 禁止对原生对象或只读的全局对象进行赋值
-    "no-implicit-coercion": "error", // 禁止使用短符号进行类型转换
+    "no-implicit-coercion": "off", // 禁止使用短符号进行类型转换
     "no-implicit-globals": "error", // 禁止在全局范围内使用变量声明和 function 声明
     "no-implied-eval": "error", // 禁止使用类似 eval() 的方法
     "no-invalid-this": "error", // 禁止 this 关键字出现在类和类对象之外
@@ -153,7 +153,7 @@ module.exports = {
     "block-spacing": [ "error", "always" ], // 禁止或强制在代码块中开括号前和闭括号后有空格
     "brace-style": "error", // 强制在代码块中使用一致的大括号风格
     camelcase: [ "error", { properties: "never" }], // 强制使用骆驼拼写法命名约定
-    "capitalized-comments": "error", // 强制或禁止对注释的第一个字母大写
+    "capitalized-comments": "off", // 强制或禁止对注释的第一个字母大写
     "comma-dangle": [ "error", "never" ], // 要求或禁止末尾逗号
     "comma-spacing": [ "error", { before: false, after: true }], // 强制在逗号前后使用一致的空格
     "comma-style": "error", // 强制使用一致的逗号风格
@@ -185,7 +185,7 @@ module.exports = {
     "max-params": "error", // 强制函数定义中最多允许的参数数量
     "max-statements": "error", // 强制函数块最多允许的的语句数量
     "max-statements-per-line": "error", // 强制每一行中所允许的最大语句数量
-    "multiline-comment-style": "error", // 强制对多行注释使用特定风格
+    "multiline-comment-style": "off", // 强制对多行注释使用特定风格
     "multiline-ternary": [ "error", "always-multiline" ], // 要求或禁止在三元操作数中间换行
     "new-cap": [ "error", { capIsNew: false }], // 要求构造函数首字母大写
     "new-parens": "error", // 强制或禁止调用无参构造函数时有圆括号
@@ -272,6 +272,9 @@ module.exports = {
     "template-curly-spacing": "error", // 要求或禁止模板字符串中的嵌入表达式周围空格的使用
     "yield-star-spacing": "error", // 强制在 yield* 表达式中 * 周围使用空格
 
+    // Vue eslint
+    "vue/html-indent": [ "error", 2 ],
+    "vue/require-default-prop": "off",
     "vue/comma-spacing": "warn",
     "vue/attribute-hyphenation": "off",
     "vue/valid-v-model": "off",
