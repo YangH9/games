@@ -5,9 +5,12 @@
       <RouterViewBox url="/games">
         <div class="container">
           <Breadcrumb />
-          游戏
+          <a-card
+            title="游戏"
+            :hoverable="true">
+            <RouterLink to="/games/minesweeper">扫雷</RouterLink>
+          </a-card>
           <br>
-          <RouterLink to="/games/minesweeper">扫雷</RouterLink>
         </div>
       </RouterViewBox>
     </a-layout>

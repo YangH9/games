@@ -4,7 +4,11 @@
     <a-layout>
       <div class="container">
         <Breadcrumb />
-        链接
+        <a-card
+          title="链接"
+          :hoverable="true">
+          链接
+        </a-card>
       </div>
     </a-layout>
   </a-layout>

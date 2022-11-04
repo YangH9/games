@@ -124,11 +124,11 @@ module.exports = {
     "no-void": "error", // 禁用 void 操作符
     "no-warning-comments": "error", // 禁止在注释中使用特定的警告术语
     "no-with": "error", // 禁用 with 语句
-    "prefer-named-capture-group": "error", // 建议在正则表达式中使用命名捕获组
+    "prefer-named-capture-group": "off", // 建议在正则表达式中使用命名捕获组
     "prefer-promise-reject-errors": "error", // 要求使用 Error 对象作为 Promise 拒绝的原因
     radix: "error", // 强制在 parseInt() 使用基数参数
     "require-await": "error", // 禁止使用不带 await 表达式的 async 函数
-    "require-unicode-regexp": "error", // 强制在 RegExp 上使用 u 标志
+    "require-unicode-regexp": "off", // 强制在 RegExp 上使用 u 标志
     "vars-on-top": "error", // 要求所有的 var 声明出现在它们所在的作用域顶部
     "wrap-iife": "error", // 要求 IIFE 使用括号括起来
     yoda: "error", // 要求或禁止 “Yoda” 条件
@@ -166,7 +166,7 @@ module.exports = {
     "func-style": [ "error", "declaration", { allowArrowFunctions: true }], // 强制一致地使用 function 声明或表达式
     "function-paren-newline": "error", // 强制在函数括号内使用一致的换行
     "id-blacklist": "error", // 禁用指定的标识符
-    "id-length": "error", // 强制标识符的最小和最大长度
+    "id-length": [ "error", { min: 1 }], // 强制标识符的最小和最大长度
     "id-match": "error", // 要求标识符匹配一个指定的正则表达式
     "implicit-arrow-linebreak": [ "error", "beside" ], // 强制隐式返回的箭头函数体的位置
     indent: [ "error", 2 ], // 强制使用一致的缩进
@@ -191,7 +191,7 @@ module.exports = {
     "new-parens": "error", // 强制或禁止调用无参构造函数时有圆括号
     "newline-per-chained-call": "error", // 要求方法链中每个调用都有一个换行符
     "no-array-constructor": "error", // 禁用 Array 构造函数
-    "no-bitwise": "error", // 禁用按位运算符
+    "no-bitwise": [ "error", { allow: ["~"] }], // 禁用按位运算符
     "no-continue": "error", // 禁用 continue 语句
     "no-inline-comments": "off", // 禁止在代码后使用内联注释
     "no-lonely-if": "error", // 禁止 if 作为唯一的语句出现在 else 语句中

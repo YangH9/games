@@ -4,7 +4,11 @@
     <a-layout>
       <div class="container">
         <Breadcrumb />
-        资源
+        <a-card
+          title="资源"
+          :hoverable="true">
+          资源
+        </a-card>
       </div>
     </a-layout>
   </a-layout>

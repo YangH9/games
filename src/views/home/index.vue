@@ -4,10 +4,11 @@
     <a-layout>
       <div class="container">
         <Breadcrumb />
-        首页
-        <div>
+        <a-card
+          title="首页"
+          :hoverable="true">
           {{ baseurl }}、{{ mode }}、{{ title }}
-        </div>
+        </a-card>
       </div>
     </a-layout>
   </a-layout>
