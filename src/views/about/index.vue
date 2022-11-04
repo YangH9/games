@@ -10,15 +10,36 @@
           <a-card
             title="关于"
             :hoverable="true">
-            关于
+            <a-descriptions :column="1">
+              <a-descriptions-item label="GitHub">
+                <a-button
+                  type="link"
+                  size="small"
+                  target="_blank"
+                  href="https://github.com/YangH9">
+                  https://github.com/YangH9
+                </a-button>
+              </a-descriptions-item>
+              <a-descriptions-item label="哔哩哔哩">
+                <a-button
+                  type="link"
+                  size="small"
+                  target="_blank"
+                  href="https://space.bilibili.com/492362541">
+                  https://space.bilibili.com/492362541
+                </a-button>
+              </a-descriptions-item>
+            </a-descriptions>
           </a-card>
           <a-card
             title="站点信息"
             :hoverable="true">
-            <a-descriptions>
-              <a-descriptions-item label="网站运行时间">{{ runTime }}</a-descriptions-item>
-            </a-descriptions>
             <a-descriptions :column="2">
+              <a-descriptions-item
+                label="网站运行时间"
+                span="2">
+                {{ runTime }}
+              </a-descriptions-item>
               <a-descriptions-item label="建站时间">{{ formatDate(startTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
               <a-descriptions-item label="迁移时间">{{ formatDate(nowTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
             </a-descriptions>
@@ -45,7 +66,8 @@ const runTime = computed(() => {
   const h = ~~(time / (1000 * 60 * 60) % 24)
   const m = ~~(time / (1000 * 60) % 60)
   const s = ~~(time / 1000 % 60)
-  return `${y}年${M}月${d}日${h}时${m}分${s}秒`
+  const a = i => i < 10 ? `0${i}` : i
+  return `${y}年${a(M)}月${a(d)}日${a(h)}时${a(m)}分${a(s)}秒`
 })
 </script>
 

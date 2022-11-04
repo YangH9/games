@@ -7,8 +7,8 @@
       mode="inline"
       :style="{ height: '100%', borderRight: 0 }"
       @click="click">
-      <a-menu-item key="/games/minesweeper">home</a-menu-item>
-      <a-menu-item key="/games/minesweeper/setting">setting</a-menu-item>
+      <a-menu-item key="/game/minesweeper">home</a-menu-item>
+      <a-menu-item key="/game/minesweeper/setting">setting</a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>

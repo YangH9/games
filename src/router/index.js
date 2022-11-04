@@ -20,28 +20,28 @@ const router = createRouter({
       component: () => import("@/views/about/index.vue")
     },
     {
-      path: "/games",
-      name: "games",
+      path: "/game",
+      name: "game",
       meta: {
         title: "游戏"
       },
-      component: () => import("@/views/games/index.vue"),
+      component: () => import("@/views/game/index.vue"),
       children: [
         {
-          path: "/games/minesweeper",
+          path: "/game/minesweeper",
           name: "minesweeper",
           meta: {
             title: "扫雷"
           },
-          component: () => import("@/views/games/minesweeper/index.vue"),
+          component: () => import("@/views/game/minesweeper/index.vue"),
           children: [
             {
-              path: "/games/minesweeper/setting",
+              path: "/game/minesweeper/setting",
               name: "minesweeper_setting",
               meta: {
                 title: "扫雷setting"
               },
-              component: () => import("@/views/games/minesweeper/setting.vue")
+              component: () => import("@/views/game/minesweeper/setting.vue")
             }
           ]
         }
@@ -64,9 +64,11 @@ const router = createRouter({
       component: () => import("@/views/resources/index.vue")
     },
 
-    // { path: "/404", component: () => import("@/error.vue") },
     // { path: "/:catchAll(.*)", redirect:"/404" },
-    { path: "/:catchAll(.*)", component: () => import("@/views/Error.vue") }
+    { path: "/403", component: () => import("@/views/error/403.vue") },
+    { path: "/404", component: () => import("@/views/error/404.vue") },
+    { path: "/500", component: () => import("@/views/error/500.vue") },
+    { path: "/:catchAll(.*)", component: () => import("@/views/error/404.vue") }
   ]
 })
 

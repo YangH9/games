@@ -2,13 +2,13 @@
   <a-layout>
     <Header></Header>
     <a-layout>
-      <RouterViewBox url="/games">
+      <RouterViewBox url="/game">
         <div class="container">
           <Breadcrumb />
           <a-card
             title="游戏"
             :hoverable="true">
-            <RouterLink to="/games/minesweeper">扫雷</RouterLink>
+            <RouterLink to="/game/minesweeper">扫雷</RouterLink>
           </a-card>
           <br>
         </div>

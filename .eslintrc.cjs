@@ -246,7 +246,7 @@ module.exports = {
     "constructor-super": "error", // 要求在构造函数中有 super() 的调用
     "generator-star-spacing": "error", // 强制 generator 函数中 * 号周围使用一致的空格
     "no-class-assign": "error", // 禁止修改类声明的变量
-    "no-confusing-arrow": "error", // 禁止在可能与比较操作符相混淆的地方使用箭头函数
+    "no-confusing-arrow": "off", // 禁止在可能与比较操作符相混淆的地方使用箭头函数
     "no-const-assign": "error", // 禁止修改 const 声明的变量
     "no-dupe-class-members": "error", // 禁止类成员中出现重复的名称
     "no-duplicate-imports": "error", // 禁止重复模块导入

@@ -5,7 +5,7 @@
     <a-layout-content
       :style="{ background: '#fff', height: 'calc(100vh - 142px)' }"
     >
-      <RouterViewBox url="/games/minesweeper">
+      <RouterViewBox url="/game/minesweeper">
         <div>
           扫雷home
           <div>
