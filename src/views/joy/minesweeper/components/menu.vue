@@ -7,8 +7,8 @@
       mode="inline"
       :style="{ height: '100%', borderRight: 0 }"
       @click="click">
-      <a-menu-item key="/game/minesweeper">home</a-menu-item>
-      <a-menu-item key="/game/minesweeper/setting">setting</a-menu-item>
+      <a-menu-item key="/joy/minesweeper">home</a-menu-item>
+      <a-menu-item key="/joy/minesweeper/setting">setting</a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
@@ -22,6 +22,6 @@ const click = data => {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

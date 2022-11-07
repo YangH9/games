@@ -20,30 +20,38 @@ const router = createRouter({
       component: () => import("@/views/about/index.vue")
     },
     {
-      path: "/game",
-      name: "game",
+      path: "/joy",
+      name: "joy",
       meta: {
-        title: "游戏"
+        title: "娱乐"
       },
-      component: () => import("@/views/game/index.vue"),
+      component: () => import("@/views/joy/index.vue"),
       children: [
         {
-          path: "/game/minesweeper",
+          path: "/joy/minesweeper",
           name: "minesweeper",
           meta: {
             title: "扫雷"
           },
-          component: () => import("@/views/game/minesweeper/index.vue"),
+          component: () => import("@/views/joy/minesweeper/index.vue"),
           children: [
             {
-              path: "/game/minesweeper/setting",
+              path: "/joy/minesweeper/setting",
               name: "minesweeper_setting",
               meta: {
                 title: "扫雷setting"
               },
-              component: () => import("@/views/game/minesweeper/setting.vue")
+              component: () => import("@/views/joy/minesweeper/setting.vue")
             }
           ]
+        },
+        {
+          path: "/joy/listen",
+          name: "listen",
+          meta: {
+            title: "音乐播放器"
+          },
+          component: () => import("@/views/joy/listen/index.vue")
         }
       ]
     },

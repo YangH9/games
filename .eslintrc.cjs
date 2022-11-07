@@ -178,7 +178,7 @@ module.exports = {
     "lines-around-comment": "error", // 要求在注释周围有空行
     "lines-between-class-members": "error", // 要求或禁止类成员之间出现空行
     "max-depth": "error", // 强制可嵌套的块的最大深度
-    "max-len": [ "error", { code: 150 }], // 强制一行的最大长度
+    "max-len": "off", // 强制一行的最大长度
     "max-lines": "error", // 强制最大行数
     "max-lines-per-function": "error", // 强制函数最大代码行数
     "max-nested-callbacks": "error", // 强制回调函数最大嵌套深度
@@ -274,6 +274,7 @@ module.exports = {
 
     // Vue eslint
     "vue/html-indent": [ "error", 2 ],
+    "vue/no-v-for-template-key": "off",
     "vue/require-default-prop": "off",
     "vue/comma-spacing": "warn",
     "vue/attribute-hyphenation": "off",

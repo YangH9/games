@@ -21,6 +21,6 @@ const back = () => {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

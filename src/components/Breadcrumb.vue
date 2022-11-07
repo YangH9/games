@@ -30,6 +30,6 @@ const menuList = computed(() => $route.matched)
 
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

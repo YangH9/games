@@ -11,24 +11,19 @@
             title="关于"
             :hoverable="true">
             <a-descriptions :column="1">
-              <a-descriptions-item label="GitHub">
-                <a-button
-                  type="link"
-                  size="small"
-                  target="_blank"
-                  href="https://github.com/YangH9">
-                  https://github.com/YangH9
-                </a-button>
-              </a-descriptions-item>
-              <a-descriptions-item label="哔哩哔哩">
-                <a-button
-                  type="link"
-                  size="small"
-                  target="_blank"
-                  href="https://space.bilibili.com/492362541">
-                  https://space.bilibili.com/492362541
-                </a-button>
-              </a-descriptions-item>
+              <template
+                v-for="(item, index) of userList"
+                :key="index">
+                <a-descriptions-item :label="item.title">
+                  <a-button
+                    type="link"
+                    size="small"
+                    target="_blank"
+                    :href="item.href">
+                    {{ item.href }}
+                  </a-button>
+                </a-descriptions-item>
+              </template>
             </a-descriptions>
           </a-card>
           <a-card
@@ -38,7 +33,7 @@
               <a-descriptions-item
                 label="网站运行时间"
                 span="2">
-                {{ runTime }}
+                {{ runTime() }}
               </a-descriptions-item>
               <a-descriptions-item label="建站时间">{{ formatDate(startTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
               <a-descriptions-item label="迁移时间">{{ formatDate(nowTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
@@ -54,12 +49,28 @@
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import Header from "@/components/Header.vue"
 import { formatDate } from "@/utils"
-import { computed } from "vue"
+import { onBeforeUnmount, onMounted, reactive, ref } from "vue"
 
-const startTime = 1584864000000
-const nowTime = new Date()
-const runTime = computed(() => {
-  const time = +nowTime - startTime
+const userList = reactive([
+  { title: "快手", href: "https://f.kuaishou.com/3QQz0B" },
+  { title: "抖音", href: "https://v.douyin.com/3x5ty2" },
+  { title: "GitHub", href: "https://github.com/YangH9" },
+  { title: "哔哩哔哩", href: "https://space.bilibili.com/492362541" },
+  { title: "哔哩哔哩Live", href: "https://live.bilibili.com/22069552" }
+])
+
+// const toolList = reactive([
+//   { title: "万年历", href: "https://f.kuaishou.com/3QQz0B" }
+// ])
+
+// const demoList = reactive([
+//   { title: "CSS皮卡丘", href: "https://f.kuaishou.com/3QQz0B" }
+// ])
+
+const startTime = ref(1584864000000)
+const nowTime = ref(new Date())
+const runTime = () => {
+  const time = +nowTime.value - startTime.value
   const y = ~~(time / (1000 * 60 * 60 * 24 * 365))
   const M = ~~(time / (1000 * 60 * 60 * 24 * 30) % 12)
   const d = ~~(time / (1000 * 60 * 60 * 24) % 30)
@@ -68,9 +79,22 @@ const runTime = computed(() => {
   const s = ~~(time / 1000 % 60)
   const a = i => i < 10 ? `0${i}` : i
   return `${y}年${a(M)}月${a(d)}日${a(h)}时${a(m)}分${a(s)}秒`
+}
+
+let timer = null
+onMounted(() => {
+  timer = setInterval(() => {
+    nowTime.value = new Date()
+  }, 1000)
 })
+
+onBeforeUnmount(() => {
+  clearInterval(timer)
+  timer = null
+})
+
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

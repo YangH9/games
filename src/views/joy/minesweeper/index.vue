@@ -5,7 +5,7 @@
     <a-layout-content
       :style="{ background: '#fff', height: 'calc(100vh - 142px)' }"
     >
-      <RouterViewBox url="/game/minesweeper">
+      <RouterViewBox url="/joy/minesweeper">
         <div>
           扫雷home
           <div>
@@ -30,6 +30,6 @@ const title = env.VITE_TITLE
 
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

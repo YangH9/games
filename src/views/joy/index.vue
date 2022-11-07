@@ -1,0 +1,45 @@
+<template>
+  <a-layout>
+    <Header></Header>
+    <a-layout>
+      <RouterViewBox url="/joy">
+        <div class="container">
+          <Breadcrumb />
+          <a-space
+            size="middle"
+            direction="vertical">
+            <a-card
+              title="游戏"
+              :hoverable="true">
+              <a-descriptions :column="1">
+                <a-descriptions-item>
+                  <RouterLink to="/joy/minesweeper">扫雷</RouterLink>
+                </a-descriptions-item>
+              </a-descriptions>
+            </a-card>
+            <a-card
+              title="娱乐"
+              :hoverable="true">
+              <a-descriptions :column="1">
+                <a-descriptions-item>
+                  <RouterLink to="/joy/listen">音乐播放器</RouterLink>
+                </a-descriptions-item>
+              </a-descriptions>
+            </a-card>
+          </a-space>
+        </div>
+      </RouterViewBox>
+    </a-layout>
+  </a-layout>
+</template>
+
+<script setup>
+import Breadcrumb from "@/components/Breadcrumb.vue"
+import Header from "@/components/Header.vue"
+import RouterViewBox from "@/components/RouterViewBox.vue"
+
+</script>
+
+<style lang="less" scoped>
+
+</style>

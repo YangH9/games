@@ -73,21 +73,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
-  width: 100%;
-  // max-width: 1080px;
-  position: relative;
-  margin: 0 auto;
-  padding: 0 20px;
-  &::after {
-    content: '';
-    display: block;
-    clear: both;
-  }
+// 取消描述列表最后一行的内边距
+.ant-descriptions tr:last-child td {
+  padding-bottom: 0;
 }
 
-@media (min-width: 1080px) {
-  .container {
-    width: 1080px;
-  }
+.wrap{
+  flex-wrap: wrap
 }
+
+// a {
+//   cursor: no-drop !important;
+// }

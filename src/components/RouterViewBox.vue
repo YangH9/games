@@ -14,6 +14,6 @@ const props = defineProps({ url: String })
 
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>
