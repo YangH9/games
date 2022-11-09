@@ -31,12 +31,18 @@ export default ({ mode }) => {
       target: "modules",
       outDir: env.VITE_OUTDIR_URL,
       emptyOutDir: true,
-      assetsDir: "assets",
       terserOptions: {
         compress: {
           // 生产环境时移除 console
           drop_console: true,
           drop_debugger: true
+        }
+      },
+      rollupOptions: {
+        output: {
+          chunkFileNames: "assets/js/[hash].js",
+          entryFileNames: "assets/js/[name].js",
+          assetFileNames: "assets/[ext]/[hash][extname]"
         }
       }
     }
