@@ -40,9 +40,9 @@ export default ({ mode }) => {
       },
       rollupOptions: {
         output: {
-          chunkFileNames: "assets/js/[hash].js",
-          entryFileNames: "assets/js/[name].js",
-          assetFileNames: "assets/[ext]/[hash][extname]"
+          chunkFileNames: `${env.VITE_OUTDIR_ASSETS}/js/${env.VITE_OUTDIR_NAME}-[hash].js`,
+          entryFileNames: `${env.VITE_OUTDIR_ASSETS}/js/[name].js`,
+          assetFileNames: `${env.VITE_OUTDIR_ASSETS}/[ext]/${env.VITE_OUTDIR_NAME}-[hash][extname]`
         }
       }
     }
