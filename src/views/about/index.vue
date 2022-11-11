@@ -4,42 +4,40 @@
     <a-layout>
       <div class="container">
         <Breadcrumb />
-        <a-space
-          size="middle"
-          direction="vertical">
-          <a-card
-            title="关于"
-            :hoverable="true">
-            <a-descriptions :column="1">
-              <template
-                v-for="(item, index) of userList"
-                :key="index">
-                <a-descriptions-item :label="item.title">
-                  <a-button
-                    type="link"
-                    size="small"
-                    target="_blank"
-                    :href="item.href">
-                    {{ item.href }}
-                  </a-button>
-                </a-descriptions-item>
-              </template>
-            </a-descriptions>
-          </a-card>
-          <a-card
-            title="站点信息"
-            :hoverable="true">
-            <a-descriptions :column="2">
-              <a-descriptions-item
-                label="网站运行时间"
-                span="2">
-                {{ runTime() }}
+        <a-card
+          title="关于"
+          class="mb10"
+          :hoverable="true">
+          <a-descriptions :column="1">
+            <template
+              v-for="(item, index) of userList"
+              :key="index">
+              <a-descriptions-item :label="item.title">
+                <a-button
+                  type="link"
+                  size="small"
+                  target="_blank"
+                  :href="item.href">
+                  {{ item.href }}
+                </a-button>
               </a-descriptions-item>
-              <a-descriptions-item label="建站时间">{{ formatDate(startTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
-              <a-descriptions-item label="迁移时间">{{ formatDate(nowTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
-            </a-descriptions>
-          </a-card>
-        </a-space>
+            </template>
+          </a-descriptions>
+        </a-card>
+        <a-card
+          title="站点信息"
+          class="mb10"
+          :hoverable="true">
+          <a-descriptions :column="2">
+            <a-descriptions-item
+              label="网站运行时间"
+              span="2">
+              {{ runTime() }}
+            </a-descriptions-item>
+            <a-descriptions-item label="建站时间">{{ formatDate(startTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
+            <a-descriptions-item label="迁移时间">{{ formatDate(nowTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
+          </a-descriptions>
+        </a-card>
       </div>
     </a-layout>
   </a-layout>

@@ -4,37 +4,26 @@
     <a-layout>
       <div class="container">
         <Breadcrumb />
-        <a-space
-          size="middle"
-          direction="vertical">
-          <template
-            v-for="(main, index) of resoutcesList"
-            :key="index">
-            <a-card
-              :title="main.title"
-              :hoverable="true">
-              <a-space
-                class="wrap"
-                size="small">
-                <template
-                  v-for="(item, index1) of main.list"
-                  :key="index1">
-                  <a-button
-                    size="large"
-                    :href="item.href">
-                    <template #icon>
-                      <img
-                        :src="`${item.href.split('/')[0]}//${item.href.split('/')[2]}/favicon.ico`"
-                        class="icon"
-                        @error="(e)=>e.target.style.display='none'" />
-                    </template>
-                    {{ item.title }}
-                  </a-button>
-                </template>
-              </a-space>
-            </a-card>
-          </template>
-        </a-space>
+        <a-card
+          v-for="(main, index) of resoutcesList"
+          :key="index"
+          :title="main.title"
+          class="mb10"
+          :hoverable="true">
+          <a-button
+            v-for="(item, index1) of main.list"
+            :key="index1"
+            size="large"
+            :href="item.href">
+            <template #icon>
+              <img
+                :src="`${item.href.split('/')[0]}//${item.href.split('/')[2]}/favicon.ico`"
+                class="icon"
+                @error="(e)=>e.target.style.display='none'" />
+            </template>
+            {{ item.title }}
+          </a-button>
+        </a-card>
       </div>
     </a-layout>
   </a-layout>
@@ -135,7 +124,7 @@ const resoutcesList = reactive([
       { title: "VUX", href: "https://vux.li/" },
       { title: "iView-UI", href: "https://www.iviewui.com/" },
       { title: "React Native", href: "https://reactnative.cn/" },
-      { title: "Ant Design React", href: "https://ant.design/index-cn" },
+      { title: "Ant Design", href: "https://ant.design/" },
       { title: "Element-React-UI", href: "https://elemefe.github.io/element-react" },
       { title: "Node.js", href: "http://nodejs.cn/" },
       { title: "egg", href: "https://eggjs.org/zh-cn/" },
@@ -226,6 +215,13 @@ const resoutcesList = reactive([
 </script>
 
 <style lang="less" scoped>
+.ant-card :deep(.ant-card-body) {
+    padding-bottom: 14px;
+    .ant-btn {
+      margin-right: 10px;
+      margin-bottom: 10px;
+  }
+}
 .icon{
   width: 16px;
   height: 16px;

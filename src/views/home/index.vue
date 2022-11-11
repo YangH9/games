@@ -6,6 +6,7 @@
         <Breadcrumb />
         <a-card
           title="首页"
+          class="mb10"
           :hoverable="true">
           {{ baseurl }}、{{ mode }}、{{ title }}
         </a-card>
@@ -27,7 +28,7 @@ const title = env.VITE_TITLE
 
 <style lang="less" scoped>
 .layout{
-  background-color: #ddd;
+  // background-color: #ddd;
   height: calc(100vh - 64px);
 }
 

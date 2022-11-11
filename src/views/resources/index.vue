@@ -6,6 +6,7 @@
         <Breadcrumb />
         <a-card
           title="网盘资源"
+          class="mb10"
           :hoverable="true">
           <a-descriptions :column="1">
             <template

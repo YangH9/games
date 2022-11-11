@@ -5,28 +5,26 @@
       <RouterViewBox url="/joy">
         <div class="container">
           <Breadcrumb />
-          <a-space
-            size="middle"
-            direction="vertical">
-            <a-card
-              title="游戏"
-              :hoverable="true">
-              <a-descriptions :column="1">
-                <a-descriptions-item>
-                  <RouterLink to="/joy/minesweeper">扫雷</RouterLink>
-                </a-descriptions-item>
-              </a-descriptions>
-            </a-card>
-            <a-card
-              title="娱乐"
-              :hoverable="true">
-              <a-descriptions :column="1">
-                <a-descriptions-item>
-                  <RouterLink to="/joy/listen">音乐播放器</RouterLink>
-                </a-descriptions-item>
-              </a-descriptions>
-            </a-card>
-          </a-space>
+          <a-card
+            title="游戏"
+            class="mb10"
+            :hoverable="true">
+            <a-descriptions :column="1">
+              <a-descriptions-item>
+                <RouterLink to="/joy/minesweeper">扫雷</RouterLink>
+              </a-descriptions-item>
+            </a-descriptions>
+          </a-card>
+          <a-card
+            title="娱乐"
+            class="mb10"
+            :hoverable="true">
+            <a-descriptions :column="1">
+              <a-descriptions-item>
+                <RouterLink to="/joy/listen">音乐播放器</RouterLink>
+              </a-descriptions-item>
+            </a-descriptions>
+          </a-card>
         </div>
       </RouterViewBox>
     </a-layout>
