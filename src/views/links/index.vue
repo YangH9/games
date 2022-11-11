@@ -25,7 +25,7 @@
                     <template #icon>
                       <img
                         :src="`${item.href.split('/')[0]}//${item.href.split('/')[2]}/favicon.ico`"
-                        style="width:20px;height:20px;"
+                        class="icon"
                         @error="(e)=>e.target.style.display='none'" />
                     </template>
                     {{ item.title }}
@@ -226,5 +226,9 @@ const resoutcesList = reactive([
 </script>
 
 <style lang="less" scoped>
-
+.icon{
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
 </style>
