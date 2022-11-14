@@ -1,10 +1,8 @@
 <template>
   <Menu></Menu>
   <a-layout style="padding: 0 24px 24px">
-    <Breadcrumb></Breadcrumb>
-    <a-layout-content
-      :style="{ background: '#fff', height: 'calc(100vh - 142px)' }"
-    >
+    <Breadcrumb />
+    <a-layout-content>
       <RouterViewBox url="/joy/minesweeper">
         <div>
           扫雷home

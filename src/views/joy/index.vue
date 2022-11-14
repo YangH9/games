@@ -9,7 +9,10 @@
             title="游戏"
             class="mb10"
             :hoverable="true">
-            <a-descriptions :column="1">
+            <a-descriptions :column="2">
+              <a-descriptions-item>
+                <RouterLink to="/joy/gameHistory">游戏历程时间轴</RouterLink>
+              </a-descriptions-item>
               <a-descriptions-item>
                 <RouterLink to="/joy/minesweeper">扫雷</RouterLink>
               </a-descriptions-item>
@@ -32,8 +35,8 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
 import Header from "@/components/Header.vue"
+import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
 
 </script>

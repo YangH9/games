@@ -28,6 +28,14 @@ const router = createRouter({
       component: () => import("@/views/joy/index.vue"),
       children: [
         {
+          path: "/joy/gameHistory",
+          name: "gameHistory",
+          meta: {
+            title: "游戏历程时间轴"
+          },
+          component: () => import("@/views/joy/gameHistory.vue")
+        },
+        {
           path: "/joy/minesweeper",
           name: "minesweeper",
           meta: {

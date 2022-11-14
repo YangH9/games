@@ -1,9 +1,7 @@
 <template>
   <div class="container">
-    <Breadcrumb></Breadcrumb>
-    <a-layout-content
-      :style="{ background: '#fff', height: 'calc(100vh - 142px)' }"
-    >
+    <Breadcrumb />
+    <a-layout-content>
       <RouterViewBox url="/joy/listen">
         <div>
           音乐播放器规划中
@@ -16,7 +14,6 @@
 <script setup>
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
-
 
 </script>
 

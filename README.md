@@ -1,7 +1,6 @@
-# games
+# yang
 
-## minesweeper
-## 扫雷
+## 网站迁移改版仓库
 
 ``` sh
 # 安装
