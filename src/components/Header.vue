@@ -1,6 +1,6 @@
 <template>
-  <a-layout-header class="header">
-    <div class="container">
+  <a-layout-header>
+    <div class="header">
       <div class="logo">瀚</div>
       <a-menu
         :selectedKeys="[`/${$route.path.split('/')[ 1 ]}`]"
@@ -29,11 +29,27 @@ const click = data => {
 </script>
 
 <style lang="less" scoped>
-.header{
+.ant-layout-header{
   padding: 0;
   position: sticky;
   top: 0;
   z-index: 3000;
+  .header {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 20px;
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+  @media (min-width: 1080px) {
+    .header {
+      width: 1080px;
+    }
+  }
 }
 
 .logo {
