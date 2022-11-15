@@ -8,7 +8,8 @@
           title="首页"
           class="mb10"
           :hoverable="true">
-          {{ baseurl }}、{{ mode }}、{{ title }}
+          <div>MODE：{{ mode }}</div>
+          <div>TITLE：{{ title }}</div>
         </a-card>
       </div>
     </a-layout>
@@ -20,8 +21,7 @@ import Breadcrumb from "@/components/Breadcrumb.vue"
 import { getCurrentInstance } from "vue"
 import Header from "@/components/Header.vue"
 const env = getCurrentInstance().proxy.getEnv
-// console.log(env)
-const baseurl = env.VITE_BASE_URL
+console.log(env)
 const mode = env.MODE
 const title = env.VITE_TITLE
 </script>

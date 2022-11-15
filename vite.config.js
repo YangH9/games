@@ -27,6 +27,7 @@ export default ({ mode }) => {
       strictPort: true
     },
     build: {
+      chunkSizeWarningLimit: 1500,
       minify: "terser",
       target: "modules",
       outDir: env.VITE_OUTDIR_URL,

@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import "@/utils/phaser"
+import "phaser"
 import "@/utils/catch-the-cat"
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import { onMounted } from "vue"
@@ -22,7 +22,7 @@ onMounted(() => {
     backgroundColor: 16777215,
     parent: "catchTheCat",
     statusBarAlign: "center",
-    credit: "yangh9.github.io"
+    credit: "YangH9.github.io"
   })
 })
 

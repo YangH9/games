@@ -1,7 +1,11 @@
 <template>
   <a-layout-header>
     <div class="header">
-      <div class="logo">瀚</div>
+      <RouterLink
+        to="/"
+        class="logo">
+        木易
+      </RouterLink>
       <a-menu
         :selectedKeys="[`/${$route.path.split('/')[ 1 ]}`]"
         mode="horizontal"
@@ -59,6 +63,9 @@ const click = data => {
 .ant-menu{
   background: transparent;
   // background: var(--color-background);
+  :deep(.ant-menu-title-content){
+    background: var(--color-background);
+  }
 }
 .logo {
   float: left;
