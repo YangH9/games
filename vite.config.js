@@ -18,11 +18,11 @@ export default ({ mode }) => {
         verbose: true, // 是否在控制台输出压缩结果
         filter: /\.(js|mjs|json|css|html)$/i, // 指定哪些资源不压缩
         disable: false, // 是否禁用
-        threshold: 102400, // 体积大于 threshold 才会被压缩,单位 b
+        threshold: 1024000, // 体积大于 threshold 才会被压缩,单位 b
         algorithm: "gzip", // 压缩算法,可选 [ 'gzip' , 'brotliCompress' ,'deflate' , 'deflateRaw']
         ext: ".gz", // 生成的压缩包后缀
         // compressionOptions: Object, // 对应的压缩算法的参数
-        deleteOriginFile: true // 压缩后是否删除源文件
+        deleteOriginFile: false // 压缩后是否删除源文件
       })
     ],
     root: env.VITE_ROOT_URL,
