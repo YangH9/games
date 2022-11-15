@@ -7,7 +7,11 @@
           <a-timeline-item
             v-for="(item, i) of historyList"
             :key="i">
-            <a-card :title="item.title">{{ item.text }}</a-card>
+            <a-card
+              :title="item.title"
+              :hoverable="true">
+              {{ item.text }}
+            </a-card>
           </a-timeline-item>
         </a-timeline>
       </div>

@@ -4,7 +4,6 @@
       <div class="logo">瀚</div>
       <a-menu
         :selectedKeys="[`/${$route.path.split('/')[ 1 ]}`]"
-        theme="dark"
         mode="horizontal"
         @click="click"
       >
@@ -51,14 +50,23 @@ const click = data => {
     }
   }
 }
-
+.ant-layout-header{
+  background: transparent;
+  background-image: radial-gradient(transparent 1px,var(--color-background) 1px);
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
+}
+.ant-menu{
+  background: transparent;
+  // background: var(--color-background);
+}
 .logo {
   float: left;
   width: 120px;
   height: 31px;
   margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-  color: #f2f2f2;
+  background: var(--vt-c-divider-dark-2);
+  color: var(--vt-c-black-mute);
   line-height: 32px;
   text-align: center;
   & ~ ul {

@@ -3,7 +3,9 @@ import { createPinia } from "pinia"
 
 import App from "@/App.vue"
 import router from "@/router"
-import { formatDate } from "@/utils/index.js"
+import { formatDate } from "@/utils/index"
+
+import "@/utils/text"
 
 import "@/assets/main.less"
 import "@/assets/base.less"

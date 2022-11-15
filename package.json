@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "ant-design-vue": "^3.2.13",
+    "nprogress": "^0.2.0",
     "pinia": "^2.0.21",
     "terser": "^5.15.1",
     "vue": "^3.2.41",

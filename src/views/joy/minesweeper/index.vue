@@ -29,5 +29,7 @@ const title = env.VITE_TITLE
 </script>
 
 <style lang="less" scoped>
-
+.ant-layout{
+  height: calc(100vh - 64px);
+}
 </style>

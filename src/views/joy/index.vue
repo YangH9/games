@@ -9,9 +9,12 @@
             title="游戏"
             class="mb10"
             :hoverable="true">
-            <a-descriptions :column="2">
+            <a-descriptions :column="3">
               <a-descriptions-item>
                 <RouterLink to="/joy/gameHistory">游戏历程时间轴</RouterLink>
+              </a-descriptions-item>
+              <a-descriptions-item>
+                <RouterLink to="/joy/catchTheCat">圈小猫</RouterLink>
               </a-descriptions-item>
               <a-descriptions-item>
                 <RouterLink to="/joy/minesweeper">扫雷</RouterLink>

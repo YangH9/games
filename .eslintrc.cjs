@@ -179,7 +179,7 @@ module.exports = {
     "lines-between-class-members": "error", // 要求或禁止类成员之间出现空行
     "max-depth": "error", // 强制可嵌套的块的最大深度
     "max-len": "off", // 强制一行的最大长度
-    "max-lines": "error", // 强制最大行数
+    "max-lines": "off", // 强制最大行数
     "max-lines-per-function": "error", // 强制函数最大代码行数
     "max-nested-callbacks": "error", // 强制回调函数最大嵌套深度
     "max-params": "error", // 强制函数定义中最多允许的参数数量
