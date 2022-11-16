@@ -17,9 +17,9 @@
             :href="item.href">
             <template #icon>
               <img
-                :src="`${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon||'favicon.ico'}`"
+                :src="`${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`"
                 class="icon"
-                @load="(e)=>e.target.style.display='inline-block'" />
+                @load="(e) => e.target.style.display = 'inline-block'" />
             </template>
             {{ item.title }}
           </a-button>
@@ -277,13 +277,15 @@ const resoutcesList = reactive([
 
 <style lang="less" scoped>
 .ant-card :deep(.ant-card-body) {
-    padding-bottom: 14px;
-    .ant-btn {
-      margin-right: 10px;
-      margin-bottom: 10px;
+  padding-bottom: 14px;
+
+  .ant-btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 }
-.icon{
+
+.icon {
   width: 16px;
   height: 16px;
   margin-right: 4px;

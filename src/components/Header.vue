@@ -7,10 +7,9 @@
         木易
       </RouterLink>
       <a-menu
-        :selectedKeys="[`/${$route.path.split('/')[ 1 ]}`]"
+        :selectedKeys="[`/${$route.path.split('/')[1]}`]"
         mode="horizontal"
-        @click="click"
-      >
+        @click="click">
         <a-menu-item key="/">首页</a-menu-item>
         <a-menu-item key="/joy">娱乐</a-menu-item>
         <a-menu-item key="/resources">资源分享</a-menu-item>
@@ -32,41 +31,48 @@ const click = data => {
 </script>
 
 <style lang="less" scoped>
-.ant-layout-header{
+.ant-layout-header {
   padding: 0;
   position: sticky;
   top: 0;
   z-index: 3000;
+
   .header {
     width: 100%;
     position: relative;
     margin: 0 auto;
     padding: 0 20px;
+
     &::after {
       content: '';
       display: block;
       clear: both;
     }
   }
+
   @media (min-width: 1080px) {
     .header {
       width: 1080px;
     }
   }
 }
-.ant-layout-header{
+
+.ant-layout-header {
   background: transparent;
-  background-image: radial-gradient(transparent 1px,var(--color-background) 1px);
+  background-image: radial-gradient(transparent 1px, #ffffff 1px);
   background-size: 4px 4px;
   backdrop-filter: saturate(50%) blur(4px);
 }
-.ant-menu{
+
+.ant-menu {
   background: transparent;
+
   // background: var(--color-background);
-  :deep(.ant-menu-title-content){
+  :deep(.ant-menu-title-content) {
     background: var(--color-background);
   }
 }
+
 .logo {
   float: left;
   width: 120px;
@@ -76,9 +82,9 @@ const click = data => {
   color: var(--vt-c-black-mute);
   line-height: 32px;
   text-align: center;
-  & ~ ul {
+
+  &~ul {
     float: right;
   }
 }
-
 </style>

@@ -48,8 +48,17 @@ const routes = [
         meta: {
           title: "扫雷"
         },
+        redirect: "/joy/minesweeper/home",
         component: () => import("@/views/joy/minesweeper/index.vue"),
         children: [
+          {
+            path: "/joy/minesweeper/home",
+            name: "minesweeper_home",
+            meta: {
+              title: "扫雷home"
+            },
+            component: () => import("@/views/joy/minesweeper/home.vue")
+          },
           {
             path: "/joy/minesweeper/setting",
             name: "minesweeper_setting",
@@ -93,6 +102,7 @@ const routes = [
           title: "DEMO展示"
         },
         redirect: "/resources/demo/pikaqiu",
+        component: () => import("@/views/resources/demo/index.vue"),
         children: [
           {
             path: "/resources/demo/pikaqiu",
@@ -117,17 +127,24 @@ const routes = [
               title: "CSS蓝胖子"
             },
             component: () => import("@/views/resources/demo/lanpangzi.vue")
+          },
+          {
+            path: "/resources/demo/loading",
+            name: "loading",
+            meta: {
+              title: "加载动画"
+            },
+            component: () => import("@/views/resources/demo/loading.vue")
           }
         ]
       }
     ]
   },
-
-  // { path: "/:catchAll(.*)", redirect:"/404" },
   { path: "/403", component: () => import("@/views/error/403.vue") },
   { path: "/404", component: () => import("@/views/error/404.vue") },
   { path: "/500", component: () => import("@/views/error/500.vue") },
-  { path: "/:catchAll(.*)", component: () => import("@/views/error/404.vue") }
+  // { path: "/:catchAll(.*)", component: () => import("@/views/error/404.vue") }
+  { path: "/:catchAll(.*)", redirect: "/404" }
 ]
 
 const router = createRouter({

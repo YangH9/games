@@ -1,6 +1,6 @@
 <template>
   <div>
-    CSS蓝胖子
+    加载动画
   </div>
 </template>
 

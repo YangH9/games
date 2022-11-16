@@ -9,13 +9,13 @@
             title="DEMO展示"
             class="mb10"
             :hoverable="true">
-            <a-descriptions :column="3">
-              <a-descriptions-item
-                v-for="(item, index) of demoList"
-                :key="index">
-                <RouterLink :to="item.href">{{ item.title }}</RouterLink>
-              </a-descriptions-item>
-            </a-descriptions>
+            <a-button
+              v-for="(item, index) of demoList"
+              :key="index"
+              type="link"
+              size="small">
+              <RouterLink :to="item.href">{{ item.title }}</RouterLink>
+            </a-button>
           </a-card>
           <a-card
             title="网盘资源"
@@ -52,7 +52,8 @@ import { reactive } from "vue"
 const demoList = reactive([
   { title: "CSS皮卡丘", href: "/resources/demo/pikaqiu" },
   { title: "CSS灰太狼", href: "/resources/demo/huitailang" },
-  { title: "CSS蓝胖子", href: "/resources/demo/lanpangzi" }
+  { title: "CSS蓝胖子", href: "/resources/demo/lanpangzi" },
+  { title: "加载动画", href: "/resources/demo/loading" }
 ])
 
 const resoutcesList = reactive([

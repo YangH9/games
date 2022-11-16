@@ -1,170 +1,159 @@
 <template>
-  <Menu></Menu>
-  <a-layout style="padding: 0 24px 24px">
-    <Breadcrumb />
-    <a-layout-content>
-      <div id="bigBigWolf">
-        <!--脸-->
-        <div class="face">
-          <div class="left"></div>
-          <div class="right"></div>
-          <div class="cover1"></div>
-          <div class="cover2"></div>
-          <div class="cover3"></div>
-          <div class="cover4"></div>
-          <div class="cover5"></div>
-        </div>
-        <!--耳朵-->
-        <div class="ear">
-          <div class="left">
+  <div id="bigBigWolf">
+    <!--脸-->
+    <div class="face">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="cover1"></div>
+      <div class="cover2"></div>
+      <div class="cover3"></div>
+      <div class="cover4"></div>
+      <div class="cover5"></div>
+    </div>
+    <!--耳朵-->
+    <div class="ear">
+      <div class="left">
+        <div class="inner"></div>
+        <div class="cover1"></div>
+        <div class="cover2"></div>
+        <div class="cover3"></div>
+        <div class="cover4"></div>
+        <div class="cover5"></div>
+      </div>
+      <div class="right">
+        <div class="inner"></div>
+        <div class="cover1"></div>
+        <div class="cover2"></div>
+        <div class="cover3"></div>
+        <div class="cover4"></div>
+        <div class="cover5"></div>
+      </div>
+    </div>
+    <!--眼睛-->
+    <div class="eye">
+      <div class="left">
+        <div class="inner">
+          <div class="pupil">
             <div class="inner"></div>
-            <div class="cover1"></div>
-            <div class="cover2"></div>
-            <div class="cover3"></div>
-            <div class="cover4"></div>
-            <div class="cover5"></div>
-          </div>
-          <div class="right">
-            <div class="inner"></div>
-            <div class="cover1"></div>
-            <div class="cover2"></div>
-            <div class="cover3"></div>
-            <div class="cover4"></div>
-            <div class="cover5"></div>
-          </div>
-        </div>
-        <!--眼睛-->
-        <div class="eye">
-          <div class="left">
-            <div class="inner">
-              <div class="pupil">
-                <div class="inner"></div>
-                <div class="light1"></div>
-                <div class="light2"></div>
-                <div class="light3"></div>
-              </div>
-            </div>
-          </div>
-          <div class="right">
-            <div class="inner">
-              <div class="pupil">
-                <div class="inner"></div>
-                <div class="light1"></div>
-                <div class="light2"></div>
-                <div class="light3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--眉毛-->
-        <div class="eyebrow">
-          <div class="left">
-            <div class="inner"></div>
-            <div class="eyebrow1"></div>
-            <div class="eyebrow2"></div>
-          </div>
-          <div class="right">
-            <div class="inner"></div>
-            <div class="eyebrow1"></div>
-          </div>
-        </div>
-        <!--鼻子-->
-        <div class="nose">
-          <div class="outer">
-            <div class="inner"></div>
-            <div class="light"></div>
-          </div>
-        </div>
-        <!--嘴巴-->
-        <div class="mouth">
-          <div class="inner">
-            <div class="tooth1"></div>
-            <div class="tooth2"></div>
-            <div class="tooth3"></div>
-            <div class="tooth4"></div>
-            <div class="tooth5"></div>
-            <div class="tooth6"></div>
-            <div class="tooth7"></div>
-            <div class="tooth8"></div>
-            <div class="tooth9"></div>
-            <div class="tooth10"></div>
-            <div class="tooth11"></div>
-            <div class="tooth12"></div>
-            <div class="tooth13"></div>
-            <div class="tooth14"></div>
-            <div class="tooth15"></div>
-            <div class="tooth16"></div>
-            <div class="tooth17"></div>
-            <div class="tooth18"></div>
-            <div class="tooth19"></div>
-            <div class="tooth20"></div>
-            <div class="tooth21"></div>
-            <div class="tooth22"></div>
-            <div class="tooth23"></div>
-          </div>
-        </div>
-        <!--胡子-->
-        <div class="beard">
-          <div class="beard1"></div>
-          <div class="beard2"></div>
-          <div class="beard3"></div>
-          <div class="beard4"></div>
-          <div class="beard5"></div>
-          <div class="beard6"></div>
-          <div class="beard7"></div>
-          <div class="beard8"></div>
-          <div class="beard9"></div>
-          <div class="beard10"></div>
-          <div class="beard11"></div>
-          <div class="beard12"></div>
-        </div>
-        <!--刀疤-->
-        <div class="scar">
-          <div class="scar1"></div>
-          <div class="scar2"></div>
-          <div class="scar3"></div>
-          <div class="scar4"></div>
-          <div class="scar5"></div>
-        </div>
-        <!--帽子-->
-        <div class="hat">
-          <div class="inner">
-            <div class="patch">
-              <div class="line1"></div>
-              <div class="line2"></div>
-              <div class="line3"></div>
-              <div class="line4"></div>
-              <div class="line5"></div>
-              <div class="line6"></div>
-              <div class="line7"></div>
-              <div class="line8"></div>
-              <div class="line9"></div>
-              <div class="line10"></div>
-            </div>
+            <div class="light1"></div>
+            <div class="light2"></div>
+            <div class="light3"></div>
           </div>
         </div>
       </div>
-    </a-layout-content>
-  </a-layout>
+      <div class="right">
+        <div class="inner">
+          <div class="pupil">
+            <div class="inner"></div>
+            <div class="light1"></div>
+            <div class="light2"></div>
+            <div class="light3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--眉毛-->
+    <div class="eyebrow">
+      <div class="left">
+        <div class="inner"></div>
+        <div class="eyebrow1"></div>
+        <div class="eyebrow2"></div>
+      </div>
+      <div class="right">
+        <div class="inner"></div>
+        <div class="eyebrow1"></div>
+      </div>
+    </div>
+    <!--鼻子-->
+    <div class="nose">
+      <div class="outer">
+        <div class="inner"></div>
+        <div class="light"></div>
+      </div>
+    </div>
+    <!--嘴巴-->
+    <div class="mouth">
+      <div class="inner">
+        <div class="tooth1"></div>
+        <div class="tooth2"></div>
+        <div class="tooth3"></div>
+        <div class="tooth4"></div>
+        <div class="tooth5"></div>
+        <div class="tooth6"></div>
+        <div class="tooth7"></div>
+        <div class="tooth8"></div>
+        <div class="tooth9"></div>
+        <div class="tooth10"></div>
+        <div class="tooth11"></div>
+        <div class="tooth12"></div>
+        <div class="tooth13"></div>
+        <div class="tooth14"></div>
+        <div class="tooth15"></div>
+        <div class="tooth16"></div>
+        <div class="tooth17"></div>
+        <div class="tooth18"></div>
+        <div class="tooth19"></div>
+        <div class="tooth20"></div>
+        <div class="tooth21"></div>
+        <div class="tooth22"></div>
+        <div class="tooth23"></div>
+      </div>
+    </div>
+    <!--胡子-->
+    <div class="beard">
+      <div class="beard1"></div>
+      <div class="beard2"></div>
+      <div class="beard3"></div>
+      <div class="beard4"></div>
+      <div class="beard5"></div>
+      <div class="beard6"></div>
+      <div class="beard7"></div>
+      <div class="beard8"></div>
+      <div class="beard9"></div>
+      <div class="beard10"></div>
+      <div class="beard11"></div>
+      <div class="beard12"></div>
+    </div>
+    <!--刀疤-->
+    <div class="scar">
+      <div class="scar1"></div>
+      <div class="scar2"></div>
+      <div class="scar3"></div>
+      <div class="scar4"></div>
+      <div class="scar5"></div>
+    </div>
+    <!--帽子-->
+    <div class="hat">
+      <div class="inner">
+        <div class="patch">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+          <div class="line4"></div>
+          <div class="line5"></div>
+          <div class="line6"></div>
+          <div class="line7"></div>
+          <div class="line8"></div>
+          <div class="line9"></div>
+          <div class="line10"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import Menu from "./components/menu.vue"
-import Breadcrumb from "@/components/Breadcrumb.vue"
 
 </script>
 
 <style lang="less" scoped>
-.ant-layout {
-  height: calc(100vh - 64px);
-}
-
 #bigBigWolf {
   background: #fff;
   position: relative;
   margin: 0 auto;
   width: 600px;
   height: 600px;
+
   div {
     position: absolute;
   }

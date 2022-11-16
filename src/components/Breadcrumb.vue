@@ -1,6 +1,5 @@
 <template>
-  <a-breadcrumb
-    style="margin: 16px 0">
+  <a-breadcrumb style="margin: 16px 0">
     <a-breadcrumb-item>
       <router-link to="/">
         <home-outlined />
@@ -9,7 +8,7 @@
     <a-breadcrumb-item
       v-for="(item, index) in menuList"
       :key="index">
-      <template v-if="index === menuList.length -1">{{ item.meta.title }}</template>
+      <template v-if="index === menuList.length - 1">{{ item.meta.title }}</template>
       <router-link
         v-else
         :to="item.path">

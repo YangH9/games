@@ -274,6 +274,7 @@ module.exports = {
 
     // Vue eslint
     "vue/html-indent": [ "error", 2 ],
+    "vue/no-setup-props-destructure": "off",
     "vue/no-v-for-template-key": "off",
     "vue/require-default-prop": "off",
     "vue/comma-spacing": "warn",

@@ -1,5 +1,5 @@
 <template>
-  <Menu url="/joy/minesweeper"></Menu>
+  <Menu url="/resources/demo"></Menu>
   <a-layout style="padding: 0 24px 24px">
     <Breadcrumb />
     <a-layout-content>
