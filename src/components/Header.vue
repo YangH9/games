@@ -59,7 +59,7 @@ const click = data => {
 
 .ant-layout-header {
   background: transparent;
-  background-image: radial-gradient(transparent 1px, #ffffff 1px);
+  background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
   background-size: 4px 4px;
   backdrop-filter: saturate(50%) blur(4px);
 }
