@@ -1,9 +1,10 @@
+import vue from "@vitejs/plugin-vue"
 import { fileURLToPath, URL } from "node:url"
 import { defineConfig, loadEnv } from "vite"
-import Components from "unplugin-vue-components/vite"
 import viteCompression from "vite-plugin-compression"
+import Components from "unplugin-vue-components/vite"
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers"
-import vue from "@vitejs/plugin-vue"
+import { createHtmlPlugin } from "vite-plugin-html"
 
 export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
@@ -12,6 +13,12 @@ export default ({ mode }) => {
       vue(),
       Components({
         resolvers: [AntDesignVueResolver()]
+      }),
+      createHtmlPlugin({
+        minify: true,
+        inject: { data: {
+          title: env.VITE_TITLE
+        } }
       }),
       viteCompression({ threshold: 1024 * 1024 })
     ],
