@@ -4,8 +4,9 @@ import { createPinia } from "pinia"
 import App from "@/App.vue"
 import router from "@/router"
 import { formatDate } from "@/utils/index"
-
 import "@/utils/text"
+
+import "nprogress/nprogress.css"
 
 import "@/assets/main.less"
 import "@/assets/base.less"

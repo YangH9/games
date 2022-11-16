@@ -31,6 +31,19 @@
               </a-descriptions-item>
             </a-descriptions>
           </a-card>
+          <a-card
+            title="QQ群"
+            class="mb10"
+            :hoverable="true">
+            <a-button
+              v-for="(item, index) of qqList"
+              :key="index"
+              type="link"
+              size="small"
+              :href="item.href">
+              {{ item.title }}
+            </a-button>
+          </a-card>
         </div>
       </RouterViewBox>
     </a-layout>
@@ -41,7 +54,14 @@
 import Header from "@/components/Header.vue"
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
+import { reactive } from "vue"
 
+const qqList = reactive([
+  { title: "👨‍👦‍👦前端程序员交流 (687041277)", href: "https://jq.qq.com/?_wv=1027&k=wSi5TUnM" },
+  { title: "👨‍👦‍👦后端程序员交流 (527121526)", href: "https://jq.qq.com/?_wv=1027&k=PXkCkxA8" },
+  // { title: "👨‍👦‍👦MC精彩无限 (778923681)", href: "https://jq.qq.com/?_wv=1027&k=ikak0eLV" },
+  { title: "👨‍👦‍👦cfm活动分享群 (238080446)", href: "https://jq.qq.com/?_wv=1027&k=K6vsosuT" }
+])
 </script>
 
 <style lang="less" scoped>

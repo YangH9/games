@@ -16,7 +16,6 @@
                 <a-button
                   type="link"
                   size="small"
-                  target="_blank"
                   :href="item.href">
                   {{ item.href }}
                 </a-button>

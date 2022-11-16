@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 import NProgress from "nprogress"
-import "nprogress/nprogress.css"
 
 const routes = [
   {
@@ -147,7 +146,7 @@ router.beforeEach((to, from, next) => {
 })
 
 // 当路由跳转结束后
-router.afterEach((to, from) => {
+router.afterEach(() => {
   console.log("afterEach")
   NProgress.done()
 })
