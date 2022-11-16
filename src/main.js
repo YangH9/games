@@ -5,6 +5,7 @@ import App from "@/App.vue"
 import router from "@/router"
 import { formatDate } from "@/utils/index"
 import "@/utils/text"
+import "@/utils/custom"
 
 import "nprogress/nprogress.css"
 

@@ -1,10 +1,12 @@
 <template>
-  <div>
-    扫雷home
+  <a-layout-content>
     <div>
-      {{ baseurl }}、{{ mode }}、{{ title }}
+      扫雷home
+      <div>
+        {{ baseurl }}、{{ mode }}、{{ title }}
+      </div>
     </div>
-  </div>
+  </a-layout-content>
 </template>
 
 <script setup>

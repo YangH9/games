@@ -1,7 +1,9 @@
 <template>
-  <div>
-    扫雷setting
-  </div>
+  <a-layout-content>
+    <div>
+      扫雷setting
+    </div>
+  </a-layout-content>
 </template>
 
 <script setup>

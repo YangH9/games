@@ -2,9 +2,7 @@
   <Menu url="/joy/minesweeper"></Menu>
   <a-layout style="padding: 0 24px 24px">
     <Breadcrumb />
-    <a-layout-content>
-      <RouterView />
-    </a-layout-content>
+    <RouterView />
   </a-layout>
 </template>
 
