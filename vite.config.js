@@ -13,15 +13,7 @@ export default ({ mode }) => {
       Components({
         resolvers: [AntDesignVueResolver()]
       }),
-      viteCompression({
-        // 生成压缩包gz
-        verbose: true, // 是否在控制台输出压缩结果
-        filter: /\.(js|mjs|json|css|html)$/i, // 指定哪些资源不压缩
-        disable: false, // 是否禁用
-        threshold: 1024000, // 体积大于 threshold 才会被压缩,单位 b
-        algorithm: "gzip", // 压缩算法,可选 [ 'gzip' , 'brotliCompress' ,'deflate' , 'deflateRaw']
-        ext: ".gz" // 生成的压缩包后缀
-      })
+      viteCompression({ threshold: 1024 * 1024 })
     ],
     root: env.VITE_ROOT_URL,
     base: env.VITE_BASE_URL,
@@ -37,7 +29,7 @@ export default ({ mode }) => {
       strictPort: true
     },
     build: {
-      // chunkSizeWarningLimit: 1500,
+      chunkSizeWarningLimit: 1500,
       minify: "terser",
       target: "modules",
       outDir: env.VITE_OUTDIR_URL,
