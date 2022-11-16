@@ -5,8 +5,6 @@ import viteCompression from "vite-plugin-compression"
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers"
 import vue from "@vitejs/plugin-vue"
 
-const Timestamp = new Date().getTime()
-
 export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   const config = {
@@ -45,9 +43,9 @@ export default ({ mode }) => {
       },
       rollupOptions: {
         output: {
-          chunkFileNames: `${env.VITE_OUTDIR_ASSETS}/js/${env.VITE_OUTDIR_NAME}-[hash]-${Timestamp}.js`,
-          entryFileNames: `${env.VITE_OUTDIR_ASSETS}/js/[name]-${Timestamp}.js`,
-          assetFileNames: `${env.VITE_OUTDIR_ASSETS}/[ext]/${env.VITE_OUTDIR_NAME}-[hash]-${Timestamp}[extname]`
+          chunkFileNames: `${env.VITE_OUTDIR_ASSETS}/js/${env.VITE_OUTDIR_NAME}-[hash].js`,
+          entryFileNames: `${env.VITE_OUTDIR_ASSETS}/js/[name].js`,
+          assetFileNames: `${env.VITE_OUTDIR_ASSETS}/[ext]/${env.VITE_OUTDIR_NAME}-[hash][extname]`
         }
       }
     }
