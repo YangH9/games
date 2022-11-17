@@ -61,6 +61,7 @@ const gameList = reactive([
 const qqList = reactive([
   { title: "👨‍👦‍👦前端程序员交流 (687041277)", href: "https://jq.qq.com/?_wv=1027&k=wSi5TUnM" },
   { title: "👨‍👦‍👦后端程序员交流 (527121526)", href: "https://jq.qq.com/?_wv=1027&k=PXkCkxA8" },
+  { title: "👨‍👦‍👦前端开发工程师交流 (153700736)", href: "https://jq.qq.com/?_wv=1027&k=rSylFS04" },
   // { title: "👨‍👦‍👦MC精彩无限 (778923681)", href: "https://jq.qq.com/?_wv=1027&k=ikak0eLV" },
   { title: "👨‍👦‍👦cfm活动分享群 (238080446)", href: "https://jq.qq.com/?_wv=1027&k=K6vsosuT" }
 ])
