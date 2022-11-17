@@ -158,9 +158,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
   }
-  setTimeout(() => {
-    next()
-  }, 1000)
+  next()
 })
 
 // 当路由跳转结束后
