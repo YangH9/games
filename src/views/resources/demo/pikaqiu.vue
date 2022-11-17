@@ -68,6 +68,9 @@
 </script>
 
 <style lang="less" scoped>
+.ant-layout-content {
+  background: var(--color-background);
+}
 // 皮卡丘
 #pikaqiu {
   width: 500px;

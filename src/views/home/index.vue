@@ -27,9 +27,8 @@ const title = env.VITE_TITLE
 </script>
 
 <style lang="less" scoped>
-.layout{
-  // background-color: #ddd;
+.layout {
   height: calc(100vh - 64px);
+  overflow: auto;
 }
-
 </style>

@@ -1,6 +1,6 @@
 <template>
   <Menu url="/resources/demo"></Menu>
-  <a-layout style="padding: 0 24px 24px">
+  <a-layout>
     <Breadcrumb />
     <RouterView />
   </a-layout>
@@ -15,5 +15,6 @@ import Breadcrumb from "@/components/Breadcrumb.vue"
 <style lang="less" scoped>
 .ant-layout {
   height: calc(100vh - 64px);
+  padding: 0px 24px 24px;
 }
 </style>

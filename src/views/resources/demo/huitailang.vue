@@ -149,6 +149,10 @@
 </script>
 
 <style lang="less" scoped>
+.ant-layout-content {
+  background: var(--color-background);
+}
+
 #bigBigWolf {
   background: #fff;
   position: relative;

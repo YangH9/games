@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout>
+    <a-layout class="layout">
       <RouterViewBox url="/resources">
         <div class="container">
           <Breadcrumb />
@@ -75,5 +75,8 @@ const resoutcesList = reactive([
 </script>
 
 <style lang="less" scoped>
-
+.layout {
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
 </style>

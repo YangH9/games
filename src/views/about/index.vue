@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout>
+    <a-layout class="layout">
       <div class="container">
         <Breadcrumb />
         <a-card
@@ -93,5 +93,8 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="less" scoped>
-
+.layout {
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
 </style>

@@ -48,11 +48,10 @@ const routes = [
         meta: {
           title: "扫雷"
         },
-        redirect: "/joy/minesweeper/home",
         component: () => import("@/views/joy/minesweeper/index.vue"),
         children: [
           {
-            path: "/joy/minesweeper/home",
+            path: "/joy/minesweeper",
             name: "minesweeper_home",
             meta: {
               title: "扫雷home"
@@ -159,7 +158,9 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
   }
-  next()
+  setTimeout(() => {
+    next()
+  }, 1000)
 })
 
 // 当路由跳转结束后

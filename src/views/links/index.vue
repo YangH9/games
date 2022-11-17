@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout>
+    <a-layout class="layout">
       <div class="container">
         <Breadcrumb />
         <a-card
@@ -17,7 +17,7 @@
             :href="item.href">
             <template #icon>
               <img
-                :src="item.favicon.indexOf('//') >= 0 ? item.favicon :`${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`"
+                :src="item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`"
                 class="icon"
                 referrer="no-referrer"
                 @load="(e) => e.target.style.display = 'inline-block'" />
@@ -274,6 +274,11 @@ const resoutcesList = reactive([
 </script>
 
 <style lang="less" scoped>
+.layout {
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
+
 .ant-card :deep(.ant-card-body) {
   padding-bottom: 14px;
 

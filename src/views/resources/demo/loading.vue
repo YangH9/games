@@ -8,11 +8,13 @@
         size="100"
         lineWidth="10"
         strokeStyle="#359dda"></loading-circle>
+      <Loading></Loading>
     </div>
   </a-layout-content>
 </template>
 
 <script setup>
+import Loading from "./components/loading1.vue"
 
 </script>
 
