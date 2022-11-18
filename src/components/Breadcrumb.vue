@@ -28,4 +28,16 @@ const $route = useRoute()
 const menuList = computed(() => $route.matched)
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+@media (prefers-color-scheme: dark) {
+  .ant-breadcrumb {
+    a,
+    :deep(.ant-breadcrumb-separator) {
+      color: var(--color-text);
+    }
+    & > span:last-child {
+      color: var(--color-heading);
+    }
+  }
+}
+</style>

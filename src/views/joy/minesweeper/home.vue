@@ -9,5 +9,6 @@
 <style lang="less" scoped>
 .ant-layout-content {
   background: var(--color-background);
+  color: var(--color-heading);
 }
 </style>

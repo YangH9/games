@@ -43,7 +43,7 @@ import { reactive } from "vue"
 const resoutcesList = reactive([
   {
     title: "友情链接",
-    list: []
+    list: [{ title: "RGB", href: "https://rgb39.top/", favicon: "" }]
   },
   {
     title: "码农推荐",

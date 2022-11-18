@@ -22,7 +22,7 @@ const visible = computed(() => routerLoading().visible)
 
 <style lang="less" scoped>
 .preloader {
-  background: #ffffff;
+  background: var(--color-background);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -79,6 +79,11 @@ const visible = computed(() => routerLoading().visible)
     .rect6 {
       animation-delay: -0.7s;
     }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .preloader .spinner > div {
+    background-color: #007180;
   }
 }
 

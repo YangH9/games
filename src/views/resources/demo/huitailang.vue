@@ -148,11 +148,11 @@
 
 <style lang="less" scoped>
 .ant-layout-content {
-  background: var(--color-background);
+  background: var(--color-background-mute);
 }
 
 #bigBigWolf {
-  background: #fff;
+  background: var(--color-background-mute);
   position: relative;
   margin: 0 auto;
   width: 600px;
@@ -217,7 +217,7 @@
   height: 40px;
   border: 3px solid #181818;
   border-bottom: 0;
-  background: #fff;
+  background: var(--color-background-mute);
   z-index: 20;
   border-top-left-radius: 600px 1200px;
   border-top-right-radius: 400px 700px;
@@ -230,7 +230,7 @@
   top: 433px;
   width: 40px;
   height: 40px;
-  background: #fff;
+  background: var(--color-background-mute);
   z-index: 30;
   border-radius: 20px;
 }
@@ -252,7 +252,7 @@
   height: 40px;
   border: 3px solid #181818;
   border-bottom: 0;
-  background: #fff;
+  background: var(--color-background-mute);
   z-index: 20;
   border-top-left-radius: 600px 1200px;
   border-top-right-radius: 400px 700px;
@@ -266,7 +266,7 @@
   top: -90px;
   width: 60px;
   height: 30px;
-  background: #fff;
+  background: var(--color-background-mute);
   z-index: 40;
   transform: rotate(28deg);
 }
@@ -429,7 +429,7 @@
   border: 3px solid #181818;
   border-bottom: 0;
   border-left: 0;
-  background: #fff;
+  background: var(--color-background-mute);
   z-index: 50;
   border-radius: 30px;
   transform: rotate(313deg);

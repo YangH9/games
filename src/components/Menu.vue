@@ -37,12 +37,18 @@ const click = data => {
   background: transparent;
 }
 .ant-menu {
-  background: transparent;
-  background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
-  background-size: 4px 4px;
-  backdrop-filter: saturate(50%) blur(4px);
+  background: var(--color-background);
+  // background: transparent;
+  // background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
+  // background-size: 4px 4px;
+  // backdrop-filter: saturate(50%) blur(4px);
   :deep(.ant-menu-title-content) span {
-    background: #e6f7ff;
+    color: var(--color-heading);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :deep(.ant-menu-item.ant-menu-item-selected) {
+    background: #004a6d;
   }
 }
 </style>

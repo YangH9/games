@@ -67,14 +67,16 @@
 
 <style lang="less" scoped>
 .ant-layout-content {
-  background: var(--color-background);
+  background: var(--color-background-mute);
 }
 // 皮卡丘
 #pikaqiu {
   width: 500px;
   height: 500px;
   margin: 100px auto 0px auto;
+  padding: 50px;
   position: relative;
+  background: var(--color-background-mute);
 
   * {
     box-sizing: content-box;
@@ -222,8 +224,8 @@
     height: 185px;
     background: #ffe100;
     position: absolute;
-    top: 38%;
-    left: 34%;
+    top: calc(38% + 50px);
+    left: calc(34% + 50px);
     border-bottom-left-radius: 45% 43%;
     border-bottom-right-radius: 45% 43%;
     border-top-left-radius: 30% 90%;
@@ -268,8 +270,8 @@
     margin: auto;
     background: #ffe100;
     position: absolute;
-    top: 10%;
-    left: 35%;
+    top: calc(10% + 50px);
+    left: calc(35% + 50px);
     border-top-left-radius: 45% 43%;
     border-top-right-radius: 45% 43%;
     border-bottom-left-radius: 50% 35%;

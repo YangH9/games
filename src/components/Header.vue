@@ -58,18 +58,19 @@ const click = data => {
 }
 
 .ant-layout-header {
-  background: transparent;
-  background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
-  background-size: 4px 4px;
-  backdrop-filter: saturate(50%) blur(4px);
+  background: var(--color-background);
+  // background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
+  // background-size: 4px 4px;
+  // backdrop-filter: saturate(50%) blur(4px);
 }
-
+.ant-menu-horizontal {
+  border-color: var(--color-background-soft);
+}
 .ant-menu {
   background: transparent;
-
-  // background: var(--color-background);
   :deep(.ant-menu-title-content) {
     background: var(--color-background);
+    color: var(--color-text);
   }
 }
 
@@ -78,8 +79,8 @@ const click = data => {
   width: 120px;
   height: 31px;
   margin: 16px 24px 16px 0;
-  background: var(--vt-c-divider-dark-2);
-  color: var(--vt-c-black-mute);
+  background: var(--color-background-mute);
+  color: var(--color-text);
   line-height: 32px;
   text-align: center;
 
