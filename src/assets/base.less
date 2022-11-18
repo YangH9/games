@@ -50,13 +50,35 @@
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  font-weight: normal;
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    font-weight: normal;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #0003;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #0000004d;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
 }
 
 body {
@@ -71,31 +93,30 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  .wrap {
+    flex-wrap: wrap;
+  }
+
+  .mb10 {
+    margin-bottom: 10px;
+  }
 }
 
-.wrap {
-  flex-wrap: wrap !important;
+// 文字弹窗
+.adriftText {
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  z-index: 6000;
+  white-space: nowrap;
 }
 
-.mb10 {
-  margin-bottom: 10px !important;
-}
-
-* {
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #0003;
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      background-color: #0000004d;
-    }
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 10px;
-  }
+// 错误页面
+.errorResult {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

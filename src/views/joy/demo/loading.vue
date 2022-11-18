@@ -4,10 +4,10 @@
       <img
         src="@/assets/loading.svg"
         width="100" />
-      <!-- <loading-circle
+      <loading-circle
         size="100"
         lineWidth="10"
-        strokeStyle="#359dda"></loading-circle> -->
+        strokeStyle="#359dda"></loading-circle>
       <Loading></Loading>
     </div>
   </a-layout-content>

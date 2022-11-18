@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb />
     <a-layout-content>
-      <RouterViewBox url="/joy/listen">
+      <RouterViewBox url="/joy/tool/listen">
         <div>音乐播放器规划中</div>
       </RouterViewBox>
     </a-layout-content>

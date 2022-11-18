@@ -27,54 +27,125 @@ const routes = [
     component: () => import("@/views/joy/index.vue"),
     children: [
       {
-        path: "/joy/gameHistory",
-        name: "gameHistory",
+        path: "/joy/demo",
+        name: "demo",
         meta: {
-          title: "游戏历程时间轴"
+          title: "DEMO展示"
         },
-        component: () => import("@/views/joy/gameHistory.vue")
-      },
-      {
-        path: "/joy/catchTheCat",
-        name: "catchTheCat",
-        meta: {
-          title: "圈小猫"
-        },
-        component: () => import("@/views/joy/catchTheCat.vue")
-      },
-      {
-        path: "/joy/minesweeper",
-        name: "minesweeper",
-        meta: {
-          title: "扫雷"
-        },
-        component: () => import("@/views/joy/minesweeper/index.vue"),
+        redirect: "/joy/demo/pikaqiu",
+        component: () => import("@/views/joy/demo/index.vue"),
         children: [
           {
-            path: "/joy/minesweeper",
-            name: "minesweeper_home",
+            path: "/joy/demo/pikaqiu",
+            name: "pikaqiu",
             meta: {
-              title: "扫雷home"
+              title: "CSS皮卡丘"
             },
-            component: () => import("@/views/joy/minesweeper/home.vue")
+            component: () => import("@/views/joy/demo/pikaqiu.vue")
           },
           {
-            path: "/joy/minesweeper/setting",
-            name: "minesweeper_setting",
+            path: "/joy/demo/huitailang",
+            name: "huitailang",
             meta: {
-              title: "扫雷setting"
+              title: "CSS灰太狼"
             },
-            component: () => import("@/views/joy/minesweeper/setting.vue")
+            component: () => import("@/views/joy/demo/huitailang.vue")
+          },
+          {
+            path: "/joy/demo/lanpangzi",
+            name: "lanpangzi",
+            meta: {
+              title: "CSS蓝胖子"
+            },
+            component: () => import("@/views/joy/demo/lanpangzi.vue")
+          },
+          {
+            path: "/joy/demo/loading",
+            name: "loading",
+            meta: {
+              title: "加载动画"
+            },
+            component: () => import("@/views/joy/demo/loading.vue")
           }
         ]
       },
       {
-        path: "/joy/listen",
-        name: "listen",
+        path: "/joy/games",
+        name: "games",
         meta: {
-          title: "音乐播放器"
+          title: "游戏"
         },
-        component: () => import("@/views/joy/listen/index.vue")
+        redirect: "/joy",
+        children: [
+          {
+            path: "/joy/games/gameHistory",
+            name: "gameHistory",
+            meta: {
+              title: "游戏历程时间轴"
+            },
+            component: () => import("@/views/joy/games/gameHistory/index.vue")
+          },
+          {
+            path: "/joy/games/catchTheCat",
+            name: "catchTheCat",
+            meta: {
+              title: "圈小猫"
+            },
+            component: () => import("@/views/joy/games/catchTheCat/index.vue")
+          },
+          {
+            path: "/joy/games/minesweeper",
+            name: "minesweeper",
+            meta: {
+              title: "扫雷"
+            },
+            component: () => import("@/views/joy/games/minesweeper/index.vue"),
+            children: [
+              {
+                path: "/joy/games/minesweeper",
+                name: "minesweeper_home",
+                meta: {
+                  title: "扫雷home"
+                },
+                component: () => import("@/views/joy/games/minesweeper/home.vue")
+              },
+              {
+                path: "/joy/games/minesweeper/setting",
+                name: "minesweeper_setting",
+                meta: {
+                  title: "扫雷setting"
+                },
+                component: () => import("@/views/joy/games/minesweeper/setting.vue")
+              }
+            ]
+          }
+        ]
+      },
+      {
+        path: "/joy/tool",
+        name: "tool",
+        meta: {
+          title: "工具"
+        },
+        redirect: "/joy",
+        children: [
+          {
+            path: "/joy/tool/listen",
+            name: "listen",
+            meta: {
+              title: "音乐播放器"
+            },
+            component: () => import("@/views/joy/tool/listen/index.vue")
+          },
+          {
+            path: "/joy/tool/petpet",
+            name: "petpet",
+            meta: {
+              title: "摸头生成器"
+            },
+            component: () => import("@/views/joy/tool/petpet/index.vue")
+          }
+        ]
       }
     ]
   },
@@ -92,52 +163,7 @@ const routes = [
     meta: {
       title: "资源分享"
     },
-    component: () => import("@/views/resources/index.vue"),
-    children: [
-      {
-        path: "/resources/demo",
-        name: "demo",
-        meta: {
-          title: "DEMO展示"
-        },
-        redirect: "/resources/demo/pikaqiu",
-        component: () => import("@/views/resources/demo/index.vue"),
-        children: [
-          {
-            path: "/resources/demo/pikaqiu",
-            name: "pikaqiu",
-            meta: {
-              title: "CSS皮卡丘"
-            },
-            component: () => import("@/views/resources/demo/pikaqiu.vue")
-          },
-          {
-            path: "/resources/demo/huitailang",
-            name: "huitailang",
-            meta: {
-              title: "CSS灰太狼"
-            },
-            component: () => import("@/views/resources/demo/huitailang.vue")
-          },
-          {
-            path: "/resources/demo/lanpangzi",
-            name: "lanpangzi",
-            meta: {
-              title: "CSS蓝胖子"
-            },
-            component: () => import("@/views/resources/demo/lanpangzi.vue")
-          },
-          {
-            path: "/resources/demo/loading",
-            name: "loading",
-            meta: {
-              title: "加载动画"
-            },
-            component: () => import("@/views/resources/demo/loading.vue")
-          }
-        ]
-      }
-    ]
+    component: () => import("@/views/resources/index.vue")
   },
   { path: "/403", component: () => import("@/views/error/403.vue") },
   { path: "/404", component: () => import("@/views/error/404.vue") },

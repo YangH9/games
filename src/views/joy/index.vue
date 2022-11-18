@@ -6,26 +6,18 @@
         <div class="container">
           <Breadcrumb />
           <a-card
-            title="游戏"
+            v-for="(main, index) of joyList"
+            :key="index"
+            :title="main.title"
             class="mb10"
             :hoverable="true">
             <a-button
-              v-for="(item, index) of gameList"
-              :key="index"
+              v-for="(item, index1) of main.list"
+              :key="index1"
               type="link"
               size="small">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
-          </a-card>
-          <a-card
-            title="娱乐"
-            class="mb10"
-            :hoverable="true">
-            <a-descriptions :column="1">
-              <a-descriptions-item>
-                <RouterLink to="/joy/listen">音乐播放器</RouterLink>
-              </a-descriptions-item>
-            </a-descriptions>
           </a-card>
           <a-card
             title="QQ群"
@@ -52,10 +44,31 @@ import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
 import { reactive } from "vue"
 
-const gameList = reactive([
-  { title: "游戏历程时间轴", href: "/joy/gameHistory" },
-  { title: "圈小猫", href: "/joy/catchTheCat" },
-  { title: "扫雷", href: "/joy/minesweeper" }
+const joyList = reactive([
+  {
+    title: "DEMO展示",
+    list: [
+      { title: "CSS皮卡丘", href: "/joy/demo/pikaqiu" },
+      { title: "CSS灰太狼", href: "/joy/demo/huitailang" },
+      { title: "CSS蓝胖子", href: "/joy/demo/lanpangzi" },
+      { title: "加载动画", href: "/joy/demo/loading" }
+    ]
+  },
+  {
+    title: "游戏",
+    list: [
+      { title: "游戏历程时间轴", href: "/joy/games/gameHistory" },
+      { title: "圈小猫", href: "/joy/games/catchTheCat" },
+      { title: "扫雷", href: "/joy/games/minesweeper" }
+    ]
+  },
+  {
+    title: "工具",
+    list: [
+      { title: "音乐播放器", href: "/joy/tool/listen" },
+      { title: "摸头生成器", href: "/joy/tool/petpet" }
+    ]
+  }
 ])
 
 const qqList = reactive([

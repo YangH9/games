@@ -7,6 +7,7 @@
   background-attachment: fixed;
   background-size: cover;
 }
+
 @media (prefers-color-scheme: dark) {
   #app::before {
     content: '';
@@ -18,12 +19,14 @@
     background: rgba(0, 0, 0, 0.3);
   }
 }
+
 // 通用 container
 .container {
   width: 100%;
   position: relative;
   margin: 0 auto;
   padding: 0 20px 10px;
+
   &::after {
     content: '';
     display: block;
@@ -43,28 +46,35 @@
   .ant-descriptions-item-content {
     color: var(--color-text);
   }
+
   tr:last-child td {
     padding-bottom: 0;
   }
 }
+
 a.ant-btn:not(.ant-btn-link) {
   color: var(--color-text);
   background: var(--color-background);
 }
+
 div.ant-card {
   color: var(--color-text);
   border-color: var(--color-border);
   background: var(--color-background);
+
   &:hover {
     border-color: var(--color-border-hover);
+
     .ant-card-head {
       border-color: var(--color-border-hover);
     }
   }
+
   .ant-card-head {
     color: var(--color-heading);
     border-color: var(--color-border);
   }
+
   .ant-card-hoverable {
     cursor: default;
   }
@@ -72,12 +82,4 @@ div.ant-card {
 
 section.ant-layout {
   background: transparent;
-}
-
-.adriftText {
-  position: fixed;
-  pointer-events: none;
-  user-select: none;
-  z-index: 6000;
-  white-space: nowrap;
 }
