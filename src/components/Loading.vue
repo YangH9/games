@@ -31,8 +31,8 @@ const visible = computed(() => routerLoading().visible)
   z-index: 8888;
 
   .spinner {
-    width: 8rem;
-    height: 8rem;
+    width: 4rem;
+    height: 4rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -43,10 +43,9 @@ const visible = computed(() => routerLoading().visible)
 
     & > div {
       height: 100%;
-      width: 0.8rem;
+      width: 1rem;
       background-color: #00acc3;
-      display: inline-block;
-      margin-right: 0.4rem;
+      margin-right: 6%;
       animation-duration: 1.2s;
       animation-name: stretchdelay;
       animation-iteration-count: infinite;
