@@ -26,9 +26,6 @@ import { HomeOutlined } from "@ant-design/icons-vue"
 const $route = useRoute()
 
 const menuList = computed(() => $route.matched)
-
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

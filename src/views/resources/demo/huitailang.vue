@@ -144,9 +144,7 @@
   </a-layout-content>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="less" scoped>
 .ant-layout-content {
@@ -164,7 +162,6 @@
     position: absolute;
   }
 }
-
 
 #bigBigWolf #url a {
   position: absolute;

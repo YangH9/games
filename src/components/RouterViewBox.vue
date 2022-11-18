@@ -11,9 +11,6 @@
 import { useRoute } from "vue-router"
 const $route = useRoute()
 const props = defineProps({ url: String })
-
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

@@ -3,9 +3,7 @@
     <Breadcrumb />
     <a-layout-content>
       <RouterViewBox url="/joy/listen">
-        <div>
-          音乐播放器规划中
-        </div>
+        <div>音乐播放器规划中</div>
       </RouterViewBox>
     </a-layout-content>
   </div>
@@ -14,9 +12,6 @@
 <script setup>
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
-
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

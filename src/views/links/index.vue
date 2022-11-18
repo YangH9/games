@@ -17,10 +17,15 @@
             :href="item.href">
             <template #icon>
               <img
-                :src="item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`"
+                :src="
+                  item.favicon.indexOf('//') >= 0
+                    ? item.favicon
+                    : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+                "
                 class="icon"
                 referrer="no-referrer"
-                @load="(e) => e.target.style.display = 'inline-block'" />
+                @load="(e) => (e.target.style.display = 'inline-block')"
+              />
             </template>
             {{ item.title }}
           </a-button>
@@ -43,8 +48,16 @@ const resoutcesList = reactive([
   {
     title: "码农推荐",
     list: [
-      { title: "【腾讯云】推广者专属福利，新客户无门槛领取总价值高达2860元代金券，每种代金券限量500张，先到先得。", href: "https://cloud.tencent.com/act/cps/redirect?redirect=1062&cps_key=42dc10103f6f6935ce4d5a47e1cefa80&from=console", favicon: "" },
-      { title: "「新浪云福利」1000云豆免费领！低成本、免运维、灵活、安全稳定，轻松应对业务爆发式增长，一起来用吧！", href: "https://www.sinacloud.com/public/login/inviter/gaimrn-mddmzeKWrhKWvrYKIo619nptqfqKqdg.html", favicon: "" },
+      {
+        title: "【腾讯云】推广者专属福利，新客户无门槛领取总价值高达2860元代金券，每种代金券限量500张，先到先得。",
+        href: "https://cloud.tencent.com/act/cps/redirect?redirect=1062&cps_key=42dc10103f6f6935ce4d5a47e1cefa80&from=console",
+        favicon: ""
+      },
+      {
+        title: "「新浪云福利」1000云豆免费领！低成本、免运维、灵活、安全稳定，轻松应对业务爆发式增长，一起来用吧！",
+        href: "https://www.sinacloud.com/public/login/inviter/gaimrn-mddmzeKWrhKWvrYKIo619nptqfqKqdg.html",
+        favicon: ""
+      },
       { title: "宝塔服务器面板，一键全能部署及管理，送你3188元礼包，点我领取", href: "https://www.bt.cn/?invite_code=MV9wb3Npdmw=", favicon: "" },
       { title: "天行数据API接口", href: "https://www.tianapi.com/source/9897a82ddb", favicon: "" },
       { title: "程序猿必备小贴纸", href: "https://www.smallsticker.com/", favicon: "" }
@@ -95,7 +108,11 @@ const resoutcesList = reactive([
       { title: "AIDesign", href: "https://ailogo.qq.com/", favicon: "" },
       { title: "TDesign", href: "https://tdesign.tencent.com/", favicon: "" },
       { title: "腾讯工蜂", href: "https://code.tencent.com/", favicon: "//assets.code.tencent.com/official/p/1667911693366/favicon.ico" },
-      { title: "腾讯GCLOUD", href: "https://gcloud.tencent.com/", favicon: "//gcloudweb-1256818929.cos.ap-shanghai.myqcloud.com/static/images/OfficialSite_Tencent/ico-img/gcloud-ico.ico" },
+      {
+        title: "腾讯GCLOUD",
+        href: "https://gcloud.tencent.com/",
+        favicon: "//gcloudweb-1256818929.cos.ap-shanghai.myqcloud.com/static/images/OfficialSite_Tencent/ico-img/gcloud-ico.ico"
+      },
       { title: "蓝鲸智云", href: "https://bk.tencent.com/", favicon: "static/img/favicon.ico" },
       { title: "腾讯开源", href: "https://opensource.tencent.com/", favicon: "" }
     ]
@@ -113,8 +130,16 @@ const resoutcesList = reactive([
       { title: "Vite", href: "https://cn.vitejs.dev/", favicon: "logo.svg" },
       { title: "Vue Devtools", href: "https://devtools.vuejs.org/", favicon: "favicon.svg" },
       { title: "DCloud", href: "https://www.dcloud.io/", favicon: "" },
-      { title: "uni-app", href: "https://uniapp.dcloud.net.cn/", favicon: "//vkceyugu.cdn.bspapp.com/VKCEYUGU-a90b5f95-90ba-4d30-a6a7-cd4d057327db/d23e842c-58fc-4574-998d-17fdc7811cc3.png" },
-      { title: "Bootstrap", href: "https://www.bootcss.com/", favicon: "//cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.65/dist/ico/favicon.ico" },
+      {
+        title: "uni-app",
+        href: "https://uniapp.dcloud.net.cn/",
+        favicon: "//vkceyugu.cdn.bspapp.com/VKCEYUGU-a90b5f95-90ba-4d30-a6a7-cd4d057327db/d23e842c-58fc-4574-998d-17fdc7811cc3.png"
+      },
+      {
+        title: "Bootstrap",
+        href: "https://www.bootcss.com/",
+        favicon: "//cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.65/dist/ico/favicon.ico"
+      },
       { title: "sass", href: "https://www.sass.hk/", favicon: "" },
       { title: "less", href: "https://lesscss.com.cn/", favicon: "Application/Home/View/Public/img/favicon.ico" },
       { title: "jquery", href: "https://www.jquery123.com/", favicon: "assets/images/favicon.ico" },
@@ -143,7 +168,11 @@ const resoutcesList = reactive([
       { title: "Lodash", href: "https://www.lodashjs.com/", favicon: "img/favicon.ico" },
       { title: "vxe-table", href: "https://vxetable.cn/", favicon: "" },
       { title: "TortoiseGit", href: "https://tortoisegit.org/", favicon: "" },
-      { title: "iconfont图标", href: "https://iconfont.cn/", favicon: "//img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg" },
+      {
+        title: "iconfont图标",
+        href: "https://iconfont.cn/",
+        favicon: "//img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg"
+      },
       { title: "fullCalendar日程插件", href: "https://fullcalendar.io/", favicon: "favicon-32x32.png" },
       { title: "Mock.js", href: "http://mockjs.com/", favicon: "assets/img/logo-2.svg" },
       { title: "Threejs", href: "https://threejs.org/", favicon: "" },
@@ -201,7 +230,11 @@ const resoutcesList = reactive([
       { title: "百度智能云", href: "https://cloud.baidu.com", favicon: "//bce.bdstatic.com/img/favicon.ico" },
       { title: "百度网盘开放平台", href: "https://pan.baidu.com", favicon: "//nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" },
       { title: "OPPO开放平台", href: "https://open.oppomobile.com", favicon: "" },
-      { title: "淘宝开放平台", href: "https://open.taobao.com", favicon: "//img.alicdn.com/imgextra/i3/O1CN01K6gTbI1FasPBz4iEB_!!6000000000504-73-tps-32-32.ico" },
+      {
+        title: "淘宝开放平台",
+        href: "https://open.taobao.com",
+        favicon: "//img.alicdn.com/imgextra/i3/O1CN01K6gTbI1FasPBz4iEB_!!6000000000504-73-tps-32-32.ico"
+      },
       { title: "小米开放平台", href: "https://dev.mi.com", favicon: "//dev.mi.com/console/favicon.ico" },
       { title: "阿里巴巴开放平台", href: "https://open.1688.com", favicon: "//cbu01.alicdn.com/favicon.ico" },
       { title: "钉钉开放平台", href: "https://open.dingtalk.com", favicon: "" }
@@ -262,7 +295,11 @@ const resoutcesList = reactive([
       { title: "央视网", href: "https://www.cctv.com", favicon: "" },
       { title: "懂车帝", href: "https://www.dongchedi.com", favicon: "" },
       { title: "赛码网", href: "https://www.acmcoder.com", favicon: "//cdn.acmcoder.com/release/www/2.0.1/images/acm.ico" },
-      { title: "Chrome插件", href: "https://www.extfans.com", favicon: "//static-public.infinitytab.com/sites-resource/extfans/61ea85a31aec3f3365dbe165/icon_1642759665914.jpg" },
+      {
+        title: "Chrome插件",
+        href: "https://www.extfans.com",
+        favicon: "//static-public.infinitytab.com/sites-resource/extfans/61ea85a31aec3f3365dbe165/icon_1642759665914.jpg"
+      },
       { title: "迅雷", href: "https://www.xunlei.com", favicon: "" },
       { title: "谷歌浏览器", href: "https://www.google.cn/chrome", favicon: "/chrome/static/images/favicons/favicon-16x16.png" },
       { title: "易车", href: "https://www.yiche.com", favicon: "//static1.bitautoimg.com/yc-common/icon/favicon.ico" },
@@ -270,7 +307,6 @@ const resoutcesList = reactive([
     ]
   }
 ])
-
 </script>
 
 <style lang="less" scoped>

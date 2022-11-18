@@ -25,7 +25,6 @@ onMounted(() => {
     credit: "YangH9.github.io"
   })
 })
-
 </script>
 
 <style lang="less" scoped>

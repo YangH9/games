@@ -5,22 +5,21 @@
       <div class="container">
         <Breadcrumb />
         <a-card
-          title="关于"
+          title="关注我"
           class="mb10"
           :hoverable="true">
           <a-descriptions :column="1">
-            <template
+            <a-descriptions-item
               v-for="(item, index) of userList"
-              :key="index">
-              <a-descriptions-item :label="item.title">
-                <a-button
-                  type="link"
-                  size="small"
-                  :href="item.href">
-                  {{ item.href }}
-                </a-button>
-              </a-descriptions-item>
-            </template>
+              :key="index"
+              :label="item.label">
+              <a-button
+                type="link"
+                size="small"
+                :href="item.href">
+                {{ item.title }}
+              </a-button>
+            </a-descriptions-item>
           </a-descriptions>
         </a-card>
         <a-card
@@ -45,24 +44,18 @@
 <script setup>
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import Header from "@/components/Header.vue"
-import { formatDate } from "@/utils"
-import { onBeforeUnmount, onMounted, reactive, ref } from "vue"
+import { ref, reactive, onBeforeUnmount, onMounted, getCurrentInstance } from "vue"
+
+const { formatDate } = getCurrentInstance().proxy
 
 const userList = reactive([
-  { title: "快手", href: "https://f.kuaishou.com/3QQz0B" },
-  { title: "抖音", href: "https://v.douyin.com/3x5ty2" },
-  { title: "GitHub", href: "https://github.com/YangH9" },
-  { title: "哔哩哔哩", href: "https://space.bilibili.com/492362541" },
-  { title: "哔哩哔哩Live", href: "https://live.bilibili.com/22069552" }
+  { label: "QQ", title: "1770571618", href: "tencent://message/?uin=1770571618" },
+  { label: "快手", title: "https://f.kuaishou.com/3QQz0B", href: "https://f.kuaishou.com/3QQz0B" },
+  { label: "抖音", title: "https://v.douyin.com/3x5ty2", href: "https://v.douyin.com/3x5ty2" },
+  { label: "GitHub", title: "https://github.com/YangH9", href: "https://github.com/YangH9" },
+  { label: "哔哩哔哩", title: "https://space.bilibili.com/492362541", href: "https://space.bilibili.com/492362541" },
+  { label: "哔哩哔哩Live", title: "https://live.bilibili.com/22069552", href: "https://live.bilibili.com/22069552" }
 ])
-
-// const toolList = reactive([
-//   { title: "万年历", href: "https://f.kuaishou.com/3QQz0B" }
-// ])
-
-// const demoList = reactive([
-//   { title: "CSS皮卡丘", href: "https://f.kuaishou.com/3QQz0B" }
-// ])
 
 const startTime = ref(1584864000000)
 const nowTime = ref(new Date())
@@ -89,7 +82,6 @@ onBeforeUnmount(() => {
   clearInterval(timer)
   timer = null
 })
-
 </script>
 
 <style lang="less" scoped>

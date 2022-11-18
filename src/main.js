@@ -4,11 +4,7 @@ import { createApp } from "vue"
 import { createPinia } from "pinia"
 
 import { formatDate } from "@/utils/index"
-import "@/utils/text"
-import "@/utils/custom"
 
-import "nprogress/nprogress.css"
-import "@/assets/base.less"
 import "@/assets/main.less"
 
 const Vue = createApp(App)

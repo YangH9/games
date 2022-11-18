@@ -10,9 +10,7 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="less" scoped>
 .preloader {
@@ -25,7 +23,7 @@
   }
 
   .spinner {
-    &>div {
+    & > div {
       background-color: #00acc3;
       height: 100%;
       width: 10px;
@@ -60,7 +58,6 @@
 }
 
 @keyframes stretchdelay {
-
   0%,
   40%,
   100% {

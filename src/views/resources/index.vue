@@ -71,7 +71,6 @@ const resoutcesList = reactive([
   { title: "其他软件", href: "https://pan.baidu.com/s/1HlN_-UyeaCWoiMKBYaRixw", code: "cyh9" },
   { title: "各种安装包", href: "https://pan.baidu.com/s/1X5vPznPtS_N2nxQ8ja8auA", code: "f6ud" }
 ])
-
 </script>
 
 <style lang="less" scoped>

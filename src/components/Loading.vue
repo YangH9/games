@@ -1,53 +1,60 @@
 <template>
-  <div class="preloader">
+  <div
+    v-if="visible"
+    class="preloader">
     <div class="spinner clearfix">
       <div class="rect1"></div>
       <div class="rect2"></div>
       <div class="rect3"></div>
       <div class="rect4"></div>
       <div class="rect5"></div>
+      <div class="rect6"></div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { routerLoading } from "@/stores"
+import { computed } from "vue"
 
+const visible = computed(() => routerLoading().visible)
 </script>
 
 <style lang="less" scoped>
 .preloader {
   background: #ffffff;
-  display: none;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 8888;
 
   .spinner {
-    font-size: 10px;
-    height: 60px;
-    left: 50%;
-    margin: -30px 0 0 -25px;
-    position: fixed;
-    text-align: center;
+    width: 8rem;
+    height: 8rem;
+    position: absolute;
     top: 50%;
-    width: 57px;
-    transform: translateZ(0);
-  }
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .spinner {
-    &>div {
-      background-color: #00acc3;
+    & > div {
       height: 100%;
-      width: 6px;
-      float: left;
-      margin-right: 3px;
+      width: 0.8rem;
+      background-color: #00acc3;
+      display: inline-block;
+      margin-right: 0.4rem;
+      animation-duration: 1.2s;
       animation-name: stretchdelay;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
-      animation-duration: 1.2s;
+    }
+
+    & > div:last-child {
+      margin-right: 0;
     }
 
     .rect1 {
@@ -69,11 +76,14 @@
     .rect5 {
       animation-delay: -0.8s;
     }
+
+    .rect6 {
+      animation-delay: -0.7s;
+    }
   }
 }
 
 @keyframes stretchdelay {
-
   0%,
   40%,
   100% {

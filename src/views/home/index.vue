@@ -20,10 +20,11 @@
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import { getCurrentInstance } from "vue"
 import Header from "@/components/Header.vue"
-const env = getCurrentInstance().proxy.getEnv
-console.log(env)
-const mode = env.MODE
-const title = env.VITE_TITLE
+
+const { getEnv } = getCurrentInstance().proxy
+// console.log(env)
+const mode = getEnv.MODE
+const title = getEnv.VITE_TITLE
 </script>
 
 <style lang="less" scoped>

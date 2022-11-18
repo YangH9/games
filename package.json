@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --mode development",
-    "build": "vite build --mode production",
+    "build": "npm run lint & vite build --mode production",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .eslintignore",
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "ant-design-vue": "^3.2.13",
-    "nprogress": "^0.2.0",
     "pinia": "^2.0.21",
     "vue": "^3.2.41",
     "vue-router": "^4.1.5"

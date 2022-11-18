@@ -57,15 +57,13 @@
         <!--鼻子-->
         <div class="nose"></div>
       </div>
-    <!--头结束-->
+      <!--头结束-->
     </div>
-  <!--皮卡丘结束-->
+    <!--皮卡丘结束-->
   </a-layout-content>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="less" scoped>
 .ant-layout-content {
@@ -136,7 +134,6 @@
 
   // 耳朵
   #ear {
-
     // 左耳朵摇摆
     #ear_left {
       animation: ear_left 6s ease-in-out infinite;
@@ -194,7 +191,6 @@
 
   // 腿
   #leg {
-
     // 左腿
     .leg_left {
       position: absolute;

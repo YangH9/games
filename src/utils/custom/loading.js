@@ -1,3 +1,4 @@
+/* eslint-disable */
 export class LoadingCircle extends HTMLElement {
   canvas
 

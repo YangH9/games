@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router"
-import NProgress from "nprogress"
+import { routerLoading } from "@/stores"
 
 const routes = [
   {
@@ -153,8 +153,7 @@ const router = createRouter({
 
 // 当路由跳转开始前
 router.beforeEach((to, from, next) => {
-  console.log("beforeEach")
-  NProgress.start()
+  routerLoading().show()
   if (to.meta.title) {
     document.title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
   }
@@ -163,8 +162,9 @@ router.beforeEach((to, from, next) => {
 
 // 当路由跳转结束后
 router.afterEach(() => {
-  console.log("afterEach")
-  NProgress.done()
+  setTimeout(() => {
+    routerLoading().hide()
+  }, 1000)
 })
 
 export default router

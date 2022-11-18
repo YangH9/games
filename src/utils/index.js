@@ -1,3 +1,6 @@
+import "@/utils/text"
+import "@/utils/custom"
+
 /**
  * 时间转换
  * @param {Date} date 时间对象

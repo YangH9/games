@@ -1,12 +1,11 @@
+/* eslint-disable */
 window.requestAnimationFrame = (function () {
   return window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame ||
     window.oRequestAnimationFrame ||
     window.msRequestAnimationFrame ||
-    function (callback) {
-      setTimeout(callback, 1000 / 60);
-    }
+    function (callback) { setTimeout(callback, 1000 / 60); }
 })();
 (function (window, document, undefined) {
   var texts = [];
@@ -16,60 +15,32 @@ window.requestAnimationFrame = (function () {
       window.mozRequestAnimationFrame ||
       window.oRequestAnimationFrame ||
       window.msRequestAnimationFrame ||
-      function (callback) {
-        setTimeout(callback, 1000 / 60);
-      }
+      function (callback) { setTimeout(callback, 1000 / 60); }
   })();
   init();
   function init() {
-    css(".text{position:fixed;pointer-events:none;user-select:none;z-index:99999;white-space:nowrap;}");
-    attachEvent();
-    gameloop();
+    attachEvent(); gameloop();
   }
   function gameloop() {
     for (var i = 0; i < texts.length; i++) {
       if (texts[i].alpha <= 0) {
-        document.body.removeChild(texts[i].el);
-        texts.splice(i, 1);
-        continue;
+        document.body.removeChild(texts[i].el); texts.splice(i, 1); continue;
       }
-      texts[i].y--;
-      texts[i].scale += 0.004;
-      texts[i].alpha -= 0.013;
+      texts[i].y--; texts[i].scale += 0.004; texts[i].alpha -= 0.013;
       texts[i].el.style.cssText = `left:${texts[i].x}px;top:${texts[i].y}px;opacity:${texts[i].alpha};transform:translateX(-50%) scale(${texts[i].scale},${texts[i].scale});color:${texts[i].color}`;
     }
     requestAnimationFrame(gameloop);
   }
   function attachEvent() {
     var old = typeof window.onclick === "function" && window.onclick;
-    window.onclick = function (event) {
-      old && old();
-      createtext(event);
-    }
+    window.onclick = function (event) {old && old(); createtext(event);}
   }
   function createtext(event) {
     var d = document.createElement("div");
-    d.className = "text";
-    texts.push({
-      el: d,
-      x: event.clientX,
-      y: event.clientY - 5,
-      scale: 1,
-      alpha: 1,
-      color: randomColor()
-    });
+    d.className = "adriftText";
+    texts.push({el: d, x: event.clientX, y: event.clientY - 5, scale: 1, alpha: 1, color: randomColor()});
     d.innerHTML = randomtext();
     document.body.appendChild(d);
-  }
-  function css(css) {
-    var style = document.createElement("style");
-    style.type = "text/css";
-    try {
-      style.appendChild(document.createTextNode(css));
-    } catch (ex) {
-      style.styleSheet.cssText = css;
-    }
-    document.getElementsByTagName('head')[0].appendChild(style);
   }
   function randomColor() {
     return `rgb(${~~(Math.random() * 255)},${~~(Math.random() * 255)},${~~(Math.random() * 255)})`;

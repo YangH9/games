@@ -1,3 +1,3 @@
-import { LoadingCircle } from "@/utils/loading"
+import { LoadingCircle } from "@/utils/custom/loading"
 
 customElements.define("loading-circle", LoadingCircle)

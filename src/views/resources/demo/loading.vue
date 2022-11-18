@@ -3,19 +3,18 @@
     <div class="box">
       <img
         src="@/assets/loading.svg"
-        width="100">
-      <loading-circle
+        width="100" />
+      <!-- <loading-circle
         size="100"
         lineWidth="10"
-        strokeStyle="#359dda"></loading-circle>
+        strokeStyle="#359dda"></loading-circle> -->
       <Loading></Loading>
     </div>
   </a-layout-content>
 </template>
 
 <script setup>
-import Loading from "./components/loading1.vue"
-
+import Loading from "./common/loading1.vue"
 </script>
 
 <style lang="less" scoped>
@@ -26,7 +25,7 @@ import Loading from "./components/loading1.vue"
 .box {
   display: flex;
 
-  &>* {
+  & > * {
     margin: 10px;
   }
 }

@@ -51,20 +51,35 @@ const historyList = reactive([
 </script>
 
 <style lang="less" scoped>
-.ant-timeline {
-  :deep(.ant-timeline-item-left) {
-    .ant-timeline-item-content {
-      left: calc(50% - 12px);
-      width: calc(50% - 12px);
-    }
-  }
-
-  :deep(.ant-timeline-item-tail) {
-    border-left: 2px solid #1890ff80;
-  }
+.ant-card-body {
+  padding: 0 20px;
 }
 
-.ant-timeline-item:last-child {
-  padding-bottom: 0;
+.ant-timeline {
+  .ant-timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  :deep(.ant-timeline-item) {
+    .ant-timeline-item-head {
+      margin-left: -10px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .ant-timeline-item-content {
+      width: calc(50% - 20px);
+    }
+
+    &.ant-timeline-item-left {
+      .ant-timeline-item-content {
+        left: calc(50% - 0px);
+      }
+    }
+
+    .ant-timeline-item-tail {
+      border-left: 2px solid #1890ff80;
+    }
+  }
 }
 </style>

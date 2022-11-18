@@ -1,15 +1,13 @@
 <template>
   <a-layout-content>
-    <div>
-      扫雷setting
-    </div>
+    <div>扫雷setting</div>
   </a-layout-content>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="less" scoped>
-
+.ant-layout-content {
+  background: var(--color-background);
+}
 </style>
