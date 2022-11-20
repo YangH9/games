@@ -96,9 +96,14 @@ const resoutcesList = reactive([
   {
     title: "腾讯",
     list: [
+      { title: "QQ", href: "https://im.qq.com/", favicon: "" },
+      { title: "微信", href: "https://weixin.qq.com/", favicon: "" },
+      { title: "TIM", href: "https://office.qq.com/", favicon: "" },
       { title: "QQ空间", href: "https://qzone.qq.com/", favicon: "" },
       { title: "QQ邮箱", href: "https://mail.qq.com/", favicon: "" },
       { title: "QQ音乐", href: "https://y.qq.com/", favicon: "" },
+      { title: "腾讯视频", href: "https://v.qq.com/", favicon: "" },
+      { title: "腾讯游戏", href: "https://game.qq.com/", favicon: "" },
       { title: "腾讯扣叮", href: "https://coding.qq.com/", favicon: "" },
       { title: "腾讯文档", href: "https://docs.qq.com/", favicon: "" },
       { title: "ProWork", href: "https://prowork.qq.com/", favicon: "" },
