@@ -205,6 +205,7 @@ const resoutcesList = reactive([
       { title: "菜鸟教程", href: "https://www.runoob.com", favicon: "" },
       { title: "Stack Overflow", href: "https://stackoverflow.com", favicon: "" },
       { title: "SegmentFault 思否", href: "https://segmentfault.com", favicon: "//static.segmentfault.com/main_site_next/44882992/favicon.ico" },
+      { title: "开源中国", href: "https://www.oschina.net/", favicon: "//static.oschina.net/new-osc/img/favicon.ico" },
       { title: "知乎", href: "https://www.zhihu.com", favicon: "" }
     ]
   },
