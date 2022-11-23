@@ -56,6 +56,7 @@ const userList = reactive([
   { label: "快手", title: "https://f.kuaishou.com/3QQz0B", href: "https://f.kuaishou.com/3QQz0B" },
   { label: "抖音", title: "https://v.douyin.com/3x5ty2", href: "https://v.douyin.com/3x5ty2" },
   { label: "GitHub", title: "https://github.com/YangH9", href: "https://github.com/YangH9" },
+  { label: "Gitee", title: "https://gitee.com/YangH9", href: "https://gitee.com/YangH9" },
   { label: "哔哩哔哩", title: "https://space.bilibili.com/492362541", href: "https://space.bilibili.com/492362541" },
   { label: "哔哩哔哩Live", title: "https://live.bilibili.com/22069552", href: "https://live.bilibili.com/22069552" }
 ])
