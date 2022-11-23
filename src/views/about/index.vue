@@ -32,8 +32,8 @@
               span="2">
               {{ runTime() }}
             </a-descriptions-item>
-            <a-descriptions-item label="建站时间">{{ formatDate(startTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
-            <a-descriptions-item label="迁移时间">{{ formatDate(nowTime, 'yyyy年MM月dd日') }}</a-descriptions-item>
+            <a-descriptions-item label="建站时间">{{ dayjs(startTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
+            <a-descriptions-item label="迁移时间">{{ dayjs(nowTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
           </a-descriptions>
         </a-card>
       </div>
@@ -45,8 +45,11 @@
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import Header from "@/components/Header.vue"
 import { ref, reactive, onBeforeUnmount, onMounted, getCurrentInstance } from "vue"
+import duration from "dayjs/plugin/duration"
 
-const { formatDate } = getCurrentInstance().proxy
+const { dayjs } = getCurrentInstance().proxy
+
+dayjs.extend(duration)
 
 const userList = reactive([
   { label: "QQ", title: "1770571618", href: "tencent://message/?uin=1770571618" },
@@ -58,17 +61,18 @@ const userList = reactive([
 ])
 
 const startTime = ref(1584864000000)
-const nowTime = ref(new Date())
+const nowTime = ref(Date.now())
+
 const runTime = () => {
-  const time = +nowTime.value - startTime.value
-  const y = ~~(time / (1000 * 60 * 60 * 24 * 365))
-  const M = ~~(time / (1000 * 60 * 60 * 24 * 30) % 12)
-  const d = ~~(time / (1000 * 60 * 60 * 24) % 30)
-  const h = ~~(time / (1000 * 60 * 60) % 24)
-  const m = ~~(time / (1000 * 60) % 60)
-  const s = ~~(time / 1000 % 60)
+  const time = dayjs.duration(+nowTime.value - startTime.value)
+  const Y = time.years()
+  const M = time.months()
+  const D = time.days()
+  const H = time.hours()
+  const m = time.minutes()
+  const s = time.seconds()
   const a = i => i < 10 ? `0${i}` : i
-  return `${y}年${a(M)}月${a(d)}日${a(h)}时${a(m)}分${a(s)}秒`
+  return `${Y}年${a(M)}月${a(D)}日${a(H)}时${a(m)}分${a(s)}秒`
 }
 
 let timer = null

@@ -190,7 +190,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
   setTimeout(() => {
     routerLoading().hide()
-  }, 1000)
+  }, 500)
 })
 
 export default router
