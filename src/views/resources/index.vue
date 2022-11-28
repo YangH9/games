@@ -35,9 +35,7 @@ import Header from "@/components/Header.vue"
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
 
-import { reactive } from "vue"
-
-const resoutcesList = reactive([
+const resoutcesList = [
   { title: "Adobe全家桶Win 2021版", href: "https://pan.baidu.com/s/1kL9FEAzlg-pXlfHdThxfaQ", code: "qld2" },
   { title: "Adobe全家桶Mac 2021 m1版", href: "https://pan.baidu.com/s/13rmigC2zRhzVFSScFMO5mg", code: "ls50" },
   { title: "Adobe全家桶Mac 2021 x86版", href: "https://pan.baidu.com/s/1OLXfsxt4bSoiuncxb-PmXw", code: "1o9w" },
@@ -51,7 +49,7 @@ const resoutcesList = reactive([
   { title: "电子书", href: "https://pan.baidu.com/s/1p_WeaOR5JTd5JkFiQuk61g", code: "upsq" },
   { title: "其他软件", href: "https://pan.baidu.com/s/1HlN_-UyeaCWoiMKBYaRixw", code: "cyh9" },
   { title: "各种安装包", href: "https://pan.baidu.com/s/1X5vPznPtS_N2nxQ8ja8auA", code: "f6ud" }
-])
+]
 </script>
 
 <style lang="less" scoped>

@@ -43,9 +43,8 @@
 <script setup>
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import Header from "@/components/Header.vue"
-import { reactive } from "vue"
 
-const resoutcesList = reactive([
+const resoutcesList = [
   {
     title: "友情链接",
     list: [{ title: "RGB", href: "https://rgb39.top/", favicon: "" }]
@@ -293,7 +292,7 @@ const resoutcesList = reactive([
       { title: "Ionic", href: "https://ionicframework.com", favicon: "" }
     ]
   }
-])
+]
 </script>
 
 <style lang="less" scoped>

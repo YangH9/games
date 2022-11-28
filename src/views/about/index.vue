@@ -44,14 +44,14 @@
 <script setup>
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import Header from "@/components/Header.vue"
-import { ref, reactive, onBeforeUnmount, onMounted, getCurrentInstance } from "vue"
+import { ref, onBeforeUnmount, onMounted, getCurrentInstance } from "vue"
 import duration from "dayjs/plugin/duration"
 
 const { dayjs } = getCurrentInstance().proxy
 
 dayjs.extend(duration)
 
-const userList = reactive([
+const userList = [
   { label: "QQ", title: "1770571618", href: "tencent://message/?uin=1770571618" },
   { label: "快手", title: "https://f.kuaishou.com/3QQz0B", href: "https://f.kuaishou.com/3QQz0B" },
   { label: "抖音", title: "https://v.douyin.com/3x5ty2", href: "https://v.douyin.com/3x5ty2" },
@@ -59,7 +59,7 @@ const userList = reactive([
   { label: "Gitee", title: "https://gitee.com/YangH9", href: "https://gitee.com/YangH9" },
   { label: "哔哩哔哩", title: "https://space.bilibili.com/492362541", href: "https://space.bilibili.com/492362541" },
   { label: "哔哩哔哩Live", title: "https://live.bilibili.com/22069552", href: "https://live.bilibili.com/22069552" }
-])
+]
 
 const startTime = ref(1584864000000)
 const nowTime = ref(Date.now())

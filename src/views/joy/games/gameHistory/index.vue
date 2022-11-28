@@ -21,9 +21,8 @@
 
 <script setup>
 import Breadcrumb from "@/components/Breadcrumb.vue"
-import { reactive } from "vue"
 
-const historyList = reactive([
+const historyList = [
   { title: "2021年10月8日", text: "英雄联盟手游，在中国大陆地区开启公测" },
   { title: "2021年1月27日", text: "梦想新大陆发行" },
   { title: "2021年1月27日", text: "鸿图之下发行" },
@@ -47,7 +46,7 @@ const historyList = reactive([
   { title: "2013年12月1日", text: "天天飞车发行（2020年12月15日停服）" },
   { title: "2012年8月2日", text: "部落冲突发行" },
   { title: "2012年7月26日", text: "神庙逃亡发行（2018年6月13日下架）" }
-])
+]
 </script>
 
 <style lang="less" scoped>

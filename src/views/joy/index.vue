@@ -42,9 +42,8 @@
 import Header from "@/components/Header.vue"
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
-import { reactive } from "vue"
 
-const joyList = reactive([
+const joyList = [
   {
     title: "DEMO展示",
     list: [
@@ -66,18 +65,19 @@ const joyList = reactive([
     title: "工具",
     list: [
       { title: "音乐播放器", href: "/joy/tool/listen" },
-      { title: "摸头生成器", href: "/joy/tool/petpet" }
+      { title: "摸头生成器", href: "/joy/tool/petpet" },
+      { title: "设备信息", href: "/joy/tool/deviceInfo" }
     ]
   }
-])
+]
 
-const qqList = reactive([
+const qqList = [
   { title: "👨‍👦‍👦前端程序员交流 (687041277)", href: "https://jq.qq.com/?_wv=1027&k=wSi5TUnM" },
   { title: "👨‍👦‍👦后端程序员交流 (527121526)", href: "https://jq.qq.com/?_wv=1027&k=PXkCkxA8" },
   { title: "👨‍👦‍👦前端开发工程师交流 (153700736)", href: "https://jq.qq.com/?_wv=1027&k=rSylFS04" },
   // { title: "👨‍👦‍👦MC精彩无限 (778923681)", href: "https://jq.qq.com/?_wv=1027&k=ikak0eLV" },
   { title: "👨‍👦‍👦cfm活动分享群 (238080446)", href: "https://jq.qq.com/?_wv=1027&k=K6vsosuT" }
-])
+]
 </script>
 
 <style lang="less" scoped>

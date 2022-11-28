@@ -144,6 +144,14 @@ const routes = [
               title: "摸头生成器"
             },
             component: () => import("@/views/joy/tool/petpet/index.vue")
+          },
+          {
+            path: "/joy/tool/deviceInfo",
+            name: "deviceInfo",
+            meta: {
+              title: "设备信息"
+            },
+            component: () => import("@/views/joy/tool/deviceInfo.vue")
           }
         ]
       }
