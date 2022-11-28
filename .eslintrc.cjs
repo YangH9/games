@@ -2,11 +2,7 @@ require("@rushstack/eslint-patch/modern-module-resolution")
 
 module.exports = {
   root: true,
-  extends: [
-    "plugin:vue/vue3-essential",
-    "eslint:recommended",
-    "plugin:vue/recommended"
-  ],
+  extends: [ "plugin:vue/vue3-essential", "eslint:recommended", "plugin:vue/recommended" ],
   env: {
     browser: true,
     node: true,
@@ -274,6 +270,7 @@ module.exports = {
 
     // Vue eslint
     "vue/html-indent": [ "error", 2 ],
+    "vue/max-attributes-per-line": [ "error", { singleline: { max: 1 }, multiline: { max: 1 } }],
     "vue/no-setup-props-destructure": "off",
     "vue/no-v-for-template-key": "off",
     "vue/require-default-prop": "off",
