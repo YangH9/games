@@ -197,7 +197,7 @@ const resoutcesList = [
   {
     title: "数据可视化",
     list: [
-      { title: "ECharts", href: "https://echarts.apache.org/", favicon: "" },
+      { title: "ECharts", href: "https://echarts.apache.org/", favicon: "//echarts.apache.org/zh/images/favicon.png" },
       { title: "MadeAPie", href: "https://madeapie.com/", favicon: "" },
       { title: "ISQQW", href: "https://www.isqqw.com/", favicon: "" },
       { title: "PPChart", href: "http://ppchart.com/", favicon: "" },
