@@ -7,8 +7,10 @@
     "build": "npm run lint & vite build --mode production",
     "preview": "vite preview --port 4173",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .eslintignore",
-    "commit:push": "git add . & git commit -m [update] & git push",
-    "push:pages": "git subtree push --prefix dist origin pages"
+    "commit": "git add . & git commit -m [update]",
+    "push": "git push",
+    "push_pages": "git subtree push --prefix dist origin pages",
+    "commit_push_pages": "git add . & git commit -m [update] & git push & git subtree push --prefix dist origin pages"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.13",
