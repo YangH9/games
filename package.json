@@ -9,8 +9,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .eslintignore",
     "commit": "git add . & git commit -m [update]",
     "push": "git push",
-    "push_pages": "git subtree push --prefix dist origin pages",
-    "commit_push_pages": "git add . & git commit -m [update] & git push & git subtree push --prefix dist origin pages"
+    "push_pages": "git subtree push --prefix GitHubPages origin GitHubPages",
+    "commit_push_pages": "git add . & git commit -m [update] & git push & git subtree push --prefix GitHubPages origin GitHubPages"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.13",
