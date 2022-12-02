@@ -168,9 +168,6 @@ const resoutcesList = [
       { title: "iconfont图标", href: "https://iconfont.cn/", favicon: "//img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg" },
       { title: "fullCalendar日程插件", href: "https://fullcalendar.io/", favicon: "favicon-32x32.png" },
       { title: "Mock.js", href: "http://mockjs.com/", favicon: "assets/img/logo-2.svg" },
-      { title: "Threejs", href: "https://threejs.org/", favicon: "" },
-      { title: "ThingJS", href: "https://www.thingjs.com/guide/", favicon: "" },
-      { title: "ECharts", href: "https://echarts.apache.org/", favicon: "" },
       { title: "Flutter", href: "https://flutter.cn", favicon: "" },
       { title: "Tippy.js", href: "https://tippyjs.bootcss.com", favicon: "icons/icon-48x48.png" },
       { title: "Video.js", href: "https://videojs.com", favicon: "" },
@@ -195,6 +192,18 @@ const resoutcesList = [
       { title: "SegmentFault 思否", href: "https://segmentfault.com", favicon: "//static.segmentfault.com/main_site_next/44882992/favicon.ico" },
       { title: "开源中国", href: "https://www.oschina.net/", favicon: "//static.oschina.net/new-osc/img/favicon.ico" },
       { title: "知乎", href: "https://www.zhihu.com", favicon: "" }
+    ]
+  },
+  {
+    title: "数据可视化",
+    list: [
+      { title: "ECharts", href: "https://echarts.apache.org/", favicon: "" },
+      { title: "MadeAPie", href: "https://madeapie.com/", favicon: "" },
+      { title: "ISQQW", href: "https://www.isqqw.com/", favicon: "" },
+      { title: "PPChart", href: "http://ppchart.com/", favicon: "" },
+      { title: "ChartLib", href: "http://chartlib.datains.cn/", favicon: "" },
+      { title: "ThingJS", href: "https://www.thingjs.com/guide/", favicon: "" },
+      { title: "Threejs", href: "https://threejs.org/", favicon: "" }
     ]
   },
   {
