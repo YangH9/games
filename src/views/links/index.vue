@@ -171,6 +171,8 @@ const resoutcesList = [
       { title: "Flutter", href: "https://flutter.cn", favicon: "" },
       { title: "Tippy.js", href: "https://tippyjs.bootcss.com", favicon: "icons/icon-48x48.png" },
       { title: "Video.js", href: "https://videojs.com", favicon: "" },
+      { title: "ThingJS", href: "https://www.thingjs.com/guide/", favicon: "" },
+      { title: "Threejs", href: "https://threejs.org/", favicon: "" },
       { title: "Swiper", href: "https://swiperjs.com", favicon: "images/favicon.png" },
       { title: "TweenMax中文网", href: "https://www.tweenmax.com.cn", favicon: "" },
       { title: "Dart", href: "https://dart.dev/", favicon: "assets/shared/dart/icon/64.png" },
@@ -195,15 +197,13 @@ const resoutcesList = [
     ]
   },
   {
-    title: "数据可视化",
+    title: "ECharts Demo",
     list: [
       { title: "ECharts", href: "https://echarts.apache.org/", favicon: "//echarts.apache.org/zh/images/favicon.png" },
       { title: "MadeAPie", href: "https://madeapie.com/", favicon: "" },
       { title: "ISQQW", href: "https://www.isqqw.com/", favicon: "" },
       { title: "PPChart", href: "http://ppchart.com/", favicon: "" },
-      { title: "ChartLib", href: "http://chartlib.datains.cn/", favicon: "" },
-      { title: "ThingJS", href: "https://www.thingjs.com/guide/", favicon: "" },
-      { title: "Threejs", href: "https://threejs.org/", favicon: "" }
+      { title: "ChartLib", href: "http://chartlib.datains.cn/", favicon: "" }
     ]
   },
   {
