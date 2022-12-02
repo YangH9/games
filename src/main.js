@@ -5,6 +5,8 @@ import { createPinia } from "pinia"
 import dayjs from "dayjs"
 import { formatDate } from "@/utils"
 
+import "@/assets/gray.less"
+import "@/assets/base.less"
 import "@/assets/main.less"
 
 const Vue = createApp(App)
