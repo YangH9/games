@@ -23,6 +23,7 @@
 import Breadcrumb from "@/components/Breadcrumb.vue"
 
 const historyList = [
+  { title: "2022年12月9日", text: "部落冲突公测（运营商换为腾讯，其他版本废弃）" },
   { title: "2021年10月8日", text: "英雄联盟手游，在中国大陆地区开启公测" },
   { title: "2021年1月27日", text: "梦想新大陆发行" },
   { title: "2021年1月27日", text: "鸿图之下发行" },

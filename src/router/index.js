@@ -86,6 +86,14 @@ const routes = [
             component: () => import("@/views/joy/games/gameHistory/index.vue")
           },
           {
+            path: "/joy/games/clashofclans",
+            name: "clashofclans",
+            meta: {
+              title: "部落冲突"
+            },
+            component: () => import("@/views/joy/games/clashofclans.vue")
+          },
+          {
             path: "/joy/games/catchTheCat",
             name: "catchTheCat",
             meta: {
