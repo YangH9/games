@@ -57,6 +57,7 @@ const joyList = [
     title: "游戏",
     list: [
       { title: "游戏历程时间轴", href: "/joy/games/gameHistory" },
+      { title: "部落冲突下载", href: "/joy/games/coc" },
       { title: "圈小猫", href: "/joy/games/catchTheCat" },
       { title: "扫雷", href: "/joy/games/minesweeper" }
     ]
