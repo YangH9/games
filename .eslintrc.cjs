@@ -170,7 +170,7 @@ module.exports = {
     "key-spacing": [ "error", { mode: "strict" }], // 强制在对象字面量的属性中键和值之间使用一致的间距
     "keyword-spacing": "error", // 强制在关键字前后使用一致的空格
     "line-comment-position": "off", // 强制行注释的位置
-    "linebreak-style": [ "error", "windows" ], // 强制使用一致的换行风格
+    "linebreak-style": "off", // 强制使用一致的换行风格
     "lines-around-comment": "error", // 要求在注释周围有空行
     "lines-between-class-members": "error", // 要求或禁止类成员之间出现空行
     "max-depth": "error", // 强制可嵌套的块的最大深度
