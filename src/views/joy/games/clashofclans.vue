@@ -70,6 +70,35 @@
         class="seat">
       </a-button>
     </a-card>
+    <a-card
+      title="阵容攻略"
+      class="mb10"
+      :hoverable="true">
+      <a-button
+        v-for="(item, index1) of list"
+        :key="index1"
+        size="large"
+        :href="item.href">
+        <template #icon>
+          <img
+            :src="
+              item.favicon.indexOf('//') >= 0
+                ? item.favicon
+                : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+            "
+            class="icon"
+            referrer="no-referrer"
+            @load="(e) => (e.target.style.display = 'inline-block')"
+          />
+        </template>
+        {{ item.title }}
+      </a-button>
+      <a-button
+        v-for="i of 20"
+        :key="i"
+        class="seat">
+      </a-button>
+    </a-card>
   </div>
 </template>
 
@@ -108,6 +137,15 @@ const toolList = [
   { title: "夜神版", href: "https://app.yeshen.com/games/single/9360", favicon: "" },
   { title: "联想版", href: "https://www.lenovomm.com/appdetail/com.supercell.clashofclans.lenovo/1138", favicon: "_next/static/images/favicon-f87a489f2d293ef5241ddf34007b6823.ico" },
   { title: "魅族版", href: "https://app.meizu.com/games/public/detail?package_name=com.supercell.clashofclans.mz", favicon: "" }
+]
+
+const list = [
+  { title: "黑羽COC", href: "https://coc.heiyu100.cn/", favicon: "img/favicon.ico" },
+  { title: "COC鱼情统计", href: "https://clashofclansforecaster.com/?lang=chinese-simp", favicon: "" },
+  { title: "COC数据统计", href: "https://clashofstats.com/", favicon: "favicon-32x32.png" },
+  { title: "COC指导", href: "https://cocservice.top/", favicon: "" },
+  { title: "晴天COC（知乎）", href: "https://www.zhihu.com/people/xin-dong-58-2", favicon: "" },
+  { title: "晴天COC（BiliBili）", href: "https://space.bilibili.com/22602921/", favicon: "" }
 ]
 </script>
 
