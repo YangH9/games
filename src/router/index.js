@@ -151,7 +151,15 @@ const routes = [
             meta: {
               title: "设备信息"
             },
-            component: () => import("@/views/joy/tool/deviceInfo.vue")
+            component: () => import("@/views/joy/tool/DeviceInfo.vue")
+          },
+          {
+            path: "/joy/tool/grayhead",
+            name: "grayhead",
+            meta: {
+              title: "灰色头像生成器"
+            },
+            component: () => import("@/views/joy/tool/GrayHead.vue")
           }
         ]
       }

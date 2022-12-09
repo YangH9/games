@@ -50,6 +50,18 @@ const resoutcesList = [
     list: [{ title: "RGB", href: "https://rgb39.top/", favicon: "" }]
   },
   {
+    title: "央视网",
+    list: [
+      { title: "央视网", href: "https://www.cctv.com/", favicon: "" },
+      { title: "新闻", href: "https://news.cctv.com/", favicon: "" },
+      { title: "视频", href: "https://v.cctv.com/", favicon: "" },
+      { title: "节目官网", href: "https://tv.cctv.com/", favicon: "" },
+      { title: "央视新闻APP", href: "https://app.cctvnews.cctv.com/", favicon: "" },
+      { title: "央视网-bilibili", href: "https://space.bilibili.com/222103174/", favicon: "" },
+      { title: "央视新闻-bilibili", href: "https://space.bilibili.com/456664753/", favicon: "" }
+    ]
+  },
+  {
     title: "码农推荐",
     list: [
       {

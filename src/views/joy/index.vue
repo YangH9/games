@@ -66,6 +66,7 @@ const joyList = [
     list: [
       { title: "音乐播放器", href: "/joy/tool/listen" },
       { title: "摸头生成器", href: "/joy/tool/petpet" },
+      { title: "灰色头像生成器", href: "/joy/tool/grayhead" },
       { title: "设备信息", href: "/joy/tool/deviceInfo" }
     ]
   }
