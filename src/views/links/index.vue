@@ -30,7 +30,7 @@
             {{ item.title }}
           </a-button>
           <a-button
-            v-for="i of 10"
+            v-for="i of main.length > 10 ? 20 : 0"
             :key="i"
             class="seat">
           </a-button>
@@ -306,7 +306,11 @@ const resoutcesList = [
       { title: "央视网", href: "https://www.cctv.com", favicon: "" },
       { title: "懂车帝", href: "https://www.dongchedi.com", favicon: "" },
       { title: "赛码网", href: "https://www.acmcoder.com", favicon: "//cdn.acmcoder.com/release/www/2.0.1/images/acm.ico" },
-      { title: "Chrome插件", href: "https://www.extfans.com", favicon: "//static-public.infinitytab.com/sites-resource/extfans/61ea85a31aec3f3365dbe165/icon_1642759665914.jpg" },
+      {
+        title: "Chrome插件",
+        href: "https://www.extfans.com",
+        favicon: "//static-public.infinitytab.com/sites-resource/extfans/61ea85a31aec3f3365dbe165/icon_1642759665914.jpg"
+      },
       { title: "迅雷", href: "https://www.xunlei.com", favicon: "" },
       { title: "谷歌浏览器", href: "https://www.google.cn/chrome", favicon: "/chrome/static/images/favicons/favicon-16x16.png" },
       { title: "易车", href: "https://www.yiche.com", favicon: "//static1.bitautoimg.com/yc-common/icon/favicon.ico" },
@@ -334,7 +338,8 @@ const resoutcesList = [
     margin-right: 10px;
     margin-bottom: 10px;
   }
-  &::before {
+  &::before,
+  &::after {
     display: none;
   }
   .seat {

@@ -83,7 +83,7 @@ const routes = [
             meta: {
               title: "游戏历程时间轴"
             },
-            component: () => import("@/views/joy/games/gameHistory/index.vue")
+            component: () => import("@/views/joy/games/gameHistory.vue")
           },
           {
             path: "/joy/games/clashofclans",
@@ -99,7 +99,7 @@ const routes = [
             meta: {
               title: "圈小猫"
             },
-            component: () => import("@/views/joy/games/catchTheCat/index.vue")
+            component: () => import("@/views/joy/games/catchTheCat.vue")
           },
           {
             path: "/joy/games/minesweeper",
