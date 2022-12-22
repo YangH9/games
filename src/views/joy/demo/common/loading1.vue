@@ -1,6 +1,6 @@
 <template>
   <div class="preloader">
-    <div class="spinner clearfix">
+    <div class="spinner">
       <div class="rect1"></div>
       <div class="rect2"></div>
       <div class="rect3"></div>
@@ -14,20 +14,21 @@
 
 <style lang="less" scoped>
 .preloader {
+  height: 100px;
   .spinner {
     font-size: 10px;
     height: 100%;
     text-align: center;
     width: 100%;
     transform: translateZ(0);
-  }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  .spinner {
     & > div {
-      background-color: #00acc3;
+      background-color: #359dda;
       height: 100%;
       width: 10px;
-      float: left;
       margin-right: 3px;
       animation-name: stretchdelay;
       animation-iteration-count: infinite;

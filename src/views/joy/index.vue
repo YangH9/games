@@ -50,7 +50,8 @@ const joyList = [
       { title: "CSS皮卡丘", href: "/joy/demo/pikaqiu" },
       { title: "CSS灰太狼", href: "/joy/demo/huitailang" },
       { title: "CSS蓝胖子", href: "/joy/demo/lanpangzi" },
-      { title: "加载动画", href: "/joy/demo/loading" }
+      { title: "加载动画", href: "/joy/demo/loading" },
+      { title: "进度条", href: "/joy/demo/progress" }
     ]
   },
   {

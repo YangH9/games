@@ -191,7 +191,7 @@ module.exports = {
     "no-continue": "error", // 禁用 continue 语句
     "no-inline-comments": "off", // 禁止在代码后使用内联注释
     "no-lonely-if": "error", // 禁止 if 作为唯一的语句出现在 else 语句中
-    "no-mixed-operators": "error", // 禁止混合使用不同的操作符
+    "no-mixed-operators": "off", // 禁止混合使用不同的操作符
     "no-mixed-spaces-and-tabs": "error", // 禁止空格和 tab 的混合缩进
     "no-multi-assign": "error", // 禁止连续赋值
     "no-multiple-empty-lines": "error", // 禁止出现多行空行

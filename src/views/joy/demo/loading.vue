@@ -1,5 +1,8 @@
 <template>
-  <a-layout-content>
+  <a-card
+    title="加载动画"
+    class="mb10"
+    :hoverable="true">
     <div class="box">
       <img
         src="@/assets/loading.svg"
@@ -10,7 +13,7 @@
         strokeStyle="#359dda"></loading-circle>
       <Loading></Loading>
     </div>
-  </a-layout-content>
+  </a-card>
 </template>
 
 <script setup>
@@ -18,14 +21,11 @@ import Loading from "./common/loading1.vue"
 </script>
 
 <style lang="less" scoped>
-.ant-layout-content {
-  background: var(--color-background);
-}
-
 .box {
   display: flex;
+  align-items: center;
 
-  & > * {
+  &>* {
     margin: 10px;
   }
 }

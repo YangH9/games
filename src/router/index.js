@@ -66,6 +66,14 @@ const routes = [
               title: "加载动画"
             },
             component: () => import("@/views/joy/demo/loading.vue")
+          },
+          {
+            path: "/joy/demo/progress",
+            name: "progress",
+            meta: {
+              title: "进度条"
+            },
+            component: () => import("@/views/joy/demo/progress.vue")
           }
         ]
       },
@@ -211,10 +219,23 @@ router.beforeEach((to, from, next) => {
 })
 
 // 当路由跳转结束后
-router.afterEach(() => {
-  setTimeout(() => {
-    routerLoading().hide()
-  }, 500)
+router.afterEach(to => {
+  routerLoading().hide()
+  const Title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
+  const handleVisiable = e => {
+    console.log(e.target.title, e.target.visibilityState)
+    if (e.target.visibilityState === "visible") {
+      document.title = "逗你的~"
+      setTimeout(() => {
+        document.title = Title
+      }, 500)
+    } else if (e.target.visibilityState === "hidden") {
+      document.title = "你有一条新消息"
+    }
+  }
+  window.onload = () => {
+    document.addEventListener("visibilitychange", handleVisiable)
+  }
 })
 
 export default router
