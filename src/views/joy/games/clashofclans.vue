@@ -13,6 +13,9 @@
           如果你还没有绑定，请在更新后前往各大应用商店，搜索“部落冲突账号绑定工具”，使用您注册游戏时的账号登录，找到绑定入口进行绑定。
         </a-descriptions-item>
         <a-descriptions-item>
+          当乐、靠谱助手、安智、拇指玩、熊猫玩、搜狗，已倒闭需联系客服处理。
+        </a-descriptions-item>
+        <a-descriptions-item>
           下面有部分平台账号绑定工具。
         </a-descriptions-item>
       </a-descriptions>
@@ -114,29 +117,43 @@ const downloadList = [
 ]
 
 const toolList = [
-  { title: "昆仑版", href: "https://coc.gameark.cn/", favicon: "" },
-  { title: "九游版", href: "http://www.9game.cn/coc/", favicon: "" },
-  { title: "华为版", href: "https://appstore.huawei.com/app/C10329573", favicon: "//appgallery.huawei.com/static/agweb/img/ic_navigation_appmarket.png" },
-  // { title: "安智版", href: "http://www.anzhi.com/pkg/ea7c_com.supercell.clashofclans.anzhi.html", favicon: "" },
-  { title: "豌豆荚版", href: "https://www.wandoujia.com/apps/7597066", favicon: "" },
-  { title: "百度版", href: "https://mobile.baidu.com/item?pid=1540839", favicon: "//ascdn.baidu.com/appsite/images/logo57x57.png" },
-  { title: "果盘版", href: "http://www.guopan.cn/blct/", favicon: "" },
-  { title: "OPPO版", href: "http://update.coc.gameark.cn/?channel=oppo", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "昆仑版（线路一）", href: "https://coc.gameark.cn/", favicon: "" },
+  { title: "昆仑版（线路二）", href: "http://update.coc.gameark.cn/?channel=kunlun", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "豌豆荚/九游（线路一）", href: "http://www.9game.cn/coc/", favicon: "" },
+  { title: "豌豆荚/九游（线路二）", href: "https://www.wandoujia.com/apps/6632360", favicon: "" },
+  { title: "豌豆荚/九游（线路三）", href: "http://update.coc.gameark.cn/?channel=wandoujia", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "华为版（需先下载三依赖）", href: "https://appgallery.huawei.com/#/app/C10329573", favicon: "//appgallery.huawei.com/static/agweb/img/ic_navigation_appmarket.png" },
+  { title: "华为版（应用市场）", href: "https://appgallery.huawei.com/#/app/C27162", favicon: "//appgallery.huawei.com/static/agweb/img/ic_navigation_appmarket.png" },
+  { title: "华为版（移动服务）", href: "https://appgallery.huawei.com/#/app/C10132067", favicon: "//appgallery.huawei.com/static/agweb/img/ic_navigation_appmarket.png" },
+  { title: "华为版（游戏中心）", href: "https://appgallery.huawei.com/#/app/C10059090", favicon: "//appgallery.huawei.com/static/agweb/img/ic_navigation_appmarket.png" },
+  { title: "百度版（线路一）", href: "http://update.coc.gameark.cn/?channel=baidu", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "百度版（线路二）", href: "https://mobile.baidu.com/item?pid=1540839", favicon: "//ascdn.baidu.com/appsite/images/logo57x57.png" },
+  { title: "百度版（线路三）", href: "https://shouji.baidu.com/detail/1540839", favicon: "//ascdn.baidu.com/appsite/images/logo57x57.png" },
+  { title: "果盘版（线路一）", href: "https://game.guopan.cn/m/gamedetail/43182", favicon: "" },
+  { title: "果盘版（线路二）", href: "http://www.guopan.cn/blct/", favicon: "" },
+  { title: "果盘版（线路三）", href: "https://game.guopan.cn/detail/43182", favicon: "" },
   { title: "VIVO版", href: "http://update.coc.gameark.cn/?channel=vivo", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
-  { title: "4399版", href: "http://news.4399.com/buluozz/", favicon: "" },
-  { title: "2345版", href: "http://zhushou.2345.com/game/174645.html", favicon: "//zhushou.2345cdn.net/zhushouimg/images/web/v2/fav.ico" },
-  { title: "360版", href: "http://u.360.cn/coc/", favicon: "" },
-  { title: "小米版", href: "https://game.xiaomi.com/game/62231040", favicon: "" },
-  { title: "一号玩家版", href: "https://www.1gamer.cn/game-id-11162.html", favicon: "" },
-  { title: "雷电版", href: "https://www.ldmnq.com/app/1.html", favicon: "" },
-  { title: "靠谱助手版", href: "http://www.kpzs.com/game/blctcoc1.html", favicon: "" },
-  // { title: "拇指玩版", href: "https://www.muzhiwan.com/com.supercell.clashofclans.ewan.mzw.html", favicon: "" },
-  { title: "B站版", href: "http://update.coc.gameark.cn/?channel=bili", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "OPPO版（线路一）", href: "http://update.coc.gameark.cn/?channel=oppo", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "OPPO版（线路二）", href: "https://store.oppomobile.com/", favicon: "" },
+  { title: "4399版（线路一）", href: "http://news.4399.com/buluozz/", favicon: "" },
+  { title: "4399版（线路二）", href: "https://a.4399.cn/game-id-251473.html", favicon: "" },
+  { title: "2345版（线路一）", href: "https://zhushou.2345.com/game/174645.html", favicon: "//zhushou.2345cdn.net/zhushouimg/images/web/v2/fav.ico" },
+  { title: "2345版（线路二）", href: "https://zhushou.2345.com/m/game/174645.html", favicon: "//zhushou.2345cdn.net/zhushouimg/images/web/v2/fav.ico" },
+  { title: "360版（线路一）", href: "http://u.360.cn/coc/", favicon: "" },
+  { title: "360版（线路二）", href: "https://m.app.so.com/detail/index?from=qing&id=3100671", favicon: "" },
+  { title: "360版（线路三）", href: "http://update.coc.gameark.cn/?channel=360", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "小米版（线路一）", href: "https://game.xiaomi.com/game/62231040", favicon: "" },
+  { title: "小米版（线路二）", href: "https://app.mi.com/details?id=com.supercell.clashofclans.mi", favicon: "//www.mi.com/favicon.ico" },
+  { title: "一号玩家版（原益玩版）", href: "https://www.1gamer.cn/game-id-11162.html", favicon: "" },
+  { title: "雷电版", href: "https://www.ldmnq.com/app/7361.html", favicon: "" },
+  { title: "B站版（线路一）", href: "https://www.biligame.com/detail/?id=103536", favicon: "//www.bilibili.com/favicon.ico" },
+  { title: "B站版（线路二）", href: "http://update.coc.gameark.cn/?channel=bili", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
   { title: "逍遥版", href: "https://www.xyaz.cn/gc/apps-586-1.html", favicon: "//www.xyaz.cn/layout-v2/shortlogo.png" },
-  { title: "搜狗版", href: "http://dl.wan.sogoucdn.com/dl0/1387/app12195_default_0009000500395.apk", favicon: "" },
   { title: "夜神版", href: "https://app.yeshen.com/games/single/9360", favicon: "" },
-  { title: "联想版", href: "https://www.lenovomm.com/appdetail/com.supercell.clashofclans.lenovo/1138", favicon: "_next/static/images/favicon-f87a489f2d293ef5241ddf34007b6823.ico" },
-  { title: "魅族版", href: "https://app.meizu.com/games/public/detail?package_name=com.supercell.clashofclans.mz", favicon: "" }
+  { title: "联想版（线路一）", href: "https://www.lenovomm.com/appdetail/com.supercell.clashofclans.lenovo/1138", favicon: "_next/static/images/favicon-f87a489f2d293ef5241ddf34007b6823.ico" },
+  { title: "联想版（线路二）", href: "http://update.coc.gameark.cn/?channel=lenovo", favicon: "//f-cn-1.kunlun.com/coc/images/favicon.png" },
+  { title: "魅族版（线路一）", href: "https://app.meizu.com/games/public/detail?package_name=com.supercell.clashofclans.mz", favicon: "" },
+  { title: "魅族版（线路二）", href: "https://game.flyme.cn/game/detail/3239713?contentId=3239713", favicon: "" }
 ]
 
 const list = [
