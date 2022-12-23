@@ -5,6 +5,9 @@
     :hoverable="true">
     <div class="box">
       <progress></progress>
+      <progress
+        :value="progressValue"
+        :max="steps"></progress>
       <Progress
         type="line"
         :value="progressValue"></Progress>
