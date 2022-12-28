@@ -42,8 +42,8 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
 import Header from "@/components/Header.vue"
+import Breadcrumb from "@/components/Breadcrumb.vue"
 import { ref, onBeforeUnmount, onMounted, getCurrentInstance } from "vue"
 import duration from "dayjs/plugin/duration"
 

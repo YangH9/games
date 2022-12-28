@@ -5,6 +5,7 @@ import { createPinia } from "pinia"
 import dayjs from "dayjs"
 import { formatDate } from "@/utils"
 
+// 默哀的全局灰色
 // import "@/assets/gray.less"
 import "@/assets/base.less"
 import "@/assets/main.less"

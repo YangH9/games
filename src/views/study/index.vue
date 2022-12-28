@@ -2,11 +2,11 @@
   <a-layout>
     <Header></Header>
     <a-layout class="layout">
-      <RouterViewBox url="/joy">
+      <RouterViewBox url="/study">
         <div class="container">
           <Breadcrumb />
           <a-card
-            v-for="(main, index) of joyList"
+            v-for="(main, index) of studyList"
             :key="index"
             :title="main.title"
             class="mb10"
@@ -43,31 +43,28 @@ import Header from "@/components/Header.vue"
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import RouterViewBox from "@/components/RouterViewBox.vue"
 
-const joyList = [
+const studyList = [
   {
-    title: "游戏",
+    title: "纯CSS特效",
     list: [
-      { title: "游戏历程时间轴", href: "/joy/games/gameHistory" },
-      { title: "部落冲突", href: "/joy/games/clashofclans" },
-      { title: "圈小猫", href: "/joy/games/catchTheCat" },
-      { title: "扫雷", href: "/joy/games/minesweeper" }
+      { title: "CSS皮卡丘", href: "/study/demo/pikaqiu" },
+      { title: "CSS灰太狼", href: "/study/demo/huitailang" },
+      { title: "CSS蓝胖子", href: "/study/demo/lanpangzi" }
     ]
   },
   {
-    title: "工具",
+    title: "其他",
     list: [
-      { title: "音乐播放器", href: "/joy/tool/listen" },
-      { title: "摸头生成器", href: "/joy/tool/petpet" },
-      { title: "灰色头像生成器", href: "/joy/tool/grayhead" },
-      { title: "设备信息", href: "/joy/tool/deviceInfo" }
+      { title: "加载动画", href: "/study/other/loading" },
+      { title: "进度条", href: "/study/other/progress" }
     ]
   }
 ]
 
-
 const qqList = [
-  { title: "👨‍👦‍👦MC精彩无限 (778923681)", href: "https://jq.qq.com/?_wv=1027&k=ikak0eLV" },
-  { title: "👨‍👦‍👦cfm活动分享群 (238080446)", href: "https://jq.qq.com/?_wv=1027&k=K6vsosuT" }
+  { title: "👨‍👦‍👦前端程序员交流 (687041277)", href: "https://jq.qq.com/?_wv=1027&k=wSi5TUnM" },
+  { title: "👨‍👦‍👦后端程序员交流 (527121526)", href: "https://jq.qq.com/?_wv=1027&k=PXkCkxA8" },
+  { title: "👨‍👦‍👦前端开发工程师交流 (153700736)", href: "https://jq.qq.com/?_wv=1027&k=rSylFS04" }
 ]
 </script>
 

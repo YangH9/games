@@ -1,5 +1,5 @@
 <template>
-  <Menu url="/joy/demo"></Menu>
+  <Menu url="/study/demo"></Menu>
   <a-layout>
     <Breadcrumb />
     <RouterView />

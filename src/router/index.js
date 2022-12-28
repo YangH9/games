@@ -19,6 +19,77 @@ const routes = [
     component: () => import("@/views/about/index.vue")
   },
   {
+    path: "/study",
+    name: "study",
+    meta: {
+      title: "学习"
+    },
+    component: () => import("@/views/study/index.vue"),
+    children: [
+      {
+        path: "/study/demo",
+        name: "demo",
+        meta: {
+          title: "纯CSS特效"
+        },
+        redirect: "/study/demo/pikaqiu",
+        component: () => import("@/views/study/demo/index.vue"),
+        children: [
+          {
+            path: "/study/demo/pikaqiu",
+            name: "pikaqiu",
+            meta: {
+              title: "CSS皮卡丘"
+            },
+            component: () => import("@/views/study/demo/pikaqiu.vue")
+          },
+          {
+            path: "/study/demo/huitailang",
+            name: "huitailang",
+            meta: {
+              title: "CSS灰太狼"
+            },
+            component: () => import("@/views/study/demo/huitailang.vue")
+          },
+          {
+            path: "/study/demo/lanpangzi",
+            name: "lanpangzi",
+            meta: {
+              title: "CSS蓝胖子"
+            },
+            component: () => import("@/views/study/demo/lanpangzi.vue")
+          }
+        ]
+      },
+      {
+        path: "/study/other",
+        name: "other",
+        meta: {
+          title: "其他"
+        },
+        redirect: "/study",
+        children: [
+          {
+            path: "/study/other/loading",
+            name: "loading",
+            meta: {
+              title: "加载动画"
+            },
+            component: () => import("@/views/study/other/loading.vue")
+          },
+          {
+            path: "/study/other/progress",
+            name: "progress",
+            meta: {
+              title: "进度条"
+            },
+            component: () => import("@/views/study/other/progress.vue")
+          }
+        ]
+      }
+    ]
+  },
+  {
     path: "/joy",
     name: "joy",
     meta: {
@@ -26,57 +97,6 @@ const routes = [
     },
     component: () => import("@/views/joy/index.vue"),
     children: [
-      {
-        path: "/joy/demo",
-        name: "demo",
-        meta: {
-          title: "DEMO展示"
-        },
-        redirect: "/joy/demo/pikaqiu",
-        component: () => import("@/views/joy/demo/index.vue"),
-        children: [
-          {
-            path: "/joy/demo/pikaqiu",
-            name: "pikaqiu",
-            meta: {
-              title: "CSS皮卡丘"
-            },
-            component: () => import("@/views/joy/demo/pikaqiu.vue")
-          },
-          {
-            path: "/joy/demo/huitailang",
-            name: "huitailang",
-            meta: {
-              title: "CSS灰太狼"
-            },
-            component: () => import("@/views/joy/demo/huitailang.vue")
-          },
-          {
-            path: "/joy/demo/lanpangzi",
-            name: "lanpangzi",
-            meta: {
-              title: "CSS蓝胖子"
-            },
-            component: () => import("@/views/joy/demo/lanpangzi.vue")
-          },
-          {
-            path: "/joy/demo/loading",
-            name: "loading",
-            meta: {
-              title: "加载动画"
-            },
-            component: () => import("@/views/joy/demo/loading.vue")
-          },
-          {
-            path: "/joy/demo/progress",
-            name: "progress",
-            meta: {
-              title: "进度条"
-            },
-            component: () => import("@/views/joy/demo/progress.vue")
-          }
-        ]
-      },
       {
         path: "/joy/games",
         name: "games",

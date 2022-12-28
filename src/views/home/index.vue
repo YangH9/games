@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
+import Header from "@/components/Header.vue"
 import Breadcrumb from "@/components/Breadcrumb.vue"
 import { getCurrentInstance } from "vue"
-import Header from "@/components/Header.vue"
 
 const { getEnv } = getCurrentInstance().proxy
 // console.log(env)

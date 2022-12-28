@@ -72,7 +72,7 @@ import { ref, computed, reactive } from "vue"
 const props = defineProps({
   type: { type: String, default: "circle" },
   hasText: { type: Boolean, default: false },
-  width: { type: Number, default: 200 },
+  width: { type: Number, default: 100 },
   steps: { type: Number, default: 100 },
   value: { type: Number, default: 0 },
   color: { type: String, default: "#359dda" },
