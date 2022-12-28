@@ -30,7 +30,7 @@
             {{ item.title }}
           </a-button>
           <a-button
-            v-for="i of main.length > 10 ? 20 : 0"
+            v-for="i of 10"
             :key="i"
             class="seat">
           </a-button>
