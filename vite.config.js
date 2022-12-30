@@ -44,6 +44,5 @@ export default ({ mode }) => {
     }
   }
 
-  // Console.log(config)
   return defineConfig(config)
 }

@@ -50,7 +50,8 @@ const joyList = [
       { title: "游戏历程时间轴", href: "/joy/games/gameHistory" },
       { title: "部落冲突", href: "/joy/games/clashofclans" },
       { title: "圈小猫", href: "/joy/games/catchTheCat" },
-      { title: "扫雷", href: "/joy/games/minesweeper" }
+      { title: "扫雷", href: "/joy/games/minesweeper" },
+      { title: "QQ飞车手游图鉴", href: "/joy/games/qqspeedm" }
     ]
   },
   {

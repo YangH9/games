@@ -111,7 +111,7 @@ const routes = [
             meta: {
               title: "游戏历程时间轴"
             },
-            component: () => import("@/views/joy/games/gameHistory.vue")
+            component: () => import("@/views/joy/games/GameHistory.vue")
           },
           {
             path: "/joy/games/clashofclans",
@@ -119,7 +119,7 @@ const routes = [
             meta: {
               title: "部落冲突"
             },
-            component: () => import("@/views/joy/games/clashofclans.vue")
+            component: () => import("@/views/joy/games/ClashOfClans.vue")
           },
           {
             path: "/joy/games/catchTheCat",
@@ -127,7 +127,15 @@ const routes = [
             meta: {
               title: "圈小猫"
             },
-            component: () => import("@/views/joy/games/catchTheCat.vue")
+            component: () => import("@/views/joy/games/CatchTheCat.vue")
+          },
+          {
+            path: "/joy/games/qqspeedm",
+            name: "qqspeedm",
+            meta: {
+              title: "QQ飞车手游"
+            },
+            component: () => import("@/views/joy/games/QQSpeedM.vue")
           },
           {
             path: "/joy/games/minesweeper",
@@ -182,7 +190,7 @@ const routes = [
             component: () => import("@/views/joy/tool/petpet/index.vue")
           },
           {
-            path: "/joy/tool/deviceInfo",
+            path: "/joy/tool/deviceinfo",
             name: "deviceInfo",
             meta: {
               title: "设备信息"

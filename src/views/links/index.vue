@@ -149,6 +149,7 @@ const resoutcesList = [
       { title: "Pinia", href: "https://pinia.vuejs.org/zh/", favicon: "logo.svg" },
       { title: "Vite", href: "https://cn.vitejs.dev/", favicon: "logo.svg" },
       { title: "Vue Devtools", href: "https://devtools.vuejs.org/", favicon: "favicon.svg" },
+      { title: "Axios", href: "https://axios-http.com/", favicon: "favicon.svg" },
       { title: "DCloud", href: "https://www.dcloud.io/", favicon: "" },
       { title: "uni-app", href: "https://uniapp.dcloud.net.cn/", favicon: "//vkceyugu.cdn.bspapp.com/VKCEYUGU-a90b5f95-90ba-4d30-a6a7-cd4d057327db/d23e842c-58fc-4574-998d-17fdc7811cc3.png" },
       { title: "Bootstrap", href: "https://www.bootcss.com/", favicon: "//cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.65/dist/ico/favicon.ico" },

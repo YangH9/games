@@ -36,7 +36,7 @@ const click = data => {
   padding: 0;
   position: sticky;
   top: 0;
-  z-index: 3000;
+  z-index: 1000;
 
   .header {
     width: 100%;
