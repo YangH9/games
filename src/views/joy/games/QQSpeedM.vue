@@ -21,7 +21,6 @@
           </a-card-grid>
         </template>
       </a-image-preview-group>
-      <!-- {{ carsDataList }}{{ mapsDataList }}{{ petsDataList }} -->
     </a-card>
   </div>
 </template>
@@ -31,6 +30,7 @@ import Breadcrumb from "@/components/Breadcrumb.vue"
 import { ref } from "vue"
 
 const url = i => `https://speedm.qq.com/zlkdatasys/data/${i}/list.json`
+
 const carUrl = url`car_list`
 const mapUrl = url`map_list`
 const petUrl = url`pet_list`
@@ -61,12 +61,11 @@ const getScript = (src, func) => {
 }
 // 获取赛车数据
 getScript(carUrl)
-// 获取赛道数据
+// 获取地图数据
 getScript(mapUrl)
-// 获取赛道数据
+// 获取宠物数据
 getScript(petUrl)
 
-console.log(carsDataList, mapsDataList, petsDataList)
 </script>
 
 <style lang="less" scoped>
