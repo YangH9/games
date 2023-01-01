@@ -49,7 +49,8 @@ const resoutcesList = [
     title: "友情链接",
     list: [
       { title: "RGB", href: "https://rgb39.top/", favicon: "" },
-      { title: "小天的视频解析器", href: "http://1.15.124.32:7002/", favicon: "" }
+      { title: "小天的中国象棋", href: "https://www.aixt.vip/", favicon: "" },
+      { title: "小天的视频解析器", href: "https://www.aixt.vip/video/", favicon: "" }
     ]
   },
   {
