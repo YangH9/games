@@ -84,6 +84,14 @@ const routes = [
               title: "进度条"
             },
             component: () => import("@/views/study/other/progress.vue")
+          },
+          {
+            path: "/study/other/applelogo",
+            name: "applelogo",
+            meta: {
+              title: "Apple新年logo"
+            },
+            component: () => import("@/views/study/other/appleLogo.vue")
           }
         ]
       }

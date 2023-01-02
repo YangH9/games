@@ -150,7 +150,7 @@
 </template>
 
 <script setup>
-
+// https://github.com/corestudi0/corestudi0.github.io/tree/main/newyear
 </script>
 
 <style lang="less" scoped>
