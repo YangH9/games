@@ -4,7 +4,6 @@
   "eslint.format.enable": true,
   "editor.tabSize": 2,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  "dart.lineLength": 150,
   "typescript.tsdk": "node_modules/typescript/lib",
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -19,6 +18,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.bracketSameLine": true,

@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --mode development",
-    "build": "npm run lint & vite build --mode production",
+    "build": "vite build --mode production",
     "preview": "vite preview --port 4173",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .eslintignore",
     "commit": "git add . & git commit -m [update]",
