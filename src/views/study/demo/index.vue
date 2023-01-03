@@ -7,8 +7,8 @@
 </template>
 
 <script setup>
-import Menu from "@/components/Menu.vue"
-import Breadcrumb from "@/components/Breadcrumb.vue"
+import Menu from '@/components/Menu.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
 <style lang="less" scoped>

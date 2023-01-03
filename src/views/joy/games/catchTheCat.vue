@@ -8,10 +8,10 @@
 </template>
 
 <script setup>
-import "phaser"
-import "@/utils/catch-the-cat"
-import Breadcrumb from "@/components/Breadcrumb.vue"
-import { onMounted } from "vue"
+import 'phaser'
+import '@/utils/catch-the-cat'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import { onMounted } from 'vue'
 
 onMounted(() => {
   // eslint-disable-next-line no-undef
@@ -20,9 +20,9 @@ onMounted(() => {
     h: 20,
     r: 20,
     backgroundColor: 16777215,
-    parent: "catchTheCat",
-    statusBarAlign: "center",
-    credit: "YangH9.github.io"
+    parent: 'catchTheCat',
+    statusBarAlign: 'center',
+    credit: 'YangH9.github.io'
   })
 })
 </script>

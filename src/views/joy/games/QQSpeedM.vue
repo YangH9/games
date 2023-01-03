@@ -1,22 +1,13 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card
-      title="飞车手游图鉴"
-      class="card mb10"
-      :hoverable="true">
+    <a-card title="飞车手游图鉴" class="card mb10" :hoverable="true">
       <a-image-preview-group>
         <template v-if="carsDataList.length > 0">
-          <a-card-grid
-            v-for="item of carsDataList"
-            :key="item.cid_d3"
-            style="width: 25%">
+          <a-card-grid v-for="item of carsDataList" :key="item.cid_d3" style="width: 25%">
             <a-card :title="item.cm_4e">
               <template #extra>{{ item.jb_43 }}</template>
-              <a-image
-                :src="item.slt_3c"
-                width="100%"
-                height="110px" />
+              <a-image :src="item.slt_3c" width="100%" height="110px" />
             </a-card>
           </a-card-grid>
         </template>
@@ -26,10 +17,10 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
-import { ref } from "vue"
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import { ref } from 'vue'
 
-const url = i => `https://speedm.qq.com/zlkdatasys/data/${i}/list.json`
+const url = (i) => `https://speedm.qq.com/zlkdatasys/data/${i}/list.json`
 
 const carUrl = url`car_list`
 const mapUrl = url`map_list`
@@ -40,20 +31,20 @@ const mapsDataList = ref([])
 const petsDataList = ref([])
 
 // 分装json内调用的方法并获取内容
-window.cars_data = obj => {
+window.cars_data = (obj) => {
   carsDataList.value = obj.scsy_ad.reverse()
 }
-window.maps_data = obj => {
+window.maps_data = (obj) => {
   mapsDataList.value = obj.dtsy_1f.reverse()
 }
-window.pets_data = obj => {
+window.pets_data = (obj) => {
   petsDataList.value = obj.cwsy_80.reverse()
 }
 
 // 生成script标签
 const getScript = (src, func) => {
-  const script = document.createElement("script")
-  script.async = "async"
+  const script = document.createElement('script')
+  script.async = 'async'
   script.src = src
   script.onload = func
   document.head.appendChild(script)
@@ -65,7 +56,6 @@ getScript(carUrl)
 getScript(mapUrl)
 // 获取宠物数据
 getScript(petUrl)
-
 </script>
 
 <style lang="less" scoped>

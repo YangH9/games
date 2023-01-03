@@ -127,7 +127,7 @@ const routes = [
             meta: {
               title: "部落冲突"
             },
-            component: () => import("@/views/joy/games/ClashOfClans.vue")
+            component: () => import("@/views/joy/games/clashOfClans.vue")
           },
           {
             path: "/joy/games/catchTheCat",
@@ -255,10 +255,10 @@ router.beforeEach((to, from, next) => {
 })
 
 // 当路由跳转结束后
-router.afterEach(to => {
+router.afterEach((to) => {
   routerLoading().hide()
   const Title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
-  const handleVisiable = e => {
+  const handleVisiable = (e) => {
     console.log(e.target.title, e.target.visibilityState)
     if (e.target.visibilityState === "visible") {
       document.title = "逗你的~"

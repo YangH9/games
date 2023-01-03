@@ -8,20 +8,20 @@ axios.jsonp = jsonp
 
 // 请求拦截器
 axios.interceptors.request.use(
-  config => {
+  (config) => {
     console.log("请求拦截器")
     return config
   },
-  error => Promise.reject(error)
+  (error) => Promise.reject(error)
 )
 
 // 响应拦截器
 axios.interceptors.response.use(
-  response => {
+  (response) => {
     console.log("响应拦截器")
     return response
   },
-  error => Promise.reject(error)
+  (error) => Promise.reject(error)
 )
 
 // axios.defaults.headers.post[ "Content-Type" ] = "application/json;charset=UTF-8"

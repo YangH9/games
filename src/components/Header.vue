@@ -1,15 +1,8 @@
 <template>
   <a-layout-header>
     <div class="header">
-      <RouterLink
-        to="/"
-        class="logo">
-        木易
-      </RouterLink>
-      <a-menu
-        :selectedKeys="[`/${$route.path.split('/')[1]}`]"
-        mode="horizontal"
-        @click="click">
+      <RouterLink to="/" class="logo"> 木易 </RouterLink>
+      <a-menu :selectedKeys="[`/${$route.path.split('/')[1]}`]" mode="horizontal" @click="click">
         <a-menu-item key="/">首页</a-menu-item>
         <a-menu-item key="/study">学习</a-menu-item>
         <a-menu-item key="/joy">娱乐</a-menu-item>
@@ -22,11 +15,11 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from "vue-router"
+import { useRoute, useRouter } from 'vue-router'
 const $router = useRouter()
 const $route = useRoute()
 
-const click = data => {
+const click = (data) => {
   $router.push(data.key)
 }
 </script>
@@ -64,11 +57,14 @@ const click = data => {
   // background-size: 4px 4px;
   // backdrop-filter: saturate(50%) blur(4px);
 }
+
 .ant-menu-horizontal {
   border-color: var(--color-background-soft);
 }
+
 .ant-menu {
   background: transparent;
+
   :deep(.ant-menu-title-content) {
     background: var(--color-background);
     color: var(--color-text);

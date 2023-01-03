@@ -1,13 +1,7 @@
 <template>
   <a-layout-sider width="200">
-    <a-menu
-      :selectedKeys="[$route.path]"
-      mode="inline"
-      :style="{ height: '100%', borderRight: 0 }"
-      @click="click">
-      <a-menu-item
-        v-for="item of menuList"
-        :key="item.path">
+    <a-menu :selectedKeys="[$route.path]" mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="click">
+      <a-menu-item v-for="item of menuList" :key="item.path">
         <span>
           {{ item.meta.title }}
         </span>
@@ -17,17 +11,17 @@
 </template>
 
 <script setup>
-import { reactive } from "vue"
-import { useRoute, useRouter } from "vue-router"
+import { reactive } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const { url } = defineProps({ url: String })
 
 const $router = useRouter()
 const $route = useRoute()
 
-const menuList = reactive($route.matched.find(item => item.path === url).children)
+const menuList = reactive($route.matched.find((item) => item.path === url).children)
 
-const click = data => {
+const click = (data) => {
   $router.push(data.key)
 }
 </script>
@@ -36,8 +30,10 @@ const click = data => {
 .ant-layout-sider {
   background: transparent;
 }
+
 .ant-menu {
   background: var(--color-background);
+
   // background: transparent;
   // background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
   // background-size: 4px 4px;
@@ -46,6 +42,7 @@ const click = data => {
     color: var(--color-heading);
   }
 }
+
 @media (prefers-color-scheme: dark) {
   :deep(.ant-menu-item.ant-menu-item-selected) {
     background: #004a6d;

@@ -5,30 +5,13 @@
       <RouterViewBox url="/joy">
         <div class="container">
           <Breadcrumb />
-          <a-card
-            v-for="(main, index) of joyList"
-            :key="index"
-            :title="main.title"
-            class="mb10"
-            :hoverable="true">
-            <a-button
-              v-for="(item, index1) of main.list"
-              :key="index1"
-              type="link"
-              size="small">
+          <a-card v-for="(main, index) of joyList" :key="index" :title="main.title" class="mb10" :hoverable="true">
+            <a-button v-for="(item, index1) of main.list" :key="index1" type="link" size="small">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
           </a-card>
-          <a-card
-            title="QQ群"
-            class="mb10"
-            :hoverable="true">
-            <a-button
-              v-for="(item, index) of qqList"
-              :key="index"
-              type="link"
-              size="small"
-              :href="item.href">
+          <a-card title="QQ群" class="mb10" :hoverable="true">
+            <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href">
               {{ item.title }}
             </a-button>
           </a-card>
@@ -39,36 +22,35 @@
 </template>
 
 <script setup>
-import Header from "@/components/Header.vue"
-import Breadcrumb from "@/components/Breadcrumb.vue"
-import RouterViewBox from "@/components/RouterViewBox.vue"
+import Header from '@/components/Header.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import RouterViewBox from '@/components/RouterViewBox.vue'
 
 const joyList = [
   {
-    title: "游戏",
+    title: '游戏',
     list: [
-      { title: "游戏历程时间轴", href: "/joy/games/gameHistory" },
-      { title: "部落冲突", href: "/joy/games/clashofclans" },
-      { title: "圈小猫", href: "/joy/games/catchTheCat" },
-      { title: "扫雷", href: "/joy/games/minesweeper" },
-      { title: "QQ飞车手游图鉴", href: "/joy/games/qqspeedm" }
+      { title: '游戏历程时间轴', href: '/joy/games/gameHistory' },
+      { title: '部落冲突', href: '/joy/games/clashofclans' },
+      { title: '圈小猫', href: '/joy/games/catchTheCat' },
+      { title: '扫雷', href: '/joy/games/minesweeper' },
+      { title: 'QQ飞车手游图鉴', href: '/joy/games/qqspeedm' }
     ]
   },
   {
-    title: "工具",
+    title: '工具',
     list: [
-      { title: "音乐播放器", href: "/joy/tool/listen" },
-      { title: "摸头生成器", href: "/joy/tool/petpet" },
-      { title: "灰色头像生成器", href: "/joy/tool/grayhead" },
-      { title: "设备信息", href: "/joy/tool/deviceInfo" }
+      { title: '音乐播放器', href: '/joy/tool/listen' },
+      { title: '摸头生成器', href: '/joy/tool/petpet' },
+      { title: '灰色头像生成器', href: '/joy/tool/grayhead' },
+      { title: '设备信息', href: '/joy/tool/deviceInfo' }
     ]
   }
 ]
 
-
 const qqList = [
-  { title: "👨‍👦‍👦MC精彩无限 (778923681)", href: "https://jq.qq.com/?_wv=1027&k=ikak0eLV" },
-  { title: "👨‍👦‍👦cfm活动分享群 (238080446)", href: "https://jq.qq.com/?_wv=1027&k=K6vsosuT" }
+  { title: '👨‍👦‍👦MC精彩无限 (778923681)', href: 'https://jq.qq.com/?_wv=1027&k=ikak0eLV' },
+  { title: '👨‍👦‍👦cfm活动分享群 (238080446)', href: 'https://jq.qq.com/?_wv=1027&k=K6vsosuT' }
 ]
 </script>
 

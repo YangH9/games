@@ -1,19 +1,15 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card
-      title="Apple新年logo"
-      class="mb10"
-      :hoverable="true">
+    <a-card title="Apple新年logo" class="mb10" :hoverable="true">
       <div class="box">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1468 1000">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1468 1000">
           <g class="apple-logo">
             <g class="eye-wink">
               <path
                 class="cls-1"
-                d="M699.92,391.69c0,12.92-6.25,23.39-14,23.39s-14-10.47-14-23.39,6.25-23.4,14-23.4S699.92,378.76,699.92,391.69Z"></path>
+                d="M699.92,391.69c0,12.92-6.25,23.39-14,23.39s-14-10.47-14-23.39,6.25-23.4,14-23.4S699.92,378.76,699.92,391.69Z"
+              ></path>
               <animateTransform
                 attributeName="transform"
                 begin="1.08s"
@@ -50,7 +46,8 @@
               type="scale"
               from="1, 1"
               to="1.05, 1.05"
-              fill="freeze"></animateTransform>
+              fill="freeze"
+            ></animateTransform>
           </g>
         </svg>
       </div>
@@ -59,7 +56,7 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
+import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
 <style lang="less" scoped>
@@ -67,14 +64,17 @@ import Breadcrumb from "@/components/Breadcrumb.vue"
   display: flex;
   align-items: center;
 
-  &>* {
+  & > * {
     margin: 10px;
   }
+
   .apple-logo {
     transform-origin: center;
+
     .eye-wink {
       transform-origin: 0 400px;
     }
+
     .cls-1 {
       fill: #b12;
     }

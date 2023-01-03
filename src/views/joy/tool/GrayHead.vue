@@ -1,10 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card
-      title="灰色头像生成器"
-      class="mb10"
-      :hoverable="true">
+    <a-card title="灰色头像生成器" class="mb10" :hoverable="true">
       <!-- <div>
         <a-upload
           name="file"
@@ -33,12 +30,11 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
+import Breadcrumb from '@/components/Breadcrumb.vue'
 
 // const handleChange = a => {
 //   console.log(a)
 // }
-
 </script>
 
 <style lang="less" scoped>

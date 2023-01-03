@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
-import RouterViewBox from "@/components/RouterViewBox.vue"
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import RouterViewBox from '@/components/RouterViewBox.vue'
 </script>
 
 <style lang="less" scoped></style>

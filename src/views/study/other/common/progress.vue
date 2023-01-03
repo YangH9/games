@@ -1,11 +1,7 @@
 <template>
   <div>
     <!-- 水平进度条 -->
-    <svg
-      v-if="type === 'line'"
-      :width="lineOption.width"
-      :height="lineOption.height"
-      :viewBox="lineOption.viewBox">
+    <svg v-if="type === 'line'" :width="lineOption.width" :height="lineOption.height" :viewBox="lineOption.viewBox">
       <line
         :x1="lineOption.x1"
         :y1="lineOption.y1"
@@ -30,11 +26,7 @@
       />
     </svg>
     <!-- 圆形进度条 -->
-    <svg
-      v-if="type === 'circle'"
-      :width="circleOption.width"
-      :height="circleOption.height"
-      :viewBox="circleOption.viewBox">
+    <svg v-if="type === 'circle'" :width="circleOption.width" :height="circleOption.height" :viewBox="circleOption.viewBox">
       <circle
         :cx="circleOption.cx"
         :cy="circleOption.cy"
@@ -54,12 +46,7 @@
         :stroke-dasharray="circleOption.strokeDasharray"
         :stroke-linecap="linecap"
       />
-      <text
-        v-if="hasText"
-        :x="circleOption.textX"
-        :y="circleOption.textY"
-        text-anchor="middle"
-        :font-size="circleOption.textSize">
+      <text v-if="hasText" :x="circleOption.textX" :y="circleOption.textY" text-anchor="middle" :font-size="circleOption.textSize">
         {{ props.value }}
       </text>
     </svg>
@@ -67,17 +54,17 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive } from "vue"
+import { ref, computed, reactive } from 'vue'
 
 const props = defineProps({
-  type: { type: String, default: "circle" },
+  type: { type: String, default: 'circle' },
   hasText: { type: Boolean, default: false },
   width: { type: Number, default: 100 },
   steps: { type: Number, default: 100 },
   value: { type: Number, default: 0 },
-  color: { type: String, default: "#359dda" },
-  bgColor: { type: String, default: "#ccc" },
-  linecap: { type: String, default: "round" },
+  color: { type: String, default: '#359dda' },
+  bgColor: { type: String, default: '#ccc' },
+  linecap: { type: String, default: 'round' },
   strokeWidth: { type: Number, default: 10 }
 })
 
@@ -93,7 +80,7 @@ const lineOption = reactive({
   x2: props.width - props.strokeWidth / 2,
   y2: props.strokeWidth / 2,
   strokeWidth: props.strokeWidth,
-  strokeDasharray: computed(() => `${props.value / props.steps * total.value} ${total.value}`)
+  strokeDasharray: computed(() => `${(props.value / props.steps) * total.value} ${total.value}`)
 })
 
 const circleOption = reactive({
@@ -104,7 +91,7 @@ const circleOption = reactive({
   cy: props.width / 2,
   r: props.width / 2 - props.strokeWidth / 2,
   strokeWidth: props.strokeWidth,
-  strokeDasharray: computed(() => `${props.value / props.steps * total.value} ${total.value}`),
+  strokeDasharray: computed(() => `${(props.value / props.steps) * total.value} ${total.value}`),
   textX: props.width / 2,
   textY: props.width / 2 + props.strokeWidth / 2 + 2,
   textSize: props.strokeWidth * 2

@@ -15,6 +15,7 @@
 <style lang="less" scoped>
 .preloader {
   height: 100px;
+
   .spinner {
     font-size: 10px;
     height: 100%;

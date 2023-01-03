@@ -1,20 +1,12 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card
-      title="设备基础信息"
-      class="mb10"
-      :hoverable="true">
+    <a-card title="设备基础信息" class="mb10" :hoverable="true">
       <a-descriptions :column="2">
-        <a-descriptions-item
-          label="设备UA"
-          :span="2">
+        <a-descriptions-item label="设备UA" :span="2">
           {{ userAgent }}
         </a-descriptions-item>
-        <a-descriptions-item
-          v-for="item of userAgentData?.brands"
-          :key="item.brand"
-          label="品牌(版本)">
+        <a-descriptions-item v-for="item of userAgentData?.brands" :key="item.brand" label="品牌(版本)">
           {{ item.brand }}（{{ item.version }}）
         </a-descriptions-item>
         <a-descriptions-item label="平台">{{ userAgentData.platform }}</a-descriptions-item>
@@ -33,10 +25,7 @@
         <a-descriptions-item label="mediaSession">{{ JSON.stringify(mediaSession) }}</a-descriptions-item> -->
       </a-descriptions>
     </a-card>
-    <a-card
-      title="网络信息"
-      class="mb10"
-      :hoverable="true">
+    <a-card title="网络信息" class="mb10" :hoverable="true">
       <a-descriptions :column="2">
         <a-descriptions-item label="网络状态">{{ onLine ? '在线' : '离线' }}</a-descriptions-item>
         <a-descriptions-item label="网络类型">{{ connection?.effectiveType }}</a-descriptions-item>
@@ -49,31 +38,31 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
+import Breadcrumb from '@/components/Breadcrumb.vue'
 
 const {
-  appName = "",
-  platform = "",
-  product = "",
-  userAgent = "",
-  cookieEnabled = "",
-  language = "",
+  appName = '',
+  platform = '',
+  product = '',
+  userAgent = '',
+  cookieEnabled = '',
+  language = '',
   languages = [],
-  maxTouchPoints = "",
+  maxTouchPoints = '',
   connection = {},
-  onLine = "",
-  pdfViewerEnabled = "",
-  deviceMemory = "",
+  onLine = '',
+  pdfViewerEnabled = '',
+  deviceMemory = '',
   userAgentData = {},
   wakeLock = {},
-  storage = "",
-  geolocation = "",
-  mediaSession = ""
+  storage = '',
+  geolocation = '',
+  mediaSession = ''
 } = window.navigator
 
 console.log(storage, geolocation, mediaSession)
 
-wakeLock?.request("screen").then(lock => {
+wakeLock?.request('screen').then((lock) => {
   setTimeout(() => lock.release(), 10 * 60 * 1000)
 })
 

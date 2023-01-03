@@ -4,10 +4,7 @@
     <a-layout class="layout">
       <div class="container">
         <Breadcrumb />
-        <a-card
-          title="首页"
-          class="mb10"
-          :hoverable="true">
+        <a-card title="首页" class="mb10" :hoverable="true">
           <div>MODE：{{ mode }}</div>
           <div>TITLE：{{ title }}</div>
         </a-card>

@@ -1,18 +1,11 @@
 <template>
   <div class="result">
-    <a-result
-      status="403"
-      title="403"
-      sub-title="你没有此页面的访问权限。">
+    <a-result status="403" title="403" sub-title="你没有此页面的访问权限。">
       <template #extra>
-        <a-button
-          type="primary"
-          @click="back">
+        <a-button type="primary" @click="back">
           Back
         </a-button>
-        <a-button
-          type="primary"
-          @click="home">
+        <a-button type="primary" @click="home">
           Home
         </a-button>
       </template>
@@ -31,4 +24,6 @@ const home = () => {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+
+</style>

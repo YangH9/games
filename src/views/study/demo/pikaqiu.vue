@@ -69,6 +69,7 @@
 .ant-layout-content {
   background: var(--color-background-mute);
 }
+
 // 皮卡丘
 #pikaqiu {
   width: 500px;

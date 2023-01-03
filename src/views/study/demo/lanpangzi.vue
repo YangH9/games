@@ -78,6 +78,7 @@
   background: var(--color-background-mute);
   color: var(--color-heading);
   z-index: 1;
+
   * {
     box-sizing: content-box;
   }
@@ -365,6 +366,7 @@
 
   .body {
     position: unset;
+
     .doutai {
       position: absolute;
       width: 220px;
@@ -418,6 +420,7 @@
 
   .hand {
     position: relative;
+
     &.hand_right {
       position: absolute;
       top: 272px;
@@ -631,5 +634,4 @@
     margin: 0 0 0 0;
   }
 }
-
 </style>

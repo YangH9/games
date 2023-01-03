@@ -5,7 +5,7 @@ export default (url, data) => new Promise((resolve, reject) => {
   const script = document.createElement("script")
   script.async = "async"
   script.src = url
-  script.onload = res => {
+  script.onload = (res) => {
     console.log(res)
     resolve(url)
   }
