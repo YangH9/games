@@ -4,6 +4,7 @@ import { createApp } from "vue"
 import { createPinia } from "pinia"
 import dayjs from "dayjs"
 import { formatDate } from "@/utils"
+import directive from "@/utils/directive"
 
 // 默哀的全局灰色
 // import "@/assets/gray.less"
@@ -18,5 +19,6 @@ Vue.config.globalProperties.dayjs = dayjs
 
 Vue.use(createPinia())
 Vue.use(router)
+Vue.use(directive)
 
 Vue.mount("#app")

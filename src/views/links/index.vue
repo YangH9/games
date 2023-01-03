@@ -17,14 +17,15 @@
             :href="item.href">
             <template #icon>
               <img
-                :src="
+                v-lazy
+                :data-src="
                   item.favicon.indexOf('//') >= 0
                     ? item.favicon
                     : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
                 "
                 class="icon"
                 referrer="no-referrer"
-                @load="(e) => (e.target.style.display = 'inline-block')"
+                @error="(e) => (e.target.style.display = 'none')"
               />
             </template>
             {{ item.title }}
@@ -361,7 +362,6 @@ const resoutcesList = [
   width: 16px;
   height: 16px;
   margin-right: 4px;
-  display: none;
   vertical-align: baseline;
 }
 </style>
