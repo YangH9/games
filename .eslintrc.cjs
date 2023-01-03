@@ -153,7 +153,7 @@ module.exports = {
     'comma-dangle': ['error', 'never'], // 要求或禁止末尾逗号
     'comma-spacing': ['error', { before: false, after: true }], // 强制在逗号前后使用一致的空格
     'comma-style': 'error', // 强制使用一致的逗号风格
-    'computed-property-spacing': ['error', 'always'], // 强制在计算的属性的方括号中使用一致的空格
+    'computed-property-spacing': 'off', // 强制在计算的属性的方括号中使用一致的空格
     'consistent-this': 'error', // 当获取当前执行环境的上下文时，强制使用一致的命名
     'eol-last': ['error', 'always'], // 要求或禁止文件末尾存在空行
     'func-call-spacing': 'error', // 要求或禁止在函数标识符和其调用之间有空格

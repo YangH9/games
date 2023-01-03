@@ -27,7 +27,13 @@
     </a-card>
     <a-card title="网络信息" class="mb10" :hoverable="true">
       <a-descriptions :column="2">
-        <a-descriptions-item label="网络状态">{{ onLine ? '在线' : '离线' }}</a-descriptions-item>
+        <a-descriptions-item label="网络状态">
+          <span class="mr10">
+            {{ onLine ? '在线' : '离线' }}
+          </span>
+          <CheckCircleTwoTone v-if="onLine" two-tone-color="#52c41a" />
+          <ExclamationCircleTwoTone v-if="!onLine" two-tone-color="#ff4d4f" />
+        </a-descriptions-item>
         <a-descriptions-item label="网络类型">{{ connection?.effectiveType }}</a-descriptions-item>
         <a-descriptions-item label="下行速度">{{ connection?.downlink }}</a-descriptions-item>
         <a-descriptions-item label="估算的往返时间">{{ connection?.rtt }}</a-descriptions-item>
@@ -39,6 +45,8 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
+import { CheckCircleTwoTone, ExclamationCircleTwoTone } from '@ant-design/icons-vue'
+import { ref } from 'vue'
 
 const {
   appName = '',
@@ -50,7 +58,6 @@ const {
   languages = [],
   maxTouchPoints = '',
   connection = {},
-  onLine = '',
   pdfViewerEnabled = '',
   deviceMemory = '',
   userAgentData = {},
@@ -60,11 +67,20 @@ const {
   mediaSession = ''
 } = window.navigator
 
+const onLine = ref(window.navigator.onLine)
+
 console.log(storage, geolocation, mediaSession)
 
 wakeLock?.request('screen').then((lock) => {
   setTimeout(() => lock.release(), 10 * 60 * 1000)
 })
+
+const lineChange = () => {
+  onLine.value = window.navigator.onLine
+}
+
+window.addEventListener('online', lineChange)
+window.addEventListener('offline', lineChange)
 
 // const { architecture, bitness, fullVersionList, platform, platformVersion } = await userAgentData.getHighEntropyValues([ "architecture", "bitness", "model", "platformVersion", "fullVersionList" ])
 // console.log(architecture, bitness, fullVersionList, platform, platformVersion)
