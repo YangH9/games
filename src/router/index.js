@@ -141,9 +141,17 @@ const routes = [
             path: "/joy/games/qqspeedm",
             name: "qqspeedm",
             meta: {
-              title: "QQ飞车手游"
+              title: "QQ飞车手游壁纸"
             },
             component: () => import("@/views/joy/games/QQSpeedM.vue")
+          },
+          {
+            path: "/joy/games/qqspeedm/atlas",
+            name: "qqspeedmatlas",
+            meta: {
+              title: "QQ飞车手游图鉴"
+            },
+            component: () => import("@/views/joy/games/QQSpeedMAtlas.vue")
           },
           {
             path: "/joy/games/minesweeper",

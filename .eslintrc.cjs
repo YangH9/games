@@ -62,7 +62,6 @@ module.exports = {
     'consistent-return': 'error', // 要求 return 语句要么总是指定返回的值，要么不指定
     curly: 'error', // 强制所有控制语句使用一致的括号风格
     'default-case': 'error', // 要求 switch 语句中有 default 分支
-    'dot-location': 'error', // 强制在点号之前和之后一致的换行
     'dot-notation': 'error', // 强制尽可能地使用点号
     eqeqeq: 'error', // 要求使用 === 和 !==
     'guard-for-in': 'error', // 要求 for-in 循环中有一个 if 语句
@@ -160,11 +159,9 @@ module.exports = {
     'func-name-matching': 'error', // 要求函数名与赋值给它们的变量名或属性名相匹配
     'func-names': 'error', // 要求或禁止使用命名的 function 表达式
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }], // 强制一致地使用 function 声明或表达式
-    'function-paren-newline': 'error', // 强制在函数括号内使用一致的换行
     'id-blacklist': 'error', // 禁用指定的标识符
     'id-length': ['error', { min: 1 }], // 强制标识符的最小和最大长度
     'id-match': 'error', // 要求标识符匹配一个指定的正则表达式
-    'implicit-arrow-linebreak': ['error', 'beside'], // 强制隐式返回的箭头函数体的位置
     indent: ['error', 2], // 强制使用一致的缩进
     'jsx-quotes': 'error', // 强制在 JSX 属性中一致地使用双引号或单引号
     'key-spacing': ['error', { mode: 'strict' }], // 强制在对象字面量的属性中键和值之间使用一致的间距

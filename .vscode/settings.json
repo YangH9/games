@@ -44,7 +44,7 @@
   "prettier.vueIndentScriptAndStyle": false,
   "prettier.useTabs": false,
   "emmet.optimizeStylesheetParsing": true,
-  "editor.snippetSuggestions": "bottom",
+  "editor.snippetSuggestions": "inline",
   "emmet.showExpandedAbbreviation": "never",
   "emmet.showSuggestionsAsSnippets": false,
   "emmet.triggerExpansionOnTab": false,
