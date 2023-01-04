@@ -54,7 +54,7 @@
         </template>
       </template>
       <template v-if="show">
-        <a-row v-if="carsDataList.length > 0 && typeListActive === 'car'" justify="space-around" :gutter="[4, 8]">
+        <a-row v-if="carsDataList.length > 0 && typeListActive === 'car'" justify="space-around" :gutter="[0, 10]">
           <a-col
             v-for="(item, index) of carsDataList.filter(
               (item) => (item.ccmz_36 === carFactoryListActive || !carFactoryListActive) && (item.jb_43 === carGradeListActive || !carGradeListActive)
@@ -64,7 +64,7 @@
             <a-card :hoverable="true">
               <template #title>
                 {{ item.cm_4e }}
-                <img v-lazy :data-src="item.cclogo_2a" style="filter: invert(1)" />
+                <img v-lazy :data-src="item.cclogo_2a" />
               </template>
               <template #extra>{{ item.jb_43 }}</template>
               <img v-lazy class="image" src="@/assets/default.png" :data-src="item.slt_3c" :alt="item.cm_4e" :title="item.jj_3b" />
@@ -222,7 +222,7 @@ getScript(petUrl)
 
 .card {
   & > :deep(.ant-card-body) {
-    height: calc(100vh - 340px);
+    height: calc(100vh - 350px);
     overflow-x: hidden;
     overflow-y: auto;
     padding: 6px 0px 0px 6px;
@@ -231,6 +231,12 @@ getScript(petUrl)
       padding-left: 10px;
       padding-right: 10px;
       min-height: auto;
+
+      .ant-card-head-title {
+        img {
+          filter: invert(1);
+        }
+      }
 
       .ant-card-head-title,
       .ant-card-extra {

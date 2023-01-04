@@ -23,6 +23,9 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
   "prettier.bracketSameLine": true,
   "prettier.ignorePath": ".eslintignore",
   "prettier.insertPragma": false,
@@ -52,5 +55,5 @@
   "emmet.showAbbreviationSuggestions": true,
   "volar.autoCompleteRefs": true,
   "volar.addSpaceBetweenDoubleCurlyBrackets": true,
-  "volar.doctor.statusBarItem": true,
+  "volar.doctor.statusBarItem": true
 }
