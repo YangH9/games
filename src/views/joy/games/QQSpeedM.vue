@@ -4,8 +4,8 @@
     <a-card class="card" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">
-          飞车手游壁纸
           <div>
+            <span class="mr10">飞车手游壁纸</span>
             <template v-for="(item, index) of directionList" :key="index">
               <a-button :type="directionListActive === item.key ? 'primary' : ''" @click="directionListActive = item.key">
                 {{ item.title }}
@@ -21,7 +21,7 @@
           </div>
         </div>
         <a-divider />
-        <a-row justify="space-around">
+        <a-row justify="center" gutter="10">
           <a-col v-for="(item, index) of pagesList" :key="index">
             <a-button :type="pagesListActive === item.key ? 'primary' : ''" @click="pagesListActive = item.key">
               {{ item.title }}
@@ -29,7 +29,7 @@
           </a-col>
         </a-row>
       </template>
-      <a-row justify="space-around" :gutter="[0, 8]" :class="`direction${directionListActive}`">
+      <a-row justify="space-around" :gutter="[0, 10]" :class="`direction${directionListActive}`">
         <a-col v-for="(item, index) of sIdxTimeDataList" :key="index">
           <a-card :title="item.sTitle">
             <template #extra>{{ item.sTagInfoList[0].name }}</template>
@@ -67,7 +67,7 @@ const pagesList = computed(() =>
     .map((item, i) => ({ title: i + 1, key: i + 1 }))
 )
 const directionList = reactive([
-  { title: '横板', key: '122216' },
+  { title: '横版', key: '122216' },
   { title: '竖版', key: '122217' }
 ])
 const sortByList = reactive([

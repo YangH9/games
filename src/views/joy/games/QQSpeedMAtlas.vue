@@ -3,7 +3,10 @@
     <Breadcrumb />
     <a-card class="card" :hoverable="true">
       <template #title>
-        <h3>飞车手游图鉴</h3>
+        <div class="ant-row ant-row-space-between">
+          <h3>飞车手游图鉴</h3>
+          <h6>数据内容来自<a href="//speedm.qq.com/main.shtml">QQ飞车手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
+        </div>
         <a-divider />
         <a-row justify="space-around">
           <a-col v-for="(item, index) of typeList" :key="index">
