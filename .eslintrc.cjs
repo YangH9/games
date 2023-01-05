@@ -267,7 +267,7 @@ module.exports = {
 
     // Vue eslint
     'vue/html-indent': ['error', 2],
-    'vue/max-attributes-per-line': ['error', { singleline: { max: 6 }, multiline: { max: 6 } }],
+    'vue/max-attributes-per-line': ['error', { singleline: { max: 8 }, multiline: { max: 8 } }],
     'vue/no-setup-props-destructure': 'off',
     'vue/no-v-for-template-key': 'off',
     'vue/require-default-prop': 'off',

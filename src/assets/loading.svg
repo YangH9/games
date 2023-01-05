@@ -2,6 +2,7 @@
   <circle cx="22" cy="22" r="20" fill="none" stroke="#359dda" stroke-width="4">
     <animate attributeName="stroke-dasharray" from="4,126" to="130,126" dur="1.5" repeatCount="indefinite" />
     <animate attributeName="stroke-dashoffset" from="0" to="-130" dur="1.5" repeatCount="indefinite" />
-    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 22 22" to="360 22 22" dur="2" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 22 22" to="360 22 22" dur="2"
+      repeatCount="indefinite" />
   </circle>
 </svg>

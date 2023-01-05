@@ -7,17 +7,7 @@
         <a-card v-for="(main, index) of resoutcesList" :key="index" :title="main.title" class="mb10" :hoverable="true">
           <a-button v-for="(item, index1) of main.list" :key="index1" size="large" :href="item.href">
             <template #icon>
-              <img
-                v-lazy
-                :data-src="
-                  item.favicon.indexOf('//') >= 0
-                    ? item.favicon
-                    : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
-                "
-                class="icon"
-                referrer="no-referrer"
-                @error="(e) => (e.target.style.display = 'none')"
-              />
+              <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
             </template>
             {{ item.title }}
           </a-button>
@@ -332,6 +322,12 @@ const resoutcesList = [
     ]
   }
 ]
+
+const filtterUrl = (item) => {
+  const url =
+    item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+  return url
+}
 </script>
 
 <style lang="less" scoped>

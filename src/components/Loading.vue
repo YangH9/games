@@ -12,8 +12,8 @@
 </template>
 
 <script setup>
-import { routerLoading } from "@/stores"
-import { computed } from "vue"
+import { routerLoading } from '@/stores'
+import { computed } from 'vue'
 
 const visible = computed(() => routerLoading().visible)
 </script>
@@ -39,7 +39,7 @@ const visible = computed(() => routerLoading().visible)
     align-items: center;
     justify-content: center;
 
-    &>div {
+    & > div {
       height: 100%;
       width: 1rem;
       background-color: #00acc3;
@@ -50,7 +50,7 @@ const visible = computed(() => routerLoading().visible)
       animation-timing-function: ease-in-out;
     }
 
-    &>div:last-child {
+    & > div:last-child {
       margin-right: 0;
     }
 
@@ -81,13 +81,12 @@ const visible = computed(() => routerLoading().visible)
 }
 
 @media (prefers-color-scheme: dark) {
-  .preloader .spinner>div {
+  .preloader .spinner > div {
     background-color: #007180;
   }
 }
 
 @keyframes stretchdelay {
-
   0%,
   40%,
   100% {

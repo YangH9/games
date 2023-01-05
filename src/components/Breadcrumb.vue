@@ -15,9 +15,9 @@
 </template>
 
 <script setup>
-import { computed } from "vue"
-import { useRoute } from "vue-router"
-import { HomeOutlined } from "@ant-design/icons-vue"
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { HomeOutlined } from '@ant-design/icons-vue'
 
 const $route = useRoute()
 
@@ -27,13 +27,12 @@ const menuList = computed(() => $route.matched)
 <style lang="less" scoped>
 @media (prefers-color-scheme: dark) {
   .ant-breadcrumb {
-
     a,
     :deep(.ant-breadcrumb-separator) {
       color: var(--color-text);
     }
 
-    &>span:last-child {
+    & > span:last-child {
       color: var(--color-heading);
     }
   }

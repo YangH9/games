@@ -53,8 +53,8 @@
           </div>
         </template>
       </template>
-      <template v-if="show">
-        <a-row v-if="carsDataList.length > 0 && typeListActive === 'car'" justify="space-around" :gutter="[0, 10]">
+      <a-row justify="space-around" :gutter="[0, 10]">
+        <template v-if="show && typeListActive === 'car'">
           <a-col
             v-for="(item, index) of carsDataList.filter(
               (item) => (item.ccmz_36 === carFactoryListActive || !carFactoryListActive) && (item.jb_43 === carGradeListActive || !carGradeListActive)
@@ -67,7 +67,15 @@
                 <img v-lazy :data-src="item.cclogo_2a" />
               </template>
               <template #extra>{{ item.jb_43 }}</template>
-              <img v-lazy class="image" src="@/assets/default.png" :data-src="item.slt_3c" :alt="item.cm_4e" :title="item.jj_3b" />
+              <img
+                v-lazy
+                class="image"
+                src="@/assets/default.png"
+                :data-src="item.slt_3c"
+                :alt="item.cm_4e"
+                :title="item.jj_3b"
+                @click="previewUrl = item.slt_3c"
+              />
             </a-card>
           </a-col>
           <a-col v-for="item of 3" :key="item" class="seat">
@@ -75,12 +83,20 @@
               <div class="image"></div>
             </a-card>
           </a-col>
-        </a-row>
-        <a-row v-if="mapsDataList.length > 0 && typeListActive === 'map'" justify="space-around" :gutter="[4, 8]">
+        </template>
+        <template v-if="show && typeListActive === 'map'">
           <a-col v-for="(item, index) of mapsDataList.filter((item) => item.jytg_a3 === mapGradeListActive || !mapGradeListActive)" :key="index">
             <a-card :title="item.dtm_88" :hoverable="true">
               <template #extra>{{ item.jytg_a3 }}星</template>
-              <img v-lazy class="image" src="@/assets/default.png" :data-src="item.slt_3c" :alt="item.dtm_88" :title="item.jj_3b" />
+              <img
+                v-lazy
+                class="image"
+                src="@/assets/default.png"
+                :data-src="item.slt_3c"
+                :alt="item.dtm_88"
+                :title="item.jj_3b"
+                @click="previewUrl = item.slt_3c"
+              />
             </a-card>
           </a-col>
           <a-col v-for="item of 3" :key="item" class="seat">
@@ -88,11 +104,19 @@
               <div class="image"></div>
             </a-card>
           </a-col>
-        </a-row>
-        <a-row v-if="petsDataList.length > 0 && typeListActive === 'pet'" justify="space-around" :gutter="[4, 8]">
+        </template>
+        <template v-if="show && typeListActive === 'pet'">
           <a-col v-for="(item, index) of petsDataList" :key="index">
             <a-card :title="item.mc_77" :hoverable="true">
-              <img v-lazy class="image" src="@/assets/default.png" :data-src="item.slt_3c" :alt="item.mc_77" :title="item.jj_3b" />
+              <img
+                v-lazy
+                class="image"
+                src="@/assets/default.png"
+                :data-src="item.slt_3c"
+                :alt="item.mc_77"
+                :title="item.jj_3b"
+                @click="previewUrl = item.slt_3c"
+              />
             </a-card>
           </a-col>
           <a-col v-for="item of 3" :key="item" class="seat">
@@ -100,15 +124,26 @@
               <div class="image"></div>
             </a-card>
           </a-col>
-        </a-row>
-      </template>
+        </template>
+      </a-row>
     </a-card>
+    <a-image
+      :preview="{
+        visible: !!previewUrl,
+        src: previewUrl,
+        onVisibleChange: (e) => {
+          !e && (previewUrl = '')
+        }
+      }"
+    />
   </div>
 </template>
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { reactive, ref, watch, nextTick } from 'vue'
+import { reactive, ref, watch, nextTick, onMounted } from 'vue'
+
+const previewUrl = ref('')
 
 const show = ref(true)
 
@@ -208,6 +243,11 @@ getScript(carUrl)
 getScript(mapUrl)
 // 获取宠物数据
 getScript(petUrl)
+
+onMounted(() => {
+  const { top } = document.querySelector('.ant-card-body').getBoundingClientRect()
+  document.querySelector('.ant-card-body').setAttribute('style', `height:calc(100vh - ${top + 12}px`)
+})
 </script>
 
 <style lang="less" scoped>
@@ -220,9 +260,12 @@ getScript(petUrl)
   margin-bottom: 8px;
 }
 
+:deep(.ant-image) {
+  display: none;
+}
+
 .card {
   & > :deep(.ant-card-body) {
-    height: calc(100vh - 350px);
     overflow-x: hidden;
     overflow-y: auto;
     padding: 6px 0px 0px 6px;

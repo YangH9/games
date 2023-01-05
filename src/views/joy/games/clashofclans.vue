@@ -14,16 +14,7 @@
     <a-card title="部落冲突下载" class="mb10" :hoverable="true">
       <a-button v-for="(item, index1) of downloadList" :key="index1" size="large" :href="item.href">
         <template #icon>
-          <img
-            :src="
-              item.favicon.indexOf('//') >= 0
-                ? item.favicon
-                : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
-            "
-            class="icon"
-            referrer="no-referrer"
-            @load="(e) => (e.target.style.display = 'inline-block')"
-          />
+          <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
         {{ item.title }}
       </a-button>
@@ -31,16 +22,7 @@
     <a-card title="部落冲突各平台账号绑定工具" class="mb10" :hoverable="true">
       <a-button v-for="(item, index1) of toolList" :key="index1" size="large" :href="item.href">
         <template #icon>
-          <img
-            :src="
-              item.favicon.indexOf('//') >= 0
-                ? item.favicon
-                : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
-            "
-            class="icon"
-            referrer="no-referrer"
-            @load="(e) => (e.target.style.display = 'inline-block')"
-          />
+          <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
         {{ item.title }}
       </a-button>
@@ -49,16 +31,7 @@
     <a-card title="阵容攻略" class="mb10" :hoverable="true">
       <a-button v-for="(item, index1) of list" :key="index1" size="large" :href="item.href">
         <template #icon>
-          <img
-            :src="
-              item.favicon.indexOf('//') >= 0
-                ? item.favicon
-                : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
-            "
-            class="icon"
-            referrer="no-referrer"
-            @load="(e) => (e.target.style.display = 'inline-block')"
-          />
+          <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
         {{ item.title }}
       </a-button>
@@ -150,6 +123,12 @@ const list = [
   { title: '晴天COC（知乎）', href: 'https://www.zhihu.com/people/xin-dong-58-2', favicon: '' },
   { title: '晴天COC（BiliBili）', href: 'https://space.bilibili.com/22602921/', favicon: '' }
 ]
+
+const filtterUrl = (item) => {
+  const url =
+    item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+  return url
+}
 </script>
 
 <style lang="less" scoped>
@@ -188,7 +167,6 @@ const list = [
   width: 16px;
   height: 16px;
   margin-right: 4px;
-  display: none;
   vertical-align: baseline;
 }
 </style>
