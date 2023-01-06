@@ -222,7 +222,6 @@ module.exports = {
     'sort-keys': 'off', // 要求对象属性按序排列
     'sort-vars': 'off', // 要求同一个声明块中的变量按顺序排列
     'space-before-blocks': 'error', // 强制在块之前使用一致的空格
-    'space-before-function-paren': 'error', // 强制在 function的左括号之前使用一致的空格
     'space-in-parens': 'error', // 强制在圆括号内使用一致的空格
     'space-infix-ops': 'error', // 要求操作符周围有空格
     'space-unary-ops': 'error', // 强制在一元操作符前后使用一致的空格
@@ -230,7 +229,6 @@ module.exports = {
     'switch-colon-spacing': ['error', { before: true, after: false }], // 强制在 switch 的冒号左右有空格
     'template-tag-spacing': 'error', // 要求或禁止在模板标记和它们的字面量之间有空格
     'unicode-bom': 'error', // 要求或禁止 Unicode 字节顺序标记 (BOM)
-    'wrap-regex': 'error', // 要求正则表达式被括号括起来
 
     // ECMAScript 6 、这些规则只与 ES6 有关, 即通常所说的 ES2015：
     'arrow-body-style': ['error', 'as-needed'], // 要求箭头函数体使用大括号

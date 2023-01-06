@@ -58,6 +58,14 @@ const routes = [
               title: 'CSS蓝胖子'
             },
             component: () => import('@/views/study/demo/lanpangzi.vue')
+          },
+          {
+            path: '/study/demo/regularPolygon',
+            name: 'regularPolygon',
+            meta: {
+              title: 'CSS正多边形'
+            },
+            component: () => import('@/views/study/demo/regularPolygon.vue')
           }
         ]
       },

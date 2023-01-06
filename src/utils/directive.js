@@ -1,19 +1,19 @@
 import lazy from './modules/lazy'
-import copy from './modules/copy'
-import waterMarker from './modules/waterMarker'
-import draggable from './modules/draggable'
-import debounce from './modules/debounce'
-import throttle from './modules/throttle'
-import longpress from './modules/longpress'
+// import copy from './modules/copy'
+// import waterMarker from './modules/waterMarker'
+// import draggable from './modules/draggable'
+// import debounce from './modules/debounce'
+// import throttle from './modules/throttle'
+// import longpress from './modules/longpress'
 
 const directivesList = {
-  lazy,
-  copy,
-  waterMarker,
-  draggable,
-  debounce,
-  throttle,
-  longpress
+  lazy
+  // ,  copy,
+  // waterMarker,
+  // draggable,
+  // debounce,
+  // throttle,
+  // longpress
 }
 
 export default {

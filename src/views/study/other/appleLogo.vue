@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-card title="Apple新年logo" class="mb10" :hoverable="true">
       <div class="box">
         <img src="@/assets/apple/2023.svg" />

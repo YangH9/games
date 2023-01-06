@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-card class="card" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">

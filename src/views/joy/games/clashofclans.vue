@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-card title="部落冲突" class="mb10" :hoverable="true">
       <a-descriptions :column="1">
         <a-descriptions-item> 自2022/12/9起，所有国内渠道商都转移到了腾讯，你必须绑定QQ或微信才可以继续登录。 </a-descriptions-item>

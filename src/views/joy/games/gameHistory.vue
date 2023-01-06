@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-layout-content>
       <div class="ant-card-body">
         <a-timeline mode="alternate">

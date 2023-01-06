@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-card title="加载动画" class="mb10" :hoverable="true">
       <div class="box">
         <img src="@/assets/loading.svg" width="100" />

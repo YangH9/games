@@ -32,7 +32,8 @@ const studyList = [
     list: [
       { title: 'CSS皮卡丘', href: '/study/demo/pikaqiu' },
       { title: 'CSS灰太狼', href: '/study/demo/huitailang' },
-      { title: 'CSS蓝胖子', href: '/study/demo/lanpangzi' }
+      { title: 'CSS蓝胖子', href: '/study/demo/lanpangzi' },
+      { title: 'CSS正多边形', href: '/study/demo/regularPolygon' }
     ]
   },
   {

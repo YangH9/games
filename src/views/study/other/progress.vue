@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-card title="进度条" class="mb10" :hoverable="true">
       <div class="box">
         <progress></progress>

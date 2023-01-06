@@ -3,7 +3,7 @@
  * 长按指令，长按时触发事件
  */
 
-const directive = {
+const longpress = {
   mounted(el, binding) {
     if (typeof binding.value !== 'function') {
       throw 'callback must be a function'
@@ -45,4 +45,4 @@ const directive = {
   }
 }
 
-export default directive
+export default longpress

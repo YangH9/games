@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-card class="card" :hoverable="true" title="飞车端游壁纸">
       <a-row justify="space-around" :gutter="[0, 10]">
         <a-col v-for="(item, index) of dataList" :key="index">
