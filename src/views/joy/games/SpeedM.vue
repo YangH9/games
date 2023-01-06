@@ -72,10 +72,10 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { reactive, ref, watch, nextTick, computed, onMounted } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
 const baseUrl = `https://apps.game.qq.com/cmc/cross?serviceId=70&source=web_pc&r0=script`
-const dataKey = 'qqSpeedM'
+const dataKey = 'speedM'
 
 const previewUrl = ref('')
 const limit = ref(20)
@@ -92,14 +92,14 @@ const pagesList = computed(() =>
     .fill(1)
     .map((item, i) => ({ title: i + 1, key: i + 1 }))
 )
-const directionList = reactive([
+const directionList = [
   { title: '横版', key: '122216' },
   { title: '竖版', key: '122217' }
-])
-const sortByList = reactive([
+]
+const sortByList = [
   { title: '时间排序', key: 'sIdxTime' },
   { title: '热度排序', key: 'iTotalPlay' }
-])
+]
 
 const sIdxTimeDataList = ref([])
 

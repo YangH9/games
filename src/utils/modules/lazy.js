@@ -9,10 +9,10 @@ const observer = new IntersectionObserver((entries) => {
 })
 
 const lazy = {
-  mounted (el) {
+  mounted(el) {
     observer.observe(el)
   },
-  unmounted () {
+  unmounted() {
     observer.disconnect()
   }
 }

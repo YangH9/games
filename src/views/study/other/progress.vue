@@ -14,7 +14,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import Progress from './common/progress.vue'
 
 const progressValue = ref(0)

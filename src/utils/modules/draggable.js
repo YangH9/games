@@ -1,9 +1,9 @@
 // draggable 拖拽
 
 const draggable = {
-  mounted (el) {
-    el.style.cursor = "move"
-    el.style.position = "absolute"
+  mounted(el) {
+    el.style.cursor = 'move'
+    el.style.position = 'absolute'
     el.onmousedown = (e) => {
       const disX = e.pageX - el.offsetLeft
       const disY = e.pageY - el.offsetTop

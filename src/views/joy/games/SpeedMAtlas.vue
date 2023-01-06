@@ -141,7 +141,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { reactive, ref, watch, nextTick, onMounted } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 
 const previewUrl = ref('')
 
@@ -152,12 +152,12 @@ const carFactoryListActive = ref('')
 const carGradeListActive = ref('')
 const mapGradeListActive = ref('')
 
-const typeList = reactive([
+const typeList = [
   { title: '赛车', key: 'car' },
   { title: '地图', key: 'map' },
   { title: '宠物', key: 'pet' }
-])
-const carFactoryList = reactive([
+]
+const carFactoryList = [
   { title: '全部车厂', key: '' },
   { title: '雷诺重工', key: '雷诺重工' },
   { title: '阿尔法科技', key: '阿尔法科技' },
@@ -165,8 +165,8 @@ const carFactoryList = reactive([
   { title: '特洛伊工业', key: '特洛伊工业' },
   { title: '合作车厂', key: '合作车厂' },
   { title: '暂无车厂', key: '暂无车厂' }
-])
-const carGradeList = reactive([
+]
+const carGradeList = [
   { title: '全部等级', key: '' },
   { title: 'T车', key: 'T' },
   { title: 'S车', key: 'S' },
@@ -179,8 +179,8 @@ const carGradeList = reactive([
   { title: 'L2滑板', key: 'L2' },
   { title: 'L1滑板', key: 'L1' },
   { title: 'L0滑板', key: 'L0' }
-])
-const mapGradeList = reactive([
+]
+const mapGradeList = [
   { title: '全部', key: '' },
   { title: '七星', key: '7' },
   { title: '六星', key: '6' },
@@ -189,7 +189,7 @@ const mapGradeList = reactive([
   { title: '三星', key: '3' },
   { title: '二星', key: '2' },
   { title: '一星', key: '1' }
-])
+]
 
 watch([typeListActive, carFactoryListActive, carGradeListActive, mapGradeListActive], () => {
   show.value = false

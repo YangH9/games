@@ -34,8 +34,10 @@ const joyList = [
       { title: '部落冲突', href: '/joy/games/clashofclans' },
       { title: '圈小猫', href: '/joy/games/catchTheCat' },
       { title: '扫雷', href: '/joy/games/minesweeper' },
-      { title: 'QQ飞车手游壁纸', href: '/joy/games/qqspeedm' },
-      { title: 'QQ飞车手游图鉴', href: '/joy/games/qqspeedm/atlas' }
+      { title: '飞车手游壁纸', href: '/joy/games/speedm' },
+      { title: '飞车手游图鉴', href: '/joy/games/speedm/atlas' },
+      { title: '穿越火线手游壁纸', href: '/joy/games/cfm' },
+      { title: '穿越火线手游图鉴', href: '/joy/games/cfm/atlas' }
     ]
   },
   {

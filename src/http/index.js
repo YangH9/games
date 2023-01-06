@@ -1,7 +1,7 @@
-import axios from "axios"
-import jsonp from "./jsonp"
+import axios from 'axios'
+import jsonp from './jsonp'
 
-axios.defaults.baseURL = "" // 设置axios默认地址
+axios.defaults.baseURL = '' // 设置axios默认地址
 
 // 添加jsonp方法
 axios.jsonp = jsonp
@@ -9,7 +9,7 @@ axios.jsonp = jsonp
 // 请求拦截器
 axios.interceptors.request.use(
   (config) => {
-    console.log("请求拦截器")
+    console.log('请求拦截器')
     return config
   },
   (error) => Promise.reject(error)
@@ -18,7 +18,7 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
   (response) => {
-    console.log("响应拦截器")
+    console.log('响应拦截器')
     return response
   },
   (error) => Promise.reject(error)

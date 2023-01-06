@@ -266,6 +266,7 @@ module.exports = {
     'yield-star-spacing': 'error', // 强制在 yield* 表达式中 * 周围使用空格
 
     // Vue eslint
+    'vue/attributes-order': 'error',
     'vue/html-indent': ['error', 2],
     'vue/max-attributes-per-line': ['error', { singleline: { max: 8 }, multiline: { max: 8 } }],
     'vue/no-setup-props-destructure': 'off',

@@ -5,12 +5,12 @@
  */
 
 const handleClick = (that) => {
-  const input = document.createElement("input")
-  input.style.opacity = "0"
+  const input = document.createElement('input')
+  input.style.opacity = '0'
   input.value = that.copyData.toLocaleString()
   document.body.appendChild(input)
   input.select()
-  document.execCommand("Copy")
+  document.execCommand('Copy')
   document.body.removeChild(input)
   // ElMessage({
   //   type: "success",
@@ -19,15 +19,15 @@ const handleClick = (that) => {
 }
 
 const copy = {
-  mounted (el, binding) {
+  mounted(el, binding) {
     el.copyData = binding.value
-    el.addEventListener("click", handleClick)
+    el.addEventListener('click', handleClick)
   },
-  updated (el, binding) {
+  updated(el, binding) {
     el.copyData = binding.value
-  // },
-  // beforeUnmount (el) {
-  //   el.removeEventListener("click", el.__handleClick__)
+    // },
+    // beforeUnmount (el) {
+    //   el.removeEventListener("click", el.__handleClick__)
   }
 }
 

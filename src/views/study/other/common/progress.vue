@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
 const props = defineProps({
   type: { type: String, default: 'circle' },

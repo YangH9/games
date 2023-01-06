@@ -14,14 +14,14 @@ export class LoadingCircle extends HTMLElement {
 
   angularVelocity = 0.2
 
-  initCanvas () {
+  initCanvas() {
     this.ctx.scale(devicePixelRatio, devicePixelRatio)
     this.roundCap = true
     this.lineWidth = 6
-    this.strokeStyle = document.body.style.getPropertyValue("--controlColor") || "#000"
+    this.strokeStyle = document.body.style.getPropertyValue('--controlColor') || '#000'
   }
 
-  get size () {
+  get size() {
     if (!this.canvas) {
       return 200
     }
@@ -29,7 +29,7 @@ export class LoadingCircle extends HTMLElement {
     return this.canvas.getBoundingClientRect().width
   }
 
-  set size (v) {
+  set size(v) {
     const c = this.canvas
     c.style.width = `${v}px`
     c.style.height = `${v}px`
@@ -38,27 +38,27 @@ export class LoadingCircle extends HTMLElement {
     this.initCanvas()
   }
 
-  get roundCap () {
-    return this.ctx.lineCap === "round"
+  get roundCap() {
+    return this.ctx.lineCap === 'round'
   }
 
-  set roundCap (v) {
-    this.ctx.lineCap = v ? "round" : "butt"
+  set roundCap(v) {
+    this.ctx.lineCap = v ? 'round' : 'butt'
   }
 
-  get lineWidth () {
+  get lineWidth() {
     return this.ctx.lineWidth
   }
 
-  set lineWidth (v) {
+  set lineWidth(v) {
     this.ctx.lineWidth = v
   }
 
-  get strokeStyle () {
+  get strokeStyle() {
     return this.ctx.strokeStyle
   }
 
-  set strokeStyle (v) {
+  set strokeStyle(v) {
     this.ctx.strokeStyle = v
   }
 
@@ -70,23 +70,23 @@ export class LoadingCircle extends HTMLElement {
 
   end = this.min
 
-  constructor () {
+  constructor() {
     super()
 
-    const shadow = this.attachShadow({ mode: "open" })
+    const shadow = this.attachShadow({ mode: 'open' })
 
-    shadow.innerHTML = "<canvas id=\"canvas\"></canvas>"
-    this.canvas = shadow.getElementById("canvas")
-    this.ctx = this.canvas.getContext("2d")
+    shadow.innerHTML = '<canvas id="canvas"></canvas>'
+    this.canvas = shadow.getElementById('canvas')
+    this.ctx = this.canvas.getContext('2d')
     this.size = 200
     this.roundCap = true
     this.lineWidth = 6
-    this.strokeStyle = document.body.style.getPropertyValue("--controlColor") || "#000"
+    this.strokeStyle = document.body.style.getPropertyValue('--controlColor') || '#000'
   }
 
   _a = Math.PI / 180
 
-  render () {
+  render() {
     this.radStart = this.start * this._a
     this.radEnd = this.end * this._a
   }
@@ -95,14 +95,14 @@ export class LoadingCircle extends HTMLElement {
 
   circle = (() => {
     let counter = 0
-    return dt => {
+    return (dt) => {
       counter += dt
       this.start = this.add(this.start, this.angularVelocity * dt)
       this.end = this.add(this.end, this.angularVelocity * dt)
       this.render()
       if (counter > this.transformationDelay) {
         this.state = this.state === 3 ? 0 : this.state + 1
-        return counter = 0
+        return (counter = 0)
       }
     }
   })()
@@ -119,7 +119,7 @@ export class LoadingCircle extends HTMLElement {
 
       return counter * a
     }
-    return dt => {
+    return (dt) => {
       counter += dt
       this.start = this.add(this.start, this.angularVelocity * dt)
       this.end = this.add(this.end, (2 * v() + this.angularVelocity) * dt)
@@ -128,7 +128,7 @@ export class LoadingCircle extends HTMLElement {
         this.end = this.start + this.max
         this.state++
         this.render()
-        return counter = 0
+        return (counter = 0)
       }
 
       this.render()
@@ -147,7 +147,7 @@ export class LoadingCircle extends HTMLElement {
 
       return counter * a
     }
-    return dt => {
+    return (dt) => {
       counter += dt
       this.start = this.add(this.start, (2 * v() + this.angularVelocity) * dt)
       this.end = this.add(this.end, this.angularVelocity * dt)
@@ -156,7 +156,7 @@ export class LoadingCircle extends HTMLElement {
         this.start = this.end - this.min
         this.state++
         this.render()
-        return counter = 0
+        return (counter = 0)
       }
 
       this.render()
@@ -165,7 +165,7 @@ export class LoadingCircle extends HTMLElement {
 
   state = 0
 
-  f = dt => {
+  f = (dt) => {
     if (this.state == 0) {
       this.stretch(dt)
     }
@@ -189,7 +189,7 @@ export class LoadingCircle extends HTMLElement {
 
   timeStamp
 
-  drawOneFrame = timestamp => {
+  drawOneFrame = (timestamp) => {
     if (!this.timeStamp) {
       this.timeStamp = timestamp
       requestAnimationFrame(this.drawOneFrame)
@@ -210,44 +210,30 @@ export class LoadingCircle extends HTMLElement {
     requestAnimationFrame(this.drawOneFrame)
   }
 
-  watchedAttrs = [
-    "size",
-    "min",
-    "max",
-    "transformDuration",
-    "transformationDelay",
-    "angularVelocity",
-    "roundCap",
-    "lineWidth",
-    "strokeStyle"
-  ]
+  watchedAttrs = ['size', 'min', 'max', 'transformDuration', 'transformationDelay', 'angularVelocity', 'roundCap', 'lineWidth', 'strokeStyle']
 
-  connectedCallback () {
-    this.watchedAttrs.map(v => this.initAttr(v))
+  connectedCallback() {
+    this.watchedAttrs.map((v) => this.initAttr(v))
     requestAnimationFrame(this.drawOneFrame)
   }
 
-  initAttr (name) {
+  initAttr(name) {
     if (!this.hasAttribute(name)) {
       return null
     }
 
     const val = this.getAttribute(name)
 
-    this[ name ] = isNaN(+val)
-      ? val
-      : +val
+    this[name] = isNaN(+val) ? val : +val
   }
 
-  attributeChangedCallback (n, _, val) {
-    if (n === "size") {
+  attributeChangedCallback(n, _, val) {
+    if (n === 'size') {
       return
     }
 
     if (this.watchedAttrs.includes(n)) {
-      this[ n ] = isNaN(+val)
-        ? val
-        : +val
+      this[n] = isNaN(+val) ? val : +val
     }
   }
 }

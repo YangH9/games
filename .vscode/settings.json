@@ -6,7 +6,7 @@
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "typescript.tsdk": "node_modules/typescript/lib",
   "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -29,7 +29,6 @@
   "prettier.bracketSameLine": true,
   "prettier.ignorePath": ".eslintignore",
   "prettier.insertPragma": false,
-  "prettier.jsxSingleQuote": false,
   "prettier.printWidth": 80,
   "prettier.htmlWhitespaceSensitivity": "css",
   "prettier.endOfLine": "auto",
@@ -40,7 +39,6 @@
   "prettier.quoteProps": "as-needed",
   "prettier.semi": true,
   "prettier.singleAttributePerLine": false,
-  "prettier.singleQuote": false,
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "es5",
   "prettier.useEditorConfig": false,

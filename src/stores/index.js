@@ -1,12 +1,12 @@
-import { defineStore } from "pinia"
+import { defineStore } from 'pinia'
 
-export const routerLoading = defineStore("routerLoading", {
+export const routerLoading = defineStore('routerLoading', {
   state: () => ({ visible: false }),
   actions: {
-    show () {
+    show() {
       this.visible = true
     },
-    hide () {
+    hide() {
       this.visible = false
     }
   }

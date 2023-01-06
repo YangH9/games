@@ -4,39 +4,23 @@
     <a-layout-content>
       <main class="grid">
         <header class="header">
-          <div class="heading">
-            摸头生成器<input
-              id="color-theme"
-              type="checkbox"
-              title="toggle theme" />
-          </div>
+          <div class="heading">摸头生成器<input id="color-theme" type="checkbox" title="toggle theme" /></div>
           <div>如果你的浏览器崩溃了，这不是我的错</div>
         </header>
 
         <section class="preview content">
           <div class="content-heading">预览</div>
           <div class="preview-canvas">
-            <canvas
-              id="canvas"
-              height="112"
-              width="112"
-              class="canvas"
-              tabindex="1"></canvas>
+            <canvas id="canvas" height="112" width="112" class="canvas" tabindex="1"></canvas>
             <div class="preview-playback">
-              <button
-                id="prev"
-                class="btn btn-playback-prev control-grouped-left">
+              <button id="prev" class="btn btn-playback-prev control-grouped-left">
                 <i class="jam jam-set-backward"></i>
               </button>
-              <button
-                id="play"
-                class="btn btn-playback-playpause control-grouped-center">
+              <button id="play" class="btn btn-playback-playpause control-grouped-center">
                 <i class="jam jam-play btn-playback-play"></i>
                 <i class="jam jam-pause btn-playback-pause"></i>
               </button>
-              <button
-                id="next"
-                class="btn btn-playback-next control-grouped-right">
+              <button id="next" class="btn btn-playback-next control-grouped-right">
                 <i class="jam jam-set-forward"></i>
               </button>
             </div>
@@ -45,97 +29,39 @@
           <div class="preview-controls">
             <div class="row">
               <div class="control-group">
-                <label
-                  for="toggleAdjust"
-                  class="control-group-l">调整模式</label>
-                <label
-                  for="toggleAdjust"
-                  class="toggle-switch">
-                  <input
-                    id="toggleAdjust"
-                    type="checkbox"
-                    class="toggle-switch-input" />
+                <label for="toggleAdjust" class="control-group-l">调整模式</label>
+                <label for="toggleAdjust" class="toggle-switch">
+                  <input id="toggleAdjust" type="checkbox" class="toggle-switch-input" />
                   <span class="toggle-switch-control"></span>
                 </label>
               </div>
               <div class="hint">启用在预览中使用鼠标/触摸/键盘移动图像。也适用于移动设备 :-)</div>
             </div>
             <div class="row control-group">
-              <label
-                for="toggleFlip"
-                class="control-group-l">反转</label>
-              <label
-                for="toggleFlip"
-                class="toggle-switch sm">
-                <input
-                  id="toggleFlip"
-                  type="checkbox"
-                  class="toggle-switch-input" />
+              <label for="toggleFlip" class="control-group-l">反转</label>
+              <label for="toggleFlip" class="toggle-switch sm">
+                <input id="toggleFlip" type="checkbox" class="toggle-switch-input" />
                 <span class="toggle-switch-control"></span>
               </label>
             </div>
             <div class="row control-group">
-              <label
-                for="scale"
-                class="control-label control-group-s">大小</label>
-              <input
-                id="scale"
-                class="control-range control-group-l"
-                type="range"
-                step="1"
-                min="15"
-                max="200"
-                value="85" />
+              <label for="scale" class="control-label control-group-s">大小</label>
+              <input id="scale" class="control-range control-group-l" type="range" step="1" min="15" max="200" value="85" />
             </div>
             <div class="row control-group">
-              <label
-                for="squish"
-                class="control-label control-group-s">挤压</label>
-              <input
-                id="squish"
-                class="control-range control-group-l"
-                type="range"
-                step="1"
-                min="100"
-                max="300"
-                value="125" />
+              <label for="squish" class="control-label control-group-s">挤压</label>
+              <input id="squish" class="control-range control-group-l" type="range" step="1" min="100" max="300" value="125" />
             </div>
             <div class="row control-group">
-              <label
-                for="fps"
-                class="control-label control-group-s">速度</label>
-              <input
-                id="fps"
-                class="control-range"
-                type="range"
-                step="2"
-                min="2"
-                max="60"
-                value="16" />
-              <input
-                id="fpsVal"
-                type="number"
-                class="control control-sm"
-                step="1"
-                min="2"
-                max="60"
-                value="16" />
+              <label for="fps" class="control-label control-group-s">速度</label>
+              <input id="fps" class="control-range" type="range" step="2" min="2" max="60" value="16" />
+              <input id="fpsVal" type="number" class="control control-sm" step="1" min="2" max="60" value="16" />
             </div>
             <div class="row export-row">
               <div class="control-group">
-                <button
-                  id="reset"
-                  class="btn btn-reset control-group-s">
-                  重置
-                </button>
-                <div
-                  class="spacer"
-                  style="width: 0.382em"></div>
-                <button
-                  id="export"
-                  class="btn btn-export control-group-l">
-                  导出
-                </button>
+                <button id="reset" class="btn btn-reset control-group-s">重置</button>
+                <div class="spacer" style="width: 0.382em"></div>
+                <button id="export" class="btn btn-export control-group-l">导出</button>
               </div>
             </div>
           </div>
@@ -144,29 +70,13 @@
         <section class="upload content">
           <div class="content-heading">上传</div>
           <div class="upload-preview">
-            <label
-              id="dropArea"
-              class="drop-area preview-image-container"
-              for="uploadFile">
+            <label id="dropArea" class="drop-area preview-image-container" for="uploadFile">
               <div class="drop-area-input">
-                <input
-                  id="uploadFile"
-                  class="drop-area-file-input"
-                  type="file"
-                  accept="image/*" />
-                <img
-                  id="uploadPreview"
-                  class="drop-area-preview preview-image"
-                  src="" />
-                <div
-                  class="drop-area-upload"
-                  for="uploadFile">
-                  <label
-                    for="uploadFile"
-                    class="drop-area-upload-btn btn">选择文件</label>
-                  <label
-                    id="uploadFileName"
-                    class="drop-area-upload-filename">或者拖拽到这里</label>
+                <input id="uploadFile" class="drop-area-file-input" type="file" accept="image/*" />
+                <img id="uploadPreview" class="drop-area-preview preview-image" src="" />
+                <div class="drop-area-upload" for="uploadFile">
+                  <label for="uploadFile" class="drop-area-upload-btn btn">选择文件</label>
+                  <label id="uploadFileName" class="drop-area-upload-filename">或者拖拽到这里</label>
                 </div>
               </div>
             </label>
@@ -176,18 +86,13 @@
                 class="control control-group-l control-has-icon control-grouped-left"
                 type="url"
                 required
-                placeholder="输入要上传的网站" />
-              <button
-                id="uploadUrlBtn"
-                type="submit"
-                class="btn control-icon control-grouped-right">
-                <i
-                  class="jam jam-upload"></i>
+                placeholder="输入要上传的网站"
+              />
+              <button id="uploadUrlBtn" type="submit" class="btn control-icon control-grouped-right">
+                <i class="jam jam-upload"></i>
               </button>
             </div>
-            <p
-              id="uploadError"
-              class="error-message"></p>
+            <p id="uploadError" class="error-message"></p>
             <p class="help">注意：url上传可能并不总是有效，因为有些网站不喜欢直接链接图片</p>
           </div>
         </section>
@@ -195,16 +100,8 @@
         <section class="output content">
           <div class="content-heading">输出</div>
           <figure class="preview-image-container">
-            <img
-              id="result"
-              width="112"
-              height="112"
-              class="preview-image" />
-            <div
-              id="info"
-              class="help output-info">
-              ...
-            </div>
+            <img id="result" width="112" height="112" class="preview-image" />
+            <div id="info" class="help output-info">...</div>
           </figure>
           <p class="help">ps: 如果要共享，请保存导出的gif，使用链接将不起作用，因为它仅存在于您的浏览器中</p>
           <p class="help">pps: 如果导出中有奇怪的绿点，请尝试其他浏览器</p>
@@ -213,17 +110,11 @@
         <footer class="footer help">
           <div>
             模板:
-            <a
-              href="./img/template.gif"
-              target="_blank">gif</a>,
-            <a
-              href="./img/sprite.png"
-              target="_blank">精灵图</a>
+            <a href="./img/template.gif" target="_blank">gif</a>,
+            <a href="./img/sprite.png" target="_blank">精灵图</a>
             <span class="separator">|</span>
             gif使用
-            <a
-              href="https://github.com/jnordberg/gif.js"
-              target="_blank">gif.js</a>
+            <a href="https://github.com/jnordberg/gif.js" target="_blank">gif.js</a>
             生成
           </div>
         </footer>
@@ -233,7 +124,7 @@
 </template>
 
 <script setup>
-import Breadcrumb from "@/components/Breadcrumb.vue"
+import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 <style scoped>
 @import 'https://unpkg.com/sanitize.css';
@@ -524,11 +415,11 @@ button:disabled,
   position: absolute;
 }
 
-.toggle-switch-input:checked+.toggle-switch-control {
+.toggle-switch-input:checked + .toggle-switch-control {
   background: #fedc7d;
 }
 
-.toggle-switch-input:checked+.toggle-switch-control:after {
+.toggle-switch-input:checked + .toggle-switch-control:after {
   left: var(--h);
 }
 
@@ -747,7 +638,7 @@ button:disabled,
   color: rgba(94, 50, 38, 0.9);
 }
 
-img[src]+.output-info {
+img[src] + .output-info {
   margin-top: 1em;
 }
 
