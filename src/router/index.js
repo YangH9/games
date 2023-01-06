@@ -138,10 +138,18 @@ const routes = [
             component: () => import('@/views/joy/games/CatchTheCat.vue')
           },
           {
+            path: '/joy/games/speed',
+            name: 'speed',
+            meta: {
+              title: '飞车端游壁纸'
+            },
+            component: () => import('@/views/joy/games/Speed.vue')
+          },
+          {
             path: '/joy/games/speedm',
             name: 'speedm',
             meta: {
-              title: 'QQ飞车手游壁纸'
+              title: '飞车手游壁纸'
             },
             component: () => import('@/views/joy/games/SpeedM.vue')
           },
@@ -149,7 +157,7 @@ const routes = [
             path: '/joy/games/speedm/atlas',
             name: 'speedmatlas',
             meta: {
-              title: 'QQ飞车手游图鉴'
+              title: '飞车手游图鉴'
             },
             component: () => import('@/views/joy/games/SpeedMAtlas.vue')
           },

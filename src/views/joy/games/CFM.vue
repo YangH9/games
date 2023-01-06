@@ -50,7 +50,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref, onMounted } from 'vue'
 import { dataList } from '@/utils/tencentGame/cfm.json'
 
-// const url = `https://cfm.qq.com/zlkdatasys/data_zlk_qxsy.json`
+// https://cfm.qq.com/cp/a20200225s2/index.html
 
 const previewUrl = ref('')
 

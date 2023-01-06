@@ -37,7 +37,7 @@
         </div>
       </template>
       <a-row justify="space-around" :gutter="[0, 10]" :class="`direction${directionListActive}`">
-        <a-col v-for="(item, index) of sIdxTimeDataList" :key="index">
+        <a-col v-for="(item, index) of dataList" :key="index">
           <a-card :title="item.sTitle">
             <template #extra>{{ item.sTagInfoList[0].name }}</template>
             <img
@@ -101,7 +101,7 @@ const sortByList = [
   { title: '热度排序', key: 'iTotalPlay' }
 ]
 
-const sIdxTimeDataList = ref([])
+const dataList = ref([])
 
 // 生成script标签
 const getScript = (src, func) => {
@@ -116,9 +116,9 @@ const getScript = (src, func) => {
 const getData = () => {
   const start = (pagesListActive.value - 1) * limit.value
   const getUrl = `${baseUrl}&tagids=${directionListActive.value}&start=${start}&limit=${limit.value}&sortby=${sortByListActive.value}&r1=${dataKey}`
-  sIdxTimeDataList.value = []
+  dataList.value = []
   getScript(getUrl, () => {
-    sIdxTimeDataList.value = window[dataKey].data.items
+    dataList.value = window[dataKey].data.items
     total.value = window[dataKey].data.total
     if (pagesListActive.value > Math.ceil(total.value / limit.value)) {
       pagesListActive.value = Math.ceil(total.value / limit.value)

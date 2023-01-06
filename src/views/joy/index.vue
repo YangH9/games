@@ -37,7 +37,8 @@ const joyList = [
       { title: '飞车手游壁纸', href: '/joy/games/speedm' },
       { title: '飞车手游图鉴', href: '/joy/games/speedm/atlas' },
       { title: '穿越火线手游壁纸', href: '/joy/games/cfm' },
-      { title: '穿越火线手游图鉴', href: '/joy/games/cfm/atlas' }
+      { title: '穿越火线手游图鉴', href: '/joy/games/cfm/atlas' },
+      { title: '飞车端游壁纸', href: '/joy/games/speed' }
     ]
   },
   {
