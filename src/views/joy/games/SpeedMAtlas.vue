@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card class="card" :hoverable="true">
+    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" class="card" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">
           <h3>飞车手游图鉴</h3>
@@ -64,14 +64,13 @@
             <a-card :hoverable="true">
               <template #title>
                 {{ item.cm_4e }}
-                <img v-lazy :data-src="item.cclogo_2a" />
+                <img v-lazy="item.cclogo_2a" />
               </template>
               <template #extra>{{ item.jb_43 }}</template>
               <img
-                v-lazy
+                v-lazy="item.slt_3c"
                 class="image"
                 src="@/assets/default.png"
-                :data-src="item.slt_3c"
                 :alt="item.cm_4e"
                 :title="item.jj_3b"
                 @click="previewUrl = item.slt_3c"
@@ -89,10 +88,9 @@
             <a-card :title="item.dtm_88" :hoverable="true">
               <template #extra>{{ item.jytg_a3 }}星</template>
               <img
-                v-lazy
+                v-lazy="item.slt_3c"
                 class="image"
                 src="@/assets/default.png"
-                :data-src="item.slt_3c"
                 :alt="item.dtm_88"
                 :title="item.jj_3b"
                 @click="previewUrl = item.slt_3c"
@@ -109,10 +107,9 @@
           <a-col v-for="(item, index) of petsDataList" :key="index">
             <a-card :title="item.mc_77" :hoverable="true">
               <img
-                v-lazy
+                v-lazy="item.slt_3c"
                 class="image"
                 src="@/assets/default.png"
-                :data-src="item.slt_3c"
                 :alt="item.mc_77"
                 :title="item.jj_3b"
                 @click="previewUrl = item.slt_3c"
@@ -141,7 +138,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 
 const previewUrl = ref('')
 
@@ -244,10 +241,6 @@ getScript(mapUrl)
 // 获取宠物数据
 getScript(petUrl)
 
-onMounted(() => {
-  const { top } = document.querySelector('.ant-card-body').getBoundingClientRect()
-  document.querySelector('.ant-card-body').setAttribute('style', `height:calc(100vh - ${top + 12}px`)
-})
 </script>
 
 <style lang="less" scoped>

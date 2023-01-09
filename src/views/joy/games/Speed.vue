@@ -1,18 +1,11 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card class="card" :hoverable="true" title="飞车端游壁纸">
+    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" class="card" :hoverable="true" title="飞车端游壁纸">
       <a-row justify="space-around" :gutter="[0, 10]">
         <a-col v-for="(item, index) of dataList" :key="index">
           <a-card :title="item.dtInputDT">
-            <img
-              v-lazy
-              class="image"
-              src="@/assets/default.png"
-              :data-src="item.sProdImgNo_1"
-              :title="item.dtInputDT"
-              @click="previewUrl = item.sThumbURL"
-            />
+            <img v-lazy="item.sProdImgNo_1" class="image" src="@/assets/default.png" :title="item.dtInputDT" @click="previewUrl = item.sThumbURL" />
             <template #actions>
               <div @click="previewUrl = item.sProdImgNo_2">1280X1024</div>
               <div @click="previewUrl = item.sProdImgNo_3">1440X900</div>
@@ -41,7 +34,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 const dataKey = 'speed'
 
@@ -78,10 +71,6 @@ const getScript = (src, func) => {
 
 getScript(baseUrl)
 
-onMounted(() => {
-  const { top } = document.querySelector('.ant-card-body').getBoundingClientRect()
-  document.querySelector('.ant-card-body').setAttribute('style', `height:calc(100vh - ${top + 12}px`)
-})
 </script>
 
 <style lang="less" scoped>

@@ -66,6 +66,22 @@ const routes = [
               title: 'CSS正多边形'
             },
             component: () => import('@/views/study/demo/regularPolygon.vue')
+          },
+          {
+            path: '/study/demo/borderEffect',
+            name: 'borderEffect',
+            meta: {
+              title: 'CSS边框特效'
+            },
+            component: () => import('@/views/study/demo/borderEffect.vue')
+          },
+          {
+            path: '/study/demo/LCDDigital',
+            name: 'LCDDigital',
+            meta: {
+              title: 'CSS液晶数字字体'
+            },
+            component: () => import('@/views/study/demo/LCDDigital.vue')
           }
         ]
       },

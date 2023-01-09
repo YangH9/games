@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card class="card" :hoverable="true">
+    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" class="card" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">
           <h3>穿越火线手游武器图鉴</h3>
@@ -17,10 +17,9 @@
             </template>
             <template #extra>{{ Array.isArray(item.wqlx_ba) ? item.wqlx_ba[0].bq_24 : item.wqlx_ba?.bq_24 }}</template>
             <img
-              v-lazy
+              v-lazy="item.sytp_58"
               class="image"
               src="@/assets/default.png"
-              :data-src="item.sytp_58"
               :alt="item.qxmc_e8"
               :title="item.qxjj_c7"
               @click="previewUrl = item.sytp_58"
@@ -48,17 +47,13 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { dataList } from '@/utils/tencentGame/cfmAtlas.json'
 
 // const url = `https://cfm.qq.com/zlkdatasys/data_zlk_qxsy.json`
 
 const previewUrl = ref('')
 
-onMounted(() => {
-  const { top } = document.querySelector('.ant-card-body').getBoundingClientRect()
-  document.querySelector('.ant-card-body').setAttribute('style', `height:calc(100vh - ${top + 12}px`)
-})
 </script>
 
 <style lang="less" scoped>

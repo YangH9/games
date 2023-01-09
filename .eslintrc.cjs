@@ -200,7 +200,6 @@ module.exports = {
     'no-tabs': 'error', // 禁用 tab
     'no-ternary': 'off', // 禁用三元操作符
     'no-trailing-spaces': 'error', // 禁用行尾空格
-    'no-underscore-dangle': 'error', // 禁止标识符中有悬空下划线
     'no-unneeded-ternary': 'error', // 禁止可以在有更简单的可替代的表达式时使用三元操作符
     'no-whitespace-before-property': 'error', // 禁止属性前有空白
     'nonblock-statement-body-position': 'error', // 强制单个语句的位置

@@ -3,18 +3,18 @@
     <Breadcrumb overlayShow />
     <a-card title="部落冲突" class="mb10" :hoverable="true">
       <a-descriptions :column="1">
-        <a-descriptions-item> 自2022/12/9起，所有国内渠道商都转移到了腾讯，你必须绑定QQ或微信才可以继续登录。 </a-descriptions-item>
+        <a-descriptions-item>自2022/12/9起，所有国内渠道商都转移到了腾讯，你必须绑定QQ或微信才可以继续登录。</a-descriptions-item>
         <a-descriptions-item>
           如果你还没有绑定，请在更新后前往各大应用商店，搜索“部落冲突账号绑定工具”，使用您注册游戏时的账号登录，找到绑定入口进行绑定。
         </a-descriptions-item>
-        <a-descriptions-item> 当乐、靠谱助手、安智、拇指玩、熊猫玩、搜狗，已倒闭需联系客服处理。 </a-descriptions-item>
-        <a-descriptions-item> 下面有部分平台账号绑定工具。 </a-descriptions-item>
+        <a-descriptions-item>当乐、靠谱助手、安智、拇指玩、熊猫玩、搜狗，已倒闭需联系客服处理。</a-descriptions-item>
+        <a-descriptions-item>下面有部分平台账号绑定工具。</a-descriptions-item>
       </a-descriptions>
     </a-card>
     <a-card title="部落冲突下载" class="mb10" :hoverable="true">
       <a-button v-for="(item, index1) of downloadList" :key="index1" size="large" :href="item.href">
         <template #icon>
-          <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+          <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
         {{ item.title }}
       </a-button>
@@ -22,20 +22,20 @@
     <a-card title="部落冲突各平台账号绑定工具" class="mb10" :hoverable="true">
       <a-button v-for="(item, index1) of toolList" :key="index1" size="large" :href="item.href">
         <template #icon>
-          <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+          <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
         {{ item.title }}
       </a-button>
-      <a-button v-for="i of 20" :key="i" class="seat"> </a-button>
+      <a-button v-for="i of 20" :key="i" class="seat"></a-button>
     </a-card>
     <a-card title="阵容攻略" class="mb10" :hoverable="true">
       <a-button v-for="(item, index1) of list" :key="index1" size="large" :href="item.href">
         <template #icon>
-          <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+          <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
         {{ item.title }}
       </a-button>
-      <a-button v-for="i of 20" :key="i" class="seat"> </a-button>
+      <a-button v-for="i of 20" :key="i" class="seat"></a-button>
     </a-card>
   </div>
 </template>

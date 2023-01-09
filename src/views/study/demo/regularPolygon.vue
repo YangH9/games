@@ -1,12 +1,12 @@
 <template>
-  <a-card :style="{ '--width': `${width}px` }">
+  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" :style="{ '--width': `${width}px` }">
     <template #title>
       <a-row justify="center">
         <a-col :span="6">
-          <a-slider v-model:value="width" :min="100" :max="300" />
+          <a-slider v-model:value="width" :min="min" :max="max" />
         </a-col>
         <a-col :span="4">
-          <a-input-number v-model:value="width" :min="100" :max="300" style="margin-left: 16px" />
+          <a-input-number v-model:value="width" :min="min" :max="max" class="ml10" />
         </a-col>
       </a-row>
     </template>
@@ -36,12 +36,13 @@
 <script setup>
 import { ref } from 'vue'
 
+const min = ref(20)
+const max = ref(300)
 const width = ref(100)
 </script>
 
 <style lang="less" scoped>
 .ant-card :deep(.ant-card-body) {
-  height: calc(100vh - 240px);
   overflow-x: hidden;
   overflow-y: auto;
 

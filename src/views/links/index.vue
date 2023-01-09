@@ -7,11 +7,11 @@
         <a-card v-for="(main, index) of resoutcesList" :key="index" :title="main.title" class="mb10" :hoverable="true">
           <a-button v-for="(item, index1) of main.list" :key="index1" size="large" :href="item.href">
             <template #icon>
-              <img v-lazy class="icon" :data-src="filtterUrl(item)" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+              <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
             </template>
             {{ item.title }}
           </a-button>
-          <a-button v-for="i of 10" :key="i" class="seat"> </a-button>
+          <a-button v-for="i of 10" :key="i" class="seat"></a-button>
         </a-card>
       </div>
     </a-layout>

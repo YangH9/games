@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card class="card" :hoverable="true">
+    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" class="card" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">
           <div>
@@ -41,10 +41,9 @@
           <a-card :title="item.sTitle">
             <template #extra>{{ item.sTagInfoList[0].name }}</template>
             <img
-              v-lazy
+              v-lazy="item.sIMG"
               class="image"
               src="@/assets/default.png"
-              :data-src="item.sIMG"
               :alt="item.sTitle"
               :title="item.sTitle"
               @click="previewUrl = item.sIMG"
@@ -72,7 +71,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 
 const baseUrl = `https://apps.game.qq.com/cmc/cross?serviceId=70&source=web_pc&r0=script`
 const dataKey = 'speedM'
@@ -136,10 +135,6 @@ watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
   })
 })
 
-onMounted(() => {
-  const { top } = document.querySelector('.ant-card-body').getBoundingClientRect()
-  document.querySelector('.ant-card-body').setAttribute('style', `height:calc(100vh - ${top + 12}px`)
-})
 </script>
 
 <style lang="less" scoped>

@@ -1,4 +1,5 @@
 import lazy from './modules/lazy'
+import calcHeight from './modules/height'
 // import copy from './modules/copy'
 // import waterMarker from './modules/waterMarker'
 // import draggable from './modules/draggable'
@@ -7,7 +8,8 @@ import lazy from './modules/lazy'
 // import longpress from './modules/longpress'
 
 const directivesList = {
-  lazy
+  lazy,
+  calcHeight
   // ,  copy,
   // waterMarker,
   // draggable,

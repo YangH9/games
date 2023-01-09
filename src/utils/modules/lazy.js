@@ -1,15 +1,16 @@
-// lazy 懒加载
+// lazy 懒加载 传入 src
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((item) => {
     if (item.isIntersecting) {
-      item.target.src = item.target.dataset.src
+      item.target.src = item.target.__src__
     }
   })
 })
 
 const lazy = {
-  mounted(el) {
+  created(el, binding) {
+    el.__src__ = binding.value
     observer.observe(el)
   },
   unmounted() {
