@@ -2,7 +2,7 @@
   <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="CSS液晶数字字体">
     <div class="clock">
       <div class="digits">
-        <div v-for="i of 19" :key="i" :class="numList[dayjs(time).format('YYYY/MM/DD HH:mm:ss')[i - 1]]">
+        <div v-for="i of 19" :key="i" :class="numList[Dayjs(time).format('YYYY/MM/DD HH:mm:ss')[i - 1]]">
           <template v-if="![':', '/', ' '].includes(i)">
             <span v-for="j of 7" :key="j" :class="`stroke${j}`"></span>
           </template>
@@ -20,7 +20,7 @@
 <script setup>
 import { getCurrentInstance, ref, onMounted, onBeforeUnmount } from 'vue'
 
-const { dayjs } = getCurrentInstance().proxy
+const { Dayjs } = getCurrentInstance().proxy
 
 const numList = {
   ':': 'colon',
@@ -54,7 +54,6 @@ onBeforeUnmount(() => {
 
 <style lang="less" scoped>
 :deep(.ant-card-body) {
-  margin: 30px;
   --bgcolor: #272e38;
 }
 
@@ -216,7 +215,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 1 */
+    //  1
     &.one {
       .stroke5,
       .stroke7 {
@@ -224,7 +223,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 2 */
+    //  2
     &.two {
       .stroke1,
       .stroke5,
@@ -235,7 +234,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 3 */
+    //  3
     &.three {
       .stroke1,
       .stroke5,
@@ -246,7 +245,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 4 */
+    //  4
     &.four {
       .stroke5,
       .stroke2,
@@ -256,7 +255,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 5 */
+    //  5
     &.five {
       .stroke1,
       .stroke2,
@@ -267,7 +266,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 6 */
+    //  6
     &.six {
       .stroke1,
       .stroke2,
@@ -279,7 +278,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 7 */
+    //  7
     &.seven {
       .stroke1,
       .stroke5,
@@ -288,7 +287,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 8 */
+    //  8
     &.eight {
       .stroke1,
       .stroke2,
@@ -301,7 +300,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 9 */
+    //  9
     &.nine {
       .stroke1,
       .stroke2,
@@ -313,7 +312,7 @@ onBeforeUnmount(() => {
       }
     }
 
-    /* 0 */
+    //  0
     &.zero {
       .stroke1,
       .stroke3,

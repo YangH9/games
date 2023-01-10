@@ -1,29 +1,61 @@
 <template>
-  <div class="circleProgress_wrapper">
+  <div class="circleProgress_wrapper" :style="{ '--width': `${width}px` }">
     <div class="wrapper right">
-      <div class="circleProgress rightcircle"></div>
+      <div
+        class="circleProgress right"
+        :style="{
+          transform: `rotate(${(props.value / 100 < 0.5 ? (props.value / 100) * 360 : 180) + 45}deg)`,
+          'border-width': `${strokeWidth}px`,
+          'border-left-color': 'green',
+          'border-bottom-color': 'green'
+        }"
+      ></div>
     </div>
     <div class="wrapper left">
-      <div class="circleProgress leftcircle"></div>
+      <div
+        class="circleProgress left"
+        :style="{
+          transform: `rotate(${(props.value / 100 > 0.5 ? (props.value / 100) * 360 : 180) + 225}deg)`,
+          'border-width': `${strokeWidth}px`,
+          'border-top-color': 'green',
+          'border-right-color': 'green'
+        }"
+      ></div>
+    </div>
+    {{ props.value }}
+  </div>
+  <div class="circleProgress_wrapper" :style="{ '--width': `${width}px` }">
+    <div class="wrapper right">
+      <div class="circleProgress right rightcircle" :style="{ 'border-width': `${strokeWidth}px` }"></div>
+    </div>
+    <div class="wrapper left">
+      <div class="circleProgress left leftcircle" :style="{ 'border-width': `${strokeWidth}px` }"></div>
     </div>
     CSS进度条
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  width: { type: Number, default: 100 },
+  value: { type: Number, default: 0 },
+  strokeWidth: { type: Number, default: 10 }
+})
+</script>
 
 <style lang="less" scoped>
 .circleProgress_wrapper {
   text-align: center;
-  line-height: 190px;
-  width: 200px;
-  height: 200px;
+  line-height: var(--width);
+  width: var(--width);
+  height: var(--width);
   position: relative;
+  margin: 0 10px;
 }
 
 .wrapper {
-  width: 100px;
-  height: 200px;
+  width: calc(var(--width) / 2);
+  height: var(--width);
   position: absolute;
   top: 0;
   overflow: hidden;
@@ -38,8 +70,8 @@
 }
 
 .circleProgress {
-  width: 200px;
-  height: 200px;
+  width: var(--width);
+  height: var(--width);
   border: 20px solid rgb(81, 197, 81);
   border-radius: 50%;
   position: absolute;
@@ -48,12 +80,10 @@
 }
 
 .rightcircle {
-  right: 0;
   animation: circleProgressLoad_right 10s linear infinite;
 }
 
 .leftcircle {
-  left: 0;
   animation: circleProgressLoad_left 10s linear infinite;
 }
 

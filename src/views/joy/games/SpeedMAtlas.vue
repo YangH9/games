@@ -138,7 +138,9 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { nextTick, ref, watch } from 'vue'
+import { nextTick, ref, watch, getCurrentInstance } from 'vue'
+
+const { Jsonp } = getCurrentInstance().proxy
 
 const previewUrl = ref('')
 
@@ -225,22 +227,12 @@ window.pets_data = (obj) => {
   petsDataList.value = obj.cwsy_80.reverse()
 }
 
-// 生成script标签
-const getScript = (src, func) => {
-  const script = document.createElement('script')
-  script.async = 'async'
-  script.src = src
-  script.onload = func
-  document.head.appendChild(script)
-  document.head.removeChild(script)
-}
 // 获取赛车数据
-getScript(carUrl)
+Jsonp(carUrl)
 // 获取地图数据
-getScript(mapUrl)
+Jsonp(mapUrl)
 // 获取宠物数据
-getScript(petUrl)
-
+Jsonp(petUrl)
 </script>
 
 <style lang="less" scoped>

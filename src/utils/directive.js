@@ -1,5 +1,5 @@
 import lazy from './modules/lazy'
-import calcHeight from './modules/height'
+import calcHeight from './modules/calcHeight'
 // import copy from './modules/copy'
 // import waterMarker from './modules/waterMarker'
 // import draggable from './modules/draggable'

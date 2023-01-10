@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout class="layout">
+    <a-layout v-calcHeight="0" class="layout">
       <RouterViewBox url="/study">
         <div class="container">
           <Breadcrumb />
@@ -33,9 +33,11 @@ const studyList = [
       { title: 'CSS皮卡丘', href: '/study/demo/pikaqiu' },
       { title: 'CSS灰太狼', href: '/study/demo/huitailang' },
       { title: 'CSS蓝胖子', href: '/study/demo/lanpangzi' },
+      { title: 'CSS喵咪老师', href: '/study/demo/madara' },
       { title: 'CSS正多边形', href: '/study/demo/regularPolygon' },
       { title: 'CSS边框特效', href: '/study/demo/borderEffect' },
-      { title: 'CSS液晶数字字体', href: '/study/demo/LCDDigital' }
+      { title: 'CSS液晶数字字体', href: '/study/demo/LCDDigital' },
+      { title: 'CSS扇形菜单', href: '/study/demo/fanMenu' }
     ]
   },
   {
@@ -57,7 +59,6 @@ const qqList = [
 
 <style lang="less" scoped>
 .layout {
-  height: calc(100vh - 64px);
   overflow: auto;
 }
 </style>

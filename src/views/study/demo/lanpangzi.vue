@@ -7,7 +7,6 @@
           <div class="eyes">
             <div class="eye eye_left"></div>
             <div class="black_eye black_left"></div>
-
             <div class="eye eye_right"></div>
             <div class="black_eye black_right"></div>
           </div>
@@ -20,11 +19,9 @@
             <div class="mouth"></div>
             <div class="mouth_rewrite"></div>
             <div class="firefox_mouth"></div>
-
             <div class="whiskers whi_right_top rotate160"></div>
             <div class="whiskers whi_right"></div>
             <div class="whiskers whi_right_bottom rotate20"></div>
-
             <div class="whiskers whi_left_top rotate20"></div>
             <div class="whiskers whi_left"></div>
             <div class="whiskers whi_left_bottom rotate160"></div>

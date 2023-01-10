@@ -71,7 +71,9 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, ref, watch, getCurrentInstance } from 'vue'
+
+const { Jsonp } = getCurrentInstance().proxy
 
 const baseUrl = `https://apps.game.qq.com/cmc/cross?serviceId=70&source=web_pc&r0=script`
 const dataKey = 'speedM'
@@ -79,7 +81,6 @@ const dataKey = 'speedM'
 const previewUrl = ref('')
 const limit = ref(20)
 
-const show = ref(true)
 const total = ref(0)
 
 const pagesListActive = ref(1)
@@ -102,21 +103,11 @@ const sortByList = [
 
 const dataList = ref([])
 
-// 生成script标签
-const getScript = (src, func) => {
-  const script = document.createElement('script')
-  script.async = 'async'
-  script.src = src
-  script.onload = func
-  document.head.appendChild(script)
-  document.head.removeChild(script)
-}
-
 const getData = () => {
   const start = (pagesListActive.value - 1) * limit.value
   const getUrl = `${baseUrl}&tagids=${directionListActive.value}&start=${start}&limit=${limit.value}&sortby=${sortByListActive.value}&r1=${dataKey}`
   dataList.value = []
-  getScript(getUrl, () => {
+  Jsonp(getUrl, () => {
     dataList.value = window[dataKey].data.items
     total.value = window[dataKey].data.total
     if (pagesListActive.value > Math.ceil(total.value / limit.value)) {
@@ -128,13 +119,8 @@ const getData = () => {
 getData()
 
 watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
-  show.value = false
   getData()
-  nextTick(() => {
-    show.value = true
-  })
 })
-
 </script>
 
 <style lang="less" scoped>

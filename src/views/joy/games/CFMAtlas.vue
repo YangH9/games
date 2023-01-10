@@ -53,7 +53,6 @@ import { dataList } from '@/utils/tencentGame/cfmAtlas.json'
 // const url = `https://cfm.qq.com/zlkdatasys/data_zlk_qxsy.json`
 
 const previewUrl = ref('')
-
 </script>
 
 <style lang="less" scoped>

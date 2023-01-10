@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout class="layout">
+    <a-layout v-calcHeight="0" class="layout">
       <RouterViewBox url="/resources">
         <div class="container">
           <Breadcrumb />
@@ -45,7 +45,6 @@ const resoutcesList = [
 
 <style lang="less" scoped>
 .layout {
-  height: calc(100vh - 64px);
   overflow: auto;
 }
 </style>

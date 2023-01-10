@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-layout-content>
+    <a-layout-content v-calcHeight="12">
       <iframe src="https://yangh9.github.io/petpet/" frameborder="0" width="100%" height="100%" @load="routerLoading().hide()"></iframe>
     </a-layout-content>
   </div>
@@ -17,8 +17,4 @@ onMounted(() => {
 })
 </script>
 
-<style lang="less" scoped>
-.ant-layout-content {
-  height: calc(100vh - 128px);
-}
-</style>
+<style lang="less" scoped></style>

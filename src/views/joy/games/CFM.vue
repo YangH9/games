@@ -52,7 +52,6 @@ import { dataList } from '@/utils/tencentGame/cfm.json'
 // https://cfm.qq.com/cp/a20200225s2/index.html
 
 const previewUrl = ref('')
-
 </script>
 
 <style lang="less" scoped>

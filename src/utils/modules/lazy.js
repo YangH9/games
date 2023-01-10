@@ -12,9 +12,6 @@ const lazy = {
   created(el, binding) {
     el.__src__ = binding.value
     observer.observe(el)
-  },
-  unmounted() {
-    observer.disconnect()
   }
 }
 

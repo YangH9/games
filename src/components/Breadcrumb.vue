@@ -5,7 +5,7 @@
         <home-outlined />
       </router-link>
     </a-breadcrumb-item>
-    <a-breadcrumb-item v-for="(item, index) in menuList" :key="index">
+    <a-breadcrumb-item v-for="(item, index) of menuList" :key="index">
       <template v-if="index === menuList.length - 1">{{ item.meta.title }}</template>
       <router-link v-if="index < menuList.length - 1" :to="item.path">
         {{ item.meta.title }}

@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout class="layout">
+    <a-layout v-calcHeight="0" class="layout">
       <RouterViewBox url="/joy">
         <div class="container">
           <Breadcrumb />
@@ -60,7 +60,6 @@ const qqList = [
 
 <style lang="less" scoped>
 .layout {
-  height: calc(100vh - 64px);
   overflow: auto;
 }
 </style>

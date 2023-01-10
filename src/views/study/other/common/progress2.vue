@@ -1,20 +1,22 @@
 <template>
-  <div class="cylinder">
+  <div class="cylinder" :style="{ '--width': `${width}px` }">
     <div class="cylinder-shade" :style="{ height: `${props.value}%` }"></div>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  value: { type: Number, default: 0 }
+  width: { type: Number, default: 100 },
+  value: { type: Number, default: 0 },
+  strokeWidth: { type: Number, default: 10 }
 })
 </script>
 
 <style lang="less" scoped>
 .cylinder {
   position: relative;
-  width: 90px;
-  height: 200px;
+  width:  var(--width);
+  height:  calc(var(--width) * 2);
   background-color: transparent;
   background-color: rgba(0, 199, 159, 0.2);
 }

@@ -60,6 +60,14 @@ const routes = [
             component: () => import('@/views/study/demo/lanpangzi.vue')
           },
           {
+            path: '/study/demo/madara',
+            name: 'madara',
+            meta: {
+              title: 'CSS喵咪老师'
+            },
+            component: () => import('@/views/study/demo/madara.vue')
+          },
+          {
             path: '/study/demo/regularPolygon',
             name: 'regularPolygon',
             meta: {
@@ -82,6 +90,14 @@ const routes = [
               title: 'CSS液晶数字字体'
             },
             component: () => import('@/views/study/demo/LCDDigital.vue')
+          },
+          {
+            path: '/study/demo/fanMenu',
+            name: 'fanMenu',
+            meta: {
+              title: 'CSS扇形菜单'
+            },
+            component: () => import('@/views/study/demo/fanMenu.vue')
           }
         ]
       },
@@ -279,7 +295,17 @@ const routes = [
     meta: {
       title: '链接'
     },
-    component: () => import('@/views/links/index.vue')
+    component: () => import('@/views/links/index.vue'),
+    children: [
+      {
+        path: '/links/tencentLinks',
+        name: 'tencentLinks',
+        meta: {
+          title: '腾讯链接'
+        },
+        component: () => import('@/views/links/tencentLinks.vue')
+      }
+    ]
   },
   {
     path: '/resources',

@@ -1,26 +1,32 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout class="layout">
-      <div class="container">
-        <Breadcrumb />
-        <a-card v-for="(main, index) of resoutcesList" :key="index" :title="main.title" class="mb10" :hoverable="true">
-          <a-button v-for="(item, index1) of main.list" :key="index1" size="large" :href="item.href">
-            <template #icon>
-              <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+    <a-layout v-calcHeight="0" class="layout">
+      <RouterViewBox url="/links">
+        <div class="container">
+          <Breadcrumb />
+          <a-card v-for="(main, index) of resoutcesList" :key="index" :title="main.title" class="mb10" :hoverable="true">
+            <template v-if="main.extra" #extra>
+              <RouterLink :to="main.extra">查看更多</RouterLink>
             </template>
-            {{ item.title }}
-          </a-button>
-          <a-button v-for="i of 10" :key="i" class="seat"></a-button>
-        </a-card>
-      </div>
+            <a-button v-for="(item, index1) of main.list" :key="index1" size="large" :href="item.href">
+              <template #icon>
+                <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+              </template>
+              {{ item.title }}
+            </a-button>
+            <a-button v-for="i of 10" :key="i" class="seat"></a-button>
+          </a-card>
+        </div>
+      </RouterViewBox>
     </a-layout>
   </a-layout>
 </template>
 
 <script setup>
-import Breadcrumb from '@/components/Breadcrumb.vue'
 import Header from '@/components/Header.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import RouterViewBox from '@/components/RouterViewBox.vue'
 
 const resoutcesList = [
   {
@@ -93,6 +99,7 @@ const resoutcesList = [
   },
   {
     title: '腾讯',
+    extra: '/links/tencentLinks',
     list: [
       { title: 'QQ', href: 'https://im.qq.com/', favicon: '' },
       { title: '微信', href: 'https://weixin.qq.com/', favicon: '//res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico' },
@@ -332,7 +339,6 @@ const filtterUrl = (item) => {
 
 <style lang="less" scoped>
 .layout {
-  height: calc(100vh - 64px);
   overflow: auto;
 }
 

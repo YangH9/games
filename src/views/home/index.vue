@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout class="layout">
+    <a-layout v-calcHeight="0" class="layout">
       <div class="container">
         <Breadcrumb />
         <a-card title="首页" class="mb10" :hoverable="true">
@@ -18,15 +18,14 @@ import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { getCurrentInstance } from 'vue'
 
-const { getEnv } = getCurrentInstance().proxy
+const { GetEnv } = getCurrentInstance().proxy
 // console.log(env)
-const mode = getEnv.MODE
-const title = getEnv.VITE_TITLE
+const mode = GetEnv.MODE
+const title = GetEnv.VITE_TITLE
 </script>
 
 <style lang="less" scoped>
 .layout {
-  height: calc(100vh - 64px);
   overflow: auto;
 }
 </style>

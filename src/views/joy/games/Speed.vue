@@ -34,7 +34,9 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
+
+const { Jsonp } = getCurrentInstance().proxy
 
 const dataKey = 'speed'
 
@@ -59,18 +61,7 @@ window[dataKey] = (res) => {
   })
 }
 
-// 生成script标签
-const getScript = (src, func) => {
-  const script = document.createElement('script')
-  script.async = 'async'
-  script.src = src
-  script.onload = func
-  document.head.appendChild(script)
-  document.head.removeChild(script)
-}
-
-getScript(baseUrl)
-
+Jsonp(baseUrl)
 </script>
 
 <style lang="less" scoped>

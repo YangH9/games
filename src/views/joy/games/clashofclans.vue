@@ -132,11 +132,6 @@ const filtterUrl = (item) => {
 </script>
 
 <style lang="less" scoped>
-.layout {
-  height: calc(100vh - 64px);
-  overflow: auto;
-}
-
 .ant-card :deep(.ant-card-body) {
   padding-right: 14px;
   padding-bottom: 14px;

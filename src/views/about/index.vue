@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout class="layout">
+    <a-layout v-calcHeight="0" class="layout">
       <div class="container">
         <Breadcrumb />
         <a-card title="关注我" class="mb10" :hoverable="true">
@@ -18,8 +18,8 @@
             <a-descriptions-item label="网站运行时间" span="2">
               {{ runTime() }}
             </a-descriptions-item>
-            <a-descriptions-item label="建站时间">{{ dayjs(startTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
-            <a-descriptions-item label="迁移时间">{{ dayjs(nowTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
+            <a-descriptions-item label="建站时间">{{ Dayjs(startTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
+            <a-descriptions-item label="迁移时间">{{ Dayjs(nowTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
           </a-descriptions>
         </a-card>
       </div>
@@ -33,9 +33,9 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { getCurrentInstance, onBeforeUnmount, onMounted, ref } from 'vue'
 import duration from 'dayjs/plugin/duration'
 
-const { dayjs } = getCurrentInstance().proxy
+const { Dayjs } = getCurrentInstance().proxy
 
-dayjs.extend(duration)
+Dayjs.extend(duration)
 
 const userList = [
   { label: 'QQ', title: '1770571618', href: 'tencent://message/?uin=1770571618' },
@@ -51,7 +51,7 @@ const startTime = ref(1584864000000)
 const nowTime = ref(Date.now())
 
 const runTime = () => {
-  const time = dayjs.duration(+nowTime.value - startTime.value)
+  const time = Dayjs.duration(+nowTime.value - startTime.value)
   const Y = time.years()
   const M = time.months()
   const D = time.days()
@@ -77,7 +77,6 @@ onBeforeUnmount(() => {
 
 <style lang="less" scoped>
 .layout {
-  height: calc(100vh - 64px);
   overflow: auto;
 }
 </style>

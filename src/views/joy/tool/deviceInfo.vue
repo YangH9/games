@@ -86,9 +86,4 @@ window.addEventListener('offline', lineChange)
 // console.log(architecture, bitness, fullVersionList, platform, platformVersion)
 </script>
 
-<style lang="less" scoped>
-.layout {
-  height: calc(100vh - 64px);
-  overflow: auto;
-}
-</style>
+<style lang="less" scoped></style>

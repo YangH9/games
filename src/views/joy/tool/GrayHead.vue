@@ -37,9 +37,4 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 // }
 </script>
 
-<style lang="less" scoped>
-.layout {
-  height: calc(100vh - 64px);
-  overflow: auto;
-}
-</style>
+<style lang="less" scoped></style>
