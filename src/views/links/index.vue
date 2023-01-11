@@ -189,6 +189,7 @@ const resoutcesList = [
       { title: 'Flutter', href: 'https://flutter.cn', favicon: '' },
       { title: 'Tippy.js', href: 'https://tippyjs.bootcss.com', favicon: 'icons/icon-48x48.png' },
       { title: 'Video.js', href: 'https://videojs.com', favicon: '' },
+      { title: 'FAST', href: 'https://fast.design/', favicon: 'https://static.fast.design/assets/favicon.svg' },
       { title: 'ThingJS', href: 'https://www.thingjs.com/guide/', favicon: '' },
       { title: 'Threejs', href: 'https://threejs.org/', favicon: '' },
       { title: 'Swiper', href: 'https://swiperjs.com', favicon: 'images/favicon.png' },
@@ -316,7 +317,6 @@ const resoutcesList = [
       { title: '小贴画', href: 'https://smallsticker.com', favicon: '' },
       { title: '央视网', href: 'https://www.cctv.com', favicon: '' },
       { title: '懂车帝', href: 'https://www.dongchedi.com', favicon: '' },
-      { title: '赛码网', href: 'https://www.acmcoder.com', favicon: '//cdn.acmcoder.com/release/www/2.0.1/images/acm.ico' },
       {
         title: 'Chrome插件',
         href: 'https://www.extfans.com',
@@ -325,7 +325,8 @@ const resoutcesList = [
       { title: '迅雷', href: 'https://www.xunlei.com', favicon: '' },
       { title: '谷歌浏览器', href: 'https://www.google.cn/chrome', favicon: '/chrome/static/images/favicons/favicon-16x16.png' },
       { title: '易车', href: 'https://www.yiche.com', favicon: '//static1.bitautoimg.com/yc-common/icon/favicon.ico' },
-      { title: 'Ionic', href: 'https://ionicframework.com', favicon: '' }
+      { title: 'Ionic', href: 'https://ionicframework.com', favicon: '' },
+      { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: '' }
     ]
   }
 ]

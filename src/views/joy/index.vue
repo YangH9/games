@@ -10,6 +10,14 @@
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
           </a-card>
+          <a-card title="MC链接" class="mb10" :hoverable="true">
+            <a-button v-for="(item, index) of mcList" :key="index" size="large" :href="item.href" class="mr10">
+              <template #icon>
+                <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+              </template>
+              {{ item.title }}
+            </a-button>
+          </a-card>
           <a-card title="QQ群" class="mb10" :hoverable="true">
             <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href">
               {{ item.title }}
@@ -52,14 +60,39 @@ const joyList = [
   }
 ]
 
+const mcList = [
+  { title: 'MCbbs', href: 'https://www.mcbbs.net/', favicon: '' },
+  { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: 'images/favicon.ico' },
+  { title: 'MINEbbs', href: 'https://www.minebbs.com/', favicon: 'data/assets/logo/MB1-.png' },
+  { title: 'MCmod', href: 'https://www.curseforge.com/minecraft/modpacks', favicon: '' },
+  {
+    title: 'Minecraft Wiki',
+    href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
+    favicon: '//static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4a/Site-favicon.ico/revision/latest'
+  }
+]
+
 const qqList = [
   { title: '👨‍👦‍👦MC精彩无限 (778923681)', href: 'https://jq.qq.com/?_wv=1027&k=ikak0eLV' },
   { title: '👨‍👦‍👦cfm活动分享群 (238080446)', href: 'https://jq.qq.com/?_wv=1027&k=K6vsosuT' }
 ]
+
+const filtterUrl = (item) => {
+  const url =
+    item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+  return url
+}
 </script>
 
 <style lang="less" scoped>
 .layout {
   overflow: auto;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: baseline;
 }
 </style>

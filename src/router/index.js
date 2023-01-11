@@ -92,12 +92,20 @@ const routes = [
             component: () => import('@/views/study/demo/LCDDigital.vue')
           },
           {
-            path: '/study/demo/fanMenu',
-            name: 'fanMenu',
+            path: '/study/demo/menuEffect',
+            name: 'menuEffect',
             meta: {
-              title: 'CSS扇形菜单'
+              title: 'CSS菜单特效'
             },
-            component: () => import('@/views/study/demo/fanMenu.vue')
+            component: () => import('@/views/study/demo/menuEffect.vue')
+          },
+          {
+            path: '/study/demo/buttonEffect',
+            name: 'buttonEffect',
+            meta: {
+              title: 'CSS按钮特效'
+            },
+            component: () => import('@/views/study/demo/buttonEffect.vue')
           }
         ]
       },

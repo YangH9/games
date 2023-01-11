@@ -30,14 +30,15 @@ const studyList = [
   {
     title: '纯CSS特效',
     list: [
-      { title: 'CSS皮卡丘', href: '/study/demo/pikaqiu' },
-      { title: 'CSS灰太狼', href: '/study/demo/huitailang' },
-      { title: 'CSS蓝胖子', href: '/study/demo/lanpangzi' },
-      { title: 'CSS喵咪老师', href: '/study/demo/madara' },
-      { title: 'CSS正多边形', href: '/study/demo/regularPolygon' },
-      { title: 'CSS边框特效', href: '/study/demo/borderEffect' },
-      { title: 'CSS液晶数字字体', href: '/study/demo/LCDDigital' },
-      { title: 'CSS扇形菜单', href: '/study/demo/fanMenu' }
+      { title: '皮卡丘', href: '/study/demo/pikaqiu' },
+      { title: '灰太狼', href: '/study/demo/huitailang' },
+      { title: '蓝胖子', href: '/study/demo/lanpangzi' },
+      { title: '喵咪老师', href: '/study/demo/madara' },
+      { title: '正多边形', href: '/study/demo/regularPolygon' },
+      { title: '边框特效', href: '/study/demo/borderEffect' },
+      { title: '液晶数字字体', href: '/study/demo/LCDDigital' },
+      { title: '菜单特效', href: '/study/demo/menuEffect' },
+      { title: '按钮特效', href: '/study/demo/buttonEffect' }
     ]
   },
   {
