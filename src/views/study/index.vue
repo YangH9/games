@@ -38,7 +38,8 @@ const studyList = [
       { title: '边框特效', href: '/study/demo/borderEffect' },
       { title: '液晶数字字体', href: '/study/demo/LCDDigital' },
       { title: '菜单特效', href: '/study/demo/menuEffect' },
-      { title: '按钮特效', href: '/study/demo/buttonEffect' }
+      { title: '按钮特效', href: '/study/demo/buttonEffect' },
+      { title: '动画图标', href: '/study/demo/icon' }
     ]
   },
   {

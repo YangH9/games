@@ -87,13 +87,13 @@ onBeforeUnmount(() => {
         top: 0;
         left: 6px;
 
-        &:before {
+        &::before {
           border-width: 0 5px 5px 0;
           border-right-color: inherit;
           left: -5px;
         }
 
-        &:after {
+        &::after {
           border-width: 0 0 5px 5px;
           border-left-color: inherit;
           right: -5px;
@@ -106,13 +106,13 @@ onBeforeUnmount(() => {
         top: 24px;
         left: 6px;
 
-        &:before {
+        &::before {
           border-width: 3px 4px 2px;
           border-right-color: inherit;
           left: -8px;
         }
 
-        &:after {
+        &::after {
           border-width: 3px 4px 2px;
           border-left-color: inherit;
           right: -8px;
@@ -125,13 +125,13 @@ onBeforeUnmount(() => {
         top: 48px;
         left: 6px;
 
-        &:before {
+        &::before {
           border-width: 5px 5px 0 0;
           border-right-color: inherit;
           left: -5px;
         }
 
-        &:after {
+        &::after {
           border-width: 5px 0 0 5px;
           border-left-color: inherit;
           right: -5px;
@@ -144,13 +144,13 @@ onBeforeUnmount(() => {
         top: 7px;
         left: 0;
 
-        &:before {
+        &::before {
           border-width: 0 5px 5px 0;
           border-bottom-color: inherit;
           top: -5px;
         }
 
-        &:after {
+        &::after {
           border-width: 0 0 5px 5px;
           border-left-color: inherit;
           bottom: -5px;
@@ -163,13 +163,13 @@ onBeforeUnmount(() => {
         top: 7px;
         right: 0;
 
-        &:before {
+        &::before {
           border-width: 0 0 5px 5px;
           border-bottom-color: inherit;
           top: -5px;
         }
 
-        &:after {
+        &::after {
           border-width: 5px 0 0 5px;
           border-top-color: inherit;
           bottom: -5px;
@@ -182,13 +182,13 @@ onBeforeUnmount(() => {
         top: 32px;
         left: 0;
 
-        &:before {
+        &::before {
           border-width: 0 5px 5px 0;
           border-bottom-color: inherit;
           top: -5px;
         }
 
-        &:after {
+        &::after {
           border-width: 0 0 5px 5px;
           border-left-color: inherit;
           bottom: -5px;
@@ -201,13 +201,13 @@ onBeforeUnmount(() => {
         top: 32px;
         right: 0;
 
-        &:before {
+        &::before {
           border-width: 0 0 5px 5px;
           border-bottom-color: inherit;
           top: -5px;
         }
 
-        &:after {
+        &::after {
           border-width: 5px 0 0 5px;
           border-top-color: inherit;
           bottom: -5px;
@@ -327,8 +327,8 @@ onBeforeUnmount(() => {
     &.colon {
       width: 5px;
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         width: 5px;
         height: 5px;
         content: '';
@@ -338,7 +338,7 @@ onBeforeUnmount(() => {
         background-color: var(--bgcolor);
       }
 
-      &:after {
+      &::after {
         top: 34px;
       }
     }

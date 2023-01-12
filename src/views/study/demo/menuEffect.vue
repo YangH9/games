@@ -1,5 +1,5 @@
 <template>
-  <a-layout-content>
+  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="菜单特效">
     <div class="menu menu1">
       <ul class="floor1">
         <li>
@@ -71,7 +71,7 @@
         </filter>
       </defs>
     </svg>
-  </a-layout-content>
+  </a-card>
 </template>
 
 <script setup>
@@ -122,12 +122,6 @@ const menuData = {
 </script>
 
 <style lang="less" scoped>
-.ant-layout-content {
-  background: var(--color-background-mute);
-  color: var(--color-heading);
-  z-index: 1;
-}
-
 .menu {
   float: left;
 }
@@ -139,7 +133,7 @@ const menuData = {
   overflow: hidden;
   transition: 0s 0.6s;
   z-index: 1;
-  margin: 90px 0 0 90px;
+  margin: 30px 0 0 30px;
 
   .floor1 {
     li {
@@ -234,7 +228,7 @@ const menuData = {
   position: relative;
   width: 100px;
   height: 100px;
-  margin: 150px;
+  margin: 120px;
 
   * {
     box-sizing: border-box;
@@ -471,7 +465,7 @@ const menuData = {
 }
 
 .menu3 {
-  margin: 90px 0 0 90px;
+  margin: 40px 0 0 40px;
 
   * {
     color: #fff;
@@ -483,8 +477,8 @@ const menuData = {
     top: 20px;
     left: 20px;
     margin: auto;
-    width: 150px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
     filter: url('#filt');
 
     .blob {

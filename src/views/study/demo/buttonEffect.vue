@@ -1,23 +1,23 @@
 <template>
-  <a-layout-content>
-    <!-- demo1 -->
-    <div class="button demo1">demo1</div>
-    <!-- demo2 -->
-    <div class="button demo2" data-text="demo2"><span>demo2</span></div>
-    <!-- demo3 -->
-    <div class="button demo3">demo3</div>
-    <!-- demo4 -->
-    <div class="button demo4">demo4</div>
-    <!-- demo5 -->
-    <div class="button demo5" data-text="demo5"><span>demo5</span></div>
-    <!-- demo6 -->
-    <div class="button demo6" data-text="demo6"><span>demo6</span></div>
-    <!-- demo7 -->
-    <div class="button demo7">demo7</div>
-    <!-- demo8 -->
-    <div class="button demo8">demo8</div>
-    <!-- demo9 -->
-    <div class="button demo9">demo9</div>
+  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="按钮特效">
+    <!-- demo01 -->
+    <div class="button demo01">demo01</div>
+    <!-- demo02 -->
+    <div class="button demo02" data-text="demo02"><span>demo02</span></div>
+    <!-- demo03 -->
+    <div class="button demo03">demo03</div>
+    <!-- demo04 -->
+    <div class="button demo04">demo04</div>
+    <!-- demo05 -->
+    <div class="button demo05" data-text="demo05"><span>demo05</span></div>
+    <!-- demo06 -->
+    <div class="button demo06" data-text="demo06"><span>demo06</span></div>
+    <!-- demo07 -->
+    <div class="button demo07">demo07</div>
+    <!-- demo08 -->
+    <div class="button demo08">demo08</div>
+    <!-- demo09 -->
+    <div class="button demo09">demo09</div>
     <!-- demo10 -->
     <div class="button demo10"><span>demo10</span></div>
     <!-- demo11 -->
@@ -117,13 +117,15 @@
     <!-- demo58 -->
     <div class="button demo58">demo58</div>
     <!-- demo59 -->
-    <div class="button demo59">demo59</div>
+    <div class="button demo58 demo59">demo59</div>
     <!-- demo60 -->
     <div class="button demo60">demo60</div>
     <!-- demo61 -->
     <div class="button demo61">demo61</div>
     <!-- demo62 -->
-    <div class="button demo62"><span data-text="demo62">demo62</span></div>
+    <div class="button demo62">demo62</div>
+    <!-- demo63 -->
+    <div class="button demo63"><span data-text="demo63">demo63</span></div>
     <svg class="hidden">
       <defs>
         <clipPath id="clipBox" clipPathUnits="objectBoundingBox">
@@ -131,18 +133,12 @@
         </clipPath>
       </defs>
     </svg>
-  </a-layout-content>
+  </a-card>
 </template>
 
 <script setup></script>
 
 <style lang="less" scoped>
-.ant-layout-content {
-  background: var(--color-background);
-  color: var(--color-heading);
-  z-index: 1;
-}
-
 .hidden {
   display: none;
 }
@@ -160,15 +156,23 @@
   -moz-osx-font-smoothing: grayscale;
   cursor: pointer;
 
+  &::before,
+  &::after,
+  span,
+  span::before,
+  span::after {
+    pointer-events: none;
+  }
+
   *,
-  *:before,
-  *:after {
+  *::before,
+  *::after {
     box-sizing: border-box;
     position: initial;
   }
 
-  // demo1
-  &.demo1 {
+  // demo01
+  &.demo01 {
     border: 1px solid transparent;
     transition: 0.6s;
     color: #0af;
@@ -180,7 +184,6 @@
       display: block;
       width: 0;
       height: 0;
-      pointer-events: none;
     }
 
     &::before {
@@ -219,8 +222,8 @@
     }
   }
 
-  // demo2
-  &.demo2 {
+  // demo02
+  &.demo02 {
     overflow: hidden;
     transition: border-color 0.3s, background-color 0.3s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
@@ -264,8 +267,8 @@
     }
   }
 
-  // demo3
-  &.demo3 {
+  // demo03
+  &.demo03 {
     transition: border-color 0.4s, color 0.4s;
 
     &::before {
@@ -300,8 +303,8 @@
     }
   }
 
-  // demo4
-  &.demo4 {
+  // demo04
+  &.demo04 {
     overflow: hidden;
     transition: border-color 0.3s, color 0.3s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
@@ -333,8 +336,8 @@
     }
   }
 
-  // demo5
-  &.demo5 {
+  // demo05
+  &.demo05 {
     overflow: hidden;
     color: #7986cb;
 
@@ -387,8 +390,8 @@
     }
   }
 
-  // demo6
-  &.demo6 {
+  // demo06
+  &.demo06 {
     overflow: hidden;
 
     &::before {
@@ -424,8 +427,8 @@
     }
   }
 
-  // demo7
-  &.demo7 {
+  // demo07
+  &.demo07 {
     color: #ffffff;
 
     &::before,
@@ -463,9 +466,8 @@
     }
   }
 
-  // demo8
-  &.demo8 {
-    margin: 1em 2em;
+  // demo08
+  &.demo08 {
     transition: color 0.3s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 
@@ -513,8 +515,8 @@
     }
   }
 
-  // demo9
-  &.demo9 {
+  // demo09
+  &.demo09 {
     background: #7986cb;
     color: #fff;
     transition: background-color 0.3s, color 0.3s;
@@ -927,7 +929,6 @@
       content: '';
       z-index: -1;
       border-radius: inherit;
-      pointer-events: none;
       position: absolute;
       top: 0;
       left: 0;
@@ -1254,8 +1255,8 @@
     border: 1px solid currentColor;
     color: #8d53b3;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       position: absolute;
       top: 50%;
       content: '';
@@ -1266,12 +1267,12 @@
       z-index: -1;
     }
 
-    &:before {
+    &::before {
       left: -20px;
       transform: translate(-50%, -50%);
     }
 
-    &:after {
+    &::after {
       right: -20px;
       transform: translate(50%, -50%);
     }
@@ -1279,11 +1280,11 @@
     &:hover {
       color: #dadce0;
 
-      &:before {
+      &::before {
         animation: demo24-cross-left 0.8s both;
       }
 
-      &:after {
+      &::after {
         animation: demo24-cross-right 0.8s both;
       }
     }
@@ -1335,10 +1336,10 @@
       transition: none;
     }
 
-    &:before,
-    &:after,
-    span:before,
-    span:after {
+    &::before,
+    &::after,
+    span::before,
+    span::after {
       transition: 0.5s;
       z-index: -1;
       content: '';
@@ -1350,22 +1351,22 @@
       position: absolute;
     }
 
-    &:after {
+    &::after {
       top: 0;
       right: 0;
     }
 
-    &:before {
+    &::before {
       bottom: 0;
       left: 0;
     }
 
-    span:after {
+    span::after {
       top: 0;
       left: 0;
     }
 
-    span:before {
+    span::before {
       right: 0;
       bottom: 0;
     }
@@ -1373,19 +1374,19 @@
     &:hover {
       color: #decde9;
 
-      &:before {
+      &::before {
         border-width: 14px 33px;
       }
 
-      &:after {
+      &::after {
         border-width: 14px 33px;
       }
 
-      span:before {
+      span::before {
         border-width: 14px 33px;
       }
 
-      span:after {
+      span::after {
         border-width: 14px 33px;
       }
     }
@@ -1397,10 +1398,10 @@
     border: 1px solid currentColor;
     color: #8d53b3;
 
-    &:before,
-    &:after,
-    span:before,
-    span:after {
+    &::before,
+    &::after,
+    span::before,
+    span::after {
       transition: 0.5s;
       z-index: -1;
       content: '';
@@ -1411,25 +1412,25 @@
       position: absolute;
     }
 
-    &:after {
+    &::after {
       border-color: transparent #492064 transparent transparent;
       top: 0;
       right: 0;
     }
 
-    &:before {
+    &::before {
       border-color: transparent transparent transparent #492064;
       bottom: 0;
       left: 0;
     }
 
-    span:after {
+    span::after {
       border-color: #492064 transparent transparent transparent;
       top: 0;
       left: 0;
     }
 
-    span:before {
+    span::before {
       border-color: transparent transparent #492064 transparent;
       right: 0;
       bottom: 0;
@@ -1438,19 +1439,19 @@
     &:hover {
       color: #decde9;
 
-      &:before {
+      &::before {
         border-width: 28px 65px;
       }
 
-      &:after {
+      &::after {
         border-width: 28px 65px;
       }
 
-      span:before {
+      span::before {
         border-width: 28px 65px;
       }
 
-      span:after {
+      span::after {
         border-width: 28px 65px;
       }
     }
@@ -1462,8 +1463,8 @@
     border: 1px solid currentColor;
     color: #808695;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       content: '';
       width: 0;
       height: 0;
@@ -1474,13 +1475,13 @@
       z-index: -1;
     }
 
-    &:after {
+    &::after {
       border-color: transparent #3f444e transparent transparent;
       top: 0;
       right: 0;
     }
 
-    &:before {
+    &::before {
       border-color: transparent transparent transparent #3f444e;
       bottom: 0;
       left: 0;
@@ -1489,8 +1490,8 @@
     &:hover {
       color: #dadce0;
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         border-width: 55px 135px;
       }
     }
@@ -1502,10 +1503,10 @@
     border: 1px solid currentColor;
     color: #27692b;
 
-    &:before,
-    &:after,
-    span:before,
-    span:after {
+    &::before,
+    &::after,
+    span::before,
+    span::after {
       content: '';
       position: absolute;
       top: 0;
@@ -1516,35 +1517,35 @@
       z-index: -1;
     }
 
-    &:before {
+    &::before {
       left: 0;
     }
 
-    &:after {
+    &::after {
       left: 50%;
     }
 
-    span:before,
-    span:after {
+    span::before,
+    span::after {
       top: auto;
       bottom: 0;
     }
 
-    span:before {
+    span::before {
       left: 25%;
     }
 
-    span:after {
+    span::after {
       left: 75%;
     }
 
     &:hover {
       color: #c0d3c1;
 
-      &:before,
-      &:after,
-      span:before,
-      span:after {
+      &::before,
+      &::after,
+      span::before,
+      span::after {
         height: 100%;
       }
     }
@@ -1556,7 +1557,7 @@
     border: 1px solid currentColor;
     color: #9a3789;
 
-    &:before {
+    &::before {
       content: '';
       position: absolute;
       top: 0;
@@ -1571,7 +1572,7 @@
     &:hover {
       color: #e1c4dc;
 
-      &:before {
+      &::before {
         width: 100%;
       }
     }
@@ -1581,12 +1582,12 @@
   &.demo30 {
     color: #9a3789;
 
-    &:before {
+    &::before {
       width: 100%;
       height: 0;
     }
 
-    &:hover:before {
+    &:hover::before {
       height: 100%;
     }
   }
@@ -1597,7 +1598,7 @@
     border: 1px solid currentColor;
     color: #be876e;
 
-    &:after {
+    &::after {
       content: '';
       width: 0;
       height: 0;
@@ -1614,7 +1615,7 @@
     &:hover {
       color: #ecdcd4;
 
-      &:after {
+      &::after {
         border-width: 180px 180px 0 0;
       }
     }
@@ -1626,8 +1627,8 @@
     border: 1px solid currentColor;
     color: #bc4b41;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       content: '';
       width: 0;
       height: 0;
@@ -1639,12 +1640,12 @@
       z-index: -1;
     }
 
-    &:before {
+    &::before {
       border-color: transparent transparent transparent #6a1a13;
       left: 0;
     }
 
-    &:after {
+    &::after {
       border-color: transparent transparent #6a1a13 transparent;
       right: 0;
     }
@@ -1652,11 +1653,11 @@
     &:hover {
       color: #ebcac7;
 
-      &:before {
+      &::before {
         border-width: 130px 0 0 130px;
       }
 
-      &:after {
+      &::after {
         border-width: 0 0 130px 130px;
       }
     }
@@ -1668,8 +1669,8 @@
     border: 1px solid currentColor;
     color: #48a6b1;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       content: '';
       width: 0;
       height: 0;
@@ -1680,13 +1681,13 @@
       z-index: -1;
     }
 
-    &:before {
+    &::before {
       border-color: transparent transparent transparent #185a62;
       bottom: 0;
       left: 0;
     }
 
-    &:after {
+    &::after {
       border-color: transparent #185a62 transparent transparent;
       top: 0;
       right: 0;
@@ -1695,11 +1696,11 @@
     &:hover {
       color: #c9e5e8;
 
-      &:before {
+      &::before {
         border-width: 100px 0 0 100px;
       }
 
-      &:after {
+      &::after {
         border-width: 0 100px 100px 0;
       }
     }
@@ -1711,10 +1712,10 @@
     border: 1px solid currentColor;
     color: #ad96a0;
 
-    &:before,
-    &:after,
-    span:before,
-    span:after {
+    &::before,
+    &::after,
+    span::before,
+    span::after {
       content: '';
       width: 0;
       height: 0;
@@ -1725,25 +1726,25 @@
       z-index: -1;
     }
 
-    &:before {
+    &::before {
       border-color: transparent transparent transparent #5f4f56;
       bottom: 0;
       left: 0;
     }
 
-    &:after {
+    &::after {
       border-color: transparent #5f4f56 transparent transparent;
       top: 0;
       right: 0;
     }
 
-    span:before {
+    span::before {
       border-color: transparent transparent #5f4f56 transparent;
       right: 0;
       bottom: 0;
     }
 
-    span:after {
+    span::after {
       border-color: #5f4f56 transparent transparent transparent;
       top: 0;
       left: 0;
@@ -1752,19 +1753,19 @@
     &:hover {
       color: #e7e0e3;
 
-      &:before {
+      &::before {
         border-width: 100px 0 0 100px;
       }
 
-      &:after {
+      &::after {
         border-width: 0 100px 100px 0;
       }
 
-      span:before {
+      span::before {
         border-width: 0 0 100px 100px;
       }
 
-      span:after {
+      span::after {
         border-width: 100px 100px 0 0;
       }
     }
@@ -1806,8 +1807,8 @@
     border: 1px solid currentColor;
     color: #5177a7;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       top: 0;
@@ -1819,7 +1820,7 @@
       z-index: -1;
     }
 
-    &:after {
+    &::after {
       top: auto;
       bottom: 0;
     }
@@ -1827,8 +1828,8 @@
     &:hover {
       color: #ccd7e5;
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         height: 100%;
       }
     }
@@ -1836,20 +1837,20 @@
 
   // demo37
   &.demo37 {
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       width: 0;
       height: 100%;
     }
 
-    &:after {
+    &::after {
       left: auto;
       right: 0;
     }
 
     &:hover {
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         width: 100%;
       }
     }
@@ -1861,10 +1862,10 @@
     border: 1px solid currentColor;
     color: #c93a8e;
 
-    &:before,
-    &:after,
-    span:before,
-    span:after {
+    &::before,
+    &::after,
+    span::before,
+    span::after {
       content: '';
       position: absolute;
       top: 0;
@@ -1876,24 +1877,24 @@
       z-index: -1;
     }
 
-    &:after,
-    span:before {
+    &::after,
+    span::before {
       top: auto;
       bottom: 0;
     }
 
-    span:before,
-    span:after {
+    span::before,
+    span::after {
       transition-delay: 0.4s;
     }
 
     &:hover {
       color: #efc5de;
 
-      &:before,
-      &:after,
-      span:before,
-      span:after {
+      &::before,
+      &::after,
+      span::before,
+      span::after {
         height: 100%;
       }
     }
@@ -1905,10 +1906,10 @@
     border: 1px solid currentColor;
     color: #8f5c82;
 
-    &:before,
-    &:after,
-    span:before,
-    span:after {
+    &::before,
+    &::after,
+    span::before,
+    span::after {
       content: '';
       position: absolute;
       top: 0;
@@ -1920,24 +1921,24 @@
       z-index: -1;
     }
 
-    &:after,
-    span:before {
+    &::after,
+    span::before {
       left: auto;
       right: 0;
     }
 
-    span:before,
-    span:after {
+    span::before,
+    span::after {
       transition-delay: 0.4s;
     }
 
     &:hover {
       color: #decfda;
 
-      &:before,
-      &:after,
-      span:before,
-      span:after {
+      &::before,
+      &::after,
+      span::before,
+      span::after {
         width: 100%;
       }
     }
@@ -1962,7 +1963,7 @@
     border: 1px solid currentColor;
     color: #2194e0;
 
-    &:before {
+    &::before {
       content: '';
       background-color: rgba(255, 255, 255, 0.5);
       height: 100%;
@@ -1979,7 +1980,7 @@
       background-color: #2194e0;
       color: #fff;
 
-      &:before {
+      &::before {
         transform: skewX(-45deg) translateX(230px);
         transition: all 0.5s ease-in-out;
       }
@@ -2001,7 +2002,7 @@
       transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       width: 10px;
@@ -2026,7 +2027,7 @@
         transform: translate3d(-10px, 0, 0);
       }
 
-      &:after {
+      &::after {
         transform: translate3d(0, -50%, 0) rotate(-45deg);
       }
     }
@@ -2123,12 +2124,12 @@
   // demo47
   &.demo47 {
     border: 1px solid currentColor;
-    color: #82f6d8;
+    color: #009970;
     transition: color 1s;
 
     &:hover {
       animation: anim-demo47 0.75s infinite linear;
-      background: repeating-linear-gradient(45deg, #82f6d8 0, #82f6d8 0.25em, transparent 0.25em, transparent 0.5em);
+      background: repeating-linear-gradient(45deg, #00cf98 0, #00d89e 0.25em, transparent 0.25em, transparent 0.5em);
       color: #f682a0;
     }
 
@@ -2150,13 +2151,13 @@
       transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
     }
 
-    &:before {
+    &::before {
       top: 0;
       right: 0;
       bottom: 0;
@@ -2167,7 +2168,7 @@
       transition: transform 0.3s;
     }
 
-    &:after {
+    &::after {
       width: 10px;
       height: 10px;
       top: 50%;
@@ -2205,7 +2206,7 @@
     border: 1px solid currentColor;
     transition: color 1s, border 1s;
 
-    &:before {
+    &::before {
       content: '';
       position: absolute;
       top: -1px;
@@ -2366,7 +2367,6 @@
       right: 0;
       bottom: 0;
       transition: transform 0.3s;
-      pointer-events: none;
     }
 
     &::before {
@@ -2506,7 +2506,6 @@
     color: #666;
 
     &::before {
-      pointer-events: none;
       position: absolute;
       content: '';
       height: 0;
@@ -2556,6 +2555,19 @@
 
   // demo59
   &.demo59 {
+    &:hover {
+      &::before {
+        transform: rotateY(68deg) translate(9em, 0px);
+      }
+
+      &::after {
+        transform: rotateY(-68deg) translate(-9em, 0px);
+      }
+    }
+  }
+
+  // demo60
+  &.demo60 {
     border: 1px solid currentColor;
     color: #4b4b4b;
     overflow: hidden;
@@ -2591,8 +2603,8 @@
     }
   }
 
-  // demo60
-  &.demo60 {
+  // demo61
+  &.demo61 {
     border: 1px solid currentColor;
     color: #4b4b4b;
     overflow: hidden;
@@ -2625,8 +2637,8 @@
     }
   }
 
-  // demo61
-  &.demo61 {
+  // demo62
+  &.demo62 {
     border: 1px solid currentColor;
     color: #4b4b4b;
     overflow: hidden;
@@ -2655,8 +2667,8 @@
     }
   }
 
-  // demo62
-  &.demo62 {
+  // demo63
+  &.demo63 {
     position: relative;
     color: #331c55;
     background: #7e4bcf;

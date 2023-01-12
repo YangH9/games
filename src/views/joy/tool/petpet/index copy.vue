@@ -386,7 +386,7 @@ button:disabled,
   cursor: pointer;
 }
 
-.toggle-switch-control:after {
+.toggle-switch-control::after {
   content: '';
   width: var(--h);
   height: var(--h);
@@ -401,7 +401,7 @@ button:disabled,
   transition: left 200ms ease-out, transform 500ms;
 }
 
-.toggle-switch-control:hover:after {
+.toggle-switch-control:hover::after {
   transform: scale(1.1, 1.1);
 }
 
@@ -419,7 +419,7 @@ button:disabled,
   background: #fedc7d;
 }
 
-.toggle-switch-input:checked + .toggle-switch-control:after {
+.toggle-switch-input:checked + .toggle-switch-control::after {
   left: var(--h);
 }
 
@@ -534,7 +534,7 @@ button:disabled,
   padding: 0;
 }
 
-#color-theme:before {
+#color-theme::before {
   content: '🌝';
   cursor: pointer;
   display: inline-block;

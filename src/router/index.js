@@ -106,6 +106,14 @@ const routes = [
               title: 'CSS按钮特效'
             },
             component: () => import('@/views/study/demo/buttonEffect.vue')
+          },
+          {
+            path: '/study/demo/icon',
+            name: 'icon',
+            meta: {
+              title: 'CSS动画图标'
+            },
+            component: () => import('@/views/study/demo/icon.vue')
           }
         ]
       },

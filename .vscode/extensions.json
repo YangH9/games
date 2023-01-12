@@ -1,3 +1,13 @@
 {
-  "recommendations": ["Vue.volar", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "iwanabethatguy.path-alias"]
+  "recommendations": [
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "iwanabethatguy.path-alias",
+    "ms-ceintl.vscode-language-pack-zh-hans",
+    "formulahendry.auto-rename-tag",
+    "jock.svg",
+    "jaspernorth.vscode-pigments"
+  ]
 }

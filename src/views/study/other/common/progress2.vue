@@ -28,8 +28,8 @@ const props = defineProps({
   background-image: linear-gradient(to top, rgb(0, 255, 204), rgb(0, 199, 159));
   text-align: center;
 }
-.cylinder:before,
-.cylinder:after,
+.cylinder::before,
+.cylinder::after,
 .cylinder-shade::before,
 .cylinder-shade::after {
   position: absolute;
@@ -39,15 +39,15 @@ const props = defineProps({
   height: 20px;
   border-radius: 50%;
 }
-.cylinder:before,
+.cylinder::before,
 .cylinder-shade::before {
   top: -10.5px;
   z-index: 2;
   background-color: rgb(101 221 197);
 }
 
-.cylinder:after,
-.cylinder-shade:after {
+.cylinder::after,
+.cylinder-shade::after {
   height: 15px;
   bottom: -10px;
   background-color: rgb(0, 255, 204);
@@ -56,7 +56,7 @@ const props = defineProps({
   z-index: 1;
   background-color: rgb(0, 199, 159);
 }
-.cylinder-shade:after {
+.cylinder-shade::after {
   background-color: white;
 }
 
