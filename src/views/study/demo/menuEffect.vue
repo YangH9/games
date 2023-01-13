@@ -122,6 +122,11 @@ const menuData = {
 </script>
 
 <style lang="less" scoped>
+.ant-card :deep(.ant-card-body) {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .menu {
   float: left;
 }

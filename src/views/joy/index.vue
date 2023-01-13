@@ -11,6 +11,9 @@
             </a-button>
           </a-card>
           <a-card title="MC链接" class="mb10" :hoverable="true">
+            <template #extra>
+              <RouterLink to="/links/MinecraftBookmark">查看更多</RouterLink>
+            </template>
             <a-button v-for="(item, index) of mcList" :key="index" size="large" :href="item.href" class="mr10">
               <template #icon>
                 <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />

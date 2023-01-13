@@ -320,6 +320,14 @@ const routes = [
           title: '腾讯链接'
         },
         component: () => import('@/views/links/tencentLinks.vue')
+      },
+      {
+        path: '/links/MinecraftBookmark',
+        name: 'MinecraftBookmark',
+        meta: {
+          title: '我的世界书签收录'
+        },
+        component: () => import('@/views/links/MinecraftBookmark.vue')
       }
     ]
   },

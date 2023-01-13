@@ -328,6 +328,18 @@ const resoutcesList = [
       { title: 'Ionic', href: 'https://ionicframework.com', favicon: '' },
       { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: '' }
     ]
+  },
+  {
+    title: '我的世界',
+    extra: '/links/MinecraftBookmark',
+    list: [
+      { title: 'Minecraft', href: 'https://www.minecraft.net/zh-hans', favicon: '' },
+      {
+        title: 'Minecraft Wiki',
+        href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
+        favicon: '//static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4a/Site-favicon.ico/revision/latest'
+      }
+    ]
   }
 ]
 

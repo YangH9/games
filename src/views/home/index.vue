@@ -7,6 +7,9 @@
         <a-card title="首页" class="mb10" :hoverable="true">
           <div>MODE：{{ mode }}</div>
           <div>TITLE：{{ title }}</div>
+          <!-- 18:00、19:40
+          1、20:00、21:00
+          2、20:30、21:30 -->
         </a-card>
       </div>
     </a-layout>
