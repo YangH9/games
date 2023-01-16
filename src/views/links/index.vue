@@ -168,6 +168,7 @@ const resoutcesList = [
       { title: 'Ant Design of Vue', href: 'https://antdv.com/docs/vue/introduce-cn', favicon: '//aliyuncdn.antdv.com/favicon.ico' },
       { title: 'Layui', href: 'https://layui.gitee.io/', favicon: '' },
       { title: 'Vant', href: 'https://vant-ui.github.io/', favicon: '//fastly.jsdelivr.net/npm/@vant/assets/logo.png' },
+      { title: 'svelte', href: 'https://www.sveltejs.cn/', favicon: 'favicon.png' },
       { title: 'Mint-UI', href: 'https://mint-ui.github.io/', favicon: '' },
       { title: 'iView-UI', href: 'https://www.iviewui.com/', favicon: '//file.iviewui.com/view-design-logo.png' },
       { title: 'React Native', href: 'https://reactnative.cn/', favicon: 'img/favicon.ico' },
@@ -266,6 +267,7 @@ const resoutcesList = [
   {
     title: '娱乐、办公、其他',
     list: [
+      { title: 'AppStore图标', href: 'https://macosicons.com/', favicon: '' },
       { title: '小米', href: 'https://www.mi.com', favicon: '' },
       { title: '京东', href: 'https://www.jd.com', favicon: '' },
       { title: '淘宝', href: 'https://www.taobao.com', favicon: '' },

@@ -30,7 +30,7 @@ const routes = [
         path: '/study/demo',
         name: 'demo',
         meta: {
-          title: '纯CSS特效'
+          title: 'CSS特效'
         },
         redirect: '/study/demo/pikaqiu',
         component: () => import('@/views/study/demo/index.vue'),
@@ -114,6 +114,14 @@ const routes = [
               title: 'CSS动画图标'
             },
             component: () => import('@/views/study/demo/icon.vue')
+          },
+          {
+            path: '/study/demo/clock',
+            name: 'clock',
+            meta: {
+              title: 'CSS动画时钟'
+            },
+            component: () => import('@/views/study/demo/clock.vue')
           }
         ]
       },
