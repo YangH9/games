@@ -12,7 +12,7 @@
       </a-descriptions>
     </a-card>
     <a-card title="部落冲突下载" class="mb10" :hoverable="true">
-      <a-button v-for="(item, index1) of downloadList" :key="index1" size="large" :href="item.href">
+      <a-button v-for="(item, index1) of downloadList" :key="index1" size="large" :href="item.href" :title="item.title">
         <template #icon>
           <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
@@ -20,7 +20,7 @@
       </a-button>
     </a-card>
     <a-card title="部落冲突各平台账号绑定工具" class="mb10" :hoverable="true">
-      <a-button v-for="(item, index1) of toolList" :key="index1" size="large" :href="item.href">
+      <a-button v-for="(item, index1) of toolList" :key="index1" size="large" :href="item.href" :title="item.title">
         <template #icon>
           <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>
@@ -29,7 +29,7 @@
       <a-button v-for="i of 20" :key="i" class="seat"></a-button>
     </a-card>
     <a-card title="阵容攻略" class="mb10" :hoverable="true">
-      <a-button v-for="(item, index1) of list" :key="index1" size="large" :href="item.href">
+      <a-button v-for="(item, index1) of list" :key="index1" size="large" :href="item.href" :title="item.title">
         <template #icon>
           <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
         </template>

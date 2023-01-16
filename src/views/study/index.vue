@@ -6,12 +6,12 @@
         <div class="container">
           <Breadcrumb />
           <a-card v-for="(main, index) of studyList" :key="index" :title="main.title" class="mb10" :hoverable="true">
-            <a-button v-for="(item, index1) of main.list" :key="index1" type="link" size="small">
+            <a-button v-for="(item, index1) of main.list" :key="index1" type="link" size="small" :title="item.title">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
           </a-card>
           <a-card title="QQ群" class="mb10" :hoverable="true">
-            <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href">
+            <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href" :title="item.title">
               {{ item.title }}
             </a-button>
           </a-card>
@@ -48,7 +48,8 @@ const studyList = [
     list: [
       { title: '加载动画', href: '/study/other/loading' },
       { title: '进度条', href: '/study/other/progress' },
-      { title: 'Apple新年logo', href: '/study/other/applelogo' }
+      { title: 'Apple新年logo', href: '/study/other/applelogo' },
+      { title: '代码雨', href: '/study/other/codeRain' }
     ]
   }
 ]

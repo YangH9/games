@@ -8,7 +8,7 @@
           <a-card title="网盘资源" class="mb10" :hoverable="true">
             <a-descriptions :column="1">
               <a-descriptions-item v-for="(item, index) of resoutcesList" :key="index" :label="item.title">
-                <a-button type="link" size="small" :href="item.href">
+                <a-button type="link" size="small" :href="item.href" :title="item.title">
                   {{ item.href }}
                 </a-button>
                 提取码：{{ item.code }}

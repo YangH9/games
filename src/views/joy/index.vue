@@ -6,7 +6,7 @@
         <div class="container">
           <Breadcrumb />
           <a-card v-for="(main, index) of joyList" :key="index" :title="main.title" class="mb10" :hoverable="true">
-            <a-button v-for="(item, index1) of main.list" :key="index1" type="link" size="small">
+            <a-button v-for="(item, index1) of main.list" :key="index1" type="link" size="small" :title="item.title">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
           </a-card>
@@ -14,7 +14,7 @@
             <template #extra>
               <RouterLink to="/links/MinecraftBookmark">查看更多</RouterLink>
             </template>
-            <a-button v-for="(item, index) of mcList" :key="index" size="large" :href="item.href" class="mr10">
+            <a-button v-for="(item, index) of mcList" :key="index" size="large" :href="item.href" class="mr10" :title="item.title">
               <template #icon>
                 <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
               </template>
@@ -22,7 +22,7 @@
             </a-button>
           </a-card>
           <a-card title="QQ群" class="mb10" :hoverable="true">
-            <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href">
+            <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href" :title="item.title">
               {{ item.title }}
             </a-button>
           </a-card>

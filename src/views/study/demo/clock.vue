@@ -35,26 +35,6 @@ const ms = d.getSeconds()
 :deep(.ant-card-body) {
   --bgcolor: #272e38;
 }
-@property --h {
-  syntax: '<integer>';
-  inherits: false;
-  initial-value: 0;
-}
-@property --m {
-  syntax: '<integer>';
-  inherits: false;
-  initial-value: 0;
-}
-@property --s {
-  syntax: '<integer>';
-  inherits: false;
-  initial-value: 0;
-}
-@property --ms {
-  syntax: '<integer>';
-  inherits: false;
-  initial-value: 10;
-}
 
 .time {
   display: flex;
@@ -63,62 +43,96 @@ const ms = d.getSeconds()
   --step: 60s;
   font-family: Consolas, Monaco, monospace;
   font-size: 60px;
-}
-.split {
-  animation: shark 1s step-end infinite;
-}
 
-.hour::after {
-  counter-reset: hour var(--h);
-  content: counter(hour, decimal-leading-zero);
-  animation: hour calc(var(--step) * 60 * 24) infinite steps(24);
-  animation-delay: calc(-1 * var(--step) * var(--dh) * 60);
-}
-.minitus::after {
-  counter-reset: minitus var(--m);
-  content: counter(minitus, decimal-leading-zero);
-  animation: minitus calc(var(--step) * 60) infinite steps(60);
-  animation-delay: calc(-1 * var(--step) * var(--dm));
-}
-.seconds::after {
-  counter-reset: seconds var(--s);
-  content: counter(seconds, decimal-leading-zero);
-  animation: seconds var(--step) infinite steps(60);
-  animation-delay: calc(-1 * var(--step) * var(--ds) / 60);
-}
-.milliseconds::after {
-  counter-reset: milliseconds var(--ms);
-  content: counter(milliseconds, decimal-leading-zero);
-  animation: milliseconds calc(var(--step) / 100) infinite steps(99);
-  animation-delay: calc(-1 * var(--step) * var(--dms) / 60);
-}
-@keyframes hour {
-  to {
-    --h: 24;
+  .split {
+    animation: shark 1s step-end infinite;
   }
-}
-@keyframes minitus {
-  to {
-    --m: 60;
+
+  .hour::after {
+    counter-reset: hour var(--h);
+    content: counter(hour, decimal-leading-zero);
+    animation: hour calc(var(--step) * 60 * 24) infinite steps(24);
+    animation-delay: calc(-1 * var(--step) * var(--dh) * 60);
   }
-}
-@keyframes seconds {
-  to {
-    --s: 60;
+
+  .minitus::after {
+    counter-reset: minitus var(--m);
+    content: counter(minitus, decimal-leading-zero);
+    animation: minitus calc(var(--step) * 60) infinite steps(60);
+    animation-delay: calc(-1 * var(--step) * var(--dm));
   }
-}
-@keyframes milliseconds {
-  to {
-    --ms: 99;
+
+  .seconds::after {
+    counter-reset: seconds var(--s);
+    content: counter(seconds, decimal-leading-zero);
+    animation: seconds var(--step) infinite steps(60);
+    animation-delay: calc(-1 * var(--step) * var(--ds) / 60);
   }
-}
-@keyframes shark {
-  0%,
-  100% {
-    opacity: 1;
+
+  .milliseconds::after {
+    counter-reset: milliseconds var(--ms);
+    content: counter(milliseconds, decimal-leading-zero);
+    animation: milliseconds calc(var(--step) / 100) infinite steps(99);
+    animation-delay: calc(-1 * var(--step) * var(--dms) / 60);
   }
-  50% {
-    opacity: 0;
+
+  @property --h {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --m {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --s {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --ms {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 10;
+  }
+
+  @keyframes hour {
+    to {
+      --h: 24;
+    }
+  }
+
+  @keyframes minitus {
+    to {
+      --m: 60;
+    }
+  }
+
+  @keyframes seconds {
+    to {
+      --s: 60;
+    }
+  }
+
+  @keyframes milliseconds {
+    to {
+      --ms: 99;
+    }
+  }
+
+  @keyframes shark {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
   }
 }
 </style>

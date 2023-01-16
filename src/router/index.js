@@ -156,6 +156,14 @@ const routes = [
               title: 'Apple新年logo'
             },
             component: () => import('@/views/study/other/appleLogo.vue')
+          },
+          {
+            path: '/study/other/codeRain',
+            name: 'codeRain',
+            meta: {
+              title: '代码雨'
+            },
+            component: () => import('@/views/study/other/codeRain.vue')
           }
         ]
       }
@@ -330,12 +338,12 @@ const routes = [
         component: () => import('@/views/links/tencentLinks.vue')
       },
       {
-        path: '/links/MinecraftBookmark',
-        name: 'MinecraftBookmark',
+        path: '/links/minecraftBookmark',
+        name: 'minecraftBookmark',
         meta: {
           title: '我的世界书签收录'
         },
-        component: () => import('@/views/links/MinecraftBookmark.vue')
+        component: () => import('@/views/links/minecraftBookmark.vue')
       }
     ]
   },
