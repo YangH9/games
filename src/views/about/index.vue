@@ -62,16 +62,19 @@ const runTime = () => {
   return `${Y}年${a(M)}月${a(D)}日${a(H)}时${a(m)}分${a(s)}秒`
 }
 
-let timer = null
+let timer = ''
+
+const running = () => {
+  nowTime.value = new Date()
+  timer = requestAnimationFrame(running)
+}
+
 onMounted(() => {
-  timer = setInterval(() => {
-    nowTime.value = new Date()
-  }, 1000)
+  timer = requestAnimationFrame(running)
 })
 
 onBeforeUnmount(() => {
-  clearInterval(timer)
-  timer = null
+  cancelAnimationFrame(timer)
 })
 </script>
 

@@ -33,7 +33,7 @@ module.exports = {
     'no-ex-assign': 'error', // 禁止对 catch 子句的参数重新赋值
     'no-extra-boolean-cast': 'error', // 禁止不必要的布尔转换
     'no-extra-parens': 'off', // 禁止不必要的括号
-    'no-extra-semi': 'error', // 禁止不必要的分号
+    'no-extra-semi': 'off', // 禁止不必要的分号
     'no-func-assign': 'error', // 禁止对 function 声明重新赋值
     'no-inner-declarations': 'error', // 禁止在嵌套的块中出现变量声明或 function 声明
     'no-invalid-regexp': 'error', // 禁止 RegExp 构造函数中存在无效的正则表达式字符串
@@ -125,7 +125,7 @@ module.exports = {
     'require-await': 'error', // 禁止使用不带 await 表达式的 async 函数
     'require-unicode-regexp': 'off', // 强制在 RegExp 上使用 u 标志
     'vars-on-top': 'error', // 要求所有的 var 声明出现在它们所在的作用域顶部
-    'wrap-iife': 'error', // 要求 IIFE 使用括号括起来
+    // 'wrap-iife': 'error', // 要求 IIFE 使用括号括起来
     yoda: 'error', // 要求或禁止 “Yoda” 条件
 
     // Variables 这些规则与变量声明有关：
@@ -157,7 +157,7 @@ module.exports = {
     'eol-last': ['error', 'always'], // 要求或禁止文件末尾存在空行
     'func-call-spacing': 'error', // 要求或禁止在函数标识符和其调用之间有空格
     'func-name-matching': 'error', // 要求函数名与赋值给它们的变量名或属性名相匹配
-    'func-names': 'error', // 要求或禁止使用命名的 function 表达式
+    // 'func-names': 'error', // 要求或禁止使用命名的 function 表达式
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }], // 强制一致地使用 function 声明或表达式
     'id-blacklist': 'error', // 禁用指定的标识符
     'id-length': ['error', { min: 1 }], // 强制标识符的最小和最大长度

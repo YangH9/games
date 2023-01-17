@@ -1,30 +1,6 @@
 /* eslint-disable */
-window.requestAnimationFrame = (function () {
-  return (
-    window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-      setTimeout(callback, 1000 / 60)
-    }
-  )
-})()
 ;(function (window, document, undefined) {
   var texts = []
-  window.requestAnimationFrame = (function () {
-    return (
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function (callback) {
-        setTimeout(callback, 1000 / 60)
-      }
-    )
-  })()
   init()
   function init() {
     attachEvent()

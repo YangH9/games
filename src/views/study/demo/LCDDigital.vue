@@ -39,16 +39,19 @@ const numList = {
 
 const time = ref(new Date())
 
-let timer = null
+let timer = ''
+
+const running = () => {
+  time.value = new Date()
+  timer = requestAnimationFrame(running)
+}
+
 onMounted(() => {
-  timer = setInterval(() => {
-    time.value = new Date()
-  }, 1000)
+  timer = requestAnimationFrame(running)
 })
 
 onBeforeUnmount(() => {
-  clearInterval(timer)
-  timer = null
+  cancelAnimationFrame(timer)
 })
 </script>
 

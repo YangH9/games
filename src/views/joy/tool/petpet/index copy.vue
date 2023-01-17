@@ -315,7 +315,6 @@ button:disabled,
 }
 
 .control-range {
-  -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 0.618em;
@@ -332,7 +331,6 @@ button:disabled,
 }
 
 .control-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
   background: #feecba;
   border-radius: 50%;

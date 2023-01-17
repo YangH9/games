@@ -16,19 +16,29 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { onMounted, ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Progress1 from './common/progress1.vue'
 import Progress2 from './common/progress2.vue'
 import Progress3 from './common/progress3.vue'
 
 const progressValue = ref(0)
-const step = 1
+const step = Date.now()
 const steps = 100
 
+let timer = ''
+
+const running = () => {
+  // progressValue.value = (progressValue.value + step) % steps
+  progressValue.value = ~~((Date.now() / steps - step / steps) % steps)
+  timer = requestAnimationFrame(running)
+}
+
 onMounted(() => {
-  setInterval(() => {
-    progressValue.value = (progressValue.value + step) % steps
-  }, 100)
+  timer = requestAnimationFrame(running)
+})
+
+onBeforeUnmount(() => {
+  cancelAnimationFrame(timer)
 })
 </script>
 

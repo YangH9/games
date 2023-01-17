@@ -20,7 +20,6 @@ const canvasConfig = reactive({
   codeRainArr: [],
   cols: 0
 })
-const { requestAnimationFrame } = window
 
 // 初始化
 const init = () => {
@@ -30,7 +29,7 @@ const init = () => {
   canvas.value.width = canvasConfig.width
   canvas.value.height = canvasConfig.height
   canvasConfig.cols = ~~(canvasConfig.width / 14)
-  canvasConfig.content.font = ' 14px microsoft yahei'
+  canvasConfig.content.font = '14px microsoft yahei'
   canvasConfig.codeRainArr = Array(canvasConfig.cols)
     .fill(1)
     .map(() => {

@@ -1,4 +1,5 @@
 import '@/utils/text'
+import '@/utils/skipWord'
 import '@/utils/custom'
 
 /**
