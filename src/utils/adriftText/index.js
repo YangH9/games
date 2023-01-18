@@ -61,13 +61,6 @@ const createEle = (e) => {
   ele.className = 'adriftText'
   ele.innerHTML = randomText()
   document.body.appendChild(ele)
-  ele.style = {
-    left: `${e.clientX + defaultOption.left}px`,
-    top: `${e.clientY + defaultOption.top}px`,
-    transform: `translateX(-50%) scale(${defaultOption.scale},${defaultOption.scale})`,
-    color: randomColor(),
-    opacity: defaultOption.opacity
-  }
   testList.push({
     ele,
     startTime: Date.now(),

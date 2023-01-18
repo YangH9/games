@@ -10,7 +10,7 @@
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
           </a-card>
-          <a-card title="MC链接" class="mb10" :hoverable="true">
+          <a-card title="我的世界" class="mb10" :hoverable="true">
             <template #extra>
               <RouterLink to="/links/MinecraftBookmark">查看更多</RouterLink>
             </template>
@@ -55,23 +55,21 @@ const joyList = [
   {
     title: '工具',
     list: [
+      { title: '设备信息', href: '/joy/tool/deviceInfo' },
       { title: '音乐播放器', href: '/joy/tool/listen' },
       { title: '摸头生成器', href: '/joy/tool/petpet' },
       { title: '灰色头像生成器', href: '/joy/tool/grayhead' },
-      { title: '设备信息', href: '/joy/tool/deviceInfo' }
+      { title: 'CSS拟态生成器', href: '/joy/tool/mimicry' }
     ]
   }
 ]
 
 const mcList = [
-  { title: 'MCbbs', href: 'https://www.mcbbs.net/', favicon: '' },
-  { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: 'images/favicon.ico' },
-  { title: 'MINEbbs', href: 'https://www.minebbs.com/', favicon: 'data/assets/logo/MB1-.png' },
-  { title: 'MCmod', href: 'https://www.curseforge.com/minecraft/modpacks', favicon: '' },
+  { title: 'Minecraft', href: 'https://www.minecraft.net/zh-hans', favicon: 'etc.clientlibs/minecraft/clientlibs/main/resources/favicon.ico' },
   {
     title: 'Minecraft Wiki',
     href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
-    favicon: '//static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4a/Site-favicon.ico/revision/latest'
+    favicon: 'https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4a/Site-favicon.ico/revision/latest'
   }
 ]
 
