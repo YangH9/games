@@ -4,8 +4,8 @@
     <a-card title="加载动画" class="mb10" :hoverable="true">
       <div class="box">
         <img src="@/assets/loading.svg" width="100" />
-        <loading-circle size="100" lineWidth="10" strokeStyle="#359dda"></loading-circle>
-        <Loading></Loading>
+        <my-loading size="100" lineWidth="10" strokeStyle="#359dda"></my-loading>
+        <Loading1></Loading1>
       </div>
     </a-card>
   </div>
@@ -13,7 +13,10 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import Loading from './common/loading1.vue'
+import Loading1 from './common/loading1.vue'
+import { LoadingCircle } from '@/utils/custom/loading'
+
+customElements.define('my-loading', LoadingCircle)
 </script>
 
 <style lang="less" scoped>

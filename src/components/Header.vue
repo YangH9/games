@@ -30,18 +30,18 @@ const click = (data) => {
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: var(--color-background);
+  // background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
+  // background-size: 4px 4px;
+  // backdrop-filter: saturate(50%) blur(4px);
 
   .header {
     width: 100%;
     position: relative;
     margin: 0 auto;
     padding: 0 20px;
-
-    &::after {
-      content: '';
-      display: block;
-      clear: both;
-    }
+    display: flex;
+    justify-content: space-between;
   }
 
   @media (min-width: 1080px) {
@@ -51,38 +51,25 @@ const click = (data) => {
   }
 }
 
-.ant-layout-header {
-  background: var(--color-background);
-  // background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
-  // background-size: 4px 4px;
-  // backdrop-filter: saturate(50%) blur(4px);
-}
-
-.ant-menu-horizontal {
-  border-color: var(--color-background-soft);
-}
-
 .ant-menu {
+  max-width: calc(100% - 120px);
   background: transparent;
+  border-color: var(--color-background-soft);
 
   :deep(.ant-menu-title-content) {
-    background: var(--color-background);
+    // background: var(--color-background);
     color: var(--color-text);
   }
 }
 
 .logo {
-  float: left;
   width: 120px;
+  min-width: 120px;
   height: 31px;
   margin: 16px 24px 16px 0;
   background: var(--color-background-mute);
   color: var(--color-text);
   line-height: 32px;
   text-align: center;
-
-  & ~ ul {
-    float: right;
-  }
 }
 </style>

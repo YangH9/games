@@ -12,7 +12,14 @@ export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   const config = {
     plugins: [
-      vue(),
+      vue({
+        template: {
+          compilerOptions: {
+            // 将所有带短横线的标签名都视为自定义元素
+            isCustomElement: (tag) => tag.startsWith('my-')
+          }
+        }
+      }),
       Components({ resolvers: [AntDesignVueResolver()] }),
       createHtmlPlugin({ minify: true, inject: { data: { title: env.VITE_TITLE } } }),
       viteCompression({ threshold: 1024 * 1024 })

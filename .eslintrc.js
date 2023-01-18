@@ -33,7 +33,7 @@ module.exports = {
     'no-ex-assign': 'error', // 禁止对 catch 子句的参数重新赋值
     'no-extra-boolean-cast': 'error', // 禁止不必要的布尔转换
     'no-extra-parens': 'off', // 禁止不必要的括号
-    'no-extra-semi': 'off', // 禁止不必要的分号
+    'no-extra-semi': 'error', // 禁止不必要的分号
     'no-func-assign': 'error', // 禁止对 function 声明重新赋值
     'no-inner-declarations': 'error', // 禁止在嵌套的块中出现变量声明或 function 声明
     'no-invalid-regexp': 'error', // 禁止 RegExp 构造函数中存在无效的正则表达式字符串
@@ -176,7 +176,7 @@ module.exports = {
     'max-lines-per-function': 'off', // 强制函数最大代码行数
     'max-nested-callbacks': 'error', // 强制回调函数最大嵌套深度
     'max-params': 'error', // 强制函数定义中最多允许的参数数量
-    'max-statements': 'error', // 强制函数块最多允许的的语句数量
+    'max-statements': 'off', // 强制函数块最多允许的的语句数量
     'max-statements-per-line': 'error', // 强制每一行中所允许的最大语句数量
     'multiline-comment-style': 'off', // 强制对多行注释使用特定风格
     'multiline-ternary': ['error', 'always-multiline'], // 要求或禁止在三元操作数中间换行

@@ -1,6 +1,4 @@
-import '@/utils/text'
-import '@/utils/skipWord'
-import '@/utils/custom'
+import '@/utils/adriftText'
 
 /**
  * 时间转换
