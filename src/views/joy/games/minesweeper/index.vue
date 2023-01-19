@@ -13,6 +13,6 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 
 <style lang="less" scoped>
 .ant-layout {
-  padding: 0 24px 24px;
+  padding: 0px 20px 20px;
 }
 </style>

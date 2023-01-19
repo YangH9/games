@@ -1,5 +1,5 @@
 <template>
-  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="CSS动画时钟">
+  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="CSS动画时钟">
     <h2>当前时间（js初始化时间）：</h2>
     <div class="time">
       <span class="hour" :style="{ '--dh': h + m / 60 + s / 3600 }"></span>

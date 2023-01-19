@@ -1,5 +1,5 @@
 <template>
-  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="按钮特效">
+  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="按钮特效">
     <!-- demo01 -->
     <div class="button demo01">demo01</div>
     <!-- demo02 -->

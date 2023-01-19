@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="CSS玻璃拟物化风格生成器" :hoverable="true">
+    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="CSS玻璃拟物化风格生成器" :hoverable="true">
       <div class="preview">
         <div class="box"></div>
       </div>
@@ -56,7 +56,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
   overflow-y: auto;
   padding: 0;
   .col {
-    padding: 24px;
+    padding: 20px;
   }
   .preview {
     height: 300px;

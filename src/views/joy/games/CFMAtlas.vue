@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" :hoverable="true">
+    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">
           <h3>穿越火线手游武器图鉴</h3>

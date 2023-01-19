@@ -1,5 +1,5 @@
 <template>
-  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="边框特效">
+  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="边框特效">
     <div class="box">
       <div class="div solid transparent radius">内容</div>
       <div class="div dashed transparent radius">内容</div>

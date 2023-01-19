@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 22, dom: '.ant-card-body' }" title="代码雨" class="mb10" :hoverable="true">
+    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="代码雨" :hoverable="true">
       <canvas ref="canvas">你的浏览器不支持</canvas>
     </a-card>
   </div>

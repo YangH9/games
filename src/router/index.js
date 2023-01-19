@@ -13,7 +13,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   routerLoading().show()
   if (devRouter.includes(to.path)) {
-    message.info('开发中')
+    message.info('开发中，暂未开放！')
     if (import.meta.env.PROD) {
       next(from.path)
     } else {

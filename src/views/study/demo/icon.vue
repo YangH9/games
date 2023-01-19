@@ -1,5 +1,5 @@
 <template>
-  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="纯CSS3ICON">
+  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="纯CSS3ICON">
     <div class="stage">
       <span><i class="icon-home"></i></span>
       <span><i class="icon-mail"></i></span>

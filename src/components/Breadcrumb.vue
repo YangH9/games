@@ -48,6 +48,12 @@ const menuList = computed(() => $route.matched)
   }
 }
 
+@media (max-width: 720px) {
+  .ant-breadcrumb {
+    padding: 0 20px;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .ant-breadcrumb {
     a,

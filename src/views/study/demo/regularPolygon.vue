@@ -1,5 +1,5 @@
 <template>
-  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" :style="{ '--width': `${width}px` }">
+  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" :style="{ '--width': `${width}px` }">
     <template #title>
       <a-row justify="center">
         <a-col :span="6">

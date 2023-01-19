@@ -1,5 +1,5 @@
 <template>
-  <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="CSS液晶数字字体">
+  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="CSS液晶数字字体">
     <div class="clock">
       <div class="digits">
         <div v-for="i of 19" :key="i" :class="numList[Dayjs(time).format('YYYY/MM/DD HH:mm:ss')[i - 1]]">

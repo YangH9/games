@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" title="CSS新拟态设计风格生成器" :hoverable="true">
+    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="CSS新拟态设计风格生成器" :hoverable="true">
       <div class="preview">
         <div class="box"></div>
       </div>
@@ -73,9 +73,11 @@
           </a-form>
         </a-col>
         <a-col class="col" :span="12">
-          border-radius: 50px;<br />
-          background: #e0e0e0;<br />
-          box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+          <div class="code-box">
+            border-radius: 50px;<br />
+            background: #e0e0e0;<br />
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+          </div>
         </a-col>
       </a-row>
     </a-card>
@@ -95,7 +97,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
   padding: 0;
 
   .col {
-    padding: 24px;
+    padding: 20px;
   }
 
   .preview {
@@ -125,6 +127,11 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 
   .ant-form-item:last-child {
     margin-bottom: 0;
+  }
+  .code-box {
+    padding: 10px;
+    color: #fff;
+    background: #000;
   }
 }
 </style>
