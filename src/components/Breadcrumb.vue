@@ -39,6 +39,15 @@ const menuList = computed(() => $route.matched)
 </script>
 
 <style lang="less" scoped>
+.ant-dropdown-menu:deep(.ant-dropdown-menu-item) {
+  padding: 0;
+
+  a {
+    display: block;
+    padding: 5px 12px;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .ant-breadcrumb {
     a,

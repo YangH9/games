@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" class="card" :hoverable="true">
+    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">
           <div>
@@ -137,48 +137,46 @@ watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
   display: none;
 }
 
-.card {
-  & > :deep(.ant-card-body) {
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 6px 0px 0px 6px;
+.ant-card:deep(.ant-card-body) {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 6px 0px 0px 6px;
 
-    .ant-card-head {
-      padding-left: 10px;
-      padding-right: 10px;
-      min-height: auto;
+  .ant-card-head {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: auto;
 
-      .ant-card-head-title,
-      .ant-card-extra {
-        padding: 8px;
-        max-width: 200px;
-      }
+    .ant-card-head-title,
+    .ant-card-extra {
+      padding: 8px;
+      max-width: 200px;
     }
+  }
 
-    .ant-card-body {
-      padding: 0;
-    }
+  .ant-card-body {
+    padding: 0;
+  }
 
-    .seat {
-      zoom: 0;
-      visibility: hidden;
-      height: 0;
-      overflow: hidden;
-    }
+  .seat {
+    zoom: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+  }
 
+  .image {
+    width: 330px;
+    height: 206px;
+    max-width: 100%;
+    display: inline-block;
+    object-fit: contain;
+  }
+
+  .direction122217 {
     .image {
-      width: 330px;
-      height: 206px;
-      max-width: 100%;
-      display: inline-block;
-      object-fit: contain;
-    }
-
-    .direction122217 {
-      .image {
-        width: 300px;
-        height: 340px;
-      }
+      width: 300px;
+      height: 340px;
     }
   }
 }

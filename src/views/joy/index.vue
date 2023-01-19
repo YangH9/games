@@ -49,17 +49,21 @@ const joyList = [
       { title: '飞车手游图鉴', href: '/joy/games/speedm/atlas' },
       { title: '穿越火线手游壁纸', href: '/joy/games/cfm' },
       { title: '穿越火线手游图鉴', href: '/joy/games/cfm/atlas' },
-      { title: '飞车端游壁纸', href: '/joy/games/speed' }
+      { title: '飞车端游壁纸', href: '/joy/games/speed' },
+      { title: '王者荣耀壁纸', href: '/joy/games/pvp' },
+      { title: '王者荣耀图鉴', href: '/joy/games/pvp/atlas' }
     ]
   },
   {
     title: '工具',
     list: [
       { title: '设备信息', href: '/joy/tool/deviceInfo' },
+      { title: '日历', href: '/joy/tool/calendar' },
       { title: '音乐播放器', href: '/joy/tool/listen' },
       { title: '摸头生成器', href: '/joy/tool/petpet' },
       { title: '灰色头像生成器', href: '/joy/tool/grayhead' },
-      { title: 'CSS拟态生成器', href: '/joy/tool/mimicry' }
+      { title: 'CSS新拟态生成器', href: '/joy/tool/skeuomorphism' },
+      { title: 'CSS玻璃拟物化生成器', href: '/joy/tool/glassmorphism' }
     ]
   }
 ]

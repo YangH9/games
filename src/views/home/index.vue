@@ -22,7 +22,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { getCurrentInstance } from 'vue'
 
 const { GetEnv } = getCurrentInstance().proxy
-// console.log(env)
+
 const mode = GetEnv.MODE
 const title = GetEnv.VITE_TITLE
 </script>

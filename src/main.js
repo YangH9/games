@@ -2,13 +2,12 @@ import App from '@/App.vue'
 import router from '@/router'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-// import Antd from 'ant-design-vue'
 import dayjs from 'dayjs'
 import jsonp from '@/http/jsonp'
 import { formatDate } from '@/utils'
 import directive from '@/utils/directive'
 
-// import 'ant-design-vue/dist/antd.css'
+import 'ant-design-vue/dist/antd.css'
 
 // 默哀的全局灰色
 // import "@/assets/gray.less"
@@ -25,6 +24,5 @@ Vue.config.globalProperties.Jsonp = jsonp
 Vue.use(createPinia())
 Vue.use(router)
 Vue.use(directive)
-// Vue.use(Antd)
 
 Vue.mount('#app')

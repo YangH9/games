@@ -4,33 +4,10 @@
     <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
         <div class="ant-row ant-row-space-between">
-          <h3>穿越火线手游壁纸</h3>
-          <h6>数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
+          <h3>王者荣耀壁纸</h3>
         </div>
       </template>
-      <a-row justify="space-around" :gutter="[0, 10]">
-        <a-col v-for="(item, index) of dataList" :key="index">
-          <a-card :hoverable="true">
-            <template #title>
-              {{ item.sTitle }}
-            </template>
-            <template #extra>{{ item.sCoverList[0].size }}</template>
-            <img
-              v-lazy="item.sIMG"
-              class="image"
-              src="@/assets/default.png"
-              :alt="item.sAuthor"
-              :title="`${item.sTitle}\n${item.sIdxTime}`"
-              @click="previewUrl = item.sIMG"
-            />
-          </a-card>
-        </a-col>
-        <a-col v-for="item of 3" :key="item" class="seat">
-          <a-card>
-            <div class="image"></div>
-          </a-card>
-        </a-col>
-      </a-row>
+      <a-row justify="space-around" :gutter="[0, 10]"></a-row>
     </a-card>
     <a-image
       :preview="{
@@ -47,9 +24,6 @@
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref } from 'vue'
-import { dataList } from '@/utils/tencentGame/cfm.json'
-
-// https://cfm.qq.com/cp/a20200225s2/index.html
 
 const previewUrl = ref('')
 </script>

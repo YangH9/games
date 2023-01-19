@@ -46,7 +46,7 @@
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { CheckCircleTwoTone, ExclamationCircleTwoTone } from '@ant-design/icons-vue'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 const {
   appName = '',
@@ -57,19 +57,27 @@ const {
   language = '',
   languages = [],
   maxTouchPoints = '',
-  connection = {},
+  // connection = {},
   pdfViewerEnabled = '',
   deviceMemory = '',
   userAgentData = {},
-  wakeLock = {},
-  storage = '',
-  geolocation = '',
-  mediaSession = ''
+  wakeLock = {}
+  // ,storage = '',
+  // geolocation = '',
+  // mediaSession = ''
 } = window.navigator
 
 const onLine = ref(window.navigator.onLine)
 
-console.log(storage, geolocation, mediaSession)
+const connec = window.navigator.connection
+const connection = reactive({
+  effectiveType: connec.effectiveType,
+  downlink: connec.downlink,
+  rtt: connec.rtt,
+  saveData: connec.saveData
+})
+
+// console.log(storage, geolocation, mediaSession)
 
 wakeLock?.request('screen').then((lock) => {
   setTimeout(() => lock.release(), 10 * 60 * 1000)
@@ -77,6 +85,11 @@ wakeLock?.request('screen').then((lock) => {
 
 const lineChange = () => {
   onLine.value = window.navigator.onLine
+  const connect = window.navigator.connection
+  connection.effectiveType = connect.effectiveType
+  connection.downlink = connect.downlink
+  connection.rtt = connect.rtt
+  connection.saveData = connect.saveData
 }
 
 window.addEventListener('online', lineChange)

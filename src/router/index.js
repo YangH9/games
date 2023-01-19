@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { routerLoading } from '@/stores'
+import { message } from 'ant-design-vue'
 import routes from '@/router/routeList'
-// import { message } from 'ant-design-vue'
+import devRouter from '@/router/devRouter'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
@@ -11,11 +12,16 @@ const router = createRouter({
 // 当路由跳转开始前
 router.beforeEach((to, from, next) => {
   routerLoading().show()
-  // 开发中拦截
-  // setTimeout(() => {
-  //   message.success('aaa')
-  // }, 2000)
-  next()
+  if (devRouter.includes(to.path)) {
+    message.info('开发中')
+    if (import.meta.env.PROD) {
+      next(from.path)
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 // 当路由跳转结束后
@@ -27,14 +33,18 @@ router.afterEach((to) => {
   document.title = Title
 
   const handleVisiable = (e) => {
-    console.log(e.target.title, e.target.visibilityState)
+    // console.log(e.target.title, e.target.visibilityState)
     if (e.target.visibilityState === 'visible') {
       document.title = '逗你的~'
       setTimeout(() => {
-        document.title = Title
+        if (e.target.visibilityState === 'visible') {
+          document.title = Title
+        } else if (e.target.visibilityState === 'hidden') {
+          document.title = `(你有一条新消息)${Title}`
+        }
       }, 1000)
     } else if (e.target.visibilityState === 'hidden') {
-      document.title = '你有一条新消息'
+      document.title = `(你有一条新消息)${Title}`
     }
   }
 

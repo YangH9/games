@@ -25,7 +25,6 @@ const { Jsonp } = getCurrentInstance().proxy
 const dataList = ref([])
 
 Jsonp('http://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldomain.js', () => {
-  console.log(window.Milo_Monitor_All_Domain)
   dataList.value = window.Milo_Monitor_All_Domain
 })
 </script>

@@ -247,6 +247,22 @@ export default [
             component: () => import('@/views/joy/games/CFMAtlas.vue')
           },
           {
+            path: '/joy/games/pvp',
+            name: 'pvp',
+            meta: {
+              title: '王者荣耀壁纸'
+            },
+            component: () => import('@/views/joy/games/pvp.vue')
+          },
+          {
+            path: '/joy/games/pvp/atlas',
+            name: 'pvpatlas',
+            meta: {
+              title: '王者荣耀图鉴'
+            },
+            component: () => import('@/views/joy/games/pvpAtlas.vue')
+          },
+          {
             path: '/joy/games/minesweeper',
             name: 'minesweeper',
             meta: {
@@ -288,7 +304,15 @@ export default [
             meta: {
               title: '设备信息'
             },
-            component: () => import('@/views/joy/tool/DeviceInfo.vue')
+            component: () => import('@/views/joy/tool/deviceInfo.vue')
+          },
+          {
+            path: '/joy/tool/calendar',
+            name: 'calendar',
+            meta: {
+              title: '日历'
+            },
+            component: () => import('@/views/joy/tool/calendar.vue')
           },
           {
             path: '/joy/tool/listen',
@@ -315,12 +339,20 @@ export default [
             component: () => import('@/views/joy/tool/GrayHead.vue')
           },
           {
-            path: '/joy/tool/mimicry',
-            name: 'mimicry',
+            path: '/joy/tool/skeuomorphism',
+            name: 'Skeuomorphism',
             meta: {
-              title: 'CSS拟态生成器'
+              title: 'CSS新拟态设计风格生成器'
             },
-            component: () => import('@/views/joy/tool/mimicry.vue')
+            component: () => import('@/views/joy/tool/Skeuomorphism.vue')
+          },
+          {
+            path: '/joy/tool/glassmorphism',
+            name: 'Glassmorphism',
+            meta: {
+              title: 'CSS玻璃拟物化风格生成器'
+            },
+            component: () => import('@/views/joy/tool/Glassmorphism.vue')
           }
         ]
       }

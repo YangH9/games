@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" class="card" :hoverable="true" title="飞车端游壁纸">
+    <a-card v-calcHeight="{ height: 12, dom: '.ant-card-body' }" :hoverable="true" title="飞车端游壁纸">
       <a-row justify="space-around" :gutter="[0, 10]">
         <a-col v-for="(item, index) of dataList" :key="index">
           <a-card :title="item.dtInputDT">
@@ -78,41 +78,39 @@ Jsonp(baseUrl)
   display: none;
 }
 
-.card {
-  & > :deep(.ant-card-body) {
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 6px 0px 0px 6px;
+.ant-card:deep(.ant-card-body) {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 6px 0px 0px 6px;
 
-    .ant-card-head {
-      padding-left: 10px;
-      padding-right: 10px;
-      min-height: auto;
+  .ant-card-head {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: auto;
 
-      .ant-card-head-title {
-        padding: 6px;
-        max-width: 200px;
-      }
+    .ant-card-head-title {
+      padding: 6px;
+      max-width: 200px;
     }
+  }
 
-    .ant-card-body {
-      padding: 0;
-    }
+  .ant-card-body {
+    padding: 0;
+  }
 
-    .seat {
-      zoom: 0;
-      visibility: hidden;
-      height: 0;
-      overflow: hidden;
-    }
+  .seat {
+    zoom: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+  }
 
-    .image {
-      width: 246px;
-      height: 196px;
-      max-width: 100%;
-      display: inline-block;
-      object-fit: contain;
-    }
+  .image {
+    width: 246px;
+    height: 196px;
+    max-width: 100%;
+    display: inline-block;
+    object-fit: contain;
   }
 }
 </style>
