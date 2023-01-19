@@ -32,6 +32,8 @@ const resoutcesList = [
   {
     title: '友情链接',
     list: [
+      { title: '旧站点1', href: 'https://hanhais.com/', favicon: '' },
+      { title: '旧站点2', href: 'https://yangh9.github.io/y/', favicon: '' },
       { title: 'RGB', href: 'https://rgb39.top/', favicon: '' },
       { title: '小天的中国象棋', href: 'https://www.aixt.vip/', favicon: '' },
       { title: '小天的视频解析器', href: 'https://www.aixt.vip/video/', favicon: '' }
@@ -68,17 +70,6 @@ const resoutcesList = [
     ]
   },
   {
-    title: '网站收录',
-    list: [
-      { title: '百度资源搜索平台', href: 'https://ziyuan.baidu.com/', favicon: '' },
-      { title: '必应网站管理员工具', href: 'https://www.bing.com/toolbox/webmaster/', favicon: '' },
-      { title: '360站长平台', href: 'https://zhanzhang.so.com/', favicon: '' },
-      { title: '谷歌收录', href: 'https://www.google.cn/intl/zh-CN/add_url.html', favicon: '' },
-      { title: '搜狗站长平台', href: 'https://zhanzhang.sogou.com/', favicon: '//dlweb.sogoucdn.com/translate/favicon.ico' },
-      { title: '神马站长平台', href: 'https://zhanzhang.sm.cn/', favicon: '//sm01.alicdn.com/L1/272/1990/favicon/favicon.ico' }
-    ]
-  },
-  {
     title: '名站导航',
     list: [
       { title: '百度', href: 'https://www.baidu.com/', favicon: '' },
@@ -92,39 +83,19 @@ const resoutcesList = [
       { title: 'MDN', href: 'https://developer.mozilla.org/zh-CN/', favicon: '' },
       { title: 'w3school', href: 'https://www.w3school.com.cn/', favicon: 'ui2019/logo-16-red.png' },
       { title: '菜鸟教程', href: 'https://www.runoob.com/', favicon: '' },
-      { title: 'ESLint', href: 'https://zh-hans.eslint.org/', favicon: '' },
       { title: 'VSCode', href: 'https://code.visualstudio.com/', favicon: '' },
       { title: 'URDRA极光', href: 'https://www.jiguang.cn/', favicon: '' }
     ]
   },
   {
-    title: '腾讯',
-    extra: '/links/tencentLinks',
+    title: '开发工具',
     list: [
-      { title: 'QQ', href: 'https://im.qq.com/', favicon: '' },
-      { title: '微信', href: 'https://weixin.qq.com/', favicon: '//res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico' },
-      { title: 'TIM', href: 'https://office.qq.com/', favicon: '' },
-      { title: 'QQ空间', href: 'https://qzone.qq.com/', favicon: '' },
-      { title: 'QQ邮箱', href: 'https://mail.qq.com/', favicon: '' },
-      { title: 'QQ音乐', href: 'https://y.qq.com/', favicon: '' },
-      { title: '腾讯视频', href: 'https://v.qq.com/', favicon: '' },
-      { title: '腾讯游戏', href: 'https://game.qq.com/', favicon: '' },
-      { title: '腾讯扣叮', href: 'https://coding.qq.com/', favicon: '' },
-      { title: '腾讯文档', href: 'https://docs.qq.com/', favicon: '//docs.gtimg.com/desktop/favicon2.ico' },
-      { title: 'ProWork', href: 'https://prowork.qq.com/', favicon: '' },
-      { title: '腾讯问卷', href: 'https://wj.qq.com/', favicon: '' },
-      { title: '腾讯兔小巢', href: 'https://txc.qq.com/', favicon: '' },
-      { title: 'CoDesign', href: 'https://codesign.qq.com/', favicon: '' },
-      { title: 'AIDesign', href: 'https://ailogo.qq.com/', favicon: '' },
-      { title: 'TDesign', href: 'https://tdesign.tencent.com/', favicon: '' },
-      { title: '腾讯工蜂', href: 'https://code.tencent.com/', favicon: '//assets.code.tencent.com/official/p/1667911693366/favicon.ico' },
-      {
-        title: '腾讯GCLOUD',
-        href: 'https://gcloud.tencent.com/',
-        favicon: '//gcloudweb-1256818929.cos.ap-shanghai.myqcloud.com/static/images/OfficialSite_Tencent/ico-img/gcloud-ico.ico'
-      },
-      { title: '蓝鲸智云', href: 'https://bk.tencent.com/', favicon: 'static/img/favicon.ico' },
-      { title: '腾讯开源', href: 'https://opensource.tencent.com/', favicon: '' }
+      { title: 'vscode', href: 'https://code.visualstudio.com/', favicon: '' },
+      { title: 'vscode在线版', href: 'https://vscode.dev/', favicon: '/static/stable/favicon.ico' },
+      { title: 'WebStorm', href: 'https://www.jetbrains.com/webstorm/', favicon: '' },
+      { title: 'Sublime Text', href: 'https://www.sublimetext.com/', favicon: '' },
+      { title: 'EditPlus', href: 'https://www.editplus.com/', favicon: '' },
+      { title: 'HBuilderX', href: 'https://dcloud.io/hbuilderx.html', favicon: '' }
     ]
   },
   {
@@ -332,6 +303,36 @@ const resoutcesList = [
     ]
   },
   {
+    title: '腾讯',
+    extra: '/links/tencentLinks',
+    list: [
+      { title: 'QQ', href: 'https://im.qq.com/', favicon: '' },
+      { title: '微信', href: 'https://weixin.qq.com/', favicon: '//res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico' },
+      { title: 'TIM', href: 'https://office.qq.com/', favicon: '' },
+      { title: 'QQ空间', href: 'https://qzone.qq.com/', favicon: '' },
+      { title: 'QQ邮箱', href: 'https://mail.qq.com/', favicon: '' },
+      { title: 'QQ音乐', href: 'https://y.qq.com/', favicon: '' },
+      { title: '腾讯视频', href: 'https://v.qq.com/', favicon: '' },
+      { title: '腾讯游戏', href: 'https://game.qq.com/', favicon: '' },
+      { title: '腾讯扣叮', href: 'https://coding.qq.com/', favicon: '' },
+      { title: '腾讯文档', href: 'https://docs.qq.com/', favicon: '//docs.gtimg.com/desktop/favicon2.ico' },
+      { title: 'ProWork', href: 'https://prowork.qq.com/', favicon: '' },
+      { title: '腾讯问卷', href: 'https://wj.qq.com/', favicon: '' },
+      { title: '腾讯兔小巢', href: 'https://txc.qq.com/', favicon: '' },
+      { title: 'CoDesign', href: 'https://codesign.qq.com/', favicon: '' },
+      { title: 'AIDesign', href: 'https://ailogo.qq.com/', favicon: '' },
+      { title: 'TDesign', href: 'https://tdesign.tencent.com/', favicon: '' },
+      { title: '腾讯工蜂', href: 'https://code.tencent.com/', favicon: '//assets.code.tencent.com/official/p/1667911693366/favicon.ico' },
+      {
+        title: '腾讯GCLOUD',
+        href: 'https://gcloud.tencent.com/',
+        favicon: '//gcloudweb-1256818929.cos.ap-shanghai.myqcloud.com/static/images/OfficialSite_Tencent/ico-img/gcloud-ico.ico'
+      },
+      { title: '蓝鲸智云', href: 'https://bk.tencent.com/', favicon: 'static/img/favicon.ico' },
+      { title: '腾讯开源', href: 'https://opensource.tencent.com/', favicon: '' }
+    ]
+  },
+  {
     title: '我的世界',
     extra: '/links/MinecraftBookmark',
     list: [
@@ -341,6 +342,17 @@ const resoutcesList = [
         href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
         favicon: '//static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4a/Site-favicon.ico/revision/latest'
       }
+    ]
+  },
+  {
+    title: '网站收录平台',
+    list: [
+      { title: '百度资源搜索平台', href: 'https://ziyuan.baidu.com/', favicon: '' },
+      { title: '必应网站管理员工具', href: 'https://www.bing.com/toolbox/webmaster/', favicon: '' },
+      { title: '360站长平台', href: 'https://zhanzhang.so.com/', favicon: '' },
+      { title: '谷歌收录', href: 'https://www.google.cn/intl/zh-CN/add_url.html', favicon: '' },
+      { title: '搜狗站长平台', href: 'https://zhanzhang.sogou.com/', favicon: '//dlweb.sogoucdn.com/translate/favicon.ico' },
+      { title: '神马站长平台', href: 'https://zhanzhang.sm.cn/', favicon: '//sm01.alicdn.com/L1/272/1990/favicon/favicon.ico' }
     ]
   }
 ]

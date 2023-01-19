@@ -339,6 +339,22 @@ export default [
             component: () => import('@/views/joy/tool/GrayHead.vue')
           },
           {
+            path: '/joy/tool/avatarEditor',
+            name: 'avatarEditor',
+            meta: {
+              title: '国庆红旗头像生成器'
+            },
+            component: () => import('@/views/joy/tool/avatarEditor.vue')
+          },
+          {
+            path: '/joy/tool/qrcode',
+            name: 'qrcode',
+            meta: {
+              title: '二维码生成器'
+            },
+            component: () => import('@/views/joy/tool/qrcode.vue')
+          },
+          {
             path: '/joy/tool/skeuomorphism',
             name: 'Skeuomorphism',
             meta: {
