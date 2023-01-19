@@ -1,17 +1,12 @@
-# yang
+# YangH9.github.io
 
-## 网站迁移改版仓库
+[![](https://img.shields.io/badge/Vue.js-3.2-4FC08D?logo=vue.js&logoColor=4FC08D)](https://vuejs.org/)
+[![](https://img.shields.io/badge/Vite-3.0-a750fe?logo=Vite&logoColor=a750fe)](https://cn.vitejs.dev/)
+[![](https://img.shields.io/badge/Pinia-2.0-ffd34f?logo=Pinia&logoColor=ffd34f)](https://pinia.vuejs.org/zh/)
 
-```sh
-# 安装
-npm install
-# 运行
-npm start
-# 格式化
-npm run lint
-# 打包
-npm run build
-```
+[![](https://github-readme-stats.vercel.app/api?username=yangh9&title_color=ff69b4&text_color=718096&bg_color=ffffff00&icon_color=87ceeb&show_icons=true)](https://github.com/yangh9)
+
+[![](https://github-readme-stats.vercel.app/api/top-langs/?username=yangh9&title_color=ff69b4&text_color=718096&icon_color=87ceeb&bg_color=ffffff00)](https://github.com/yangh9)
 
 [Vue](https://cn.vuejs.org/)、
 [Vite](https://cn.vitejs.dev/)、
