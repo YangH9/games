@@ -2,7 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import { routerLoading } from '@/stores'
 import { message } from 'ant-design-vue'
 import routes from '@/router/routeList'
-import devRouter from '@/router/devRouter'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
@@ -12,7 +11,7 @@ const router = createRouter({
 // 当路由跳转开始前
 router.beforeEach((to, from, next) => {
   routerLoading().show()
-  if (devRouter.includes(to.path)) {
+  if (to.meta.dev) {
     message.info('开发中，敬请期待！')
     if (import.meta.env.PROD) {
       next(from.path)

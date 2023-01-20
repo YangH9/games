@@ -134,6 +134,7 @@ export default [
             path: '/study/note/basic',
             name: 'basic',
             meta: {
+              dev: true,
               title: '入门级基础知识'
             },
             component: () => import('@/views/study/note/basic.vue')
@@ -142,6 +143,7 @@ export default [
             path: '/study/note/html',
             name: 'html',
             meta: {
+              dev: true,
               title: 'HTML相关'
             },
             component: () => import('@/views/study/note/html.vue')
@@ -150,6 +152,7 @@ export default [
             path: '/study/note/css',
             name: 'css',
             meta: {
+              dev: true,
               title: 'CSS相关'
             },
             component: () => import('@/views/study/note/css.vue')
@@ -158,6 +161,7 @@ export default [
             path: '/study/note/ecmascript',
             name: 'ecmascript',
             meta: {
+              dev: true,
               title: 'ECMAScript'
             },
             component: () => import('@/views/study/note/ECMAScript.vue')
@@ -166,6 +170,7 @@ export default [
             path: '/study/note/regular',
             name: 'regular',
             meta: {
+              dev: true,
               title: '正则基础知识'
             },
             component: () => import('@/views/study/note/regular.vue')
@@ -174,6 +179,7 @@ export default [
             path: '/study/note/git',
             name: 'git',
             meta: {
+              dev: true,
               title: 'git常用命令'
             },
             component: () => import('@/views/study/note/git.vue')
@@ -182,6 +188,7 @@ export default [
             path: '/study/note/npm',
             name: 'npm',
             meta: {
+              dev: true,
               title: 'npm常用命令'
             },
             component: () => import('@/views/study/note/npm.vue')
@@ -190,9 +197,19 @@ export default [
             path: '/study/note/command',
             name: 'command',
             meta: {
+              dev: true,
               title: '计算机常用命令快捷键'
             },
             component: () => import('@/views/study/note/command.vue')
+          },
+          {
+            path: '/study/note/function',
+            name: 'function',
+            meta: {
+              dev: true,
+              title: 'js常用方法封装'
+            },
+            component: () => import('@/views/study/note/function.vue')
           }
         ]
       },
@@ -324,6 +341,7 @@ export default [
             path: '/joy/games/pvp',
             name: 'pvp',
             meta: {
+              dev: true,
               title: '王者荣耀壁纸'
             },
             component: () => import('@/views/joy/games/pvp.vue')
@@ -332,6 +350,7 @@ export default [
             path: '/joy/games/pvp/atlas',
             name: 'pvpatlas',
             meta: {
+              dev: true,
               title: '王者荣耀图鉴'
             },
             component: () => import('@/views/joy/games/pvpAtlas.vue')
@@ -340,6 +359,7 @@ export default [
             path: '/joy/games/minesweeper',
             name: 'minesweeper',
             meta: {
+              dev: true,
               title: '扫雷'
             },
             component: () => import('@/views/joy/games/minesweeper/index.vue'),
@@ -384,6 +404,7 @@ export default [
             path: '/joy/tool/calendar',
             name: 'calendar',
             meta: {
+              dev: true,
               title: '日历'
             },
             component: () => import('@/views/joy/tool/calendar.vue')
@@ -392,6 +413,7 @@ export default [
             path: '/joy/tool/listen',
             name: 'listen',
             meta: {
+              dev: true,
               title: '音乐播放器'
             },
             component: () => import('@/views/joy/tool/listen/index.vue')
@@ -408,6 +430,7 @@ export default [
             path: '/joy/tool/grayhead',
             name: 'grayhead',
             meta: {
+              dev: true,
               title: '灰色头像生成器'
             },
             component: () => import('@/views/joy/tool/GrayHead.vue')
@@ -416,6 +439,7 @@ export default [
             path: '/joy/tool/avatarEditor',
             name: 'avatarEditor',
             meta: {
+              dev: true,
               title: '国庆红旗头像生成器'
             },
             component: () => import('@/views/joy/tool/avatarEditor.vue')
@@ -424,6 +448,7 @@ export default [
             path: '/joy/tool/qrcode',
             name: 'qrcode',
             meta: {
+              dev: true,
               title: '二维码生成器'
             },
             component: () => import('@/views/joy/tool/qrcode.vue')
@@ -432,6 +457,7 @@ export default [
             path: '/joy/tool/skeuomorphism',
             name: 'Skeuomorphism',
             meta: {
+              dev: true,
               title: 'CSS新拟态设计风格生成器'
             },
             component: () => import('@/views/joy/tool/Skeuomorphism.vue')
@@ -440,9 +466,29 @@ export default [
             path: '/joy/tool/glassmorphism',
             name: 'Glassmorphism',
             meta: {
+              dev: true,
               title: 'CSS玻璃拟物化风格生成器'
             },
             component: () => import('@/views/joy/tool/Glassmorphism.vue')
+          }
+        ]
+      },
+      {
+        path: '/joy/festival',
+        name: 'festival',
+        meta: {
+          title: '节日欢庆'
+        },
+        redirect: '/joy',
+        children: [
+          {
+            path: '/joy/festival/newyear',
+            name: 'deviceInfo',
+            meta: {
+              dev: true,
+              title: '新年烟花'
+            },
+            component: () => import('@/views/joy/festival/newyear.vue')
           }
         ]
       }

@@ -53,7 +53,8 @@ const studyList = [
       { title: '正则基础知识', href: '/study/note/regular' },
       { title: 'git常用命令', href: '/study/note/git' },
       { title: 'npm常用命令', href: '/study/note/npm' },
-      { title: '计算机常用命令快捷键', href: '/study/note/command' }
+      { title: '计算机常用命令快捷键', href: '/study/note/command' },
+      { title: 'js常用方法封装', href: '/study/note/function' }
     ]
   },
   {

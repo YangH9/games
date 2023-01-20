@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <audio id="audioDom" src="https://download.kstore.space/download/2719/newyear/files/audio.mp3" preload="auto" loop="loop"></audio>
+    <!-- <audio id="audioDom" src="https://download.kstore.space/download/2719/newyear/files/audio.mp3" preload="auto" loop="loop"></audio>
     <div
       id="yhBtn"
       style="
@@ -129,7 +129,7 @@
           <button type="button" class="help-modal__close-btn">关闭</button>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

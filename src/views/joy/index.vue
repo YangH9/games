@@ -67,6 +67,10 @@ const joyList = [
       { title: 'CSS新拟态生成器', href: '/joy/tool/skeuomorphism' },
       { title: 'CSS玻璃拟物化生成器', href: '/joy/tool/glassmorphism' }
     ]
+  },
+  {
+    title: '节日欢庆',
+    list: [{ title: '新年烟花', href: '/joy/festival/newyear' }]
   }
 ]
 
