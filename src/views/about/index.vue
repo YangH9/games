@@ -19,7 +19,7 @@
               {{ runTime() }}
             </a-descriptions-item>
             <a-descriptions-item label="建站时间">{{ Dayjs(startTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
-            <a-descriptions-item label="迁移时间">{{ Dayjs(nowTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
+            <a-descriptions-item label="二次重构时间">{{ Dayjs(1666137600000).format('YYYY年MM月DD日') }}</a-descriptions-item>
           </a-descriptions>
         </a-card>
       </div>

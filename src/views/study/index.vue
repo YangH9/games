@@ -44,6 +44,19 @@ const studyList = [
     ]
   },
   {
+    title: '学习笔记',
+    list: [
+      { title: '入门级基础知识', href: '/study/note/basic' },
+      { title: 'HTML相关', href: '/study/note/html' },
+      { title: 'CSS相关', href: '/study/note/css' },
+      { title: 'ECMAScript', href: '/study/note/ecmascript' },
+      { title: '正则基础知识', href: '/study/note/regular' },
+      { title: 'git常用命令', href: '/study/note/git' },
+      { title: 'npm常用命令', href: '/study/note/npm' },
+      { title: '计算机常用命令快捷键', href: '/study/note/command' }
+    ]
+  },
+  {
     title: '其他',
     list: [
       { title: '加载动画', href: '/study/other/loading' },

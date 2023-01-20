@@ -123,6 +123,80 @@ export default [
         ]
       },
       {
+        path: '/study/note',
+        name: 'note',
+        meta: {
+          title: '学习笔记'
+        },
+        redirect: '/study',
+        children: [
+          {
+            path: '/study/note/basic',
+            name: 'basic',
+            meta: {
+              title: '入门级基础知识'
+            },
+            component: () => import('@/views/study/note/basic.vue')
+          },
+          {
+            path: '/study/note/html',
+            name: 'html',
+            meta: {
+              title: 'HTML相关'
+            },
+            component: () => import('@/views/study/note/html.vue')
+          },
+          {
+            path: '/study/note/css',
+            name: 'css',
+            meta: {
+              title: 'CSS相关'
+            },
+            component: () => import('@/views/study/note/css.vue')
+          },
+          {
+            path: '/study/note/ecmascript',
+            name: 'ecmascript',
+            meta: {
+              title: 'ECMAScript'
+            },
+            component: () => import('@/views/study/note/ECMAScript.vue')
+          },
+          {
+            path: '/study/note/regular',
+            name: 'regular',
+            meta: {
+              title: '正则基础知识'
+            },
+            component: () => import('@/views/study/note/regular.vue')
+          },
+          {
+            path: '/study/note/git',
+            name: 'git',
+            meta: {
+              title: 'git常用命令'
+            },
+            component: () => import('@/views/study/note/git.vue')
+          },
+          {
+            path: '/study/note/npm',
+            name: 'npm',
+            meta: {
+              title: 'npm常用命令'
+            },
+            component: () => import('@/views/study/note/npm.vue')
+          },
+          {
+            path: '/study/note/command',
+            name: 'command',
+            meta: {
+              title: '计算机常用命令快捷键'
+            },
+            component: () => import('@/views/study/note/command.vue')
+          }
+        ]
+      },
+      {
         path: '/study/other',
         name: 'other',
         meta: {

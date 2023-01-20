@@ -29,26 +29,26 @@ router.afterEach((to) => {
   routerLoading().hide()
 
   const Title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
-
-  document.title = Title
-
-  const handleVisiable = (e) => {
-    // console.log(e.target.title, e.target.visibilityState)
-    if (e.target.visibilityState === 'visible') {
+  let handleVisiableInit = ''
+  const handleVisiable = () => {
+    if (document.visibilityState === 'visible') {
       document.title = '逗你的~'
       setTimeout(() => {
-        if (e.target.visibilityState === 'visible') {
-          document.title = Title
-        } else if (e.target.visibilityState === 'hidden') {
-          document.title = `(你有一条新消息)${Title}`
-        }
+        handleVisiableInit()
       }, 1000)
-    } else if (e.target.visibilityState === 'hidden') {
+    } else if (document.visibilityState === 'hidden') {
       document.title = `(你有一条新消息)${Title}`
     }
   }
-
-  document.addEventListener('visibilitychange', handleVisiable)
+  handleVisiableInit = () => {
+    if (document.visibilityState === 'visible') {
+      document.title = Title
+    } else if (document.visibilityState === 'hidden') {
+      document.title = `(你有一条新消息)${Title}`
+    }
+    document.addEventListener('visibilitychange', handleVisiable)
+  }
+  handleVisiableInit()
 })
 
 export default router
