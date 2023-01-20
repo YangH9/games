@@ -119,6 +119,15 @@ export default [
               title: 'CSS动画时钟'
             },
             component: () => import('@/views/study/demo/clock.vue')
+          },
+          {
+            path: '/study/demo/sharingan',
+            name: 'sharingan',
+            meta: {
+              dev: true,
+              title: 'CSS写轮眼'
+            },
+            component: () => import('@/views/study/demo/sharingan.vue')
           }
         ]
       },

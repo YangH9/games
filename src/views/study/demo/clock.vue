@@ -32,10 +32,6 @@ const ms = d.getSeconds()
 </script>
 
 <style lang="less" scoped>
-:deep(.ant-card-body) {
-  --bgcolor: #272e38;
-}
-
 .time {
   display: flex;
   align-items: center;
