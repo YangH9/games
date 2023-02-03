@@ -8,6 +8,7 @@
     "preview": "vite preview --port 4173",
     "lint:eslint": "eslint . --ext .vue,.js,.jsx,.cjs --fix --ignore-path .eslintignore",
     "lint:prettier": "prettier --w . --ignore-path .eslintignore",
+    "pull": "git pull",
     "commit": "git add . & git commit -m [update]",
     "push": "git push",
     "push_pages": "git subtree push --prefix github-pages origin github-pages",
