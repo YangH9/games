@@ -526,6 +526,14 @@ export default [
           title: '我的世界书签收录'
         },
         component: () => import('@/views/links/minecraftBookmark.vue')
+      },
+      {
+        path: '/links/cssTool',
+        name: 'cssTool',
+        meta: {
+          title: 'CSS工具收录'
+        },
+        component: () => import('@/views/links/cssTool.vue')
       }
     ]
   },

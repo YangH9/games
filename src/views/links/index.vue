@@ -189,6 +189,27 @@ const resoutcesList = [
     ]
   },
   {
+    title: 'CSS工具',
+    extra: '/links/cssTool',
+    list: [
+      { title: '新拟态生成器', href: 'https://neumorphism.io/', favicon: '' },
+      { title: '毛玻璃', href: 'https://hype4.academy/tools/glassmorphism-generator', favicon: '' },
+      { title: '发光效果', href: 'https://cssbud.com/css-generator/css-glow-generator/', favicon: '' },
+      { title: '图片滤镜', href: 'https://www.cssfilters.co/', favicon: 'images/icons/favicon-32x32.png' },
+      { title: '动画生成器', href: 'https://animista.net/play', favicon: '' },
+      { title: '三次贝塞尔曲线', href: 'https://cubic-bezier.com/', favicon: '' },
+      { title: '图案背景', href: 'https://heropatterns.com/', favicon: '' },
+      { title: '背景生成', href: 'https://app.haikei.app/', favicon: '' },
+      { title: '渐变颜色', href: 'https://cssgradient.io/', favicon: 'images/favicon-23859487.png' },
+      { title: '颜色编辑器', href: 'https://colormixer.web.app/', favicon: 'favicon@2x.png' },
+      { title: '色系调色板', href: 'https://paletton.com/', favicon: '' },
+      { title: '加载动画', href: 'https://tobiasahlin.com/spinkit/', favicon: 'images/favicon.ico' },
+      { title: '弹性布局可视化', href: 'https://bennettfeely.com/flexplorer/', favicon: 'flexplorer/flexfavicon.png' },
+      { title: '布局制作', href: 'https://layout.bradwoods.io/', favicon: '' },
+      { title: 'CSS历史', href: 'https://css-timeline.vercel.app/', favicon: '' }
+    ]
+  },
+  {
     title: 'ECharts Demo',
     list: [
       { title: 'ECharts', href: 'https://echarts.apache.org/', favicon: '//echarts.apache.org/zh/images/favicon.png' },
