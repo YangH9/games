@@ -110,7 +110,7 @@ const resoutcesList = [
       { title: 'Pinia', href: 'https://pinia.vuejs.org/zh/', favicon: 'logo.svg' },
       { title: 'Vite', href: 'https://cn.vitejs.dev/', favicon: 'logo.svg' },
       { title: 'Vue Devtools', href: 'https://devtools.vuejs.org/', favicon: 'favicon.svg' },
-      { title: 'Axios', href: 'https://axios-http.com/', favicon: 'favicon.svg' },
+      { title: 'Axios', href: 'https://axios-http.com/', favicon: 'assets/favicon.ico' },
       { title: 'DCloud', href: 'https://www.dcloud.io/', favicon: '' },
       {
         title: 'uni-app',
@@ -185,7 +185,7 @@ const resoutcesList = [
       { title: 'SegmentFault 思否', href: 'https://segmentfault.com', favicon: '//static.segmentfault.com/main_site_next/44882992/favicon.ico' },
       { title: '开源中国', href: 'https://www.oschina.net/', favicon: '//static.oschina.net/new-osc/img/favicon.ico' },
       { title: '知乎', href: 'https://www.zhihu.com', favicon: '' },
-      { title: 'Prettier', href: 'https://prettier.io/', favicon: '' }
+      { title: 'Prettier', href: 'https://prettier.io/', favicon: 'icon.png' }
     ]
   },
   {
@@ -227,7 +227,7 @@ const resoutcesList = [
       { title: '码云', href: 'https://gitee.com/', favicon: '' },
       { title: '腾讯云', href: 'https://cloud.tencent.com/', favicon: '' },
       { title: '新浪云', href: 'https://www.sinacloud.com/', favicon: '' },
-      { title: '阿里云', href: 'https://www.aliyun.com/', favicon: '' }
+      { title: '阿里云', href: 'https://www.aliyun.com/', favicon: '//img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico' }
     ]
   },
   {
@@ -357,7 +357,7 @@ const resoutcesList = [
     title: '我的世界',
     extra: '/links/MinecraftBookmark',
     list: [
-      { title: 'Minecraft', href: 'https://www.minecraft.net/zh-hans', favicon: '' },
+      { title: 'Minecraft', href: 'https://www.minecraft.net/zh-hans', favicon: 'etc.clientlibs/minecraft/clientlibs/main/resources/favicon.ico' },
       {
         title: 'Minecraft Wiki',
         href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
