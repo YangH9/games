@@ -27,6 +27,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import RouterViewBox from '@/components/RouterViewBox.vue'
 
 const resoutcesList = [
+  { title: 'Adobe全家桶Win 2023版', href: 'https://pan.baidu.com/s/1l_bidfWwpfeJeS7VtplgIw ', code: 'uqe1' },
   { title: 'Adobe全家桶Win 2021版', href: 'https://pan.baidu.com/s/1kL9FEAzlg-pXlfHdThxfaQ', code: 'qld2' },
   { title: 'Adobe全家桶Mac 2021 m1版', href: 'https://pan.baidu.com/s/13rmigC2zRhzVFSScFMO5mg', code: 'ls50' },
   { title: 'Adobe全家桶Mac 2021 x86版', href: 'https://pan.baidu.com/s/1OLXfsxt4bSoiuncxb-PmXw', code: '1o9w' },
