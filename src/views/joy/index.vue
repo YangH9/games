@@ -21,6 +21,14 @@
               {{ item.title }}
             </a-button>
           </a-card>
+          <a-card title="原神" class="mb10" :hoverable="true">
+            <a-button v-for="(item, index) of ysList" :key="index" size="large" :href="item.href" class="mr10" :title="item.title">
+              <template #icon>
+                <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+              </template>
+              {{ item.title }}
+            </a-button>
+          </a-card>
           <a-card title="QQ群" class="mb10" :hoverable="true">
             <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href" :title="item.title">
               {{ item.title }}
@@ -81,6 +89,15 @@ const mcList = [
     href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
     favicon: 'https://static.wikia.nocookie.net/minecraft_zh_gamepedia/images/4/4a/Site-favicon.ico/revision/latest'
   }
+]
+
+const ysList = [
+  { title: '米哈游', href: 'https://www.mihoyo.com/', favicon: '' },
+  { title: '原神', href: 'https://ys.mihoyo.com/main/', favicon: '' },
+  { title: '米游社', href: 'https://www.miyoushe.com/', favicon: '' },
+  { title: '原神·米游社', href: 'https://www.miyoushe.com/ys/', favicon: '' },
+  { title: '原神·观测枢', href: 'https://bbs.mihoyo.com/ys/strategy/', favicon: '' },
+  { title: '原神·地图', href: 'https://webstatic.mihoyo.com/ys/app/interactive-map', favicon: '' }
 ]
 
 const qqList = [

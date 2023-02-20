@@ -88,6 +88,8 @@
 import Breadcrumb from '@/components/Breadcrumb.vue'
 
 // https://www.fly63.com/tool/neumorphism/
+// https://yeelz.com/tool/softui/#e0e0e0
+// https://neumorphism.io/#e0e0e0
 </script>
 
 <style lang="less" scoped>

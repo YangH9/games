@@ -12,7 +12,7 @@
     "commit": "git add . & git commit -m [update]",
     "push": "git push",
     "push_pages": "git subtree push --prefix github-pages origin github-pages",
-    "pull_push_pages": "git pull && git add . & git commit -m [update] & git push & git subtree push --prefix github-pages origin github-pages"
+    "pull_push_pages": "git pull & git add . & git commit -m [update] & git push & git subtree push --prefix github-pages origin github-pages"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.13",
