@@ -28,3 +28,31 @@ export const formatDate = (date, pattern = 'yyyy-MM-dd hh:mm:ss') => {
   }
   return result
 }
+
+/**
+ * @description: 设置title
+ * @param {Object} routerObject
+ */
+export const setTitle = (to) => {
+  const Title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
+  let handleVisiableInit = ''
+  const handleVisiable = () => {
+    if (document.visibilityState === 'visible') {
+      document.title = '逗你的~'
+      setTimeout(() => {
+        handleVisiableInit()
+      }, 1000)
+    } else if (document.visibilityState === 'hidden') {
+      document.title = `(你有一条新消息)${Title}`
+    }
+  }
+  handleVisiableInit = () => {
+    if (document.visibilityState === 'visible') {
+      document.title = Title
+    } else if (document.visibilityState === 'hidden') {
+      document.title = `(你有一条新消息)${Title}`
+    }
+    document.addEventListener('visibilitychange', handleVisiable)
+  }
+  handleVisiableInit()
+}

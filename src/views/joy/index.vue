@@ -14,7 +14,7 @@
             <template #extra>
               <RouterLink to="/links/MinecraftBookmark">查看更多</RouterLink>
             </template>
-            <a-button v-for="(item, index) of mcList" :key="index" size="large" :href="item.href" class="mr10" :title="item.title">
+            <a-button v-for="(item, index) of mcList" :key="index" :href="item.href" class="mr10" :title="item.title" size="large" target="_blank">
               <template #icon>
                 <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
               </template>
@@ -22,7 +22,7 @@
             </a-button>
           </a-card>
           <a-card title="原神" class="mb10" :hoverable="true">
-            <a-button v-for="(item, index) of ysList" :key="index" size="large" :href="item.href" class="mr10" :title="item.title">
+            <a-button v-for="(item, index) of ysList" :key="index" :href="item.href" class="mr10" :title="item.title" size="large" target="_blank">
               <template #icon>
                 <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
               </template>
@@ -30,7 +30,7 @@
             </a-button>
           </a-card>
           <a-card title="QQ群" class="mb10" :hoverable="true">
-            <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href" :title="item.title">
+            <a-button v-for="(item, index) of qqList" :key="index" :href="item.href" :title="item.title" size="small" type="link" target="_blank">
               {{ item.title }}
             </a-button>
           </a-card>

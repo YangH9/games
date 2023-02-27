@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import { routerLoading } from '@/stores'
 import { message } from 'ant-design-vue'
 import routes from '@/router/routeList'
+import { setTitle } from '@/utils'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
@@ -26,28 +27,7 @@ router.beforeEach((to, from, next) => {
 // 当路由跳转结束后
 router.afterEach((to) => {
   routerLoading().hide()
-
-  const Title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
-  let handleVisiableInit = ''
-  const handleVisiable = () => {
-    if (document.visibilityState === 'visible') {
-      document.title = '逗你的~'
-      setTimeout(() => {
-        handleVisiableInit()
-      }, 1000)
-    } else if (document.visibilityState === 'hidden') {
-      document.title = `(你有一条新消息)${Title}`
-    }
-  }
-  handleVisiableInit = () => {
-    if (document.visibilityState === 'visible') {
-      document.title = Title
-    } else if (document.visibilityState === 'hidden') {
-      document.title = `(你有一条新消息)${Title}`
-    }
-    document.addEventListener('visibilitychange', handleVisiable)
-  }
-  handleVisiableInit()
+  setTitle(to)
 })
 
 export default router

@@ -11,7 +11,7 @@
             </a-button>
           </a-card>
           <a-card title="QQ群" class="mb10" :hoverable="true">
-            <a-button v-for="(item, index) of qqList" :key="index" type="link" size="small" :href="item.href" :title="item.title">
+            <a-button v-for="(item, index) of qqList" :key="index" :href="item.href" :title="item.title" size="small" type="link" target="_blank">
               {{ item.title }}
             </a-button>
           </a-card>

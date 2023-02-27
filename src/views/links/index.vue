@@ -9,7 +9,7 @@
             <template v-if="main.extra" #extra>
               <RouterLink :to="main.extra">查看更多</RouterLink>
             </template>
-            <a-button v-for="(item, index1) of main.list" :key="index1" size="large" :href="item.href" :title="item.title">
+            <a-button v-for="(item, index1) of main.list" :key="index1" :href="item.href" :title="item.title" size="large" target="_blank">
               <template #icon>
                 <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
               </template>
@@ -32,6 +32,8 @@ const resoutcesList = [
   {
     title: '友情链接',
     list: [
+      { title: 'GitHub站点', href: 'https://yangh9.github.io', favicon: '' },
+      { title: 'Gitee镜像', href: 'https://yangh9.gitee.io', favicon: '' },
       { title: '旧站点1', href: 'https://hanhais.com/', favicon: '' },
       { title: '旧站点2', href: 'https://yangh9.github.io/y/', favicon: '' },
       { title: 'RGB', href: 'https://rgb39.top/', favicon: '' },

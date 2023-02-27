@@ -7,7 +7,7 @@
         <a-card title="关注我" class="mb10" :hoverable="true">
           <a-descriptions :column="1">
             <a-descriptions-item v-for="(item, index) of userList" :key="index" :label="item.label">
-              <a-button type="link" size="small" :href="item.href">
+              <a-button :href="item.href" size="small" type="link" target="_blank">
                 {{ item.title }}
               </a-button>
             </a-descriptions-item>
@@ -42,7 +42,9 @@ const userList = [
   { label: '快手', title: 'https://f.kuaishou.com/3QQz0B', href: 'https://f.kuaishou.com/3QQz0B' },
   { label: '抖音', title: 'https://v.douyin.com/3x5ty2', href: 'https://v.douyin.com/3x5ty2' },
   { label: 'GitHub', title: 'https://github.com/YangH9', href: 'https://github.com/YangH9' },
+  { label: 'GitHub站点', title: 'https://yangh9.github.io', href: 'https://yangh9.github.io' },
   { label: 'Gitee', title: 'https://gitee.com/YangH9', href: 'https://gitee.com/YangH9' },
+  { label: 'Gitee站点', title: 'https://yangh9.gitee.io', href: 'https://yangh9.gitee.io' },
   { label: '哔哩哔哩', title: 'https://space.bilibili.com/492362541', href: 'https://space.bilibili.com/492362541' },
   { label: '哔哩哔哩Live', title: 'https://live.bilibili.com/22069552', href: 'https://live.bilibili.com/22069552' }
 ]
