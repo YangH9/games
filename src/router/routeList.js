@@ -261,6 +261,24 @@ export default [
               title: '代码雨'
             },
             component: () => import('@/views/study/other/codeRain.vue')
+          },
+          {
+            path: '/study/other/pictureInPicture',
+            name: 'pictureInPicture',
+            meta: {
+              dev: true,
+              title: '画中画'
+            },
+            component: () => import('@/views/study/other/pictureInPicture.vue')
+          },
+          {
+            path: '/study/other/teleprompter',
+            name: 'teleprompter',
+            meta: {
+              dev: true,
+              title: '提词器'
+            },
+            component: () => import('@/views/study/other/teleprompter.vue')
           }
         ]
       }
