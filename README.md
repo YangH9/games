@@ -16,5 +16,7 @@
 [terser](https://terser.org/)、
 [VSCode](https://code.visualstudio.com/)
 
+[day.js](https://day.js.org/docs/zh-CN/display/format)
+
 [Eslint](http://eslint.cn/docs/rules/)、
 [Vue-Eslint](https://eslint.vuejs.org/rules/)
