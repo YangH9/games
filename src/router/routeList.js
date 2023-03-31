@@ -266,7 +266,7 @@ export default [
             path: '/study/other/pictureInPicture',
             name: 'pictureInPicture',
             meta: {
-              dev: true,
+              // dev: true,
               title: '画中画'
             },
             component: () => import('@/views/study/other/pictureInPicture.vue')
