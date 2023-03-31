@@ -158,6 +158,7 @@ const resoutcesList = [
         href: 'https://iconfont.cn/',
         favicon: '//img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg'
       },
+      { title: 'IcoMoon App - 图标字体，SVG，PDF和PNG生成器', href: 'https://icomoon.io/app/', favicon: 'favicon-32x32.png' },
       { title: 'fullCalendar日程插件', href: 'https://fullcalendar.io/', favicon: 'favicon-32x32.png' },
       { title: 'Mock.js', href: 'http://mockjs.com/', favicon: 'assets/img/logo-2.svg' },
       { title: 'Flutter', href: 'https://flutter.cn', favicon: '' },

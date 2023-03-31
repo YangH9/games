@@ -65,7 +65,8 @@ const studyList = [
       { title: '进度条', href: '/study/other/progress' },
       { title: 'Apple新年logo', href: '/study/other/applelogo' },
       { title: '代码雨', href: '/study/other/codeRain' },
-      { title: '画中画', href: '/study/other/pictureInPicture' }
+      { title: '画中画', href: '/study/other/pictureInPicture' },
+      { title: '提词器', href: '/study/other/teleprompter' }
     ]
   }
 ]

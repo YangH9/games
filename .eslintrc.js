@@ -109,7 +109,6 @@ module.exports = {
     'no-sequences': 'error', // 禁用逗号操作符
     'no-throw-literal': 'error', // 禁止抛出异常字面量
     'no-unmodified-loop-condition': 'error', // 禁用一成不变的循环条件
-    'no-unused-expressions': 'error', // 禁止出现未使用过的表达式
     'no-unused-labels': 'error', // 禁用出现未使用过的标
     'no-useless-call': 'error', // 禁止不必要的 .call() 和 .apply()
     'no-useless-catch': 'error', // 禁止不必要的 catch 子句
