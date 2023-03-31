@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card title="画中画" class="mb10" :hoverable="true">
       <canvas ref="canvas">不支持canvas</canvas>
-      <video ref="video" autoplay style="display: none;"></video>
+      <video ref="video" autoplay></video>
       <div>
         <!-- <a-button @click="start">视频开始</a-button> -->
         <a-button @click="open">开启画中画</a-button>
@@ -24,8 +24,8 @@ const { Dayjs } = getCurrentInstance().proxy
 // https://blog.csdn.net/hzhfxian/article/details/120283616
 // https://cn.teleprompter-online.com/
 
-const font = '40px SanFrancisco'
-const padding = 20
+const font = '30px SanFrancisco'
+const padding = 14
 let textRect = {}
 let context = ''
 
