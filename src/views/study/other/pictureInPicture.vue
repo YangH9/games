@@ -15,9 +15,11 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref, onMounted, getCurrentInstance, nextTick } from 'vue'
+import { ref, onMounted, getCurrentInstance, nextTick, watch } from 'vue'
 
 const { Dayjs } = getCurrentInstance().proxy
+
+// web devtools eruda
 
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Picture-in-Picture_API
@@ -28,6 +30,7 @@ const font = '30px SanFrancisco'
 const padding = 14
 let textRect = {}
 let context = ''
+let oldTime = ''
 
 const canvas = ref('')
 const video = ref('')
@@ -45,15 +48,19 @@ const draw = () => {
   context.font = font
   context.beginPath()
   context.fillText(time, width / 2, height / 2 + 10)
-  try {
-    video.value.srcObject = canvas.value.captureStream()
-  } catch (err) {
-    console.log(err)
+  if (oldTime !== time) {
+    oldTime = time
+    try {
+      video.value.srcObject = canvas.value.captureStream()
+      // video.value.srcObject.push(canvas.value.captureStream())
+    } catch (err) {
+      console.log(err)
+    }
   }
-  // window.requestAnimationFrame(draw)
-  setTimeout(() => {
-    draw()
-  }, 1000)
+  window.requestAnimationFrame(draw)
+  // setTimeout(() => {
+  //   draw()
+  // }, 1000)
 }
 
 const init = () => {
@@ -66,6 +73,21 @@ const init = () => {
   context.textAlign = 'center'
   context.textBaseline = 'middle'
   context.lineWidth = 5
+  // const mediaSource = new MediaSource();
+  // const stream = canvas.value.captureStream()
+  // const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' })
+  // mediaRecorder.ondataavailable = (event) => {
+  //   console.log(event)
+  //   if (event.data && event.data.size) {
+  //     mediaSource.addSourceBuffer(e.data)
+  //   }
+  // }
+  // nextTick(() => {
+  //   console.log(video.value)
+  //   mediaSource.addSourceBuffer(canvas.value.captureStream())
+  //   video.value.srcObject = mediaSource;
+  // })
+  // mediaRecorder.start()
   draw()
 }
 
