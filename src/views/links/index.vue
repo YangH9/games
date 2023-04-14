@@ -152,6 +152,8 @@ const resoutcesList = [
       { title: 'Moment.js', href: 'http://momentjs.cn/', favicon: 'static/img/moment-favicon.png' },
       { title: 'Lodash', href: 'https://www.lodashjs.com/', favicon: 'img/favicon.ico' },
       { title: 'vxe-table', href: 'https://vxetable.cn/', favicon: '' },
+      { title: 'Vueuse', href: 'https://vueuse.org/', favicon: '' },
+      { title: 'VueFlow', href: 'https://vueflow.dev/', favicon: '' },
       { title: 'TortoiseGit', href: 'https://tortoisegit.org/', favicon: '' },
       {
         title: 'iconfont图标',

@@ -1,3 +1,5 @@
+import home from '@/views/home/index.vue'
+
 export default [
   {
     path: '/',
@@ -5,7 +7,7 @@ export default [
     meta: {
       title: '首页'
     },
-    component: () => import('@/views/home/index.vue')
+    component: home
   },
   {
     path: '/about',
@@ -306,7 +308,7 @@ export default [
             meta: {
               title: '游戏历程时间轴'
             },
-            component: () => import('@/views/joy/games/GameHistory.vue')
+            component: () => import('@/views/joy/games/gameHistory.vue')
           },
           {
             path: '/joy/games/clashofclans',
@@ -322,7 +324,7 @@ export default [
             meta: {
               title: '圈小猫'
             },
-            component: () => import('@/views/joy/games/CatchTheCat.vue')
+            component: () => import('@/views/joy/games/catchTheCat.vue')
           },
           {
             path: '/joy/games/speed',
@@ -563,9 +565,10 @@ export default [
     },
     component: () => import('@/views/resources/index.vue')
   },
-  { path: '/403', component: () => import('@/views/error/403.vue') },
-  { path: '/404', component: () => import('@/views/error/404.vue') },
-  { path: '/500', component: () => import('@/views/error/500.vue') },
-  // { path: "/:catchAll(.*)", component: () => import("@/views/error/404.vue") }
-  { path: '/:catchAll(.*)', redirect: '/404' }
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    meta: { title: '404(NotFound)' },
+    component: () => import('@/views/errorPages/404.vue')
+  }
 ]

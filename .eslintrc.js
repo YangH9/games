@@ -13,6 +13,11 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
+  // 全局参数，readonly/false——只读、writable/true——可写、off——禁用该全局变量
+  globals: {
+    process: 'writable'
+  },
+  // 规则
   rules: {
     // Possible Errors、这些规则与 JavaScript 代码中可能的错误或逻辑错误有关：
     'for-direction': 'error', // 强制 “for” 循环中更新子句的计数器朝着正确的方向移动
@@ -134,7 +139,7 @@ module.exports = {
     'no-restricted-globals': ['error', 'event'], // 禁用特定的全局变量
     'no-shadow': 'error', // 禁止变量声明与外层作用域的变量同名
     'no-shadow-restricted-names': 'error', // 禁止将标识符定义为受限的名字
-    'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'warn', // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
+    'no-undef': 'error', // 禁用未声明的变量，除非它们在 /* global */ 注释中被提到
     'no-undef-init': 'error', // 禁止将变量初始化为 undefined
     'no-undefined': 'error', // 禁止将 undefined 作为标识符
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn', // 禁止出现未使用过的变量
