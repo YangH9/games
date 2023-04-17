@@ -309,7 +309,7 @@ export default [
             component: () => import('@/views/joy/games/GameHistory.vue')
           },
           {
-            path: '/joy/games/clashofclans',
+            path: '/joy/games/clashOfClans',
             name: 'clashofclans',
             meta: {
               title: '部落冲突'
