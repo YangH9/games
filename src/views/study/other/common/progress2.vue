@@ -15,8 +15,8 @@ const props = defineProps({
 <style lang="less" scoped>
 .cylinder {
   position: relative;
-  width:  var(--width);
-  height:  calc(var(--width) * 2);
+  width: var(--width);
+  height: calc(var(--width) * 2);
   background-color: transparent;
   background-color: rgba(0, 199, 159, 0.2);
 }
@@ -59,5 +59,4 @@ const props = defineProps({
 .cylinder-shade::after {
   background-color: white;
 }
-
 </style>
