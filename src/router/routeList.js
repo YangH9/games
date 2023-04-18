@@ -311,12 +311,12 @@ export default [
             component: () => import('@/views/joy/games/gameHistory.vue')
           },
           {
-            path: '/joy/games/clashofclans',
+            path: '/joy/games/clashOfClans',
             name: 'clashofclans',
             meta: {
               title: '部落冲突'
             },
-            component: () => import('@/views/joy/games/clashOfClans.vue')
+            component: () => import('@/views/joy/games/ClashOfClans.vue')
           },
           {
             path: '/joy/games/catchTheCat',
@@ -545,7 +545,7 @@ export default [
         meta: {
           title: '我的世界书签收录'
         },
-        component: () => import('@/views/links/minecraftBookmark.vue')
+        component: () => import('@/views/links/MinecraftBookmark.vue')
       },
       {
         path: '/links/cssTool',
@@ -554,6 +554,14 @@ export default [
           title: 'CSS工具收录'
         },
         component: () => import('@/views/links/cssTool.vue')
+      },
+      {
+        path: '/links/chartGPT',
+        name: 'chartGPT',
+        meta: {
+          title: 'chartGPT'
+        },
+        component: () => import('@/views/links/chartGPT.vue')
       }
     ]
   },

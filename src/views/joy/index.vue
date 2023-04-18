@@ -50,7 +50,7 @@ const joyList = [
     title: '游戏',
     list: [
       { title: '游戏历程时间轴', href: '/joy/games/gameHistory' },
-      { title: '部落冲突', href: '/joy/games/clashofclans' },
+      { title: '部落冲突', href: '/joy/games/clashOfClans' },
       { title: '圈小猫', href: '/joy/games/catchTheCat' },
       { title: '扫雷', href: '/joy/games/minesweeper' },
       { title: '飞车手游壁纸', href: '/joy/games/speedm' },
@@ -73,7 +73,8 @@ const joyList = [
       { title: '灰色头像生成器', href: '/joy/tool/grayhead' },
       { title: '国庆红旗头像生成器', href: '/joy/tool/avatarEditor' },
       { title: 'CSS新拟态生成器', href: '/joy/tool/skeuomorphism' },
-      { title: 'CSS玻璃拟物化生成器', href: '/joy/tool/glassmorphism' }
+      { title: 'CSS玻璃拟物化生成器', href: '/joy/tool/glassmorphism' },
+      { title: 'ChartGPT', href: '/links/chartGPT' }
     ]
   },
   {
