@@ -20,3 +20,9 @@
 
 [Eslint](http://eslint.cn/docs/rules/)、
 [Vue-Eslint](https://eslint.vuejs.org/rules/)
+
+检测依赖版本
+
+npm install -g npm-check
+
+npm-check -u

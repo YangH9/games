@@ -1,6 +1,7 @@
-import vue from '@vitejs/plugin-vue'
-import { URL, fileURLToPath } from 'node:url'
+import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import viteCompression from 'vite-plugin-compression'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -20,6 +21,7 @@ export default ({ mode }) => {
           }
         }
       }),
+      vueJsx(),
       Components({ resolvers: [AntDesignVueResolver()] }),
       createHtmlPlugin({ minify: true, inject: { data: { title: env.VITE_TITLE } } }),
       viteCompression({ threshold: 1024 * 1024 })
@@ -27,9 +29,7 @@ export default ({ mode }) => {
     root: env.VITE_ROOT_URL,
     base: env.VITE_BASE_URL,
     hmr: true,
-    resolve: {
-      alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
-    },
+    resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
     server: { host: '0.0.0.0', port: 6060, strictPort: true },
     build: {
       chunkSizeWarningLimit: 1500,

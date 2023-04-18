@@ -316,7 +316,7 @@ export default [
             meta: {
               title: '部落冲突'
             },
-            component: () => import('@/views/joy/games/ClashOfClans.vue')
+            component: () => import('@/views/joy/games/clashOfClans.vue')
           },
           {
             path: '/joy/games/catchTheCat',
