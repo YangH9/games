@@ -126,7 +126,6 @@ export default [
             path: '/study/demo/sharingan',
             name: 'sharingan',
             meta: {
-              dev: true,
               title: 'CSS写轮眼'
             },
             component: () => import('@/views/study/demo/sharingan.vue')

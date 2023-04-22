@@ -32,7 +32,7 @@ export default ({ mode }) => {
     resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
     server: { host: '0.0.0.0', port: 6060, strictPort: true },
     build: {
-      chunkSizeWarningLimit: 1500,
+      chunkSizeWarningLimit: 2000,
       minify: 'terser',
       target: 'modules',
       outDir: env.VITE_OUTDIR_URL,
