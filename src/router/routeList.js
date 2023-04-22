@@ -307,7 +307,7 @@ export default [
             meta: {
               title: '游戏历程时间轴'
             },
-            component: () => import('@/views/joy/games/gameHistory.vue')
+            component: () => import('@/views/joy/games/GameHistory.vue')
           },
           {
             path: '/joy/games/clashOfClans',
@@ -315,7 +315,7 @@ export default [
             meta: {
               title: '部落冲突'
             },
-            component: () => import('@/views/joy/games/clashOfClans.vue')
+            component: () => import('@/views/joy/games/ClashOfClans.vue')
           },
           {
             path: '/joy/games/catchTheCat',
@@ -323,7 +323,7 @@ export default [
             meta: {
               title: '圈小猫'
             },
-            component: () => import('@/views/joy/games/catchTheCat.vue')
+            component: () => import('@/views/joy/games/CatchTheCat.vue')
           },
           {
             path: '/joy/games/speed',
