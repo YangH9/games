@@ -6,10 +6,14 @@
 const longpress = {
   mounted(el, binding) {
     if (typeof binding.value !== 'function') {
-      throw 'callback must be a function'
+      throw new Error('callback must be a function')
     }
     // 定义变量
     let pressTimer = null
+    // 运行函数
+    const handler = (e) => {
+      binding.value(e)
+    }
     // 创建计时器（ 2秒后执行函数 ）
     const start = (e) => {
       if (e.button) {
@@ -29,10 +33,6 @@ const longpress = {
         clearTimeout(pressTimer)
         pressTimer = null
       }
-    }
-    // 运行函数
-    const handler = (e) => {
-      binding.value(e)
     }
     // 添加事件监听器
     el.addEventListener('mousedown', start)
