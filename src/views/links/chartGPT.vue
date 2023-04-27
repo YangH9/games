@@ -19,6 +19,7 @@ const dataList = [
     title: 'ChartGPT免费链接',
     list: [
       { title: 'https://chat.theb.ai', href: 'https://chat.theb.ai', favicon: '' },
+      { title: 'https://char.forefront.ai/', href: 'https://char.forefront.ai/', favicon: '' },
       { title: 'https://www.aitoolgpt.com', href: 'https://www.aitoolgpt.com', favicon: '' },
       { title: 'https://chatforai.com', href: 'https://chatforai.com', favicon: '' },
       { title: 'https://freechatgpt.chat', href: 'https://freechatgpt.chat', favicon: '' },
