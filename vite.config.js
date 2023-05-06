@@ -30,7 +30,7 @@ export default ({ mode }) => {
     base: env.VITE_BASE_URL,
     hmr: true,
     resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
-    server: { host: '0.0.0.0', port: 6060, strictPort: true },
+    server: { host: '0.0.0.0', port: 6600, strictPort: true },
     build: {
       chunkSizeWarningLimit: 2000,
       minify: 'terser',

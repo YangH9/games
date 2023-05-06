@@ -13,6 +13,13 @@
             </a-descriptions-item>
           </a-descriptions>
         </a-card>
+        <a-card class="mb10" :hoverable="true">
+          <a-descriptions :column="1">
+            <a-descriptions-item>
+              <a-button href="https://yangh9.github.io/ChinaHolidayCalender/" target="_blank">自制日历订阅</a-button>
+            </a-descriptions-item>
+          </a-descriptions>
+        </a-card>
         <a-card title="站点信息" class="mb10" :hoverable="true">
           <a-descriptions :column="2">
             <a-descriptions-item label="网站运行时间" span="2">

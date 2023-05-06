@@ -11,8 +11,7 @@
     "pull": "git pull",
     "commit": "git add . & git commit -m [update]",
     "push": "git push",
-    "pull_push": "git pull & git add . & git commit -m [update] & git push",
-    "push_pages": "git subtree push --prefix github-pages origin github-pages"
+    "pull_push": "git pull & git add . & git commit -m [update] & git push"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.17",
