@@ -1,6 +1,7 @@
 {
   "name": "yang",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "main": "main.js",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --mode development",
@@ -13,6 +14,8 @@
     "push": "git push",
     "pull_push": "git pull & git add . & git commit -m [update] & git push"
   },
+  "author": "yangh9",
+  "license": "MIT",
   "dependencies": {
     "ant-design-vue": "^3.2.17",
     "axios": "^1.3.5",
