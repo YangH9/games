@@ -15,9 +15,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref, onMounted, getCurrentInstance, nextTick, watch } from 'vue'
-
-const { Dayjs } = getCurrentInstance().proxy
+import { ref, onMounted, nextTick, watch } from 'vue'
 
 // web devtools eruda
 
@@ -36,7 +34,7 @@ const canvas = ref('')
 const video = ref('')
 const textWidth = ref('')
 
-const getTime = () => Dayjs().format('YYYY/MM/DD HH:mm:ss')
+const getTime = () => new Date().toFormat()
 
 const draw = () => {
   const time = getTime()

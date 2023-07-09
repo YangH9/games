@@ -37,6 +37,7 @@ const resoutcesList = [
       { title: '旧站点1', href: 'https://hanhais.com/', favicon: '' },
       { title: '旧站点2', href: 'https://yangh9.github.io/y/', favicon: '' },
       { title: 'RGB', href: 'https://rgb39.top/', favicon: '' },
+      { title: '小白白AI', href: 'http://108.61.176.107:8124/', favicon: 'assets/logo.png' },
       { title: '小天的中国象棋', href: 'https://www.aixt.vip/', favicon: '' },
       { title: '小天的视频解析器', href: 'https://www.aixt.vip/video/', favicon: '' }
     ]

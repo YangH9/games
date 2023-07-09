@@ -1,32 +1,44 @@
 import '@/utils/adriftText'
 
-/**
- * 时间转换
- * @param {Date} date 时间对象
- * @param {String} pattern 转换的格式（默认yyyy-MM）
- * @returns
- */
-export const formatDate = (date, pattern = 'yyyy-MM-dd hh:mm:ss') => {
-  const time = new Date(date)
-  let result = pattern
-  const timeObj = {
-    'M+': time.getMonth() + 1,
-    'd+': time.getDate(),
-    'h+': time.getHours(),
-    'm+': time.getMinutes(),
-    's+': time.getSeconds(),
-    'q+': Math.floor((time.getMonth() + 3) / 3),
-    S: time.getMilliseconds()
-  }
-  if (/(y+)/.test(result)) {
-    result = result.replace(RegExp.$1, `${time.getFullYear()}`.substr(4 - RegExp.$1.length))
-  }
-  for (const item in timeObj) {
-    if (new RegExp(`(${item})`).test(result)) {
-      result = result.replace(RegExp.$1, RegExp.$1.length === 1 ? timeObj[item] : `00${timeObj[item]}`.substr(`${timeObj[item]}`.length))
+
+// 挂在到Date实例，可直接调用
+// YYYY-MM-DD EEE hh:mm:ss
+if (!Date.prototype.toFormat) {
+  ;(function () {
+    Date.prototype.toFormat = function (pattern = 'YYYY/MM/DD hh:mm:ss') {
+      const time = {
+        'M+': this.getMonth() + 1,
+        'D+': this.getDate(),
+        'h+': this.getHours(),
+        'm+': this.getMinutes(),
+        's+': this.getSeconds(),
+        'q+': Math.floor((this.getMonth() + 3) / 3),
+        S: this.getMilliseconds()
+      }
+      const week = ['\u65e5', '\u4e00', '\u4e8c', '\u4e09', '\u56db', '\u4e94', '\u516d']
+      if (/(Y+)/.test(pattern)) {
+        pattern = pattern.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
+      }
+      if (/(E+)/.test(pattern)) {
+        pattern = pattern.replace(
+          RegExp.$1,
+          (RegExp.$1.length > 1 ? (RegExp.$1.length > 2 ? '\u661f\u671f' : '\u5468') : '') +
+            week[this.getDay()]
+        )
+      }
+      for (const item in time) {
+        if (new RegExp(`(${item})`).test(pattern)) {
+          pattern = pattern.replace(
+            RegExp.$1,
+            RegExp.$1.length === 1
+              ? time[item]
+              : ('00' + time[item]).substr(('' + time[item]).length)
+          )
+        }
+      }
+      return pattern
     }
-  }
-  return result
+  })()
 }
 
 /**

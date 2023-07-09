@@ -23,10 +23,10 @@
         <a-card title="站点信息" class="mb10" :hoverable="true">
           <a-descriptions :column="2">
             <a-descriptions-item label="网站运行时间" span="2">
-              {{ runTime() }}
+              {{ new Date(nowTime - startTime).toFormat('Y年M月D日h时m分s秒') }}
             </a-descriptions-item>
-            <a-descriptions-item label="建站时间">{{ Dayjs(startTime).format('YYYY年MM月DD日') }}</a-descriptions-item>
-            <a-descriptions-item label="二次重构时间">{{ Dayjs(1666137600000).format('YYYY年MM月DD日') }}</a-descriptions-item>
+            <a-descriptions-item label="建站时间">{{ new Date(startTime).toFormat('YYYY年MM月DD日') }}</a-descriptions-item>
+            <a-descriptions-item label="二次重构时间">{{ new Date(1666137600000).toFormat('YYYY年MM月DD日') }}</a-descriptions-item>
           </a-descriptions>
         </a-card>
       </div>
@@ -37,12 +37,7 @@
 <script setup>
 import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { getCurrentInstance, onBeforeUnmount, onMounted, ref } from 'vue'
-import duration from 'dayjs/plugin/duration'
-
-const { Dayjs } = getCurrentInstance().proxy
-
-Dayjs.extend(duration)
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 const userList = [
   { label: 'QQ', title: '1770571618', href: 'tencent://message/?uin=1770571618' },
@@ -59,22 +54,10 @@ const userList = [
 const startTime = ref(1584864000000)
 const nowTime = ref(Date.now())
 
-const runTime = () => {
-  const time = Dayjs.duration(+nowTime.value - startTime.value)
-  const Y = time.years()
-  const M = time.months()
-  const D = time.days()
-  const H = time.hours()
-  const m = time.minutes()
-  const s = time.seconds()
-  const a = (i) => (i < 10 ? `0${i}` : i)
-  return `${Y}年${a(M)}月${a(D)}日${a(H)}时${a(m)}分${a(s)}秒`
-}
-
 let timer = ''
 
 const running = () => {
-  nowTime.value = new Date()
+  nowTime.value = Date.now()
   timer = requestAnimationFrame(running)
 }
 

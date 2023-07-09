@@ -2,7 +2,7 @@
   <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="CSS液晶数字字体">
     <div class="clock">
       <div class="digits">
-        <div v-for="i of 19" :key="i" :class="numList[Dayjs(time).format('YYYY/MM/DD HH:mm:ss')[i - 1]]">
+        <div v-for="i of 19" :key="i" :class="numList[new Date(time).toFormat()[i - 1]]">
           <template v-if="![':', '/', ' '].includes(i)">
             <span v-for="j of 7" :key="j" :class="`stroke${j}`"></span>
           </template>
@@ -18,9 +18,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, ref, onMounted, onBeforeUnmount } from 'vue'
-
-const { Dayjs } = getCurrentInstance().proxy
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const numList = {
   ':': 'colon',
@@ -37,12 +35,12 @@ const numList = {
   9: 'nine'
 }
 
-const time = ref(new Date())
+const time = ref(Date.now())
 
 let timer = ''
 
 const running = () => {
-  time.value = new Date()
+  time.value = Date.now()
   timer = requestAnimationFrame(running)
 }
 
