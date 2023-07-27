@@ -1,5 +1,30 @@
 import home from '@/views/home/index.vue'
 
+// 只能使用字面量引入，一组/*为一层文件夹
+const modules = import.meta.glob(['@/views/*.vue', '@/views/*/*.vue', '@/views/*/*/*.vue'])
+
+/**
+ * @description: 辅助处理路由表信息，减少数据量
+ * component：src/views/下的文件路径
+ * { component: 'home/overview' } => { path: '/home/overview', name: '/home/overview', component: () => import('@/views/home/overview.vue') }
+ * 过滤index路径，home/index => home
+ */
+const createRoute = (list) => {
+  list.map((item) => {
+    // 添加path
+    !item.hasOwnProperty('path') && (item.path = `/${item.component}`.replace(/(\/index)$/, ''))
+    // 添加name
+    !item.hasOwnProperty('name') && (item.name = item.component?.replace(/\//g, '_'))
+    item.hasOwnProperty('component') && (item.component = modules[`/src/views/${item.component}.vue`] || modules['/src/views/errorPages/404.vue'])
+    // 添加是否有子元素选择、
+    !item.hasOwnProperty('has_children') && (item.has_children = item.hasOwnProperty('children'))
+    item.hasOwnProperty('children') && createRoute(item.children)
+    // 添加默认数据，防止空数据
+    !item.meta && (item.meta = { title: item.name, icon: 'Document' })
+  })
+  return list
+}
+
 export default [
   {
     path: '/',
