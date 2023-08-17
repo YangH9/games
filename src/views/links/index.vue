@@ -326,6 +326,7 @@ const resoutcesList = [
       { title: '谷歌浏览器', href: 'https://www.google.cn/chrome', favicon: '/chrome/static/images/favicons/favicon-16x16.png' },
       { title: '易车', href: 'https://www.yiche.com', favicon: '//static1.bitautoimg.com/yc-common/icon/favicon.ico' },
       { title: 'Ionic', href: 'https://ionicframework.com', favicon: '' },
+      { title: 'VFX资源网', href: 'https://www.vfxzy.com/', favicon: '' },
       { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: '' }
     ]
   },
