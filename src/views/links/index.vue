@@ -327,6 +327,8 @@ const resoutcesList = [
       { title: '易车', href: 'https://www.yiche.com', favicon: '//static1.bitautoimg.com/yc-common/icon/favicon.ico' },
       { title: 'Ionic', href: 'https://ionicframework.com', favicon: '' },
       { title: 'VFX资源网', href: 'https://www.vfxzy.com/', favicon: '' },
+      { title: '佛系软件', href: 'https://www.foxirj.com/', favicon: '' },
+      { title: 'XXMac', href: 'https://www.xxmac.com/', favicon: '' },
       { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: '' }
     ]
   },
