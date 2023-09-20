@@ -1,10 +1,9 @@
 import '@/utils/adriftText'
 
-
 // 挂在到Date实例，可直接调用
 // YYYY-MM-DD EEE hh:mm:ss
 if (!Date.prototype.toFormat) {
-  ;(function () {
+  ;(() => {
     Date.prototype.toFormat = function (pattern = 'YYYY/MM/DD hh:mm:ss') {
       const time = {
         'M+': this.getMonth() + 1,
@@ -20,26 +19,23 @@ if (!Date.prototype.toFormat) {
         pattern = pattern.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
       }
       if (/(E+)/.test(pattern)) {
-        pattern = pattern.replace(
-          RegExp.$1,
-          (RegExp.$1.length > 1 ? (RegExp.$1.length > 2 ? '\u661f\u671f' : '\u5468') : '') +
-            week[this.getDay()]
-        )
+        pattern = pattern.replace(RegExp.$1, (RegExp.$1.length > 1 ? (RegExp.$1.length > 2 ? '\u661f\u671f' : '\u5468') : '') + week[this.getDay()])
       }
       for (const item in time) {
         if (new RegExp(`(${item})`).test(pattern)) {
-          pattern = pattern.replace(
-            RegExp.$1,
-            RegExp.$1.length === 1
-              ? time[item]
-              : ('00' + time[item]).substr(('' + time[item]).length)
-          )
+          pattern = pattern.replace(RegExp.$1, RegExp.$1.length === 1 ? time[item] : ('00' + time[item]).substr(('' + time[item]).length))
         }
       }
       return pattern
     }
   })()
 }
+
+// 设置灰度 class
+;(() => {
+  const timeList = ['4/4', '9/18', '12/13']
+  timeList.includes(new Date().toFormat('M/D')) && document.querySelector('html').classList.add('gray')
+})()
 
 /**
  * @description: 设置title
