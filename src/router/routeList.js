@@ -483,7 +483,7 @@ export default [
             path: '/joy/tool/random',
             name: 'petpet',
             meta: {
-              title: '摸头生成器'
+              title: '随机数生成器'
             },
             component: () => import('@/views/joy/tool/random.vue')
           },
