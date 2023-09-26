@@ -42,7 +42,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-
+// 
 const downloadList = [
   { title: '国服（腾讯版官网）', href: 'https://coc.qq.com/', favicon: '' },
   { title: '国服（应用宝下载）', href: 'https://sj.qq.com/appdetail/com.tencent.tmgp.supercell.clashofclans', favicon: '' },

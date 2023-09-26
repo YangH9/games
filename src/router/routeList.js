@@ -480,6 +480,14 @@ export default [
             component: () => import('@/views/joy/tool/petpet/index.vue')
           },
           {
+            path: '/joy/tool/random',
+            name: 'petpet',
+            meta: {
+              title: '摸头生成器'
+            },
+            component: () => import('@/views/joy/tool/random.vue')
+          },
+          {
             path: '/joy/tool/grayhead',
             name: 'grayhead',
             meta: {
