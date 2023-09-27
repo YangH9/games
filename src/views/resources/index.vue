@@ -5,7 +5,7 @@
       <RouterViewBox url="/resources">
         <div class="container">
           <Breadcrumb />
-          <a-card title="网盘资源" class="mb10" :hoverable="true">
+          <a-card title="网盘资源" class="mb_2" :hoverable="true">
             <a-descriptions :column="1">
               <a-descriptions-item v-for="(item, index) of resoutcesList" :key="index" :label="item.title">
                 <a-button :href="item.href" :title="item.title" size="small" type="link" target="_blank">

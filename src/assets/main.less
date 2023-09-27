@@ -88,6 +88,62 @@ div.ant-card {
   }
 }
 
+div.ant-collapse {
+  color: var(--color-text);
+  border-color: var(--color-border);
+  background: var(--color-background-mute);
+  .ant-collapse-item {
+    border-color: var(--color-border);
+    .ant-collapse-header {
+      color: var(--color-text);
+    }
+    .ant-collapse-content {
+      border-color: var(--color-border);
+      background: var(--color-background);
+    }
+  }
+}
+
+.ant-form {
+  .ant-form-item {
+    .ant-form-item-label {
+      label {
+        color: var(--color-text);
+      }
+    }
+    .ant-radio {
+      &-wrapper {
+        color: var(--color-heading);
+      }
+      &-inner {
+        background: var(--color-background-mute);
+      }
+    }
+    .ant-input {
+      color: var(--color-heading);
+      border-color: var(--color-border);
+      background: var(--color-background-mute);
+    }
+    .ant-input-number {
+      color: var(--color-heading);
+      border-color: var(--color-border);
+      background: var(--color-background-mute);
+      &-handler {
+        border-color: var(--color-border);
+        span {
+          color: var(--color-heading);
+        }
+        &:active {
+          background: var(--color-background);
+        }
+      }
+      &-handler-wrap {
+        background: var(--color-background-mute);
+      }
+    }
+  }
+}
+
 section.ant-layout {
   background: transparent;
 }

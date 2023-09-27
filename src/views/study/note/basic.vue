@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="入门级基础知识" class="mb10" :hoverable="true"> 入门级基础知识 </a-card>
+    <a-card title="入门级基础知识" class="mb_2" :hoverable="true"> 入门级基础知识 </a-card>
   </div>
 </template>
 

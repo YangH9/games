@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="npm常用命令" class="mb10" :hoverable="true"> npm常用命令 </a-card>
+    <a-card title="npm常用命令" class="mb_2" :hoverable="true"> npm常用命令 </a-card>
   </div>
 </template>
 

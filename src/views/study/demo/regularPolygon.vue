@@ -6,7 +6,7 @@
           <a-slider v-model:value="width" :min="min" :max="max" />
         </a-col>
         <a-col :span="4">
-          <a-input-number v-model:value="width" :min="min" :max="max" class="ml10" />
+          <a-input-number v-model:value="width" :min="min" :max="max" class="ml_2" />
         </a-col>
       </a-row>
     </template>

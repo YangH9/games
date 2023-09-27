@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="灰色头像生成器" class="mb10" :hoverable="true">
+    <a-card title="灰色头像生成器" class="mb_2" :hoverable="true">
       灰色头像生成器
       <!-- <div>
         <a-upload

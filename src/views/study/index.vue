@@ -5,12 +5,12 @@
       <RouterViewBox url="/study">
         <div class="container">
           <Breadcrumb />
-          <a-card v-for="(main, index) of studyList" :key="index" :title="main.title" class="mb10" :hoverable="true">
+          <a-card v-for="(main, index) of studyList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
             <a-button v-for="(item, index1) of main.list" :key="index1" type="link" size="small" :title="item.title">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
           </a-card>
-          <a-card title="QQ群" class="mb10" :hoverable="true">
+          <a-card title="QQ群" class="mb_2" :hoverable="true">
             <a-button v-for="(item, index) of qqList" :key="index" :href="item.href" :title="item.title" size="small" type="link" target="_blank">
               {{ item.title }}
             </a-button>

@@ -5,7 +5,7 @@
       <template #title>
         <div class="ant-row ant-row-space-between">
           <div>
-            <span class="mr10">飞车手游壁纸</span>
+            <span class="mr_2">飞车手游壁纸</span>
             <template v-for="(item, index) of directionList" :key="index">
               <a-button :type="directionListActive === item.key ? 'primary' : ''" @click="directionListActive = item.key">
                 {{ item.title }}

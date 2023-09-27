@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card title="设备基础信息" class="mb10" :hoverable="true">
+    <a-card title="设备基础信息" class="mb_2" :hoverable="true">
       <a-descriptions :column="2">
         <a-descriptions-item label="设备UA" :span="2">
           {{ userAgent }}
@@ -25,10 +25,10 @@
         <a-descriptions-item label="mediaSession">{{ JSON.stringify(mediaSession) }}</a-descriptions-item> -->
       </a-descriptions>
     </a-card>
-    <a-card title="网络信息" class="mb10" :hoverable="true">
+    <a-card title="网络信息" class="mb_2" :hoverable="true">
       <a-descriptions :column="2">
         <a-descriptions-item label="网络状态">
-          <span class="mr10">
+          <span class="mr_2">
             {{ onLine ? '在线' : '离线' }}
           </span>
           <CheckCircleTwoTone v-if="onLine" two-tone-color="#52c41a" />

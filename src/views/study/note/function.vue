@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="function" class="mb10" :hoverable="true"> function </a-card>
+    <a-card title="function" class="mb_2" :hoverable="true"> function </a-card>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="进度条" class="mb10" :hoverable="true">
+    <a-card title="进度条" class="mb_2" :hoverable="true">
       <div class="box">
         <progress></progress>
         <progress :value="progressValue" :max="steps"></progress>

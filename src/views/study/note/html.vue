@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="HTML" class="mb10" :hoverable="true"> HTML </a-card>
+    <a-card title="HTML" class="mb_2" :hoverable="true"> HTML </a-card>
   </div>
 </template>
 

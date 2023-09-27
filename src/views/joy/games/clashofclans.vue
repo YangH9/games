@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="部落冲突" class="mb10" :hoverable="true">
+    <a-card title="部落冲突" class="mb_2" :hoverable="true">
       <a-descriptions :column="1">
         <a-descriptions-item>自2022/12/9起，所有国内渠道商都转移到了腾讯，你必须绑定QQ或微信才可以继续登录。</a-descriptions-item>
         <a-descriptions-item>
@@ -11,7 +11,7 @@
         <a-descriptions-item>下面有部分平台账号绑定工具。</a-descriptions-item>
       </a-descriptions>
     </a-card>
-    <a-card title="部落冲突下载" class="mb10" :hoverable="true">
+    <a-card title="部落冲突下载" class="mb_2" :hoverable="true">
       <a-button v-for="(item, index1) of downloadList" :key="index1" :href="item.href" :title="item.title" size="large" type="link" target="_blank">
         <template #icon>
           <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
@@ -19,7 +19,7 @@
         {{ item.title }}
       </a-button>
     </a-card>
-    <a-card title="部落冲突各平台账号绑定工具" class="mb10" :hoverable="true">
+    <a-card title="部落冲突各平台账号绑定工具" class="mb_2" :hoverable="true">
       <a-button v-for="(item, index1) of toolList" :key="index1" :href="item.href" :title="item.title" size="large" type="link" target="_blank">
         <template #icon>
           <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
@@ -28,7 +28,7 @@
       </a-button>
       <a-button v-for="i of 20" :key="i" class="seat"></a-button>
     </a-card>
-    <a-card title="阵容攻略" class="mb10" :hoverable="true">
+    <a-card title="阵容攻略" class="mb_2" :hoverable="true">
       <a-button v-for="(item, index1) of list" :key="index1" :href="item.href" :title="item.title" size="large" type="link" target="_blank">
         <template #icon>
           <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
@@ -42,7 +42,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-// 
+//
 const downloadList = [
   { title: '国服（腾讯版官网）', href: 'https://coc.qq.com/', favicon: '' },
   { title: '国服（应用宝下载）', href: 'https://sj.qq.com/appdetail/com.tencent.tmgp.supercell.clashofclans', favicon: '' },

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="画中画" class="mb10" :hoverable="true">
+    <a-card title="画中画" class="mb_2" :hoverable="true">
       <canvas ref="canvas">不支持canvas</canvas>
       <video ref="video" autoplay></video>
       <div>

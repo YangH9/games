@@ -5,7 +5,7 @@
       <RouterViewBox url="/links">
         <div class="container">
           <Breadcrumb />
-          <a-card v-for="(main, index) of resoutcesList" :key="index" :title="main.title" class="mb10" :hoverable="true">
+          <a-card v-for="(main, index) of resoutcesList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
             <template v-if="main.extra" #extra>
               <RouterLink :to="main.extra">查看更多</RouterLink>
             </template>

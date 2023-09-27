@@ -3,14 +3,14 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="随机数生成器" :hoverable="true">
       <a-form :model="option">
-        <a-collapse v-model:activeKey="activeKey" class="mb10">
+        <a-collapse v-model:activeKey="activeKey" class="mb_2">
           <a-collapse-panel key="1">
             <template #header>
-              <span class="mr10">{{ option.quantity }}个</span>
-              <span class="mr10">{{ option.unique ? '唯一' : '不唯一' }}</span>
-              <span class="mr10">{{ option.type === 'int' ? '整数' : '浮点数' }}</span>
-              <span class="mr10">（{{ option.min }}，{{ option.max }}）</span>
-              <span class="mr10">{{ option.sort === 'asc' ? '升序' : option.sort === 'desc' ? '降序' : '' }}</span>
+              <span class="mr_2">{{ option.quantity }}个</span>
+              <span class="mr_2">{{ option.unique ? '唯一' : '不唯一' }}</span>
+              <span class="mr_2">{{ option.type === 'int' ? '整数' : '浮点数' }}</span>
+              <span class="mr_2">（{{ option.min }}，{{ option.max }}）</span>
+              <span class="mr_2">{{ option.sort === 'asc' ? '升序' : option.sort === 'desc' ? '降序' : '' }}</span>
             </template>
             <template #extra><a-button type="primary" @click.stop="generate">生成</a-button></template>
             <a-row :gutter="24">
@@ -65,7 +65,7 @@
         </a-collapse>
         <a-col :span="24">
           <a-form-item label="生成结果">
-            <a-textarea v-model:value="data" placeholder="生成结果" :auto-size="{ minRows: 2 }" />
+            <a-textarea v-model:value="data" placeholder="生成结果" :auto-size="{ minRows: 6 }" />
           </a-form-item>
         </a-col>
       </a-form>

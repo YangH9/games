@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="加载动画" class="mb10" :hoverable="true">
+    <a-card title="加载动画" class="mb_2" :hoverable="true">
       <div class="box">
         <img src="@/assets/loading.svg" width="100" />
         <my-loading size="100" lineWidth="10" strokeStyle="#359dda"></my-loading>

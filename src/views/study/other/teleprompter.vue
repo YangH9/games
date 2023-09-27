@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="提词器" class="mb10" :hoverable="true">
+    <a-card title="提词器" class="mb_2" :hoverable="true">
       <canvas ref="canvas" width="200" height="600">不支持canvas</canvas>
     </a-card>
   </div>

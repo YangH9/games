@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="ECMAScript" class="mb10" :hoverable="true"> ECMAScript </a-card>
+    <a-card title="ECMAScript" class="mb_2" :hoverable="true"> ECMAScript </a-card>
   </div>
 </template>
 

@@ -7,10 +7,10 @@ import jsonp from '@/http/jsonp'
 import '@/utils'
 import directive from '@/utils/directive'
 
-import 'ant-design-vue/dist/antd.css'
+// import 'ant-design-vue/dist/antd.css'
 
 // 默哀的全局灰色
-import "@/assets/gray.less"
+import '@/assets/gray.less'
 import '@/assets/base.less'
 import '@/assets/main.less'
 

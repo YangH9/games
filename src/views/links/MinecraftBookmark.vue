@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card v-for="(main, index) of dataList" :key="index" :title="main.title" class="mb10" :hoverable="true">
+    <a-card v-for="(main, index) of dataList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
       <a-button v-for="(item, index1) of main.list" :key="index1" :href="item.href" :title="item.title" size="large" target="_blank">
         <template #icon>
           <img v-lazy="item.favicon" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />

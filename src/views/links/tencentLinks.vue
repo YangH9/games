@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card title="腾讯旗下游戏链接" class="mb10" :hoverable="true">
+    <a-card title="腾讯旗下游戏链接" class="mb_2" :hoverable="true">
       <a-button v-for="(item, key, index) of dataList" :key="index" :href="`//${key}`" :title="item.title" size="large" target="_blank">
         <template #icon>
           <img v-lazy="`//${key}/favicon.ico`" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />

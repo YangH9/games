@@ -4,7 +4,7 @@
     <a-layout v-calcHeight="0" class="layout">
       <div class="container">
         <Breadcrumb />
-        <a-card title="关注我" class="mb10" :hoverable="true">
+        <a-card title="关注我" class="mb_2" :hoverable="true">
           <a-descriptions :column="1">
             <a-descriptions-item v-for="(item, index) of userList" :key="index" :label="item.label">
               <a-button :href="item.href" size="small" type="link" target="_blank">
@@ -13,14 +13,14 @@
             </a-descriptions-item>
           </a-descriptions>
         </a-card>
-        <a-card class="mb10" :hoverable="true">
+        <a-card class="mb_2" :hoverable="true">
           <a-descriptions :column="1">
             <a-descriptions-item>
               <a-button href="https://yangh9.github.io/ChinaHolidayCalender/" target="_blank">自制日历订阅</a-button>
             </a-descriptions-item>
           </a-descriptions>
         </a-card>
-        <a-card title="站点信息" class="mb10" :hoverable="true">
+        <a-card title="站点信息" class="mb_2" :hoverable="true">
           <a-descriptions :column="2">
             <a-descriptions-item label="网站运行时间" span="2">
               {{ new Date(nowTime - startTime).toFormat('Y年M月D日h时m分s秒') }}

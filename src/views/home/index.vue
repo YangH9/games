@@ -4,7 +4,7 @@
     <a-layout v-calcHeight="0" class="layout">
       <div class="container">
         <Breadcrumb />
-        <a-card title="首页" class="mb10" :hoverable="true">
+        <a-card title="首页" class="mb_2" :hoverable="true">
           <div>MODE：{{ mode }}</div>
           <div>TITLE：{{ title }}</div>
           <!-- 18:00、19:40
