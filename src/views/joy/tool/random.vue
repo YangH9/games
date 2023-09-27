@@ -8,7 +8,7 @@
             <template #header>
               <span class="mr_2">{{ option.quantity }}个</span>
               <span class="mr_2">{{ option.unique ? '唯一' : '不唯一' }}</span>
-              <span class="mr_2">{{ option.type === 'int' ? '整数' : '浮点数' }}</span>
+              <span class="mr_2">{{ option.type === 'integer' ? '整数' : '浮点数' }}</span>
               <span class="mr_2">（{{ option.min }}，{{ option.max }}）</span>
               <span class="mr_2">{{ option.sort === 'asc' ? '升序' : option.sort === 'desc' ? '降序' : '' }}</span>
             </template>
