@@ -481,7 +481,7 @@ export default [
           },
           {
             path: '/joy/tool/random',
-            name: 'petpet',
+            name: 'random',
             meta: {
               title: '随机数生成器'
             },
