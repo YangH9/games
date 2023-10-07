@@ -12,7 +12,7 @@ import 'phaser'
 import '@/utils/catch-the-cat'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { onMounted } from 'vue'
-//
+
 onMounted(() => {
   // eslint-disable-next-line no-undef
   window.game = new CatchTheCatGame({
