@@ -24,7 +24,7 @@ const click = (data) => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-layout-header {
   padding: 0;
   position: sticky;

@@ -18,7 +18,7 @@ import { computed } from 'vue'
 const visible = computed(() => routerLoading().visible)
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .preloader {
   background: var(--color-background);
   position: fixed;

@@ -111,7 +111,7 @@ onMounted(() => {
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .textWidth {
   display: inline-block;
   visibility: hidden;

@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="ant-row ant-row-space-between">
+        <div class="flex items_center content_between">
           <div>
             <span class="mr_2">飞车手游壁纸</span>
             <template v-for="(item, index) of directionList" :key="index">
@@ -21,7 +21,7 @@
           </div>
         </div>
         <a-divider />
-        <div class="ant-row ant-row-space-between">
+        <div class="flex items_center content_between">
           <div>
             <template v-for="(item, index) of pagesList" :key="index">
               <a-button :type="pagesListActive === item.key ? 'primary' : ''" @click="pagesListActive = item.key">
@@ -123,7 +123,7 @@ watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-btn + .ant-btn {
   margin-left: 6px;
 }
@@ -137,46 +137,51 @@ watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
   display: none;
 }
 
-.ant-card:deep(.ant-card-body) {
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 6px 0px 0px 6px;
-
-  .ant-card-head {
-    padding-left: 10px;
-    padding-right: 10px;
-    min-height: auto;
-
-    .ant-card-head-title,
-    .ant-card-extra {
-      padding: 8px;
-      max-width: 200px;
-    }
+:deep(.ant-card) {
+  .ant-card-head-title {
+    padding: 10px 0;
   }
-
   .ant-card-body {
-    padding: 0;
-  }
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 6px 0px 0px 6px;
 
-  .seat {
-    zoom: 0;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
-  }
+    .ant-card-head {
+      padding-left: 10px;
+      padding-right: 10px;
+      min-height: auto;
 
-  .image {
-    width: 330px;
-    height: 206px;
-    max-width: 100%;
-    display: inline-block;
-    object-fit: contain;
-  }
+      .ant-card-head-title,
+      .ant-card-extra {
+        padding: 8px;
+        max-width: 200px;
+      }
+    }
 
-  .direction122217 {
+    .ant-card-body {
+      padding: 0;
+    }
+
+    .seat {
+      zoom: 0;
+      visibility: hidden;
+      height: 0;
+      overflow: hidden;
+    }
+
     .image {
-      width: 300px;
-      height: 340px;
+      width: 330px;
+      height: 206px;
+      max-width: 100%;
+      display: inline-block;
+      object-fit: contain;
+    }
+
+    .direction122217 {
+      .image {
+        width: 300px;
+        height: 340px;
+      }
     }
   }
 }

@@ -544,7 +544,7 @@ export default [
         children: [
           {
             path: '/joy/festival/newyear',
-            name: 'deviceInfo',
+            name: 'newyear',
             meta: {
               dev: true,
               title: '新年烟花'

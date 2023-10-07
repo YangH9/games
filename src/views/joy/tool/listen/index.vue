@@ -14,4 +14,4 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import RouterViewBox from '@/components/RouterViewBox.vue'
 </script>
 
-<style lang="less" scoped></style>
+<style lang="scss" scoped></style>

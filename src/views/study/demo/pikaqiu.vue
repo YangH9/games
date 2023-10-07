@@ -65,7 +65,7 @@
 
 <script setup></script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-layout-content {
   background: var(--color-background-mute);
 }

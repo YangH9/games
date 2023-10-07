@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="随机数生成器" :hoverable="true">
       <a-form :model="option">
-        <a-collapse v-model:activeKey="activeKey" class="mb_2">
+        <a-collapse class="mb_2">
           <a-collapse-panel key="1">
             <template #header>
               <span class="mr_2">{{ option.quantity }}个</span>
@@ -126,7 +126,7 @@ const generate = () => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-card:deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;

@@ -64,7 +64,7 @@ window[dataKey] = (res) => {
 Jsonp(baseUrl)
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-btn + .ant-btn {
   margin-left: 6px;
 }

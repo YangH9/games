@@ -11,7 +11,7 @@ import Menu from '@/components/Menu.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-layout {
   padding: 0px 20px 20px;
 }

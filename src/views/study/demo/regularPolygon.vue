@@ -41,7 +41,7 @@ const max = ref(300)
 const width = ref(100)
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-card :deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;

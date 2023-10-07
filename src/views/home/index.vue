@@ -27,7 +27,7 @@ const mode = GetEnv.MODE
 const title = GetEnv.VITE_TITLE
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .layout {
   overflow: auto;
 }

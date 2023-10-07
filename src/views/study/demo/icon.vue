@@ -110,7 +110,7 @@
 
 <script setup></script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-card :deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;

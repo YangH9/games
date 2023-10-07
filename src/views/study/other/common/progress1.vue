@@ -98,7 +98,7 @@ const circleOption = reactive({
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 circle {
   transform-origin: center center;
   transform: rotate(-90deg);

@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="ant-row ant-row-space-between">
+        <div class="flex items_center content_between">
           <h3>飞车手游图鉴</h3>
           <h6>数据内容来自<a href="//speedm.qq.com/main.shtml">QQ飞车手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
         </div>
@@ -235,7 +235,7 @@ Jsonp(mapUrl)
 Jsonp(petUrl)
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-btn + .ant-btn {
   margin-left: 6px;
 }
@@ -249,45 +249,50 @@ Jsonp(petUrl)
   display: none;
 }
 
-.ant-card:deep(.ant-card-body) {
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 6px 0px 0px 6px;
+:deep(.ant-card) {
+  .ant-card-head-title {
+    padding: 10px 0;
+  }
+  .ant-card-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 6px 0px 0px 6px;
 
-  .ant-card-head {
-    padding-left: 10px;
-    padding-right: 10px;
-    min-height: auto;
+    .ant-card-head {
+      padding-left: 10px;
+      padding-right: 10px;
+      min-height: auto;
 
-    .ant-card-head-title {
-      img {
-        filter: invert(1);
+      .ant-card-head-title {
+        img {
+          filter: invert(1);
+        }
+      }
+
+      .ant-card-head-title,
+      .ant-card-extra {
+        padding: 8px;
       }
     }
 
-    .ant-card-head-title,
-    .ant-card-extra {
-      padding: 8px;
+    .ant-card-body {
+      padding: 0;
     }
-  }
 
-  .ant-card-body {
-    padding: 0;
-  }
+    .seat {
+      zoom: 0;
+      visibility: hidden;
+      height: 0;
+      overflow: hidden;
+    }
 
-  .seat {
-    zoom: 0;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
-  }
-
-  .image {
-    width: 244px;
-    height: 120px;
-    max-width: 100%;
-    display: inline-block;
-    object-fit: contain;
+    .image {
+      width: 244px;
+      height: 120px;
+      max-width: 100%;
+      display: inline-block;
+      object-fit: contain;
+    }
   }
 }
 </style>

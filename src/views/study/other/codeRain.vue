@@ -70,7 +70,7 @@ onMounted(() => {
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-card :deep(.ant-card-body) {
   padding: 0;
   background: #000;

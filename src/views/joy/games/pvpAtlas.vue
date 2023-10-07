@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="ant-row ant-row-space-between">
+        <div class="flex items_center content_between">
           <h3>王者荣耀图鉴</h3>
         </div>
       </template>
@@ -28,7 +28,7 @@ import { ref } from 'vue'
 const previewUrl = ref('')
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-divider {
   margin-top: 8px;
   margin-bottom: 8px;

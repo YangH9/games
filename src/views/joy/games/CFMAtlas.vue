@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="ant-row ant-row-space-between">
+        <div class="flex items_center content_between">
           <h3>穿越火线手游武器图鉴</h3>
           <span>全部（{{ dataList.length }}）件</span>
           <h6>数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
@@ -55,7 +55,7 @@ import { dataList } from '@/utils/tencentGame/cfmAtlas.json'
 const previewUrl = ref('')
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-divider {
   margin-top: 8px;
   margin-bottom: 8px;

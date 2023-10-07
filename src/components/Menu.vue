@@ -26,7 +26,7 @@ const click = (data) => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-layout-sider {
   background: transparent;
 }

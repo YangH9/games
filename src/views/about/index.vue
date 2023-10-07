@@ -70,7 +70,7 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .layout {
   overflow: auto;
 }

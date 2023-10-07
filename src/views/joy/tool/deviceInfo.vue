@@ -99,4 +99,4 @@ window.addEventListener('offline', lineChange)
 // console.log(architecture, bitness, fullVersionList, platform, platformVersion)
 </script>
 
-<style lang="less" scoped></style>
+<style lang="scss" scoped></style>

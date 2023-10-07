@@ -43,7 +43,7 @@ const props = defineProps({
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .circleProgress_wrapper {
   text-align: center;
   line-height: var(--width);

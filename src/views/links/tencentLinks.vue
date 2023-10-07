@@ -29,7 +29,7 @@ Jsonp('http://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldom
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .layout {
   overflow: auto;
 }

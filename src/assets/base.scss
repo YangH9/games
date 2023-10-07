@@ -93,19 +93,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  .wrap {
-    flex-wrap: wrap;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-bottom: 0;
-  }
 }
 
 // 文字弹窗
@@ -431,6 +418,10 @@ body {
 }
 
 .text_ {
+  &wrap {
+    text-wrap: wrap;
+  }
+
   &no_wrap {
     text-wrap: nowrap;
   }

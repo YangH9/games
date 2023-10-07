@@ -19,7 +19,7 @@
 
 <script setup></script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .box {
   max-width: 600px;
 }
