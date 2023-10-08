@@ -95,6 +95,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
 // 文字弹窗
 .adriftText {
   position: fixed;
@@ -409,6 +419,29 @@ body {
 
     &end {
       align-items: flex-end !important;
+    }
+  }
+}
+
+.scroll {
+  &_x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-wrap: nowrap;
+    flex-wrap: nowrap;
+    display: block;
+    &.show {
+      overflow-x: scroll;
+    }
+  }
+  &_y {
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-wrap: nowrap;
+    flex-wrap: nowrap;
+    display: block;
+    &.show {
+      overflow-y: scroll;
     }
   }
 }

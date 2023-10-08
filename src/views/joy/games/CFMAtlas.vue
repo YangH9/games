@@ -9,24 +9,29 @@
           <h6>数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
         </div>
       </template>
-      <a-row justify="space-around" :gutter="[0, 10]">
-        <a-col v-for="(item, index) of dataList" :key="index">
+      <a-row justify="space-around" :gutter="[10, 10]">
+        <a-col v-bind="colSpan" v-for="(item, index) of dataList" :key="index">
           <a-card :hoverable="true">
             <template #title>
               {{ item.qxmc_e8 }}
             </template>
-            <template #extra>{{ Array.isArray(item.wqlx_ba) ? item.wqlx_ba[0].bq_24 : item.wqlx_ba?.bq_24 }}</template>
+            <template #extra>
+              <template v-if="Array.isArray(item.wqlx_ba)">
+                <a-tag v-for="ite of item.wqlx_ba" color="blue" class="mr_0 ml_1">{{ ite?.bq_24 }}</a-tag>
+              </template>
+              <a-tag v-else color="blue" class="mr_0">{{ item.wqlx_ba?.bq_24 }}</a-tag>
+            </template>
             <img
               v-lazy="item.sytp_58"
               class="image"
               src="@/assets/default.png"
               :alt="item.qxmc_e8"
-              :title="item.qxjj_c7"
+              :title="`${item.qxjj_c7}${item.sytp_58.match(/\/([0-9]{8})\//)[1].replace(/([0-9]{4})([0-9]{2})([0-9]{2})/, '$1-$2-$3')}`"
               @click="previewUrl = item.sytp_58"
             />
           </a-card>
         </a-col>
-        <a-col v-for="item of 3" :key="item" class="seat">
+        <a-col v-bind="colSpan" v-for="item of 4" :key="item" class="seat">
           <a-card>
             <div class="image"></div>
           </a-card>
@@ -51,6 +56,8 @@ import { ref } from 'vue'
 import { dataList } from '@/utils/tencentGame/cfmAtlas.json'
 
 // const url = `https://cfm.qq.com/zlkdatasys/data_zlk_qxsy.json`
+
+const colSpan = { xs: 12, sm: 8, lg: 6 }
 
 const previewUrl = ref('')
 </script>
@@ -94,7 +101,7 @@ const previewUrl = ref('')
   }
 
   .image {
-    width: 244px;
+    width: 100%;
     height: 120px;
     max-width: 100%;
     display: inline-block;

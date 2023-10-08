@@ -25,7 +25,9 @@ import {
   RadioGroup,
   Textarea,
   Collapse,
-  CollapsePanel
+  CollapsePanel,
+  Watermark,
+  Tag
 } from 'ant-design-vue'
 
 const antList = {
@@ -53,8 +55,10 @@ const antList = {
   Radio,
   // RadioGroup,
   // Textarea,
-  Collapse
-  // CollapsePanel
+  Collapse,
+  // CollapsePanel,
+  Watermark,
+  Tag
 }
 
 //抛出整体按需引入的组件

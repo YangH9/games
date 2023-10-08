@@ -15,12 +15,11 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
-const $router = useRouter()
-const $route = useRoute()
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const click = (data) => {
-  $router.push(data.key)
+  router.push(data.key)
 }
 </script>
 
@@ -29,7 +28,7 @@ const click = (data) => {
   padding: 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
   background: var(--color-background);
   // background-image: radial-gradient(transparent 1px, var(--color-background) 1px);
   // background-size: 4px 4px;

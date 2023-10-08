@@ -16,13 +16,13 @@ import { useRoute, useRouter } from 'vue-router'
 
 const { url } = defineProps({ url: String })
 
-const $router = useRouter()
-const $route = useRoute()
+const router = useRouter()
+const route = useRoute()
 
-const menuList = reactive($route.matched.find((item) => item.path === url).children)
+const menuList = reactive(route.matched.find((item) => item.path === url).children)
 
 const click = (data) => {
-  $router.push(data.key)
+  router.push(data.key)
 }
 </script>
 

@@ -8,54 +8,30 @@
           <h6>数据内容来自<a href="//speedm.qq.com/main.shtml">QQ飞车手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
         </div>
         <a-divider />
-        <a-row justify="space-around">
-          <a-col v-for="(item, index) of typeList" :key="index">
-            <a-button :type="typeListActive === item.key ? 'primary' : ''" @click="typeListActive = item.key">
-              {{ item.title }}
-            </a-button>
-          </a-col>
-        </a-row>
-        <template v-if="typeListActive === 'car'">
-          <a-divider />
-          <div>
-            <a-button
-              v-for="(item, index) of carFactoryList"
-              :key="index"
-              :type="carFactoryListActive === item.key ? 'primary' : ''"
-              @click="carFactoryListActive = item.key"
-            >
-              {{ item.title }}
-            </a-button>
-          </div>
-          <a-divider />
-          <div>
-            <a-button
-              v-for="(item, index) of carGradeList"
-              :key="index"
-              :type="carGradeListActive === item.key ? 'primary' : ''"
-              @click="carGradeListActive = item.key"
-            >
-              {{ item.title }}
-            </a-button>
-          </div>
-        </template>
-        <template v-if="typeListActive === 'map'">
-          <a-divider />
-          <div>
-            <a-button
-              v-for="(item, index) of mapGradeList"
-              :key="index"
-              :type="mapGradeListActive === item.key ? 'primary' : ''"
-              @click="mapGradeListActive = item.key"
-            >
-              {{ item.title }}
-            </a-button>
-          </div>
-        </template>
+        <a-radio-group v-model:value="typeListActive" button-style="solid" class="flex items_center content_around">
+          <a-radio-button v-for="(item, index) of typeList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+        </a-radio-group>
       </template>
-      <a-row justify="space-around" :gutter="[0, 10]">
+      <template v-if="typeListActive === 'car'">
+        <a-radio-group v-model:value="carFactoryListActive" button-style="solid" class="px_3 scroll_x">
+          <a-radio-button v-for="(item, index) of carFactoryList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+        </a-radio-group>
+        <a-divider />
+        <a-radio-group v-model:value="carGradeListActive" button-style="solid" class="px_3 scroll_x">
+          <a-radio-button v-for="(item, index) of carGradeList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+        </a-radio-group>
+        <a-divider />
+      </template>
+      <template v-if="typeListActive === 'map'">
+        <a-radio-group v-model:value="mapGradeListActive" button-style="solid" class="px_3 scroll_x">
+          <a-radio-button v-for="(item, index) of mapGradeList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+        </a-radio-group>
+        <a-divider />
+      </template>
+      <a-row justify="space-around" :gutter="[10, 10]">
         <template v-if="show && typeListActive === 'car'">
           <a-col
+            v-bind="colSpan"
             v-for="(item, index) of carsDataList.filter(
               (item) => (item.ccmz_36 === carFactoryListActive || !carFactoryListActive) && (item.jb_43 === carGradeListActive || !carGradeListActive)
             )"
@@ -66,25 +42,26 @@
                 {{ item.cm_4e }}
                 <img v-lazy="item.cclogo_2a" />
               </template>
-              <template #extra>{{ item.jb_43 }}</template>
+              <template #extra>
+                <a-tag color="blue" class="mr_0">{{ item.jb_43 }}</a-tag>
+              </template>
               <img
                 v-lazy="item.slt_3c"
                 class="image"
                 src="@/assets/default.png"
                 :alt="item.cm_4e"
-                :title="item.jj_3b"
-                @click="previewUrl = item.slt_3c"
+                :title="`${item.jj_3b}\n${item.slt_3c.match(/\/([0-9]{8})\//)[1].replace(/([0-9]{4})([0-9]{2})([0-9]{2})/, '$1-$2-$3')}`"
+                @click="previewUrl = [item.slt_3c, item.tt_8a]"
               />
-            </a-card>
-          </a-col>
-          <a-col v-for="item of 3" :key="item" class="seat">
-            <a-card>
-              <div class="image"></div>
             </a-card>
           </a-col>
         </template>
         <template v-if="show && typeListActive === 'map'">
-          <a-col v-for="(item, index) of mapsDataList.filter((item) => item.jytg_a3 === mapGradeListActive || !mapGradeListActive)" :key="index">
+          <a-col
+            v-bind="colSpan"
+            v-for="(item, index) of mapsDataList.filter((item) => item.jytg_a3 === mapGradeListActive || !mapGradeListActive)"
+            :key="index"
+          >
             <a-card :title="item.dtm_88" :hoverable="true">
               <template #extra>{{ item.jytg_a3 }}星</template>
               <img
@@ -92,47 +69,43 @@
                 class="image"
                 src="@/assets/default.png"
                 :alt="item.dtm_88"
-                :title="item.jj_3b"
-                @click="previewUrl = item.slt_3c"
+                :title="`${item.jj_3b}\n${item.slt_3c.match(/\/([0-9]{8})\//)[1].replace(/([0-9]{4})([0-9]{2})([0-9]{2})/, '$1-$2-$3')}`"
+                @click="previewUrl = [item.slt_3c, item.tt_8a]"
               />
-            </a-card>
-          </a-col>
-          <a-col v-for="item of 3" :key="item" class="seat">
-            <a-card>
-              <div class="image"></div>
             </a-card>
           </a-col>
         </template>
         <template v-if="show && typeListActive === 'pet'">
-          <a-col v-for="(item, index) of petsDataList" :key="index">
+          <a-col v-bind="colSpan" v-for="(item, index) of petsDataList" :key="index">
             <a-card :title="item.mc_77" :hoverable="true">
               <img
                 v-lazy="item.slt_3c"
                 class="image"
                 src="@/assets/default.png"
                 :alt="item.mc_77"
-                :title="item.jj_3b"
-                @click="previewUrl = item.slt_3c"
+                :title="`${item.jj_3b}\n${item.slt_3c.match(/\/([0-9]{8})\//)[1].replace(/([0-9]{4})([0-9]{2})([0-9]{2})/, '$1-$2-$3')}`"
+                @click="previewUrl = [item.slt_3c, item.tmpngxt_19, item.tt_8a]"
               />
             </a-card>
           </a-col>
-          <a-col v-for="item of 3" :key="item" class="seat">
-            <a-card>
-              <div class="image"></div>
-            </a-card>
-          </a-col>
         </template>
+        <a-col v-bind="colSpan" v-for="item of 4" :key="item" class="seat">
+          <a-card>
+            <div class="image"></div>
+          </a-card>
+        </a-col>
       </a-row>
     </a-card>
-    <a-image
+    <a-image-preview-group
       :preview="{
-        visible: !!previewUrl,
-        src: previewUrl,
+        visible: previewUrl.length > 0,
         onVisibleChange: (e) => {
-          !e && (previewUrl = '')
+          !e && (previewUrl = [])
         }
       }"
-    />
+    >
+      <a-image v-for="item of previewUrl" :src="item" />
+    </a-image-preview-group>
   </div>
 </template>
 
@@ -142,7 +115,9 @@ import { nextTick, ref, watch, getCurrentInstance } from 'vue'
 
 const { Jsonp } = getCurrentInstance().proxy
 
-const previewUrl = ref('')
+const colSpan = { xs: 12, sm: 8, md: 6 }
+
+const previewUrl = ref([])
 
 const show = ref(true)
 
@@ -287,11 +262,10 @@ Jsonp(petUrl)
     }
 
     .image {
-      width: 244px;
+      width: 100%;
       height: 120px;
-      max-width: 100%;
       display: inline-block;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
 }

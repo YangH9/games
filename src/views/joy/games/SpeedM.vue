@@ -6,51 +6,47 @@
         <div class="flex items_center content_between">
           <div>
             <span class="mr_2">飞车手游壁纸</span>
-            <template v-for="(item, index) of directionList" :key="index">
-              <a-button :type="directionListActive === item.key ? 'primary' : ''" @click="directionListActive = item.key">
-                {{ item.title }}
-              </a-button>
-            </template>
+            <a-radio-group v-model:value="directionListActive" button-style="solid">
+              <a-radio-button v-for="(item, index) of directionList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+            </a-radio-group>
           </div>
           <div>
-            <template v-for="(item, index) of sortByList" :key="index">
-              <a-button :type="sortByListActive === item.key ? 'primary' : ''" @click="sortByListActive = item.key">
-                {{ item.title }}
-              </a-button>
-            </template>
+            <a-radio-group v-model:value="sortByListActive" button-style="solid">
+              <a-radio-button v-for="(item, index) of sortByList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+            </a-radio-group>
           </div>
         </div>
         <a-divider />
         <div class="flex items_center content_between">
           <div>
-            <template v-for="(item, index) of pagesList" :key="index">
-              <a-button :type="pagesListActive === item.key ? 'primary' : ''" @click="pagesListActive = item.key">
-                {{ item.title }}
-              </a-button>
-            </template>
+            <a-radio-group v-model:value="pagesListActive" button-style="solid">
+              <a-radio-button v-for="(item, index) of pagesList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+            </a-radio-group>
           </div>
           <a-select v-model:value="limit">
-            <a-select-option value="5">5</a-select-option>
-            <a-select-option value="10">10</a-select-option>
-            <a-select-option value="20">20</a-select-option>
+            <a-select-option :value="5">5</a-select-option>
+            <a-select-option :value="10">10</a-select-option>
+            <a-select-option :value="20">20</a-select-option>
           </a-select>
         </div>
       </template>
-      <a-row justify="space-around" :gutter="[0, 10]" :class="`direction${directionListActive}`">
-        <a-col v-for="(item, index) of dataList" :key="index">
+      <a-row justify="space-around" :gutter="[10, 10]" :class="`direction${directionListActive}`">
+        <a-col v-bind="colSpan[directionListActive]" v-for="(item, index) of dataList" :key="index">
           <a-card :title="item.sTitle">
-            <template #extra>{{ item.sTagInfoList[0].name }}</template>
+            <template #extra>
+              <a-tag color="blue" class="mr_0">{{ item.sTagInfoList[0].name }}</a-tag>
+            </template>
             <img
               v-lazy="item.sIMG"
               class="image"
               src="@/assets/default.png"
               :alt="item.sTitle"
-              :title="item.sTitle"
+              :title="`${item.sTitle}\n${item.sCreated}`"
               @click="previewUrl = item.sIMG"
             />
           </a-card>
         </a-col>
-        <a-col v-for="item of 3" :key="item" class="seat">
+        <a-col v-bind="colSpan[directionListActive]" v-for="item of 4" :key="item" class="seat">
           <a-card>
             <div class="image"></div>
           </a-card>
@@ -75,6 +71,7 @@ import { computed, ref, watch, getCurrentInstance } from 'vue'
 
 const { Jsonp } = getCurrentInstance().proxy
 
+const colSpan = { 122216: { xs: 24, sm: 12, md: 8 }, 122217: { xs: 12, sm: 8, md: 6 } }
 const baseUrl = `https://apps.game.qq.com/cmc/cross?serviceId=70&source=web_pc&r0=script`
 const dataKey = 'speedM'
 
@@ -170,16 +167,14 @@ watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
     }
 
     .image {
-      width: 330px;
+      width: 100%;
       height: 206px;
-      max-width: 100%;
       display: inline-block;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .direction122217 {
       .image {
-        width: 300px;
         height: 340px;
       }
     }

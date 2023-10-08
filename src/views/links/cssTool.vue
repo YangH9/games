@@ -14,6 +14,8 @@
 </template>
 
 <script setup>
+import Breadcrumb from '@/components/Breadcrumb.vue'
+
 const dataList = [
   {
     title: '属性生成器',
@@ -140,7 +142,6 @@ const filtterUrl = (item) => {
   .ant-btn {
     margin-right: 10px;
     margin-bottom: 10px;
-    line-height: 44px;
     span {
       max-width: 270px;
       line-height: normal;

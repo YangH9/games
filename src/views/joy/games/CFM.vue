@@ -8,8 +8,8 @@
           <h6>数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
         </div>
       </template>
-      <a-row justify="space-around" :gutter="[0, 10]">
-        <a-col v-for="(item, index) of dataList" :key="index">
+      <a-row justify="space-around" :gutter="[10, 10]">
+        <a-col v-bind="colSpan" v-for="(item, index) of dataList" :key="index">
           <a-card :hoverable="true">
             <template #title>
               {{ item.sTitle }}
@@ -20,12 +20,12 @@
               class="image"
               src="@/assets/default.png"
               :alt="item.sAuthor"
-              :title="`${item.sTitle}\n${item.sIdxTime}`"
+              :title="`${item.sTitle}\n${item.sCreated}`"
               @click="previewUrl = item.sIMG"
             />
           </a-card>
         </a-col>
-        <a-col v-for="item of 3" :key="item" class="seat">
+        <a-col v-bind="colSpan" v-for="item of 4" :key="item" class="seat">
           <a-card>
             <div class="image"></div>
           </a-card>
@@ -50,6 +50,8 @@ import { ref } from 'vue'
 import { dataList } from '@/utils/tencentGame/cfm.json'
 
 // https://cfm.qq.com/cp/a20200225s2/index.html
+
+const colSpan = { xs: 24, sm: 12, lg: 8 }
 
 const previewUrl = ref('')
 </script>
@@ -93,11 +95,11 @@ const previewUrl = ref('')
   }
 
   .image {
-    width: 330px;
+    width: 100%;
     height: 186px;
     max-width: 100%;
     display: inline-block;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 </style>

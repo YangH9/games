@@ -33,9 +33,9 @@ import { HomeOutlined } from '@ant-design/icons-vue'
 
 const { overlayShow } = defineProps({ overlayShow: { type: Boolean, default: false } })
 
-const $route = useRoute()
+const route = useRoute()
 
-const menuList = computed(() => $route.matched)
+const menuList = computed(() => route.matched)
 </script>
 
 <style lang="scss" scoped>
