@@ -9,7 +9,7 @@
         </div>
         <a-divider />
         <a-radio-group v-model:value="typeListActive" button-style="solid" class="flex items_center content_around" @change="changeType">
-          <a-radio-button v-for="(item, index) of typeList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+          <a-radio-button v-for="(item, index) of typeList" :value="item.key" :key="index">{{ item.title }}（{{ item.num }}）</a-radio-button>
         </a-radio-group>
       </template>
       <template v-if="typeListActive === 'car'">
@@ -109,7 +109,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { nextTick, ref, watch, getCurrentInstance } from 'vue'
+import { nextTick, ref, watch, getCurrentInstance, computed } from 'vue'
 
 const { Jsonp } = getCurrentInstance().proxy
 
@@ -154,11 +154,21 @@ const carFactoryListActive = ref('')
 const carGradeListActive = ref('')
 const mapGradeListActive = ref('')
 
-const typeList = [
-  { title: '赛车', key: 'car' },
-  { title: '地图', key: 'map' },
-  { title: '宠物', key: 'pet' }
-]
+const url = (i) => `https://speedm.qq.com/zlkdatasys/data/${i}/list.json`
+
+const carUrl = url`car_list`
+const mapUrl = url`map_list`
+const petUrl = url`pet_list`
+
+const carsDataList = ref([])
+const mapsDataList = ref([])
+const petsDataList = ref([])
+
+const typeList = computed(() => [
+  { title: '赛车', key: 'car', num: carsDataList.value.length },
+  { title: '地图', key: 'map', num: mapsDataList.value.length },
+  { title: '宠物', key: 'pet', num: petsDataList.value.length }
+])
 const carFactoryList = [
   { title: '全部车厂', key: '' },
   { title: '雷诺重工', key: '雷诺重工' },
@@ -199,16 +209,6 @@ watch([typeListActive, carFactoryListActive, carGradeListActive, mapGradeListAct
     show.value = true
   })
 })
-
-const url = (i) => `https://speedm.qq.com/zlkdatasys/data/${i}/list.json`
-
-const carUrl = url`car_list`
-const mapUrl = url`map_list`
-const petUrl = url`pet_list`
-
-const carsDataList = ref([])
-const mapsDataList = ref([])
-const petsDataList = ref([])
 
 // 分装json内调用的方法并获取内容
 window.cars_data = (obj) => {
