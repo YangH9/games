@@ -57,9 +57,7 @@
       :preview="{
         visible: !!previewUrl,
         src: previewUrl,
-        onVisibleChange: (e) => {
-          !e && (previewUrl = '')
-        }
+        onVisibleChange: (e) => !e && (previewUrl = '')
       }"
     />
   </div>
@@ -141,7 +139,7 @@ watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
   .ant-card-body {
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 6px 0px 0px 6px;
+    padding: 10px 4px 0px 10px;
 
     .ant-card-head {
       padding-left: 10px;

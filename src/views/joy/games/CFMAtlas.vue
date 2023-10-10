@@ -10,8 +10,8 @@
         </div>
       </template>
       <a-row justify="space-around" :gutter="[10, 10]">
-        <a-col v-bind="colSpan" v-for="(item, index) of dataList" :key="index">
-          <a-card :hoverable="true">
+        <a-col v-bind="colSpan" v-for="(item, index) of dataList.slice(0, pageNum)" :key="index">
+          <a-card ref="cardRef" :hoverable="true">
             <template #title>
               {{ item.qxmc_e8 }}
             </template>
@@ -42,9 +42,7 @@
       :preview="{
         visible: !!previewUrl,
         src: previewUrl,
-        onVisibleChange: (e) => {
-          !e && (previewUrl = '')
-        }
+        onVisibleChange: (e) => !e && (previewUrl = '')
       }"
     />
   </div>
@@ -52,7 +50,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { dataList } from '@/utils/tencentGame/cfmAtlas.json'
 
 // const url = `https://cfm.qq.com/zlkdatasys/data_zlk_qxsy.json`
@@ -60,6 +58,27 @@ import { dataList } from '@/utils/tencentGame/cfmAtlas.json'
 const colSpan = { xs: 12, sm: 8, lg: 6 }
 
 const previewUrl = ref('')
+
+const pageNum = ref(10)
+
+const cardRef = ref([])
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((item) => {
+    if (item.isIntersecting) {
+      pageNum.value += 10
+      observer.unobserve(item.target)
+      observer.observe(cardRef.value?.at(-1)?.$el)
+    }
+  })
+})
+watch(
+  [cardRef],
+  () => {
+    cardRef.value.length && observer.observe(cardRef.value?.at(-1)?.$el)
+  },
+  { deep: true }
+)
 </script>
 
 <style lang="scss" scoped>
@@ -75,7 +94,7 @@ const previewUrl = ref('')
 .ant-card:deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 6px 0px 0px 6px;
+  padding: 10px 4px 0px 10px;
 
   .ant-card-head {
     padding-left: 10px;

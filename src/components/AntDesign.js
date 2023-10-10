@@ -27,7 +27,8 @@ import {
   Collapse,
   CollapsePanel,
   Watermark,
-  Tag
+  Tag,
+  ConfigProvider
 } from 'ant-design-vue'
 
 const antList = {
@@ -58,7 +59,8 @@ const antList = {
   Collapse,
   // CollapsePanel,
   Watermark,
-  Tag
+  Tag,
+  ConfigProvider
 }
 
 //抛出整体按需引入的组件

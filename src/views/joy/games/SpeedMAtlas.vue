@@ -8,7 +8,7 @@
           <h6>数据内容来自<a href="//speedm.qq.com/main.shtml">QQ飞车手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
         </div>
         <a-divider />
-        <a-radio-group v-model:value="typeListActive" button-style="solid" class="flex items_center content_around">
+        <a-radio-group v-model:value="typeListActive" button-style="solid" class="flex items_center content_around" @change="changeType">
           <a-radio-button v-for="(item, index) of typeList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
         </a-radio-group>
       </template>
@@ -32,12 +32,12 @@
         <template v-if="show && typeListActive === 'car'">
           <a-col
             v-bind="colSpan"
-            v-for="(item, index) of carsDataList.filter(
-              (item) => (item.ccmz_36 === carFactoryListActive || !carFactoryListActive) && (item.jb_43 === carGradeListActive || !carGradeListActive)
-            )"
+            v-for="(item, index) of carsDataList
+              .filter((i) => (i.ccmz_36 === carFactoryListActive || !carFactoryListActive) && (i.jb_43 === carGradeListActive || !carGradeListActive))
+              .slice(0, pageNum)"
             :key="index"
           >
-            <a-card :hoverable="true">
+            <a-card ref="carRef" :hoverable="true">
               <template #title>
                 {{ item.cm_4e }}
                 <img v-lazy="item.cclogo_2a" />
@@ -59,10 +59,10 @@
         <template v-if="show && typeListActive === 'map'">
           <a-col
             v-bind="colSpan"
-            v-for="(item, index) of mapsDataList.filter((item) => item.jytg_a3 === mapGradeListActive || !mapGradeListActive)"
+            v-for="(item, index) of mapsDataList.filter((i) => i.jytg_a3 === mapGradeListActive || !mapGradeListActive).slice(0, pageNum)"
             :key="index"
           >
-            <a-card :title="item.dtm_88" :hoverable="true">
+            <a-card ref="mapRef" :title="item.dtm_88" :hoverable="true">
               <template #extra>{{ item.jytg_a3 }}星</template>
               <img
                 v-lazy="item.slt_3c"
@@ -76,8 +76,8 @@
           </a-col>
         </template>
         <template v-if="show && typeListActive === 'pet'">
-          <a-col v-bind="colSpan" v-for="(item, index) of petsDataList" :key="index">
-            <a-card :title="item.mc_77" :hoverable="true">
+          <a-col v-bind="colSpan" v-for="(item, index) of petsDataList.slice(0, pageNum)" :key="index">
+            <a-card ref="petRef" :title="item.mc_77" :hoverable="true">
               <img
                 v-lazy="item.slt_3c"
                 class="image"
@@ -99,9 +99,7 @@
     <a-image-preview-group
       :preview="{
         visible: previewUrl.length > 0,
-        onVisibleChange: (e) => {
-          !e && (previewUrl = [])
-        }
+        onVisibleChange: (e) => !e && (previewUrl = [])
       }"
     >
       <a-image v-for="item of previewUrl" :src="item" />
@@ -116,6 +114,36 @@ import { nextTick, ref, watch, getCurrentInstance } from 'vue'
 const { Jsonp } = getCurrentInstance().proxy
 
 const colSpan = { xs: 12, sm: 8, md: 6 }
+
+const pageNum = ref(10)
+
+const carRef = ref([])
+const mapRef = ref([])
+const petRef = ref([])
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((item) => {
+    if (item.isIntersecting) {
+      pageNum.value += 10
+      observer.unobserve(item.target)
+      observer.observe(carRef.value?.at(-1)?.$el || mapRef.value?.at(-1)?.$el || petRef.value?.at(-1)?.$el)
+    }
+  })
+})
+watch(
+  [carRef, mapRef, petRef],
+  () => {
+    ;(carRef.value.length || mapRef.value.length || petRef.value.length) &&
+      observer.observe(carRef.value?.at(-1)?.$el || mapRef.value?.at(-1)?.$el || petRef.value?.at(-1)?.$el)
+  },
+  { deep: true }
+)
+
+const changeType = () => {
+  pageNum.value = 10
+  observer.disconnect()
+  document.querySelector('.ant-card-body').scrollTop = 0
+}
 
 const previewUrl = ref([])
 
@@ -230,8 +258,8 @@ Jsonp(petUrl)
   }
   .ant-card-body {
     overflow-x: hidden;
-    overflow-y: auto;
-    padding: 6px 0px 0px 6px;
+    overflow-y: scroll;
+    padding: 10px 4px 0px 10px;
 
     .ant-card-head {
       padding-left: 10px;
@@ -252,6 +280,7 @@ Jsonp(petUrl)
 
     .ant-card-body {
       padding: 0;
+      overflow-y: hidden;
     }
 
     .seat {

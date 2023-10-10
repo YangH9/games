@@ -3,8 +3,8 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true" title="飞车端游壁纸">
       <a-row justify="space-around" :gutter="[10, 10]">
-        <a-col v-bind="colSpan" v-for="(item, index) of dataList" :key="index">
-          <a-card :title="item.dtInputDT">
+        <a-col v-bind="colSpan" v-for="(item, index) of dataList.slice(0, pageNum)" :key="index">
+          <a-card ref="cardRef" :title="item.dtInputDT">
             <img
               v-lazy="item.sProdImgNo_1"
               class="image"
@@ -29,9 +29,7 @@
     <a-image-preview-group
       :preview="{
         visible: !!previewUrl,
-        onVisibleChange: (e) => {
-          !e && (previewUrl = '')
-        }
+        onVisibleChange: (e) => !e && (previewUrl = '')
       }"
     >
       <a-image v-if="Array.isArray(previewUrl)" v-for="item of previewUrl" :src="item" />
@@ -42,7 +40,7 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref, getCurrentInstance } from 'vue'
+import { ref, getCurrentInstance, watch } from 'vue'
 
 const { Jsonp } = getCurrentInstance().proxy
 
@@ -51,10 +49,31 @@ const dataKey = 'speed'
 
 const previewUrl = ref('')
 
-const limit = ref(100)
-const pagesListActive = ref(0)
+const pageNum = ref(10)
 
-const baseUrl = `https://apps.game.qq.com/cgi-bin/ams/module/ishow/V1.0/query/workList_inc.cgi?sDataType=JSON&jsoncallback=${dataKey}&iActId=4023&iModuleId=4023&page=${pagesListActive.value}&iListNum=${limit.value}`
+const cardRef = ref([])
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((item) => {
+    if (item.isIntersecting) {
+      pageNum.value += 10
+      observer.unobserve(item.target)
+      observer.observe(cardRef.value?.at(-1)?.$el)
+    }
+  })
+})
+watch(
+  [cardRef],
+  () => {
+    cardRef.value.length && observer.observe(cardRef.value?.at(-1)?.$el)
+  },
+  { deep: true }
+)
+
+const limit = 100
+const pagesListActive = 0
+
+const baseUrl = `https://apps.game.qq.com/cgi-bin/ams/module/ishow/V1.0/query/workList_inc.cgi?sDataType=JSON&jsoncallback=${dataKey}&iActId=4023&iModuleId=4023&page=${pagesListActive}&iListNum=${limit}`
 
 const dataList = ref([])
 
@@ -90,7 +109,7 @@ Jsonp(baseUrl)
 .ant-card:deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 6px 0px 0px 6px;
+  padding: 10px 4px 0px 10px;
 
   .ant-card-head {
     padding-left: 10px;
