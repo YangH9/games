@@ -1,38 +1,79 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout v-calcHeight="0" class="layout">
+    <a-layout v-calcHeight="0" class="scroll_auto">
       <RouterViewBox url="/joy">
         <div class="container">
           <Breadcrumb />
-          <a-card v-for="(main, index) of joyList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
-            <a-button v-for="(item, index1) of main.list" :key="index1" type="link" size="small" :title="item.title">
+          <a-card
+            v-for="(main, index) in joyList"
+            :key="index"
+            :title="main.title"
+            class="card_button_list"
+            :hoverable="true"
+          >
+            <a-button v-for="(item, index1) in main.list" :key="index1" size="large" :title="item.title">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
+            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
-          <a-card title="我的世界" class="mb_2" :hoverable="true">
+          <a-card title="我的世界" class="card_button_list" :hoverable="true">
             <template #extra>
               <RouterLink to="/links/MinecraftBookmark">查看更多</RouterLink>
             </template>
-            <a-button v-for="(item, index) of mcList" :key="index" :href="item.href" class="mr_2" :title="item.title" size="large" target="_blank">
+            <a-button
+              v-for="(item, index) in mcList"
+              :key="index"
+              :href="item.href"
+              :title="item.title"
+              size="large"
+              target="_blank"
+            >
               <template #icon>
-                <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+                <img
+                  v-lazy="filtterUrl(item)"
+                  class="icon"
+                  referrer="no-referrer"
+                  @error="(e) => (e.target.style.display = 'none')"
+                />
               </template>
               {{ item.title }}
             </a-button>
+            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
-          <a-card title="原神" class="mb_2" :hoverable="true">
-            <a-button v-for="(item, index) of ysList" :key="index" :href="item.href" class="mr_2" :title="item.title" size="large" target="_blank">
+          <a-card title="原神" class="card_button_list" :hoverable="true">
+            <a-button
+              v-for="(item, index) in ysList"
+              :key="index"
+              :href="item.href"
+              :title="item.title"
+              size="large"
+              target="_blank"
+            >
               <template #icon>
-                <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+                <img
+                  v-lazy="filtterUrl(item)"
+                  class="icon"
+                  referrer="no-referrer"
+                  @error="(e) => (e.target.style.display = 'none')"
+                />
               </template>
               {{ item.title }}
             </a-button>
+            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
-          <a-card title="QQ群" class="mb_2" :hoverable="true">
-            <a-button v-for="(item, index) of qqList" :key="index" :href="item.href" :title="item.title" size="small" type="link" target="_blank">
+          <a-card title="QQ群" class="card_button_list" :hoverable="true">
+            <a-button
+              v-for="(item, index) in qqList"
+              :key="index"
+              :href="item.href"
+              :title="item.title"
+              size="large"
+              target="_blank"
+            >
               {{ item.title }}
             </a-button>
+            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
         </div>
       </RouterViewBox>
@@ -85,7 +126,11 @@ const joyList = [
 ]
 
 const mcList = [
-  { title: 'Minecraft', href: 'https://www.minecraft.net/zh-hans', favicon: 'etc.clientlibs/minecraft/clientlibs/main/resources/favicon.ico' },
+  {
+    title: 'Minecraft',
+    href: 'https://www.minecraft.net/zh-hans',
+    favicon: 'etc.clientlibs/minecraft/clientlibs/main/resources/favicon.ico'
+  },
   {
     title: 'Minecraft Wiki',
     href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
@@ -102,27 +147,15 @@ const ysList = [
   { title: '原神·地图', href: 'https://webstatic.mihoyo.com/ys/app/interactive-map', favicon: '' }
 ]
 
-const qqList = [
-  { title: '👨‍👦‍👦MC精彩无限 (778923681)', href: 'https://jq.qq.com/?_wv=1027&k=ikak0eLV' },
-  { title: '👨‍👦‍👦cfm活动分享群 (238080446)', href: 'https://jq.qq.com/?_wv=1027&k=K6vsosuT' }
-]
+const qqList = [{ title: '👨‍👦‍👦MC精彩无限 (778923681)', href: 'https://jq.qq.com/?_wv=1027&k=ikak0eLV' }]
 
 const filtterUrl = (item) => {
   const url =
-    item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+    item.favicon.indexOf('//') >= 0
+      ? item.favicon
+      : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
   return url
 }
 </script>
 
-<style lang="scss" scoped>
-.layout {
-  overflow: auto;
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-  vertical-align: baseline;
-}
-</style>
+<style lang="scss" scoped></style>

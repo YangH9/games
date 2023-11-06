@@ -2,13 +2,19 @@ require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
   root: true,
-  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', 'plugin:vue/recommended'],
+  extends: [
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    'plugin:vue/recommended',
+    '@vue/eslint-config-prettier/skip-formatting'
+  ],
   env: {
     browser: true,
     node: true,
     es6: true,
     es2020: true
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
@@ -142,7 +148,7 @@ module.exports = {
     'no-undef': 'error', // 禁用未声明的变量，除非它们在 /* global */ 注释中被提到
     'no-undef-init': 'error', // 禁止将变量初始化为 undefined
     'no-undefined': 'error', // 禁止将 undefined 作为标识符
-    'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn', // 禁止出现未使用过的变量
+    'no-unused-vars': ['error', { varsIgnorePattern: '.*', args: 'none' }], // 禁止出现未使用过的变量
     'no-use-before-define': 'error', // 禁止在变量定义之前使用它们
 
     // Stylistic Issues、这些规则是关于风格指南的，而且是非常主观的：

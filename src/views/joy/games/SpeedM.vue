@@ -7,12 +7,16 @@
           <div>
             <span class="mr_2">飞车手游壁纸</span>
             <a-radio-group v-model:value="directionListActive" button-style="solid">
-              <a-radio-button v-for="(item, index) of directionList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+              <a-radio-button v-for="(item, index) in directionList" :key="index" :value="item.key">{{
+                item.title
+              }}</a-radio-button>
             </a-radio-group>
           </div>
           <div>
             <a-radio-group v-model:value="sortByListActive" button-style="solid">
-              <a-radio-button v-for="(item, index) of sortByList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+              <a-radio-button v-for="(item, index) in sortByList" :key="index" :value="item.key">{{
+                item.title
+              }}</a-radio-button>
             </a-radio-group>
           </div>
         </div>
@@ -20,7 +24,9 @@
         <div class="flex items_center content_between">
           <div>
             <a-radio-group v-model:value="pagesListActive" button-style="solid">
-              <a-radio-button v-for="(item, index) of pagesList" :value="item.key" :key="index">{{ item.title }}</a-radio-button>
+              <a-radio-button v-for="(item, index) in pagesList" :key="index" :value="item.key">{{
+                item.title
+              }}</a-radio-button>
             </a-radio-group>
           </div>
           <a-select v-model:value="limit">
@@ -31,7 +37,7 @@
         </div>
       </template>
       <a-row justify="space-around" :gutter="[10, 10]" :class="`direction${directionListActive}`">
-        <a-col v-bind="colSpan[directionListActive]" v-for="(item, index) of dataList" :key="index">
+        <a-col v-for="(item, index) in dataList" v-bind="colSpan[directionListActive]" :key="index">
           <a-card :title="item.sTitle">
             <template #extra>
               <a-tag color="blue" class="mr_0">{{ item.sTagInfoList[0].name }}</a-tag>
@@ -46,7 +52,7 @@
             />
           </a-card>
         </a-col>
-        <a-col v-bind="colSpan[directionListActive]" v-for="item of 4" :key="item" class="seat">
+        <a-col v-for="item in 4" v-bind="colSpan[directionListActive]" :key="item" class="seat">
           <a-card>
             <div class="image"></div>
           </a-card>

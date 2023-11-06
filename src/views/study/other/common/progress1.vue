@@ -26,7 +26,12 @@
       />
     </svg>
     <!-- 圆形进度条 -->
-    <svg v-if="type === 'circle'" :width="circleOption.width" :height="circleOption.height" :viewBox="circleOption.viewBox">
+    <svg
+      v-if="type === 'circle'"
+      :width="circleOption.width"
+      :height="circleOption.height"
+      :viewBox="circleOption.viewBox"
+    >
       <circle
         :cx="circleOption.cx"
         :cy="circleOption.cy"
@@ -46,7 +51,13 @@
         :stroke-dasharray="circleOption.strokeDasharray"
         :stroke-linecap="linecap"
       />
-      <text v-if="hasText" :x="circleOption.textX" :y="circleOption.textY" text-anchor="middle" :font-size="circleOption.textSize">
+      <text
+        v-if="hasText"
+        :x="circleOption.textX"
+        :y="circleOption.textY"
+        text-anchor="middle"
+        :font-size="circleOption.textSize"
+      >
         {{ props.value }}
       </text>
     </svg>

@@ -1,14 +1,32 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card v-for="(main, index) of dataList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
-      <a-button v-for="(item, index1) of main.list" :key="index1" :href="item.href" :title="item.title" size="large" target="_blank">
+    <a-card
+      v-for="(main, index) in dataList"
+      :key="index"
+      :title="main.title"
+      class="card_button_list"
+      :hoverable="true"
+    >
+      <a-button
+        v-for="(item, index1) in main.list"
+        :key="index1"
+        :href="item.href"
+        :title="item.title"
+        size="large"
+        target="_blank"
+      >
         <template #icon>
-          <img v-lazy="item.favicon" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+          <img
+            v-lazy="item.favicon"
+            class="icon"
+            referrer="no-referrer"
+            @error="(e) => (e.target.style.display = 'none')"
+          />
         </template>
         {{ item.title }}
       </a-button>
-      <a-button v-for="i of 10" :key="i" class="seat"></a-button>
+      <a-button v-for="i in 10" :key="i" class="seat"></a-button>
     </a-card>
   </div>
 </template>
@@ -39,7 +57,8 @@ const dataList = [
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAChElEQVQ4ja2Tu28UZxTFf/ebWRZ5ZhaxZm0SJSIyokFOkMJLdIiGVPkLaKLIVGkSJf9AqtSOEiGgIoAU+kiR0oB4yAvCEsgNEBCPEDu7492157Ezu998lwISLGI6TnGLc849zbkX3j1aIewNN+db/+NloyEIgnB2tnEH68Dnk3Z7qQNw+PDsFOLdRWFpaW1flmUpdFMAH+Dgwb07nfNuR9u2RKd+/iBKr95ibr6xCEd3wWWsNYsXL+2ZAmXuiz/vP31cJNmwtb/b7a74QGS82sK5i3veD0NDUB+7aqKSSpPt0G/CNGFktgeBaBDW9Pz53dHz31aiEz/IQhc+9qEpwOS2oNKJyNeyjGT6s+P8eiitn/zy0QOA02dn6vW6UI6cNCbU5aEKyiQ0xYeWMrKrf//entj1+THZMfkTaI5435lfLsw0EI8gEECUomD1WlsGa1YxW1ahpwbuJQ+fpke+PhOVxRAxZPQG34utMo0aNQ1DUUXUllaGN26SD0qZm6+Vyx17BEgMQBw/6T97vtZf/uOy9la/wdFRVSPWqliroooYD9WxJS1Fk4J+nsd9APOqwzKN1w98e7aRpGWJZ8x/5cqr6VWWtBTm5v0kzasDQLkxQOM8H/zVSVw1cnieqPGMIoJ4HloUml5rqystWSkujuMBoBsDgGaN8ag2vLFAlRdUIytYq2441PUrbXF5ge+Db6QGzdq/W/7rgJ4zMj1Y75dBeOW6OicOQVDw7dh5viFZF1F0AD23ySlDELR2znxoFk9/NX4v3KpU1UvZ84W0gJM/+suPnrlPs6y7smnAS0xN7/7I3BQkVFUFEEEU0oeP3SHo/POWZ9qIHRG4NzSjECdvOl8AWc44xcv72r0AAAAASUVORK5CYII='
       },
       {
-        title: '[角色]SkinsRestorer —— 老牌皮肤显示插件[1.8+ 中文|持续更新|支持Sponge] - 服务端插件 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '[角色]SkinsRestorer —— 老牌皮肤显示插件[1.8+ 中文|持续更新|支持Sponge] - 服务端插件 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/thread-805404-1-1.html',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
@@ -110,7 +129,8 @@ const dataList = [
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADRklEQVQ4jUXUy49TZRiA8ef9vu/0nLbTmYoDwzUzwAIERwkhKqCYGONlMxqjiTGujBt3JEqEkBg1RoUViSS64x9ww8JEF0bECysSRsBgEEagZtrpXGhP23NOe873utH4/A+/R/i/YPzg1lq33cjdga+OS2XyhM+SkfcREk4EJm18NrPw1udpfa9rLF+PucwIQADHHszsPt63kTmad2y+YX+1tv7RUjkdqN64+xPe7hBz75PELnwa21rgfJqcuX6NU/yOt4DumOW9zU+EH00fqVS3Hkiq66bToMjOUg2flkwOyfpahNQPBYz1q1vqF8saBE9F3ierN/nZAVp4gjBSNzVVyZ6ZfLcUBZbLdx+SX28/joiqCGLEaFw+Slns0HROh6IEgBrmztcoRWEpLLRejsxLMx/I89tOyv5NOab0PaKIoogOBRljJTgVDtwL6gzhrrnJmoGgUT38yrGNuwtJet61kga9YUI7PsRw9BjGQDoCW6qwYV1VqlGhnckvJNwUHROz3HBgxqtVR31C6MW5nLk2Q9L7kIXWSXpFFYDICYJQeEOW9GWYCxgTihA6fKGgiIo4t6it7kFZWjtCP/cgEBpDYDy5CuDJiXTcXBLHUBNvcBjnBbUqkd78+7yM/Hb62U6cTbE4IqcYEUa5Ah7VUGruNzWSC+LU4FPrc1sUeSJReEXjdCdlBxUTERkH5GRFTmcwpBOniMa6mL4uWe4Ur1jxS3PN1sNbWrxZbN3wpVlZHaMUdJmZOkcpuEK7d5hO35KkPYrRiNZSW7qLd7R7oyFpsyIWN3ZVNx+YTide3b6cvKNRuZB1E1/Lgw+cwtgfKXREWJqntTpLPEg1zwuGWe4Hzd7QrVx9zbF09RK9xoXhvW+fXe5uymK3q2S23NfyfSQpShrYjxmzSNEstL04S1AVr+0/Lb2FdvzXrfMWsAxWQ3XRG16CIGvOSzKsSMkPsZ1bMlgNxccFa61M1ha3ic+axi/9Aa3508S7fxHAAJ49L7+IyDkZxVY3Pllh4yOVcX9Rp91Z+nav3Ln7nC+a82sE5RHGvs211e/gQiH/UhZAqc/UMVOeXfuOUxo/wbA8qpkfnDd16Xc3d2l8s4eVrAPt3n8P+AdF240SYiobTwAAAABJRU5ErkJggg=='
       },
       {
-        title: 'FokaStudio&#39;s Ender Expansion ~ Harder End, New Biomes and More! [Now PROPERLY on 1.18.2!] Minecraft Data Pack',
+        title:
+          'FokaStudio&#39;s Ender Expansion ~ Harder End, New Biomes and More! [Now PROPERLY on 1.18.2!] Minecraft Data Pack',
         href: 'https://www.planetminecraft.com/data-pack/fokastudio-s-ender-expansion/',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADRklEQVQ4jUXUy49TZRiA8ef9vu/0nLbTmYoDwzUzwAIERwkhKqCYGONlMxqjiTGujBt3JEqEkBg1RoUViSS64x9ww8JEF0bECysSRsBgEEagZtrpXGhP23NOe873utH4/A+/R/i/YPzg1lq33cjdga+OS2XyhM+SkfcREk4EJm18NrPw1udpfa9rLF+PucwIQADHHszsPt63kTmad2y+YX+1tv7RUjkdqN64+xPe7hBz75PELnwa21rgfJqcuX6NU/yOt4DumOW9zU+EH00fqVS3Hkiq66bToMjOUg2flkwOyfpahNQPBYz1q1vqF8saBE9F3ierN/nZAVp4gjBSNzVVyZ6ZfLcUBZbLdx+SX28/joiqCGLEaFw+Slns0HROh6IEgBrmztcoRWEpLLRejsxLMx/I89tOyv5NOab0PaKIoogOBRljJTgVDtwL6gzhrrnJmoGgUT38yrGNuwtJet61kga9YUI7PsRw9BjGQDoCW6qwYV1VqlGhnckvJNwUHROz3HBgxqtVR31C6MW5nLk2Q9L7kIXWSXpFFYDICYJQeEOW9GWYCxgTihA6fKGgiIo4t6it7kFZWjtCP/cgEBpDYDy5CuDJiXTcXBLHUBNvcBjnBbUqkd78+7yM/Hb62U6cTbE4IqcYEUa5Ah7VUGruNzWSC+LU4FPrc1sUeSJReEXjdCdlBxUTERkH5GRFTmcwpBOniMa6mL4uWe4Ur1jxS3PN1sNbWrxZbN3wpVlZHaMUdJmZOkcpuEK7d5hO35KkPYrRiNZSW7qLd7R7oyFpsyIWN3ZVNx+YTide3b6cvKNRuZB1E1/Lgw+cwtgfKXREWJqntTpLPEg1zwuGWe4Hzd7QrVx9zbF09RK9xoXhvW+fXe5uymK3q2S23NfyfSQpShrYjxmzSNEstL04S1AVr+0/Lb2FdvzXrfMWsAxWQ3XRG16CIGvOSzKsSMkPsZ1bMlgNxccFa61M1ha3ic+axi/9Aa3508S7fxHAAJ49L7+IyDkZxVY3Pllh4yOVcX9Rp91Z+nav3Ln7nC+a82sE5RHGvs211e/gQiH/UhZAqc/UMVOeXfuOUxo/wbA8qpkfnDd16Xc3d2l8s4eVrAPt3n8P+AdF240SYiobTwAAAABJRU5ErkJggg=='
@@ -163,7 +183,11 @@ const dataList = [
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADCUlEQVQ4jWWTTWhcZRSG33Pud3/MzOTPNGWkxIXVohQKBRdRqknc6y4LF1VMoXsX6XbAXQp1IQgl7VpoUXDhIqB2Cq0JKFLRTekmo5mOyWQmJvN/73fP6yKxKJ7d4fC+cHh4BMcjAAgAN374+W0DVyy3RfqsDAAaRk9FpaqQ2x+/cfH+vzNysqBy505x4sWX18x4RUTCbDQCT0oFkDCOQTJTlVuHtSerleXl7vGNlEq1WihG418nhbGlTvvARGjQQDVLhWbAc2O0LDNAtDQ9pcNe//tuevReZWGhpxBhISqtJYXCUqfdGokKAmPQT8bk4ua3eOWbuzgwShRoICrotFujpFBYKkSlNYhQ1jZ/fFOpVZ+mEBEVM8k1QNLtYPn2J5IHI3x26UMmZ89ivFhCbkYA5qIIJumCiuGqijrw5F0a0ijGhc0NiVpdTr20z7dqW1Kv7+KouQcVFZBQUSfmriqNiz5LCRGVPEcWxjhV35ZXHz1kiqIMEpX5mQc802jJbruJg0Ydoqp5lpE5F9W8L5sZ5BgLcudwYes7hsOBMFLk+2Monq/Lpac/0YIYnXYTe7/XxPsMpJUVz6ASuQsx3m5i7slvyOIEqjmkHSKdEbxW+BXT+x1YnGDYOcRebRt+NISqcw1VBYzMncNkaxdRvytQR1GDdR3MHItze3Lqr0P4QBEGjj5L0dzZaaio3HNhJAQNJHwYQURpEJGAlF7I7PGEsB8yjRyEBGkWRpHQ8qpS/U2jeWoAl6VsluewXz6DsW6HuTrxCST64jRrv5xHvTyNOPWkKGj0meCmrs7PPyS5Xpyccsh9ZmHI++9eRnO2jKTfY9GP2BifwZevvwMGAWmWJaVxR3D985UPHjiQ0qtWVwVyrvD8zFKv1bbW7Av5Vx9d09KjLUkHPdROz3EYRhb5TJOJiXg06N/Lhp1VAPJMpusbGwU3OXvdjFcUCFPvMYBwv74DHh5IEscwoxcN1v/Yfrx6t1Lp/qPk/3QGuJL7fJF5VgaBVvPPxuCoWw3i8Nanl9//j85/A1z9qhXmWKTSAAAAAElFTkSuQmCC'
       },
-      { title: 'Nova Skin - Minecraft Wallpaper Generator with custom skins', href: 'http://minecraft.novaskin.me/wallpapers/mobile', favicon: '' },
+      {
+        title: 'Nova Skin - Minecraft Wallpaper Generator with custom skins',
+        href: 'http://minecraft.novaskin.me/wallpapers/mobile',
+        favicon: ''
+      },
       {
         title: '首页 - 我的世界皮肤站 - Minecraft SkinMe',
         href: 'http://www.skinme.cc/skinme/user/home/',
@@ -290,7 +314,8 @@ const dataList = [
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVQ4jaVTORKAIAzcOD6CRt9AbWPHv/2Bb9CGX8RGHCQHzrgVQ5LdTQgECVbuWpA4GKjJ1NyhJ8W7H/cI2lbU1lwHRd1z0W0BAM6wmjFtMFyr1sVz2ETNCKU3rXjK20ugEI29KWvEAEARDICodWCpU5TDpGjM4Miy+LbMjQtzE7U3L7kPiUfg4ctf8bGkzEvKDHxcJA+/CS5YrDUokhVf1AAAAABJRU5ErkJggg=='
       },
       {
-        title: '[管理|安全|修正]BanItem——一款有新型有特色的轻量级封禁物品插件[1.7-1.15] - 服务端插件 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '[管理|安全|修正]BanItem——一款有新型有特色的轻量级封禁物品插件[1.7-1.15] - 服务端插件 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/thread-976724-1-1.html',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
@@ -332,7 +357,8 @@ const dataList = [
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
       },
       {
-        title: '[信息][开源][SCT]mcMMO View —— 更好的显示mcmmo,支持高版本! - 服务端插件 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '[信息][开源][SCT]mcMMO View —— 更好的显示mcmmo,支持高版本! - 服务端插件 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/forum.php?mod=viewthread&tid=1300127',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
@@ -391,19 +417,22 @@ const dataList = [
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
       },
       {
-        title: '[1.16.5/1.18.1]Arclight ⚡ —— 高版本 Forge+Bukkit 服务端实现 - 软件资源 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '[1.16.5/1.18.1]Arclight ⚡ —— 高版本 Forge+Bukkit 服务端实现 - 软件资源 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/forum.php?mod=viewthread&tid=1046859',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
       },
       {
-        title: '[1.12.2/1.16.5/1.18.1]Mohist ——— 高版本 Forge+Paper 服务器核心 - 软件资源 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '[1.12.2/1.16.5/1.18.1]Mohist ——— 高版本 Forge+Paper 服务器核心 - 软件资源 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/forum.php?mod=viewthread&tid=916340',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
       },
       {
-        title: '[1.16.5]LoliServer 🎆 —— 基于Forge并融合Spigot/Bukkit的高兼容性核心 - 软件资源 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '[1.16.5]LoliServer 🎆 —— 基于Forge并融合Spigot/Bukkit的高兼容性核心 - 软件资源 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/thread-1280076-1-1.html',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
@@ -488,7 +517,8 @@ const dataList = [
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
       },
       {
-        title: '【服务端整合包】服务端核心镜像站 [自建|高速|稳定|全面] [1.2-1.18] - 服务端整合包 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '【服务端整合包】服务端核心镜像站 [自建|高速|稳定|全面] [1.2-1.18] - 服务端整合包 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/forum.php?mod=viewthread&tid=1214823',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
@@ -644,7 +674,8 @@ const dataList = [
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABRklEQVQ4je2QMUtCYRSG33O/Dy/XhkIpLBwaJAiaJNxrCuHezampsaWl39AfyMmxoiXHq0ZFP6CgBqGhr8VIErSI0G4lek6TcEULGoPe7XDe87znHOBfFC6y2eyaZVnHvwFo13UPmDkJAEREALoAIgODBWBS9fDS18PJRA1mPtQikiciH8DMuISFSAAFGQIw875SarNcLgdWqVS6dBxnUUR2ROR+BDD7Bm+piajVBwAGYDKZzIbv+8HIDwAgl8tNB0FQJaKEN9dCPaKxnmigcD2P20+nJyK7lUplO3zikIrFYouIzgDAjT7zVvoO8ZZgeaINItJa65uwfwQw4AAw+Yek1biI4+nDxslrrAugzswmbFTjpo0xJpVKTTXZXj1vx3DajuFdlAJw1Ol0CrVajX8EeJ63AmBvTCtt2/ajMebqm83/or4AxPJ5JdyCsXEAAAAASUVORK5CYII='
       },
       {
-        title: '[管理|娱乐][SCT]Magic——魔法?不只是技能那么简单![1.6-1.17.X] - 服务端插件 - Minecraft(我的世界)中文论坛 -',
+        title:
+          '[管理|娱乐][SCT]Magic——魔法?不只是技能那么简单![1.6-1.17.X] - 服务端插件 - Minecraft(我的世界)中文论坛 -',
         href: 'https://www.mcbbs.net/thread-1182379-1-1.html',
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4jXWTy28bVRjFf/fOeDwZvyYP26F2VBJoS0FQlzUV2QQhsWHLjiW7ZMWWLbBqlvwFsESqhISiSg1IIARSFhUVrXBrnBY12NgTv+fOfbALFaRnfc5P35G+I3iOPnzn6k6j6j4WQPtp+vmXtx8dnOcT/wtut+Lymt6rF9RuvaRiieHJKEju9739yUzd/PpOJzkX8P52K355Te2VI7W7sSrilbxAW4lyFukUyuRoD2XSHZj9wUifgTyAra2tT65vyq/ee92+2yjbcJ7BXDmUdUwygzFQCiRbsQ6vrPvbvXn0UX9RDIfD4aEAuHF90+V8RzXO8/YredaLMyaLlIWWRFJSCARhtES7Z/ml7XjUW/C4P6bd/Vv4ALViNq4XF6WfjxX3n8y53Cjw5kXBq3VD0Qv4tSf4/ijj3nHK6WTCazVNHNgxgA/QHRiWQ82NTUsnCemcjHjwZ8i1F5fAGY7aM5LxmEYl5XJTorTPcOo4A2Qmx1FXUatWufLGWzS7tzD6lG/upgwmKdcuzHipAXOd48FfjswKUiMBkAAbK5ZW02MyUdz9Y8QPDyWVUHBpTbFezCiHkk6S596JQBuPjWVBXODZCyxrMfjemMf9nxjh8d1DSTLVTFLBbyc+noCNZaiElsAHbZ6pEEiBMB5eDuqlIc3lPAsd8ePvBiklzQpEeUPmHMpYQs/DF+LfCnNNyfPBFw7tJNpZXog15SVLFFjiokFbyDKNL8EIh3audPZISufoT2mVi7kwjiQ5AOPoDGChLNWCAwT5wGOmPDp9kpPEfLpI1aEHMJrOD6dZ8EW359J5JltR6IVxwXE8kGSZpbkiOFUe3b5LOn372XghPkhOR9+eO6Y4juMolHtXG7ndZCbi8VQReDp5OmRfI28mSZL8N3OuarXazsULqwf11fJBpVLZeZ7vHwSESAk2UBaGAAAAAElFTkSuQmCC'
@@ -729,7 +760,11 @@ const dataList = [
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADI0lEQVQ4jVWTzWtcVRjGn/Nxz7lzZ+bOnZk0yUysg1IpfkAXQVxl1yoIggSmf4CbUmjpyq66diFxUSqUduFaEt11IwhdKCiK+IEagtoajUySzmTuvbl37sc55x4XSRN9d8/L87zv5vkBp0OG62BPxbWbl/q3Pl1de/fjt9YuvXO+/3S/bocMADkJAcBwHWzjMgwArKwOer2V9vXFXvdK0G10hBAY7U0O2iy4t/9deuf+e5+NjjJDtnF5w5xcenF1rvfyytKNZsu9+szZeT+ME7iOqzl30HBr3JEE2//sx0hx98FHX9/e/mI2AgBy8eJya/FNdhOBuTZ4tucL4yKZJcoVLjdKE8sIXOZYIaVOy5lTSY1ZVMQ2lh/+8qB4n02caX9h0f+kITxJOSs1VTTKEnaYJJCOQEE0xodTCMaZKxwb7qdqdyvxvn/4aOXnLzfv82gLxl5wD8ZI248f7fP5fgv+kmuDVoMQELRrTXTqDUwODu0PDx/jr18n3NHCptNsGkW54UEAYramjsclMU8UFAWJM41Q7GPw0gLieIbRTxG2vtkhk98iSI8DkhLsGCcACA/DHM4LFt6Io5tJ7P24B/9MC1EYYfJ7gvDPHFoDWmm4FYfaVSB1DlaTQAjw5wIXvW4T1vEQZwXcJ4DOGbqoI/z2EEVpIawFrQwqA9T9GpqewCwvEeYAB4A006jSKQQD5rs+vBpFnBAstVuYjaZwJUdlGWxVQQoHSa5gK4te4IIWOSwoVLtVt1Ga2yjNrCqVNVUFKTkEJyiUAeXC5oWys0JZwZmllKqcwHJHSlaWphPZHM8vBmqSWSfwXdLwtN2ZJGCUQhkNqgvSbNRtqokuy0yAkI6owNjrryxZw1nFCC6Acq8oFSmLQhHKKOGCRHFCGKVoNmpaKcWKPGe5NjEl+OCP3fjzkyqvLg96prlwo0ymV7sN4VsAlBC9uTOGMZYfacRFoe8meXZ7e3xcZQAYAmwDRzC9sTzoMbDrrhRXzp7xO19t/o1CVQdpnt8Lo+jOeIbR8U+G48wpzsNTnM/Pef23Xzu39uq5/trcnNf/j+9/OP8LSxx5harCTBAAAAAASUVORK5CYII='
       },
-      { title: '登录 Minecraft 统一通行证 - Minecraft 统一通行证', href: 'https://login2.nide8.com:233/account/login', favicon: '' },
+      {
+        title: '登录 Minecraft 统一通行证 - Minecraft 统一通行证',
+        href: 'https://login2.nide8.com:233/account/login',
+        favicon: ''
+      },
       {
         title: 'Bukkit Plugins - Minecraft - CurseForge',
         href: 'https://www.curseforge.com/minecraft/bukkit-plugins?filter-game-version=2020709689%3A9190&filter-sort=4#',
@@ -771,7 +806,11 @@ const dataList = [
         favicon:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmklEQVQ4jaVTORKAIAzcOD6CRt9AbWPHv/2Bb9CGX8RGHCQHzrgVQ5LdTQgECVbuWpA4GKjJ1NyhJ8W7H/cI2lbU1lwHRd1z0W0BAM6wmjFtMFyr1sVz2ETNCKU3rXjK20ugEI29KWvEAEARDICodWCpU5TDpGjM4Miy+LbMjQtzE7U3L7kPiUfg4ctf8bGkzEvKDHxcJA+/CS5YrDUokhVf1AAAAABJRU5ErkJggg=='
       },
-      { title: '概览 (Spigot-API 1.19.2-R0.1-SNAPSHOT API 中文文档)', href: 'https://bukkit.windit.net/javadoc/', favicon: '' },
+      {
+        title: '概览 (Spigot-API 1.19.2-R0.1-SNAPSHOT API 中文文档)',
+        href: 'https://bukkit.windit.net/javadoc/',
+        favicon: ''
+      },
       {
         title: 'RarityEG&#39;s Plugin Dev Tutorial',
         href: 'https://plgdev.xuogroup.top/#/',
@@ -860,45 +899,4 @@ const dataList = [
 ]
 </script>
 
-<style lang="scss" scoped>
-.ant-card :deep(.ant-card-body) {
-  padding-right: 14px;
-  padding-bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  content-visibility: auto;
-
-  .ant-btn {
-    margin-right: 10px;
-    margin-bottom: 10px;
-    span {
-      max-width: 270px;
-      line-height: normal;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  }
-
-  &::before,
-  &::after {
-    display: none;
-  }
-
-  .seat {
-    width: 0;
-    height: 0;
-    zoom: 0;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-  vertical-align: baseline;
-}
-</style>
+<style lang="scss" scoped></style>

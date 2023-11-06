@@ -6,11 +6,13 @@
         <a-descriptions-item label="设备UA" :span="2">
           {{ userAgent }}
         </a-descriptions-item>
-        <a-descriptions-item v-for="item of userAgentData?.brands" :key="item.brand" label="品牌(版本)">
+        <a-descriptions-item v-for="item in userAgentData?.brands" :key="item.brand" label="品牌(版本)">
           {{ item.brand }}（{{ item.version }}）
         </a-descriptions-item>
         <a-descriptions-item label="平台">{{ userAgentData.platform }}</a-descriptions-item>
-        <a-descriptions-item label="设备类型">{{ userAgentData.mobile ? '移动设备' : '非移动设备' }}</a-descriptions-item>
+        <a-descriptions-item label="设备类型">{{
+          userAgentData.mobile ? '移动设备' : '非移动设备'
+        }}</a-descriptions-item>
         <a-descriptions-item label="浏览器的名称">{{ appName }}</a-descriptions-item>
         <a-descriptions-item label="操作系统平台">{{ platform }}</a-descriptions-item>
         <a-descriptions-item label="浏览器引擎">{{ product }}</a-descriptions-item>

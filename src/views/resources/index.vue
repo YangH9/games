@@ -1,13 +1,13 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout v-calcHeight="0" class="layout">
+    <a-layout v-calcHeight="0" class="scroll_auto">
       <RouterViewBox url="/resources">
         <div class="container">
           <Breadcrumb />
           <a-card title="网盘资源" class="mb_2" :hoverable="true">
             <a-descriptions :column="1">
-              <a-descriptions-item v-for="(item, index) of resoutcesList" :key="index" :label="item.title">
+              <a-descriptions-item v-for="(item, index) in resoutcesList" :key="index" :label="item.title">
                 <a-button :href="item.href" :title="item.title" size="small" type="link" target="_blank">
                   {{ item.href }}
                 </a-button>
@@ -44,8 +44,4 @@ const resoutcesList = [
 ]
 </script>
 
-<style lang="scss" scoped>
-.layout {
-  overflow: auto;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -2,16 +2,16 @@
   <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="CSS液晶数字字体">
     <div class="clock">
       <div class="digits">
-        <div v-for="i of 19" :key="i" :class="numList[new Date(time).toFormat()[i - 1]]">
+        <div v-for="i in 19" :key="i" :class="numList[new Date(time).toFormat()[i - 1]]">
           <template v-if="![':', '/', ' '].includes(i)">
-            <span v-for="j of 7" :key="j" :class="`stroke${j}`"></span>
+            <span v-for="j in 7" :key="j" :class="`stroke${j}`"></span>
           </template>
         </div>
       </div>
     </div>
     <div class="digits">
-      <div v-for="i of numList" :key="i" :class="i">
-        <span v-for="j of 7" :key="j" :class="`stroke${j}`"></span>
+      <div v-for="i in numList" :key="i" :class="i">
+        <span v-for="j in 7" :key="j" :class="`stroke${j}`"></span>
       </div>
     </div>
   </a-card>

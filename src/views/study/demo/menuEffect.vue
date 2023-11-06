@@ -8,19 +8,25 @@
           </a>
           <template v-if="menuData.children">
             <ul class="floor2">
-              <li v-for="(item1, index1) of menuData.children" :key="index1">
+              <li v-for="(item1, index1) in menuData.children" :key="index1">
                 <a
                   href="javascript:;"
-                  :style="{ background: `hsl(0, 0%, ${90 - index1 * 7}%)`, transform: `rotate(${index1 * (90 / menuData.children.length)}deg)` }"
+                  :style="{
+                    background: `hsl(0, 0%, ${90 - index1 * 7}%)`,
+                    transform: `rotate(${index1 * (90 / menuData.children.length)}deg)`
+                  }"
                 >
                   <span>{{ item1.title }}</span>
                 </a>
                 <template v-if="item1.children">
                   <ul class="floor3">
-                    <li v-for="(item2, index2) of item1.children" :key="index2">
+                    <li v-for="(item2, index2) in item1.children" :key="index2">
                       <a
                         href="javascript:;"
-                        :style="{ background: `hsl(0, 0%, ${80 - index2 * 7}%)`, transform: `rotate(${index2 * (90 / item1.children.length)}deg)` }"
+                        :style="{
+                          background: `hsl(0, 0%, ${80 - index2 * 7}%)`,
+                          transform: `rotate(${index2 * (90 / item1.children.length)}deg)`
+                        }"
                       >
                         <span>{{ item2.title }}</span>
                       </a>
@@ -66,7 +72,12 @@
       <defs>
         <filter id="filt">
           <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="filt"></feColorMatrix>
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+            result="filt"
+          ></feColorMatrix>
           <feBlend in2="filt" in="SourceGraphic" result="mix"></feBlend>
         </filter>
       </defs>
@@ -92,7 +103,13 @@ const menuData = {
     },
     {
       title: '菜单项4',
-      children: [{ title: '菜单项4-1' }, { title: '菜单项4-2' }, { title: '菜单项4-3' }, { title: '菜单项4-4' }, { title: '菜单项4-5' }]
+      children: [
+        { title: '菜单项4-1' },
+        { title: '菜单项4-2' },
+        { title: '菜单项4-3' },
+        { title: '菜单项4-4' },
+        { title: '菜单项4-5' }
+      ]
     },
     {
       title: '菜单项5',

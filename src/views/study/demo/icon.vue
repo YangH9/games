@@ -1259,8 +1259,9 @@
       transform: translate(-50%, -50%);
       width: 2px;
       height: 2px;
-      box-shadow: -2px -4px 0, -6px -4px 0, -10px -4px 0, 2px -4px 0, 6px -4px 0, 8px -4px 0, 10px -4px 0, -4px 0 0, -8px 0 0, -10px 0 0,
-        inset 0 0 0 32px, 4px 0 0, 8px 0 0, 10px 0 0, 4px 4px 0, 2px 4px 0, 0 4px 0, -2px 4px 0, -6px 4px 0, -10px 4px 0, 6px 4px 0, 10px 4px 0;
+      box-shadow: -2px -4px 0, -6px -4px 0, -10px -4px 0, 2px -4px 0, 6px -4px 0, 8px -4px 0, 10px -4px 0, -4px 0 0,
+        -8px 0 0, -10px 0 0, inset 0 0 0 32px, 4px 0 0, 8px 0 0, 10px 0 0, 4px 4px 0, 2px 4px 0, 0 4px 0, -2px 4px 0,
+        -6px 4px 0, -10px 4px 0, 6px 4px 0, 10px 4px 0;
     }
   }
 
@@ -2348,7 +2349,8 @@
       height: 4px;
       top: 3px;
       left: 3px;
-      box-shadow: inset 0 0 0 32px, 6px 0, 12px 0, 18px 0, 0 6px, 6px 6px, 12px 6px, 18px 6px, 0 12px, 6px 12px, 12px 12px, 18px 12px;
+      box-shadow: inset 0 0 0 32px, 6px 0, 12px 0, 18px 0, 0 6px, 6px 6px, 12px 6px, 18px 6px, 0 12px, 6px 12px,
+        12px 12px, 18px 12px;
     }
 
     &::after {

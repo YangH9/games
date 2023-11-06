@@ -1,14 +1,32 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card v-for="(main, index) of dataList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
-      <a-button v-for="(item, index1) of main.list" :key="index1" :href="item.href" :title="item.title" size="large" target="_blank">
+    <a-card
+      v-for="(main, index) in dataList"
+      :key="index"
+      :title="main.title"
+      class="card_button_list"
+      :hoverable="true"
+    >
+      <a-button
+        v-for="(item, index1) in main.list"
+        :key="index1"
+        :href="item.href"
+        :title="item.title"
+        size="large"
+        target="_blank"
+      >
         <template #icon>
-          <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+          <img
+            v-lazy="filtterUrl(item)"
+            class="icon"
+            referrer="no-referrer"
+            @error="(e) => (e.target.style.display = 'none')"
+          />
         </template>
         {{ item.title }}
       </a-button>
-      <a-button v-for="i of 10" :key="i" class="seat"></a-button>
+      <a-button v-for="i in 10" :key="i" class="seat"></a-button>
     </a-card>
   </div>
 </template>
@@ -22,7 +40,11 @@ const dataList = [
     list: [
       { title: '新拟态生成器', href: 'https://neumorphism.io/', favicon: '' },
       { title: '阴影生成器', href: 'https://shadows.brumm.af/', favicon: '' },
-      { title: '花式边框', href: 'https://9elements.github.io/fancy-border-radius/', favicon: 'fancy-border-radius/favicon-32x32.png' },
+      {
+        title: '花式边框',
+        href: 'https://9elements.github.io/fancy-border-radius/',
+        favicon: 'fancy-border-radius/favicon-32x32.png'
+      },
       { title: '发光效果', href: 'https://cssbud.com/css-generator/css-glow-generator/', favicon: '' },
       { title: '回旋曲线圆角', href: 'https://onotakehiko.dev/clothoid/', favicon: 'clothoid/favicon.ico' },
       { title: '毛玻璃', href: 'https://hype4.academy/tools/glassmorphism-generator', favicon: '' },
@@ -54,7 +76,11 @@ const dataList = [
       { title: '模糊动画背景', href: 'https://wweb.dev/resources/animated-css-background-generator/', favicon: '' },
       { title: '几何背景', href: 'https://trianglify.io/', favicon: 'favicon.png' },
       { title: '动画背景', href: 'https://animatedbackgrounds.me/', favicon: '' },
-      { title: '魔法图案背景', href: 'https://www.magicpattern.design/tools/css-backgrounds', favicon: 'static/favicons/favicon.ico' }
+      {
+        title: '魔法图案背景',
+        href: 'https://www.magicpattern.design/tools/css-backgrounds',
+        favicon: 'static/favicons/favicon.ico'
+      }
     ]
   },
   {
@@ -77,7 +103,11 @@ const dataList = [
     list: [
       { title: '字体搭配', href: 'https://fontjoy.com/', favicon: 'favicon32.gif' },
       { title: '文字属性预览', href: 'https://typesetwith.me/', favicon: '' },
-      { title: '字体大小', href: 'https://type-scale.com/', favicon: 'wp-content/themes/typescale/favicon/favicon.ico' },
+      {
+        title: '字体大小',
+        href: 'https://type-scale.com/',
+        favicon: 'wp-content/themes/typescale/favicon/favicon.ico'
+      },
       { title: '图标字体', href: 'https://glyphter.com/', favicon: '' },
       { title: '字体库', href: 'https://katydecorah.com/font-library', favicon: '' },
       { title: '发光文字', href: 'https://wh0.github.io/glitter/', favicon: '' }
@@ -125,50 +155,11 @@ const dataList = [
 
 const filtterUrl = (item) => {
   const url =
-    item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+    item.favicon.indexOf('//') >= 0
+      ? item.favicon
+      : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
   return url
 }
 </script>
 
-<style lang="scss" scoped>
-.ant-card :deep(.ant-card-body) {
-  padding-right: 14px;
-  padding-bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  content-visibility: auto;
-
-  .ant-btn {
-    margin-right: 10px;
-    margin-bottom: 10px;
-    span {
-      max-width: 270px;
-      line-height: normal;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  }
-
-  &::before,
-  &::after {
-    display: none;
-  }
-
-  .seat {
-    width: 0;
-    height: 0;
-    zoom: 0;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-  vertical-align: baseline;
-}
-</style>
+<style lang="scss" scoped></style>

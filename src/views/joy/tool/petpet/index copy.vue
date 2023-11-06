@@ -46,11 +46,27 @@
             </div>
             <div class="row control-group">
               <label for="scale" class="control-label control-group-s">大小</label>
-              <input id="scale" class="control-range control-group-l" type="range" step="1" min="15" max="200" value="85" />
+              <input
+                id="scale"
+                class="control-range control-group-l"
+                type="range"
+                step="1"
+                min="15"
+                max="200"
+                value="85"
+              />
             </div>
             <div class="row control-group">
               <label for="squish" class="control-label control-group-s">挤压</label>
-              <input id="squish" class="control-range control-group-l" type="range" step="1" min="100" max="300" value="125" />
+              <input
+                id="squish"
+                class="control-range control-group-l"
+                type="range"
+                step="1"
+                min="100"
+                max="300"
+                value="125"
+              />
             </div>
             <div class="row control-group">
               <label for="fps" class="control-label control-group-s">速度</label>

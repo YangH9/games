@@ -5,14 +5,14 @@
         <home-outlined />
       </router-link>
     </a-breadcrumb-item>
-    <a-breadcrumb-item v-for="(item, index) of menuList" :key="index">
+    <a-breadcrumb-item v-for="(item, index) in menuList" :key="index">
       <template v-if="index === menuList.length - 1">{{ item.meta.title }}</template>
       <router-link v-if="index < menuList.length - 1" :to="item.path">
         {{ item.meta.title }}
       </router-link>
       <template v-if="overlayShow && index === menuList.length - 1 && menuList[index - 1]?.children?.length" #overlay>
         <a-menu>
-          <template v-for="(ite, ind) of menuList[index - 1].children" :key="ind">
+          <template v-for="(ite, ind) in menuList[index - 1].children" :key="ind">
             <a-menu-item v-if="ite.path !== item.path">
               <router-link :to="ite.path">
                 {{ ite.meta.title }}

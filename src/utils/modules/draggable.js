@@ -10,8 +10,10 @@ const draggable = {
       document.onmousemove = (e) => {
         let x = e.pageX - disX
         let y = e.pageY - disY
-        const maxX = parseInt(window.getComputedStyle(el.parentNode).width) - parseInt(window.getComputedStyle(el).width)
-        const maxY = parseInt(window.getComputedStyle(el.parentNode).height) - parseInt(window.getComputedStyle(el).height)
+        const maxX =
+          parseInt(window.getComputedStyle(el.parentNode).width) - parseInt(window.getComputedStyle(el).width)
+        const maxY =
+          parseInt(window.getComputedStyle(el.parentNode).height) - parseInt(window.getComputedStyle(el).height)
         if (x < 0) {
           x = 0
         } else if (x > maxX) {

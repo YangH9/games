@@ -12,13 +12,14 @@ const modules = import.meta.glob(['@/views/*.vue', '@/views/*/*.vue', '@/views/*
 const createRoute = (list) => {
   list.map((item) => {
     // 添加path
-    !item.hasOwnProperty('path') && (item.path = `/${item.component}`.replace(/(\/index)$/, ''))
+    !Object.hasOwn(item, 'path') && (item.path = `/${item.component}`.replace(/(\/index)$/, ''))
     // 添加name
-    !item.hasOwnProperty('name') && (item.name = item.component?.replace(/\//g, '_'))
-    item.hasOwnProperty('component') && (item.component = modules[`/src/views/${item.component}.vue`] || modules['/src/views/errorPages/404.vue'])
+    !Object.hasOwn(item, 'name') && (item.name = item.component?.replace(/\//g, '_'))
+    Object.hasOwn(item, 'component') &&
+      (item.component = modules[`/src/views/${item.component}.vue`] || modules['/src/views/errorPages/404.vue'])
     // 添加是否有子元素选择、
-    !item.hasOwnProperty('has_children') && (item.has_children = item.hasOwnProperty('children'))
-    item.hasOwnProperty('children') && createRoute(item.children)
+    !Object.hasOwn(item, 'has_children') && (item.has_children = Object.hasOwn(item, 'children'))
+    Object.hasOwn(item, 'children') && createRoute(item.children)
     // 添加默认数据，防止空数据
     !item.meta && (item.meta = { title: item.name, icon: 'Document' })
   })

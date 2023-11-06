@@ -1,7 +1,7 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout v-calcHeight="0" class="layout">
+    <a-layout v-calcHeight="0" class="scroll_auto">
       <div class="container">
         <Breadcrumb />
         <a-card title="首页" class="mb_2" :hoverable="true">
@@ -27,8 +27,4 @@ const mode = GetEnv.MODE
 const title = GetEnv.VITE_TITLE
 </script>
 
-<style lang="scss" scoped>
-.layout {
-  overflow: auto;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -32,6 +32,48 @@
   }
 }
 
+// card页面按钮样式
+.ant-card.card_button_list {
+  margin-bottom: 0.5rem;
+
+  .ant-card-body {
+    padding-right: 14px;
+    padding-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    content-visibility: auto;
+
+    .ant-btn {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+      vertical-align: baseline;
+    }
+
+    .seat {
+      width: 0;
+      height: 0;
+      zoom: 0;
+      margin: 0;
+      padding: 0;
+      visibility: hidden;
+      overflow: hidden;
+      border: none;
+    }
+  }
+}
+
 // 取消描述列表最后一行的内边距
 .ant-descriptions {
   .ant-descriptions-item {
@@ -95,11 +137,14 @@ section.ant-layout {
     color: var(--color-text);
     border-color: var(--color-border);
     background: var(--color-background-mute);
+
     .ant-collapse-item {
       border-color: var(--color-border);
+
       .ant-collapse-header {
         color: var(--color-text);
       }
+
       .ant-collapse-content {
         border-color: var(--color-border);
         background: var(--color-background);
@@ -114,32 +159,40 @@ section.ant-layout {
           color: var(--color-text);
         }
       }
+
       .ant-radio {
         &-wrapper {
           color: var(--color-heading);
         }
+
         &-inner {
           background: var(--color-background-mute);
         }
       }
+
       .ant-input {
         color: var(--color-heading);
         border-color: var(--color-border);
         background: var(--color-background-mute);
       }
+
       .ant-input-number {
         color: var(--color-heading);
         border-color: var(--color-border);
         background: var(--color-background-mute);
+
         &-handler {
           border-color: var(--color-border);
+
           span {
             color: var(--color-heading);
           }
+
           &:active {
             background: var(--color-background);
           }
         }
+
         &-handler-wrap {
           background: var(--color-background-mute);
         }

@@ -5,11 +5,13 @@
       <template #title>
         <div class="flex items_center content_between">
           <h3>穿越火线手游壁纸</h3>
-          <h6>数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
+          <h6>
+            数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准
+          </h6>
         </div>
       </template>
       <a-row justify="space-around" :gutter="[10, 10]">
-        <a-col v-bind="colSpan" v-for="(item, index) of dataList" :key="index">
+        <a-col v-for="(item, index) in dataList" v-bind="colSpan" :key="index">
           <a-card :hoverable="true">
             <template #title>
               {{ item.sTitle }}
@@ -25,7 +27,7 @@
             />
           </a-card>
         </a-col>
-        <a-col v-bind="colSpan" v-for="item of 4" :key="item" class="seat">
+        <a-col v-for="item in 4" v-bind="colSpan" :key="item" class="seat">
           <a-card>
             <div class="image"></div>
           </a-card>

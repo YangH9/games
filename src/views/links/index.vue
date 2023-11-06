@@ -1,21 +1,39 @@
 <template>
   <a-layout>
     <Header></Header>
-    <a-layout v-calcHeight="0" class="layout">
+    <a-layout v-calcHeight="0" class="scroll_auto">
       <RouterViewBox url="/links">
         <div class="container">
           <Breadcrumb />
-          <a-card v-for="(main, index) of resoutcesList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
+          <a-card
+            v-for="(main, index) in resoutcesList"
+            :key="index"
+            :title="main.title"
+            class="card_button_list"
+            :hoverable="true"
+          >
             <template v-if="main.extra" #extra>
               <RouterLink :to="main.extra">查看更多</RouterLink>
             </template>
-            <a-button v-for="(item, index1) of main.list" :key="index1" :href="item.href" :title="item.title" size="large" target="_blank">
+            <a-button
+              v-for="(item, index1) in main.list"
+              :key="index1"
+              :href="item.href"
+              :title="item.title"
+              size="large"
+              target="_blank"
+            >
               <template #icon>
-                <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+                <img
+                  v-lazy="filtterUrl(item)"
+                  class="icon"
+                  referrer="no-referrer"
+                  @error="(e) => (e.target.style.display = 'none')"
+                />
               </template>
               {{ item.title }}
             </a-button>
-            <a-button v-for="i of 10" :key="i" class="seat"></a-button>
+            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
         </div>
       </RouterViewBox>
@@ -37,7 +55,7 @@ const resoutcesList = [
       { title: '旧站点1', href: 'https://hanhais.com/', favicon: '' },
       { title: '旧站点2', href: 'https://yangh9.github.io/y/', favicon: '' },
       { title: 'RGB', href: 'https://rgb39.top/', favicon: '' },
-      { title: '小白白AI', href: 'http://108.61.176.107:8124/', favicon: 'assets/logo.png' },
+      { title: '小白白AI', href: 'http://ai.kampe.top:8123/web', favicon: 'assets/logo.png' },
       { title: '小天的中国象棋', href: 'https://www.aixt.vip/', favicon: '' },
       { title: '小天的视频解析器', href: 'https://www.aixt.vip/video/', favicon: '' }
     ]
@@ -67,7 +85,11 @@ const resoutcesList = [
         href: 'https://www.sinacloud.com/public/login/inviter/gaimrn-mddmzeKWrhKWvrYKIo619nptqfqKqdg.html',
         favicon: ''
       },
-      { title: '宝塔服务器面板，一键全能部署及管理，送你3188元礼包，点我领取', href: 'https://www.bt.cn/?invite_code=MV9wb3Npdmw=', favicon: '' },
+      {
+        title: '宝塔服务器面板，一键全能部署及管理，送你3188元礼包，点我领取',
+        href: 'https://www.bt.cn/?invite_code=MV9wb3Npdmw=',
+        favicon: ''
+      },
       { title: '天行数据API接口', href: 'https://www.tianapi.com/source/9897a82ddb', favicon: '' },
       { title: '程序猿必备小贴纸', href: 'https://www.smallsticker.com/', favicon: '' }
     ]
@@ -118,7 +140,8 @@ const resoutcesList = [
       {
         title: 'uni-app',
         href: 'https://uniapp.dcloud.net.cn/',
-        favicon: '//vkceyugu.cdn.bspapp.com/VKCEYUGU-a90b5f95-90ba-4d30-a6a7-cd4d057327db/d23e842c-58fc-4574-998d-17fdc7811cc3.png'
+        favicon:
+          '//vkceyugu.cdn.bspapp.com/VKCEYUGU-a90b5f95-90ba-4d30-a6a7-cd4d057327db/d23e842c-58fc-4574-998d-17fdc7811cc3.png'
       },
       {
         title: 'Bootstrap',
@@ -138,8 +161,16 @@ const resoutcesList = [
       { title: 'View Design', href: 'https://www.iviewui.com/', favicon: '//file.iviewui.com/view-design-logo.png' },
       { title: 'Element-UI', href: 'https://element.eleme.cn/#/zh-CN', favicon: '' },
       { title: 'Element-Plus', href: 'https://element-plus.org/', favicon: 'images/element-plus-logo-small.svg' },
-      { title: 'Ant Design', href: 'https://ant.design/', favicon: '//gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png' },
-      { title: 'Ant Design of Vue', href: 'https://antdv.com/docs/vue/introduce-cn', favicon: '//aliyuncdn.antdv.com/favicon.ico' },
+      {
+        title: 'Ant Design',
+        href: 'https://ant.design/',
+        favicon: '//gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png'
+      },
+      {
+        title: 'Ant Design of Vue',
+        href: 'https://antdv.com/docs/vue/introduce-cn',
+        favicon: '//aliyuncdn.antdv.com/favicon.ico'
+      },
       { title: 'Layui', href: 'https://layui.gitee.io/', favicon: '' },
       { title: 'Vant', href: 'https://vant-ui.github.io/', favicon: '//fastly.jsdelivr.net/npm/@vant/assets/logo.png' },
       { title: 'svelte', href: 'https://www.sveltejs.cn/', favicon: 'favicon.png' },
@@ -161,7 +192,11 @@ const resoutcesList = [
         href: 'https://iconfont.cn/',
         favicon: '//img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg'
       },
-      { title: 'IcoMoon App - 图标字体，SVG，PDF和PNG生成器', href: 'https://icomoon.io/app/', favicon: 'favicon-32x32.png' },
+      {
+        title: 'IcoMoon App - 图标字体，SVG，PDF和PNG生成器',
+        href: 'https://icomoon.io/app/',
+        favicon: 'favicon-32x32.png'
+      },
       { title: 'fullCalendar日程插件', href: 'https://fullcalendar.io/', favicon: 'favicon-32x32.png' },
       { title: 'Mock.js', href: 'http://mockjs.com/', favicon: 'assets/img/logo-2.svg' },
       { title: 'Flutter', href: 'https://flutter.cn', favicon: '' },
@@ -175,20 +210,36 @@ const resoutcesList = [
       { title: 'Dart', href: 'https://dart.dev/', favicon: 'assets/shared/dart/icon/64.png' },
       { title: 'jsdelivr', href: 'https://www.jsdelivr.com', favicon: '' },
       { title: 'CodePen', href: 'https://codepen.io', favicon: '' },
-      { title: 'Postman', href: 'https://www.postman.com', favicon: '//www.postman.com/_ar-assets/images/favicon-1-16.png' },
+      {
+        title: 'Postman',
+        href: 'https://www.postman.com',
+        favicon: '//www.postman.com/_ar-assets/images/favicon-1-16.png'
+      },
       { title: 'RxJS', href: 'https://rxjs.dev/', favicon: 'assets/images/favicons/favicon.ico' },
       { title: '码市', href: 'https://codemart.com/', favicon: '' },
       { title: '力扣', href: 'https://leetcode.cn/', favicon: '' },
       { title: '牛客网', href: 'https://www.nowcoder.com/', favicon: '//static.nowcoder.com/images/logo_87_87.png' },
-      { title: '赛码网', href: 'https://www.acmcoder.com/', favicon: '//cdn.acmcoder.com/release/www/2.0.1/images/acm.ico' },
+      {
+        title: '赛码网',
+        href: 'https://www.acmcoder.com/',
+        favicon: '//cdn.acmcoder.com/release/www/2.0.1/images/acm.ico'
+      },
       { title: '万维网联盟（W3C）', href: 'https://www.w3.org', favicon: '' },
       { title: 'MDN', href: 'https://developer.mozilla.org', favicon: '' },
       { title: '掘金', href: 'https://juejin.cn', favicon: '' },
       { title: 'CSDN', href: 'https://www.csdn.net', favicon: '' },
-      { title: 'w3school', href: 'https://www.w3school.com.cn', favicon: '//www.w3school.com.cn/ui2019/logo-16-red.png' },
+      {
+        title: 'w3school',
+        href: 'https://www.w3school.com.cn',
+        favicon: '//www.w3school.com.cn/ui2019/logo-16-red.png'
+      },
       { title: '菜鸟教程', href: 'https://www.runoob.com', favicon: '' },
       { title: 'Stack Overflow', href: 'https://stackoverflow.com', favicon: '' },
-      { title: 'SegmentFault 思否', href: 'https://segmentfault.com', favicon: '//static.segmentfault.com/main_site_next/44882992/favicon.ico' },
+      {
+        title: 'SegmentFault 思否',
+        href: 'https://segmentfault.com',
+        favicon: '//static.segmentfault.com/main_site_next/44882992/favicon.ico'
+      },
       { title: '开源中国', href: 'https://www.oschina.net/', favicon: '//static.oschina.net/new-osc/img/favicon.ico' },
       { title: '知乎', href: 'https://www.zhihu.com', favicon: '' },
       { title: 'Prettier', href: 'https://prettier.io/', favicon: 'icon.png' }
@@ -233,7 +284,11 @@ const resoutcesList = [
       { title: '码云', href: 'https://gitee.com/', favicon: '' },
       { title: '腾讯云', href: 'https://cloud.tencent.com/', favicon: '' },
       { title: '新浪云', href: 'https://www.sinacloud.com/', favicon: '' },
-      { title: '阿里云', href: 'https://www.aliyun.com/', favicon: '//img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico' }
+      {
+        title: '阿里云',
+        href: 'https://www.aliyun.com/',
+        favicon: '//img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico'
+      }
     ]
   },
   {
@@ -247,10 +302,22 @@ const resoutcesList = [
       { title: '腾讯位置服务', href: 'https://lbs.qq.com', favicon: '' },
       { title: '百度地图开放平台', href: 'https://lbsyun.baidu.com', favicon: '' },
       { title: '高德开放平台', href: 'https://developer.amap.com', favicon: '' },
-      { title: '支付宝开放平台', href: 'https://open.alipay.com', favicon: '//img.alicdn.com/tfs/TB1qEwuzrj1gK0jSZFOXXc7GpXa-32-32.ico' },
-      { title: '拼多多开放平台', href: 'https://open.pinduoduo.com', favicon: '//open-static.pddpic.com/application/favicon.ico' },
+      {
+        title: '支付宝开放平台',
+        href: 'https://open.alipay.com',
+        favicon: '//img.alicdn.com/tfs/TB1qEwuzrj1gK0jSZFOXXc7GpXa-32-32.ico'
+      },
+      {
+        title: '拼多多开放平台',
+        href: 'https://open.pinduoduo.com',
+        favicon: '//open-static.pddpic.com/application/favicon.ico'
+      },
       { title: '百度智能云', href: 'https://cloud.baidu.com', favicon: '//bce.bdstatic.com/img/favicon.ico' },
-      { title: '百度网盘开放平台', href: 'https://pan.baidu.com', favicon: '//nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico' },
+      {
+        title: '百度网盘开放平台',
+        href: 'https://pan.baidu.com',
+        favicon: '//nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico'
+      },
       { title: 'OPPO开放平台', href: 'https://open.oppomobile.com', favicon: '' },
       {
         title: '淘宝开放平台',
@@ -269,7 +336,11 @@ const resoutcesList = [
       { title: '小米', href: 'https://www.mi.com', favicon: '' },
       { title: '京东', href: 'https://www.jd.com', favicon: '' },
       { title: '淘宝', href: 'https://www.taobao.com', favicon: '' },
-      { title: '千牛', href: 'https://myseller.taobao.com', favicon: '//g.alicdn.com/qn/qn-login-page/0.0.9/favicon.png' },
+      {
+        title: '千牛',
+        href: 'https://myseller.taobao.com',
+        favicon: '//g.alicdn.com/qn/qn-login-page/0.0.9/favicon.png'
+      },
       { title: 'Apple', href: 'https://apple.com.cn', favicon: '' },
       { title: '蓝湖', href: 'https://lanhuapp.com/', favicon: '' },
       { title: '哔哩哔哩', href: 'https://www.bilibili.com/', favicon: '' },
@@ -320,10 +391,15 @@ const resoutcesList = [
       {
         title: 'Chrome插件',
         href: 'https://www.extfans.com',
-        favicon: '//static-public.infinitytab.com/sites-resource/extfans/61ea85a31aec3f3365dbe165/icon_1642759665914.jpg'
+        favicon:
+          '//static-public.infinitytab.com/sites-resource/extfans/61ea85a31aec3f3365dbe165/icon_1642759665914.jpg'
       },
       { title: '迅雷', href: 'https://www.xunlei.com', favicon: '' },
-      { title: '谷歌浏览器', href: 'https://www.google.cn/chrome', favicon: '/chrome/static/images/favicons/favicon-16x16.png' },
+      {
+        title: '谷歌浏览器',
+        href: 'https://www.google.cn/chrome',
+        favicon: '/chrome/static/images/favicons/favicon-16x16.png'
+      },
       { title: '易车', href: 'https://www.yiche.com', favicon: '//static1.bitautoimg.com/yc-common/icon/favicon.ico' },
       { title: 'Ionic', href: 'https://ionicframework.com', favicon: '' },
       { title: 'VFX资源网', href: 'https://www.vfxzy.com/', favicon: '' },
@@ -352,11 +428,16 @@ const resoutcesList = [
       { title: 'CoDesign', href: 'https://codesign.qq.com/', favicon: '' },
       { title: 'AIDesign', href: 'https://ailogo.qq.com/', favicon: '' },
       { title: 'TDesign', href: 'https://tdesign.tencent.com/', favicon: '' },
-      { title: '腾讯工蜂', href: 'https://code.tencent.com/', favicon: '//assets.code.tencent.com/official/p/1667911693366/favicon.ico' },
+      {
+        title: '腾讯工蜂',
+        href: 'https://code.tencent.com/',
+        favicon: '//assets.code.tencent.com/official/p/1667911693366/favicon.ico'
+      },
       {
         title: '腾讯GCLOUD',
         href: 'https://gcloud.tencent.com/',
-        favicon: '//gcloudweb-1256818929.cos.ap-shanghai.myqcloud.com/static/images/OfficialSite_Tencent/ico-img/gcloud-ico.ico'
+        favicon:
+          '//gcloudweb-1256818929.cos.ap-shanghai.myqcloud.com/static/images/OfficialSite_Tencent/ico-img/gcloud-ico.ico'
       },
       { title: '蓝鲸智云', href: 'https://bk.tencent.com/', favicon: 'static/img/favicon.ico' },
       { title: '腾讯开源', href: 'https://opensource.tencent.com/', favicon: '' }
@@ -366,7 +447,11 @@ const resoutcesList = [
     title: '我的世界',
     extra: '/links/MinecraftBookmark',
     list: [
-      { title: 'Minecraft', href: 'https://www.minecraft.net/zh-hans', favicon: 'etc.clientlibs/minecraft/clientlibs/main/resources/favicon.ico' },
+      {
+        title: 'Minecraft',
+        href: 'https://www.minecraft.net/zh-hans',
+        favicon: 'etc.clientlibs/minecraft/clientlibs/main/resources/favicon.ico'
+      },
       {
         title: 'Minecraft Wiki',
         href: 'https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki',
@@ -381,55 +466,27 @@ const resoutcesList = [
       { title: '必应网站管理员工具', href: 'https://www.bing.com/toolbox/webmaster/', favicon: '' },
       { title: '360站长平台', href: 'https://zhanzhang.so.com/', favicon: '' },
       { title: '谷歌收录', href: 'https://www.google.cn/intl/zh-CN/add_url.html', favicon: '' },
-      { title: '搜狗站长平台', href: 'https://zhanzhang.sogou.com/', favicon: '//dlweb.sogoucdn.com/translate/favicon.ico' },
-      { title: '神马站长平台', href: 'https://zhanzhang.sm.cn/', favicon: '//sm01.alicdn.com/L1/272/1990/favicon/favicon.ico' }
+      {
+        title: '搜狗站长平台',
+        href: 'https://zhanzhang.sogou.com/',
+        favicon: '//dlweb.sogoucdn.com/translate/favicon.ico'
+      },
+      {
+        title: '神马站长平台',
+        href: 'https://zhanzhang.sm.cn/',
+        favicon: '//sm01.alicdn.com/L1/272/1990/favicon/favicon.ico'
+      }
     ]
   }
 ]
 
 const filtterUrl = (item) => {
   const url =
-    item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+    item.favicon.indexOf('//') >= 0
+      ? item.favicon
+      : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
   return url
 }
 </script>
 
-<style lang="scss" scoped>
-.layout {
-  overflow: auto;
-}
-
-.ant-card :deep(.ant-card-body) {
-  padding-right: 14px;
-  padding-bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  content-visibility: auto;
-
-  .ant-btn {
-    margin-right: 10px;
-    margin-bottom: 10px;
-  }
-
-  &::before,
-  &::after {
-    display: none;
-  }
-
-  .seat {
-    width: 0;
-    height: 0;
-    zoom: 0;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-  vertical-align: baseline;
-}
-</style>
+<style lang="scss" scoped></style>

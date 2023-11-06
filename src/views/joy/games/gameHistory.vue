@@ -4,7 +4,7 @@
     <a-layout-content>
       <div class="ant-card-body">
         <a-timeline mode="alternate">
-          <a-timeline-item v-for="(item, i) of historyList" :key="i">
+          <a-timeline-item v-for="(item, i) in historyList" :key="i">
             <a-card :title="item.title" :hoverable="true">
               {{ item.text }}
             </a-card>

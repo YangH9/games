@@ -1,7 +1,7 @@
 <template>
   <a-layout-sider width="200">
     <a-menu :selectedKeys="[$route.path]" mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="click">
-      <a-menu-item v-for="item of menuList" :key="item.path">
+      <a-menu-item v-for="item in menuList" :key="item.path">
         <span>
           {{ item.meta.title }}
         </span>

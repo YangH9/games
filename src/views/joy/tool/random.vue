@@ -92,11 +92,11 @@ const data = ref('')
 
 const generate = () => {
   const { type, unique, quantity, min, max, sort, split, float } = option
-  let numbers = []
+  const numbers = []
   // 生成整数或浮点数
   if (type === 'integer') {
     for (let i = 0; i < quantity; i++) {
-      let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
       if (unique && numbers.includes(randomNumber)) {
         i--
         continue
@@ -105,7 +105,7 @@ const generate = () => {
     }
   } else if (type === 'float') {
     for (let i = 0; i < quantity; i++) {
-      let randomNumber = Math.random() * (max - min) + min
+      const randomNumber = Math.random() * (max - min) + min
       if (unique && numbers.includes(randomNumber)) {
         i--
         continue

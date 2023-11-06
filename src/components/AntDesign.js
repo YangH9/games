@@ -63,7 +63,7 @@ const antList = {
   ConfigProvider
 }
 
-//抛出整体按需引入的组件
+// 抛出整体按需引入的组件
 export default {
   install(app) {
     Object.values(antList).forEach((item) => {

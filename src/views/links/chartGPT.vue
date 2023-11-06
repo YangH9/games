@@ -1,14 +1,26 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card v-for="(main, index) of dataList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
-      <a-button v-for="(item, index1) of main.list" :key="index1" :href="item.href" :title="item.title" size="large" target="_blank">
+    <a-card v-for="(main, index) in dataList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
+      <a-button
+        v-for="(item, index1) in main.list"
+        :key="index1"
+        :href="item.href"
+        :title="item.title"
+        size="large"
+        target="_blank"
+      >
         <template #icon>
-          <img v-lazy="filtterUrl(item)" class="icon" referrer="no-referrer" @error="(e) => (e.target.style.display = 'none')" />
+          <img
+            v-lazy="filtterUrl(item)"
+            class="icon"
+            referrer="no-referrer"
+            @error="(e) => (e.target.style.display = 'none')"
+          />
         </template>
         {{ item.title }}
       </a-button>
-      <a-button v-for="i of 10" :key="i" class="seat"></a-button>
+      <a-button v-for="i in 10" :key="i" class="seat"></a-button>
     </a-card>
   </div>
 </template>
@@ -221,51 +233,11 @@ const dataList = [
 
 const filtterUrl = (item) => {
   const url =
-    item.favicon.indexOf('//') >= 0 ? item.favicon : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
+    item.favicon.indexOf('//') >= 0
+      ? item.favicon
+      : `${item.href.split('/')[0]}//${item.href.split('/')[2]}/${item.favicon || 'favicon.ico'}`
   return url
 }
 </script>
 
-<style lang="scss" scoped>
-.ant-card :deep(.ant-card-body) {
-  padding-right: 14px;
-  padding-bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  content-visibility: auto;
-
-  .ant-btn {
-    margin-right: 10px;
-    margin-bottom: 10px;
-
-    span {
-      max-width: 270px;
-      line-height: normal;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  }
-
-  &::before,
-  &::after {
-    display: none;
-  }
-
-  .seat {
-    width: 0;
-    height: 0;
-    zoom: 0;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-  vertical-align: baseline;
-}
-</style>
+<style lang="scss" scoped></style>

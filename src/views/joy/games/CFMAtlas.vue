@@ -6,18 +6,20 @@
         <div class="flex items_center content_between">
           <h3>穿越火线手游武器图鉴</h3>
           <span>全部（{{ dataList.length }}）件</span>
-          <h6>数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
+          <h6>
+            数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准
+          </h6>
         </div>
       </template>
       <a-row justify="space-around" :gutter="[10, 10]">
-        <a-col v-bind="colSpan" v-for="(item, index) of dataList.slice(0, pageNum)" :key="index">
+        <a-col v-for="(item, index) in dataList.slice(0, pageNum)" v-bind="colSpan" :key="index">
           <a-card ref="cardRef" :hoverable="true">
             <template #title>
               {{ item.qxmc_e8 }}
             </template>
             <template #extra>
               <template v-if="Array.isArray(item.wqlx_ba)">
-                <a-tag v-for="ite of item.wqlx_ba" color="blue" class="mr_0 ml_1">{{ ite?.bq_24 }}</a-tag>
+                <a-tag v-for="ite in item.wqlx_ba" color="blue" class="mr_0 ml_1">{{ ite?.bq_24 }}</a-tag>
               </template>
               <a-tag v-else color="blue" class="mr_0">{{ item.wqlx_ba?.bq_24 }}</a-tag>
             </template>
@@ -26,12 +28,14 @@
               class="image"
               src="@/assets/default.png"
               :alt="item.qxmc_e8"
-              :title="`${item.qxjj_c7}${item.sytp_58.match(/\/([0-9]{8})\//)[1].replace(/([0-9]{4})([0-9]{2})([0-9]{2})/, '$1-$2-$3')}`"
+              :title="`${item.qxjj_c7}${item.sytp_58
+                .match(/\/([0-9]{8})\//)[1]
+                .replace(/([0-9]{4})([0-9]{2})([0-9]{2})/, '$1-$2-$3')}`"
               @click="previewUrl = item.sytp_58"
             />
           </a-card>
         </a-col>
-        <a-col v-bind="colSpan" v-for="item of 4" :key="item" class="seat">
+        <a-col v-for="item in 4" v-bind="colSpan" :key="item" class="seat">
           <a-card>
             <div class="image"></div>
           </a-card>

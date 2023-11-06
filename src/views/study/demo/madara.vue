@@ -201,7 +201,12 @@
       top: 34px;
       left: 18px;
       border-radius: 50% 50% 50% 50%;
-      background-image: radial-gradient(50% 50%, rgba(253, 214, 240, 0.8) 0%, rgba(253, 224, 244, 0.8) 66%, rgba(253, 234, 247, 0.8) 100%);
+      background-image: radial-gradient(
+        50% 50%,
+        rgba(253, 214, 240, 0.8) 0%,
+        rgba(253, 224, 244, 0.8) 66%,
+        rgba(253, 234, 247, 0.8) 100%
+      );
       opacity: 0;
     }
 

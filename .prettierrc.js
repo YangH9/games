@@ -1,5 +1,6 @@
 module.exports = {
-  printWidth: 150, // 一行的字符数换行
+  $schema: 'https://json.schemastore.org/prettierrc',
+  printWidth: 120, // 一行的字符数换行
   tabWidth: 2, // 一个tab代表几个空格数
   useTabs: false, // 是否使用tab进行缩进
   semi: false, // 行尾是否使用分号
@@ -16,6 +17,6 @@ module.exports = {
   vueIndentScriptAndStyle: false, // vue script和style标签中是否缩进
   endOfLine: 'auto', // 保留在 Windows 和 Unix 下的换行符,
   embeddedLanguageFormatting: 'auto', // 格式化嵌入式代码
-  singleAttributePerLine: false,
-  disableLanguages: ['vue'] // 不格式化vue文件，vue文件的格式化单独设置
+  singleAttributePerLine: false
+  // disableLanguages: ['vue'] // 不格式化vue文件，vue文件的格式化单独设置
 }

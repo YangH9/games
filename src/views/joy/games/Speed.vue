@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true" title="飞车端游壁纸">
       <a-row justify="space-around" :gutter="[10, 10]">
-        <a-col v-bind="colSpan" v-for="(item, index) of dataList.slice(0, pageNum)" :key="index">
+        <a-col v-for="(item, index) in dataList.slice(0, pageNum)" v-bind="colSpan" :key="index">
           <a-card ref="cardRef" :title="item.dtInputDT">
             <img
               v-lazy="item.sProdImgNo_1"
@@ -13,13 +13,19 @@
               @click="previewUrl = [item.sThumbURL, item.sProdImgNo_2, item.sProdImgNo_3, item.sProdImgNo_4]"
             />
             <template #actions>
-              <a-button type="link" size="small" class="px_1" @click="previewUrl = item.sProdImgNo_2">1280X1024</a-button>
-              <a-button type="link" size="small" class="px_1" @click="previewUrl = item.sProdImgNo_3">1440X900</a-button>
-              <a-button type="link" size="small" class="px_1" @click="previewUrl = item.sProdImgNo_4">1920X1080</a-button>
+              <a-button type="link" size="small" class="px_1" @click="previewUrl = item.sProdImgNo_2"
+                >1280X1024</a-button
+              >
+              <a-button type="link" size="small" class="px_1" @click="previewUrl = item.sProdImgNo_3"
+                >1440X900</a-button
+              >
+              <a-button type="link" size="small" class="px_1" @click="previewUrl = item.sProdImgNo_4"
+                >1920X1080</a-button
+              >
             </template>
           </a-card>
         </a-col>
-        <a-col v-bind="colSpan" v-for="item of 4" :key="item" class="seat">
+        <a-col v-for="item in 4" v-bind="colSpan" :key="item" class="seat">
           <a-card>
             <div class="image"></div>
           </a-card>
@@ -32,7 +38,9 @@
         onVisibleChange: (e) => !e && (previewUrl = '')
       }"
     >
-      <a-image v-if="Array.isArray(previewUrl)" v-for="item of previewUrl" :src="item" />
+      <template v-if="Array.isArray(previewUrl)">
+        <a-image v-for="(item, index) in previewUrl" :key="index" :src="item" />
+      </template>
       <a-image v-else :src="previewUrl" />
     </a-image-preview-group>
   </div>
