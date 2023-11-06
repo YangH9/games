@@ -31,7 +31,7 @@ const s = d.getSeconds()
 const ms = d.getSeconds()
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .time {
   display: flex;
   align-items: center;

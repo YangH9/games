@@ -61,7 +61,8 @@ const studyList = [
       { title: '菜单特效', href: '/study/demo/menuEffect' },
       { title: '按钮特效', href: '/study/demo/buttonEffect' },
       { title: '动画图标', href: '/study/demo/icon' },
-      { title: '动画时钟', href: '/study/demo/clock' },
+      { title: '动画时钟', href: '/study/demo/animationClock' },
+      { title: '数码管时钟', href: '/study/demo/nixieTubeClock' },
       { title: '写轮眼', href: '/study/demo/sharingan' }
     ]
   },

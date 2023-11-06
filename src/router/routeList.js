@@ -141,12 +141,20 @@ export default [
             component: () => import('@/views/study/demo/icon.vue')
           },
           {
-            path: '/study/demo/clock',
-            name: 'clock',
+            path: '/study/demo/animationClock',
+            name: 'animationClock',
             meta: {
               title: 'CSS动画时钟'
             },
-            component: () => import('@/views/study/demo/clock.vue')
+            component: () => import('@/views/study/demo/animationClock.vue')
+          },
+          {
+            path: '/study/demo/nixieTubeClock',
+            name: 'nixieTubeClock',
+            meta: {
+              title: '数码管时钟'
+            },
+            component: () => import('@/views/study/demo/nixieTubeClock.vue')
           },
           {
             path: '/study/demo/sharingan',
