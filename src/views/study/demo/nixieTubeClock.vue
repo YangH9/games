@@ -8,7 +8,7 @@
       <rect id="noise-rect" filter="url(#noiseFilter)" />
     </svg>
 
-    <div class="clock off">
+    <div :class="`clock ${clockOff ? '' : 'off'}`">
       <div class="shadow"></div>
 
       <div class="base-container">
@@ -49,35 +49,29 @@
       </div>
 
       <div class="display">
-        <div v-for="i of [0, 2, 4, 6, 8]" :class="`${i === 10 ? 'small-row' : 'row'}`" :style="{ marginBottom: i === 2 ? '0.2em' : '' }">
-          <div v-for="j of [0, 1]" class="col">
-            <div>8</div>
-            <div>{{ timeStr[i + j] }}</div>
-            <div>{{ timeStr[i + j] }}</div>
-          </div>
-        </div>
-        <div class="small-row">
-          <div class="row">
-            <div class="col">
+        <template v-for="i of [0, 2, 4, 6, 8, 10, 12]">
+          <div v-if="[0, 2, 6, 8, 10].includes(i)" class="row" :style="{ marginBottom: i === 2 ? '0.2em' : '' }">
+            <div v-for="j of [0, 1]" class="col">
               <div>8</div>
-              <div>{{ timeStr[10] }}</div>
-              <div>{{ timeStr[10] }}</div>
-            </div>
-            <div class="col">
-              <div>8</div>
-              <div>{{ timeStr[11] }}</div>
-              <div>{{ timeStr[11] }}</div>
+              <div>{{ timeStr[i + j] }}</div>
+              <div>{{ timeStr[i + j] }}</div>
             </div>
           </div>
-        </div>
+          <div v-else class="small-row">
+            <div class="row">
+              <div v-for="j of [0, 1]" class="col">
+                <div>8</div>
+                <div>{{ timeStr[i + j] }}</div>
+                <div>{{ timeStr[i + j] }}</div>
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
-
       <div class="glass-tube"></div>
-
       <div class="hex">
         <div class="overlay"></div>
       </div>
-
       <div class="tube-base-container">
         <div class="wires">
           <div></div>
@@ -91,13 +85,11 @@
         </div>
         <div class="tube-btm"></div>
       </div>
-
       <div class="power-cord">
         <div></div>
         <div></div>
       </div>
-
-      <div class="button" onclick="body.querySelector('.clock').classList.toggle('off')">
+      <div class="button" @click="click">
         <div></div>
       </div>
     </div>
@@ -105,29 +97,32 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+
+let timer = ''
 
 const timeStr = ref('')
-const updateTimeAndDate = () => {
+const clockOff = ref(false)
+
+const running = () => {
   const now = new Date()
-  let hours = now.getHours()
-  timeStr.value = `${now.toFormat('hhmmMMDDYY')}${hours >= 12 ? 'PM' : 'AM'}`
-  console.log(timeStr.value)
-  // let timeStr = hours.toString().padStart(2, '0') + minutes
-
-  // let month = (now.getMonth() + 1).toString().padStart(2, '0')
-  // let day = now.getDate().toString().padStart(2, '0')
-  // const year = now.getFullYear().toString().slice(-2)
-
-  // const displayStr = timeStr + amPm + month + day + year
-  // console.log(displayStr)
-  // for (let i = 0; i < 12; i++) {
-  //   document.getElementById('char' + i + '1').textContent = displayStr[i]
-  //   document.getElementById('char' + i + '2').textContent = displayStr[i]
-  // }
+  timeStr.value = `${now.toFormat('hhmmssMMDDYY')}${now.getHours() >= 12 ? 'PM' : 'AM'}`
+  timer = setTimeout(() => {
+    running()
+  }, 1000)
 }
-updateTimeAndDate()
-// setInterval(updateTimeAndDate, 60000)
+
+const click = () => {
+  clockOff.value = !clockOff.value
+}
+
+onMounted(() => {
+  running()
+})
+
+onBeforeUnmount(() => {
+  clearTimeout(timer)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -214,7 +209,8 @@ updateTimeAndDate()
     margin: auto;
     height: 20em;
     width: 0;
-    box-shadow: 0 0 8em 4em var(--_y1), 0 0 8em 6em var(--_y2), 0 0 8em 8em var(--_o1), 0 0 8em 10em var(--_o2), 0 0 8em 12em var(--_o3);
+    box-shadow: 0 0 8em 4em var(--_y1), 0 0 8em 6em var(--_y2), 0 0 8em 8em var(--_o1), 0 0 8em 10em var(--_o2),
+      0 0 8em 12em var(--_o3);
   }
 
   &::after {
@@ -253,9 +249,9 @@ updateTimeAndDate()
   scale: 0.84 0.91;
   border-radius: 15% / 7%;
   box-shadow: 0em 104em 16em 20em #040909, /* light on */ 0em 1.2em 1em 0.2em var(--m3), 0em 1.2em 1em 0.5em var(--m2),
-    0em 1.2em 0.5em 1.2em var(--m1), 0em 1.2em 1.2em 1.5em var(--m2), 0em 1.2em 2em 2em var(--m3), /* ---- */ 0em 90em 16em 20em #040909,
-    /* nat light */ -1em 1em 2em 3.7em #040909, 0.5em 0em 2em 3.7em #040909, 0em 0em 0em 4.6em var(--mw1), 0em 0em 0.5em 5em var(--mw1),
-    /* --------- */ 0em 0em 0em 20em #040909;
+    0em 1.2em 0.5em 1.2em var(--m1), 0em 1.2em 1.2em 1.5em var(--m2), 0em 1.2em 2em 2em var(--m3),
+    /* ---- */ 0em 90em 16em 20em #040909, /* nat light */ -1em 1em 2em 3.7em #040909, 0.5em 0em 2em 3.7em #040909,
+    0em 0em 0em 4.6em var(--mw1), 0em 0em 0.5em 5em var(--mw1), /* --------- */ 0em 0em 0em 20em #040909;
 }
 
 .pipe-accents {
@@ -403,8 +399,9 @@ updateTimeAndDate()
         top: 0;
         bottom: 0;
         margin: auto;
-        box-shadow: inset 0 0 0em 0.1em #040909, /* light on */ 0 0 0.5em 0.1em var(--_bloom), inset 0 0 1.3em 0.2em var(--_o3),
-          inset 0 0 1.3em 0.4em var(--_o2), inset 0 0 1.3em 0.6em var(--_o1), inset 0 0 1.3em 2em var(--_y1) /* -------- */;
+        box-shadow: inset 0 0 0em 0.1em #040909, /* light on */ 0 0 0.5em 0.1em var(--_bloom),
+          inset 0 0 1.3em 0.2em var(--_o3), inset 0 0 1.3em 0.4em var(--_o2), inset 0 0 1.3em 0.6em var(--_o1),
+          inset 0 0 1.3em 2em var(--_y1) /* -------- */;
         animation: 5s flicker linear infinite;
       }
     }
@@ -727,8 +724,9 @@ updateTimeAndDate()
   border-radius: 35% / 10%;
   box-shadow: 0em -94em 20em 20em #040909, 0em 104em 20em 20em #040909, /* light on */ 0em 1em 1em 0.2em var(--m3),
     0em 1em 1em 0.5em var(--m2), 0em 1em 0.5em 1.2em var(--m1), 0em 1em 1.2em 1.5em var(--m2), 0em 1em 2em 2em var(--m3),
-    /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1), 0em 90em 16em 20em #040909, -1em 1em 2em 2em #040909,
-    0.5em 0em 2em 2em #040909, 0em 0em 0em 4.6em var(--mw1), 0em 0em 1.5em 5em var(--mw1), /* --------- */ 0em 0em 0em 20em #040909;
+    /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1), 0em 90em 16em 20em #040909,
+    -1em 1em 2em 2em #040909, 0.5em 0em 2em 2em #040909, 0em 0em 0em 4.6em var(--mw1), 0em 0em 1.5em 5em var(--mw1),
+    /* --------- */ 0em 0em 0em 20em #040909;
 }
 
 .base-container {
@@ -758,8 +756,8 @@ updateTimeAndDate()
         height: 50%;
         border-radius: 100%;
         box-shadow: 0 2em 10em 0 #000, inset -0.4em 0em 0.8em 0em var(--mw1), inset 0em 0em 0.5em 0.3em #040909,
-          inset 0em 0em 0.5em 0.3em #040909, inset 0em 0em 1em 0em #040909, inset 0em 0em 2em 0em #040909, inset 0em 0em 3em 0em #040909,
-          /* light on */ inset 0em 0em 1em 0em var(--m3), inset 0em 0em 1em 2em var(--m2),
+          inset 0em 0em 0.5em 0.3em #040909, inset 0em 0em 1em 0em #040909, inset 0em 0em 2em 0em #040909,
+          inset 0em 0em 3em 0em #040909, /* light on */ inset 0em 0em 1em 0em var(--m3), inset 0em 0em 1em 2em var(--m2),
           inset 1em 0.3em 10em 10em var(--m1) /* -------- */;
       }
     }
@@ -777,7 +775,9 @@ updateTimeAndDate()
     position: absolute;
     right: -22%;
     top: 10%;
-
+    ~ .small-row {
+      top: 30%;
+    }
     .row {
       flex-direction: column;
       line-height: 1.02em;
@@ -827,8 +827,8 @@ updateTimeAndDate()
   box-shadow:
     /* light on */ 0em 0em 1em -0.2em var(--m1), 0em 0em 2em -0.4em var(--m2), 0em 0em 3em -0.4em var(--m2),
     inset 0em 0em 0.4em 0.2em var(--m3), inset 0em 0em 0.6em 0.4em var(--m2), inset 0em 0em 1em 0.7em var(--m1),
-    inset 0em 0em 3em 0em var(--m2), inset 0em 0em 5em 1em var(--m3), /* -------- */ inset -0.1em 0.1em 0.1em 0em var(--mw1),
-    inset 0 0 1em 0.1em var(--mw1);
+    inset 0em 0em 3em 0em var(--m2), inset 0em 0em 5em 1em var(--m3),
+    /* -------- */ inset -0.1em 0.1em 0.1em 0em var(--mw1), inset 0 0 1em 0.1em var(--mw1);
 
   &::before {
     content: '';
@@ -873,10 +873,10 @@ updateTimeAndDate()
   --_hex-cl1: #040909;
   --_hex-cl2: var(--_o1);
   --_hex-size: 2.18em;
-  background: radial-gradient(circle farthest-side at 0% 50%, var(--_hex-cl1) 23.5%, rgba(240, 166, 17, 0) 0) calc(1.06 * var(--_hex-size))
-      calc(1.5 * var(--_hex-size)),
-    radial-gradient(circle farthest-side at 0% 50%, var(--_hex-cl2) 24%, rgba(240, 166, 17, 0) 0) calc(0.94 * var(--_hex-size))
-      calc(1.5 * var(--_hex-size)),
+  background: radial-gradient(circle farthest-side at 0% 50%, var(--_hex-cl1) 23.5%, rgba(240, 166, 17, 0) 0)
+      calc(1.06 * var(--_hex-size)) calc(1.5 * var(--_hex-size)),
+    radial-gradient(circle farthest-side at 0% 50%, var(--_hex-cl2) 24%, rgba(240, 166, 17, 0) 0)
+      calc(0.94 * var(--_hex-size)) calc(1.5 * var(--_hex-size)),
     linear-gradient(var(--_hex-cl1) 14%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 85%, var(--_hex-cl1) 0) 0 0,
     linear-gradient(
         150deg,
@@ -902,7 +902,8 @@ updateTimeAndDate()
         var(--_hex-cl1) 0
       )
       0 0,
-    linear-gradient(90deg, var(--_hex-cl2) 2%, var(--_hex-cl1) 0, var(--_hex-cl1) 98%, var(--_hex-cl2) 0%) 0 0 var(--_hex-cl1);
+    linear-gradient(90deg, var(--_hex-cl2) 2%, var(--_hex-cl1) 0, var(--_hex-cl1) 98%, var(--_hex-cl2) 0%) 0 0
+      var(--_hex-cl1);
   background-size: calc(2 * var(--_hex-size)) calc(3 * var(--_hex-size));
 
   .overlay {
@@ -1084,8 +1085,8 @@ updateTimeAndDate()
   cursor: pointer;
   background: var(--_bloom);
   box-shadow: 0em -0.1em 0.2em 0em var(--_o1), 0em -0.1em 0.2em 0.1em var(--_o2), 0em -0.1em 0.2em 0.2em var(--_o3),
-    0em -0.1em 1em 0.5em var(--_bloom), /* light on */ inset 0em 0em 1em 0em var(--_o3), inset 0em 0em 1em 0.5em var(--_o2),
-    inset 0em 0em 1em 1em var(--_o1) /* -------- */;
+    0em -0.1em 1em 0.5em var(--_bloom), /* light on */ inset 0em 0em 1em 0em var(--_o3),
+    inset 0em 0em 1em 0.5em var(--_o2), inset 0em 0em 1em 1em var(--_o1) /* -------- */;
   filter: blur(1px);
 }
 
@@ -1161,14 +1162,15 @@ updateTimeAndDate()
   .top-tube,
   .top,
   .topinset {
-    box-shadow: inset -0.2em 1.1em 1.4em -0.4em var(--mw1), /* light off */ inset 0em -1.2em 0.5em -1.1em rgba(0, 0, 0, 0),
-      inset 0em -1.2em 1em -0.8em rgba(0, 0, 0, 0), inset 0em -1.2em 1em -0.2em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow: inset -0.2em 1.1em 1.4em -0.4em var(--mw1),
+      /* light off */ inset 0em -1.2em 0.5em -1.1em rgba(0, 0, 0, 0), inset 0em -1.2em 1em -0.8em rgba(0, 0, 0, 0),
+      inset 0em -1.2em 1em -0.2em rgba(0, 0, 0, 0) /* -------- */;
   }
 
   .topinset::before {
     box-shadow: inset 0 0 0em 0.1em #040909, /* light off */ -0.1em 0.2em 0.7em 0.1em rgba(255, 255, 255, 0.4),
-      inset 0 0 1.3em 0.2em rgba(0, 0, 0, 0), inset 0 0 1.3em 0.4em rgba(0, 0, 0, 0), inset 0 0 1.3em 0.6em rgba(0, 0, 0, 0),
-      inset 0 0 1.3em 2em rgba(0, 0, 0, 0) /* -------- */;
+      inset 0 0 1.3em 0.2em rgba(0, 0, 0, 0), inset 0 0 1.3em 0.4em rgba(0, 0, 0, 0),
+      inset 0 0 1.3em 0.6em rgba(0, 0, 0, 0), inset 0 0 1.3em 2em rgba(0, 0, 0, 0) /* -------- */;
     animation-play-state: paused;
   }
 
@@ -1178,10 +1180,11 @@ updateTimeAndDate()
   }
 
   .inner-pipe {
-    box-shadow: 0em 104em 16em 20em #040909, /* light off */ 0em 1.2em 1em 0.2em rgba(0, 0, 0, 0), 0em 1.2em 1em 0.5em rgba(0, 0, 0, 0),
-      0em 1.2em 0.5em 1.2em rgba(0, 0, 0, 0), 0em 1.2em 1.2em 1.5em rgba(0, 0, 0, 0), 0em 1.2em 2em 2em rgba(0, 0, 0, 0),
-      /* ---- */ 0em 90em 16em 20em #040909, /* nat light */ -1em 1em 2em 3.7em #040909, 0.5em 0em 2em 3.7em #040909,
-      0em 0em 0em 4.6em var(--mw1), 0em 0em 0.5em 5em var(--mw1), /* --------- */ 0em 0em 0em 20em #040909;
+    box-shadow: 0em 104em 16em 20em #040909, /* light off */ 0em 1.2em 1em 0.2em rgba(0, 0, 0, 0),
+      0em 1.2em 1em 0.5em rgba(0, 0, 0, 0), 0em 1.2em 0.5em 1.2em rgba(0, 0, 0, 0),
+      0em 1.2em 1.2em 1.5em rgba(0, 0, 0, 0), 0em 1.2em 2em 2em rgba(0, 0, 0, 0), /* ---- */ 0em 90em 16em 20em #040909,
+      /* nat light */ -1em 1em 2em 3.7em #040909, 0.5em 0em 2em 3.7em #040909, 0em 0em 0em 4.6em var(--mw1),
+      0em 0em 0.5em 5em var(--mw1), /* --------- */ 0em 0em 0em 20em #040909;
   }
 
   .small-inner-pipe {
@@ -1189,9 +1192,10 @@ updateTimeAndDate()
     height: 100%;
     scale: 0.92 0.98;
     border-radius: 35% / 10%;
-    box-shadow: 0em -94em 20em 20em #040909, 0em 104em 20em 20em #040909, /* light off */ 0em 1em 1em 0.2em rgba(0, 0, 0, 0),
-      0em 1em 1em 0.5em rgba(0, 0, 0, 0), 0em 1em 0.5em 1.2em rgba(0, 0, 0, 0), 0em 1em 1.2em 1.5em rgba(0, 0, 0, 0),
-      0em 1em 2em 2em rgba(0, 0, 0, 0), /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1), 0em 90em 16em 20em #040909,
+    box-shadow: 0em -94em 20em 20em #040909, 0em 104em 20em 20em #040909,
+      /* light off */ 0em 1em 1em 0.2em rgba(0, 0, 0, 0), 0em 1em 1em 0.5em rgba(0, 0, 0, 0),
+      0em 1em 0.5em 1.2em rgba(0, 0, 0, 0), 0em 1em 1.2em 1.5em rgba(0, 0, 0, 0), 0em 1em 2em 2em rgba(0, 0, 0, 0),
+      /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1), 0em 90em 16em 20em #040909,
       -1em 1em 2em 2em #040909, 0.5em 0em 2em 2em #040909, 0em 0em 0em 4.6em var(--mw1), 0em 0em 1.5em 5em var(--mw1),
       /* --------- */ 0em 0em 0em 20em #040909;
   }
@@ -1217,8 +1221,9 @@ updateTimeAndDate()
   }
 
   .left div:nth-child(1) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light off */ inset -1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0),
-      inset -1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0), inset -1em -0.5em 1em -0.3em rgba(0, 0, 0, 0);
+    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset -1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0), inset -1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0),
+      inset -1em -0.5em 1em -0.3em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
@@ -1239,14 +1244,16 @@ updateTimeAndDate()
   }
 
   .left div:nth-child(3) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light off */ inset -1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0),
-      inset -1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0), inset -1em 0.3em 1em 0em rgba(0, 0, 0, 0);
+    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset -1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0), inset -1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0),
+      inset -1em 0.3em 1em 0em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
   .right div:nth-child(1) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light off */ inset 1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0),
-      inset 1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0), inset 1em -0.5em 1em -0.3em rgba(0, 0, 0, 0);
+    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset 1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0), inset 1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0),
+      inset 1em -0.5em 1em -0.3em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
@@ -1257,16 +1264,17 @@ updateTimeAndDate()
   }
 
   .right div:nth-child(3) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light off */ inset 1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0),
-      inset 1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0), inset 1em 0.3em 1em 0em rgba(0, 0, 0, 0);
+    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset 1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0), inset 1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0),
+      inset 1em 0.3em 1em 0em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
   .base-container .base div::before {
     box-shadow: 0 2em 10em 0 #000, inset -0.4em 0em 0.8em 0em var(--mw1), inset 0em 0em 0.5em 0.3em #040909,
-      inset 0em 0em 0.5em 0.3em #040909, inset 0em 0em 1em 0em #040909, inset 0em 0em 2em 0em #040909, inset 0em 0em 3em 0em #040909,
-      /* light off */ inset 0em 0em 1em 0em rgba(0, 0, 0, 0), inset 0em 0em 1em 2em rgba(0, 0, 0, 0),
-      inset 1em 0.3em 10em 10em rgba(0, 0, 0, 0) /* -------- */;
+      inset 0em 0em 0.5em 0.3em #040909, inset 0em 0em 1em 0em #040909, inset 0em 0em 2em 0em #040909,
+      inset 0em 0em 3em 0em #040909, /* light off */ inset 0em 0em 1em 0em rgba(0, 0, 0, 0),
+      inset 0em 0em 1em 2em rgba(0, 0, 0, 0), inset 1em 0.3em 10em 10em rgba(0, 0, 0, 0) /* -------- */;
   }
 
   .display .row .col > div:nth-child(2) {
@@ -1280,8 +1288,9 @@ updateTimeAndDate()
   .glass-tube {
     box-shadow:
       /* light off */ 0em 0em 1em -0.2em rgba(0, 0, 0, 0), 0em 0em 2em -0.4em rgba(0, 0, 0, 0),
-      0em 0em 3em -0.4em rgba(0, 0, 0, 0), inset 0em 0em 0.4em 0.2em rgba(0, 0, 0, 0), inset 0em 0em 0.6em 0.4em rgba(0, 0, 0, 0),
-      inset 0em 0em 1em 0.7em rgba(0, 0, 0, 0), inset 0em 0em 3em 0em rgba(0, 0, 0, 0), inset 0em 0em 5em 1em rgba(0, 0, 0, 0),
+      0em 0em 3em -0.4em rgba(0, 0, 0, 0), inset 0em 0em 0.4em 0.2em rgba(0, 0, 0, 0),
+      inset 0em 0em 0.6em 0.4em rgba(0, 0, 0, 0), inset 0em 0em 1em 0.7em rgba(0, 0, 0, 0),
+      inset 0em 0em 3em 0em rgba(0, 0, 0, 0), inset 0em 0em 5em 1em rgba(0, 0, 0, 0),
       /* -------- */ inset -0.1em 0.1em 0.1em 0em var(--mw1), inset 0 0 1em 0.1em var(--mw1);
   }
 
@@ -1319,8 +1328,9 @@ updateTimeAndDate()
 
   .button {
     background: #8d8d8d;
-    box-shadow: 0em -0.1em 0.2em 0em #040909, 0em -0.1em 0.2em 0.1em #040909, 0em 0em 1em 0.5em var(--_bloom), 0em -0.1em 1em 0.5em #040909,
-      /* light off */ inset 0em 0em 1em 0em var(--mw1), inset 0em 0em 1em 0.5em var(--mw1), inset 0em 0em 1em 1em var(--mw1) /* -------- */;
+    box-shadow: 0em -0.1em 0.2em 0em #040909, 0em -0.1em 0.2em 0.1em #040909, 0em 0em 1em 0.5em var(--_bloom),
+      0em -0.1em 1em 0.5em #040909, /* light off */ inset 0em 0em 1em 0em var(--mw1), inset 0em 0em 1em 0.5em var(--mw1),
+      inset 0em 0em 1em 1em var(--mw1) /* -------- */;
     filter: blur(0.7px);
     animation: 5s flicker linear infinite;
   }
