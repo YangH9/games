@@ -1,7 +1,7 @@
 <template>
   <Menu url="/study/demo"></Menu>
   <a-layout v-calcHeight="0">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <RouterView />
   </a-layout>
 </template>
@@ -12,7 +12,9 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
 <style lang="scss" scoped>
-.ant-layout {
-  padding: 0px 20px 20px;
+@media (min-width: 720px) {
+  .ant-layout {
+    padding: 0px 20px 20px;
+  }
 }
 </style>

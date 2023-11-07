@@ -43,6 +43,12 @@ const click = (data) => {
   }
 }
 
+@media (max-width: 720px) {
+  .ant-layout-sider {
+    display: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :deep(.ant-menu-item.ant-menu-item-selected) {
     background: #004a6d;
