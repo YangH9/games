@@ -126,7 +126,108 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.cdnfonts.com/css/lcd');
+@font-face {
+  font-family: lcd;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCD'), url(@/assets/woff/LCD-N___.woff) format('woff');
+}
+@font-face {
+  font-family: lcd;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCD'), url(@/assets/woff/LCD-U___.woff) format('woff');
+}
+@font-face {
+  font-family: lcd;
+  font-style: normal;
+  font-weight: 300;
+  src: local('LCD'), url(@/assets/woff/LCD-L___.woff) format('woff');
+}
+@font-face {
+  font-family: lcd;
+  font-style: normal;
+  font-weight: 700;
+  src: local('LCD'), url(@/assets/woff/LCD-BOLD.woff) format('woff');
+}
+@font-face {
+  font-family: lcd2;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCD2'), url(@/assets/woff/LCD2N___.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono2;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCDMono2'), url(@/assets/woff/LCDM2N__.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCDMono'), url(@/assets/woff/LCDMN___.woff) format('woff');
+}
+@font-face {
+  font-family: digitalism;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Digitalism'), url(@/assets/woff/digitalism.woff) format('woff');
+}
+@font-face {
+  font-family: lcd2;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCD2'), url(@/assets/woff/LCD2U___.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono2;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCDMono2'), url(@/assets/woff/LCDM2U__.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono;
+  font-style: normal;
+  font-weight: 400;
+  src: local('LCDMono'), url(@/assets/woff/LCDMU___.woff) format('woff');
+}
+@font-face {
+  font-family: lcd2;
+  font-style: normal;
+  font-weight: 300;
+  src: local('LCD2'), url(@/assets/woff/LCD2L___.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono2;
+  font-style: normal;
+  font-weight: 300;
+  src: local('LCDMono2'), url(@/assets/woff/LCDM2L__.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono;
+  font-style: normal;
+  font-weight: 300;
+  src: local('LCDMono'), url(@/assets/woff/LCDML___.woff) format('woff');
+}
+@font-face {
+  font-family: lcd2;
+  font-style: normal;
+  font-weight: 700;
+  src: local('LCD2'), url(@/assets/woff/LCD2B___.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono2;
+  font-style: normal;
+  font-weight: 700;
+  src: local('LCDMono2'), url(@/assets/woff/LCDM2B__.woff) format('woff');
+}
+@font-face {
+  font-family: lcdmono;
+  font-style: normal;
+  font-weight: 700;
+  src: local('LCDMono'), url(@/assets/woff/LCDMB___.woff) format('woff');
+}
 
 :deep().ant-card-body {
   display: flex;
