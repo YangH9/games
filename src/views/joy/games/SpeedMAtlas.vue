@@ -231,6 +231,7 @@ const mapGradeList = [
 ]
 
 watch([typeListActive, carFactoryListActive, carGradeListActive, mapGradeListActive], () => {
+  pageNum.value = 10
   show.value = false
   nextTick(() => {
     show.value = true

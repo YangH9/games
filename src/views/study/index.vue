@@ -12,13 +12,7 @@
             class="card_button_list"
             :hoverable="true"
           >
-            <a-button
-              v-for="(item, index1) in main.list"
-              :key="index1"
-              :href="item.href"
-              :title="item.title"
-              size="large"
-            >
+            <a-button v-for="(item, index1) in main.list" :key="index1" :title="item.title" size="large">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
             <a-button v-for="i in 10" :key="i" class="seat"></a-button>

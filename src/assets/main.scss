@@ -47,6 +47,13 @@
     .ant-btn {
       margin-right: 10px;
       margin-bottom: 10px;
+      max-width: 100%;
+      span {
+        max-width: calc(100% - 20px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
 
     &::before,
@@ -58,7 +65,7 @@
       width: 16px;
       height: 16px;
       margin-right: 4px;
-      vertical-align: baseline;
+      vertical-align: super;
     }
 
     .seat {
@@ -90,7 +97,8 @@
   }
 }
 
-a.ant-btn:not(.ant-btn-link) {
+a.ant-btn:not(.ant-btn-link),
+:where(.css-dev-only-do-not-override-kqecok).ant-btn-default {
   color: var(--color-text);
   background: var(--color-background);
 }
