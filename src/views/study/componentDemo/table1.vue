@@ -15,7 +15,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 
 const tableData = [
   {
-    name: '胡彦斌',
+    name: 'Edrward',
     age: 32,
     column0: '1.1',
     column1: '1.2',
