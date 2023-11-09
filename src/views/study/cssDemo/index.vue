@@ -1,5 +1,5 @@
 <template>
-  <Menu url="/study/demo"></Menu>
+  <Menu url="/study/cssDemo"></Menu>
   <a-layout v-calcHeight="0">
     <Breadcrumb overlayShow />
     <RouterView />

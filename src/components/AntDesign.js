@@ -23,12 +23,14 @@ import {
   InputNumber,
   Radio,
   RadioGroup,
+  Checkbox,
   Textarea,
   Collapse,
   CollapsePanel,
   Watermark,
   Tag,
-  ConfigProvider
+  ConfigProvider,
+  Table
 } from 'ant-design-vue'
 
 const antList = {
@@ -55,12 +57,14 @@ const antList = {
   InputNumber,
   Radio,
   // RadioGroup,
+  Checkbox,
   // Textarea,
   Collapse,
   // CollapsePanel,
   Watermark,
   Tag,
-  ConfigProvider
+  ConfigProvider,
+  Table
 }
 
 // 抛出整体按需引入的组件

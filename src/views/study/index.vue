@@ -45,19 +45,19 @@ const studyList = [
   {
     title: 'CSS特效',
     list: [
-      { title: '皮卡丘', href: '/study/demo/pikaqiu' },
-      { title: '灰太狼', href: '/study/demo/huitailang' },
-      { title: '蓝胖子', href: '/study/demo/lanpangzi' },
-      { title: '喵咪老师', href: '/study/demo/madara' },
-      { title: '正多边形', href: '/study/demo/regularPolygon' },
-      { title: '边框特效', href: '/study/demo/borderEffect' },
-      { title: '液晶数字字体', href: '/study/demo/LCDDigital' },
-      { title: '菜单特效', href: '/study/demo/menuEffect' },
-      { title: '按钮特效', href: '/study/demo/buttonEffect' },
-      { title: '动画图标', href: '/study/demo/icon' },
-      { title: '动画时钟', href: '/study/demo/animationClock' },
-      { title: '数码管时钟', href: '/study/demo/nixieTubeClock' },
-      { title: '写轮眼', href: '/study/demo/sharingan' }
+      { title: '皮卡丘', href: '/study/cssDemo/pikaqiu' },
+      { title: '灰太狼', href: '/study/cssDemo/huitailang' },
+      { title: '蓝胖子', href: '/study/cssDemo/lanpangzi' },
+      { title: '喵咪老师', href: '/study/cssDemo/madara' },
+      { title: '正多边形', href: '/study/cssDemo/regularPolygon' },
+      { title: '边框特效', href: '/study/cssDemo/borderEffect' },
+      { title: '液晶数字字体', href: '/study/cssDemo/LCDDigital' },
+      { title: '菜单特效', href: '/study/cssDemo/menuEffect' },
+      { title: '按钮特效', href: '/study/cssDemo/buttonEffect' },
+      { title: '动画图标', href: '/study/cssDemo/icon' },
+      { title: '动画时钟', href: '/study/cssDemo/animationClock' },
+      { title: '数码管时钟', href: '/study/cssDemo/nixieTubeClock' },
+      { title: '写轮眼', href: '/study/cssDemo/sharingan' }
     ]
   },
   {
@@ -84,6 +84,10 @@ const studyList = [
       { title: '画中画', href: '/study/other/pictureInPicture' },
       { title: '提词器', href: '/study/other/teleprompter' }
     ]
+  },
+  {
+    title: '组件',
+    list: [{ title: '表格1', href: '/study/componentDemo/table1' }]
   }
 ]
 

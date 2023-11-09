@@ -52,117 +52,117 @@ export default [
     component: () => import('@/views/study/index.vue'),
     children: [
       {
-        path: '/study/demo',
-        name: 'demo',
+        path: '/study/cssDemo',
+        name: 'cssDemo',
         meta: {
           title: 'CSS特效'
         },
-        redirect: '/study/demo/pikaqiu',
-        component: () => import('@/views/study/demo/index.vue'),
+        redirect: '/study/cssDemo/pikaqiu',
+        component: () => import('@/views/study/cssDemo/index.vue'),
         children: [
           {
-            path: '/study/demo/pikaqiu',
+            path: '/study/cssDemo/pikaqiu',
             name: 'pikaqiu',
             meta: {
               title: 'CSS皮卡丘'
             },
-            component: () => import('@/views/study/demo/pikaqiu.vue')
+            component: () => import('@/views/study/cssDemo/pikaqiu.vue')
           },
           {
-            path: '/study/demo/huitailang',
+            path: '/study/cssDemo/huitailang',
             name: 'huitailang',
             meta: {
               title: 'CSS灰太狼'
             },
-            component: () => import('@/views/study/demo/huitailang.vue')
+            component: () => import('@/views/study/cssDemo/huitailang.vue')
           },
           {
-            path: '/study/demo/lanpangzi',
+            path: '/study/cssDemo/lanpangzi',
             name: 'lanpangzi',
             meta: {
               title: 'CSS蓝胖子'
             },
-            component: () => import('@/views/study/demo/lanpangzi.vue')
+            component: () => import('@/views/study/cssDemo/lanpangzi.vue')
           },
           {
-            path: '/study/demo/madara',
+            path: '/study/cssDemo/madara',
             name: 'madara',
             meta: {
               title: 'CSS喵咪老师'
             },
-            component: () => import('@/views/study/demo/madara.vue')
+            component: () => import('@/views/study/cssDemo/madara.vue')
           },
           {
-            path: '/study/demo/regularPolygon',
+            path: '/study/cssDemo/regularPolygon',
             name: 'regularPolygon',
             meta: {
               title: 'CSS正多边形'
             },
-            component: () => import('@/views/study/demo/regularPolygon.vue')
+            component: () => import('@/views/study/cssDemo/regularPolygon.vue')
           },
           {
-            path: '/study/demo/borderEffect',
+            path: '/study/cssDemo/borderEffect',
             name: 'borderEffect',
             meta: {
               title: 'CSS边框特效'
             },
-            component: () => import('@/views/study/demo/borderEffect.vue')
+            component: () => import('@/views/study/cssDemo/borderEffect.vue')
           },
           {
-            path: '/study/demo/LCDDigital',
+            path: '/study/cssDemo/LCDDigital',
             name: 'LCDDigital',
             meta: {
               title: 'CSS液晶数字字体'
             },
-            component: () => import('@/views/study/demo/LCDDigital.vue')
+            component: () => import('@/views/study/cssDemo/LCDDigital.vue')
           },
           {
-            path: '/study/demo/menuEffect',
+            path: '/study/cssDemo/menuEffect',
             name: 'menuEffect',
             meta: {
               title: 'CSS菜单特效'
             },
-            component: () => import('@/views/study/demo/menuEffect.vue')
+            component: () => import('@/views/study/cssDemo/menuEffect.vue')
           },
           {
-            path: '/study/demo/buttonEffect',
+            path: '/study/cssDemo/buttonEffect',
             name: 'buttonEffect',
             meta: {
               title: 'CSS按钮特效'
             },
-            component: () => import('@/views/study/demo/buttonEffect.vue')
+            component: () => import('@/views/study/cssDemo/buttonEffect.vue')
           },
           {
-            path: '/study/demo/icon',
+            path: '/study/cssDemo/icon',
             name: 'icon',
             meta: {
               title: 'CSS动画图标'
             },
-            component: () => import('@/views/study/demo/icon.vue')
+            component: () => import('@/views/study/cssDemo/icon.vue')
           },
           {
-            path: '/study/demo/animationClock',
+            path: '/study/cssDemo/animationClock',
             name: 'animationClock',
             meta: {
               title: 'CSS动画时钟'
             },
-            component: () => import('@/views/study/demo/animationClock.vue')
+            component: () => import('@/views/study/cssDemo/animationClock.vue')
           },
           {
-            path: '/study/demo/nixieTubeClock',
+            path: '/study/cssDemo/nixieTubeClock',
             name: 'nixieTubeClock',
             meta: {
               title: '数码管时钟'
             },
-            component: () => import('@/views/study/demo/nixieTubeClock.vue')
+            component: () => import('@/views/study/cssDemo/nixieTubeClock.vue')
           },
           {
-            path: '/study/demo/sharingan',
+            path: '/study/cssDemo/sharingan',
             name: 'sharingan',
             meta: {
               title: 'CSS写轮眼'
             },
-            component: () => import('@/views/study/demo/sharingan.vue')
+            component: () => import('@/views/study/cssDemo/sharingan.vue')
           }
         ]
       },
@@ -314,6 +314,24 @@ export default [
               title: '提词器'
             },
             component: () => import('@/views/study/other/teleprompter.vue')
+          }
+        ]
+      },
+      {
+        path: '/study/componentDemo',
+        name: 'componentDemo',
+        meta: {
+          title: '组件例子'
+        },
+        redirect: '/study',
+        children: [
+          {
+            path: '/study/componentDemo/table1',
+            name: 'table1',
+            meta: {
+              title: '表格'
+            },
+            component: () => import('@/views/study/componentDemo/table1.vue')
           }
         ]
       }
