@@ -27,12 +27,12 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref, getCurrentInstance } from 'vue'
+import { ref, inject } from 'vue'
 
 // 腾讯各类域名
 // http://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldomain.js
 
-const { Jsonp } = getCurrentInstance().proxy
+const Jsonp = inject('Jsonp')
 
 const dataList = ref([])
 

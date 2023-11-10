@@ -71,9 +71,9 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { computed, ref, watch, getCurrentInstance } from 'vue'
+import { computed, ref, watch, inject } from 'vue'
 
-const { Jsonp } = getCurrentInstance().proxy
+const Jsonp = inject('Jsonp')
 
 const colSpan = { 122216: { xs: 24, sm: 12, md: 8 }, 122217: { xs: 12, sm: 8, md: 6 } }
 const baseUrl = `https://apps.game.qq.com/cmc/cross?serviceId=70&source=web_pc&r0=script`

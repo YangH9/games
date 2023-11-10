@@ -19,9 +19,9 @@
 <script setup>
 import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { getCurrentInstance } from 'vue'
+import { inject } from 'vue'
 
-const { GetEnv } = getCurrentInstance().proxy
+const GetEnv = inject('GetEnv')
 
 const mode = GetEnv.MODE
 const title = GetEnv.VITE_TITLE

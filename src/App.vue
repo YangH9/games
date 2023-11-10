@@ -9,12 +9,12 @@
 
 <script setup>
 import Loading from '@/components/Loading.vue'
-import { getCurrentInstance } from 'vue'
+import { inject } from 'vue'
 import { useRoute } from 'vue-router'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 
 const route = useRoute()
-const { GetEnv } = getCurrentInstance().proxy
+const GetEnv = inject('GetEnv')
 
 const title = GetEnv.VITE_TITLE
 </script>

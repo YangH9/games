@@ -1,5 +1,9 @@
+<template>
+  <myDom></myDom>
+</template>
+
 <script setup lang="jsx">
-import { getCurrentInstance, useAttrs, computed } from 'vue'
+import { useAttrs, computed } from 'vue'
 
 let key = 0
 
@@ -27,13 +31,7 @@ const getTableColumn = (column) => {
     key += 1
   }
   const columnProps = { align: 'center', ...data }
-  return (
-    <el-table-column
-      key={column.prop ?? column.type ?? key}
-      {...columnProps}
-      v-slots={slots}
-    ></el-table-column>
-  )
+  return <el-table-column key={column.prop ?? column.type ?? key} {...columnProps} v-slots={slots}></el-table-column>
 }
 
 const sizeChange = (e) => {
@@ -47,7 +45,7 @@ const tableColumns = computed(() => props.columns.map(getTableColumn))
 
 const empty = () => <el-empty description="暂无数据" />
 
-getCurrentInstance().render = () => (
+const myDom = () => (
   <>
     <el-table data={props.data} border stripe v-slots={{ empty }} {...attrs}>
       {tableColumns.value}

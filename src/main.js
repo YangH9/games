@@ -15,15 +15,14 @@ import '@/assets/gray.scss'
 import '@/assets/base.scss'
 import '@/assets/main.scss'
 
-const Vue = createApp(App)
+const app = createApp(App)
 
-Vue.config.globalProperties.GetEnv = import.meta.env
-Vue.config.globalProperties.Dayjs = dayjs
-Vue.config.globalProperties.Jsonp = jsonp
-
-Vue.use(AntDesign)
-Vue.use(createPinia())
-Vue.use(router)
-Vue.use(directive)
-
-Vue.mount('#app')
+app
+  .use(AntDesign)
+  .use(createPinia())
+  .use(router)
+  .use(directive)
+  .provide('GetEnv', import.meta.env)
+  .provide('Dayjs', dayjs)
+  .provide('Jsonp', jsonp)
+  .mount('#app')

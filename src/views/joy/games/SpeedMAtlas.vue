@@ -136,9 +136,9 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { nextTick, ref, watch, getCurrentInstance, computed } from 'vue'
+import { nextTick, ref, watch, inject, computed } from 'vue'
 
-const { Jsonp } = getCurrentInstance().proxy
+const Jsonp = inject('Jsonp')
 
 const colSpan = { xs: 12, sm: 8, md: 6 }
 
