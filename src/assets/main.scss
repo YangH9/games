@@ -41,15 +41,18 @@
     padding-bottom: 14px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
     content-visibility: auto;
 
     .ant-btn {
       margin-right: 10px;
       margin-bottom: 10px;
-      max-width: 100%;
-      span {
+      max-width: calc(100% - 10px);
+      flex: 1;
+      img ~ span {
         max-width: calc(100% - 20px);
+      }
+      span {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;

@@ -33,7 +33,6 @@
               </template>
               {{ item.title }}
             </a-button>
-            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
         </div>
       </RouterViewBox>

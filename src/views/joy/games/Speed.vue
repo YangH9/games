@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true" title="飞车端游壁纸">
-      <a-row justify="space-around" :gutter="[10, 10]">
+      <a-row :gutter="[10, 10]">
         <a-col v-for="(item, index) in dataList.slice(0, pageNum)" v-bind="colSpan" :key="index">
           <a-card ref="cardRef" :title="item.dtInputDT">
             <img
@@ -23,11 +23,6 @@
                 >1920X1080</a-button
               >
             </template>
-          </a-card>
-        </a-col>
-        <a-col v-for="item in 4" v-bind="colSpan" :key="item" class="seat">
-          <a-card>
-            <div class="image"></div>
           </a-card>
         </a-col>
       </a-row>
@@ -132,13 +127,6 @@ Jsonp(baseUrl)
 
   .ant-card-body {
     padding: 0;
-  }
-
-  .seat {
-    zoom: 0;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
   }
 
   .image {

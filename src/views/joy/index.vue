@@ -15,7 +15,6 @@
             <a-button v-for="(item, index1) in main.list" :key="index1" size="large" :title="item.title">
               <RouterLink :to="item.href">{{ item.title }}</RouterLink>
             </a-button>
-            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
           <a-card title="我的世界" class="card_button_list" :hoverable="true">
             <template #extra>
@@ -39,7 +38,6 @@
               </template>
               {{ item.title }}
             </a-button>
-            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
           <a-card title="原神" class="card_button_list" :hoverable="true">
             <a-button
@@ -60,7 +58,6 @@
               </template>
               {{ item.title }}
             </a-button>
-            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
           <a-card title="QQ群" class="card_button_list" :hoverable="true">
             <a-button
@@ -73,7 +70,6 @@
             >
               {{ item.title }}
             </a-button>
-            <a-button v-for="i in 10" :key="i" class="seat"></a-button>
           </a-card>
         </div>
       </RouterViewBox>

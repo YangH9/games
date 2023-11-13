@@ -36,7 +36,7 @@
           </a-select>
         </div>
       </template>
-      <a-row justify="space-around" :gutter="[10, 10]" :class="`direction${directionListActive}`">
+      <a-row :gutter="[10, 10]" :class="`direction${directionListActive}`">
         <a-col v-for="(item, index) in dataList" v-bind="colSpan[directionListActive]" :key="index">
           <a-card :title="item.sTitle">
             <template #extra>
@@ -50,11 +50,6 @@
               :title="`${item.sTitle}\n${item.sCreated}`"
               @click="previewUrl = item.sIMG"
             />
-          </a-card>
-        </a-col>
-        <a-col v-for="item in 4" v-bind="colSpan[directionListActive]" :key="item" class="seat">
-          <a-card>
-            <div class="image"></div>
           </a-card>
         </a-col>
       </a-row>
@@ -161,13 +156,6 @@ watch([pagesListActive, directionListActive, sortByListActive, limit], () => {
 
     .ant-card-body {
       padding: 0;
-    }
-
-    .seat {
-      zoom: 0;
-      visibility: hidden;
-      height: 0;
-      overflow: hidden;
     }
 
     .image {

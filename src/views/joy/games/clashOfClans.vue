@@ -52,7 +52,6 @@
         </template>
         {{ item.title }}
       </a-button>
-      <a-button v-for="i in 20" :key="i" class="seat"></a-button>
     </a-card>
     <a-card title="阵容攻略" class="card_button_list" :hoverable="true">
       <a-button
@@ -73,7 +72,6 @@
         </template>
         {{ item.title }}
       </a-button>
-      <a-button v-for="i in 20" :key="i" class="seat"></a-button>
     </a-card>
   </div>
 </template>

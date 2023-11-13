@@ -43,7 +43,7 @@
         </a-radio-group>
         <a-divider />
       </template>
-      <a-row justify="space-around" :gutter="[10, 10]">
+      <a-row :gutter="[10, 10]">
         <template v-if="show && typeListActive === 'car'">
           <a-col
             v-for="(item, index) in carsDataList
@@ -116,11 +116,6 @@
             </a-card>
           </a-col>
         </template>
-        <a-col v-for="item in 4" v-bind="colSpan" :key="item" class="seat">
-          <a-card>
-            <div class="image"></div>
-          </a-card>
-        </a-col>
       </a-row>
     </a-card>
     <a-image-preview-group
@@ -310,13 +305,6 @@ Jsonp(petUrl)
     .ant-card-body {
       padding: 0;
       overflow-y: hidden;
-    }
-
-    .seat {
-      zoom: 0;
-      visibility: hidden;
-      height: 0;
-      overflow: hidden;
     }
 
     .image {

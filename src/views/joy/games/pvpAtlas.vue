@@ -7,7 +7,7 @@
           <h3>王者荣耀图鉴</h3>
         </div>
       </template>
-      <a-row justify="space-around" :gutter="[0, 10]"></a-row>
+      <a-row :gutter="[0, 10]"></a-row>
     </a-card>
     <a-image
       :preview="{
@@ -55,13 +55,6 @@ const previewUrl = ref('')
 
   .ant-card-body {
     padding: 0;
-  }
-
-  .seat {
-    zoom: 0;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
   }
 
   .image {

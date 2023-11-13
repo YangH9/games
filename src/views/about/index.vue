@@ -13,12 +13,17 @@
             </a-descriptions-item>
           </a-descriptions>
         </a-card>
-        <a-card class="mb_2" :hoverable="true">
-          <a-descriptions :column="1">
-            <a-descriptions-item>
-              <a-button href="https://yangh9.github.io/ChinaHolidayCalender/" target="_blank">自制日历订阅</a-button>
-            </a-descriptions-item>
-          </a-descriptions>
+        <a-card class="card_button_list" :hoverable="true">
+          <a-button
+            v-for="(item, index) in list"
+            :key="index"
+            :href="item.href"
+            :title="item.title"
+            size="large"
+            target="_blank"
+          >
+            {{ item.title }}
+          </a-button>
         </a-card>
         <a-card title="站点信息" class="mb_2" :hoverable="true">
           <a-descriptions :column="2">
@@ -45,12 +50,16 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 const userList = [
   { label: 'QQ', title: '1770571618', href: 'tencent://message/?uin=1770571618' },
-  { label: '快手', title: 'https://f.kuaishou.com/3QQz0B', href: 'https://f.kuaishou.com/3QQz0B' },
-  { label: '抖音', title: 'https://v.douyin.com/3x5ty2', href: 'https://v.douyin.com/3x5ty2' },
   { label: 'GitHub', title: 'https://github.com/YangH9', href: 'https://github.com/YangH9' },
   { label: 'GitHub站点', title: 'https://yangh9.github.io', href: 'https://yangh9.github.io' },
   { label: 'Gitee', title: 'https://gitee.com/YangH9', href: 'https://gitee.com/YangH9' },
   { label: 'Gitee站点', title: 'https://yangh9.gitee.io', href: 'https://yangh9.gitee.io' },
+  { label: '抖音', title: 'https://v.douyin.com/3x5ty2', href: 'https://v.douyin.com/3x5ty2' },
+  {
+    label: '快手',
+    title: 'https://www.kuaishou.com/profile/3x9f22yvyy25eee',
+    href: 'https://www.kuaishou.com/profile/3x9f22yvyy25eee'
+  },
   {
     label: '哔哩哔哩',
     title: 'https://space.bilibili.com/492362541',
@@ -65,6 +74,16 @@ const userList = [
 
 const startTime = ref(1584864000000)
 const nowTime = ref(Date.now())
+
+const list = [
+  { title: '自制日历订阅', href: 'https://yangh9.github.io/ChinaHolidayCalender/' },
+  { title: '不会百度么', href: 'https://yangh9.github.io/baidu/' },
+  { title: '国庆头像制作', href: 'https://yangh9.github.io/avatar-editor/' },
+  { title: '摸摸头', href: 'https://yangh9.github.io/petpet/' },
+  { title: '1024节', href: 'https://yangh9.github.io/1024/' },
+  { title: '代码行数计算', href: 'https://github.com/YangH9/linecounter' },
+  { title: '行政区划', href: 'https://github.com/YangH9/China_area' }
+]
 
 let timer = ''
 

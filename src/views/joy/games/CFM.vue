@@ -10,7 +10,7 @@
           </h6>
         </div>
       </template>
-      <a-row justify="space-around" :gutter="[10, 10]">
+      <a-row :gutter="[10, 10]">
         <a-col v-for="(item, index) in dataList" v-bind="colSpan" :key="index">
           <a-card :hoverable="true">
             <template #title>
@@ -25,11 +25,6 @@
               :title="`${item.sTitle}\n${item.sCreated}`"
               @click="previewUrl = item.sIMG"
             />
-          </a-card>
-        </a-col>
-        <a-col v-for="item in 4" v-bind="colSpan" :key="item" class="seat">
-          <a-card>
-            <div class="image"></div>
           </a-card>
         </a-col>
       </a-row>
@@ -85,13 +80,6 @@ const previewUrl = ref('')
 
   .ant-card-body {
     padding: 0;
-  }
-
-  .seat {
-    zoom: 0;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
   }
 
   .image {
