@@ -27,7 +27,7 @@
             v-lazy="filtterUrl(item)"
             class="icon"
             referrer="no-referrer"
-            @error="(e) => (e.target.style.display = 'none')"
+            @error="(e) => e.target.classList.add('hidden')"
           />
         </template>
         {{ item.title }}
@@ -47,7 +47,7 @@
             v-lazy="filtterUrl(item)"
             class="icon"
             referrer="no-referrer"
-            @error="(e) => (e.target.style.display = 'none')"
+            @error="(e) => e.target.classList.add('hidden')"
           />
         </template>
         {{ item.title }}
@@ -67,7 +67,7 @@
             v-lazy="filtterUrl(item)"
             class="icon"
             referrer="no-referrer"
-            @error="(e) => (e.target.style.display = 'none')"
+            @error="(e) => e.target.classList.add('hidden')"
           />
         </template>
         {{ item.title }}

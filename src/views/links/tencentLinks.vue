@@ -15,7 +15,7 @@
             v-lazy="`//${key}/favicon.ico`"
             class="icon"
             referrer="no-referrer"
-            @error="(e) => (e.target.style.display = 'none')"
+            @error="(e) => e.target.classList.add('hidden')"
           />
         </template>
         {{ key }}
