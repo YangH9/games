@@ -3,9 +3,11 @@
     <Breadcrumb />
     <a-layout-content>
       <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1500 }" />
-      <a-button @click="cons">cons</a-button>
-      <div class="ant-card">
-        <div>选择的数据：{{ checkD }}</div>
+      <a-button @click="print">print</a-button>
+      <div class="ant-card mt_3">
+        <div>选择的数据：</div>
+        <div class="border_all">{{ checkD }}</div>
+        <div class="border_all" v-html="checkD"></div>
       </div>
     </a-layout-content>
   </div>
@@ -97,6 +99,7 @@ const defaultColumn = [
 const init = async () => {
   // 获取主要数据
   const { value } = await getData()
+
   const mapRes = value.matchInfoList
     .flatMap((i) => i.subMatchList)
     .map((i) => {
@@ -117,6 +120,7 @@ const init = async () => {
         const {
           value: { oddsHistory: detailData }
         } = await getData1(obj.matchId)
+
         ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
           const detail = detailData[key].reduce(
             (total, item) =>
@@ -153,20 +157,17 @@ const init = async () => {
 }
 init()
 
-const cons = () => {
+const print = () => {
   const column = JSON.parse(JSON.stringify(defaultColumn))
-  // matchNumStr，matchDate
   const checkData = tableData.value
     .filter((i) => Object.values(i).find((i) => i?.checked))
     .map((item) => {
       const numList = column.filter((i) => item[i.prop]?.checked).map((i) => item[i.prop].value)
-      return `${item.matchNumStr}：${numList.join('+')}`
+      // return `${item.matchNumStr}：${numList.join('+')}`
+      return `<p><font size="12">${item.matchNumStr}</font></p><p><font size="8">${numList.join('+')}</font></p>`
     })
-  checkD.value = checkData
+  checkD.value = checkData.join('')
 }
-// const print = () => {
-//   window.print()
-// }
 </script>
 
 <style lang="scss" scoped>
