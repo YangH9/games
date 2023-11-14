@@ -430,7 +430,6 @@ export default [
             path: '/joy/games/pvp/atlas',
             name: 'pvpatlas',
             meta: {
-              dev: true,
               title: '王者荣耀图鉴'
             },
             component: () => import('@/views/joy/games/pvpAtlas.vue')

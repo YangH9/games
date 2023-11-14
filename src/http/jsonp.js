@@ -1,24 +1,13 @@
-// export default (url, data) =>
-//   new Promise((resolve, reject) => {
-//     if (!url) {
-//       reject(new Error('URL'))
-//     }
-//     const script = document.createElement('script')
-//     script.async = 'async'
-//     script.src = url
-//     script.onload = (res) => {
-//       console.log(res)
-//       resolve(url)
-//     }
-//     console.log(script, data)
-//     document.head.appendChild(script)
-//     document.head.removeChild(script)
-//   })
-export default (src, func) => {
-  const script = document.createElement('script')
-  script.async = 'async'
-  script.src = src
-  script.onload = func
-  document.head.appendChild(script)
-  document.head.removeChild(script)
+export default (src, callback) => {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script')
+    script.async = 'async'
+    script.src = src
+    script.onload = () => {
+      callback && callback()
+      resolve()
+    }
+    document.head.appendChild(script)
+    document.head.removeChild(script)
+  })
 }

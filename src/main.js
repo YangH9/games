@@ -3,6 +3,7 @@ import router from '@/router'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import dayjs from 'dayjs'
+import axios from '@/http'
 import jsonp from '@/http/jsonp'
 import '@/utils'
 import directive from '@/utils/directive'
@@ -25,4 +26,5 @@ app
   .provide('GetEnv', import.meta.env)
   .provide('Dayjs', dayjs)
   .provide('Jsonp', jsonp)
+  .provide('Axios', axios)
   .mount('#app')
