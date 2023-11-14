@@ -21,7 +21,7 @@ export default ({ mode }) => {
       }),
       vueJsx(),
       createHtmlPlugin({ minify: true, inject: { data: { title: env.VITE_TITLE } } }),
-      viteCompression({ threshold: 1024 * 1024 })
+      viteCompression({ threshold: 1024 * 1024 * 10 })
     ],
     root: env.VITE_ROOT_URL,
     base: env.VITE_BASE_URL,
@@ -29,7 +29,7 @@ export default ({ mode }) => {
     resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
     server: { host: '0.0.0.0', port: 6600, strictPort: true },
     build: {
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 1024 * 1024 * 10,
       minify: 'terser',
       target: 'modules',
       outDir: env.VITE_OUTDIR_URL,
