@@ -8,6 +8,7 @@
         <div>选择的数据：</div>
         <div class="border_all">{{ checkD }}</div>
         <div class="border_all" v-html="checkD"></div>
+        <a-table :dataSource="checkDataList" :columns="checkColList" :scroll="{ x: 1500 }" />
       </div>
     </a-layout-content>
   </div>
@@ -35,6 +36,8 @@ const getData1 = () => {
   })
 }
 const checkD = ref('')
+const checkColList = ref([])
+const checkDataList = ref([])
 const columnData = ref([])
 const tableData = ref([])
 const defaultColumn = [
@@ -111,9 +114,9 @@ const init = async () => {
         }
         i.oddsList.forEach((j) => {
           if (['HAD', 'HHAD'].includes(j.poolCode)) {
-            obj[`${j.poolCode}a`] = { value: j.a, checked: false }
-            obj[`${j.poolCode}d`] = { value: j.d, checked: false }
-            obj[`${j.poolCode}h`] = { value: j.h, checked: false }
+            obj[`${j.poolCode}a`] = { value: j.a, key: `${j.poolCode}a`, checked: false }
+            obj[`${j.poolCode}d`] = { value: j.d, key: `${j.poolCode}d`, checked: false }
+            obj[`${j.poolCode}h`] = { value: j.h, key: `${j.poolCode}h`, checked: false }
           }
         })
         // 按matchId查询数据
@@ -130,7 +133,7 @@ const init = async () => {
             { updateDate: '1970', updateTime: '0:0' }
           )
           Object.keys(detail).forEach((key) => {
-            obj[key] = { value: detail[key], checked: false }
+            obj[key] = { value: detail[key], key, checked: false }
           })
         })
         resolve(obj)
@@ -159,16 +162,42 @@ init()
 
 const print = () => {
   const column = JSON.parse(JSON.stringify(defaultColumn))
-  const checkData = tableData.value
+  const data = tableData.value
     .filter((i) => Object.values(i).find((i) => i?.checked))
-    .map((item) => {
-      const numList = column.filter((i) => item[i.prop]?.checked).map((i) => item[i.prop].value)
-      // return `${item.matchNumStr}：${numList.join('+')}`
-      return `<p><font size="12">${item.matchNumStr}</font></p><p><font size="8">${numList.join('+')}</font></p>`
-    })
-  checkD.value = checkData.join('')
+    .map((item) => ({
+      matchDate: item.matchDate,
+      matchId: item.matchId,
+      matchNumStr: item.matchNumStr,
+      checkList: column.filter((i) => item[i.prop]?.checked).map((i) => item[i.prop])
+    }))
+  const test = data.map((item) => {
+    // return `${item.matchNumStr}：${numList.join('+')}`
+    return `<p><font size="5">${item.matchNumStr}</font></p><p><font size="4">${item.checkList
+      .map((i) => i.value)
+      .join('+')}</font></p>`
+  })
+  const col = defaultColumn
+    .filter((i) =>
+      data.find((a) => ['matchNumStr', 'matchDate'].includes(i.prop) || a.checkList.find((b) => b.key === i.prop))
+    )
+    .map((i) => ({
+      title: i.label,
+      key: i.prop,
+      dataIndex: i.prop,
+      fixed: i.fixed,
+      width: i.width,
+      customRender: ({ text, record, index, column }) =>
+        record[column.key] ? record[column.key] : record.checkList.find((i) => i.key === column.key)?.value
+    }))
+  checkD.value = test.join('')
+  checkDataList.value = data
+  checkColList.value = col
 }
+
+const exportPdf = (dom, pdfName = 'default.pdf') => {}
 </script>
+<!-- https://shizuka.icu/article/detail?id=42 -->
+<!-- https://juejin.cn/post/7280133121730560061 -->
 
 <style lang="scss" scoped>
 .ant-layout-content {
