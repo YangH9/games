@@ -2,13 +2,13 @@
   <div class="container">
     <Breadcrumb />
     <a-layout-content>
-      <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1500 }" />
+      <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1000 }" />
       <a-button @click="print">print</a-button>
       <div class="ant-card mt_3">
         <div>选择的数据：</div>
         <div class="border_all">{{ checkD }}</div>
         <div class="border_all" v-html="checkD"></div>
-        <a-table :dataSource="checkDataList" :columns="checkColList" :scroll="{ x: 1500 }" />
+        <a-table :dataSource="checkDataList" :columns="checkColList" :scroll="{ x: 1000 }" />
       </div>
     </a-layout-content>
   </div>
@@ -193,8 +193,6 @@ const print = () => {
   checkDataList.value = data
   checkColList.value = col
 }
-
-const exportPdf = (dom, pdfName = 'default.pdf') => {}
 </script>
 <!-- https://shizuka.icu/article/detail?id=42 -->
 <!-- https://juejin.cn/post/7280133121730560061 -->
