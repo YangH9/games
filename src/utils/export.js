@@ -61,31 +61,32 @@ export const export2Html = async (dom, htmlName = 'default.html') => {
 /* 导出为pdf */
 export const export2Pdf = async (dom, pdfName = 'default.pdf') => {
   wMap.has(dom) ? null : await init(dom)
+  // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+  const pdfWidth = 595.28
+  const pdfHeight = 841.89
   const domWidth = imgObj.width
   const domHeight = imgObj.height
   const b64Data = wMap.get(dom)
-  const pageHeight = (domWidth / 592.28) * 841.89
+  const pageHeight = (domWidth / pdfWidth) * pdfHeight
   // 未生成pdf的html页面高度
   let leftHeight = domHeight
   // 页面偏移
   let position = 0
-  // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-  const imgWidth = 595.28
-  const imgHeight = (595.28 / domWidth) * domHeight
+  const imgWidth = pdfWidth
+  const imgHeight = (pdfWidth / domWidth) * domHeight
   const pdf = new JsPdf('', 'pt', 'a4')
 
-  // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+  // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(pdfHeight)
   // 当内容未超过pdf一页显示的范围，无需分页
   if (leftHeight < pageHeight) {
     // 在pdf.addImage(pageData, 'JPEG', 左，上，宽度，高度)设置在pdf中显示；
     pdf.addImage(b64Data, 'JPEG', 0, 0, imgWidth, imgHeight)
-    // pdf.addImage(pageData, 'JPEG', 20, 40, imgWidth, imgHeight);
   } else {
     // 分页
     while (leftHeight > 0) {
       pdf.addImage(b64Data, 'JPEG', 0, position, imgWidth, imgHeight)
       leftHeight -= pageHeight
-      position -= 841.89
+      position -= pdfHeight
       // 避免添加空白页
       if (leftHeight > 0) {
         pdf.addPage()

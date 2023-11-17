@@ -470,6 +470,10 @@ p {
     text-align: center;
   }
 
+  &right {
+    text-align: right;
+  }
+
   &indent {
     text-indent: 1.5rem;
   }
@@ -542,21 +546,21 @@ p {
 .border_ {
   &all,
   &t {
-    border-top: 1px solid var(--el-border-color);
+    border-top: 1px solid var(--color-border);
   }
 
   &all,
   &r {
-    border-right: 1px solid var(--el-border-color);
+    border-right: 1px solid var(--color-border);
   }
 
   &all,
   &l {
-    border-left: 1px solid var(--el-border-color);
+    border-left: 1px solid var(--color-border);
   }
 
   &all,
   &b {
-    border-bottom: 1px solid var(--el-border-color);
+    border-bottom: 1px solid var(--color-border);
   }
 }

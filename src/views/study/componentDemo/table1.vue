@@ -2,21 +2,27 @@
   <div class="container">
     <Breadcrumb />
     <a-layout-content>
-      <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1000 }" />
-      <a-button @click="print">print</a-button>
-      <div class="ant-card mt_3">
+      <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1000 }" :pagination="false" />
+      <div class="my_3">
+        <a-button class="mx_2" @click="print">print</a-button>
+        <a-button class="mx_2" @click="tablePreview">表格预览</a-button>
+        <a-button class="mx_2" @click="printView">打印视图</a-button>
+      </div>
+      <div class="ant-card">
         <div>选择的数据：</div>
-        <div class="border_all">{{ checkD }}</div>
-        <div class="border_all" v-html="checkD"></div>
-        <a-table :dataSource="checkDataList" :columns="checkColList" :scroll="{ x: 1000 }" />
+        <div>{{ checkD }}</div>
       </div>
     </a-layout-content>
+    <contextHolder />
   </div>
 </template>
 
 <script setup lang="jsx">
 import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
+import { Modal } from 'ant-design-vue'
+import { export2Img, export2Pdf } from '@/utils/export'
+const [modal, contextHolder] = Modal.useModal()
 
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'
@@ -36,8 +42,6 @@ const getData1 = () => {
   })
 }
 const checkD = ref('')
-const checkColList = ref([])
-const checkDataList = ref([])
 const columnData = ref([])
 const tableData = ref([])
 const defaultColumn = [
@@ -159,8 +163,7 @@ const init = async () => {
   tableData.value = data
 }
 init()
-
-const print = () => {
+const getCheckData = () => {
   const column = JSON.parse(JSON.stringify(defaultColumn))
   const data = tableData.value
     .filter((i) => Object.values(i).find((i) => i?.checked))
@@ -170,15 +173,20 @@ const print = () => {
       matchNumStr: item.matchNumStr,
       checkList: column.filter((i) => item[i.prop]?.checked).map((i) => item[i.prop])
     }))
-  const test = data.map((item) => {
-    // return `${item.matchNumStr}：${numList.join('+')}`
-    return `<p><font size="5">${item.matchNumStr}</font></p><p><font size="4">${item.checkList
-      .map((i) => i.value)
-      .join('+')}</font></p>`
-  })
-  const col = defaultColumn
+  return data
+}
+
+const print = () => {
+  const data = getCheckData()
+  const test = data.map((item) => `${item.matchNumStr}：${item.checkList.map((i) => i.value).join('+')}`)
+  checkD.value = test.join('，')
+}
+
+const tablePreview = () => {
+  const checkData = getCheckData()
+  const checkCol = JSON.parse(JSON.stringify(defaultColumn))
     .filter((i) =>
-      data.find((a) => ['matchNumStr', 'matchDate'].includes(i.prop) || a.checkList.find((b) => b.key === i.prop))
+      checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.prop) || a.checkList.find((b) => b.key === i.prop))
     )
     .map((i) => ({
       title: i.label,
@@ -189,16 +197,71 @@ const print = () => {
       customRender: ({ text, record, index, column }) =>
         record[column.key] ? record[column.key] : record.checkList.find((i) => i.key === column.key)?.value
     }))
-  checkD.value = test.join('')
-  checkDataList.value = data
-  checkColList.value = col
+  modal.info({
+    width: '80%',
+    class: 'mymodal',
+    icon: () => <div></div>,
+    footer: null,
+    maskClosable: true,
+    content: () => <a-table dataSource={checkData} columns={checkCol} pagination={false} scroll={{ x: 1000 }}></a-table>
+  })
+}
+
+const printView = () => {
+  const column = JSON.parse(JSON.stringify(defaultColumn))
+  const checkData = getCheckData()
+  const test = checkData
+    .map(
+      (item) =>
+        `<p><font size="4"><strong>${item.matchNumStr}</strong></font></p><p><font size="4">${item.checkList
+          .map((i) => i.value)
+          .join('+')}</font></p>`
+    )
+    .join('')
+  modal.info({
+    class: 'mymodal',
+    icon: () => <div></div>,
+    maskClosable: true,
+    okText: '导出PDF',
+    content: () => (
+      <div class="border_all p_4">
+        <p class="text_center border_b pb_2">
+          <span style="font-size:22px;font-weight:600;">标题</span>
+        </p>
+        <div class="px_4">
+          {checkData.map((i) => (
+            <>
+              <p>
+                <span style="font-size:18px;font-weight:600;">{i.matchNumStr}</span>
+              </p>
+              <p class="pl_2">
+                <span style="font-size:18px;">{i.checkList.map((i) => i.value).join('+')}</span>
+              </p>
+            </>
+          ))}
+        </div>
+        <p class="text_right border_t">
+          <span style="font-size:18px;font-weight:600;">{new Date().toFormat('YYYY/MM/DD')}</span>
+        </p>
+      </div>
+    ),
+    onOk: () => {
+      const dom = document.querySelector('.ant-modal-confirm-content')
+      // export2Img(dom)
+      export2Pdf(dom)
+    }
+  })
 }
 </script>
 <!-- https://shizuka.icu/article/detail?id=42 -->
 <!-- https://juejin.cn/post/7280133121730560061 -->
+<!-- https://github.com/electron-vite/electron-vite-vue -->
 
 <style lang="scss" scoped>
 .ant-layout-content {
   text-align: center;
+}
+:global(.mymodal .ant-modal-confirm-content) {
+  width: 100%;
 }
 </style>
