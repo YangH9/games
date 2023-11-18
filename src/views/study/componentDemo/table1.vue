@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb />
     <a-layout-content>
-      <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1000 }" :pagination="false" />
+      <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1000 }" :pagination="false" bordered />
       <div class="my_3">
         <a-button class="mx_2" @click="print">print</a-button>
         <a-button class="mx_2" @click="tablePreview">表格预览</a-button>
@@ -21,7 +21,7 @@
 import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
-import { export2Img, export2Pdf } from '@/utils/export'
+import { export2Pdf } from '@/utils/export'
 const [modal, contextHolder] = Modal.useModal()
 
 import data1 from './data/data1.json'
@@ -151,7 +151,7 @@ const init = async () => {
     fixed: i.fixed,
     width: i.width,
     unChecked: i.unChecked,
-    customRender: ({ text, record, index, column }) =>
+    customRender: ({ record, column }) =>
       column.unChecked ? (
         record[column.key]
       ) : record[column.key] ? (
@@ -194,7 +194,7 @@ const tablePreview = () => {
       dataIndex: i.prop,
       fixed: i.fixed,
       width: i.width,
-      customRender: ({ text, record, index, column }) =>
+      customRender: ({ record, column }) =>
         record[column.key] ? record[column.key] : record.checkList.find((i) => i.key === column.key)?.value
     }))
   modal.info({
@@ -203,21 +203,14 @@ const tablePreview = () => {
     icon: () => <div></div>,
     footer: null,
     maskClosable: true,
-    content: () => <a-table dataSource={checkData} columns={checkCol} pagination={false} scroll={{ x: 1000 }}></a-table>
+    content: () => (
+      <a-table dataSource={checkData} columns={checkCol} scroll={{ x: 1000 }} pagination={false} bordered></a-table>
+    )
   })
 }
 
 const printView = () => {
-  const column = JSON.parse(JSON.stringify(defaultColumn))
   const checkData = getCheckData()
-  const test = checkData
-    .map(
-      (item) =>
-        `<p><font size="4"><strong>${item.matchNumStr}</strong></font></p><p><font size="4">${item.checkList
-          .map((i) => i.value)
-          .join('+')}</font></p>`
-    )
-    .join('')
   modal.info({
     class: 'mymodal',
     icon: () => <div></div>,

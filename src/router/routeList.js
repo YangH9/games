@@ -329,9 +329,17 @@ export default [
             path: '/study/componentDemo/table1',
             name: 'table1',
             meta: {
-              title: '表格'
+              title: '表格1'
             },
             component: () => import('@/views/study/componentDemo/table1.vue')
+          },
+          {
+            path: '/study/componentDemo/table2',
+            name: 'table2',
+            meta: {
+              title: '表格2'
+            },
+            component: () => import('@/views/study/componentDemo/table2.vue')
           }
         ]
       }

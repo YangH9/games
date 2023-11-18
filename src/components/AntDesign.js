@@ -30,7 +30,8 @@ import {
   Watermark,
   Tag,
   ConfigProvider,
-  Table
+  Table,
+  Tree
 } from 'ant-design-vue'
 
 const antList = {
@@ -64,7 +65,8 @@ const antList = {
   Watermark,
   Tag,
   ConfigProvider,
-  Table
+  Table,
+  Tree
 }
 
 // 抛出整体按需引入的组件

@@ -85,7 +85,10 @@ const studyList = [
   },
   {
     title: '组件',
-    list: [{ title: '表格1', href: '/study/componentDemo/table1' }]
+    list: [
+      { title: '表格1', href: '/study/componentDemo/table1' },
+      { title: '表格2', href: '/study/componentDemo/table2' }
+    ]
   }
 ]
 
