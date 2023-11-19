@@ -2,8 +2,8 @@
   <div class="container">
     <Breadcrumb />
     <a-layout-content>
-      <a-row :gutter="16">
-        <a-col v-bind="{ xs: 0, md: 6 }">
+      <a-row :gutter="[16, 16]">
+        <a-col v-bind="{ xs: 24, md: 6 }">
           <a-tree
             checkable
             defaultExpandAll
