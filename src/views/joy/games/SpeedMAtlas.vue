@@ -233,9 +233,9 @@ watch([typeListActive, carFactoryListActive, carGradeListActive, mapGradeListAct
   })
 })
 
-// 分装json内调用的方法并获取内容
-window.cars_data = (obj) => {
-  carsDataList.value = obj.scsy_ad.reverse().map((item) => {
+// 获取赛车数据
+Jsonp(carUrl, 'cars_data', (data) => {
+  carsDataList.value = data.scsy_ad.reverse().map((item) => {
     try {
       item.ccmz_36 = item.ccxgxx_48[0].ccmz_36
       item.cclogo_2a = item.ccxgxx_48[0].cclogo_2a
@@ -245,20 +245,15 @@ window.cars_data = (obj) => {
     }
     return item
   })
-}
-window.maps_data = (obj) => {
-  mapsDataList.value = obj.dtsy_1f.reverse()
-}
-window.pets_data = (obj) => {
-  petsDataList.value = obj.cwsy_80.reverse()
-}
-
-// 获取赛车数据
-Jsonp(carUrl)
+})
 // 获取地图数据
-Jsonp(mapUrl)
+Jsonp(mapUrl, 'maps_data', (data) => {
+  mapsDataList.value = data.dtsy_1f.reverse()
+})
 // 获取宠物数据
-Jsonp(petUrl)
+Jsonp(petUrl, 'pets_data', (data) => {
+  petsDataList.value = data.cwsy_80.reverse()
+})
 </script>
 
 <style lang="scss" scoped>

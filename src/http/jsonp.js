@@ -1,12 +1,17 @@
-export default (src, callback) => {
+export default (src, callbackKey, callback) => {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script')
     script.async = 'async'
     script.src = src
-    script.onload = () => {
-      callback && callback()
-      resolve()
-    }
+    typeof callbackKey !== 'function'
+      ? (window[callbackKey] = (data) => {
+          callback && callback(data)
+          resolve(data)
+        })
+      : (script.onload = () => {
+          callbackKey && callbackKey()
+          resolve()
+        })
     document.head.appendChild(script)
     document.head.removeChild(script)
   })

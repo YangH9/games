@@ -8,9 +8,12 @@
         <a-button class="mx_2" @click="tablePreview">表格预览</a-button>
         <a-button class="mx_2" @click="printView">打印视图</a-button>
       </div>
-      <div class="ant-card">
+      <div class="ant-card my_3">
         <div>选择的数据：</div>
         <div>{{ checkD }}</div>
+      </div>
+      <div class="ant-card">
+        <div id="report_holder"></div>
       </div>
     </a-layout-content>
     <contextHolder />
@@ -18,11 +21,45 @@
 </template>
 
 <script setup lang="jsx">
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
 import { export2Pdf } from '@/utils/export'
+import '@/utils/grhtml5-6.8-min.js'
 const [modal, contextHolder] = Modal.useModal()
+
+const reportURL = './file/table1Grf.grf'
+const dataURL = {
+  Table: [
+    {
+      CustomerID: 'HUNGC',
+      CompanyName: '五金机械',
+      ContactName: '苏先生',
+      ContactTitle: '销售代表',
+      Address: '德昌路甲 29 号',
+      City: '大连',
+      Region: '东北',
+      PostalCode: '564576',
+      Country: '中国',
+      Phone: '(053) 5556874',
+      Fax: '(053) 5552376'
+    },
+    {
+      CustomerID: 'CENTC',
+      CompanyName: '三捷实业',
+      ContactName: '王先生',
+      ContactTitle: '市场经理',
+      Address: '英雄山路 84 号',
+      City: '大连',
+      Region: '东北',
+      PostalCode: '130083',
+      Country: '中国',
+      Phone: '(061) 15553392',
+      Fax: '(061) 15557293'
+    }
+  ]
+}
+window.rubylong.grhtml5.insertReportViewer('report_holder', reportURL, dataURL).start()
 
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'

@@ -49,15 +49,15 @@
             <a-card ref="heroRef" :hoverable="true">
               <template #title> {{ item.cname }} </template>
               <img
-                v-lazy="`${baseUrl}heroimg/${item.ename}/${item.ename}.jpg`"
+                v-lazy="`${imgBaseUrl}heroimg/${item.ename}/${item.ename}.jpg`"
                 class="image"
                 src="@/assets/default.png"
                 @click="
                   previewUrl = [
-                    `${baseUrl}heroimg/${item.ename}/${item.ename}.jpg`,
+                    `${imgBaseUrl}heroimg/${item.ename}/${item.ename}.jpg`,
                     ...new Array(item.skin_name.split('|').length)
                       .fill(1)
-                      .map((a, i) => `${baseUrl}heroimg/${item.ename}/${item.ename}-bigskin-${i}.jpg`)
+                      .map((a, i) => `${imgBaseUrl}heroimg/${item.ename}/${item.ename}-bigskin-${i}.jpg`)
                   ]
                 "
               />
@@ -75,10 +75,10 @@
             <a-card ref="itemRef" :hoverable="true">
               <template #title> {{ item.item_name }} </template>
               <img
-                v-lazy="`${baseUrl}itemimg/${item.item_id}.jpg`"
+                v-lazy="`${imgBaseUrl}itemimg/${item.item_id}.jpg`"
                 class="image"
                 src="@/assets/default.png"
-                @click="previewUrl = [`${baseUrl}itemimg/${item.item_id}.jpg`]"
+                @click="previewUrl = [`${imgBaseUrl}itemimg/${item.item_id}.jpg`]"
               />
             </a-card>
           </a-col>
@@ -88,13 +88,13 @@
             <a-card ref="summonerRef" :hoverable="true">
               <template #title> {{ item.summoner_name }} </template>
               <img
-                v-lazy="`${baseUrl}summoner/${item.summoner_id}.jpg`"
+                v-lazy="`${imgBaseUrl}summoner/${item.summoner_id}.jpg`"
                 class="image"
                 src="@/assets/default.png"
                 @click="
                   previewUrl = [
-                    `${baseUrl}summoner/${item.summoner_id}.jpg`,
-                    `${baseUrl}summoner/${item.summoner_id}-big.jpg`
+                    `${imgBaseUrl}summoner/${item.summoner_id}.jpg`,
+                    `${imgBaseUrl}summoner/${item.summoner_id}-big.jpg`
                   ]
                 "
               />
@@ -106,10 +106,10 @@
             <a-card ref="mingRef" :hoverable="true">
               <template #title> {{ item.ming_name }} </template>
               <img
-                v-lazy="`${baseUrl}mingwen/${item.ming_id}.png`"
+                v-lazy="`${imgBaseUrl}mingwen/${item.ming_id}.png`"
                 class="image"
                 src="@/assets/default.png"
-                @click="previewUrl = [`${baseUrl}mingwen/${item.ming_id}.png`]"
+                @click="previewUrl = [`${imgBaseUrl}mingwen/${item.ming_id}.png`]"
               />
             </a-card>
           </a-col>
@@ -129,19 +129,37 @@
 
 <script setup>
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { computed, nextTick, ref, watch } from 'vue'
-// https://pvp.qq.com/web201605/js/herolist.json heroimg/166/166.jpg heroimg/166/166-bigskin-1.jpg heroimg/166/166-mobileskin-1.jpg
-import heroList from './data/pvpHero.json'
-// https://pvp.qq.com/web201605/js/item.json itemimg/1111.jpg
-import itemList from './data/pvpItem.json'
-// https://pvp.qq.com/zlkdatasys/data_zlk_bjtwitem.json itemimg/1111.jpg
-import bjtwItemList from './data/pvpBjtwItem.json'
-// https://pvp.qq.com/web201605/js/summoner.json summoner/80104.jpg summoner/80104-big.jpg
-import summonerList from './data/pvpSummoner.json'
-// https://pvp.qq.com/web201605/js/ming.json mingwen/1510.png
-import mingList from './data/pvpMing.json'
+import { computed, nextTick, ref, watch, inject } from 'vue'
+const Jsonp = inject('Jsonp')
 
-const baseUrl = '//game.gtimg.cn/images/yxzj/img201606/'
+// https://pvp.qq.com/web201605/js/herolist.json heroimg/166/166.jpg heroimg/166/166-bigskin-1.jpg heroimg/166/166-mobileskin-1.jpg
+const heroList = ref([])
+// https://pvp.qq.com/web201605/js/item.json itemimg/1111.jpg
+const itemList = ref([])
+// https://pvp.qq.com/zlkdatasys/data_zlk_bjtwitem.json itemimg/1111.jpg
+// const bjtwItemList = ref([])
+// https://pvp.qq.com/web201605/js/summoner.json summoner/80104.jpg summoner/80104-big.jpg
+const summonerList = ref([])
+// https://pvp.qq.com/web201605/js/ming.json mingwen/1510.png
+const mingList = ref([])
+
+const birdUrl = (url, back) => `https://bird.ioliu.cn/v2?url=${url}&callback=${back}`
+const baseUrl = 'https://pvp.qq.com/web201605/js/'
+const imgBaseUrl = '//game.gtimg.cn/images/yxzj/img201606/'
+
+Jsonp(birdUrl(`${baseUrl}herolist.json`, 'pvp_hero'), 'pvp_hero', (data) => (heroList.value = JSON.parse(data)))
+Jsonp(birdUrl(`${baseUrl}item.json`, 'pvp_item'), 'pvp_item', (data) => (itemList.value = JSON.parse(data)))
+// Jsonp(
+//   birdUrl(`https://pvp.qq.com/zlkdatasys/data_zlk_bjtwitem.json`, 'pvp_bjtwitem'),
+//   'pvp_bjtwitem',
+//   (data) => (bjtwItemList.value = JSON.parse(data))
+// )
+Jsonp(
+  birdUrl(`${baseUrl}summoner.json`, 'pvp_summoner'),
+  'pvp_summoner',
+  (data) => (summonerList.value = JSON.parse(data))
+)
+Jsonp(birdUrl(`${baseUrl}ming.json`, 'pvp_ming'), 'pvp_ming', (data) => (mingList.value = JSON.parse(data)))
 
 const colSpan = { xs: 8, sm: 6, md: 3 }
 
@@ -196,11 +214,11 @@ const itemTypeListActive = ref(0)
 const bjtwItemTypeListActive = ref(0)
 
 const typeList = computed(() => [
-  { title: '英雄', key: 'hero', num: heroList.length },
-  { title: '局内道具', key: 'item', num: itemList.length },
-  // { title: '局内道具\n（边境突围模式）', key: 'bjtwitem', num: bjtwItemList.length },
-  { title: '召唤师技能', key: 'summoner', num: summonerList.length },
-  { title: '铭文', key: 'ming', num: mingList.length }
+  { title: '英雄', key: 'hero', num: heroList.value.length },
+  { title: '局内道具', key: 'item', num: itemList.value.length },
+  // { title: '局内道具\n（边境突围模式）', key: 'bjtwitem', num: bjtwItemList.value.length },
+  { title: '召唤师技能', key: 'summoner', num: summonerList.value.length },
+  { title: '铭文', key: 'ming', num: mingList.value.length }
 ])
 const heroTypeList = [
   { key: 0, title: '全部' },

@@ -2,6 +2,8 @@ import axios from 'axios'
 
 axios.defaults.baseURL = '' // 设置axios默认地址
 
+axios.defaults.withCredentials = true
+
 // 请求拦截器
 axios.interceptors.request.use(
   (config) => {

@@ -80,7 +80,7 @@ const baseUrl = `https://apps.game.qq.com/cgi-bin/ams/module/ishow/V1.0/query/wo
 
 const dataList = ref([])
 
-window[dataKey] = (res) => {
+Jsonp(baseUrl, dataKey, (res) => {
   dataList.value = res.List.map((item) => {
     item.dtInputDT = decodeURIComponent(item.dtInputDT)
     item.sThumbURL = decodeURIComponent(item.sThumbURL)
@@ -90,9 +90,7 @@ window[dataKey] = (res) => {
     item.sProdImgNo_4 = decodeURIComponent(item.sProdImgNo_4).replace('thumb_', '')
     return item
   })
-}
-
-Jsonp(baseUrl)
+})
 </script>
 
 <style lang="scss" scoped>

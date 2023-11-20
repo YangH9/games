@@ -78,29 +78,23 @@ const tableCol = ref([
   { title: '费用', key: 'column6', dataIndex: 'column6' }
 ])
 const defaultDataObj = {
-  column1: 'column1',
-  column2: 'column2',
-  column3: 'column3',
-  column4: 'column4',
-  column5: 'column5',
-  column6: 'column6'
+  column1: '列1',
+  column2: '列2',
+  column3: '列3',
+  column4: '列4',
+  column5: '列5',
+  column6: '列6'
 }
 
 const checkTree = (keys) => {
   const tree = treeData
   console.log(keys)
-  const obj = {}
   const data = []
-  keys.forEach((item) => {
-    tree.forEach((i) =>
-      i.children.forEach((j) => {
-        if (item === j.key) {
-          obj[item] = j
-          data.push({ ...defaultDataObj, column1: i.title, column2: j.title })
-        }
-      })
+  tree.forEach((i) =>
+    i.children.forEach((j) =>
+      keys.forEach((item) => item === j.key && data.push({ ...defaultDataObj, column1: i.title, column2: j.title }))
     )
-  })
+  )
   tableData.value = data
 }
 </script>
