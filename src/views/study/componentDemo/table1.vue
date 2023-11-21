@@ -12,54 +12,17 @@
         <div>选择的数据：</div>
         <div>{{ checkD }}</div>
       </div>
-      <div class="ant-card">
-        <div id="report_holder"></div>
-      </div>
     </a-layout-content>
     <contextHolder />
   </div>
 </template>
 
 <script setup lang="jsx">
-import { ref, inject } from 'vue'
+import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
-import { export2Pdf } from '@/utils/export'
 import '@/utils/grhtml5-6.8-min.js'
 const [modal, contextHolder] = Modal.useModal()
-
-const reportURL = './file/table1Grf.grf'
-const dataURL = {
-  Table: [
-    {
-      CustomerID: 'HUNGC',
-      CompanyName: '五金机械',
-      ContactName: '苏先生',
-      ContactTitle: '销售代表',
-      Address: '德昌路甲 29 号',
-      City: '大连',
-      Region: '东北',
-      PostalCode: '564576',
-      Country: '中国',
-      Phone: '(053) 5556874',
-      Fax: '(053) 5552376'
-    },
-    {
-      CustomerID: 'CENTC',
-      CompanyName: '三捷实业',
-      ContactName: '王先生',
-      ContactTitle: '市场经理',
-      Address: '英雄山路 84 号',
-      City: '大连',
-      Region: '东北',
-      PostalCode: '130083',
-      Country: '中国',
-      Phone: '(061) 15553392',
-      Fax: '(061) 15557293'
-    }
-  ]
-}
-window.rubylong.grhtml5.insertReportViewer('report_holder', reportURL, dataURL).start()
 
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'
@@ -200,6 +163,7 @@ const init = async () => {
   tableData.value = data
 }
 init()
+
 const getCheckData = () => {
   const column = JSON.parse(JSON.stringify(defaultColumn))
   const data = tableData.value
@@ -248,39 +212,45 @@ const tablePreview = () => {
 
 const printView = () => {
   const checkData = getCheckData()
+  const reportURL = './file/table1Grf.grf'
+  const data = {
+    Table: [
+      {
+        MemoBox3: checkData
+          .map(
+            (i) =>
+              `<p><font size=3>${i.matchNumStr}</font></p><p><font size=2>${i.checkList
+                .map((i) => i.value)
+                .join('+')}</font></p>`
+          )
+          .join(''),
+        MemoBox6: '标题内容',
+        MemoBox11: new Date().toFormat('YYYY/MM/DD')
+      }
+    ]
+  }
   modal.info({
     class: 'mymodal',
     icon: () => <div></div>,
     maskClosable: true,
     okText: '导出PDF',
-    content: () => (
-      <div class="border_all p_4">
-        <p class="text_center border_b pb_2">
-          <span style="font-size:22px;font-weight:600;">标题</span>
-        </p>
-        <div class="px_4">
-          {checkData.map((i) => (
-            <>
-              <p>
-                <span style="font-size:18px;font-weight:600;">{i.matchNumStr}</span>
-              </p>
-              <p class="pl_2">
-                <span style="font-size:18px;">{i.checkList.map((i) => i.value).join('+')}</span>
-              </p>
-            </>
-          ))}
-        </div>
-        <p class="text_right border_t">
-          <span style="font-size:18px;font-weight:600;">{new Date().toFormat('YYYY/MM/DD')}</span>
-        </p>
-      </div>
-    ),
+    content: () => <div id="report_holder" class="inline-block border_all"></div>,
     onOk: () => {
-      const dom = document.querySelector('.ant-modal-confirm-content')
-      // export2Img(dom)
-      export2Pdf(dom)
+      const dom = document.querySelector('#report_holder')
+      const css = document.querySelectorAll('[id^="_gridcss"]')
+      const printContentHtml = dom.outerHTML
+      const iframe = document.createElement('iframe')
+      document.body.appendChild(iframe)
+      iframe.contentDocument.write([...css].map((i) => i.outerHTML).join(''))
+      iframe.contentDocument.write(printContentHtml)
+      iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;')
+      iframe.contentDocument.body.setAttribute('style', 'margin:0px')
+      iframe.contentDocument.close()
+      iframe.contentWindow.print()
+      document.body.removeChild(iframe)
     }
   })
+  window.rubylong.grhtml5.insertReportViewer('report_holder', reportURL, data).start()
 }
 </script>
 <!-- https://shizuka.icu/article/detail?id=42 -->
@@ -293,5 +263,6 @@ const printView = () => {
 }
 :global(.mymodal .ant-modal-confirm-content) {
   width: 100%;
+  text-align: center;
 }
 </style>
