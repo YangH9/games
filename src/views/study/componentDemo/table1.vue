@@ -6,23 +6,259 @@
       <div class="my_3">
         <a-button class="mx_2" @click="print">print</a-button>
         <a-button class="mx_2" @click="tablePreview">表格预览</a-button>
-        <a-button class="mx_2" @click="printView">打印视图</a-button>
+        <a-button class="mx_2" @click="printView">导出预览</a-button>
       </div>
       <div class="ant-card my_3">
         <div>选择的数据：</div>
         <div>{{ checkD }}</div>
       </div>
+      <!-- <div class="ant-card my_3">
+        <div id="report_holder1" class="inline-block border_all"></div>
+      </div> -->
     </a-layout-content>
     <contextHolder />
   </div>
 </template>
 
 <script setup lang="jsx">
-import { nextTick, ref } from 'vue'
+import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
 import '@/utils/grhtml5-6.8-min.js'
 const [modal, contextHolder] = Modal.useModal()
+
+// const reportURL = './file/table1Grf.grf'
+// const checkData = [
+//   {
+//     matchDate: '2023-11-06',
+//     matchId: 1021643,
+//     matchNumStr: '周一001',
+//     checkList: [
+//       {
+//         value: '5.55',
+//         key: 'HADh',
+//         checked: true
+//       },
+//       {
+//         value: '4.10',
+//         key: 'HADd',
+//         checked: true
+//       },
+//       {
+//         value: '1.40',
+//         key: 'HADa',
+//         checked: true
+//       }
+//     ]
+//   },
+//   {
+//     matchDate: '2023-11-06',
+//     matchId: 1021644,
+//     matchNumStr: '周一002',
+//     checkList: [
+//       {
+//         value: '2.11',
+//         key: 'HHADh',
+//         checked: true
+//       },
+//       {
+//         value: '4.55',
+//         key: 'HHADd',
+//         checked: true
+//       },
+//       {
+//         value: '18.00',
+//         key: 's02s02',
+//         checked: true
+//       },
+//       {
+//         value: '31.00',
+//         key: 's02s03',
+//         checked: true
+//       },
+//       {
+//         value: '50.00',
+//         key: 's02s04',
+//         checked: true
+//       }
+//     ]
+//   },
+//   {
+//     matchDate: '2023-11-07',
+//     matchId: 1021647,
+//     matchNumStr: '周一005',
+//     checkList: [
+//       {
+//         value: '1.69',
+//         key: 'HADh',
+//         checked: true
+//       },
+//       {
+//         value: '3.00',
+//         key: 'HADd',
+//         checked: true
+//       },
+//       {
+//         value: '4.66',
+//         key: 'HADa',
+//         checked: true
+//       },
+//       {
+//         value: '3.62',
+//         key: 'HHADh',
+//         checked: true
+//       },
+//       {
+//         value: '3.10',
+//         key: 'HHADd',
+//         checked: true
+//       },
+//       {
+//         value: '1.85',
+//         key: 'HHADa',
+//         checked: true
+//       },
+//       {
+//         value: '13.00',
+//         key: 's00s00',
+//         checked: true
+//       },
+//       {
+//         value: '6.50',
+//         key: 's00s01',
+//         checked: true
+//       },
+//       {
+//         value: '6.75',
+//         key: 's00s02',
+//         checked: true
+//       },
+//       {
+//         value: '9.25',
+//         key: 's00s03',
+//         checked: true
+//       },
+//       {
+//         value: '31.00',
+//         key: 's02s03',
+//         checked: true
+//       },
+//       {
+//         value: '50.00',
+//         key: 's02s04',
+//         checked: true
+//       },
+//       {
+//         value: '100.0',
+//         key: 's02s05',
+//         checked: true
+//       },
+//       {
+//         value: '100.0',
+//         key: 's03s00',
+//         checked: true
+//       },
+//       {
+//         value: '50.00',
+//         key: 's03s01',
+//         checked: true
+//       },
+//       {
+//         value: '50.00',
+//         key: 's03s02',
+//         checked: true
+//       },
+//       {
+//         value: '80.00',
+//         key: 's03s03',
+//         checked: true
+//       }
+//     ]
+//   },
+//   {
+//     matchDate: '2023-11-08',
+//     matchId: 1021684,
+//     matchNumStr: '周二002',
+//     checkList: [
+//       {
+//         value: '3.35',
+//         key: 'HADd',
+//         checked: true
+//       },
+//       {
+//         value: '2.38',
+//         key: 'HADa',
+//         checked: true
+//       },
+//       {
+//         value: '5.00',
+//         key: 'HHADh',
+//         checked: true
+//       },
+//       {
+//         value: '4.25',
+//         key: 'HHADd',
+//         checked: true
+//       },
+//       {
+//         value: '1.42',
+//         key: 'HHADa',
+//         checked: true
+//       },
+//       {
+//         value: '6.50',
+//         key: 's00s01',
+//         checked: true
+//       },
+//       {
+//         value: '6.75',
+//         key: 's00s02',
+//         checked: true
+//       }
+//     ]
+//   },
+//   {
+//     matchDate: '2023-11-08',
+//     matchId: 1021687,
+//     matchNumStr: '周二005',
+//     checkList: [
+//       {
+//         value: '1.85',
+//         key: 'HHADa',
+//         checked: true
+//       },
+//       {
+//         value: '13.00',
+//         key: 's00s00',
+//         checked: true
+//       },
+//       {
+//         value: '6.75',
+//         key: 's00s02',
+//         checked: true
+//       }
+//     ]
+//   }
+// ]
+// const data = {
+//   Table: [
+//     {
+//       MemoBox3: checkData
+//         .map(
+//           (i) =>
+//             `<p><font size=3>${
+//               i.matchNumStr
+//             }</font></p><p style="width:302.36px;"><font size=2 style="text-wrap:wrap;white-space: wrap;">${i.checkList
+//               .map((i) => i.value)
+//               .join('+')}</font></p>`
+//         )
+//         .join(''),
+//       MemoBox6: '标题内容',
+//       MemoBox11: new Date().toFormat('YYYY/MM/DD')
+//     }
+//   ]
+// }
+// window.rubylong.grhtml5.insertReportViewer('report_holder1', reportURL, data).start()
 
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'

@@ -15,6 +15,55 @@
 		"RightMargin":0,
 		"BottomMargin":0
 	},
+	"Parameter":[
+		{
+			"Name":"leixing",
+			"Value":"混合过关"
+		},
+		{
+			"Name":"guoguan",
+			"Value":"单场"
+		},
+		{
+			"Name":"suiji",
+			"Value":"000000-000000-000000-00 0A0000AA 00000000"
+		},
+		{
+			"Name":"neirong",
+			"Value":"qwedfjglksdj\r\nasdfasdf\r\nasdfasdfasdfasdf\r\nasdfasdfasd\r\nsafdsdgghjksadf"
+		},
+		{
+			"Name":"beishu",
+			"Value":"1"
+		},
+		{
+			"Name":"jine",
+			"Value":"0"
+		},
+		{
+			"Name":"time"
+		},
+		{
+			"Name":"zhanhao",
+			"Value":"110561501"
+		},
+		{
+			"Name":"dizhi",
+			"Value":"南海区里水河村西紫市场鸿泰广场斜对面"
+		},
+		{
+			"Name":"guanggao",
+			"Value":"广告广告广告广告广告\r\n广告广告广告广告广告"
+		},
+		{
+			"Name":"duijiang",
+			"Value":"145元54分"
+		},
+		{
+			"Name":"status",
+			"Value":"已兑奖"
+		}
+	],
 	"ReportHeader":[
 		{
 			"Name":"ReportHeader1",
@@ -41,7 +90,7 @@
 				{
 					"Type":"MemoBox",
 					"Name":"MemoBox6",
-					"Left":2.59292,
+					"Left":0.714375,
 					"Top":1.00542,
 					"Width":6.40292,
 					"Height":0.396875,
@@ -52,7 +101,7 @@
 						"Charset":134
 					},
 					"WordWrap":true,
-					"TextAlign":"TopLeft",
+					"TextAlign":"MiddleCenter",
 					"CharSpacing":1,
 					"FontWidthRatio":0,
 					"Text":"[#{biaoti}#]"
@@ -109,6 +158,52 @@
 					"Text":"-------------------------------------"
 				}
 			]
+		}
+	],
+	"Control":[
+		{
+			"Type":"MemoBox",
+			"Name":"duijiangkuang",
+			"Left":2.65,
+			"Top":2.19604,
+			"Width":2.40771,
+			"Height":2.19604,
+			"Border":{
+				"Pen":{
+					"Width":2
+				}
+			},
+			"Font":{
+				"Name":"FZL元分0555",
+				"Size":202500,
+				"Weight":400
+			},
+			"TextAlign":"TopCenter",
+			"FontWidthRatio":0.6,
+			"Text":"[#{duijiang}#]"
+		},
+		{
+			"Type":"MemoBox",
+			"Name":"kuang",
+			"Left":2.80458,
+			"Top":1.29646,
+			"Width":2.1,
+			"Height":2.03729,
+			"Border":{
+				"Styles":"[DrawLeft|DrawTop|DrawRight|DrawBottom]",
+				"Pen":{
+					"Width":2
+				}
+			},
+			"Font":{
+				"Name":"1黑体粗",
+				"Size":240000,
+				"Weight":400,
+				"Charset":134
+			},
+			"TextAlign":"TopCenter",
+			"FontWidthRatio":0.5,
+			"Text":"[#{status}#]"
 		}
 	]
 }

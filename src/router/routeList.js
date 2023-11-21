@@ -326,6 +326,15 @@ export default [
         redirect: '/study',
         children: [
           {
+            path: '/study/componentDemo/search',
+            name: 'search',
+            meta: {
+              dev: true,
+              title: '搜索'
+            },
+            component: () => import('@/views/study/componentDemo/search.vue')
+          },
+          {
             path: '/study/componentDemo/table1',
             name: 'table1',
             meta: {
@@ -340,6 +349,15 @@ export default [
               title: '表格2'
             },
             component: () => import('@/views/study/componentDemo/table2.vue')
+          },
+          {
+            path: '/study/componentDemo/form1',
+            name: 'form1',
+            meta: {
+              dev: true,
+              title: '表单1'
+            },
+            component: () => import('@/views/study/componentDemo/form1.vue')
           }
         ]
       }

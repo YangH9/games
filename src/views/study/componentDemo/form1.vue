@@ -1,13 +1,12 @@
 <template>
   <div class="container">
-    <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="二维码生成器" :hoverable="true">
-      二维码生成器
-    </a-card>
+    <Breadcrumb />
+    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="表单" :hoverable="true">表单</a-card>
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
+import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
