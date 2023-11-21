@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="jsx">
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
 import '@/utils/grhtml5-6.8-min.js'
@@ -233,7 +233,7 @@ const printView = () => {
     class: 'mymodal',
     icon: () => <div></div>,
     maskClosable: true,
-    okText: '导出PDF',
+    okText: '打印',
     content: () => <div id="report_holder" class="inline-block border_all"></div>,
     onOk: () => {
       const dom = document.querySelector('#report_holder')
@@ -247,7 +247,9 @@ const printView = () => {
       iframe.contentDocument.body.setAttribute('style', 'margin:0px')
       iframe.contentDocument.close()
       iframe.contentWindow.print()
-      document.body.removeChild(iframe)
+      setTimeout(() => {
+        document.body.removeChild(iframe)
+      }, 1000)
     }
   })
   window.rubylong.grhtml5.insertReportViewer('report_holder', reportURL, data).start()
