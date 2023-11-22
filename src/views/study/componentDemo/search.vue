@@ -1,13 +1,41 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="搜索" :hoverable="true">搜索</a-card>
+    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="搜索" :hoverable="true">
+      <div class="flex">
+        <a-select
+          v-model:value="selectOption1.value"
+          :options="selectOption1.options"
+          :field-names="selectOption1.fieldNames"
+          allowClear
+          mode="multiple"
+          class="grow"
+        ></a-select>
+      </div>
+      <div>options数据：{{ selectOption1.options.map((i) => i.label).join('，') }}</div>
+    </a-card>
   </div>
 </template>
 
 <script setup lang="jsx">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
+
+// 随机一个大小写字母
+// String.fromCharCode((Math.random() >= 0.5 ? 65 : 97) + ~~(Math.random() * 25))
+// (~~(Math.random() * 25) + 10).toString(36)[Math.random() >= 0.5 ? 'toLowerCase' : 'toUpperCase']()
+
+const selectOption1 = reactive({
+  fieldNames: { label: 'label', value: 'value', options: 'children' },
+  options: new Array(20).fill(1).map((_, i) => ({
+    label: new Array(8)
+      .fill(1)
+      .map((_) => String.fromCharCode((Math.random() >= 0.5 ? 65 : 97) + ~~(Math.random() * 25)))
+      .join(''),
+    value: `value${i}`
+  })),
+  value: []
+})
 </script>
 
 <style lang="scss" scoped>

@@ -267,6 +267,7 @@ const printView = () => {
             const iframe = document.createElement('iframe')
             document.body.appendChild(iframe)
             iframe.contentDocument.write([...css].map((i) => i.outerHTML).join(''))
+            iframe.contentDocument.write('<style media="print">@page{size:auto;margin:0;}</style>')
             iframe.contentDocument.write(printContentHtml)
             iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;')
             iframe.contentDocument.body.setAttribute('style', 'margin:0px')

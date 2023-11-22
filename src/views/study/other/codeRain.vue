@@ -38,7 +38,7 @@ const init = () => {
       const colx = ~~(Math.random() * canvasConfig.width)
       return Array(~~(canvasConfig.height / canvasConfig.step) / 2)
         .fill(1)
-        .map((a, i) => ({
+        .map((_, i) => ({
           x: colx,
           y: -(canvasConfig.step * i) - basePos,
           speed,

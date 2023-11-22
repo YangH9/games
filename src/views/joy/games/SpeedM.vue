@@ -86,7 +86,7 @@ const sortByListActive = ref('sIdxTime')
 const pagesList = computed(() =>
   Array(Math.ceil(total.value / limit.value))
     .fill(1)
-    .map((item, i) => ({ title: i + 1, key: i + 1 }))
+    .map((_, i) => ({ title: i + 1, key: i + 1 }))
 )
 const directionList = [
   { title: '横版', key: '122216' },
