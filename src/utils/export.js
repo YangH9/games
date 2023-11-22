@@ -33,6 +33,7 @@ export const export2Img = async (dom, picName = 'default.jpg') => {
   image.src = b64Data
   document.body.appendChild(image)
   click2Download(b64Data, picName)
+  document.body.removeChild(image)
 }
 
 /* 导出为html */

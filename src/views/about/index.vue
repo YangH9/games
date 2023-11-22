@@ -28,14 +28,14 @@
         <a-card title="站点信息" class="mb_2" :hoverable="true">
           <a-descriptions :column="2">
             <a-descriptions-item label="网站运行时间" span="2">
-              {{ new Date(nowTime - startTime).toFormat('Y年M月D日h时m分s秒') }}
+              {{ new Date(nowTime - startTime).toFormat('Y年MM月DD日hh时mm分ss秒') }}
             </a-descriptions-item>
-            <a-descriptions-item label="建站时间">{{
-              new Date(startTime).toFormat('YYYY年MM月DD日')
-            }}</a-descriptions-item>
-            <a-descriptions-item label="二次重构时间">{{
-              new Date(1666137600000).toFormat('YYYY年MM月DD日')
-            }}</a-descriptions-item>
+            <a-descriptions-item label="建站时间">
+              {{ new Date(startTime).toFormat('YYYY年MM月DD日') }}
+            </a-descriptions-item>
+            <a-descriptions-item label="二次重构时间">
+              {{ new Date(1666137600000).toFormat('YYYY年MM月DD日') }}
+            </a-descriptions-item>
           </a-descriptions>
         </a-card>
       </div>

@@ -12,13 +12,26 @@
             class="card_button_list"
             :hoverable="true"
           >
-            <a-button v-for="(item, index1) in main.list" :key="index1" size="large" :title="item.title">
-              <RouterLink :to="item.href">{{ item.title }}</RouterLink>
+            <a-button
+              v-for="(item, index1) in main.list"
+              :key="index1"
+              :href="`${$router.options.history.base}${item.href}`"
+              :title="item.title"
+              size="large"
+            >
+              {{ item.title }}
             </a-button>
           </a-card>
           <a-card title="我的世界" class="card_button_list" :hoverable="true">
             <template #extra>
-              <RouterLink to="/links/MinecraftBookmark">查看更多</RouterLink>
+              <a-button
+                :href="`${$router.options.history.base}/links/MinecraftBookmark`"
+                title="查看更多"
+                type="link"
+                size="small"
+              >
+                查看更多
+              </a-button>
             </template>
             <a-button
               v-for="(item, index) in mcList"

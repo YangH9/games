@@ -12,8 +12,14 @@
             class="card_button_list"
             :hoverable="true"
           >
-            <a-button v-for="(item, index1) in main.list" :key="index1" :title="item.title" size="large">
-              <RouterLink :to="item.href">{{ item.title }}</RouterLink>
+            <a-button
+              v-for="(item, index1) in main.list"
+              :key="index1"
+              :href="`${$router.options.history.base}${item.href}`"
+              :title="item.title"
+              size="large"
+            >
+              {{ item.title }}
             </a-button>
           </a-card>
           <a-card title="QQ群" class="card_button_list" :hoverable="true">
@@ -89,7 +95,7 @@ const studyList = [
       { title: '搜索', href: '/study/componentDemo/search' },
       { title: '表格1', href: '/study/componentDemo/table1' },
       { title: '表格2', href: '/study/componentDemo/table2' },
-      { title: '表单1', href: '/study/componentDemo/form1' },
+      { title: '表单1', href: '/study/componentDemo/form1' }
     ]
   }
 ]

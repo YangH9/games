@@ -1,7 +1,13 @@
 <template>
   <div class="container">
     <Breadcrumb />
-    <a-card v-for="(main, index) in dataList" :key="index" :title="main.title" class="mb_2" :hoverable="true">
+    <a-card
+      v-for="(main, index) in dataList"
+      :key="index"
+      :title="main.title"
+      class="card_button_list"
+      :hoverable="true"
+    >
       <a-button
         v-for="(item, index1) in main.list"
         :key="index1"

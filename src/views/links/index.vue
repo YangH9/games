@@ -13,7 +13,14 @@
             :hoverable="true"
           >
             <template v-if="main.extra" #extra>
-              <RouterLink :to="main.extra">查看更多</RouterLink>
+              <a-button
+                :href="`${$router.options.history.base}${main.extra}`"
+                title="查看更多"
+                type="link"
+                size="small"
+              >
+                查看更多
+              </a-button>
             </template>
             <a-button
               v-for="(item, index1) in main.list"
