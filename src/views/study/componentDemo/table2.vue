@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-layout-content>
       <a-row :gutter="[16, 16]">
         <a-col v-bind="{ xs: 24, md: 6 }">
@@ -25,36 +25,29 @@
 <script setup lang="jsx">
 import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
+import { CloneDeep } from '@/utils/lodash'
 
-const treeData = [
-  {
-    title: 'title1',
-    key: 'key1',
-    children: [
-      { title: 'title2', key: 'key2' },
-      { title: 'title3', key: 'key3' }
-    ]
-  },
-  {
-    title: 'title4',
-    key: 'key4',
-    children: [
-      { title: 'title5', key: 'key5' },
-      { title: 'title6', key: 'key6' },
-      { title: 'title7', key: 'key7' }
-    ]
-  },
-  {
-    title: 'title8',
-    key: 'key8',
-    children: [
-      { title: 'title9', key: 'key9' },
-      { title: 'title10', key: 'key10' },
-      { title: 'title11', key: 'key11' },
-      { title: 'title12', key: 'key12' }
-    ]
+const ramdomStr = () =>
+  new Array(8)
+    .fill(1)
+    .map((_) => String.fromCharCode(~~(Math.random() * 25) + 97))
+    .join('')
+
+const treeData = new Array(~~(Math.random() * 4) + 1).fill(1).map((_) => {
+  const str = ramdomStr()
+  return {
+    title: str,
+    key: str,
+    children: new Array(~~(Math.random() * 6) + 1).fill(1).map((_) => {
+      const str = ramdomStr()
+      return {
+        title: str,
+        key: str
+      }
+    })
   }
-]
+})
+
 const tableData = ref([])
 const tableCol = ref([
   {
@@ -77,22 +70,33 @@ const tableCol = ref([
   { title: '测试', key: 'column5', dataIndex: 'column5' },
   { title: '费用', key: 'column6', dataIndex: 'column6' }
 ])
-const defaultDataObj = {
-  column1: '列1',
-  column2: '列2',
-  column3: '列3',
-  column4: '列4',
-  column5: '列5',
-  column6: '列6'
-}
+
+const defaultDataObj = () => ({
+  column1: ramdomStr(),
+  column2: ramdomStr(),
+  column3: ramdomStr(),
+  column4: ramdomStr(),
+  column5: ramdomStr(),
+  column6: ramdomStr()
+})
 
 const checkTree = (keys) => {
+  const oldData = CloneDeep(tableData.value)
   const tree = treeData
-  console.log(keys)
   const data = []
   tree.forEach((i) =>
     i.children.forEach((j) =>
-      keys.forEach((item) => item === j.key && data.push({ ...defaultDataObj, column1: i.title, column2: j.title }))
+      keys.forEach(
+        (item) =>
+          item === j.key &&
+          data.push(
+            oldData.find((a) => a.column1 === i.title && a.column2 === j.title) ?? {
+              ...defaultDataObj(),
+              column1: i.title,
+              column2: j.title
+            }
+          )
+      )
     )
   )
   tableData.value = data

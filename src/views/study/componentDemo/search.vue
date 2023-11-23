@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="搜索" :hoverable="true">
       <div class="flex">
         <a-select

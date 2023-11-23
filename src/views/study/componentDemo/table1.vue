@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb />
+    <Breadcrumb overlayShow />
     <a-layout-content>
       <a-table
         :dataSource="tableData"
