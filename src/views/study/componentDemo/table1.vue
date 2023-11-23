@@ -2,9 +2,16 @@
   <div class="container">
     <Breadcrumb />
     <a-layout-content>
-      <a-table :dataSource="tableData" :columns="columnData" :scroll="{ x: 1000 }" :pagination="false" bordered />
+      <a-table
+        :dataSource="tableData"
+        :columns="columnData.filter((i) => i.active)"
+        :scroll="{ x: 900 }"
+        :pagination="false"
+        bordered
+      />
       <div class="my_3">
-        <a-button class="mx_2" @click="print">print</a-button>
+        <a-button class="mx_2" @click="setColumn">修改显示列</a-button>
+        <a-button class="mx_2" @click="printData">输出数据</a-button>
         <a-button class="mx_2" @click="tablePreview">表格预览</a-button>
         <a-button class="mx_2" @click="printView">导出预览</a-button>
       </div>
@@ -18,15 +25,17 @@
 </template>
 
 <script setup lang="jsx">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
+import { export2Img, export2Pdf } from '@/utils/export'
 import '@/utils/grhtml5-6.8-min.js'
+
 const [modal, contextHolder] = Modal.useModal()
 
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'
-import { export2Img, export2Pdf } from '@/utils/export'
+import { CloneDeep } from '@/utils/lodash'
 
 const getData = () => {
   return new Promise((resolve, reject) => {
@@ -46,8 +55,8 @@ const checkD = ref('')
 const columnData = ref([])
 const tableData = ref([])
 const defaultColumn = [
-  { prop: 'matchNumStr', label: '编号', width: 100, unChecked: true, fixed: 'left' },
-  { prop: 'matchDate', label: '时间', width: 120, align: 'center', unChecked: true },
+  { prop: 'matchNumStr', label: '编号', width: 100, unChecked: true, disabled: true, fixed: 'left' },
+  { prop: 'matchDate', label: '时间', width: 120, unChecked: true, disabled: true },
   { prop: 'HADh', label: '列表1', width: 85 },
   { prop: 'HADd', label: '列表2', width: 85 },
   { prop: 'HADa', label: '列表3', width: 85 },
@@ -149,9 +158,11 @@ const init = async () => {
     title: i.label,
     key: i.prop,
     dataIndex: i.prop,
-    fixed: i.fixed,
+    fixed: i.fixed ?? null,
     width: i.width,
-    unChecked: i.unChecked,
+    unChecked: i.unChecked ?? false,
+    active: i.active ?? i.disabled ?? true,
+    disabled: i.disabled ?? false,
     customRender: ({ record, column }) =>
       column.unChecked ? (
         record[column.key]
@@ -165,20 +176,62 @@ const init = async () => {
 }
 init()
 
+const setColumn = () => {
+  const column = ref(
+    columnData.value.map((i) => ({ label: i.title, value: i.key, active: i.active, disabled: i.disabled }))
+  )
+  console.log(columnData.value, column.value)
+  const defaultActiveList = column.value.filter((i) => i.disabled).map((i) => i.value)
+  const activeList = ref(column.value.filter((i) => i.active).map((i) => i.value))
+  const checkAll = computed(() => activeList.value.length === column.value.length)
+  const indeterminate = computed(() => activeList.value.length > 0 && activeList.value.length < column.value.length)
+  modal.info({
+    width: '80%',
+    icon: () => <div></div>,
+    maskClosable: true,
+    content: () => (
+      <div>
+        <div>
+          <a-checkbox
+            v-model:checked={checkAll.value}
+            indeterminate={indeterminate.value}
+            onChange={() =>
+              checkAll.value
+                ? (activeList.value = CloneDeep(defaultActiveList))
+                : (activeList.value = column.value.filter((i) => i.active).map((i) => i.value))
+            }
+          >
+            全选
+          </a-checkbox>
+        </div>
+        <a-divider class="my_2" />
+        <a-checkbox-group v-model:value={activeList.value} options={column.value} />
+      </div>
+    ),
+    okText: '确认',
+    onOk: () => {
+      const list = activeList.value
+      columnData.value.forEach((i) => {
+        i.active = list.includes(i.key)
+      })
+    }
+  })
+}
+
 const getCheckData = () => {
-  const column = JSON.parse(JSON.stringify(defaultColumn))
+  const column = CloneDeep(columnData.value)
   const data = tableData.value
-    .filter((i) => Object.values(i).find((i) => i?.checked))
+    .filter((i) => Object.values(i).find((i) => i?.checked && column.find((j) => j.key === i?.key)?.active))
     .map((item) => ({
       matchDate: item.matchDate,
       matchId: item.matchId,
       matchNumStr: item.matchNumStr,
-      checkList: column.filter((i) => item[i.prop]?.checked).map((i) => item[i.prop])
+      checkList: column.filter((i) => item[i.key]?.checked && i?.active).map((i) => item[i.key])
     }))
   return data
 }
 
-const print = () => {
+const printData = () => {
   const data = getCheckData()
   const test = data.map((item) => `${item.matchNumStr}：${item.checkList.map((i) => i.value).join('+')}`)
   checkD.value = test.join('，')
@@ -186,14 +239,14 @@ const print = () => {
 
 const tablePreview = () => {
   const checkData = getCheckData()
-  const checkCol = JSON.parse(JSON.stringify(defaultColumn))
+  const checkCol = CloneDeep(columnData.value)
     .filter((i) =>
-      checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.prop) || a.checkList.find((b) => b.key === i.prop))
+      checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.key) || a.checkList.find((b) => b.key === i.key))
     )
     .map((i) => ({
-      title: i.label,
-      key: i.prop,
-      dataIndex: i.prop,
+      title: i.title,
+      key: i.key,
+      dataIndex: i.dataIndex,
       fixed: i.fixed,
       width: i.width,
       customRender: ({ record, column }) =>
@@ -206,7 +259,7 @@ const tablePreview = () => {
     footer: null,
     maskClosable: true,
     content: () => (
-      <a-table dataSource={checkData} columns={checkCol} scroll={{ x: 1000 }} pagination={false} bordered></a-table>
+      <a-table dataSource={checkData} columns={checkCol} scroll={{ x: 800 }} pagination={false} bordered></a-table>
     )
   })
 }

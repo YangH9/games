@@ -85,7 +85,7 @@
 					"TextAlign":"TopLeft",
 					"LnSpacing":1,
 					"HtmlTags":true,
-					"Text":"<font size=8>[#{内容}#]</font>"
+					"Text":"[#{内容}#]"
 				},
 				{
 					"Type":"MemoBox",
