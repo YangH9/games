@@ -30,12 +30,59 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
 import { export2Img, export2Pdf } from '@/utils/export'
 import '@/utils/grhtml5-6.8-min.js'
+import { CloneDeep } from '@/utils/lodash'
+import data1 from './data/data1.json'
+import data2 from './data/data2.json'
 
 const [modal, contextHolder] = Modal.useModal()
 
-import data1 from './data/data1.json'
-import data2 from './data/data2.json'
-import { CloneDeep } from '@/utils/lodash'
+const columnObject = {
+  HAD: { HADh: '列表1', HADd: '列表2', HADa: '列表3' },
+  HHAD: { HHADh: '列表4', HHADd: '列表5', HHADa: '列表6' },
+  crsList: {
+    s00s00: '0.0',
+    s00s01: '0.1',
+    s00s02: '0.2',
+    s00s03: '0.3',
+    s00s04: '0.4',
+    s00s05: '0.5',
+    s01s00: '1.0',
+    s01s01: '1.1',
+    s01s02: '1.2',
+    s01s03: '1.3',
+    s01s04: '1.4',
+    s01s05: '1.5',
+    s02s00: '2.0',
+    s02s01: '2.1',
+    s02s02: '2.2',
+    s02s03: '2.3',
+    s02s04: '2.4',
+    s02s05: '2.5',
+    s03s00: '3.0',
+    s03s01: '3.1',
+    s03s02: '3.2',
+    s03s03: '3.3',
+    s04s00: '4.0',
+    s04s01: '4.1',
+    s04s02: '4.2',
+    s05s00: '5.0',
+    s05s01: '5.1',
+    s05s02: '5.2',
+    's-1sh': 'a其他',
+    's-1sd': 'b其他',
+    's-1sa': 'c其他'
+  },
+  hafuList: { hh: 'aa', hd: 'ab', ha: 'ac', dh: 'ba', dd: 'bb', da: 'bc', ah: 'ca', ad: 'cb', aa: 'cc' },
+  ttgList: { s0: '00', s1: '01', s2: '02', s3: '03', s4: '04', s5: '05', s6: '06', s7: '07' }
+}
+
+const defaultColumn = [
+  { prop: 'matchNumStr', label: '编号', group: 0, width: 100, unChecked: true, disabled: true, fixed: 'left' },
+  { prop: 'matchDate', label: '时间', group: 0, width: 120, unChecked: true, disabled: true },
+  ...Object.entries(columnObject)
+    .map(([key, value]) => Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, width: 85 })))
+    .flat(1)
+]
 
 const getData = () => {
   return new Promise((resolve, reject) => {
@@ -54,64 +101,6 @@ const getData1 = () => {
 const checkD = ref('')
 const columnData = ref([])
 const tableData = ref([])
-const defaultColumn = [
-  { prop: 'matchNumStr', label: '编号', width: 100, unChecked: true, disabled: true, fixed: 'left' },
-  { prop: 'matchDate', label: '时间', width: 120, unChecked: true, disabled: true },
-  { prop: 'HADh', label: '列表1', width: 85 },
-  { prop: 'HADd', label: '列表2', width: 85 },
-  { prop: 'HADa', label: '列表3', width: 85 },
-  { prop: 'HHADh', label: '列表4', width: 85 },
-  { prop: 'HHADd', label: '列表5', width: 85 },
-  { prop: 'HHADa', label: '列表6', width: 85 },
-  { prop: 's00s00', label: '0.0', width: 85 },
-  { prop: 's00s01', label: '0.1', width: 85 },
-  { prop: 's00s02', label: '0.2', width: 85 },
-  { prop: 's00s03', label: '0.3', width: 85 },
-  { prop: 's00s04', label: '0.4', width: 85 },
-  { prop: 's00s05', label: '0.5', width: 85 },
-  { prop: 's01s00', label: '1.0', width: 85 },
-  { prop: 's01s01', label: '1.1', width: 85 },
-  { prop: 's01s02', label: '1.2', width: 85 },
-  { prop: 's01s03', label: '1.3', width: 85 },
-  { prop: 's01s04', label: '1.4', width: 85 },
-  { prop: 's01s05', label: '1.5', width: 85 },
-  { prop: 's02s00', label: '2.0', width: 85 },
-  { prop: 's02s01', label: '2.1', width: 85 },
-  { prop: 's02s02', label: '2.2', width: 85 },
-  { prop: 's02s03', label: '2.3', width: 85 },
-  { prop: 's02s04', label: '2.4', width: 85 },
-  { prop: 's02s05', label: '2.5', width: 85 },
-  { prop: 's03s00', label: '3.0', width: 85 },
-  { prop: 's03s01', label: '3.1', width: 85 },
-  { prop: 's03s02', label: '3.2', width: 85 },
-  { prop: 's03s03', label: '3.3', width: 85 },
-  { prop: 's04s00', label: '4.0', width: 85 },
-  { prop: 's04s01', label: '4.1', width: 85 },
-  { prop: 's04s02', label: '4.2', width: 85 },
-  { prop: 's05s00', label: '5.0', width: 85 },
-  { prop: 's05s01', label: '5.1', width: 85 },
-  { prop: 's05s02', label: '5.2', width: 85 },
-  { prop: 's-1sh', label: 'a其他', width: 85 },
-  { prop: 's-1sd', label: 'b其他', width: 85 },
-  { prop: 's-1sa', label: 'c其他', width: 85 },
-  { prop: 'hh', label: 'aa', width: 85 },
-  { prop: 'hd', label: 'ab', width: 85 },
-  { prop: 'ha', label: 'ac', width: 85 },
-  { prop: 'dh', label: 'ba', width: 85 },
-  { prop: 'dd', label: 'bb', width: 85 },
-  { prop: 'da', label: 'bc', width: 85 },
-  { prop: 'ah', label: 'ca', width: 85 },
-  { prop: 'ad', label: 'cb', width: 85 },
-  { prop: 'aa', label: 'cc', width: 85 },
-  { prop: 's0', label: '00', width: 85 },
-  { prop: 's1', label: '01', width: 85 },
-  { prop: 's2', label: '02', width: 85 },
-  { prop: 's3', label: '03', width: 85 },
-  { prop: 's4', label: '04', width: 85 },
-  { prop: 's5', label: '05', width: 85 },
-  { prop: 's6', label: '06', width: 85 },
-  { prop: 's7', label: '07', width: 85 }
-]
 
 const init = async () => {
   // 获取主要数据
@@ -155,14 +144,11 @@ const init = async () => {
     })
   const data = await Promise.all(mapRes)
   columnData.value = defaultColumn.map((i) => ({
+    ...i,
     title: i.label,
     key: i.prop,
     dataIndex: i.prop,
-    fixed: i.fixed ?? null,
-    width: i.width,
-    unChecked: i.unChecked ?? false,
     active: i.active ?? i.disabled ?? true,
-    disabled: i.disabled ?? false,
     customRender: ({ record, column }) =>
       column.unChecked ? (
         record[column.key]
@@ -177,16 +163,27 @@ const init = async () => {
 init()
 
 const setColumn = () => {
-  const column = ref(
-    columnData.value.map((i) => ({ label: i.title, value: i.key, active: i.active, disabled: i.disabled }))
-  )
-  console.log(columnData.value, column.value)
+  const column = ref(columnData.value.map((i) => ({ ...i, value: i.key })))
   const defaultActiveList = column.value.filter((i) => i.disabled).map((i) => i.value)
   const activeList = ref(column.value.filter((i) => i.active).map((i) => i.value))
   const checkAll = computed(() => activeList.value.length === column.value.length)
   const indeterminate = computed(() => activeList.value.length > 0 && activeList.value.length < column.value.length)
+  const groupOption = computed(() => {
+    const active = activeList.value
+    const colum = column.value
+    const obj = {}
+    Object.keys(columnObject).forEach((key) => {
+      const col = colum.filter((i) => i.group === key)
+      const act = active.filter((i) => col.find((a) => i === a.prop))
+      obj[key] = {
+        checkAll: act.length === col.length,
+        indeterminate: act.length > 0 && act.length < col.length
+      }
+    })
+    return obj
+  })
   modal.info({
-    width: '80%',
+    width: '60%',
     icon: () => <div></div>,
     maskClosable: true,
     content: () => (
@@ -203,8 +200,28 @@ const setColumn = () => {
           >
             全选
           </a-checkbox>
+          {Object.keys(columnObject).map((key) => (
+            <a-checkbox
+              v-model:checked={groupOption.value[key].checkAll}
+              indeterminate={groupOption.value[key].indeterminate}
+              onChange={() =>
+                groupOption.value[key].checkAll
+                  ? (activeList.value = [
+                      ...new Set([
+                        ...activeList.value,
+                        ...column.value.filter((i) => i.group === key).map((i) => i.prop)
+                      ])
+                    ])
+                  : (activeList.value = activeList.value.filter(
+                      (i) => column.value.find((a) => a.prop === i)?.group !== key
+                    ))
+              }
+            >
+              {key}
+            </a-checkbox>
+          ))}
         </div>
-        <a-divider class="my_2" />
+        <a-divider class="my_3" />
         <a-checkbox-group v-model:value={activeList.value} options={column.value} />
       </div>
     ),
@@ -244,11 +261,7 @@ const tablePreview = () => {
       checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.key) || a.checkList.find((b) => b.key === i.key))
     )
     .map((i) => ({
-      title: i.title,
-      key: i.key,
-      dataIndex: i.dataIndex,
-      fixed: i.fixed,
-      width: i.width,
+      ...i,
       customRender: ({ record, column }) =>
         record[column.key] ? record[column.key] : record.checkList.find((i) => i.key === column.key)?.value
     }))
