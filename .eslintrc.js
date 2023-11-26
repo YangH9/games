@@ -17,6 +17,9 @@ module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
+    ecmaFeatures: {
+      jsx: true
+    },
     sourceType: 'module'
   },
   // 全局参数，readonly/false——只读、writable/true——可写、off——禁用该全局变量

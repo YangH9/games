@@ -10,23 +10,16 @@ import {
   Slider,
   Result,
   Menu,
-  MenuItem,
   Breadcrumb,
-  BreadcrumbItem,
   Descriptions,
-  DescriptionsItem,
   Timeline,
-  TimelineItem,
   Form,
   Input,
   Select,
   InputNumber,
   Radio,
-  RadioGroup,
   Checkbox,
-  Textarea,
   Collapse,
-  CollapsePanel,
   Watermark,
   Tag,
   ConfigProvider,
@@ -34,7 +27,7 @@ import {
   Tree
 } from 'ant-design-vue'
 
-const antList = {
+const Components = {
   Row,
   Col,
   Image,
@@ -45,23 +38,16 @@ const antList = {
   Slider,
   Result,
   Menu,
-  // MenuItem,
   Breadcrumb,
-  // BreadcrumbItem,
   Descriptions,
-  // DescriptionsItem,
   Timeline,
-  // TimelineItem,
   Form,
   Input,
   Select,
   InputNumber,
   Radio,
-  // RadioGroup,
   Checkbox,
-  // Textarea,
   Collapse,
-  // CollapsePanel,
   Watermark,
   Tag,
   ConfigProvider,
@@ -72,7 +58,7 @@ const antList = {
 // 抛出整体按需引入的组件
 export default {
   install(app) {
-    Object.values(antList).forEach((item) => {
+    Object.values(Components).forEach((item) => {
       app.use(item)
     })
   }
