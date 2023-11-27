@@ -297,7 +297,7 @@ const printView = () => {
             onClick={() => {
               const dom = document.querySelector('#report_holder')
               export2Img(dom)
-              Modal.destroyAll()
+              ElMessageBox.close()
             }}
           >
             导出图片
@@ -307,14 +307,15 @@ const printView = () => {
             onClick={() => {
               const dom = document.querySelector('#report_holder')
               export2Pdf(dom)
-              Modal.destroyAll()
+              ElMessageBox.close()
             }}
           >
             导出PDF
           </ElButton>
         </div>
       </>
-    )
+    ),
+    confirmButtonText: '打印'
   }).then(() => {
     const dom = document.querySelector('#report_holder')
     const css = document.querySelectorAll('[id^="_gridcss"]')
@@ -330,7 +331,6 @@ const printView = () => {
     iframe.contentWindow.print()
     setTimeout(() => {
       document.body.removeChild(iframe)
-      Modal.destroyAll()
     }, 1000)
   })
   window.rubylong.grhtml5.insertReportViewer('report_holder', reportURL, data).start()

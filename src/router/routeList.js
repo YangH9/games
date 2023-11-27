@@ -1,5 +1,3 @@
-import home from '@/views/home/index.vue'
-
 // 只能使用字面量引入，一组/*为一层文件夹
 const modules = import.meta.glob(['@/views/*.vue', '@/views/*/*.vue', '@/views/*/*/*.vue'])
 
@@ -33,7 +31,7 @@ export default [
     meta: {
       title: '首页'
     },
-    component: home
+    component: () => import('@/views/home/index.vue')
   },
   {
     path: '/about',
