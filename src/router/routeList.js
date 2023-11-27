@@ -333,12 +333,12 @@ export default [
             component: () => import('@/views/study/componentDemo/search.vue')
           },
           {
-            path: '/study/componentDemo/table1',
-            name: 'table1',
+            path: '/study/componentDemo/table1_ant',
+            name: 'table1_ant',
             meta: {
-              title: '表格1'
+              title: '表格1-ant'
             },
-            component: () => import('@/views/study/componentDemo/table1.vue')
+            component: () => import('@/views/study/componentDemo/table1_ant.vue')
           },
           {
             path: '/study/componentDemo/table1_el',

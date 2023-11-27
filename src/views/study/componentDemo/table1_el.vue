@@ -4,10 +4,10 @@
     <a-layout-content>
       <MyTable :data="tableData" :columns="columnData"></MyTable>
       <div class="my_3">
-        <el-button class="mx_2" @click="setColumn">修改显示列</el-button>
-        <el-button class="mx_2" @click="printData">输出数据</el-button>
-        <el-button class="mx_2" @click="tablePreview">表格预览</el-button>
-        <el-button class="mx_2" @click="printView">导出预览</el-button>
+        <ElButton class="mx_2" @click="setColumn">修改显示列</ElButton>
+        <ElButton class="mx_2" @click="printData">输出数据</ElButton>
+        <ElButton class="mx_2" @click="tablePreview">表格预览</ElButton>
+        <ElButton class="mx_2" @click="printView">导出预览</ElButton>
       </div>
       <div class="ant-card my_3">
         <div>选择的数据：</div>
