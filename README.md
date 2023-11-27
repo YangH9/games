@@ -1,8 +1,8 @@
 # YangH9.github.io
 
-[![](https://img.shields.io/badge/Vue.js-3.2-4FC08D?logo=vue.js&logoColor=4FC08D)](https://vuejs.org/)
-[![](https://img.shields.io/badge/Vite-3.0-a750fe?logo=Vite&logoColor=a750fe)](https://cn.vitejs.dev/)
-[![](https://img.shields.io/badge/Pinia-2.0-ffd34f?logo=Pinia&logoColor=ffd34f)](https://pinia.vuejs.org/zh/)
+[![](https://img.shields.io/badge/Vue.js-3.3-4FC08D?logo=vue.js&logoColor=4FC08D)](https://vuejs.org/)
+[![](https://img.shields.io/badge/Vite-4.4-a750fe?logo=Vite&logoColor=a750fe)](https://cn.vitejs.dev/)
+[![](https://img.shields.io/badge/Pinia-2.1-ffd34f?logo=Pinia&logoColor=ffd34f)](https://pinia.vuejs.org/zh/)
 
 [![](https://github-readme-stats.vercel.app/api?username=yangh9&title_color=ff69b4&text_color=718096&bg_color=ffffff00&icon_color=87ceeb&show_icons=true)](https://github.com/yangh9)
 
