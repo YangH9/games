@@ -46,7 +46,9 @@
   left: 0;
   border-width: 50px;
   border-color: rgba(0, 0, 0, 0.6);
-  transition: border-width 0.6s, border-color 2s;
+  transition:
+    border-width 0.6s,
+    border-color 2s;
 }
 
 .solid::after {

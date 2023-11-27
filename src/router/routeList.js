@@ -343,6 +343,14 @@ export default [
             component: () => import('@/views/study/componentDemo/table1.vue')
           },
           {
+            path: '/study/componentDemo/table1_el',
+            name: 'table1_el',
+            meta: {
+              title: '表格1-el'
+            },
+            component: () => import('@/views/study/componentDemo/table1_el.vue')
+          },
+          {
             path: '/study/componentDemo/table2',
             name: 'table2',
             meta: {

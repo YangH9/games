@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "jsx": "preserve",
+    "types": ["vite/client", "element-plus/global"],
     "paths": {
       "@/*": ["src/*"]
-    },
-    "types": ["element-plus/global"]
+    }
   },
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true

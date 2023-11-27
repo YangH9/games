@@ -134,7 +134,9 @@
       position: absolute;
       left: -20px;
       top: 0px;
-      transition: transform 1s, left 1s;
+      transition:
+        transform 1s,
+        left 1s;
     }
 
     // 右耳
@@ -148,7 +150,9 @@
       position: absolute;
       right: -20px;
       top: 0px;
-      transition: transform 1s, right 1s;
+      transition:
+        transform 1s,
+        right 1s;
     }
   }
 

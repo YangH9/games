@@ -130,103 +130,137 @@ onBeforeUnmount(() => {
   font-family: lcd;
   font-style: normal;
   font-weight: 400;
-  src: local('LCD'), url(@/assets/woff/LCD-N___.woff) format('woff');
+  src:
+    local('LCD'),
+    url(@/assets/woff/LCD-N___.woff) format('woff');
 }
 @font-face {
   font-family: lcd;
   font-style: normal;
   font-weight: 400;
-  src: local('LCD'), url(@/assets/woff/LCD-U___.woff) format('woff');
+  src:
+    local('LCD'),
+    url(@/assets/woff/LCD-U___.woff) format('woff');
 }
 @font-face {
   font-family: lcd;
   font-style: normal;
   font-weight: 300;
-  src: local('LCD'), url(@/assets/woff/LCD-L___.woff) format('woff');
+  src:
+    local('LCD'),
+    url(@/assets/woff/LCD-L___.woff) format('woff');
 }
 @font-face {
   font-family: lcd;
   font-style: normal;
   font-weight: 700;
-  src: local('LCD'), url(@/assets/woff/LCD-BOLD.woff) format('woff');
+  src:
+    local('LCD'),
+    url(@/assets/woff/LCD-BOLD.woff) format('woff');
 }
 @font-face {
   font-family: lcd2;
   font-style: normal;
   font-weight: 400;
-  src: local('LCD2'), url(@/assets/woff/LCD2N___.woff) format('woff');
+  src:
+    local('LCD2'),
+    url(@/assets/woff/LCD2N___.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono2;
   font-style: normal;
   font-weight: 400;
-  src: local('LCDMono2'), url(@/assets/woff/LCDM2N__.woff) format('woff');
+  src:
+    local('LCDMono2'),
+    url(@/assets/woff/LCDM2N__.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono;
   font-style: normal;
   font-weight: 400;
-  src: local('LCDMono'), url(@/assets/woff/LCDMN___.woff) format('woff');
+  src:
+    local('LCDMono'),
+    url(@/assets/woff/LCDMN___.woff) format('woff');
 }
 @font-face {
   font-family: digitalism;
   font-style: normal;
   font-weight: 400;
-  src: local('Digitalism'), url(@/assets/woff/digitalism.woff) format('woff');
+  src:
+    local('Digitalism'),
+    url(@/assets/woff/digitalism.woff) format('woff');
 }
 @font-face {
   font-family: lcd2;
   font-style: normal;
   font-weight: 400;
-  src: local('LCD2'), url(@/assets/woff/LCD2U___.woff) format('woff');
+  src:
+    local('LCD2'),
+    url(@/assets/woff/LCD2U___.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono2;
   font-style: normal;
   font-weight: 400;
-  src: local('LCDMono2'), url(@/assets/woff/LCDM2U__.woff) format('woff');
+  src:
+    local('LCDMono2'),
+    url(@/assets/woff/LCDM2U__.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono;
   font-style: normal;
   font-weight: 400;
-  src: local('LCDMono'), url(@/assets/woff/LCDMU___.woff) format('woff');
+  src:
+    local('LCDMono'),
+    url(@/assets/woff/LCDMU___.woff) format('woff');
 }
 @font-face {
   font-family: lcd2;
   font-style: normal;
   font-weight: 300;
-  src: local('LCD2'), url(@/assets/woff/LCD2L___.woff) format('woff');
+  src:
+    local('LCD2'),
+    url(@/assets/woff/LCD2L___.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono2;
   font-style: normal;
   font-weight: 300;
-  src: local('LCDMono2'), url(@/assets/woff/LCDM2L__.woff) format('woff');
+  src:
+    local('LCDMono2'),
+    url(@/assets/woff/LCDM2L__.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono;
   font-style: normal;
   font-weight: 300;
-  src: local('LCDMono'), url(@/assets/woff/LCDML___.woff) format('woff');
+  src:
+    local('LCDMono'),
+    url(@/assets/woff/LCDML___.woff) format('woff');
 }
 @font-face {
   font-family: lcd2;
   font-style: normal;
   font-weight: 700;
-  src: local('LCD2'), url(@/assets/woff/LCD2B___.woff) format('woff');
+  src:
+    local('LCD2'),
+    url(@/assets/woff/LCD2B___.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono2;
   font-style: normal;
   font-weight: 700;
-  src: local('LCDMono2'), url(@/assets/woff/LCDM2B__.woff) format('woff');
+  src:
+    local('LCDMono2'),
+    url(@/assets/woff/LCDM2B__.woff) format('woff');
 }
 @font-face {
   font-family: lcdmono;
   font-style: normal;
   font-weight: 700;
-  src: local('LCDMono'), url(@/assets/woff/LCDMB___.woff) format('woff');
+  src:
+    local('LCDMono'),
+    url(@/assets/woff/LCDMB___.woff) format('woff');
 }
 
 :deep().ant-card-body {
@@ -298,7 +332,11 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 0em;
   translate: 0 45em;
-  box-shadow: 0 0 3em 2em #040909, 0 0 8em 3em var(--_o3), 0 0 10em 4em var(--_o2), 0 0 10em 5em var(--_o1);
+  box-shadow:
+    0 0 3em 2em #040909,
+    0 0 8em 3em var(--_o3),
+    0 0 10em 4em var(--_o2),
+    0 0 10em 5em var(--_o1);
   opacity: 0.6;
 
   &::before {
@@ -310,7 +348,11 @@ onBeforeUnmount(() => {
     margin: auto;
     height: 20em;
     width: 0;
-    box-shadow: 0 0 8em 4em var(--_y1), 0 0 8em 6em var(--_y2), 0 0 8em 8em var(--_o1), 0 0 8em 10em var(--_o2),
+    box-shadow:
+      0 0 8em 4em var(--_y1),
+      0 0 8em 6em var(--_y2),
+      0 0 8em 8em var(--_o1),
+      0 0 8em 10em var(--_o2),
       0 0 8em 12em var(--_o3);
   }
 
@@ -328,7 +370,10 @@ onBeforeUnmount(() => {
     width: 10em;
     border: 2px solid red;
     transform: rotateX(70deg);
-    box-shadow: 0 0em 12em 40em var(--_o1), 0 0em 12em 60em var(--_o2), 0 0em 12em 80em var(--_o3);
+    box-shadow:
+      0 0em 12em 40em var(--_o1),
+      0 0em 12em 60em var(--_o2),
+      0 0em 12em 80em var(--_o3);
   }
 }
 
@@ -349,10 +394,19 @@ onBeforeUnmount(() => {
   height: 100%;
   scale: 0.84 0.91;
   border-radius: 15% / 7%;
-  box-shadow: 0em 104em 16em 20em #040909, /* light on */ 0em 1.2em 1em 0.2em var(--m3), 0em 1.2em 1em 0.5em var(--m2),
-    0em 1.2em 0.5em 1.2em var(--m1), 0em 1.2em 1.2em 1.5em var(--m2), 0em 1.2em 2em 2em var(--m3),
-    /* ---- */ 0em 90em 16em 20em #040909, /* nat light */ -1em 1em 2em 3.7em #040909, 0.5em 0em 2em 3.7em #040909,
-    0em 0em 0em 4.6em var(--mw1), 0em 0em 0.5em 5em var(--mw1), /* --------- */ 0em 0em 0em 20em #040909;
+  box-shadow:
+    0em 104em 16em 20em #040909,
+    /* light on */ 0em 1.2em 1em 0.2em var(--m3),
+    0em 1.2em 1em 0.5em var(--m2),
+    0em 1.2em 0.5em 1.2em var(--m1),
+    0em 1.2em 1.2em 1.5em var(--m2),
+    0em 1.2em 2em 2em var(--m3),
+    /* ---- */ 0em 90em 16em 20em #040909,
+    /* nat light */ -1em 1em 2em 3.7em #040909,
+    0.5em 0em 2em 3.7em #040909,
+    0em 0em 0em 4.6em var(--mw1),
+    0em 0em 0.5em 5em var(--mw1),
+    /* --------- */ 0em 0em 0em 20em #040909;
 }
 
 .pipe-accents {
@@ -378,8 +432,11 @@ onBeforeUnmount(() => {
     height: 6%;
     background: #040909;
     background: linear-gradient(120deg, rgba(60, 62, 62, 1) 0%, rgba(4, 9, 0, 1) 60%);
-    box-shadow: inset -0.2em 1.1em 1.4em -0.4em var(--mw1), /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
-      inset 0em -1.2em 1em -0.8em var(--m2), inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
+    box-shadow:
+      inset -0.2em 1.1em 1.4em -0.4em var(--mw1),
+      /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
+      inset 0em -1.2em 1em -0.8em var(--m2),
+      inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
     border-radius: 20%;
   }
 
@@ -419,8 +476,11 @@ onBeforeUnmount(() => {
         var(--_metal-2) 91%,
         var(--_metal-1) 100%
       );
-      box-shadow: inset 0 0 0.1em 0.1em #ffffff5d, /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
-        inset 0em -1.2em 1em -0.8em var(--m2), inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
+      box-shadow:
+        inset 0 0 0.1em 0.1em #ffffff5d,
+        /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
+        inset 0em -1.2em 1em -0.8em var(--m2),
+        inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
 
       &:nth-child(1) {
         top: 12%;
@@ -470,8 +530,11 @@ onBeforeUnmount(() => {
     height: 6%;
     background: #040909;
     background: linear-gradient(120deg, rgba(60, 62, 62, 1) 0%, rgba(4, 9, 0, 1) 60%);
-    box-shadow: inset -0.2em 1.1em 1.4em -0.4em var(--mw1), /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
-      inset 0em -1.2em 1em -0.8em var(--m2), inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
+    box-shadow:
+      inset -0.2em 1.1em 1.4em -0.4em var(--mw1),
+      /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
+      inset 0em -1.2em 1em -0.8em var(--m2),
+      inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
     border-radius: 20%;
 
     &inset {
@@ -484,8 +547,11 @@ onBeforeUnmount(() => {
       height: 8%;
       background: #040909;
       background: linear-gradient(120deg, rgba(60, 62, 62, 1) 0%, rgba(4, 9, 0, 1) 60%);
-      box-shadow: inset -0.2em 1.1em 1.4em -0.4em var(--mw1), /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
-        inset 0em -1.2em 1em -0.8em var(--m2), inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
+      box-shadow:
+        inset -0.2em 1.1em 1.4em -0.4em var(--mw1),
+        /* light on */ inset 0em -1.2em 0.5em -1.1em var(--m1),
+        inset 0em -1.2em 1em -0.8em var(--m2),
+        inset 0em -1.2em 1em -0.2em var(--m3) /* -------- */;
       border-radius: 50%;
 
       &::before {
@@ -500,8 +566,12 @@ onBeforeUnmount(() => {
         top: 0;
         bottom: 0;
         margin: auto;
-        box-shadow: inset 0 0 0em 0.1em #040909, /* light on */ 0 0 0.5em 0.1em var(--_bloom),
-          inset 0 0 1.3em 0.2em var(--_o3), inset 0 0 1.3em 0.4em var(--_o2), inset 0 0 1.3em 0.6em var(--_o1),
+        box-shadow:
+          inset 0 0 0em 0.1em #040909,
+          /* light on */ 0 0 0.5em 0.1em var(--_bloom),
+          inset 0 0 1.3em 0.2em var(--_o3),
+          inset 0 0 1.3em 0.4em var(--_o2),
+          inset 0 0 1.3em 0.6em var(--_o1),
           inset 0 0 1.3em 2em var(--_y1) /* -------- */;
         animation: 5s flicker linear infinite;
       }
@@ -577,8 +647,11 @@ onBeforeUnmount(() => {
       left: var(--_pipe-pos-x);
       border-top-right-radius: 50%;
       border-top-left-radius: 50%;
-      box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light on */ inset -1em -0.5em 0.8em -0.8em var(--m3),
-        inset -1em -0.5em 0.9em -0.5em var(--m2), inset -1em -0.5em 1em -0.3em var(--m1);
+      box-shadow:
+        inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+        /* light on */ inset -1em -0.5em 0.8em -0.8em var(--m3),
+        inset -1em -0.5em 0.9em -0.5em var(--m2),
+        inset -1em -0.5em 1em -0.3em var(--m1);
 
       /* -------- */
       &::before {
@@ -594,8 +667,11 @@ onBeforeUnmount(() => {
         bottom: 0;
         margin: auto;
         z-index: -1;
-        box-shadow: inset 0em 0.3em 0.6em -0.4em var(--mw1), /* light on */ inset 1em -0.5em 0.3em -0.5em var(--m3),
-          inset 1em -0.5em 0.4em -0.3em var(--m2), inset 1em -0.5em 0.6em -0.2em var(--m1) /* -------- */;
+        box-shadow:
+          inset 0em 0.3em 0.6em -0.4em var(--mw1),
+          /* light on */ inset 1em -0.5em 0.3em -0.5em var(--m3),
+          inset 1em -0.5em 0.4em -0.3em var(--m2),
+          inset 1em -0.5em 0.6em -0.2em var(--m1) /* -------- */;
       }
     }
 
@@ -606,8 +682,11 @@ onBeforeUnmount(() => {
       border-top-left-radius: 30%;
       border-bottom-right-radius: 30%;
       border-bottom-left-radius: 30%;
-      box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light on */ inset -1em 0em 0.8em -0.6em var(--m3),
-        inset -1em 0em 0.9em 0em var(--m2), inset -1em 0em 1em 0.1em var(--m1);
+      box-shadow:
+        inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+        /* light on */ inset -1em 0em 0.8em -0.6em var(--m3),
+        inset -1em 0em 0.9em 0em var(--m2),
+        inset -1em 0em 1em 0.1em var(--m1);
 
       /* -------- */
       &::before {
@@ -623,8 +702,11 @@ onBeforeUnmount(() => {
         bottom: 0;
         margin: auto;
         z-index: -1;
-        box-shadow: inset 0em 0.3em 0.6em -0.4em var(--mw1), /* light on */ inset 1em -0.1em 0.3em 0em var(--m3),
-          inset 1em -0.1em 0.4em 0.2em var(--m2), inset 1em -0.1em 0.6em -0.3em var(--m1) /* -------- */;
+        box-shadow:
+          inset 0em 0.3em 0.6em -0.4em var(--mw1),
+          /* light on */ inset 1em -0.1em 0.3em 0em var(--m3),
+          inset 1em -0.1em 0.4em 0.2em var(--m2),
+          inset 1em -0.1em 0.6em -0.3em var(--m1) /* -------- */;
       }
     }
 
@@ -633,8 +715,11 @@ onBeforeUnmount(() => {
       left: var(--_pipe-pos-x);
       border-bottom-right-radius: 40%;
       border-bottom-left-radius: 40%;
-      box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light on */ inset -1em 0.3em 0.8em -0.5em var(--m3),
-        inset -1em 0.3em 0.9em -0.3em var(--m2), inset -1em 0.3em 1em 0em var(--m1);
+      box-shadow:
+        inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+        /* light on */ inset -1em 0.3em 0.8em -0.5em var(--m3),
+        inset -1em 0.3em 0.9em -0.3em var(--m2),
+        inset -1em 0.3em 1em 0em var(--m1);
 
       /* -------- */
       &::before {
@@ -649,8 +734,11 @@ onBeforeUnmount(() => {
         rotate: -4deg;
         margin: auto;
         z-index: -1;
-        box-shadow: inset 0em 0.3em 0.6em -0.4em var(--mw1), /* light on */ inset 1em 0.2em 0.3em -0.1em var(--m3),
-          inset 1em 0.2em 0.4em 0em var(--m2), inset 1em 0.2em 0.6em 0.1em var(--m1) /* -------- */;
+        box-shadow:
+          inset 0em 0.3em 0.6em -0.4em var(--mw1),
+          /* light on */ inset 1em 0.2em 0.3em -0.1em var(--m3),
+          inset 1em 0.2em 0.4em 0em var(--m2),
+          inset 1em 0.2em 0.6em 0.1em var(--m1) /* -------- */;
       }
     }
   }
@@ -661,8 +749,11 @@ onBeforeUnmount(() => {
       right: var(--_pipe-pos-x);
       border-top-right-radius: 50%;
       border-top-left-radius: 50%;
-      box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light on */ inset 1em -0.5em 0.8em -0.8em var(--m3),
-        inset 1em -0.5em 0.9em -0.5em var(--m2), inset 1em -0.5em 1em -0.3em var(--m1);
+      box-shadow:
+        inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+        /* light on */ inset 1em -0.5em 0.8em -0.8em var(--m3),
+        inset 1em -0.5em 0.9em -0.5em var(--m2),
+        inset 1em -0.5em 1em -0.3em var(--m1);
 
       /* -------- */
       &::before {
@@ -678,8 +769,11 @@ onBeforeUnmount(() => {
         bottom: 0;
         margin: auto;
         z-index: -1;
-        box-shadow: inset 0em 0.3em 0.6em -0.4em var(--mw1), /* light on */ inset -1em -0.5em 0.3em -0.5em var(--m3),
-          inset -1em -0.5em 0.4em -0.3em var(--m2), inset -1em -0.5em 0.6em -0.2em var(--m1) /* -------- */;
+        box-shadow:
+          inset 0em 0.3em 0.6em -0.4em var(--mw1),
+          /* light on */ inset -1em -0.5em 0.3em -0.5em var(--m3),
+          inset -1em -0.5em 0.4em -0.3em var(--m2),
+          inset -1em -0.5em 0.6em -0.2em var(--m1) /* -------- */;
       }
     }
 
@@ -690,8 +784,11 @@ onBeforeUnmount(() => {
       border-top-left-radius: 30%;
       border-bottom-right-radius: 30%;
       border-bottom-left-radius: 30%;
-      box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light on */ inset 1em 0em 0.8em -0.6em var(--m3),
-        inset 1em 0em 0.9em 0em var(--m2), inset 1em 0em 1em 0.1em var(--m1);
+      box-shadow:
+        inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+        /* light on */ inset 1em 0em 0.8em -0.6em var(--m3),
+        inset 1em 0em 0.9em 0em var(--m2),
+        inset 1em 0em 1em 0.1em var(--m1);
 
       /* -------- */
       &::before {
@@ -707,8 +804,11 @@ onBeforeUnmount(() => {
         bottom: 0;
         margin: auto;
         z-index: -1;
-        box-shadow: inset 0em 0.3em 0.6em -0.4em var(--mw1), /* light on */ inset -1em -0.1em 0.3em 0em var(--m3),
-          inset -1em -0.1em 0.4em 0.2em var(--m2), inset -1em -0.1em 0.6em -0.3em var(--m1) /* -------- */;
+        box-shadow:
+          inset 0em 0.3em 0.6em -0.4em var(--mw1),
+          /* light on */ inset -1em -0.1em 0.3em 0em var(--m3),
+          inset -1em -0.1em 0.4em 0.2em var(--m2),
+          inset -1em -0.1em 0.6em -0.3em var(--m1) /* -------- */;
       }
     }
 
@@ -717,8 +817,11 @@ onBeforeUnmount(() => {
       right: var(--_pipe-pos-x);
       border-bottom-right-radius: 40%;
       border-bottom-left-radius: 40%;
-      box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light on */ inset 1em 0.3em 0.8em -0.5em var(--m3),
-        inset 1em 0.3em 0.9em -0.3em var(--m2), inset 1em 0.3em 1em 0em var(--m1);
+      box-shadow:
+        inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+        /* light on */ inset 1em 0.3em 0.8em -0.5em var(--m3),
+        inset 1em 0.3em 0.9em -0.3em var(--m2),
+        inset 1em 0.3em 1em 0em var(--m1);
 
       /* -------- */
       &::before {
@@ -733,8 +836,11 @@ onBeforeUnmount(() => {
         rotate: 4deg;
         margin: auto;
         z-index: -1;
-        box-shadow: inset 0em 0.3em 0.6em -0.4em var(--mw1), /* light on */ inset -1em 0.2em 0.3em -0.1em var(--m3),
-          inset -1em 0.2em 0.4em 0em var(--m2), inset -1em 0.2em 0.6em 0.1em var(--m1) /* -------- */;
+        box-shadow:
+          inset 0em 0.3em 0.6em -0.4em var(--mw1),
+          /* light on */ inset -1em 0.2em 0.3em -0.1em var(--m3),
+          inset -1em 0.2em 0.4em 0em var(--m2),
+          inset -1em 0.2em 0.6em 0.1em var(--m1) /* -------- */;
       }
     }
   }
@@ -749,8 +855,11 @@ onBeforeUnmount(() => {
     border-radius: 40%;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
-    box-shadow: inset -0.4em -0.1em 1em -0.4em var(--mw1), /* light on */ inset -2em 0em 1.8em -1.5em var(--m3),
-      inset -2em 0em 1.9em -1.3em var(--m2), inset -2em 0em 2em -1em var(--m1) /* -------- */;
+    box-shadow:
+      inset -0.4em -0.1em 1em -0.4em var(--mw1),
+      /* light on */ inset -2em 0em 1.8em -1.5em var(--m3),
+      inset -2em 0em 1.9em -1.3em var(--m2),
+      inset -2em 0em 2em -1em var(--m1) /* -------- */;
 
     &::before {
       display: block;
@@ -766,8 +875,11 @@ onBeforeUnmount(() => {
       border-radius: 50%;
       border-top-left-radius: 40%;
       border-top-right-radius: 40%;
-      box-shadow: inset -0.4em 0em 1em -0.3em var(--mw1), /* light on */ inset -2em 0em 1.8em -1.5em var(--m3),
-        inset -2em 0em 1.9em -1.3em var(--m2), inset -2em 0em 2em -1em var(--m1) /* -------- */;
+      box-shadow:
+        inset -0.4em 0em 1em -0.3em var(--mw1),
+        /* light on */ inset -2em 0em 1.8em -1.5em var(--m3),
+        inset -2em 0em 1.9em -1.3em var(--m2),
+        inset -2em 0em 2em -1em var(--m1) /* -------- */;
     }
   }
 
@@ -781,8 +893,11 @@ onBeforeUnmount(() => {
     border-radius: 40%;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
-    box-shadow: inset -0.4em -0.1em 1em -0.4em var(--mw1), /* light on */ inset 2em 0em 1.8em -1.5em var(--m3),
-      inset 2em 0em 1.9em -1.3em var(--m2), inset 2em 0em 2em -1em var(--m1) /* -------- */;
+    box-shadow:
+      inset -0.4em -0.1em 1em -0.4em var(--mw1),
+      /* light on */ inset 2em 0em 1.8em -1.5em var(--m3),
+      inset 2em 0em 1.9em -1.3em var(--m2),
+      inset 2em 0em 2em -1em var(--m1) /* -------- */;
 
     &::before {
       display: block;
@@ -798,8 +913,11 @@ onBeforeUnmount(() => {
       border-radius: 50%;
       border-top-left-radius: 40%;
       border-top-right-radius: 40%;
-      box-shadow: inset -0.4em 0em 1em -0.3em var(--mw1), /* light on */ inset 2em 0em 1.8em -1.5em var(--m3),
-        inset 2em 0em 1.9em -1.3em var(--m2), inset 2em 0em 2em -1em var(--m1) /* -------- */;
+      box-shadow:
+        inset -0.4em 0em 1em -0.3em var(--mw1),
+        /* light on */ inset 2em 0em 1.8em -1.5em var(--m3),
+        inset 2em 0em 1.9em -1.3em var(--m2),
+        inset 2em 0em 2em -1em var(--m1) /* -------- */;
     }
   }
 }
@@ -823,10 +941,20 @@ onBeforeUnmount(() => {
   height: 100%;
   scale: 0.92 0.98;
   border-radius: 35% / 10%;
-  box-shadow: 0em -94em 20em 20em #040909, 0em 104em 20em 20em #040909, /* light on */ 0em 1em 1em 0.2em var(--m3),
-    0em 1em 1em 0.5em var(--m2), 0em 1em 0.5em 1.2em var(--m1), 0em 1em 1.2em 1.5em var(--m2), 0em 1em 2em 2em var(--m3),
-    /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1), 0em 90em 16em 20em #040909,
-    -1em 1em 2em 2em #040909, 0.5em 0em 2em 2em #040909, 0em 0em 0em 4.6em var(--mw1), 0em 0em 1.5em 5em var(--mw1),
+  box-shadow:
+    0em -94em 20em 20em #040909,
+    0em 104em 20em 20em #040909,
+    /* light on */ 0em 1em 1em 0.2em var(--m3),
+    0em 1em 1em 0.5em var(--m2),
+    0em 1em 0.5em 1.2em var(--m1),
+    0em 1em 1.2em 1.5em var(--m2),
+    0em 1em 2em 2em var(--m3),
+    /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1),
+    0em 90em 16em 20em #040909,
+    -1em 1em 2em 2em #040909,
+    0.5em 0em 2em 2em #040909,
+    0em 0em 0em 4.6em var(--mw1),
+    0em 0em 1.5em 5em var(--mw1),
     /* --------- */ 0em 0em 0em 20em #040909;
 }
 
@@ -848,7 +976,9 @@ onBeforeUnmount(() => {
       width: 120%;
       height: 12%;
       border-radius: 40% 40% / 30% 30%;
-      box-shadow: 0 2em 2em -1.4em #000, inset -0.4em 0.1em 0.8em -0.2em var(--mw1);
+      box-shadow:
+        0 2em 2em -1.4em #000,
+        inset -0.4em 0.1em 0.8em -0.2em var(--mw1);
 
       &::before {
         content: '';
@@ -856,9 +986,16 @@ onBeforeUnmount(() => {
         width: 100%;
         height: 50%;
         border-radius: 100%;
-        box-shadow: 0 2em 10em 0 #000, inset -0.4em 0em 0.8em 0em var(--mw1), inset 0em 0em 0.5em 0.3em #040909,
-          inset 0em 0em 0.5em 0.3em #040909, inset 0em 0em 1em 0em #040909, inset 0em 0em 2em 0em #040909,
-          inset 0em 0em 3em 0em #040909, /* light on */ inset 0em 0em 1em 0em var(--m3), inset 0em 0em 1em 2em var(--m2),
+        box-shadow:
+          0 2em 10em 0 #000,
+          inset -0.4em 0em 0.8em 0em var(--mw1),
+          inset 0em 0em 0.5em 0.3em #040909,
+          inset 0em 0em 0.5em 0.3em #040909,
+          inset 0em 0em 1em 0em #040909,
+          inset 0em 0em 2em 0em #040909,
+          inset 0em 0em 3em 0em #040909,
+          /* light on */ inset 0em 0em 1em 0em var(--m3),
+          inset 0em 0em 1em 2em var(--m2),
           inset 1em 0.3em 10em 10em var(--m1) /* -------- */;
       }
     }
@@ -909,11 +1046,21 @@ onBeforeUnmount(() => {
         --_o1-size: 0.1em;
         --_o2-size: 0.4em;
         --_o3-size: 0.6em;
-        text-shadow: 0em 0em 0.04em var(--_bloom), 0em 0em 0.04em var(--_bloom), 0em 0em var(--_o3-size) var(--_o3),
-          0em 0em var(--_o3-size) var(--_o3), 0em 0em var(--_o3-size) var(--_o3), 0em 0em var(--_o3-size) var(--_o3),
-          0em 0em var(--_o2-size) var(--_o2), 0em 0em var(--_o2-size) var(--_o2), 0em 0em var(--_o2-size) var(--_o2),
-          0em 0em var(--_o2-size) var(--_o2), 0em 0em var(--_o1-size) var(--_o1), 0em 0em var(--_o1-size) var(--_o1),
-          0em 0em var(--_o1-size) var(--_o1), 0em 0em var(--_o1-size) var(--_o1);
+        text-shadow:
+          0em 0em 0.04em var(--_bloom),
+          0em 0em 0.04em var(--_bloom),
+          0em 0em var(--_o3-size) var(--_o3),
+          0em 0em var(--_o3-size) var(--_o3),
+          0em 0em var(--_o3-size) var(--_o3),
+          0em 0em var(--_o3-size) var(--_o3),
+          0em 0em var(--_o2-size) var(--_o2),
+          0em 0em var(--_o2-size) var(--_o2),
+          0em 0em var(--_o2-size) var(--_o2),
+          0em 0em var(--_o2-size) var(--_o2),
+          0em 0em var(--_o1-size) var(--_o1),
+          0em 0em var(--_o1-size) var(--_o1),
+          0em 0em var(--_o1-size) var(--_o1),
+          0em 0em var(--_o1-size) var(--_o1);
       }
     }
   }
@@ -926,10 +1073,17 @@ onBeforeUnmount(() => {
   translate: 0 -7em;
   border-radius: 1000px;
   box-shadow:
-    /* light on */ 0em 0em 1em -0.2em var(--m1), 0em 0em 2em -0.4em var(--m2), 0em 0em 3em -0.4em var(--m2),
-    inset 0em 0em 0.4em 0.2em var(--m3), inset 0em 0em 0.6em 0.4em var(--m2), inset 0em 0em 1em 0.7em var(--m1),
-    inset 0em 0em 3em 0em var(--m2), inset 0em 0em 5em 1em var(--m3),
-    /* -------- */ inset -0.1em 0.1em 0.1em 0em var(--mw1), inset 0 0 1em 0.1em var(--mw1);
+    /* light on */
+    0em 0em 1em -0.2em var(--m1),
+    0em 0em 2em -0.4em var(--m2),
+    0em 0em 3em -0.4em var(--m2),
+    inset 0em 0em 0.4em 0.2em var(--m3),
+    inset 0em 0em 0.6em 0.4em var(--m2),
+    inset 0em 0em 1em 0.7em var(--m1),
+    inset 0em 0em 3em 0em var(--m2),
+    inset 0em 0em 5em 1em var(--m3),
+    /* -------- */ inset -0.1em 0.1em 0.1em 0em var(--mw1),
+    inset 0 0 1em 0.1em var(--mw1);
 
   &::before {
     content: '';
@@ -974,7 +1128,8 @@ onBeforeUnmount(() => {
   --_hex-cl1: #040909;
   --_hex-cl2: var(--_o1);
   --_hex-size: 2.18em;
-  background: radial-gradient(circle farthest-side at 0% 50%, var(--_hex-cl1) 23.5%, rgba(240, 166, 17, 0) 0)
+  background:
+    radial-gradient(circle farthest-side at 0% 50%, var(--_hex-cl1) 23.5%, rgba(240, 166, 17, 0) 0)
       calc(1.06 * var(--_hex-size)) calc(1.5 * var(--_hex-size)),
     radial-gradient(circle farthest-side at 0% 50%, var(--_hex-cl2) 24%, rgba(240, 166, 17, 0) 0)
       calc(0.94 * var(--_hex-size)) calc(1.5 * var(--_hex-size)),
@@ -1047,8 +1202,11 @@ onBeforeUnmount(() => {
     right: 0;
     margin: auto;
     border-radius: 80% / 40%;
-    box-shadow: inset 0em -0.1em 1.2em -0.4em var(--mw1), /* light on */ inset 0em 3em 2.8em -2.5em var(--m3),
-      inset 0em 3em 3.9em -2.3em var(--m2), inset 0em 3em 4em -2em var(--m1) /* -------- */;
+    box-shadow:
+      inset 0em -0.1em 1.2em -0.4em var(--mw1),
+      /* light on */ inset 0em 3em 2.8em -2.5em var(--m3),
+      inset 0em 3em 3.9em -2.3em var(--m2),
+      inset 0em 3em 4em -2em var(--m1) /* -------- */;
 
     &::before {
       display: block;
@@ -1057,8 +1215,11 @@ onBeforeUnmount(() => {
       height: 42%;
       background: #040909;
       border-radius: 50%;
-      box-shadow: inset 0em -0.1em 1.2em -0.4em var(--mw1), /* light on */ inset 0em 0em 1.8em -0.5em var(--m3),
-        inset 0em 0em 1.9em -0.3em var(--m2), inset 0em 0em 2em -0em var(--m1) /* -------- */;
+      box-shadow:
+        inset 0em -0.1em 1.2em -0.4em var(--mw1),
+        /* light on */ inset 0em 0em 1.8em -0.5em var(--m3),
+        inset 0em 0em 1.9em -0.3em var(--m2),
+        inset 0em 0em 2em -0em var(--m1) /* -------- */;
     }
   }
 
@@ -1072,8 +1233,11 @@ onBeforeUnmount(() => {
     bottom: 34%;
     background-color: #040909;
     border-radius: 20% 20% 100% 100%;
-    box-shadow: inset 0em 0em 1.2em -0.2em var(--mw1), /* light on */ inset 0em 0.3em 1.2em 0em var(--m1),
-      inset 0em 0.3em 1.2em 0.3em var(--m2), inset 0em 0.3em 1.2em 0.6em var(--m3) /* -------- */;
+    box-shadow:
+      inset 0em 0em 1.2em -0.2em var(--mw1),
+      /* light on */ inset 0em 0.3em 1.2em 0em var(--m1),
+      inset 0em 0.3em 1.2em 0.3em var(--m2),
+      inset 0em 0.3em 1.2em 0.6em var(--m3) /* -------- */;
 
     &::before {
       content: '';
@@ -1087,8 +1251,11 @@ onBeforeUnmount(() => {
       bottom: -158%;
       border-radius: 30% 30% 100% 100%;
       background-color: #040909;
-      box-shadow: inset 0em -0.1em 0.7em -0.2em var(--mw1), /* light on */ inset 0em 0.1em 1em -0.7em var(--m1),
-        inset 0em 0.1em 1em -0.3em var(--m2), inset 0em 0.1em 1em -0em var(--m3) /* -------- */;
+      box-shadow:
+        inset 0em -0.1em 0.7em -0.2em var(--mw1),
+        /* light on */ inset 0em 0.1em 1em -0.7em var(--m1),
+        inset 0em 0.1em 1em -0.3em var(--m2),
+        inset 0em 0.1em 1em -0em var(--m3) /* -------- */;
     }
   }
 }
@@ -1139,8 +1306,11 @@ onBeforeUnmount(() => {
   .left-rod,
   .center-rod,
   .right-rod {
-    box-shadow: inset 0em 0.1em 0.8em -0.2em var(--mw1), /* light on */ inset 0em 0.1em 1em -0.7em var(--m1),
-      inset 0em 0.1em 1em -0.3em var(--m2), inset 0em 0.1em 1em -0em var(--m3) /* -------- */;
+    box-shadow:
+      inset 0em 0.1em 0.8em -0.2em var(--mw1),
+      /* light on */ inset 0em 0.1em 1em -0.7em var(--m1),
+      inset 0em 0.1em 1em -0.3em var(--m2),
+      inset 0em 0.1em 1em -0em var(--m3) /* -------- */;
   }
 }
 
@@ -1158,7 +1328,9 @@ onBeforeUnmount(() => {
       translate: 14em -5em;
       position: absolute;
       bottom: 0;
-      box-shadow: inset 0em 0.1em 0.4em 0em var(--mw1), inset 0 0 0 0.5em #040909;
+      box-shadow:
+        inset 0em 0.1em 0.4em 0em var(--mw1),
+        inset 0 0 0 0.5em #040909;
       border-radius: 0% 100% / 50% 100%;
     }
 
@@ -1185,9 +1357,14 @@ onBeforeUnmount(() => {
   z-index: 100;
   cursor: pointer;
   background: var(--_bloom);
-  box-shadow: 0em -0.1em 0.2em 0em var(--_o1), 0em -0.1em 0.2em 0.1em var(--_o2), 0em -0.1em 0.2em 0.2em var(--_o3),
-    0em -0.1em 1em 0.5em var(--_bloom), /* light on */ inset 0em 0em 1em 0em var(--_o3),
-    inset 0em 0em 1em 0.5em var(--_o2), inset 0em 0em 1em 1em var(--_o1) /* -------- */;
+  box-shadow:
+    0em -0.1em 0.2em 0em var(--_o1),
+    0em -0.1em 0.2em 0.1em var(--_o2),
+    0em -0.1em 0.2em 0.2em var(--_o3),
+    0em -0.1em 1em 0.5em var(--_bloom),
+    /* light on */ inset 0em 0em 1em 0em var(--_o3),
+    inset 0em 0em 1em 0.5em var(--_o2),
+    inset 0em 0em 1em 1em var(--_o1) /* -------- */;
   filter: blur(1px);
 }
 
@@ -1242,13 +1419,19 @@ onBeforeUnmount(() => {
 *,
 *:before,
 *:after {
-  transition: box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
   user-select: none;
 }
 
 .clock.off {
   .shadow {
-    box-shadow: 0 0 4em 3em #040909, 0 0 8em 3em var(--_o3), 0 0 10em 4em var(--_o2), 0 0 10em 5em var(--_o1);
+    box-shadow:
+      0 0 4em 3em #040909,
+      0 0 8em 3em var(--_o3),
+      0 0 10em 4em var(--_o2),
+      0 0 10em 5em var(--_o1);
     opacity: 0;
   }
   .hex {
@@ -1263,29 +1446,46 @@ onBeforeUnmount(() => {
   .top-tube,
   .top,
   .topinset {
-    box-shadow: inset -0.2em 1.1em 1.4em -0.4em var(--mw1),
-      /* light off */ inset 0em -1.2em 0.5em -1.1em rgba(0, 0, 0, 0), inset 0em -1.2em 1em -0.8em rgba(0, 0, 0, 0),
+    box-shadow:
+      inset -0.2em 1.1em 1.4em -0.4em var(--mw1),
+      /* light off */ inset 0em -1.2em 0.5em -1.1em rgba(0, 0, 0, 0),
+      inset 0em -1.2em 1em -0.8em rgba(0, 0, 0, 0),
       inset 0em -1.2em 1em -0.2em rgba(0, 0, 0, 0) /* -------- */;
   }
 
   .topinset::before {
-    box-shadow: inset 0 0 0em 0.1em #040909, /* light off */ -0.1em 0.2em 0.7em 0.1em rgba(255, 255, 255, 0.4),
-      inset 0 0 1.3em 0.2em rgba(0, 0, 0, 0), inset 0 0 1.3em 0.4em rgba(0, 0, 0, 0),
-      inset 0 0 1.3em 0.6em rgba(0, 0, 0, 0), inset 0 0 1.3em 2em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset 0 0 0em 0.1em #040909,
+      /* light off */ -0.1em 0.2em 0.7em 0.1em rgba(255, 255, 255, 0.4),
+      inset 0 0 1.3em 0.2em rgba(0, 0, 0, 0),
+      inset 0 0 1.3em 0.4em rgba(0, 0, 0, 0),
+      inset 0 0 1.3em 0.6em rgba(0, 0, 0, 0),
+      inset 0 0 1.3em 2em rgba(0, 0, 0, 0) /* -------- */;
     animation-play-state: paused;
   }
 
   .tube-holders div {
-    box-shadow: inset 0 0 0.1em 0.1em #ffffff5d, /* light off */ inset 0em -1.2em 0.5em -1.1em rgba(0, 0, 0, 0),
-      inset 0em -1.2em 1em -0.8em rgba(0, 0, 0, 0), inset 0em -1.2em 1em -0.2em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset 0 0 0.1em 0.1em #ffffff5d,
+      /* light off */ inset 0em -1.2em 0.5em -1.1em rgba(0, 0, 0, 0),
+      inset 0em -1.2em 1em -0.8em rgba(0, 0, 0, 0),
+      inset 0em -1.2em 1em -0.2em rgba(0, 0, 0, 0) /* -------- */;
   }
 
   .inner-pipe {
-    box-shadow: 0em 104em 16em 20em #040909, /* light off */ 0em 1.2em 1em 0.2em rgba(0, 0, 0, 0),
-      0em 1.2em 1em 0.5em rgba(0, 0, 0, 0), 0em 1.2em 0.5em 1.2em rgba(0, 0, 0, 0),
-      0em 1.2em 1.2em 1.5em rgba(0, 0, 0, 0), 0em 1.2em 2em 2em rgba(0, 0, 0, 0), /* ---- */ 0em 90em 16em 20em #040909,
-      /* nat light */ -1em 1em 2em 3.7em #040909, 0.5em 0em 2em 3.7em #040909, 0em 0em 0em 4.6em var(--mw1),
-      0em 0em 0.5em 5em var(--mw1), /* --------- */ 0em 0em 0em 20em #040909;
+    box-shadow:
+      0em 104em 16em 20em #040909,
+      /* light off */ 0em 1.2em 1em 0.2em rgba(0, 0, 0, 0),
+      0em 1.2em 1em 0.5em rgba(0, 0, 0, 0),
+      0em 1.2em 0.5em 1.2em rgba(0, 0, 0, 0),
+      0em 1.2em 1.2em 1.5em rgba(0, 0, 0, 0),
+      0em 1.2em 2em 2em rgba(0, 0, 0, 0),
+      /* ---- */ 0em 90em 16em 20em #040909,
+      /* nat light */ -1em 1em 2em 3.7em #040909,
+      0.5em 0em 2em 3.7em #040909,
+      0em 0em 0em 4.6em var(--mw1),
+      0em 0em 0.5em 5em var(--mw1),
+      /* --------- */ 0em 0em 0em 20em #040909;
   }
 
   .small-inner-pipe {
@@ -1293,37 +1493,60 @@ onBeforeUnmount(() => {
     height: 100%;
     scale: 0.92 0.98;
     border-radius: 35% / 10%;
-    box-shadow: 0em -94em 20em 20em #040909, 0em 104em 20em 20em #040909,
-      /* light off */ 0em 1em 1em 0.2em rgba(0, 0, 0, 0), 0em 1em 1em 0.5em rgba(0, 0, 0, 0),
-      0em 1em 0.5em 1.2em rgba(0, 0, 0, 0), 0em 1em 1.2em 1.5em rgba(0, 0, 0, 0), 0em 1em 2em 2em rgba(0, 0, 0, 0),
-      /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1), 0em 90em 16em 20em #040909,
-      -1em 1em 2em 2em #040909, 0.5em 0em 2em 2em #040909, 0em 0em 0em 4.6em var(--mw1), 0em 0em 1.5em 5em var(--mw1),
+    box-shadow:
+      0em -94em 20em 20em #040909,
+      0em 104em 20em 20em #040909,
+      /* light off */ 0em 1em 1em 0.2em rgba(0, 0, 0, 0),
+      0em 1em 1em 0.5em rgba(0, 0, 0, 0),
+      0em 1em 0.5em 1.2em rgba(0, 0, 0, 0),
+      0em 1em 1.2em 1.5em rgba(0, 0, 0, 0),
+      0em 1em 2em 2em rgba(0, 0, 0, 0),
+      /* ---- */ /* nat light */ -0.2em 0.5em 0.8em -0.2em var(--mw1),
+      0em 90em 16em 20em #040909,
+      -1em 1em 2em 2em #040909,
+      0.5em 0em 2em 2em #040909,
+      0em 0em 0em 4.6em var(--mw1),
+      0em 0em 1.5em 5em var(--mw1),
       /* --------- */ 0em 0em 0em 20em #040909;
   }
 
   .bottom-left {
-    box-shadow: inset -0.4em -0.1em 1em -0.4em var(--mw1), /* light off */ inset -3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
-      inset -3em 0em 1.9em -1.3em rgba(0, 0, 0, 0), inset -3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset -0.4em -0.1em 1em -0.4em var(--mw1),
+      /* light off */ inset -3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
+      inset -3em 0em 1.9em -1.3em rgba(0, 0, 0, 0),
+      inset -3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
 
     &::before {
-      box-shadow: inset -0.4em 0em 1em -0.3em var(--mw1), /* light off */ inset -3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
-        inset -3em 0em 1.9em -1.3em rgba(0, 0, 0, 0), inset -3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
+      box-shadow:
+        inset -0.4em 0em 1em -0.3em var(--mw1),
+        /* light off */ inset -3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
+        inset -3em 0em 1.9em -1.3em rgba(0, 0, 0, 0),
+        inset -3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
     }
   }
 
   .bottom-right {
-    box-shadow: inset -0.4em -0.1em 1em -0.4em var(--mw1), /* light off */ inset 3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
-      inset 3em 0em 1.9em -1.3em rgba(0, 0, 0, 0), inset 3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset -0.4em -0.1em 1em -0.4em var(--mw1),
+      /* light off */ inset 3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
+      inset 3em 0em 1.9em -1.3em rgba(0, 0, 0, 0),
+      inset 3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
 
     &::before {
-      box-shadow: inset -0.4em 0em 1em -0.3em var(--mw1), /* light off */ inset 3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
-        inset 3em 0em 1.9em -1.3em rgba(0, 0, 0, 0), inset 3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
+      box-shadow:
+        inset -0.4em 0em 1em -0.3em var(--mw1),
+        /* light off */ inset 3em 0em 1.8em -1.5em rgba(0, 0, 0, 0),
+        inset 3em 0em 1.9em -1.3em rgba(0, 0, 0, 0),
+        inset 3em 0em 2em -1em rgba(0, 0, 0, 0) /* -------- */;
     }
   }
 
   .left div:nth-child(1) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
-      /* light off */ inset -1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0), inset -1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0),
+    box-shadow:
+      inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset -1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0),
+      inset -1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0),
       inset -1em -0.5em 1em -0.3em rgba(0, 0, 0, 0);
     /* -------- */
   }
@@ -1334,48 +1557,70 @@ onBeforeUnmount(() => {
   .right div:nth-child(1)::before,
   .right div:nth-child(2)::before,
   .right div:nth-child(3)::before {
-    box-shadow: inset 0em 0.3em 0.6em -0.3em var(--mw1), /* light off */ inset 1em -0.5em 0.3em -0.5em rgba(0, 0, 0, 0),
-      inset 1em -0.5em 0.4em -0.3em rgba(0, 0, 0, 0), inset 1em -0.5em 0.6em -0.2em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset 0em 0.3em 0.6em -0.3em var(--mw1),
+      /* light off */ inset 1em -0.5em 0.3em -0.5em rgba(0, 0, 0, 0),
+      inset 1em -0.5em 0.4em -0.3em rgba(0, 0, 0, 0),
+      inset 1em -0.5em 0.6em -0.2em rgba(0, 0, 0, 0) /* -------- */;
   }
 
   .left div:nth-child(2) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light off */ inset -1em 0em 0.8em -0.6em rgba(0, 0, 0, 0),
-      inset -1em 0em 0.9em 0em rgba(0, 0, 0, 0), inset -1em 0em 1em 0.1em rgba(0, 0, 0, 0);
+    box-shadow:
+      inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset -1em 0em 0.8em -0.6em rgba(0, 0, 0, 0),
+      inset -1em 0em 0.9em 0em rgba(0, 0, 0, 0),
+      inset -1em 0em 1em 0.1em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
   .left div:nth-child(3) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
-      /* light off */ inset -1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0), inset -1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0),
+    box-shadow:
+      inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset -1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0),
+      inset -1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0),
       inset -1em 0.3em 1em 0em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
   .right div:nth-child(1) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
-      /* light off */ inset 1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0), inset 1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0),
+    box-shadow:
+      inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset 1em -0.5em 0.8em -0.8em rgba(0, 0, 0, 0),
+      inset 1em -0.5em 0.9em -0.5em rgba(0, 0, 0, 0),
       inset 1em -0.5em 1em -0.3em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
   .right div:nth-child(2) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1), /* light off */ inset 1em 0em 0.8em -0.6em rgba(0, 0, 0, 0),
-      inset 1em 0em 0.9em 0em rgba(0, 0, 0, 0), inset 1em 0em 1em 0.1em rgba(0, 0, 0, 0);
+    box-shadow:
+      inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset 1em 0em 0.8em -0.6em rgba(0, 0, 0, 0),
+      inset 1em 0em 0.9em 0em rgba(0, 0, 0, 0),
+      inset 1em 0em 1em 0.1em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
   .right div:nth-child(3) {
-    box-shadow: inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
-      /* light off */ inset 1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0), inset 1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0),
+    box-shadow:
+      inset -0.1em 0.4em 0.6em -0.2em var(--mw1),
+      /* light off */ inset 1em 0.3em 0.8em -0.5em rgba(0, 0, 0, 0),
+      inset 1em 0.3em 0.9em -0.3em rgba(0, 0, 0, 0),
       inset 1em 0.3em 1em 0em rgba(0, 0, 0, 0);
     /* -------- */
   }
 
   .base-container .base div::before {
-    box-shadow: 0 2em 10em 0 #000, inset -0.4em 0em 0.8em 0em var(--mw1), inset 0em 0em 0.5em 0.3em #040909,
-      inset 0em 0em 0.5em 0.3em #040909, inset 0em 0em 1em 0em #040909, inset 0em 0em 2em 0em #040909,
-      inset 0em 0em 3em 0em #040909, /* light off */ inset 0em 0em 1em 0em rgba(0, 0, 0, 0),
-      inset 0em 0em 1em 2em rgba(0, 0, 0, 0), inset 1em 0.3em 10em 10em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      0 2em 10em 0 #000,
+      inset -0.4em 0em 0.8em 0em var(--mw1),
+      inset 0em 0em 0.5em 0.3em #040909,
+      inset 0em 0em 0.5em 0.3em #040909,
+      inset 0em 0em 1em 0em #040909,
+      inset 0em 0em 2em 0em #040909,
+      inset 0em 0em 3em 0em #040909,
+      /* light off */ inset 0em 0em 1em 0em rgba(0, 0, 0, 0),
+      inset 0em 0em 1em 2em rgba(0, 0, 0, 0),
+      inset 1em 0.3em 10em 10em rgba(0, 0, 0, 0) /* -------- */;
   }
 
   .display .row .col > div:nth-child(2) {
@@ -1388,49 +1633,77 @@ onBeforeUnmount(() => {
 
   .glass-tube {
     box-shadow:
-      /* light off */ 0em 0em 1em -0.2em rgba(0, 0, 0, 0), 0em 0em 2em -0.4em rgba(0, 0, 0, 0),
-      0em 0em 3em -0.4em rgba(0, 0, 0, 0), inset 0em 0em 0.4em 0.2em rgba(0, 0, 0, 0),
-      inset 0em 0em 0.6em 0.4em rgba(0, 0, 0, 0), inset 0em 0em 1em 0.7em rgba(0, 0, 0, 0),
-      inset 0em 0em 3em 0em rgba(0, 0, 0, 0), inset 0em 0em 5em 1em rgba(0, 0, 0, 0),
-      /* -------- */ inset -0.1em 0.1em 0.1em 0em var(--mw1), inset 0 0 1em 0.1em var(--mw1);
+      /* light off */
+      0em 0em 1em -0.2em rgba(0, 0, 0, 0),
+      0em 0em 2em -0.4em rgba(0, 0, 0, 0),
+      0em 0em 3em -0.4em rgba(0, 0, 0, 0),
+      inset 0em 0em 0.4em 0.2em rgba(0, 0, 0, 0),
+      inset 0em 0em 0.6em 0.4em rgba(0, 0, 0, 0),
+      inset 0em 0em 1em 0.7em rgba(0, 0, 0, 0),
+      inset 0em 0em 3em 0em rgba(0, 0, 0, 0),
+      inset 0em 0em 5em 1em rgba(0, 0, 0, 0),
+      /* -------- */ inset -0.1em 0.1em 0.1em 0em var(--mw1),
+      inset 0 0 1em 0.1em var(--mw1);
   }
 
   .tube-base {
-    box-shadow: inset 0em -0.1em 1.2em -0.4em var(--mw1), /* light off */ inset 0em 3em 2.8em -2.5em rgba(0, 0, 0, 0),
-      inset 0em 3em 3.9em -2.3em rgba(0, 0, 0, 0), inset 0em 3em 4em -2em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset 0em -0.1em 1.2em -0.4em var(--mw1),
+      /* light off */ inset 0em 3em 2.8em -2.5em rgba(0, 0, 0, 0),
+      inset 0em 3em 3.9em -2.3em rgba(0, 0, 0, 0),
+      inset 0em 3em 4em -2em rgba(0, 0, 0, 0) /* -------- */;
 
     &::before {
-      box-shadow: inset 0em -0.1em 1.2em -0.4em var(--mw1), /* light off */ inset 0em 0em 1.8em -0.5em rgba(0, 0, 0, 0),
-        inset 0em 0em 1.9em -0.3em rgba(0, 0, 0, 0), inset 0em 0em 2em -0em rgba(0, 0, 0, 0) /* -------- */;
+      box-shadow:
+        inset 0em -0.1em 1.2em -0.4em var(--mw1),
+        /* light off */ inset 0em 0em 1.8em -0.5em rgba(0, 0, 0, 0),
+        inset 0em 0em 1.9em -0.3em rgba(0, 0, 0, 0),
+        inset 0em 0em 2em -0em rgba(0, 0, 0, 0) /* -------- */;
     }
   }
 
   .tube-btm {
-    box-shadow: inset 0em 0em 1.2em -0.2em var(--mw1), /* light off */ inset 0em 0.3em 1.2em 0em rgba(0, 0, 0, 0),
-      inset 0em 0.3em 1.2em 0.3em rgba(0, 0, 0, 0), inset 0em 0.3em 1.2em 0.6em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset 0em 0em 1.2em -0.2em var(--mw1),
+      /* light off */ inset 0em 0.3em 1.2em 0em rgba(0, 0, 0, 0),
+      inset 0em 0.3em 1.2em 0.3em rgba(0, 0, 0, 0),
+      inset 0em 0.3em 1.2em 0.6em rgba(0, 0, 0, 0) /* -------- */;
 
     &::before {
-      box-shadow: inset 0em -0.1em 0.7em -0.2em var(--mw1), /* light off */ inset 0em 0.1em 1em -0.7em rgba(0, 0, 0, 0),
-        inset 0em 0.1em 1em -0.3em rgba(0, 0, 0, 0), inset 0em 0.1em 1em -0em rgba(0, 0, 0, 0) /* -------- */;
+      box-shadow:
+        inset 0em -0.1em 0.7em -0.2em var(--mw1),
+        /* light off */ inset 0em 0.1em 1em -0.7em rgba(0, 0, 0, 0),
+        inset 0em 0.1em 1em -0.3em rgba(0, 0, 0, 0),
+        inset 0em 0.1em 1em -0em rgba(0, 0, 0, 0) /* -------- */;
     }
   }
 
   .rods .left-rod,
   .rods .center-rod,
   .rods .right-rod {
-    box-shadow: inset 0em 0.1em 0.8em -0.2em var(--mw1), /* light off */ inset 0em 0.1em 1em -0.7em rgba(0, 0, 0, 0),
-      inset 0em 0.1em 1em -0.3em rgba(0, 0, 0, 0), inset 0em 0.1em 1em -0em rgba(0, 0, 0, 0) /* -------- */;
+    box-shadow:
+      inset 0em 0.1em 0.8em -0.2em var(--mw1),
+      /* light off */ inset 0em 0.1em 1em -0.7em rgba(0, 0, 0, 0),
+      inset 0em 0.1em 1em -0.3em rgba(0, 0, 0, 0),
+      inset 0em 0.1em 1em -0em rgba(0, 0, 0, 0) /* -------- */;
   }
 
   .wires div:nth-child(1),
   .wires div:nth-child(2) {
-    box-shadow: inset 0em 0.1em 0.4em -0.1em var(--mw1), inset 0 0 0 0.5em #040909;
+    box-shadow:
+      inset 0em 0.1em 0.4em -0.1em var(--mw1),
+      inset 0 0 0 0.5em #040909;
   }
 
   .button {
     background: #8d8d8d;
-    box-shadow: 0em -0.1em 0.2em 0em #040909, 0em -0.1em 0.2em 0.1em #040909, 0em 0em 1em 0.5em var(--_bloom),
-      0em -0.1em 1em 0.5em #040909, /* light off */ inset 0em 0em 1em 0em var(--mw1), inset 0em 0em 1em 0.5em var(--mw1),
+    box-shadow:
+      0em -0.1em 0.2em 0em #040909,
+      0em -0.1em 0.2em 0.1em #040909,
+      0em 0em 1em 0.5em var(--_bloom),
+      0em -0.1em 1em 0.5em #040909,
+      /* light off */ inset 0em 0em 1em 0em var(--mw1),
+      inset 0em 0em 1em 0.5em var(--mw1),
       inset 0em 0em 1em 1em var(--mw1) /* -------- */;
     filter: blur(0.7px);
     animation: 5s flicker linear infinite;

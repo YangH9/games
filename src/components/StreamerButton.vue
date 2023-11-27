@@ -34,14 +34,20 @@
     left: 0;
     border-top: 2px solid transparent;
     border-right: 2px solid transparent;
-    transition: border-color 0s ease-in 0.8s, width 0.2s ease-in 0.6s, height 0.2s ease-in 0.4s;
+    transition:
+      border-color 0s ease-in 0.8s,
+      width 0.2s ease-in 0.6s,
+      height 0.2s ease-in 0.4s;
   }
   &::after {
     right: 0;
     bottom: 0;
     border-bottom: 2px solid transparent;
     border-left: 2px solid transparent;
-    transition: border-color 0s ease-in 0.4s, width 0.2s ease-in 0.2s, height 0.2s ease-in;
+    transition:
+      border-color 0s ease-in 0.4s,
+      width 0.2s ease-in 0.2s,
+      height 0.2s ease-in;
   }
   &:hover::before,
   &:hover::after {
@@ -50,10 +56,15 @@
     border-color: #0af;
   }
   &:hover::before {
-    transition: width 0.2s ease-out, height 0.2s ease-out 0.2s;
+    transition:
+      width 0.2s ease-out,
+      height 0.2s ease-out 0.2s;
   }
   &:hover::after {
-    transition: border-color 0s ease-out 0.4s, width 0.2s ease-out 0.4s, height 0.2s ease-out 0.6s;
+    transition:
+      border-color 0s ease-out 0.4s,
+      width 0.2s ease-out 0.4s,
+      height 0.2s ease-out 0.6s;
   }
 }
 </style>

@@ -19,11 +19,10 @@
 
 <script setup lang="jsx">
 import { computed, ref } from 'vue'
-import { ElMessageBox } from 'element-plus'
+import { ElMessageBox, ElCheckbox, ElCheckboxGroup, ElDivider, ElTable, ElTableColumn, ElButton } from 'element-plus'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { export2Img, export2Pdf } from '@/utils/export'
 import '@/utils/grhtml5-6.8-min.js'
-import { CloneDeep } from '@/utils/lodash'
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'
 
@@ -68,10 +67,10 @@ const columnObject = {
 }
 
 const defaultColumn = [
-  { prop: 'matchNumStr', label: '编号', group: 0, width: 100, disabled: true, fixed: 'left' },
-  { prop: 'matchDate', label: '时间', group: 0, width: 120, disabled: true, fixed: 'left' },
+  { prop: 'matchNumStr', label: '编号', group: 0, minWidth: 100, disabled: true, fixed: 'left' },
+  { prop: 'matchDate', label: '时间', group: 0, minWidth: 120, disabled: true, fixed: 'left' },
   ...Object.entries(columnObject)
-    .map(([key, value]) => Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, width: 85 })))
+    .map(([key, value]) => Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, minWidth: 85 })))
     .flat(1)
 ]
 
@@ -108,9 +107,9 @@ const init = async () => {
         }
         i.oddsList.forEach((j) => {
           if (['HAD', 'HHAD'].includes(j.poolCode)) {
-            obj[`${j.poolCode}a`] = { value: j.a, key: `${j.poolCode}a`, checked: false }
-            obj[`${j.poolCode}d`] = { value: j.d, key: `${j.poolCode}d`, checked: false }
-            obj[`${j.poolCode}h`] = { value: j.h, key: `${j.poolCode}h`, checked: false }
+            obj[`${j.poolCode}a`] = { value: j.a, prop: `${j.poolCode}a`, checked: false }
+            obj[`${j.poolCode}d`] = { value: j.d, prop: `${j.poolCode}d`, checked: false }
+            obj[`${j.poolCode}h`] = { value: j.h, prop: `${j.poolCode}h`, checked: false }
           }
         })
         // 按matchId查询数据
@@ -127,7 +126,7 @@ const init = async () => {
             { updateDate: '1970', updateTime: '0:0' }
           )
           Object.keys(detail).forEach((key) => {
-            obj[key] = { value: detail[key], key, checked: false }
+            obj[key] = { value: detail[key], prop: key, checked: false }
           })
         })
         resolve(obj)
@@ -141,12 +140,11 @@ const init = async () => {
       ['matchNumStr', 'matchDate'].includes(column.property) ? (
         row[column.property]
       ) : row[column.property] ? (
-        <el-checkbox v-model={row[column.property].checked}>{row[column.property].value}</el-checkbox>
+        <ElCheckbox v-model={row[column.property].checked}>{row[column.property].value}</ElCheckbox>
       ) : (
         ''
       )
   }))
-  console.log(columnData.value, '0000000000000000000000000000000000000000')
   tableData.value = data
 }
 init()
@@ -171,27 +169,31 @@ const setColumn = () => {
     })
     return obj
   })
+  console.log(column.value)
   ElMessageBox({
+    customStyle: {
+      maxWidth: '60%'
+    },
     message: () => (
       <>
         <div>
-          <el-checkbox
-            v-model:checked={checkAll.value}
+          <ElCheckbox
+            model-value={checkAll.value}
             indeterminate={indeterminate.value}
             onChange={() =>
               checkAll.value
-                ? (activeList.value = CloneDeep(defaultActiveList))
+                ? (activeList.value = JSON.parse(JSON.stringify(defaultActiveList)))
                 : (activeList.value = column.value.filter((i) => i.active).map((i) => i.value))
             }
           >
             全选
-          </el-checkbox>
+          </ElCheckbox>
           {Object.keys(columnObject).map((key) => (
-            <el-checkbox
-              v-model:checked={groupOption.value[key].checkAll}
+            <ElCheckbox
+              model-value={groupOption.value[key].checkAll}
               indeterminate={groupOption.value[key].indeterminate}
               onChange={() =>
-                groupOption.value[key].checkAll
+                !groupOption.value[key].checkAll
                   ? (activeList.value = [
                       ...new Set([
                         ...activeList.value,
@@ -204,87 +206,35 @@ const setColumn = () => {
               }
             >
               {key}
-            </el-checkbox>
+            </ElCheckbox>
           ))}
         </div>
-        <el-divider class="my_3" />
-        <el-checkbox-group v-model={activeList.value}>
+        <ElDivider class="my_3" />
+        <ElCheckboxGroup v-model={activeList.value}>
           {column.value.map((item) => (
-            <el-checkbox label={item.value}>{item.label}</el-checkbox>
+            <ElCheckbox label={item.value} disabled={item.disabled}>
+              {item.label}
+            </ElCheckbox>
           ))}
-        </el-checkbox-group>
+        </ElCheckboxGroup>
       </>
     )
   }).then(() => {
     const list = activeList.value
-    columnData.value.forEach((i) => {
-      i.active = list.includes(i.key)
-    })
+    columnData.value.forEach((i) => (i.active = list.includes(i.prop)))
   })
-  // modal.info({
-  //   width: '60%',
-  //   icon: () => <div></div>,
-  //   maskClosable: true,
-  //   content: () => (
-  //     <div>
-  //       <div>
-  //         <a-checkbox
-  //           v-model:checked={checkAll.value}
-  //           indeterminate={indeterminate.value}
-  //           onChange={() =>
-  //             checkAll.value
-  //               ? (activeList.value = CloneDeep(defaultActiveList))
-  //               : (activeList.value = column.value.filter((i) => i.active).map((i) => i.value))
-  //           }
-  //         >
-  //           全选
-  //         </a-checkbox>
-  //         {Object.keys(columnObject).map((key) => (
-  //           <a-checkbox
-  //             v-model:checked={groupOption.value[key].checkAll}
-  //             indeterminate={groupOption.value[key].indeterminate}
-  //             onChange={() =>
-  //               groupOption.value[key].checkAll
-  //                 ? (activeList.value = [
-  //                     ...new Set([
-  //                       ...activeList.value,
-  //                       ...column.value.filter((i) => i.group === key).map((i) => i.prop)
-  //                     ])
-  //                   ])
-  //                 : (activeList.value = activeList.value.filter(
-  //                     (i) => column.value.find((a) => a.prop === i)?.group !== key
-  //                   ))
-  //             }
-  //           >
-  //             {key}
-  //           </a-checkbox>
-  //         ))}
-  //       </div>
-  //       <a-divider class="my_3" />
-  //       <a-checkbox-group v-model:value={activeList.value} options={column.value} />
-  //     </div>
-  //   ),
-  //   okText: '确认',
-  //   onOk: () => {
-  //     const list = activeList.value
-  //     columnData.value.forEach((i) => {
-  //       i.active = list.includes(i.key)
-  //     })
-  //   }
-  // })
 }
 
 const getCheckData = () => {
-  const column = CloneDeep(columnData.value)
+  const column = JSON.parse(JSON.stringify(columnData.value))
   const data = tableData.value
-    .filter((i) => Object.values(i).find((i) => i?.checked && column.find((j) => j.prop === i?.key)?.active))
+    .filter((i) => Object.values(i).find((i) => i?.checked && column.find((j) => j.prop === i?.prop)?.active))
     .map((item) => ({
       matchDate: item.matchDate,
       matchId: item.matchId,
       matchNumStr: item.matchNumStr,
       checkList: column.filter((i) => item[i.prop]?.checked && i?.active).map((i) => item[i.prop])
     }))
-  console.log(data)
   return data
 }
 
@@ -296,22 +246,21 @@ const printData = () => {
 
 const tablePreview = () => {
   const checkData = getCheckData()
-  const checkCol = CloneDeep(columnData.value)
+  const checkCol = JSON.parse(JSON.stringify(columnData.value))
     .filter((i) =>
       checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.prop) || a.checkList.find((b) => b.prop === i.prop))
     )
     .map((i) => ({
       ...i,
-      customRender: ({ record, column }) =>
-        record[column.key] ? record[column.key] : record.checkList.find((i) => i.key === column.key)?.value
+      render: ({ row, column }) =>
+        row[column.property] ? row[column.property] : row.checkList.find((i) => i.prop === column.property)?.value
     }))
-  modal.info({
-    width: '80%',
-    class: 'mymodal',
-    icon: () => <div></div>,
-    footer: null,
-    maskClosable: true,
-    content: () => <MyTable data={checkData} columns={checkCol}></MyTable>
+  console.log(checkData, checkCol)
+  ElMessageBox({
+    customStyle: {
+      maxWidth: '80%'
+    },
+    message: () => <MyTable data={checkData} columns={checkCol}></MyTable>
   })
 }
 
@@ -334,83 +283,74 @@ const printView = () => {
       }
     ]
   }
-  modal.info({
-    class: 'mymodal',
-    icon: () => <div></div>,
-    maskClosable: true,
-    content: () => <div id="report_holder" class="inline-block border_all"></div>,
-    footer: () => (
-      <div class="flex content_end mt_4">
-        <a-button
-          class="ml_4"
-          onClick={() => {
-            const dom = document.querySelector('#report_holder')
-            export2Img(dom)
-            Modal.destroyAll()
-          }}
-        >
-          导出图片
-        </a-button>
-        <a-button
-          class="ml_4"
-          onClick={() => {
-            const dom = document.querySelector('#report_holder')
-            export2Pdf(dom)
-            Modal.destroyAll()
-          }}
-        >
-          导出PDF
-        </a-button>
-        <a-button
-          class="ml_4"
-          type="primary"
-          onClick={() => {
-            const dom = document.querySelector('#report_holder')
-            const css = document.querySelectorAll('[id^="_gridcss"]')
-            const printContentHtml = dom.outerHTML
-            const iframe = document.createElement('iframe')
-            document.body.appendChild(iframe)
-            iframe.contentDocument.write([...css].map((i) => i.outerHTML).join(''))
-            iframe.contentDocument.write('<style media="print">@page{size:auto;margin:0;}</style>')
-            iframe.contentDocument.write(printContentHtml)
-            iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;')
-            iframe.contentDocument.body.setAttribute('style', 'margin:0px')
-            iframe.contentDocument.close()
-            iframe.contentWindow.print()
-            setTimeout(() => {
-              document.body.removeChild(iframe)
+  ElMessageBox({
+    customStyle: {
+      maxWidth: '80%'
+    },
+    center: true,
+    message: () => (
+      <>
+        <div id="report_holder" class="inline-block border_all"></div>
+        <div>
+          <ElButton
+            class="ml_4"
+            onClick={() => {
+              const dom = document.querySelector('#report_holder')
+              export2Img(dom)
               Modal.destroyAll()
-            }, 1000)
-          }}
-        >
-          打印
-        </a-button>
-      </div>
+            }}
+          >
+            导出图片
+          </ElButton>
+          <ElButton
+            class="ml_4"
+            onClick={() => {
+              const dom = document.querySelector('#report_holder')
+              export2Pdf(dom)
+              Modal.destroyAll()
+            }}
+          >
+            导出PDF
+          </ElButton>
+        </div>
+      </>
     )
+  }).then(() => {
+    const dom = document.querySelector('#report_holder')
+    const css = document.querySelectorAll('[id^="_gridcss"]')
+    const printContentHtml = dom.outerHTML
+    const iframe = document.createElement('iframe')
+    document.body.appendChild(iframe)
+    iframe.contentDocument.write([...css].map((i) => i.outerHTML).join(''))
+    iframe.contentDocument.write('<style media="print">@page{size:auto;margin:0;}</style>')
+    iframe.contentDocument.write(printContentHtml)
+    iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;')
+    iframe.contentDocument.body.setAttribute('style', 'margin:0px')
+    iframe.contentDocument.close()
+    iframe.contentWindow.print()
+    setTimeout(() => {
+      document.body.removeChild(iframe)
+      Modal.destroyAll()
+    }, 1000)
   })
   window.rubylong.grhtml5.insertReportViewer('report_holder', reportURL, data).start()
 }
 
-const MyTable = ({ data, columns }) => {
-  console.log(columns)
-  return (
-    <el-table data={data} border stripe>
-      {
-        computed(() =>
-          columns.map((col) => <el-table-column {...col} v-slots={{ default: col.render }}></el-table-column>)
-        ).value
-      }
-    </el-table>
-  )
-}
+const MyTable = ({ data, columns }) => (
+  <ElTable data={data} border stripe>
+    {
+      computed(() =>
+        columns
+          .filter((i) => i.active)
+          .map((col) => <ElTableColumn {...col} v-slots={{ default: col.render }}></ElTableColumn>)
+      ).value
+    }
+  </ElTable>
+)
 </script>
 
 <style lang="scss" scoped>
 .ant-layout-content {
-  text-align: center;
-}
-:global(.mymodal .ant-modal-confirm-content) {
-  width: 100%;
   text-align: center;
 }
 </style>

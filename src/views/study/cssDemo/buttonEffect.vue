@@ -204,7 +204,10 @@
       left: 0;
       border-top: 2px solid transparent;
       border-right: 2px solid transparent;
-      transition: border-color 0s ease-in 0.8s, width 0.2s ease-in 0.6s, height 0.2s ease-in 0.4s;
+      transition:
+        border-color 0s ease-in 0.8s,
+        width 0.2s ease-in 0.6s,
+        height 0.2s ease-in 0.4s;
     }
 
     &::after {
@@ -212,7 +215,10 @@
       bottom: 0;
       border-bottom: 2px solid transparent;
       border-left: 2px solid transparent;
-      transition: border-color 0s ease-in 0.4s, width 0.2s ease-in 0.2s, height 0.2s ease-in;
+      transition:
+        border-color 0s ease-in 0.4s,
+        width 0.2s ease-in 0.2s,
+        height 0.2s ease-in;
     }
 
     &:hover {
@@ -226,11 +232,16 @@
       }
 
       &::before {
-        transition: width 0.2s ease-out, height 0.2s ease-out 0.2s;
+        transition:
+          width 0.2s ease-out,
+          height 0.2s ease-out 0.2s;
       }
 
       &::after {
-        transition: border-color 0s ease-out 0.4s, width 0.2s ease-out 0.4s, height 0.2s ease-out 0.6s;
+        transition:
+          border-color 0s ease-out 0.4s,
+          width 0.2s ease-out 0.4s,
+          height 0.2s ease-out 0.6s;
       }
     }
   }
@@ -238,7 +249,9 @@
   // demo02
   &.demo02 {
     overflow: hidden;
-    transition: border-color 0.3s, background-color 0.3s;
+    transition:
+      border-color 0.3s,
+      background-color 0.3s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 
     &::after {
@@ -260,7 +273,9 @@
 
     &::after,
     span {
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
 
@@ -282,7 +297,9 @@
 
   // demo03
   &.demo03 {
-    transition: border-color 0.4s, color 0.4s;
+    transition:
+      border-color 0.4s,
+      color 0.4s;
 
     &::before {
       content: '';
@@ -294,7 +311,9 @@
       z-index: -1;
       opacity: 0;
       transform: scale3d(0.7, 1, 1);
-      transition: transform 0.4s, opacity 0.4s;
+      transition:
+        transform 0.4s,
+        opacity 0.4s;
       transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
       border-radius: 2px;
       background: #7986cb;
@@ -319,7 +338,9 @@
   // demo04
   &.demo04 {
     overflow: hidden;
-    transition: border-color 0.3s, color 0.3s;
+    transition:
+      border-color 0.3s,
+      color 0.3s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 
     &::before {
@@ -333,7 +354,10 @@
       z-index: -1;
       transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
       transform-origin: 0% 100%;
-      transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s,
+        background-color 0.3s;
     }
 
     &:hover {
@@ -383,7 +407,9 @@
       display: block;
       transform: scale3d(0.2, 0.2, 1);
       opacity: 0;
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
 
@@ -454,7 +480,9 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      transition: transform 0.3s, background-color 0.3s;
+      transition:
+        transform 0.3s,
+        background-color 0.3s;
       transition-timing-function: cubic-bezier(0.25, 0, 0.3, 1);
     }
 
@@ -491,7 +519,9 @@
       right: -4px;
       opacity: 0.2;
       transform: scale3d(0.7, 1, 1);
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
     }
 
     &::after {
@@ -500,7 +530,9 @@
       width: 100%;
       height: 100%;
       transform: scale3d(1.1, 1, 1);
-      transition: transform 0.3s, background-color 0.3s;
+      transition:
+        transform 0.3s,
+        background-color 0.3s;
     }
 
     &::before,
@@ -532,7 +564,9 @@
   &.demo09 {
     background: #7986cb;
     color: #fff;
-    transition: background-color 0.3s, color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
 
     &::before {
       content: '';
@@ -548,7 +582,9 @@
     }
 
     &:hover {
-      transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
+      transition:
+        background-color 0.1s 0.3s,
+        color 0.1s 0.3s;
       color: #eceff1;
       background-color: #3f51b5;
       animation: anim-demo9-1 0.3s forwards;
@@ -599,7 +635,9 @@
       background: #3f51b5;
       transform-origin: 100% 50%;
       transform: scale3d(1, 2, 1);
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.7, 0, 0.9, 1);
     }
 
@@ -659,7 +697,9 @@
     overflow: hidden;
     color: #fff;
     background: #37474f;
-    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    transition:
+      background-color 0.3s ease-in,
+      color 0.3s ease-in;
 
     &::after {
       content: attr(data-text);
@@ -691,7 +731,9 @@
   &.demo13 {
     background: #37474f;
     color: #fff;
-    transition: background-color 0.3s, color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
 
     &::before {
       content: '';
@@ -705,7 +747,9 @@
       border-radius: inherit;
       opacity: 0;
       transform: scale3d(0.6, 0.6, 1);
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
 
@@ -732,7 +776,9 @@
       opacity: 0;
       color: #fff;
       transform: translate3d(0, -10px, 0);
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
 
@@ -744,7 +790,9 @@
       width: 100%;
       height: 100%;
       padding: 1em 2em;
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
 
@@ -947,7 +995,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
 
@@ -1010,7 +1060,9 @@
 
     span {
       display: block;
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-delay: 0.3s;
     }
 
@@ -1191,7 +1243,9 @@
       z-index: -1;
       box-shadow: inset 0 0 0 35px #37474f;
       transform: scale3d(0.9, 0.9, 1);
-      transition: box-shadow 0.3s, transform 0.3s;
+      transition:
+        box-shadow 0.3s,
+        transform 0.3s;
     }
 
     &:hover {
@@ -1229,7 +1283,10 @@
     background: #fff;
     color: #37474f;
     border: 1px solid currentColor;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s,
+      color 0.3s;
 
     span {
       display: inline-block;
@@ -1800,7 +1857,9 @@
       border-radius: 50%;
       background: #402a55;
       transform: translate(-50%, -50%);
-      transition: width 0.4s, height 0.4s;
+      transition:
+        width 0.4s,
+        height 0.4s;
       z-index: -1;
     }
 
@@ -2054,14 +2113,17 @@
 
     &:hover {
       animation: anim-demo43 1s forwards;
-      background: radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 0 0/1.25em 1.25em,
+      background:
+        radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 0 0/1.25em 1.25em,
         radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em 1.25em;
       color: #e4f789;
     }
 
     @keyframes anim-demo43 {
       100% {
-        background-size: 2.375em 2.375em, 0.1em 0.1em;
+        background-size:
+          2.375em 2.375em,
+          0.1em 0.1em;
       }
     }
   }
@@ -2074,19 +2136,26 @@
 
     &:hover {
       animation: anim-demo44 1s ease-in infinite;
-      background: radial-gradient(circle, rgba(249, 135, 155, 0.25) 43%, transparent 50%) 0 0/1em 1em,
+      background:
+        radial-gradient(circle, rgba(249, 135, 155, 0.25) 43%, transparent 50%) 0 0/1em 1em,
         radial-gradient(circle, rgba(249, 135, 155, 0.25) 43%, transparent 50%) 0.5em 0.5em/2em 2em;
       color: #0bdcb7;
     }
 
     @keyframes anim-demo44 {
       50% {
-        background-position: 0.66em 0.66em, -0.33em -0.33em;
+        background-position:
+          0.66em 0.66em,
+          -0.33em -0.33em;
       }
 
       100% {
-        background-size: 2em 2em, 1em 1em;
-        background-position: -1.5em -1.5em, -1em -1em;
+        background-size:
+          2em 2em,
+          1em 1em;
+        background-position:
+          -1.5em -1.5em,
+          -1em -1em;
       }
     }
   }
@@ -2099,7 +2168,8 @@
 
     &:hover {
       animation: anim-demo45 0.35s infinite linear;
-      background: linear-gradient(45deg, #546b00 0.5em, transparent 0.5em) 0 0/1em 1em,
+      background:
+        linear-gradient(45deg, #546b00 0.5em, transparent 0.5em) 0 0/1em 1em,
         linear-gradient(-45deg, #546b00 0.5em, transparent 0.5em) 0 0/1em 1em;
       color: #8769f1;
     }
@@ -2119,7 +2189,8 @@
 
     &:hover {
       animation: anim-demo46 1s linear infinite;
-      background: linear-gradient(135deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) -0.5em 0,
+      background:
+        linear-gradient(135deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) -0.5em 0,
         linear-gradient(225deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) -0.5em 0,
         linear-gradient(315deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) 0 0,
         linear-gradient(45deg, rgba(238, 161, 99, 0.25) 0.25em, transparent 0.25em) 0 0;
@@ -2129,7 +2200,11 @@
 
     @keyframes anim-demo46 {
       100% {
-        background-position: 1em 0, 1em 0, -0.75em 0, -0.75em 0;
+        background-position:
+          1em 0,
+          1em 0,
+          -0.75em 0,
+          -0.75em 0;
       }
     }
   }
@@ -2192,7 +2267,9 @@
       border-left: none;
       opacity: 0;
       transform: translate3d(-2em, -50%, 0) rotate(-45deg);
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
       transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
 
@@ -2217,7 +2294,9 @@
   // demo49
   &.demo49 {
     border: 1px solid currentColor;
-    transition: color 1s, border 1s;
+    transition:
+      color 1s,
+      border 1s;
 
     &::before {
       content: '';
@@ -2244,7 +2323,9 @@
   // demo50
   &.demo50 {
     border: 1px solid currentColor;
-    transition: color 1s, border 1s;
+    transition:
+      color 1s,
+      border 1s;
 
     &::after {
       content: '';
@@ -2289,7 +2370,9 @@
       border-color: #000;
       width: 0.6em;
       height: 0.6em;
-      transition: width 0.3s, height 0.3s;
+      transition:
+        width 0.3s,
+        height 0.3s;
     }
 
     &::before,
@@ -2472,7 +2555,9 @@
       display: inline-block;
       transform: translate3d(0, -2em, 0);
       opacity: 0;
-      transition: transform 0.6s, opacity 0.6s;
+      transition:
+        transform 0.6s,
+        opacity 0.6s;
 
       &:nth-child(even) {
         transform: translate3d(0, 2em, 0);
@@ -2528,7 +2613,9 @@
       background: white;
       background: linear-gradient(45deg, white 45%, #aaaaaa 50%, #cccccc 56%, white 80%);
       box-shadow: 1px -1px 1px rgb(0 0 0 / 40%);
-      transition: width 0.3s, height 0.3s;
+      transition:
+        width 0.3s,
+        height 0.3s;
     }
 
     &:hover::before {

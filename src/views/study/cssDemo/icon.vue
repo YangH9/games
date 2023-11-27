@@ -239,14 +239,19 @@
       right: 15%;
       top: 15%;
       border: 4px solid transparent;
-      box-shadow: inset 0 0 0 2px, 0 0 0 2px;
+      box-shadow:
+        inset 0 0 0 2px,
+        0 0 0 2px;
     }
   }
 
   .icon-hamburger {
     width: 20px;
     height: 2px;
-    box-shadow: inset 0 0 0 32px, 0 -6px, 0 6px;
+    box-shadow:
+      inset 0 0 0 32px,
+      0 -6px,
+      0 6px;
     margin: 16px 7px;
   }
 
@@ -416,7 +421,10 @@
     height: 9px;
     width: 9px;
     border-radius: 50%;
-    box-shadow: inset 0 0 0 32px, 22px -11px 0 0, 22px 11px 0 0;
+    box-shadow:
+      inset 0 0 0 32px,
+      22px -11px 0 0,
+      22px 11px 0 0;
     margin: 12px 24px 13px 1px;
 
     &::before,
@@ -530,7 +538,9 @@
       left: -2px;
       top: 14px;
       transform: rotate(45deg);
-      box-shadow: inset 0 0 0 32px, 10px -6px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        10px -6px 0 0;
     }
 
     &::after {
@@ -562,7 +572,13 @@
       height: 3px;
       left: -8px;
       transform: translateY(-50%);
-      box-shadow: inset 0 0 0 32px, 0 -8px 0 0, 0 8px 0 0, 29px 0 0 0, 29px -8px 0 0, 29px 8px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 -8px 0 0,
+        0 8px 0 0,
+        29px 0 0 0,
+        29px -8px 0 0,
+        29px 8px 0 0;
     }
 
     &::after {
@@ -591,7 +607,9 @@
       height: 16px;
       left: 0;
       top: 4px;
-      box-shadow: inset 0 0 0 32px, 16px 0 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        16px 0 0 0;
     }
 
     &::after {
@@ -601,7 +619,9 @@
       left: -8px;
       top: 17px;
       border-radius: 50%;
-      box-shadow: inset 0 0 0 32px, 16px 0 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        16px 0 0 0;
     }
   }
 
@@ -631,7 +651,10 @@
       transform: translate(-50%, -50%);
       width: 13px;
       height: 2px;
-      box-shadow: inset 0 0 0 32px, 0 -5px 0 0, 0 5px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 -5px 0 0,
+        0 5px 0 0;
     }
   }
 
@@ -695,7 +718,9 @@
 
     &::before {
       border-radius: 50%;
-      box-shadow: 8px 0 0 0, 0 0 0 2px inset;
+      box-shadow:
+        8px 0 0 0,
+        0 0 0 2px inset;
       height: 4px;
       width: 4px;
       left: 7px;
@@ -727,7 +752,9 @@
 
     &::before {
       border-radius: 50%;
-      box-shadow: 8px 0 0 0, 0 0 0 2px inset;
+      box-shadow:
+        8px 0 0 0,
+        0 0 0 2px inset;
       height: 4px;
       width: 4px;
       left: 7px;
@@ -760,7 +787,9 @@
 
     &::before {
       border-radius: 50%;
-      box-shadow: 8px 0 0 0, 0 0 0 2px inset;
+      box-shadow:
+        8px 0 0 0,
+        0 0 0 2px inset;
       height: 4px;
       width: 4px;
       left: 7px;
@@ -842,13 +871,19 @@
       height: 7px;
       border-radius: 2px;
       top: 67%;
-      box-shadow: inset 0 0 0 32px, 10px -10px, -10px -14px;
+      box-shadow:
+        inset 0 0 0 32px,
+        10px -10px,
+        -10px -14px;
     }
 
     &::after {
       width: 2px;
       height: 100%;
-      box-shadow: inset 0 0 0 32px, 10px 0, -10px 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        10px 0,
+        -10px 0;
     }
   }
 
@@ -949,7 +984,9 @@
       transform: translate(-50%, -50%);
       width: 22px;
       height: 22px;
-      box-shadow: 0 0 0 3px, 0 0 0 2px inset;
+      box-shadow:
+        0 0 0 3px,
+        0 0 0 2px inset;
       border-radius: 50%;
       border: 6px solid transparent;
       box-sizing: border-box;
@@ -1038,7 +1075,9 @@
     width: 26px;
     height: 26px;
     border: 5px solid transparent;
-    box-shadow: 0 0 0 2px inset, 0 0 0 2px;
+    box-shadow:
+      0 0 0 2px inset,
+      0 0 0 2px;
     border-radius: 50%;
     margin: 4px;
 
@@ -1049,7 +1088,9 @@
       top: -3px;
       left: -3px;
       transform: rotate(45deg);
-      box-shadow: inset 0 0 0 32px, 21px 0 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        21px 0 0 0;
     }
 
     &::after {
@@ -1059,7 +1100,9 @@
       top: -3px;
       right: -3px;
       transform: rotate(135deg);
-      box-shadow: inset 0 0 0 32px, 21px 0 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        21px 0 0 0;
     }
   }
 
@@ -1072,7 +1115,9 @@
     border-top-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    box-shadow: -9px 0 0 2px inset, 0 0 0 2px inset;
+    box-shadow:
+      -9px 0 0 2px inset,
+      0 0 0 2px inset;
     border-radius: 50% 6px 6px 50%;
     transform: rotate(-45deg);
     margin: 12px -2px 8px -4px;
@@ -1171,7 +1216,9 @@
   .icon-rename {
     width: 26px;
     height: 10px;
-    box-shadow: 0 0 0 1px, 11px 0 0 0 inset;
+    box-shadow:
+      0 0 0 1px,
+      11px 0 0 0 inset;
     margin: 12px 4px;
     border: 2px solid;
     border-color: transparent;
@@ -1241,7 +1288,13 @@
       width: 8px;
       height: 2px;
       top: -6px;
-      box-shadow: inset 0 0 0 32px, -10px 2px 0 0, -6px 2px 0 0, 0 2px 0 0, 6px 2px 0 0, 10px 2px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        -10px 2px 0 0,
+        -6px 2px 0 0,
+        0 2px 0 0,
+        6px 2px 0 0,
+        10px 2px 0 0;
     }
   }
 
@@ -1259,9 +1312,29 @@
       transform: translate(-50%, -50%);
       width: 2px;
       height: 2px;
-      box-shadow: -2px -4px 0, -6px -4px 0, -10px -4px 0, 2px -4px 0, 6px -4px 0, 8px -4px 0, 10px -4px 0, -4px 0 0,
-        -8px 0 0, -10px 0 0, inset 0 0 0 32px, 4px 0 0, 8px 0 0, 10px 0 0, 4px 4px 0, 2px 4px 0, 0 4px 0, -2px 4px 0,
-        -6px 4px 0, -10px 4px 0, 6px 4px 0, 10px 4px 0;
+      box-shadow:
+        -2px -4px 0,
+        -6px -4px 0,
+        -10px -4px 0,
+        2px -4px 0,
+        6px -4px 0,
+        8px -4px 0,
+        10px -4px 0,
+        -4px 0 0,
+        -8px 0 0,
+        -10px 0 0,
+        inset 0 0 0 32px,
+        4px 0 0,
+        8px 0 0,
+        10px 0 0,
+        4px 4px 0,
+        2px 4px 0,
+        0 4px 0,
+        -2px 4px 0,
+        -6px 4px 0,
+        -10px 4px 0,
+        6px 4px 0,
+        10px 4px 0;
     }
   }
 
@@ -1287,14 +1360,18 @@
       border-color: transparent;
       border-width: 1px;
       top: 5px;
-      box-shadow: 0 0 0 1px, 0 0 0 2px inset;
+      box-shadow:
+        0 0 0 1px,
+        0 0 0 2px inset;
     }
 
     &::after {
       width: 1px;
       height: 4px;
       top: 0;
-      box-shadow: inset 0 0 0 32px, 0 13px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 13px 0 0;
     }
   }
 
@@ -1313,7 +1390,9 @@
       left: 1px;
       bottom: -4px;
       border-radius: 5px;
-      box-shadow: inset 0 0 0 32px, 20px 0 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        20px 0 0 0;
     }
   }
 
@@ -1344,7 +1423,16 @@
       width: 2px;
       height: 2px;
       bottom: -4px;
-      box-shadow: inset 0 0 0 32px, 0 2px, 0 4px, -2px 4px, -4px 4px, -6px 4px, 2px 4px, 4px 4px, 6px 4px;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 2px,
+        0 4px,
+        -2px 4px,
+        -4px 4px,
+        -6px 4px,
+        2px 4px,
+        4px 4px,
+        6px 4px;
     }
   }
 
@@ -1382,7 +1470,9 @@
     border-width: 2px 2px 6px;
     border-color: transparent;
     border-radius: 3px;
-    box-shadow: 0 0 0 1px, 0 0 0 1px inset;
+    box-shadow:
+      0 0 0 1px,
+      0 0 0 1px inset;
     margin: 3px 3px 7px;
 
     &::before {
@@ -1414,7 +1504,9 @@
     border-radius: 3px;
     border-width: 5px 1px;
     border-color: transparent;
-    box-shadow: 0 0 0 1px, 0 0 0 1px inset;
+    box-shadow:
+      0 0 0 1px,
+      0 0 0 1px inset;
     margin: 2px 8px 1px 7px;
 
     &::before,
@@ -1457,7 +1549,9 @@
       border-width: 3px 1px 1px 1px;
       border-color: transparent;
       border-radius: 3px 3px 0 0;
-      box-shadow: 0 0 0 1px, 0 0 0 1px inset;
+      box-shadow:
+        0 0 0 1px,
+        0 0 0 1px inset;
     }
   }
 
@@ -1605,7 +1699,12 @@
       left: -5px;
       border-radius: 0 0 10px 10px;
       border-left: none;
-      box-shadow: inset 0 0 0 32px, 8px 0 0, 16px 0 0, 24px 0 0, 32px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        8px 0 0,
+        16px 0 0,
+        24px 0 0,
+        32px 0 0;
     }
 
     &::after {
@@ -1652,14 +1751,26 @@
   .icon-tiles {
     width: 4px;
     height: 4px;
-    box-shadow: 0 -8px 0, -8px -8px 0, 8px -8px 0, 0 0 0 32px inset, -8px 0 0, 8px 0 0, 0 8px 0, -8px 8px 0, 8px 8px 0;
+    box-shadow:
+      0 -8px 0,
+      -8px -8px 0,
+      8px -8px 0,
+      0 0 0 32px inset,
+      -8px 0 0,
+      8px 0 0,
+      0 8px 0,
+      -8px 8px 0,
+      8px 8px 0;
     margin: 15px;
   }
 
   .icon-list {
     width: 4px;
     height: 4px;
-    box-shadow: inset 0 0 0 32px, 0 -8px 0 0, 0 8px 0 0;
+    box-shadow:
+      inset 0 0 0 32px,
+      0 -8px 0 0,
+      0 8px 0 0;
     margin: 15px 26px 15px 4px;
 
     &::before {
@@ -1669,7 +1780,10 @@
       width: 18px;
       height: 4px;
       left: 8px;
-      box-shadow: inset 0 0 0 32px, 0 -8px 0 0, 0 8px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 -8px 0 0,
+        0 8px 0 0;
     }
   }
 
@@ -1789,7 +1903,11 @@
     &::after {
       width: 4px;
       height: 3px;
-      box-shadow: inset 0 0 0 32px, 0 3px, 0 5px, 0 10px;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 3px,
+        0 5px,
+        0 10px;
       top: 6px;
       position: absolute;
       left: 50%;
@@ -1820,7 +1938,10 @@
       width: 4px;
       height: 3px;
       top: -14px;
-      box-shadow: inset 0 0 0 32px, 0 3px, 0 8px;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 3px,
+        0 8px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -1836,7 +1957,10 @@
     &::after {
       position: absolute;
       height: 2px;
-      box-shadow: inset 0 0 0 32px, 0 8px 0 0, 0 16px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 8px 0 0,
+        0 16px 0 0;
       right: 0;
     }
 
@@ -1860,7 +1984,10 @@
     &::after {
       position: absolute;
       height: 2px;
-      box-shadow: inset 0 0 0 32px, 0 8px 0 0, 0 16px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 8px 0 0,
+        0 16px 0 0;
       right: 0;
       left: 50%;
       transform: translateX(-50%);
@@ -1886,7 +2013,10 @@
     &::after {
       position: absolute;
       height: 2px;
-      box-shadow: inset 0 0 0 32px, 0 8px 0 0, 0 16px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 8px 0 0,
+        0 16px 0 0;
       right: 0;
       left: 0;
     }
@@ -1908,7 +2038,11 @@
     border-width: 4px 0 4px 8px;
     border-style: solid;
     border-color: transparent;
-    box-shadow: 0 -2px, 0 2px, inset 0 2px, inset 0 -2px;
+    box-shadow:
+      0 -2px,
+      0 2px,
+      inset 0 2px,
+      inset 0 -2px;
     margin: 9px 7px;
 
     &::before {
@@ -1929,7 +2063,11 @@
     border-width: 4px 0 4px 8px;
     border-style: solid;
     border-color: transparent;
-    box-shadow: 0 -2px, 0 2px, inset 0 2px, inset 0 -2px;
+    box-shadow:
+      0 -2px,
+      0 2px,
+      inset 0 2px,
+      inset 0 -2px;
     margin: 9px 7px;
 
     &::before {
@@ -2064,7 +2202,11 @@
       bottom: 0;
       width: 4px;
       height: 15px;
-      box-shadow: inset 0 -8px 0 0, 6px 0, 12px 7px, 18px 5px;
+      box-shadow:
+        inset 0 -8px 0 0,
+        6px 0,
+        12px 7px,
+        18px 5px;
     }
   }
 
@@ -2349,15 +2491,28 @@
       height: 4px;
       top: 3px;
       left: 3px;
-      box-shadow: inset 0 0 0 32px, 6px 0, 12px 0, 18px 0, 0 6px, 6px 6px, 12px 6px, 18px 6px, 0 12px, 6px 12px,
-        12px 12px, 18px 12px;
+      box-shadow:
+        inset 0 0 0 32px,
+        6px 0,
+        12px 0,
+        18px 0,
+        0 6px,
+        6px 6px,
+        12px 6px,
+        18px 6px,
+        0 12px,
+        6px 12px,
+        12px 12px,
+        18px 12px;
     }
 
     &::after {
       position: absolute;
       width: 4px;
       height: 8px;
-      box-shadow: inset 0 0 0 32px, 16px 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        16px 0;
       border-radius: 4px;
       top: -8px;
       left: 4px;
@@ -2375,7 +2530,9 @@
       width: 10px;
       height: 10px;
       border: 1px solid transparent;
-      box-shadow: inset 0 0 0 1px, 0 0 0 2px;
+      box-shadow:
+        inset 0 0 0 1px,
+        0 0 0 2px;
       border-radius: 50%;
       position: absolute;
       left: 50%;
@@ -2405,7 +2562,11 @@
       top: 0;
       width: 1px;
       height: 100%;
-      box-shadow: inset 0 0 0 32px, 5px 0, 10px 0, 15px 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        5px 0,
+        10px 0,
+        15px 0;
     }
 
     &::after {
@@ -2414,7 +2575,11 @@
       height: 12px;
       left: 3px;
       top: 0;
-      box-shadow: inset 0 0 0 32px, 5px 0, 10px 0, 15px 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        5px 0,
+        10px 0,
+        15px 0;
     }
   }
 
@@ -2428,7 +2593,10 @@
       position: absolute;
       width: 1px;
       height: 4px;
-      box-shadow: inset 0 0 0 32px, 6px 0, 12px 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        6px 0,
+        12px 0;
       left: 5px;
       top: 0;
     }
@@ -2437,7 +2605,15 @@
       position: absolute;
       width: 1px;
       height: 2px;
-      box-shadow: inset 0 0 0 32px, 2px 0, 6px 0, 8px 0, 12px 0, 14px 0, 18px 0, 20px 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        2px 0,
+        6px 0,
+        8px 0,
+        12px 0,
+        14px 0,
+        18px 0,
+        20px 0;
       left: 1px;
       top: 0;
     }
@@ -2493,7 +2669,9 @@
       position: absolute;
       width: 4px;
       height: 2px;
-      box-shadow: inset 0 0 0 32px, 6px 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        6px 0;
     }
   }
 
@@ -2530,14 +2708,19 @@
       width: 17px;
       height: 6px;
       border-radius: 0 0 0 8px;
-      box-shadow: inset 4px -6px, 0 -11px;
+      box-shadow:
+        inset 4px -6px,
+        0 -11px;
     }
 
     &::after {
       position: absolute;
       width: 6px;
       height: 6px;
-      box-shadow: inset 0 0 0 32px, 13px 8px, 13px 19px;
+      box-shadow:
+        inset 0 0 0 32px,
+        13px 8px,
+        13px 19px;
       border-radius: 50%;
       left: -6px;
     }
@@ -2568,14 +2751,21 @@
       border-radius: 1px;
       right: 3px;
       top: 3px;
-      box-shadow: 0 0 0 2px, 1px 1px 0 2px, -5px -1px 0 1px, -10px -1px 0 1px, -16px 1px 0 2px;
+      box-shadow:
+        0 0 0 2px,
+        1px 1px 0 2px,
+        -5px -1px 0 1px,
+        -10px -1px 0 1px,
+        -16px 1px 0 2px;
     }
   }
 
   .icon-linkedIn {
     width: 5px;
     height: 16px;
-    box-shadow: inset 0 0 0 32px, 8px 0;
+    box-shadow:
+      inset 0 0 0 32px,
+      8px 0;
     margin: 12px 24px 6px 5px;
 
     &::before {
@@ -2619,12 +2809,20 @@
 
     &::before {
       left: 4px;
-      box-shadow: 0 0 0 1px, 0 -10px 0 6px, 0 10px 0 6px, -4px 0 0 3px;
+      box-shadow:
+        0 0 0 1px,
+        0 -10px 0 6px,
+        0 10px 0 6px,
+        -4px 0 0 3px;
     }
 
     &::after {
       right: 4px;
-      box-shadow: 0 0 0 1px, 0 -10px 0 6px, 0 10px 0 6px, 4px 0 0 3px;
+      box-shadow:
+        0 0 0 1px,
+        0 -10px 0 6px,
+        0 10px 0 6px,
+        4px 0 0 3px;
     }
   }
 
@@ -2640,7 +2838,9 @@
       position: absolute;
       width: 12px;
       height: 12px;
-      box-shadow: inset 0 0 0 32px, 12px -12px 0 0;
+      box-shadow:
+        inset 0 0 0 32px,
+        12px -12px 0 0;
       left: 0;
       bottom: 0;
     }
@@ -2649,7 +2849,11 @@
   .icon-codepen {
     width: 2px;
     height: 10px;
-    box-shadow: inset 0 0 0 32px, 0 15px, -11px 7px, 11px 7px;
+    box-shadow:
+      inset 0 0 0 32px,
+      0 15px,
+      -11px 7px,
+      11px 7px;
     margin: 4px 16px 20px;
 
     &::before {
@@ -2659,7 +2863,11 @@
       width: 11px;
       height: 4px;
       transform: skew(0, -35deg) scaleY(0.6);
-      box-shadow: inset 0 0 0 32px, 0 13px, 11px 26px, 12px 39px;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 13px,
+        11px 26px,
+        12px 39px;
     }
 
     &::after {
@@ -2669,7 +2877,11 @@
       width: 11px;
       height: 4px;
       transform: skew(0, 35deg) scaleY(0.6);
-      box-shadow: inset 0 0 0 32px, 0 13px, -11px 26px, -12px 39px;
+      box-shadow:
+        inset 0 0 0 32px,
+        0 13px,
+        -11px 26px,
+        -12px 39px;
     }
   }
 

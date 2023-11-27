@@ -412,7 +412,9 @@ button:disabled,
   position: absolute;
   top: 0;
   left: 0;
-  transition: left 200ms ease-out, transform 500ms;
+  transition:
+    left 200ms ease-out,
+    transform 500ms;
 }
 
 .toggle-switch-control:hover::after {
