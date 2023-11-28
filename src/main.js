@@ -7,11 +7,13 @@ import axios from '@/http'
 import jsonp from '@/http/jsonp'
 import '@/utils'
 import directive from '@/utils/directive'
-import AntDesign from '@/components/AntDesign'
-import ElementPlus from '@/components/ElementPlus'
+import AntDesign from 'ant-design-vue'
+import ElementPlus from 'element-plus'
+import VForm3 from 'vform3-builds'
 
 import 'ant-design-vue/dist/reset.css'
 import 'element-plus/dist/index.css'
+import 'vform3-builds/dist/designer.style.css'
 
 // 默哀的全局灰色
 import '@/assets/gray.scss'
@@ -23,6 +25,7 @@ const app = createApp(App)
 app
   .use(AntDesign)
   .use(ElementPlus)
+  .use(VForm3)
   .use(createPinia())
   .use(router)
   .use(directive)

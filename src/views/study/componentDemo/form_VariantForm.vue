@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="container pb_0">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="vform3-builds" :hoverable="true">
-      vform3-builds
-    </a-card>
+  </div>
+  <div v-calcHeight="0">
+    <v-form-designer class="v-form-designer scroll_y"></v-form-designer>
   </div>
 </template>
 
@@ -15,8 +15,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
 <style lang="scss" scoped>
-.ant-card:deep(.ant-card-body) {
-  overflow-x: hidden;
-  overflow-y: auto;
+.v-form-designer:deep(.main-header) {
+  display: none;
 }
 </style>

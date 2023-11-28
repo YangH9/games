@@ -96,7 +96,7 @@ const studyList = [
       { title: '表格1-ant', href: '/study/componentDemo/table1_ant' },
       { title: '表格1-el', href: '/study/componentDemo/table1_el' },
       { title: '表格2', href: '/study/componentDemo/table2' },
-      { title: '表单1', href: '/study/componentDemo/form1' }
+      { title: 'variant表单', href: '/study/componentDemo/form_VariantForm' }
     ]
   }
 ]

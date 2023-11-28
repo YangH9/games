@@ -357,13 +357,13 @@ export default [
             component: () => import('@/views/study/componentDemo/table2.vue')
           },
           {
-            path: '/study/componentDemo/form1',
-            name: 'form1',
+            path: '/study/componentDemo/form_VariantForm',
+            name: 'form_VariantForm',
             meta: {
               dev: true,
-              title: '表单1'
+              title: 'variant低代码表单'
             },
-            component: () => import('@/views/study/componentDemo/form1.vue')
+            component: () => import('@/views/study/componentDemo/form_VariantForm.vue')
           }
         ]
       }

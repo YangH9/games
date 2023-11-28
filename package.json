@@ -2,7 +2,6 @@
   "name": "yangh9.github.io",
   "version": "1.0.0",
   "main": "main.js",
-  "type": "module",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --mode development",
@@ -28,6 +27,7 @@
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
+    "vform3-builds": "^3.0.10",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },

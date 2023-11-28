@@ -442,27 +442,27 @@ p {
 
 .scroll {
   &_x {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     text-wrap: nowrap;
     flex-wrap: nowrap;
     display: block;
     &.show {
-      overflow-x: scroll;
+      overflow-x: scroll !important;
     }
   }
   &_y {
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     text-wrap: nowrap;
     flex-wrap: nowrap;
     display: block;
     &.show {
-      overflow-y: scroll;
+      overflow-y: scroll !important;
     }
   }
   &_auto {
-    overflow: auto;
+    overflow: auto !important;
   }
 }
 

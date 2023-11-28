@@ -4,10 +4,10 @@
     <a-layout-content>
       <MyTable :data="tableData" :columns="columnData"></MyTable>
       <div class="my_3">
-        <ElButton class="mx_2" @click="setColumn">修改显示列</ElButton>
-        <ElButton class="mx_2" @click="printData">输出数据</ElButton>
-        <ElButton class="mx_2" @click="tablePreview">表格预览</ElButton>
-        <ElButton class="mx_2" @click="printView">导出预览</ElButton>
+        <el-button class="mx_2" @click="setColumn">修改显示列</el-button>
+        <el-button class="mx_2" @click="printData">输出数据</el-button>
+        <el-button class="mx_2" @click="tablePreview">表格预览</el-button>
+        <el-button class="mx_2" @click="printView">导出预览</el-button>
       </div>
       <div class="ant-card my_3">
         <div>选择的数据：</div>
@@ -19,7 +19,7 @@
 
 <script setup lang="jsx">
 import { computed, ref } from 'vue'
-import { ElMessageBox, ElCheckbox, ElCheckboxGroup, ElDivider, ElTable, ElTableColumn, ElButton } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { export2Img, export2Pdf } from '@/utils/export'
 import '@/utils/grhtml5-6.8-min.js'
@@ -140,7 +140,7 @@ const init = async () => {
       ['matchNumStr', 'matchDate'].includes(column.property) ? (
         row[column.property]
       ) : row[column.property] ? (
-        <ElCheckbox v-model={row[column.property].checked}>{row[column.property].value}</ElCheckbox>
+        <el-checkbox v-model={row[column.property].checked}>{row[column.property].value}</el-checkbox>
       ) : (
         ''
       )
@@ -177,7 +177,7 @@ const setColumn = () => {
     message: () => (
       <>
         <div>
-          <ElCheckbox
+          <el-checkbox
             model-value={checkAll.value}
             indeterminate={indeterminate.value}
             onChange={() =>
@@ -187,9 +187,9 @@ const setColumn = () => {
             }
           >
             全选
-          </ElCheckbox>
+          </el-checkbox>
           {Object.keys(columnObject).map((key) => (
-            <ElCheckbox
+            <el-checkbox
               model-value={groupOption.value[key].checkAll}
               indeterminate={groupOption.value[key].indeterminate}
               onChange={() =>
@@ -206,17 +206,17 @@ const setColumn = () => {
               }
             >
               {key}
-            </ElCheckbox>
+            </el-checkbox>
           ))}
         </div>
-        <ElDivider class="my_3" />
-        <ElCheckboxGroup v-model={activeList.value}>
+        <el-divider class="my_3" />
+        <el-checkbox-group v-model={activeList.value}>
           {column.value.map((item) => (
-            <ElCheckbox label={item.value} disabled={item.disabled}>
+            <el-checkbox label={item.value} disabled={item.disabled}>
               {item.label}
-            </ElCheckbox>
+            </el-checkbox>
           ))}
-        </ElCheckboxGroup>
+        </el-checkbox-group>
       </>
     )
   }).then(() => {
@@ -292,7 +292,7 @@ const printView = () => {
       <>
         <div id="report_holder" class="inline-block border_all"></div>
         <div>
-          <ElButton
+          <el-button
             class="ml_4"
             onClick={() => {
               const dom = document.querySelector('#report_holder')
@@ -301,8 +301,8 @@ const printView = () => {
             }}
           >
             导出图片
-          </ElButton>
-          <ElButton
+          </el-button>
+          <el-button
             class="ml_4"
             onClick={() => {
               const dom = document.querySelector('#report_holder')
@@ -311,7 +311,7 @@ const printView = () => {
             }}
           >
             导出PDF
-          </ElButton>
+          </el-button>
         </div>
       </>
     ),
@@ -337,15 +337,15 @@ const printView = () => {
 }
 
 const MyTable = ({ data, columns }) => (
-  <ElTable data={data} border stripe>
+  <el-table data={data} border stripe>
     {
       computed(() =>
         columns
           .filter((i) => i.active)
-          .map((col) => <ElTableColumn {...col} v-slots={{ default: col.render }}></ElTableColumn>)
+          .map((col) => <el-table-column {...col} v-slots={{ default: col.render }}></el-table-column>)
       ).value
     }
-  </ElTable>
+  </el-table>
 )
 </script>
 
