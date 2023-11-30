@@ -360,7 +360,6 @@ export default [
             path: '/study/componentDemo/form_VariantForm',
             name: 'form_VariantForm',
             meta: {
-              dev: true,
               title: 'variant低代码表单'
             },
             component: () => import('@/views/study/componentDemo/form_VariantForm.vue')
