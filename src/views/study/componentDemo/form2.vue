@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
   </div>
   <div v-calcHeight="0">
-    <v-form-designer class="v-form-designer scroll_y"></v-form-designer>
+    <v-form-designer class="form-designer scroll_y"></v-form-designer>
   </div>
 </template>
 
@@ -15,7 +15,33 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
 <style lang="scss" scoped>
-.v-form-designer:deep(.main-header) {
-  display: none;
+.form-designer:deep() {
+  .main-header {
+    display: none;
+  }
+  .el-scrollbar {
+    &.side-scroll-bar {
+      height: calc(100vh - 118px) !important;
+    }
+    &.setting-scrollbar {
+      height: calc(100vh - 172px) !important;
+    }
+    &.container-scroll-bar {
+      height: calc(100vh - 160px) !important;
+    }
+  }
+  .form-widget-container .el-form.full-height-width > .form-widget-list {
+    min-height: calc(100vh - 186px);
+  }
+  .right-toolbar {
+    width: auto !important;
+    .right-toolbar-con {
+      width: auto;
+      button:nth-last-child(1),
+      button:nth-last-child(2) {
+        display: none;
+      }
+    }
+  }
 }
 </style>
