@@ -77,10 +77,38 @@ const columnObject = {
 }
 
 const defaultColumn = [
-  { prop: 'matchNumStr', label: '编号', group: 0, width: 100, unChecked: true, disabled: true, fixed: 'left' },
-  { prop: 'matchDate', label: '时间', group: 0, width: 120, unChecked: true, disabled: true },
+  {
+    prop: 'matchNumStr',
+    label: '编号',
+    group: 0,
+    width: 100,
+    unChecked: true,
+    disabled: true,
+    fixed: 'left',
+    customCell: (record, rowIndex, column) => ({
+      style: { backgroundColor: `#${record.backColor}`, color: '#fff', textAlign: 'center' }
+    })
+  },
+  {
+    prop: 'matchDate',
+    label: '时间',
+    group: 0,
+    width: 120,
+    unChecked: true,
+    disabled: true,
+    fixed: 'left',
+    customCell: (record) => ({ style: { textAlign: 'center' } })
+  },
   ...Object.entries(columnObject)
-    .map(([key, value]) => Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, width: 85 })))
+    .map(([key, value]) =>
+      Object.entries(value).map(([k, v]) => ({
+        prop: k,
+        label: v,
+        group: key,
+        width: 85,
+        customCell: (record) => ({ style: { textAlign: 'center' } })
+      }))
+    )
     .flat(1)
 ]
 
@@ -113,7 +141,8 @@ const init = async () => {
         const obj = {
           matchId: i.matchId,
           matchNumStr: i.matchNumStr,
-          matchDate: i.matchDate
+          matchDate: i.matchDate,
+          backColor: i.backColor
         }
         i.oddsList.forEach((j) => {
           if (['HAD', 'HHAD'].includes(j.poolCode)) {

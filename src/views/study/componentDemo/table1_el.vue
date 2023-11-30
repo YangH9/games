@@ -2,16 +2,10 @@
   <div class="container">
     <Breadcrumb overlayShow />
     <a-layout-content>
-      <MyTable :data="tableData" :columns="columnData"></MyTable>
+      <MyTable :data="tableData" :columns="columnData" :cellStyle="cellStyle"></MyTable>
       <div class="my_3">
         <el-button class="mx_2" @click="setColumn">修改显示列</el-button>
-        <el-button class="mx_2" @click="printData">输出数据</el-button>
-        <el-button class="mx_2" @click="tablePreview">表格预览</el-button>
         <el-button class="mx_2" @click="printView">导出预览</el-button>
-      </div>
-      <div class="ant-card my_3">
-        <div>选择的数据：</div>
-        <div>{{ checkD }}</div>
       </div>
     </a-layout-content>
   </div>
@@ -21,7 +15,6 @@
 import { computed, ref } from 'vue'
 import { ElMessageBox } from 'element-plus'
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { export2Img, export2Pdf } from '@/utils/export'
 import '@/utils/grhtml5-6.8-min.js'
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'
@@ -76,13 +69,19 @@ const defaultColumn = [
 
 const getData = () => {
   return new Promise((resolve, reject) => {
+    // axios.get('url').then((res) => {
+    //   resolve(data1)
+    // })
     setTimeout(() => {
       resolve(data1)
     }, 300)
   })
 }
-const getData1 = () => {
+const getData1 = (dataObj) => {
   return new Promise((resolve, reject) => {
+    // axios.get('url', { params: { dataObj } }).then((res) => {
+    //   resolve(data2)
+    // })
     setTimeout(() => {
       resolve(data2)
     }, 300)
@@ -103,7 +102,8 @@ const init = async () => {
         const obj = {
           matchId: i.matchId,
           matchNumStr: i.matchNumStr,
-          matchDate: i.matchDate
+          matchDate: i.matchDate,
+          backColor: i.backColor
         }
         i.oddsList.forEach((j) => {
           if (['HAD', 'HHAD'].includes(j.poolCode)) {
@@ -115,7 +115,7 @@ const init = async () => {
         // 按matchId查询数据
         const {
           value: { oddsHistory: detailData }
-        } = await getData1(obj.matchId)
+        } = await getData1({ matchId: obj.matchId })
 
         ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
           const detail = detailData[key].reduce(
@@ -225,6 +225,11 @@ const setColumn = () => {
   })
 }
 
+const cellStyle = ({ row, column }) =>
+  column.property === 'matchNumStr'
+    ? { backgroundColor: `#${row.backColor}`, color: '#fff', textAlign: 'center' }
+    : { textAlign: 'center' }
+
 const getCheckData = () => {
   const column = JSON.parse(JSON.stringify(columnData.value))
   const data = tableData.value
@@ -238,32 +243,6 @@ const getCheckData = () => {
   return data
 }
 
-const printData = () => {
-  const data = getCheckData()
-  const test = data.map((item) => `${item.matchNumStr}：${item.checkList.map((i) => i.value).join('+')}`)
-  checkD.value = test.join('，')
-}
-
-const tablePreview = () => {
-  const checkData = getCheckData()
-  const checkCol = JSON.parse(JSON.stringify(columnData.value))
-    .filter((i) =>
-      checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.prop) || a.checkList.find((b) => b.prop === i.prop))
-    )
-    .map((i) => ({
-      ...i,
-      render: ({ row, column }) =>
-        row[column.property] ? row[column.property] : row.checkList.find((i) => i.prop === column.property)?.value
-    }))
-  console.log(checkData, checkCol)
-  ElMessageBox({
-    customStyle: {
-      maxWidth: '80%'
-    },
-    message: () => <MyTable data={checkData} columns={checkCol}></MyTable>
-  })
-}
-
 const printView = () => {
   const checkData = getCheckData()
   const reportURL = './file/table1Grf.grf'
@@ -274,7 +253,8 @@ const printView = () => {
           .map(
             (i) =>
               `<p><font size=3>${i.matchNumStr}</font></p><p><font size=2>${i.checkList
-                .map((i, a) => ((a + 1) % 5 ? i.value : `${i.value}</br>`))
+                .map((i, a) => i.value)
+                // .map((i, a) => ((a + 1) % 5 ? i.value : `${i.value}</br>`))
                 .join('+')}</font></p>`
           )
           .join(''),
@@ -288,33 +268,7 @@ const printView = () => {
       maxWidth: '80%'
     },
     center: true,
-    message: () => (
-      <>
-        <div id="report_holder" class="inline-block border_all"></div>
-        <div>
-          <el-button
-            class="ml_4"
-            onClick={() => {
-              const dom = document.querySelector('#report_holder')
-              export2Img(dom)
-              ElMessageBox.close()
-            }}
-          >
-            导出图片
-          </el-button>
-          <el-button
-            class="ml_4"
-            onClick={() => {
-              const dom = document.querySelector('#report_holder')
-              export2Pdf(dom)
-              ElMessageBox.close()
-            }}
-          >
-            导出PDF
-          </el-button>
-        </div>
-      </>
-    ),
+    message: () => <div id="report_holder" class="inline-block border_all"></div>,
     confirmButtonText: '打印'
   }).then(() => {
     const dom = document.querySelector('#report_holder')
@@ -336,8 +290,8 @@ const printView = () => {
   window.rubylong.grhtml5.insertReportViewer('report_holder', reportURL, data).start()
 }
 
-const MyTable = ({ data, columns }) => (
-  <el-table data={data} border stripe>
+const MyTable = ({ data, columns, cellStyle }) => (
+  <el-table data={data} cellStyle={cellStyle} border stripe>
     {
       computed(() =>
         columns
