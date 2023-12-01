@@ -10,6 +10,8 @@ import directive from '@/utils/directive'
 import AntDesign from 'ant-design-vue'
 import ElementPlus from 'element-plus'
 import VForm3 from 'vform3-builds'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import 'dayjs/locale/zh-cn'
 
 import 'ant-design-vue/dist/reset.css'
 import 'element-plus/dist/index.css'
@@ -20,11 +22,13 @@ import '@/assets/gray.scss'
 import '@/assets/base.scss'
 import '@/assets/main.scss'
 
+dayjs.locale('zh-cn')
+
 const app = createApp(App)
 
 app
   .use(AntDesign)
-  .use(ElementPlus)
+  .use(ElementPlus, { locale: zhCn })
   .use(VForm3)
   .use(createPinia())
   .use(router)
