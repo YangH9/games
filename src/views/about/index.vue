@@ -76,7 +76,7 @@ const startTime = ref(1584864000000)
 const nowTime = ref(Date.now())
 
 const list = [
-  { title: '自制日历订阅', href: 'https://yangh9.github.io/ChinaHolidayCalender/' },
+  { title: '自制日历订阅(节假日、24节气)', href: 'https://yangh9.github.io/ChinaHolidayCalender/' },
   { title: '不会百度么', href: 'https://yangh9.github.io/baidu/' },
   { title: '国庆头像制作', href: 'https://yangh9.github.io/avatar-editor/' },
   { title: '摸摸头', href: 'https://yangh9.github.io/petpet/' },
