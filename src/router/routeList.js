@@ -514,7 +514,6 @@ export default [
             path: '/joy/tool/calendar',
             name: 'calendar',
             meta: {
-              dev: true,
               title: '日历'
             },
             component: () => import('@/views/joy/tool/calendar.vue')
