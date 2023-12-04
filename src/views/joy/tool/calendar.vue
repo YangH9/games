@@ -23,7 +23,6 @@
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { weekText, lunarToSolar, solarToLunar } from '@/utils/calendar'
 
-
 console.log(lunarToSolar(1999, 1, 17))
 console.log(lunarToSolar(1998, 5, 10, true))
 
@@ -45,13 +44,13 @@ const toDayRender = () => {
   return (
     <>
       <h3>
-        公历：{data.cYear}年{data.cMonth}月{data.cDay}日{data.ncWeek}
+        公历：{data.cYear}年 {data.cMonth}月 {data.cDay}日 {data.ncWeek}
       </h3>
       <h3>
-        农历：{data.IMonthCn} {data.IDayCn}
+        农历：{data.lYear}年 {data.IMonthCn} {data.IDayCn}
       </h3>
       <h3>
-        天干地支纪年：{data.gzYear}年 【{data.Animal}年】 {data.gzMonth}月 {data.gzDay}日
+        天干地支纪年：{data.gzYear} {data.Animal}年 {data.gzMonth}月 {data.gzDay}日
       </h3>
       <h3>{data.astro}</h3>
       <table cellspacing="0" class="text_center">
