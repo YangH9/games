@@ -87,7 +87,6 @@ const getData1 = (dataObj) => {
     }, 300)
   })
 }
-const checkD = ref('')
 const columnData = ref([])
 const tableData = ref([])
 
@@ -97,6 +96,7 @@ const init = async () => {
 
   const mapRes = value.matchInfoList
     .flatMap((i) => i.subMatchList)
+    .filter((i) => i.matchStatus === 'Selling')
     .map((i) => {
       return new Promise(async (resolve, reject) => {
         const obj = {
@@ -118,7 +118,7 @@ const init = async () => {
         } = await getData1({ matchId: obj.matchId })
 
         ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
-          const detail = detailData[key].reduce(
+          const detail = detailData[key]?.reduce(
             (total, item) =>
               new Date(`${total.updateDate} ${total.updateTime}`) < new Date(`${item.updateDate} ${item.updateTime}`)
                 ? item

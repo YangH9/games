@@ -525,7 +525,7 @@ export default [
               dev: true,
               title: '音乐播放器'
             },
-            component: () => import('@/views/joy/tool/listen/index.vue')
+            component: () => import('@/views/joy/tool/listen.vue')
           },
           {
             path: '/joy/tool/petpet',
@@ -566,7 +566,7 @@ export default [
             name: 'qrcode',
             meta: {
               dev: true,
-              title: '二维码生成器'
+              title: '链接二维码生成器'
             },
             component: () => import('@/views/joy/tool/qrcode.vue')
           },
