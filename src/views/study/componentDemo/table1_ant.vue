@@ -132,9 +132,11 @@ const tableData = ref([])
 
 const init = async () => {
   // 获取主要数据
-  const { value } = await getData()
+  const {
+    value: { matchInfoList }
+  } = await getData()
 
-  const mapRes = value.matchInfoList
+  const mapRes = matchInfoList
     .flatMap((i) => i.subMatchList)
     .filter((i) => i.matchStatus === 'Selling')
     .map((i) => {
