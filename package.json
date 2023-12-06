@@ -12,7 +12,7 @@
     "pull": "git pull",
     "commit": "git add . & git commit -m [update]自动提交",
     "push": "git push",
-    "pull_push": "git add . & git commit -m [update]自动提交 & git push"
+    "commit_push": "git add . & git commit -m [update]自动提交 & git push"
   },
   "author": "yangh9",
   "license": "MIT",

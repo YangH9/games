@@ -36,6 +36,11 @@ import data2 from './data/data2.json'
 
 const [modal, contextHolder] = Modal.useModal()
 
+const config = {
+  lineSize: 4, // 单行最大数
+  pagesize: 10 // 单页最大数
+}
+
 const columnObject = {
   HAD: { HADh: '列表1', HADd: '列表2', HADa: '列表3' },
   HHAD: { HHADh: '列表4', HHADd: '列表5', HHADa: '列表6' },
@@ -316,13 +321,22 @@ const printView = () => {
     Table: [
       {
         MemoBox3: checkData
-          .map(
-            (i) =>
-              `<p><font size=3>${i.matchNumStr}</font></p><p><font size=2>${i.checkList
-                .map((i, a) => ((a + 1) % 5 ? i.value : `${i.value}</br>`))
-                .join('+')}</font></p>`
-          )
-          .join(''),
+          .map((i) => [
+            i.matchNumStr,
+            ...i.checkList.reduce((total, item, index) => {
+              let list = total
+              index % config.lineSize
+                ? (list[list.length - 1] += `+${item.value}`)
+                : list
+                  ? (list[list.length] = `+${item.value}`)
+                  : (list = [item.value])
+              return list
+            }, '')
+          ])
+          .concat(new Array(config.pagesize).fill('xxx'))
+          .flat()
+          .slice(0, config.pagesize)
+          .join('</br>'),
         MemoBox6: '标题内容',
         MemoBox11: new Date().toFormat('YYYY/MM/DD')
       }

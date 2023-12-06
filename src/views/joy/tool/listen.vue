@@ -20,8 +20,8 @@ const Jsonp = inject('Jsonp')
 // https://yangh9.github.io/public/audio/山河图-凤凰传奇.mp3
 
 const audioObj = new Audio('https://yangh9.github.io/public/audio/山河图-凤凰传奇.mp3')
-audioObj.addEventListener('readyState', (event) => {
-  console.log(event, audioObj)
+audioObj.addEventListener('canplaythrough', (event) => {
+  console.log(event, audioObj.readyState, audioObj)
 })
 
 Jsonp('https://yangh9.github.io/public/audio/fileList.js', 'callback', (res) => {
