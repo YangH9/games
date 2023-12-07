@@ -12,6 +12,7 @@ import ElementPlus from 'element-plus'
 import VForm3 from 'vform3-builds'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import 'dayjs/locale/zh-cn'
+import Icon from '@/components/icon'
 
 import 'ant-design-vue/dist/reset.css'
 import 'element-plus/dist/index.css'
@@ -33,6 +34,7 @@ app
   .use(createPinia())
   .use(router)
   .use(directive)
+  .use(Icon)
   .provide('GetEnv', import.meta.env)
   .provide('Dayjs', dayjs)
   .provide('Jsonp', jsonp)

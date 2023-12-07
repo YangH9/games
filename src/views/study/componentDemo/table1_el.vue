@@ -65,10 +65,12 @@ const columnObject = {
 }
 
 const defaultColumn = [
-  { prop: 'matchNumStr', label: '编号', group: 0, minWidth: 100, disabled: true, fixed: 'left' },
+  { prop: 'matchNumStr', label: '编号', group: 0, minWidth: 100, disabled: true, fixed: 'left', color: true },
   { prop: 'matchDate', label: '时间', group: 0, minWidth: 120, disabled: true, fixed: 'left' },
   ...Object.entries(columnObject)
-    .map(([key, value]) => Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, minWidth: 85 })))
+    .map(([key, value]) =>
+      Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, minWidth: 85, checkbox: true }))
+    )
     .flat(1)
 ]
 
@@ -142,14 +144,13 @@ const init = async () => {
   const data = await Promise.all(mapRes)
   columnData.value = defaultColumn.map((i) => ({
     ...i,
+    align: 'center',
     active: i.active ?? i.disabled ?? true,
     render: ({ row, column }) =>
-      ['matchNumStr', 'matchDate'].includes(column.property) ? (
-        row[column.property]
-      ) : row[column.property] ? (
+      i.checkbox && row[column.property] ? (
         <el-checkbox v-model={row[column.property].checked}>{row[column.property].value}</el-checkbox>
       ) : (
-        ''
+        row[column.property]
       )
   }))
   tableData.value = data
@@ -233,9 +234,7 @@ const setColumn = () => {
 }
 
 const cellStyle = ({ row, column }) =>
-  column.property === 'matchNumStr'
-    ? { backgroundColor: `#${row.backColor}`, color: '#fff', textAlign: 'center' }
-    : { textAlign: 'center' }
+  column.property === 'matchNumStr' && { backgroundColor: `#${row.backColor}`, color: '#fff' }
 
 const getCheckData = () => {
   const column = JSON.parse(JSON.stringify(columnData.value))

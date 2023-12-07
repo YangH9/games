@@ -82,37 +82,11 @@ const columnObject = {
 }
 
 const defaultColumn = [
-  {
-    prop: 'matchNumStr',
-    label: '编号',
-    group: 0,
-    width: 100,
-    unChecked: true,
-    disabled: true,
-    fixed: 'left',
-    customCell: (record, rowIndex, column) => ({
-      style: { backgroundColor: `#${record.backColor}`, color: '#fff', textAlign: 'center' }
-    })
-  },
-  {
-    prop: 'matchDate',
-    label: '时间',
-    group: 0,
-    width: 120,
-    unChecked: true,
-    disabled: true,
-    fixed: 'left',
-    customCell: (record) => ({ style: { textAlign: 'center' } })
-  },
+  { prop: 'matchNumStr', label: '编号', group: 0, width: 100, disabled: true, fixed: 'left', color: true },
+  { prop: 'matchDate', label: '时间', group: 0, width: 120, disabled: true, fixed: 'left' },
   ...Object.entries(columnObject)
     .map(([key, value]) =>
-      Object.entries(value).map(([k, v]) => ({
-        prop: k,
-        label: v,
-        group: key,
-        width: 85,
-        customCell: (record) => ({ style: { textAlign: 'center' } })
-      }))
+      Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, width: 85, checkbox: true }))
     )
     .flat(1)
 ]
@@ -185,14 +159,15 @@ const init = async () => {
     title: i.label,
     key: i.prop,
     dataIndex: i.prop,
+    align: 'center',
     active: i.active ?? i.disabled ?? true,
+    customCell: (record, rowIndex, column) =>
+      column.color && { style: { backgroundColor: `#${record.backColor}`, color: '#fff' } },
     customRender: ({ record, column }) =>
-      column.unChecked ? (
-        record[column.key]
-      ) : record[column.key] ? (
+      column.checkbox && record[column.key] ? (
         <a-checkbox v-model:checked={record[column.key].checked}>{record[column.key].value}</a-checkbox>
       ) : (
-        ''
+        record[column.key]
       )
   }))
   tableData.value = data

@@ -17,6 +17,8 @@
   "author": "yangh9",
   "license": "MIT",
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@element-plus/icons-vue": "^2.3.1",
     "ant-design-vue": "^4.0.7",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
@@ -40,7 +42,6 @@
     "@vue/test-utils": "^2.4.2",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
-    "jsdom": "^23.0.0",
     "less": "^4.2.0",
     "phaser": "^3.70.0",
     "prettier": "^3.0.3",
@@ -49,7 +50,6 @@
     "vite": "^4.4.11",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
-    "vite-plugin-mock": "^3.0.0",
-    "vitest": "^0.34.6"
+    "vite-plugin-mock": "^3.0.0"
   }
 }
