@@ -84,6 +84,7 @@ const columnObject = {
 const defaultColumn = [
   { prop: 'matchNumStr', label: '编号', group: 0, width: 100, disabled: true, fixed: 'left', color: true },
   { prop: 'matchDate', label: '时间', group: 0, width: 120, disabled: true, fixed: 'left' },
+  { prop: 'allName', label: '菜系', group: 0, width: 120 },
   ...Object.entries(columnObject)
     .map(([key, value]) =>
       Object.entries(value).map(([k, v]) => ({ prop: k, label: v, group: key, width: 85, checkbox: true }))
@@ -124,6 +125,8 @@ const init = async () => {
           matchId: i.matchId,
           matchNumStr: i.matchNumStr,
           matchDate: i.matchDate,
+          homeTeamAllName: i.homeTeamAllName,
+          leagueAllName: i.leagueAllName,
           backColor: i.backColor
         }
         i.oddsList.forEach((j) => {
@@ -166,6 +169,8 @@ const init = async () => {
     customRender: ({ record, column }) =>
       column.checkbox && record[column.key] ? (
         <a-checkbox v-model:checked={record[column.key].checked}>{record[column.key].value}</a-checkbox>
+      ) : 'allName' === column.key ? (
+        `${record.homeTeamAllName} ${record.leagueAllName}`
       ) : (
         record[column.key]
       )
