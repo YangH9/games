@@ -273,7 +273,7 @@ const printView = () => {
               return list
             }, '')
           ])
-          .concat(new Array(config.pagesize).fill('xxx'))
+          .concat(Array.from({ length: config.pagesize }, () => 'xxx'))
           .flat()
           .slice(0, config.pagesize)
           .join('</br>'),

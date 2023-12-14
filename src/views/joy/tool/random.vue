@@ -136,10 +136,9 @@ const generate = () => {
       break
     case 'lowercase':
       for (let i = 0; i < quantity; i++) {
-        const randomItem = new Array(caseNum)
-          .fill(1)
-          .map((_) => String.fromCharCode(~~(Math.random() * 25) + 97))
-          .join('')
+        const randomItem = Array.from({ length: caseNum }, (_) =>
+          String.fromCharCode(~~(Math.random() * 25) + 97)
+        ).join('')
         if (unique && array.includes(randomItem)) {
           i--
           continue
@@ -149,10 +148,9 @@ const generate = () => {
       break
     case 'uppercase':
       for (let i = 0; i < quantity; i++) {
-        const randomItem = new Array(caseNum)
-          .fill(1)
-          .map((_) => String.fromCharCode(~~(Math.random() * 25) + 65))
-          .join('')
+        const randomItem = Array.from({ length: caseNum }, (_) =>
+          String.fromCharCode(~~(Math.random() * 25) + 65)
+        ).join('')
         if (unique && array.includes(randomItem)) {
           i--
           continue
@@ -162,10 +160,9 @@ const generate = () => {
       break
     case 'upperAndLower':
       for (let i = 0; i < quantity; i++) {
-        const randomItem = new Array(caseNum)
-          .fill(1)
-          .map((_) => String.fromCharCode(~~(Math.random() * 25) + (Math.random() >= 0.5 ? 65 : 97)))
-          .join('')
+        const randomItem = Array.from({ length: caseNum }, (_) =>
+          String.fromCharCode(~~(Math.random() * 25) + (Math.random() >= 0.5 ? 65 : 97))
+        ).join('')
         if (unique && array.includes(randomItem)) {
           i--
           continue

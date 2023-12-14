@@ -438,6 +438,14 @@ p {
       align-items: flex-end !important;
     }
   }
+  &.gap_ {
+    &1 {
+      gap: 0.25rem;
+    }
+    &2 {
+      gap: 0.5rem;
+    }
+  }
 }
 
 .scroll {

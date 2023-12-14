@@ -12,7 +12,8 @@
 
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { ref, reactive, inject } from 'vue'
+import Sortable from 'sortablejs'
+import { ref, reactive, inject, nextTick } from 'vue'
 
 const Jsonp = inject('Jsonp')
 
@@ -22,8 +23,8 @@ const Jsonp = inject('Jsonp')
 // https://yangh9.github.io/public/audio/mp3/山河图-凤凰传奇.mp3
 
 const option = reactive({
-  now:'',
-  end:'',
+  now: '',
+  end: ''
 })
 
 const audioObj = new Audio('https://yangh9.github.io/public/audio/mp3/山河图-凤凰传奇.mp3')
@@ -35,7 +36,14 @@ const musicList = ref([])
 
 Jsonp('https://yangh9.github.io/public/audio/fileList.js', 'callback', (res) => {
   musicList.value = res.fhcqList
+  nextTick(() => {
+    new Sortable(document.querySelector('.ant-list-items'), {
+      handle: '.handle',
+      draggable: '.ant-list-item'
+    })
+  })
 })
+
 const controlDom = () => (
   <>
     <a-row class="text_center">
@@ -89,7 +97,22 @@ const musicListDom = () => (
     bordered
     size="small"
     renderItem={({ item }) => (
-      <a-list-item v-slots={{ actions: () => <a key="list-loadmore-edit">播放</a> }}>{item.name}</a-list-item>
+      <a-list-item
+        v-slots={{
+          actions: () => (
+            <>
+              <a-button type="link">
+                <ACaretRightOutlined />
+              </a-button>
+              <a-button type="link" class="handle">
+                <AMenuOutlined />
+              </a-button>
+            </>
+          )
+        }}
+      >
+        {item.name}
+      </a-list-item>
     )}
   ></a-list>
 )

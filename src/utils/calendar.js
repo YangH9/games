@@ -258,10 +258,10 @@ const Calendar = {
       return -1
     }
     let _table = Calendar.sTermInfo[y - 1900]
-    let _info = new Array(6).fill(1).map((_, i) => `${+`0x${_table.substring(i * 5, (i + 1) * 5)}`}`)
-    let _calday = new Array(24)
-      .fill(1)
-      .map((_, i) => _info[~~(i / 4)].substring([0, 1, 3, 4][i % 4], [0, 1, 3, 4][i % 4] + 1 + (i % 2)))
+    let _info = Array.from({ length: 6 }, (_, i) => `${+`0x${_table.substring(i * 5, (i + 1) * 5)}`}`)
+    let _calday = Array.from({ length: 24 }, (_, i) =>
+      _info[~~(i / 4)].substring([0, 1, 3, 4][i % 4], [0, 1, 3, 4][i % 4] + 1 + (i % 2))
+    )
     return +_calday[n - 1]
   },
   /**

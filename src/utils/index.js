@@ -16,7 +16,7 @@ if (!Date.prototype.toFormat) {
       }
       const week = ['\u65e5', '\u4e00', '\u4e8c', '\u4e09', '\u56db', '\u4e94', '\u516d']
       if (/(Y+)/.test(pattern)) {
-        pattern = pattern.replace(RegExp.$1, `${this.getFullYear()}`.substr(4 - RegExp.$1.length))
+        pattern = pattern.replace(RegExp.$1, `${this.getFullYear()}`.substring(4 - RegExp.$1.length))
       }
       if (/(E+)/.test(pattern)) {
         pattern = pattern.replace(
@@ -28,7 +28,7 @@ if (!Date.prototype.toFormat) {
         if (new RegExp(`(${item})`).test(pattern)) {
           pattern = pattern.replace(
             RegExp.$1,
-            RegExp.$1.length === 1 ? time[item] : `00${time[item]}`.substr(`${time[item]}`.length)
+            RegExp.$1.length === 1 ? time[item] : `00${time[item]}`.substring(`${time[item]}`.length)
           )
         }
       }

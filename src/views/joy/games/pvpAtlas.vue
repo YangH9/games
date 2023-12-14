@@ -55,9 +55,10 @@
                 @click="
                   previewUrl = [
                     `${imgBaseUrl}heroimg/${item.ename}/${item.ename}.jpg`,
-                    ...new Array(item.skin_name.split('|').length)
-                      .fill(1)
-                      .map((_, i) => `${imgBaseUrl}heroimg/${item.ename}/${item.ename}-bigskin-${i}.jpg`)
+                    ...Array.from(
+                      { length: item.skin_name.split('|').length },
+                      (_, i) => `${imgBaseUrl}heroimg/${item.ename}/${item.ename}-bigskin-${i}.jpg`
+                    )
                   ]
                 "
               />

@@ -27,18 +27,14 @@ import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { CloneDeep } from '@/utils/lodash'
 
-const ramdomStr = () =>
-  new Array(8)
-    .fill(1)
-    .map((_) => String.fromCharCode(~~(Math.random() * 25) + 97))
-    .join('')
+const ramdomStr = () => Array.from({ length: 8 }, (_) => String.fromCharCode(~~(Math.random() * 25) + 97)).join('')
 
-const treeData = new Array(~~(Math.random() * 4) + 1).fill(1).map((_) => {
+const treeData = Array.from({ length: ~~(Math.random() * 4) + 1 }, (_) => {
   const str = ramdomStr()
   return {
     title: str,
     key: str,
-    children: new Array(~~(Math.random() * 6) + 1).fill(1).map((_) => {
+    children: Array.from({ length: ~~(Math.random() * 6) + 1 }, (_) => {
       const str = ramdomStr()
       return {
         title: str,

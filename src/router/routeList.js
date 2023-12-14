@@ -571,6 +571,14 @@ export default [
             component: () => import('@/views/joy/tool/qrcode.vue')
           },
           {
+            path: '/joy/tool/lifeTime',
+            name: 'lifeTime',
+            meta: {
+              title: '人生进度表'
+            },
+            component: () => import('@/views/joy/tool/lifeTime.vue')
+          },
+          {
             path: '/joy/tool/skeuomorphism',
             name: 'Skeuomorphism',
             meta: {

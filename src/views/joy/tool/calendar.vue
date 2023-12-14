@@ -28,7 +28,7 @@ let today = new Date(), // 获取当前日期
   d = today.getDate(), // 获取日期中的日(方便在建立日期表格时高亮显示当天)
   firstday = new Date(y, m, 1), // 获取当月的第一天
   dayOfWeek = firstday.getDay(), // 判断第一天是星期几(返回[0-6]中的一个，0代表星期天，1代表星期一，以此类推)
-  days_per_month = new Array(31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31), // 创建月份数组
+  days_per_month = [31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], // 创建月份数组
   str_nums = Math.ceil((dayOfWeek + days_per_month[m]) / 7), // 确定日期表格所需的行数
   data = solarToLunar(y, m + 1, d)
 
@@ -47,13 +47,13 @@ const toDayRender = () => {
       <h3>{data.astro}</h3>
       <table cellspacing="0" class="text_center">
         <tr>
-          {new Array(7).fill(1).map((_, i) => (
+          {Array.from({ length: 7 }, (_, i) => (
             <th>{weekText[i]}</th>
           ))}
         </tr>
-        {new Array(str_nums).fill(1).map((_, i) => (
+        {Array.from({ length: str_nums }, (_, i) => (
           <tr>
-            {new Array(7).fill(1).map((_, j) => {
+            {Array.from({ length: 7 }, (_, j) => {
               let num = 7 * i + j - dayOfWeek + 1
               return (
                 <td class={num === d ? 'ant-picker-calendar-date-today' : ''}>

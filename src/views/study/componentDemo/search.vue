@@ -27,11 +27,10 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 
 const selectOption1 = reactive({
   fieldNames: { label: 'label', value: 'value', options: 'children' },
-  options: new Array(20).fill(1).map((_, i) => ({
-    label: new Array(8)
-      .fill(1)
-      .map((_) => String.fromCharCode((Math.random() >= 0.5 ? 65 : 97) + ~~(Math.random() * 25)))
-      .join(''),
+  options: Array.from({ length: 20 }, (_, i) => ({
+    label: Array.from({ length: 8 }, (_) =>
+      String.fromCharCode((Math.random() >= 0.5 ? 65 : 97) + ~~(Math.random() * 25))
+    ).join(''),
     value: `value${i}`
   })),
   value: []
