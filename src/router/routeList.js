@@ -264,6 +264,14 @@ export default [
         redirect: '/study',
         children: [
           {
+            path: '/study/other/heart',
+            name: 'heart',
+            meta: {
+              title: '心形图案'
+            },
+            component: () => import('@/views/study/other/heart.vue')
+          },
+          {
             path: '/study/other/loading',
             name: 'loading',
             meta: {

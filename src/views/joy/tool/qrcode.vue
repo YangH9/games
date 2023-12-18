@@ -2,7 +2,6 @@
   <div class="container">
     <Breadcrumb overlayShow />
     <GenerateDom />
-    <OperatorDom />
   </div>
 </template>
 
@@ -15,7 +14,7 @@ const list = {
   event:
     'BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:{name}\nDTSTART:{startdate}\nDTEND:{enddate}\nEND:VEVENT\nEND:VCALENDAR',
   wifi: 'WIFI:S:{name};T:WPA;P:{paddsord};;',
-  url: '',
+  link: '',
   text: '',
   contact: '',
   appStore: '',
@@ -27,13 +26,13 @@ const formData = reactive({
 })
 const typeList = [
   { value: 'email', label: '邮件' },
-  { value: 'email', label: '日程' },
-  { value: 'email', label: 'WiFi' },
-  { value: 'email', label: '链接' },
-  { value: 'email', label: '文本' },
-  { value: 'email', label: '联系人' },
-  { value: 'email', label: 'App' },
-  { value: 'email', label: '短信' }
+  { value: 'event', label: '日程' },
+  { value: 'wifi', label: 'WiFi' },
+  { value: 'link', label: '链接' },
+  { value: 'text', label: '文本' },
+  { value: 'contact', label: '联系人' },
+  { value: 'appStore', label: 'App' },
+  { value: 'sendSms', label: '短信' }
 ]
 
 const GenerateDom = () => (
@@ -53,9 +52,6 @@ const GenerateDom = () => (
     </a-form>
   </a-card>
 )
-
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

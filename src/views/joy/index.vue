@@ -116,9 +116,9 @@ const joyList = [
     title: '工具',
     list: [
       { title: '设备信息', href: '/joy/tool/deviceInfo' },
-      { title: '运营商积分兑换话费', href: '/joy/tool/operatorPointsRedemption' },
       { title: '日历', href: '/joy/tool/calendar' },
       { title: '链接二维码生成器', href: '/joy/tool/qrcode' },
+      { title: '运营商积分兑换话费', href: '/joy/tool/operatorPointsRedemption' },
       { title: '音乐播放器', href: '/joy/tool/listen' },
       { title: '摸头生成器', href: '/joy/tool/petpet' },
       { title: '随机数生成器', href: '/joy/tool/random' },
