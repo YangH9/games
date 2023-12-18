@@ -565,7 +565,6 @@ export default [
             path: '/joy/tool/qrcode',
             name: 'qrcode',
             meta: {
-              dev: true,
               title: '链接二维码生成器'
             },
             component: () => import('@/views/joy/tool/qrcode.vue')

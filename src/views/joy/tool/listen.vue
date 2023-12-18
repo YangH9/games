@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="音乐播放器" :hoverable="true">
-      <!-- <audio controls src="https://yangh9.github.io/public/audio/mp3/山河图-凤凰传奇.mp3"></audio> -->
+      <!-- <audio controls src="https://yangh9.github.io/public/audio/mp3/海底-凤凰传奇.mp3"></audio> -->
       <controlDom></controlDom>
       <a-divider />
       <musicListDom></musicListDom>
@@ -23,13 +23,16 @@ const Jsonp = inject('Jsonp')
 // https://yangh9.github.io/public/audio/mp3/山河图-凤凰传奇.mp3
 
 const option = reactive({
-  now: '',
-  end: ''
+  isPlay: false,
+  playIndex: null,
+  playTime: '',
+  endTime: ''
 })
 
-const audioObj = new Audio('https://yangh9.github.io/public/audio/mp3/山河图-凤凰传奇.mp3')
+const audioObj = new Audio('https://yangh9.github.io/public/audio/mp3/海底-凤凰传奇.mp3')
 audioObj.addEventListener('canplaythrough', (event) => {
   console.log(event, audioObj.readyState, audioObj)
+  audioObj.play()
 })
 
 const musicList = ref([])
@@ -118,4 +121,9 @@ const musicListDom = () => (
 )
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ant-card:deep(.ant-card-body) {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+</style>
