@@ -69,6 +69,16 @@ const OperatorDom = () => (
     </a-space>
     <a-divider class="my_4" />
     <p>手机识别二维码发送短信，等待运营商回信，按提示操作即可</p>
+    <p>或手动编辑短信发送</p>
+    <p>
+      <strong>中国移动</strong>编辑短信<strong>HF</strong>发送至<strong>10658999</strong>
+    </p>
+    <p>
+      <strong>中国联通</strong>编辑短信<strong>JFJF#Q</strong>发送至<strong>10010</strong>
+    </p>
+    <p>
+      <strong>中国电信</strong>编辑短信<strong>1068</strong>发送至<strong>10001</strong>
+    </p>
   </a-card>
 )
 </script>
