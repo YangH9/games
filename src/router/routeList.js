@@ -299,7 +299,6 @@ export default [
             path: '/study/other/pictureInPicture',
             name: 'pictureInPicture',
             meta: {
-              // dev: true,
               title: '画中画'
             },
             component: () => import('@/views/study/other/pictureInPicture.vue')
@@ -568,6 +567,14 @@ export default [
               title: '链接二维码生成器'
             },
             component: () => import('@/views/joy/tool/qrcode.vue')
+          },
+          {
+            path: '/joy/tool/operatorPointsRedemption',
+            name: 'operatorPointsRedemption',
+            meta: {
+              title: '运营商积分兑换话费'
+            },
+            component: () => import('@/views/joy/tool/operatorPointsRedemption.vue')
           },
           {
             path: '/joy/tool/lifeTime',
