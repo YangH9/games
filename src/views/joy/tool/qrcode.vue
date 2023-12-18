@@ -67,7 +67,8 @@ const OperatorDom = () => (
         <a-qrcode value="SMSTO:10001:1068" />
       </a-card>
     </a-space>
-    <a-divider class="my_4">识别二维码发送短信</a-divider>
+    <a-divider class="my_4" />
+    <p>手机识别二维码发送短信，等待运营商回信，按提示操作即可</p>
   </a-card>
 )
 </script>
