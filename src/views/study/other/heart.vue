@@ -16,9 +16,9 @@ const Heart1 = () => (
       <p>
         {Array.from({ length: 3 * 20 }, (_, j) => {
           let a = j * 0.05 - 1.5
-          let b = -(i * 0.1) + 1.5
-          let c = a * a + b * b - 1
-          return c * c * c - a * a * b * b * b <= 0 ? '*' : ' '
+          let b = -i * 0.1 + 1.5
+          let c = a ** 2 + b ** 2 - 1
+          return c ** 3 - a ** 2 * b ** 3 <= 0 ? '*' : ' '
         })}
       </p>
     ))}
@@ -28,7 +28,9 @@ const Heart1 = () => (
 
 <style lang="scss" scoped>
 .pre {
+  display: inline-block;
   line-height: 1em;
   overflow: unset;
+  margin-bottom: 0;
 }
 </style>
