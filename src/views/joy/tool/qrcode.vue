@@ -12,7 +12,7 @@ import { reactive, inject } from 'vue'
 const Dayjs = inject('Dayjs')
 
 const formData = reactive({
-  type: 'contact',
+  type: '',
   emailName: '',
   emailTitle: '',
   emailBody: '',
@@ -418,7 +418,7 @@ const GenerateDom = () => (
     <a-form model={formData} label-col={{ span: 3 }}>
       <a-row gutter={24}>
         <a-col span={24}>
-          <a-form-item label="二维码类型">
+          <a-form-item label="二维码类型" required>
             <a-select v-model:value={formData.type} allowClear placeholder="二维码类型" class="grow">
               {Object.values(typeOption).map((item) => (
                 <a-select-option value={item.value}>{item.label}</a-select-option>
