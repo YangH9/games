@@ -192,11 +192,4 @@ const generate = () => {
 .ant-collapse :deep(.ant-collapse-header) {
   align-items: center;
 }
-:deep(.ant-form-item-control-input-content) {
-  display: flex;
-  align-items: center;
-  .ant-input-number-handler-wrap {
-    z-index: 1;
-  }
-}
 </style>

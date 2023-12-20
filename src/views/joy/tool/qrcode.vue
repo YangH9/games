@@ -12,18 +12,35 @@ import { reactive, inject } from 'vue'
 const Dayjs = inject('Dayjs')
 
 const formData = reactive({
-  type: '',
+  type: 'contact',
   emailName: '',
   emailTitle: '',
   emailBody: '',
   eventName: '',
+  eventLocation: '',
   eventAllDay: false,
   eventTime: [Dayjs(), Dayjs().add(2, 'hour')],
   eventDesc: '',
+  eventValarm: false,
+  eventValarmDate: Dayjs().add(-1, 'day'),
+  eventValarmTime: [1, 'H'],
   wifiName: '',
   wifiPassword: '',
   linkUrl: '',
-  text: ''
+  geographyLatitude: '',
+  geographyLongitude: '',
+  geographyAccuracy: '',
+  text: '',
+  contactSurname: '',
+  contactName: '',
+  contactTel: '',
+  contactEmail: '',
+  contactBirthday: '',
+  contactAdr: '',
+  contactUrl: '',
+  telephone: '',
+  smsName: '',
+  smsBody: ''
 })
 const typeOption = {
   email: {
@@ -76,6 +93,11 @@ const typeOption = {
           </a-form-item>
         </a-col>
         <a-col span={24}>
+          <a-form-item label="位置">
+            <a-input v-model:value={formData.eventLocation} placeholder="位置"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
           <a-form-item label="全天">
             <a-switch v-model:checked={formData.eventAllDay} />
           </a-form-item>
@@ -87,9 +109,6 @@ const typeOption = {
               format={formData.eventAllDay ? 'YYYY-MM-DD' : 'YYYY-MM-DD HH:mm'}
               showTime={formData.eventAllDay ? false : { format: 'HH:mm' }}
               class="w_100"
-              onChange={() => {
-                console.log(formData.eventTime)
-              }}
             ></a-range-picker>
           </a-form-item>
         </a-col>
@@ -98,65 +117,69 @@ const typeOption = {
             <a-textarea v-model:value={formData.eventDesc} placeholder="日程备注"></a-textarea>
           </a-form-item>
         </a-col>
-        {formData.eventName && (
+        <a-col span={24}>
+          <a-form-item label="提醒">
+            <a-switch v-model:checked={formData.eventValarm} />
+          </a-form-item>
+        </a-col>
+        {formData.eventValarm && (
           <a-col span={24}>
-            {/* <a-qrcode
-              value={`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${
-                formData.eventName
-              }\nDTSTART:${formData.eventTime[0].$d.toFormat(
-                formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmmss'
-              )}\nDTEND:${formData.eventTime[0].$d.toFormat(
-                formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmmss'
-              )}\nEND:VEVENT\nEND:VCALENDAR`}
-            /> */}
-            {/* <a-qrcode value="BEGIN:VEVENT\nDTSTART;VALUE=DATE:20241004\nDTEND;VALUE=DATE:20241004\nDTSTAMP:20241004T000001\nUID:20241004T000001_holiday_178@yangh9\nCREATED:20241004T000001\nSUMMARY:『国庆节 假期』 第4天/共7天\nDESCRIPTION:七、国庆节：\nLAST-MODIFIED:20231214T110858\nSTATUS:CONFIRMED\nTRANSP:TRANSPARENT\nSEQUENCE:1\nEND:VEVENT" /> */}
-            <a-qrcode value="BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:qqqqqqqqqqqqqq\nDTSTART:20241012T090000\nDTEND:20241012T180000\nEND:VEVENT\nEND:VCALENDAR" />
-            {/* BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:{formData.eventName}\nDTSTART:{formData.eventStart}
-            \nDTEND:{formData.eventEnd}\nEND:VEVENT\nEND:VCALENDAR */}
+            <a-form-item label="提醒时间">
+              {formData.eventAllDay ? (
+                <>
+                  <a-date-picker
+                    v-model:value={formData.eventValarmDate}
+                    format="YYYY-MM-DD HH:mm"
+                    showTime={{ format: 'HH:mm' }}
+                    disabled-date={(date) => date && date > Dayjs().endOf('day')}
+                    class="w_100"
+                  ></a-date-picker>
+                </>
+              ) : (
+                <a-row gutter={10}>
+                  <a-col span={4}>
+                    <a-input-number v-model:value={formData.eventValarmTime[0]} class="w_100"></a-input-number>
+                  </a-col>
+                  <a-col span={4}>
+                    <a-select v-model:value={formData.eventValarmTime[1]} class="grow">
+                      {[
+                        { value: 'S', label: '秒' },
+                        { value: 'M', label: '分钟' },
+                        { value: 'H', label: '小时' }
+                      ].map((item) => (
+                        <a-select-option value={item.value}>{item.label}</a-select-option>
+                      ))}
+                    </a-select>
+                  </a-col>
+                  <a-col class="flex center">前</a-col>
+                </a-row>
+              )}
+            </a-form-item>
           </a-col>
         )}
-
-        {/*
-BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:{formData.eventName}
-DTSTART:{formData.eventStart}
-DTEND:{formData.eventEnd}
-END:VEVENT
-END:VCALENDAR
-
-BEGIN:VEVENT
-DTSTART;VALUE=DATE:20241004
-DTEND;VALUE=DATE:20241004
-DTSTAMP:20241004T000001
-UID:20241004T000001_holiday_178@yangh9
-CREATED:20241004T000001
-SUMMARY:『国庆节 假期』 第4天/共7天
-DESCRIPTION:七、国庆节：10月1日至7日放假调休，共7天。9月29日（星期日）、10月12日（星期六）上班。\n\n放假通知：https://www.gov.cn/zhengce/content/202310/content_6911527.htm\n\n2020~2025年中国人民共和国节日、纪念日和假日调休、补班日历。更新时间：2023-12-14
-LAST-MODIFIED:20231214T110858
-STATUS:CONFIRMED
-TRANSP:TRANSPARENT
-SEQUENCE:1
-END:VEVENT
-
-BEGIN:VEVENT
-DTSTART:20241012T090000
-DTEND:20241012T180000
-DTSTAMP:20241012T000001
-UID:20241012T000001_compensateday_182@yangh9
-CREATED:20241012T000001
-SUMMARY:『国庆节 补班』 第2天/共2天
-DESCRIPTION:七、国庆节：10月1日至7日放假调休，共7天。9月29日（星期日）、10月12日（星期六）上班。\n\n放假通知：https://www.gov.cn/zhengce/content/202310/content_6911527.htm\n\n2020~2025年中国人民共和国节日、纪念日和假日调休、补班日历。更新时间：2023-12-14
-LAST-MODIFIED:20231214T110858
-STATUS:TENTATIVE
-TRANSP:OPAQUE
-SEQUENCE:1
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-END:VALARM
-END:VEVENT */}
+        {formData.eventName && (
+          <a-col span={24}>
+            <a-space size={20} wrap>
+              <a-qrcode
+                value={`BEGIN:VEVENT\nDTSTART:${formData.eventTime[0].format(
+                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmmss'
+                )}\nDTEND:${formData.eventTime[1].format(
+                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmmss'
+                )}\nSUMMARY:${formData.eventName}\nLOCATION:${formData.eventLocation}\nDESCRIPTION:${
+                  formData.eventDesc
+                }\n${
+                  formData.eventValarm
+                    ? `BEGIN:VALARM\nTRIGGER:${
+                        formData.eventAllDay
+                          ? formData.eventValarmDate.format('YYYYMMDDTHHmmss')
+                          : `-PT${formData.eventValarmTime.join('')}`
+                      }\nACTION:DISPLAY\nEND:VALARM\n`
+                    : ''
+                }END:VEVENT`}
+              />
+            </a-space>
+          </a-col>
+        )}
       </>
     )
   },
@@ -208,6 +231,38 @@ END:VEVENT */}
       </>
     )
   },
+  geography: {
+    value: 'geography',
+    label: '地理坐标',
+    dom: () => (
+      <>
+        <a-col span={24}>
+          <a-form-item label="纬度" required>
+            <a-input v-model:value={formData.geographyLatitude} placeholder="纬度"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="经度" required>
+            <a-input v-model:value={formData.geographyLongitude} placeholder="经度"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="精度">
+            <a-input v-model:value={formData.geographyAccuracy} placeholder="精度"></a-input>
+          </a-form-item>
+        </a-col>
+        {formData.geographyLatitude && formData.geographyLongitude && (
+          <a-col span={24}>
+            <a-space size={20} wrap>
+              <a-qrcode
+                value={`GEO:${formData.geographyLatitude},${formData.geographyLongitude},${formData.geographyAccuracy}`}
+              />
+            </a-space>
+          </a-col>
+        )}
+      </>
+    )
+  },
   text: {
     value: 'text',
     label: '文本',
@@ -230,14 +285,66 @@ END:VEVENT */}
   },
   contact: {
     value: 'contact',
-    label: '联系人',
+    label: '联系名片',
     dom: () => (
       <>
         <a-col span={24}>
-          <a-form-item label="联系人">
-            <a-input v-model:value={formData.eventName} placeholder="联系人"></a-input>
+          <a-form-item label="姓名" required>
+            <a-row gutter={10}>
+              <a-col span={12}>
+                <a-input v-model:value={formData.contactSurname} placeholder="姓"></a-input>
+              </a-col>
+              <a-col span={12}>
+                <a-input v-model:value={formData.contactName} placeholder="名"></a-input>
+              </a-col>
+            </a-row>
           </a-form-item>
         </a-col>
+        <a-col span={24}>
+          <a-form-item label="电话号码" required>
+            <a-input v-model:value={formData.contactTel} placeholder="电话号码"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="电子邮件">
+            <a-input v-model:value={formData.contactEmail} placeholder="电子邮件"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="生日">
+            <a-date-picker
+              v-model:value={formData.contactBirthday}
+              format="YYYY-MM-DD"
+              placeholder="生日"
+              class="w_100"
+            ></a-date-picker>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="地址">
+            <a-input v-model:value={formData.contactAdr} placeholder="地址"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="网站">
+            <a-input v-model:value={formData.contactUrl} placeholder="网站"></a-input>
+          </a-form-item>
+        </a-col>
+        {formData.contactSurname && formData.contactName && formData.contactTel && (
+          <a-col span={24}>
+            <a-space size={20} wrap>
+              <a-qrcode
+                value={`BEGIN:VCARD\nVERSION:3.0\nN:${formData.contactSurname}${formData.contactName}\nTEL:${
+                  formData.contactTel
+                }\n${formData.contactEmail ? `EMAIL:${formData.contactEmail}\n` : ''}${
+                  formData.contactBirthday ? `BDAY:${formData.contactBirthday.format('YYYYMMDD')}\n` : ''
+                }${formData.contactAdr ? `ADR:${formData.contactAdr}\n` : ''}${
+                  formData.contactUrl ? `URL:${formData.contactUrl}\n` : ''
+                }END:VCARD`}
+              />
+            </a-space>
+          </a-col>
+        )}
       </>
     )
   },
@@ -251,6 +358,29 @@ END:VEVENT */}
             <a-input v-model:value={formData.eventName} placeholder="App名称"></a-input>
           </a-form-item>
         </a-col>
+      </>
+    )
+  },
+  telephone: {
+    value: 'telephone',
+    label: '拨打电话',
+    dom: () => (
+      <>
+        <a-col span={24}>
+          <a-form-item label="电话号码" required>
+            <a-input v-model:value={formData.telephone} placeholder="电话号码"></a-input>
+          </a-form-item>
+        </a-col>
+        {formData.telephone && (
+          <a-col span={24}>
+            <a-space size={20} wrap>
+              <a-qrcode value={`TEL:${formData.telephone}`} />
+              <a-button href={`tel:${formData.telephone}`} type="link" target="_blank">
+                点击跳转
+              </a-button>
+            </a-space>
+          </a-col>
+        )}
       </>
     )
   },

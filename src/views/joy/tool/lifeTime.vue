@@ -183,13 +183,6 @@ const MainDom = () => {
   overflow-x: hidden;
   overflow-y: auto;
 }
-:deep(.ant-form-item-control-input-content) {
-  display: flex;
-  align-items: center;
-  .ant-input-number-handler-wrap {
-    z-index: 1;
-  }
-}
 :deep(.square) {
   width: 1rem;
   height: 1rem;

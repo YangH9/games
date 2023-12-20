@@ -129,6 +129,11 @@ div.ant-card {
   }
 }
 
+// number 箭头
+.ant-input-number-handler-wrap {
+  z-index: 1;
+}
+
 section.ant-layout {
   background: transparent;
 }
