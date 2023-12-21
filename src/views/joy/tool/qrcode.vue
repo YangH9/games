@@ -60,7 +60,11 @@ const typeOption = {
         </a-col>
         <a-col span={24}>
           <a-form-item label="邮件内容">
-            <a-textarea v-model:value={formData.emailBody} placeholder="邮件内容"></a-textarea>
+            <a-textarea
+              v-model:value={formData.emailBody}
+              auto-size={{ minRows: 2, maxRows: 5 }}
+              placeholder="邮件内容"
+            ></a-textarea>
           </a-form-item>
         </a-col>
         {formData.emailName && (
@@ -114,7 +118,11 @@ const typeOption = {
         </a-col>
         <a-col span={24}>
           <a-form-item label="日程备注">
-            <a-textarea v-model:value={formData.eventDesc} placeholder="日程备注"></a-textarea>
+            <a-textarea
+              v-model:value={formData.eventDesc}
+              auto-size={{ minRows: 2, maxRows: 5 }}
+              placeholder="日程备注"
+            ></a-textarea>
           </a-form-item>
         </a-col>
         <a-col span={24}>
@@ -162,16 +170,16 @@ const typeOption = {
             <a-space size={20} wrap>
               <a-qrcode
                 value={`BEGIN:VEVENT\nDTSTART:${formData.eventTime[0].format(
-                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmmss'
+                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
                 )}\nDTEND:${formData.eventTime[1].format(
-                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmmss'
-                )}\nSUMMARY:${formData.eventName}\nLOCATION:${formData.eventLocation}\nDESCRIPTION:${
-                  formData.eventDesc
-                }\n${
+                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
+                )}\nSUMMARY:${formData.eventName}\nLOCATION:${
+                  formData.eventLocation
+                }\nDESCRIPTION:${formData.eventDesc?.replaceAll('\n', '\\n')}\n${
                   formData.eventValarm
                     ? `BEGIN:VALARM\nTRIGGER:${
                         formData.eventAllDay
-                          ? formData.eventValarmDate.format('YYYYMMDDTHHmmss')
+                          ? formData.eventValarmDate.format('YYYYMMDDTHHmm00')
                           : `-PT${formData.eventValarmTime.join('')}`
                       }\nACTION:DISPLAY\nEND:VALARM\n`
                     : ''
@@ -238,17 +246,39 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="纬度" required>
-            <a-input v-model:value={formData.geographyLatitude} placeholder="纬度"></a-input>
+            <a-input-number
+              v-model:value={formData.geographyLatitude}
+              min={-90}
+              max={90}
+              step="0.000000001"
+              string-mode
+              placeholder="纬度"
+              class="w_100"
+            ></a-input-number>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="经度" required>
-            <a-input v-model:value={formData.geographyLongitude} placeholder="经度"></a-input>
+            <a-input-number
+              v-model:value={formData.geographyLongitude}
+              min={-180}
+              max={180}
+              step="0.000000001"
+              string-mode
+              placeholder="经度"
+              class="w_100"
+            ></a-input-number>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="精度">
-            <a-input v-model:value={formData.geographyAccuracy} placeholder="精度"></a-input>
+            <a-input-number
+              v-model:value={formData.geographyAccuracy}
+              min={0}
+              max={1000}
+              placeholder="精度"
+              class="w_100"
+            ></a-input-number>
           </a-form-item>
         </a-col>
         {formData.geographyLatitude && formData.geographyLongitude && (
@@ -270,7 +300,11 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="文本内容" required>
-            <a-textarea v-model:value={formData.text} placeholder="文本内容"></a-textarea>
+            <a-textarea
+              v-model:value={formData.text}
+              auto-size={{ minRows: 2, maxRows: 5 }}
+              placeholder="文本内容"
+            ></a-textarea>
           </a-form-item>
         </a-col>
         {formData.text && (
@@ -396,7 +430,11 @@ const typeOption = {
         </a-col>
         <a-col span={24}>
           <a-form-item label="短信内容">
-            <a-textarea v-model:value={formData.smsBody} placeholder="短信内容"></a-textarea>
+            <a-textarea
+              v-model:value={formData.smsBody}
+              auto-size={{ minRows: 2, maxRows: 5 }}
+              placeholder="短信内容"
+            ></a-textarea>
           </a-form-item>
         </a-col>
         {formData.smsName && (
@@ -419,11 +457,7 @@ const GenerateDom = () => (
       <a-row gutter={24}>
         <a-col span={24}>
           <a-form-item label="二维码类型" required>
-            <a-select v-model:value={formData.type} allowClear placeholder="二维码类型" class="grow">
-              {Object.values(typeOption).map((item) => (
-                <a-select-option value={item.value}>{item.label}</a-select-option>
-              ))}
-            </a-select>
+            <a-radio-group v-model:value={formData.type} options={Object.values(typeOption)}></a-radio-group>
           </a-form-item>
         </a-col>
         {typeOption[formData.type]?.dom()}
