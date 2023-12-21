@@ -11,7 +11,7 @@
 	# github地址
 	url = https://github.com/YangH9/YangH9.github.io.git
 	# gitee地址
-	pushurl = https://gitee.com/YangH9/YangH9.git
+	url = https://gitee.com/YangH9/YangH9.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "master"]
 	remote = origin
