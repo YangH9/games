@@ -1,6 +1,6 @@
 #app {
   min-height: 100vh;
-  background: var(--color-background);
+  // background: var(--color-background);
   background: url('@/assets/skyblue.jpg') no-repeat center top;
   background-attachment: fixed;
   background-size: cover;
@@ -90,39 +90,39 @@
     padding-bottom: 10px;
   }
 
-  .ant-descriptions-item-label,
-  .ant-descriptions-item-content {
-    color: var(--color-text);
-  }
+  // .ant-descriptions-item-label,
+  // .ant-descriptions-item-content {
+  //   color: var(--color-text);
+  // }
 
   tr:last-child td {
     padding-bottom: 0;
   }
 }
 
-a.ant-btn:not(.ant-btn-link),
-:where(.css-dev-only-do-not-override-kqecok).ant-btn-default {
-  color: var(--color-text);
-  background: var(--color-background);
-}
+// a.ant-btn:not(.ant-btn-link),
+// :where(.css-dev-only-do-not-override-kqecok).ant-btn-default {
+//   color: var(--color-text);
+//   background: var(--color-background);
+// }
 
 div.ant-card {
-  color: var(--color-text);
-  border-color: var(--color-border);
-  background: var(--color-background);
+  // color: var(--color-text);
+  // border-color: var(--color-border);
+  // background: var(--color-background);
 
-  &:hover {
-    border-color: var(--color-border-hover);
+  // &:hover {
+  //   border-color: var(--color-border-hover);
 
-    .ant-card-head {
-      border-color: var(--color-border-hover);
-    }
-  }
+  //   .ant-card-head {
+  //     border-color: var(--color-border-hover);
+  //   }
+  // }
 
-  .ant-card-head {
-    color: var(--color-heading);
-    border-color: var(--color-border);
-  }
+  // .ant-card-head {
+  //   color: var(--color-heading);
+  //   border-color: var(--color-border);
+  // }
 
   &.ant-card-hoverable {
     cursor: default;
@@ -146,73 +146,73 @@ section.ant-layout {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
   }
 
-  div.ant-collapse {
-    color: var(--color-text);
-    border-color: var(--color-border);
-    background: var(--color-background-mute);
+  // div.ant-collapse {
+  //   color: var(--color-text);
+  //   border-color: var(--color-border);
+  //   background: var(--color-background-mute);
 
-    .ant-collapse-item {
-      border-color: var(--color-border);
+  //   .ant-collapse-item {
+  //     border-color: var(--color-border);
 
-      .ant-collapse-header {
-        color: var(--color-text);
-      }
+  //     .ant-collapse-header {
+  //       color: var(--color-text);
+  //     }
 
-      .ant-collapse-content {
-        border-color: var(--color-border);
-        background: var(--color-background);
-      }
-    }
-  }
+  //     .ant-collapse-content {
+  //       border-color: var(--color-border);
+  //       background: var(--color-background);
+  //     }
+  //   }
+  // }
 
-  .ant-form {
-    .ant-form-item {
-      .ant-form-item-label {
-        label {
-          color: var(--color-text);
-        }
-      }
+  // .ant-form {
+  //   .ant-form-item {
+  //     .ant-form-item-label {
+  //       label {
+  //         color: var(--color-text);
+  //       }
+  //     }
 
-      .ant-radio {
-        &-wrapper {
-          color: var(--color-heading);
-        }
+  //     .ant-radio {
+  //       &-wrapper {
+  //         color: var(--color-heading);
+  //       }
 
-        &-inner {
-          background: var(--color-background-mute);
-        }
-      }
+  //       &-inner {
+  //         background: var(--color-background-mute);
+  //       }
+  //     }
 
-      .ant-input {
-        color: var(--color-heading);
-        border-color: var(--color-border);
-        background: var(--color-background-mute);
-      }
+  //     .ant-input {
+  //       color: var(--color-heading);
+  //       border-color: var(--color-border);
+  //       background: var(--color-background-mute);
+  //     }
 
-      .ant-input-number {
-        color: var(--color-heading);
-        border-color: var(--color-border);
-        background: var(--color-background-mute);
+  //     .ant-input-number {
+  //       color: var(--color-heading);
+  //       border-color: var(--color-border);
+  //       background: var(--color-background-mute);
 
-        &-handler {
-          border-color: var(--color-border);
+  //       &-handler {
+  //         border-color: var(--color-border);
 
-          span {
-            color: var(--color-heading);
-          }
+  //         span {
+  //           color: var(--color-heading);
+  //         }
 
-          &:active {
-            background: var(--color-background);
-          }
-        }
+  //         &:active {
+  //           background: var(--color-background);
+  //         }
+  //       }
 
-        &-handler-wrap {
-          background: var(--color-background-mute);
-        }
-      }
-    }
-  }
+  //       &-handler-wrap {
+  //         background: var(--color-background-mute);
+  //       }
+  //     }
+  //   }
+  // }
 }

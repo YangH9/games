@@ -16,6 +16,7 @@ import Icon from '@/components/icon'
 
 import 'ant-design-vue/dist/reset.css'
 import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'vform3-builds/dist/designer.style.css'
 
 // 默哀的全局灰色

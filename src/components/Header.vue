@@ -53,12 +53,12 @@ const click = (data) => {
 .ant-menu {
   max-width: calc(100% - 120px);
   background: transparent;
-  border-color: var(--color-background-soft);
+  // border-color: var(--color-background-soft);
 
-  :deep(.ant-menu-title-content) {
-    // background: var(--color-background);
-    color: var(--color-text);
-  }
+  // :deep(.ant-menu-title-content) {
+  //   background: var(--color-background);
+  //   color: var(--color-text);
+  // }
 }
 
 .logo {

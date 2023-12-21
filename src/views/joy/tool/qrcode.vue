@@ -38,6 +38,11 @@ const formData = reactive({
   contactBirthday: '',
   contactAdr: '',
   contactUrl: '',
+  contactQQ: '',
+  contactOrg: '',
+  contactTitle: '',
+  contactWorkTel: '',
+  contactNote: '',
   telephone: '',
   smsName: '',
   smsBody: ''
@@ -360,20 +365,55 @@ const typeOption = {
           </a-form-item>
         </a-col>
         <a-col span={24}>
-          <a-form-item label="网站">
-            <a-input v-model:value={formData.contactUrl} placeholder="网站"></a-input>
+          <a-form-item label="个人主页">
+            <a-input v-model:value={formData.contactUrl} placeholder="个人主页"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="QQ">
+            <a-input v-model:value={formData.contactQQ} placeholder="QQ"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="组织">
+            <a-input v-model:value={formData.contactOrg} placeholder="组织"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="职位">
+            <a-input v-model:value={formData.contactTitle} placeholder="职位"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="工作电话">
+            <a-input v-model:value={formData.contactWorkTel} placeholder="工作电话"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col span={24}>
+          <a-form-item label="备注">
+            <a-textarea
+              v-model:value={formData.contactNote}
+              auto-size={{ minRows: 2, maxRows: 5 }}
+              placeholder="备注"
+            ></a-textarea>
           </a-form-item>
         </a-col>
         {formData.contactSurname && formData.contactName && formData.contactTel && (
           <a-col span={24}>
             <a-space size={20} wrap>
               <a-qrcode
-                value={`BEGIN:VCARD\nVERSION:3.0\nN:${formData.contactSurname}${formData.contactName}\nTEL:${
-                  formData.contactTel
-                }\n${formData.contactEmail ? `EMAIL:${formData.contactEmail}\n` : ''}${
-                  formData.contactBirthday ? `BDAY:${formData.contactBirthday.format('YYYYMMDD')}\n` : ''
-                }${formData.contactAdr ? `ADR:${formData.contactAdr}\n` : ''}${
-                  formData.contactUrl ? `URL:${formData.contactUrl}\n` : ''
+                value={`BEGIN:VCARD\nVERSION:3.0\nN:${formData.contactSurname}${
+                  formData.contactName
+                }\nTEL;TYPE=HOME,VOICE:${formData.contactTel}\n${
+                  formData.contactEmail ? `EMAIL:${formData.contactEmail}\n` : ''
+                }${formData.contactBirthday ? `BDAY:${formData.contactBirthday.format('YYYYMMDD')}\n` : ''}${
+                  formData.contactAdr ? `ADR:${formData.contactAdr}\n` : ''
+                }${formData.contactUrl ? `URL:${formData.contactUrl}\n` : ''}${
+                  formData.contactQQ ? `X-QQ:${formData.contactQQ}\n` : ''
+                }${formData.contactOrg ? `ORG:${formData.contactOrg}\n` : ''}${
+                  formData.contactTitle ? `TITLE:${formData.contactTitle}\n` : ''
+                }${formData.contactWorkTel ? `TEL;TYPE=WORK,VOICE:${formData.contactWorkTel}\n` : ''}${
+                  formData.contactNote ? `NOTE:${formData.contactNote?.replaceAll('\n', '\\n')}\n` : ''
                 }END:VCARD`}
               />
             </a-space>

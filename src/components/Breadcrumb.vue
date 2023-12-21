@@ -54,16 +54,16 @@ const menuList = computed(() => route.matched)
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .ant-breadcrumb {
-    a,
-    :deep(.ant-breadcrumb-separator) {
-      color: var(--color-text);
-    }
+// @media (prefers-color-scheme: dark) {
+//   .ant-breadcrumb {
+//     a,
+//     :deep(.ant-breadcrumb-separator) {
+//       color: var(--color-text);
+//     }
 
-    & > span:last-child {
-      color: var(--color-heading);
-    }
-  }
-}
+//     & > span:last-child {
+//       color: var(--color-heading);
+//     }
+//   }
+// }
 </style>
