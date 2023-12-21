@@ -9,10 +9,11 @@
     "preview": "vite preview --port 4173",
     "lint:eslint": "eslint . --ext .vue,.js,.jsx,.cjs --fix --ignore-path .eslintignore",
     "lint:prettier": "prettier --w . --ignore-path .eslintignore",
-    "pull": "git pull",
+    "pull": "git pull origin master",
     "commit": "git add . & git commit -m [update]自动提交",
-    "push": "git push",
-    "commit_push": "git add . & git commit -m [update]自动提交 & git push"
+    "push": "git push origin master",
+    "push_all": "git push all master",
+    "push_gitee": "git push gitee master"
   },
   "author": "yangh9",
   "license": "MIT",
