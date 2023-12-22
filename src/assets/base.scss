@@ -138,6 +138,20 @@ p {
   justify-content: center;
 }
 
+// 文字隐藏
+.textFlow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  &_2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}
+
 .ant-image-preview-content {
   height: 100vh;
 }

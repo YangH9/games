@@ -7,12 +7,14 @@
 
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { reactive, inject } from 'vue'
+import { reactive, inject, ref } from 'vue'
+import { Debounce } from '@/utils/lodash'
 
 const Dayjs = inject('Dayjs')
+const Jsonp = inject('Jsonp')
 
 const formData = reactive({
-  type: '',
+  type: 'appStore',
   emailName: '',
   emailTitle: '',
   emailBody: '',
@@ -43,6 +45,8 @@ const formData = reactive({
   contactTitle: '',
   contactWorkTel: '',
   contactNote: '',
+  appStoreName: null,
+  appStoreItem: '',
   telephone: '',
   smsName: '',
   smsBody: ''
@@ -425,15 +429,69 @@ const typeOption = {
   appStore: {
     value: 'appStore',
     label: 'App',
-    dom: () => (
-      <>
-        <a-col span={24}>
-          <a-form-item label="App名称">
-            <a-input v-model:value={formData.eventName} placeholder="App名称"></a-input>
-          </a-form-item>
-        </a-col>
-      </>
-    )
+    dom: () => {
+      let appStoreUrl = (key) =>
+        `https://itunes.apple.com/search?term=${key}&country=cn&entity=software&limit=10&callback=jsonp_appStore`
+      let appList = ref()
+      // Jsonp(appStoreUrl('qq'), 'jsonp_appStore').then((res) => {
+      //   appList.value = res
+      // })
+      return (
+        <>
+          <a-col span={24}>
+            <a-form-item label="App名称" required>
+              <a-select
+                v-model:value={formData.appStoreName}
+                show-search
+                placeholder="App名称,输入内容搜索(暂时仅支持AppStore的App)"
+                class="grow"
+                onChange={async (val) => {
+                  console.log('onChange')
+                  formData.appStoreItem = appList.value.results.find((i) => i.trackName === val)
+                  console.log(formData.appStoreItem)
+                  let res = await Jsonp(appStoreUrl(val), 'jsonp_appStore')
+                  appList.value = res
+                }}
+                onSearch={Debounce(async (val) => {
+                  let res = await Jsonp(appStoreUrl(val), 'jsonp_appStore')
+                  appList.value = res
+                }, 500)}
+              >
+                {appList.value?.results?.map((item) => (
+                  <a-select-option value={item.trackName}>{item.trackName}</a-select-option>
+                ))}
+              </a-select>
+            </a-form-item>
+          </a-col>
+          {formData.appStoreItem && (
+            <a-col span={24}>
+              <img src={formData.appStoreItem.artworkUrl60} />
+              <h3>{formData.appStoreItem.trackName}</h3>
+              <p class="textFlow_2">{formData.appStoreItem.description}</p>
+              <p class="textFlow_2">{formData.appStoreItem.advisories.join(';')}</p>
+            </a-col>
+          )}
+          {/* <a-col span={24}>
+            {console.log(appList.value)}
+            <a-list
+              item-layout="vertical"
+              data-source={appList.value?.results}
+              renderItem={({ item }) => (
+                <a-list-item>
+                  <a-list-item-meta
+                    description={item.description}
+                    v-slots={{
+                      title: () => item.trackName,
+                      avatar: () => <img src={item.artworkUrl60} />
+                    }}
+                  ></a-list-item-meta>
+                </a-list-item>
+              )}
+            ></a-list>
+          </a-col> */}
+        </>
+      )
+    }
   },
   telephone: {
     value: 'telephone',

@@ -6,3 +6,8 @@ import _ from 'lodash'
  * @returns {Object} 新对象
  */
 export const CloneDeep = (object) => _.cloneDeep(object)
+
+/**
+ * @description: 防抖
+ */
+export const Debounce = (func, time, option) => _.debounce(func, time, option)

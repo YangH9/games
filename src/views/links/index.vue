@@ -58,8 +58,8 @@ const resoutcesList = [
     list: [
       { title: 'GitHub站点', href: 'https://yangh9.github.io', favicon: '' },
       { title: 'Gitee镜像', href: 'https://yangh9.gitee.io', favicon: '' },
-      { title: '旧站点1', href: 'https://hanhais.com/', favicon: '' },
-      { title: '旧站点2', href: 'https://yangh9.github.io/y/', favicon: '' },
+      // { title: '旧站点1', href: 'https://hanhais.com/', favicon: '' },
+      { title: '旧站点', href: 'https://yangh9.github.io/y/', favicon: '' },
       { title: 'RGB', href: 'https://rgb39.top/', favicon: '' },
       { title: '小白白AI', href: 'http://ai.kampe.top:8123/web', favicon: 'assets/logo.png' },
       { title: '小天的中国象棋', href: 'https://www.aixt.vip/', favicon: '' },

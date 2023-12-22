@@ -29,13 +29,13 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref, inject } from 'vue'
 
 // 腾讯各类域名
-// http://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldomain.js
+// https://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldomain.js
 
 const Jsonp = inject('Jsonp')
 
 const dataList = ref([])
 
-Jsonp('http://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldomain.js', () => {
+Jsonp('https://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldomain.js', () => {
   dataList.value = window.Milo_Monitor_All_Domain
 })
 </script>
