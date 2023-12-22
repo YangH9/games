@@ -15,6 +15,10 @@
     "push_all": "git push all master",
     "push_gitee": "git push gitee master"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YangH9/YangH9.github.io"
+  },
   "author": "yangh9",
   "license": "MIT",
   "dependencies": {
