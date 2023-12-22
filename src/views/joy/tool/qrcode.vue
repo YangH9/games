@@ -150,10 +150,10 @@ const typeOption = {
                 </>
               ) : (
                 <a-row gutter={10}>
-                  <a-col span={4}>
+                  <a-col span={10}>
                     <a-input-number v-model:value={formData.eventValarmTime[0]} class="w_100"></a-input-number>
                   </a-col>
-                  <a-col span={4}>
+                  <a-col span={10}>
                     <a-select v-model:value={formData.eventValarmTime[1]} class="grow">
                       {[
                         { value: 'S', label: '秒' },
