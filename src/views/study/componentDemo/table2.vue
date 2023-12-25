@@ -55,9 +55,8 @@ const tableCol = ref([
       const key = 'column1'
       if (tableData.value[rowIndex - 1]?.[key] === record[key]) {
         return { rowSpan: 0 }
-      } else {
-        return { rowSpan: tableData.value.filter((i) => i[key] === record[key]).length || 1 }
       }
+      return { rowSpan: tableData.value.filter((i) => i[key] === record[key]).length || 1 }
     }
   },
   { title: '功能1', key: 'column2', dataIndex: 'column2', colSpan: 0 },

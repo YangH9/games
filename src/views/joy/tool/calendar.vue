@@ -22,51 +22,49 @@ console.log(lunarToSolar(1998, 5, 10, true))
 function isLeap(year) {
   return year % 4 == 0 ? (year % 100 != 0 ? 1 : year % 400 == 0 ? 1 : 0) : 0
 }
-let today = new Date(), // 获取当前日期
-  y = today.getFullYear(), // 获取日期中的年份
-  m = today.getMonth(), // 获取日期中的月份(需要注意的是：月份是从0开始计算，获取的值比正常月份的值少1)
-  d = today.getDate(), // 获取日期中的日(方便在建立日期表格时高亮显示当天)
-  firstday = new Date(y, m, 1), // 获取当月的第一天
-  dayOfWeek = firstday.getDay(), // 判断第一天是星期几(返回[0-6]中的一个，0代表星期天，1代表星期一，以此类推)
-  days_per_month = [31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], // 创建月份数组
-  str_nums = Math.ceil((dayOfWeek + days_per_month[m]) / 7), // 确定日期表格所需的行数
-  data = solarToLunar(y, m + 1, d)
+const today = new Date() // 获取当前日期
+const y = today.getFullYear() // 获取日期中的年份
+const m = today.getMonth() // 获取日期中的月份(需要注意的是：月份是从0开始计算，获取的值比正常月份的值少1)
+const d = today.getDate() // 获取日期中的日(方便在建立日期表格时高亮显示当天)
+const firstday = new Date(y, m, 1) // 获取当月的第一天
+const dayOfWeek = firstday.getDay() // 判断第一天是星期几(返回[0-6]中的一个，0代表星期天，1代表星期一，以此类推)
+const days_per_month = [31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 创建月份数组
+const str_nums = Math.ceil((dayOfWeek + days_per_month[m]) / 7) // 确定日期表格所需的行数
+const data = solarToLunar(y, m + 1, d)
 
-const toDayRender = () => {
-  return (
-    <>
-      <h3>
-        公历：{data.cYear}年 {data.cMonth}月 {data.cDay}日 {data.ncWeek}
-      </h3>
-      <h3>
-        农历：{data.lYear}年 {data.IMonthCn} {data.IDayCn}
-      </h3>
-      <h3>
-        天干地支纪年：{data.gzYear} {data.Animal}年 {data.gzMonth}月 {data.gzDay}日
-      </h3>
-      <h3>{data.astro}</h3>
-      <table cellspacing="0" class="text_center">
-        <tr>
-          {Array.from({ length: 7 }, (_, i) => (
-            <th>{weekText[i]}</th>
-          ))}
-        </tr>
-        {Array.from({ length: str_nums }, (_, i) => (
-          <tr>
-            {Array.from({ length: 7 }, (_, j) => {
-              let num = 7 * i + j - dayOfWeek + 1
-              return (
-                <td class={num === d ? 'ant-picker-calendar-date-today' : ''}>
-                  {num <= 0 || num > days_per_month[m] ? '' : num}
-                </td>
-              )
-            })}
-          </tr>
+const toDayRender = () => (
+  <>
+    <h3>
+      公历：{data.cYear}年 {data.cMonth}月 {data.cDay}日 {data.ncWeek}
+    </h3>
+    <h3>
+      农历：{data.lYear}年 {data.IMonthCn} {data.IDayCn}
+    </h3>
+    <h3>
+      天干地支纪年：{data.gzYear} {data.Animal}年 {data.gzMonth}月 {data.gzDay}日
+    </h3>
+    <h3>{data.astro}</h3>
+    <table cellspacing="0" class="text_center">
+      <tr>
+        {Array.from({ length: 7 }, (_, i) => (
+          <th>{weekText[i]}</th>
         ))}
-      </table>
-    </>
-  )
-}
+      </tr>
+      {Array.from({ length: str_nums }, (_, i) => (
+        <tr>
+          {Array.from({ length: 7 }, (_, j) => {
+            const num = 7 * i + j - dayOfWeek + 1
+            return (
+              <td class={num === d ? 'ant-picker-calendar-date-today' : ''}>
+                {num <= 0 || num > days_per_month[m] ? '' : num}
+              </td>
+            )
+          })}
+        </tr>
+      ))}
+    </table>
+  </>
+)
 
 const aCalendarDom = () => (
   <a-calendar

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="时间轮盘" class="mb_2" :hoverable="true"> </a-card>
+    <a-card title="时间轮盘" :hoverable="true"></a-card>
   </div>
 </template>
 

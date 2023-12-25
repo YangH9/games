@@ -15,9 +15,9 @@ const Heart1 = () => (
     {Array.from({ length: 3 * 10 }, (_, i) => (
       <p>
         {Array.from({ length: 3 * 20 }, (_, j) => {
-          let a = j * 0.05 - 1.5
-          let b = -i * 0.1 + 1.5
-          let c = a ** 2 + b ** 2 - 1
+          const a = j * 0.05 - 1.5
+          const b = -i * 0.1 + 1.5
+          const c = a ** 2 + b ** 2 - 1
           return c ** 3 - a ** 2 * b ** 3 <= 0 ? '*' : ' '
         })}
       </p>

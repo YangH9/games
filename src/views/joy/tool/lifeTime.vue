@@ -72,110 +72,108 @@ const dayArray = computed(() => {
   return arr
 })
 
-const MainDom = () => {
-  return (
-    <>
-      <a-form model={formData}>
-        <a-row gutter={24}>
-          <a-col span={24} md={12}>
-            <a-form-item label="生日">
-              <a-date-picker
-                v-model:value={formData.birthday}
-                disabled-date={(date) => date && date > Date.now()}
-                valueFormat="YYYY-MM-DD"
-                placeholder="生日"
-                class="w_100"
-              />
-            </a-form-item>
-          </a-col>
-          <a-col span={24} md={12}>
-            <a-form-item label="预计寿命">
-              <a-input-number v-model:value={formData.maxYear} min={1} max={200} class="w_100" />
-            </a-form-item>
-          </a-col>
-          <a-col span={24} md={12}>
-            <a-form-item label="最高学历">
-              <a-select v-model:value={formData.degree} allowClear placeholder="最高学历" class="grow">
-                {Object.values(degreeOption).map((item) => (
-                  <a-select-option value={item.value}>{item.label}</a-select-option>
-                ))}
-              </a-select>
-            </a-form-item>
-          </a-col>
-          <a-col span={24} md={12}>
-            <a-form-item label="显示粒度" class="grow">
-              <a-radio-group v-model:value={formData.unit}>
-                {Object.values(unitOption).map((item) => (
-                  <a-radio value={item.value}>{item.label}</a-radio>
-                ))}
-              </a-radio-group>
-            </a-form-item>
-          </a-col>
-        </a-row>
-      </a-form>
-      <a-divider class="my_4" />
-      <a-space align="center" wrap>
-        {dayTypeList.map((item) => (
-          <div class="flex center gap_1">
-            <div style={{ backgroundColor: item.color }} class="square"></div>
-            {item.label}
-          </div>
-        ))}
-      </a-space>
-      {formData.birthday && (
-        <>
-          <a-divider class="my_4" />
-          <a-space size={4} wrap>
-            <p>你的生日：{formData.birthday}</p>
-            <p>预计寿命：{formData.maxYear}岁</p>
-            <p>
-              已经存活
-              {
-                ~~(
-                  (new Date(formData.nowDay) - new Date(formData.birthday)) /
-                  (unitOption[formData.unit].day * 24 * 60 * 60 * 1000)
-                )
-              }
-              {unitOption[formData.unit].label}
-            </p>
-            <p>
-              还剩
-              {
-                ~~(
-                  formData.maxYear * formData.unit -
-                  (new Date(formData.nowDay) - new Date(formData.birthday)) /
-                    (unitOption[formData.unit].day * 24 * 60 * 60 * 1000)
-                )
-              }
-              {unitOption[formData.unit].label}
-            </p>
-            <p>祝大家长命百岁</p>
-          </a-space>
-        </>
-      )}
-      {formData.maxYear ? (
-        <>
-          <a-divider class="my_4" />
-          <a-space size={4} wrap>
-            {Array.from({ length: formData.unit * formData.maxYear }, (_, index) => {
-              const item =
-                index === dayArray.value.at(-1).end
-                  ? dayArray.value.at(-1)
-                  : index < dayArray.value.at(-1).end
-                    ? dayArray.value.find((i) => i.start <= index && i.end >= index)
-                    : { label: '', color: '' }
-              return (
-                <div style={{ backgroundColor: item.color }} class="square" title={`${item.label}\n${index + 1}`}></div>
+const MainDom = () => (
+  <>
+    <a-form model={formData}>
+      <a-row gutter={24}>
+        <a-col span={24} md={12}>
+          <a-form-item label="生日">
+            <a-date-picker
+              v-model:value={formData.birthday}
+              disabled-date={(date) => date && date > Date.now()}
+              valueFormat="YYYY-MM-DD"
+              placeholder="生日"
+              class="w_100"
+            />
+          </a-form-item>
+        </a-col>
+        <a-col span={24} md={12}>
+          <a-form-item label="预计寿命">
+            <a-input-number v-model:value={formData.maxYear} min={1} max={200} class="w_100" />
+          </a-form-item>
+        </a-col>
+        <a-col span={24} md={12}>
+          <a-form-item label="最高学历">
+            <a-select v-model:value={formData.degree} allowClear placeholder="最高学历" class="grow">
+              {Object.values(degreeOption).map((item) => (
+                <a-select-option value={item.value}>{item.label}</a-select-option>
+              ))}
+            </a-select>
+          </a-form-item>
+        </a-col>
+        <a-col span={24} md={12}>
+          <a-form-item label="显示粒度" class="grow">
+            <a-radio-group v-model:value={formData.unit}>
+              {Object.values(unitOption).map((item) => (
+                <a-radio value={item.value}>{item.label}</a-radio>
+              ))}
+            </a-radio-group>
+          </a-form-item>
+        </a-col>
+      </a-row>
+    </a-form>
+    <a-divider class="my_4" />
+    <a-space align="center" wrap>
+      {dayTypeList.map((item) => (
+        <div class="flex center gap_1">
+          <div style={{ backgroundColor: item.color }} class="square"></div>
+          {item.label}
+        </div>
+      ))}
+    </a-space>
+    {formData.birthday && (
+      <>
+        <a-divider class="my_4" />
+        <a-space size={4} wrap>
+          <p>你的生日：{formData.birthday}</p>
+          <p>预计寿命：{formData.maxYear}岁</p>
+          <p>
+            已经存活
+            {
+              ~~(
+                (new Date(formData.nowDay) - new Date(formData.birthday)) /
+                (unitOption[formData.unit].day * 24 * 60 * 60 * 1000)
               )
-            })}
-          </a-space>
-        </>
-      ) : (
-        ''
-      )}
-    </>
-  )
-}
+            }
+            {unitOption[formData.unit].label}
+          </p>
+          <p>
+            还剩
+            {
+              ~~(
+                formData.maxYear * formData.unit -
+                (new Date(formData.nowDay) - new Date(formData.birthday)) /
+                  (unitOption[formData.unit].day * 24 * 60 * 60 * 1000)
+              )
+            }
+            {unitOption[formData.unit].label}
+          </p>
+          <p>祝大家长命百岁</p>
+        </a-space>
+      </>
+    )}
+    {formData.maxYear ? (
+      <>
+        <a-divider class="my_4" />
+        <a-space size={4} wrap>
+          {Array.from({ length: formData.unit * formData.maxYear }, (_, index) => {
+            const item =
+              index === dayArray.value.at(-1).end
+                ? dayArray.value.at(-1)
+                : index < dayArray.value.at(-1).end
+                  ? dayArray.value.find((i) => i.start <= index && i.end >= index)
+                  : { label: '', color: '' }
+            return (
+              <div style={{ backgroundColor: item.color }} class="square" title={`${item.label}\n${index + 1}`}></div>
+            )
+          })}
+        </a-space>
+      </>
+    ) : (
+      ''
+    )}
+  </>
+)
 </script>
 
 <style lang="scss" scoped>

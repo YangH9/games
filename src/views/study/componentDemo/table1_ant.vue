@@ -92,20 +92,18 @@ const defaultColumn = [
     .flat(1)
 ]
 
-const getData = () => {
-  return new Promise((resolve, reject) => {
+const getData = () =>
+  new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(data1)
     }, 300)
   })
-}
-const getData1 = () => {
-  return new Promise((resolve, reject) => {
+const getData1 = () =>
+  new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(data2)
     }, 300)
   })
-}
 const checkD = ref('')
 const columnData = ref([])
 const tableData = ref([])
@@ -119,43 +117,43 @@ const init = async () => {
   const mapRes = matchInfoList
     .flatMap((i) => i.subMatchList)
     .filter((i) => i.matchStatus === 'Selling')
-    .map((i) => {
-      return new Promise(async (resolve, reject) => {
-        const obj = {
-          matchId: i.matchId,
-          matchNumStr: i.matchNumStr,
-          matchDate: i.matchDate,
-          homeTeamAllName: i.homeTeamAllName,
-          leagueAllName: i.leagueAllName,
-          backColor: i.backColor
-        }
-        i.oddsList.forEach((j) => {
-          if (['HAD', 'HHAD'].includes(j.poolCode)) {
-            obj[`${j.poolCode}a`] = { value: j.a, key: `${j.poolCode}a`, checked: false }
-            obj[`${j.poolCode}d`] = { value: j.d, key: `${j.poolCode}d`, checked: false }
-            obj[`${j.poolCode}h`] = { value: j.h, key: `${j.poolCode}h`, checked: false }
+    .map(
+      (i) =>
+        new Promise(async (resolve, reject) => {
+          const obj = {
+            matchId: i.matchId,
+            matchNumStr: i.matchNumStr,
+            matchDate: i.matchDate,
+            homeTeamAllName: i.homeTeamAllName,
+            leagueAllName: i.leagueAllName,
+            backColor: i.backColor
           }
-        })
-        // 按matchId查询数据
-        const {
-          value: { oddsHistory: detailData }
-        } = await getData1(obj.matchId)
-
-        ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
-          const detail = detailData[key]?.reduce(
-            (total, item) =>
-              new Date(`${total.updateDate} ${total.updateTime}`) < new Date(`${item.updateDate} ${item.updateTime}`)
-                ? item
-                : total,
-            { updateDate: '1970', updateTime: '0:0' }
-          )
-          Object.keys(detail).forEach((key) => {
-            obj[key] = { value: detail[key], key, checked: false }
+          i.oddsList.forEach((j) => {
+            if (['HAD', 'HHAD'].includes(j.poolCode)) {
+              obj[`${j.poolCode}a`] = { value: j.a, key: `${j.poolCode}a`, checked: false }
+              obj[`${j.poolCode}d`] = { value: j.d, key: `${j.poolCode}d`, checked: false }
+              obj[`${j.poolCode}h`] = { value: j.h, key: `${j.poolCode}h`, checked: false }
+            }
           })
+          // 按matchId查询数据
+          const {
+            value: { oddsHistory: detailData }
+          } = await getData1(obj.matchId)
+          ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
+            const detail = detailData[key]?.reduce(
+              (total, item) =>
+                new Date(`${total.updateDate} ${total.updateTime}`) < new Date(`${item.updateDate} ${item.updateTime}`)
+                  ? item
+                  : total,
+              { updateDate: '1970', updateTime: '0:0' }
+            )
+            Object.keys(detail).forEach((key) => {
+              obj[key] = { value: detail[key], key, checked: false }
+            })
+          })
+          resolve(obj)
         })
-        resolve(obj)
-      })
-    })
+    )
   const data = await Promise.all(mapRes)
   columnData.value = defaultColumn.map((i) => ({
     ...i,
@@ -169,7 +167,7 @@ const init = async () => {
     customRender: ({ record, column }) =>
       column.checkbox && record[column.key] ? (
         <a-checkbox v-model:checked={record[column.key].checked}>{record[column.key].value}</a-checkbox>
-      ) : 'allName' === column.key ? (
+      ) : column.key === 'allName' ? (
         `${record.homeTeamAllName} ${record.leagueAllName}`
       ) : (
         record[column.key]

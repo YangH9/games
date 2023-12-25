@@ -1,5 +1,5 @@
-export default (src, callbackKey, callback) => {
-  return new Promise((resolve, reject) => {
+export default (src, callbackKey, callback) =>
+  new Promise((resolve, reject) => {
     const script = document.createElement('script')
     script.async = 'async'
     script.src = src
@@ -15,4 +15,3 @@ export default (src, callbackKey, callback) => {
     document.head.appendChild(script)
     document.head.removeChild(script)
   })
-}

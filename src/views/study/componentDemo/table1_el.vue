@@ -75,8 +75,8 @@ const defaultColumn = [
     .flat(1)
 ]
 
-const getData = () => {
-  return new Promise((resolve, reject) => {
+const getData = () =>
+  new Promise((resolve, reject) => {
     // axios.get('url').then((res) => {
     //   resolve(data1)
     // })
@@ -84,9 +84,8 @@ const getData = () => {
       resolve(data1)
     }, 300)
   })
-}
-const getData1 = (dataObj) => {
-  return new Promise((resolve, reject) => {
+const getData1 = (dataObj) =>
+  new Promise((resolve, reject) => {
     // axios.get('url', { params: { dataObj } }).then((res) => {
     //   resolve(data2)
     // })
@@ -94,7 +93,6 @@ const getData1 = (dataObj) => {
       resolve(data2)
     }, 300)
   })
-}
 const columnData = ref([])
 const tableData = ref([])
 
@@ -107,43 +105,43 @@ const init = async () => {
   const mapRes = matchInfoList
     .flatMap((i) => i.subMatchList)
     .filter((i) => i.matchStatus === 'Selling')
-    .map((i) => {
-      return new Promise(async (resolve, reject) => {
-        const obj = {
-          matchId: i.matchId,
-          matchNumStr: i.matchNumStr,
-          matchDate: i.matchDate,
-          homeTeamAllName: i.homeTeamAllName,
-          leagueAllName: i.leagueAllName,
-          backColor: i.backColor
-        }
-        i.oddsList.forEach((j) => {
-          if (['HAD', 'HHAD'].includes(j.poolCode)) {
-            obj[`${j.poolCode}a`] = { value: j.a, prop: `${j.poolCode}a`, checked: false }
-            obj[`${j.poolCode}d`] = { value: j.d, prop: `${j.poolCode}d`, checked: false }
-            obj[`${j.poolCode}h`] = { value: j.h, prop: `${j.poolCode}h`, checked: false }
+    .map(
+      (i) =>
+        new Promise(async (resolve, reject) => {
+          const obj = {
+            matchId: i.matchId,
+            matchNumStr: i.matchNumStr,
+            matchDate: i.matchDate,
+            homeTeamAllName: i.homeTeamAllName,
+            leagueAllName: i.leagueAllName,
+            backColor: i.backColor
           }
-        })
-        // 按matchId查询数据
-        const {
-          value: { oddsHistory: detailData }
-        } = await getData1({ matchId: obj.matchId })
-
-        ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
-          const detail = detailData[key]?.reduce(
-            (total, item) =>
-              new Date(`${total.updateDate} ${total.updateTime}`) < new Date(`${item.updateDate} ${item.updateTime}`)
-                ? item
-                : total,
-            { updateDate: '1970', updateTime: '0:0' }
-          )
-          Object.keys(detail).forEach((key) => {
-            obj[key] = { value: detail[key], prop: key, checked: false }
+          i.oddsList.forEach((j) => {
+            if (['HAD', 'HHAD'].includes(j.poolCode)) {
+              obj[`${j.poolCode}a`] = { value: j.a, prop: `${j.poolCode}a`, checked: false }
+              obj[`${j.poolCode}d`] = { value: j.d, prop: `${j.poolCode}d`, checked: false }
+              obj[`${j.poolCode}h`] = { value: j.h, prop: `${j.poolCode}h`, checked: false }
+            }
           })
+          // 按matchId查询数据
+          const {
+            value: { oddsHistory: detailData }
+          } = await getData1({ matchId: obj.matchId })
+          ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
+            const detail = detailData[key]?.reduce(
+              (total, item) =>
+                new Date(`${total.updateDate} ${total.updateTime}`) < new Date(`${item.updateDate} ${item.updateTime}`)
+                  ? item
+                  : total,
+              { updateDate: '1970', updateTime: '0:0' }
+            )
+            Object.keys(detail).forEach((key) => {
+              obj[key] = { value: detail[key], prop: key, checked: false }
+            })
+          })
+          resolve(obj)
         })
-        resolve(obj)
-      })
-    })
+    )
   const data = await Promise.all(mapRes)
   columnData.value = defaultColumn.map((i) => ({
     ...i,
@@ -152,7 +150,7 @@ const init = async () => {
     render: ({ row, column }) =>
       i.checkbox && row[column.property] ? (
         <el-checkbox v-model={row[column.property].checked}>{row[column.property].value}</el-checkbox>
-      ) : 'allName' === column.property ? (
+      ) : column.property === 'allName' ? (
         `${row.homeTeamAllName} ${row.leagueAllName}`
       ) : (
         row[column.property]
