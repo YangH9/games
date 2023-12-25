@@ -13,8 +13,12 @@ import { Debounce } from '@/utils/lodash'
 const Dayjs = inject('Dayjs')
 const Jsonp = inject('Jsonp')
 
+const callback = 'jsonp_appStore'
+const appStoreUrl = (key) =>
+  `https://itunes.apple.com/search?term=${key}&country=cn&entity=software&limit=10&callback=${callback}`
+
 const formData = reactive({
-  type: null,
+  type: '',
   emailName: null,
   emailTitle: null,
   emailBody: null,
@@ -46,6 +50,7 @@ const formData = reactive({
   contactWorkTel: null,
   contactNote: null,
   appStoreName: null,
+  appStoreList: [],
   appStoreItem: null,
   telephone: null,
   smsName: null,
@@ -430,12 +435,6 @@ const typeOption = {
     value: 'appStore',
     label: 'App',
     dom: () => {
-      let appStoreUrl = (key) =>
-        `https://itunes.apple.com/search?term=${key}&country=cn&entity=software&limit=10&callback=jsonp_appStore`
-      let appList = ref()
-      // Jsonp(appStoreUrl('qq'), 'jsonp_appStore').then((res) => {
-      //   appList.value = res
-      // })
       return (
         <>
           <a-col span={24}>
@@ -443,52 +442,61 @@ const typeOption = {
               <a-select
                 v-model:value={formData.appStoreName}
                 show-search
+                listHeight={440}
+                filterOption={() => true}
                 placeholder="App名称,输入内容搜索(暂时仅支持AppStore的App)"
                 class="grow"
                 onChange={async (val) => {
-                  console.log('onChange')
-                  formData.appStoreItem = appList.value.results.find((i) => i.trackName === val)
-                  console.log(formData.appStoreItem)
-                  let res = await Jsonp(appStoreUrl(val), 'jsonp_appStore')
-                  appList.value = res
+                  formData.appStoreItem = formData.appStoreList.find((i) => i.trackName === val)
+                  let res = await Jsonp(appStoreUrl(val), callback)
+                  formData.appStoreList = res.results
+                  console.log('onChange', formData.appStoreList)
                 }}
                 onSearch={Debounce(async (val) => {
-                  let res = await Jsonp(appStoreUrl(val), 'jsonp_appStore')
-                  appList.value = res
+                  let res = await Jsonp(appStoreUrl(val), callback)
+                  formData.appStoreList = res.results
                 }, 500)}
               >
-                {appList.value?.results?.map((item) => (
-                  <a-select-option value={item.trackName}>{item.trackName}</a-select-option>
+                {formData.appStoreList.map((item) => (
+                  <a-select-option value={item.trackName}>
+                    <a-space size={20} class="ml_2">
+                      <a-avatar src={item.artworkUrl60} shape="square" />
+                      {item.trackName}
+                    </a-space>
+                  </a-select-option>
                 ))}
               </a-select>
             </a-form-item>
           </a-col>
           {formData.appStoreItem && (
-            <a-col span={24}>
-              <img src={formData.appStoreItem.artworkUrl60} />
-              <h3>{formData.appStoreItem.trackName}</h3>
-              <p class="textFlow_2">{formData.appStoreItem.description}</p>
-              <p class="textFlow_2">{formData.appStoreItem.advisories.join(';')}</p>
-            </a-col>
+            <>
+              <a-col span={24}>
+                <a-space>
+                  <a-avatar src={formData.appStoreItem.artworkUrl60} shape="square" />
+                  {formData.appStoreItem.trackName}
+                </a-space>
+                <p class="textFlow_2">{formData.appStoreItem.description}</p>
+              </a-col>
+              <a-col span={24}>
+                <a-space size={20}>
+                  <a-qrcode
+                    value={`https://apps.apple.com/cn/app/${
+                      formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]
+                    }`}
+                  />
+                  <a-button
+                    href={`https://apps.apple.com/cn/app/${
+                      formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]
+                    }`}
+                    type="link"
+                    target="_blank"
+                  >
+                    点击跳转
+                  </a-button>
+                </a-space>
+              </a-col>
+            </>
           )}
-          {/* <a-col span={24}>
-            {console.log(appList.value)}
-            <a-list
-              item-layout="vertical"
-              data-source={appList.value?.results}
-              renderItem={({ item }) => (
-                <a-list-item>
-                  <a-list-item-meta
-                    description={item.description}
-                    v-slots={{
-                      title: () => item.trackName,
-                      avatar: () => <img src={item.artworkUrl60} />
-                    }}
-                  ></a-list-item-meta>
-                </a-list-item>
-              )}
-            ></a-list>
-          </a-col> */}
         </>
       )
     }
