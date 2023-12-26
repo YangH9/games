@@ -143,17 +143,19 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  &_ {
+  @mixin textFlow($line) {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    &2 {
-      -webkit-line-clamp: 2;
-    }
-    &3 {
-      -webkit-line-clamp: 3;
-    }
+    -webkit-line-clamp: $line;
+  }
+
+  &_2 {
+    @include textFlow(2);
+  }
+  &_3 {
+    @include textFlow(3);
   }
 }
 
@@ -477,8 +479,8 @@ p {
     }
   }
   &_y {
-    overflow-y: auto !important;
     overflow-x: hidden !important;
+    overflow-y: auto !important;
     text-wrap: nowrap;
     flex-wrap: nowrap;
     display: block;
