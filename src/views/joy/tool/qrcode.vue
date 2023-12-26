@@ -8,7 +8,7 @@
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { reactive, inject, ref } from 'vue'
-import { Debounce } from '@/utils/lodash'
+import { debounce } from 'lodash'
 
 const Dayjs = inject('Dayjs')
 const Jsonp = inject('Jsonp')
@@ -450,7 +450,7 @@ const typeOption = {
                 const res = await Jsonp(appStoreUrl(val), callback)
                 formData.appStoreList = res.results
               }}
-              onSearch={Debounce(async (val) => {
+              onSearch={debounce(async (val) => {
                 const res = await Jsonp(appStoreUrl(val), callback)
                 formData.appStoreList = res.results
               }, 500)}

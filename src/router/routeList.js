@@ -585,6 +585,14 @@ export default [
             component: () => import('@/views/joy/tool/qrcode.vue')
           },
           {
+            path: '/joy/tool/appStore',
+            name: 'appStore',
+            meta: {
+              title: 'appStore应用搜索'
+            },
+            component: () => import('@/views/joy/tool/appStore.vue')
+          },
+          {
             path: '/joy/tool/operatorPointsRedemption',
             name: 'operatorPointsRedemption',
             meta: {

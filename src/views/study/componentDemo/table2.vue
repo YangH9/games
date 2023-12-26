@@ -25,7 +25,7 @@
 <script setup lang="jsx">
 import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { CloneDeep } from '@/utils/lodash'
+import { cloneDeep } from 'lodash'
 
 const ramdomStr = () => Array.from({ length: 8 }, (_) => String.fromCharCode(~~(Math.random() * 25) + 97)).join('')
 
@@ -76,7 +76,7 @@ const defaultDataObj = () => ({
 })
 
 const checkTree = (keys) => {
-  const oldData = CloneDeep(tableData.value)
+  const oldData = cloneDeep(tableData.value)
   const tree = treeData
   const data = []
   tree.forEach((i) =>

@@ -411,6 +411,9 @@ p {
   &.vertical {
     flex-direction: column;
   }
+  &.wrap {
+    flex-wrap: wrap;
+  }
 
   &::after,
   &::before {
@@ -468,22 +471,23 @@ p {
 }
 
 .scroll {
-  &_x {
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
+  %scroll {
     text-wrap: nowrap;
     flex-wrap: nowrap;
     display: block;
+  }
+  &_x {
+    @extend %scroll;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     &.show {
       overflow-x: scroll !important;
     }
   }
   &_y {
+    @extend %scroll;
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    text-wrap: nowrap;
-    flex-wrap: nowrap;
-    display: block;
     &.show {
       overflow-y: scroll !important;
     }

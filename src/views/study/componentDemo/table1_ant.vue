@@ -30,7 +30,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { Modal } from 'ant-design-vue'
 import { export2Img, export2Pdf } from '@/utils/export'
 import '@/utils/grhtml5-6.8-min.js'
-import { CloneDeep } from '@/utils/lodash'
+import { cloneDeep } from 'lodash'
 import data1 from './data/data1.json'
 import data2 from './data/data2.json'
 
@@ -209,7 +209,7 @@ const setColumn = () => {
             indeterminate={indeterminate.value}
             onChange={() =>
               checkAll.value
-                ? (activeList.value = CloneDeep(defaultActiveList))
+                ? (activeList.value = cloneDeep(defaultActiveList))
                 : (activeList.value = column.value.filter((i) => i.active).map((i) => i.value))
             }
           >
@@ -251,7 +251,7 @@ const setColumn = () => {
 }
 
 const getCheckData = () => {
-  const column = CloneDeep(columnData.value)
+  const column = cloneDeep(columnData.value)
   const data = tableData.value
     .filter((i) => Object.values(i).find((i) => i?.checked && column.find((j) => j.key === i?.key)?.active))
     .map((item) => ({
@@ -271,7 +271,7 @@ const printData = () => {
 
 const tablePreview = () => {
   const checkData = getCheckData()
-  const checkCol = CloneDeep(columnData.value)
+  const checkCol = cloneDeep(columnData.value)
     .filter((i) =>
       checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.key) || a.checkList.find((b) => b.key === i.key))
     )

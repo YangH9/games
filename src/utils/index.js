@@ -70,3 +70,18 @@ export const setTitle = (to) => {
   }
   handleVisiableInit()
 }
+
+/**
+ * 文件大小格式化
+ * @param {Number} size 文件大小
+ * @returns 文件大小
+ */
+export const sizeFilter = (size) => {
+  const bytes = size
+  const aMultiples = ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
+  let sOutput = `${bytes} bytes`
+  for (let nMultiple = 0, nApprox = bytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+    sOutput = `${nApprox.toFixed(3)} ${aMultiples[nMultiple]}`
+  }
+  return sOutput
+}
