@@ -48,6 +48,8 @@ import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
+// QQ注册时间2011-01-30
+
 const userList = [
   { label: 'QQ', title: '1770571618', href: 'tencent://message/?uin=1770571618' },
   { label: 'GitHub', title: 'https://github.com/YangH9', href: 'https://github.com/YangH9' },

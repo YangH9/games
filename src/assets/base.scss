@@ -143,12 +143,17 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  &_2 {
+  &_ {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    &2 {
+      -webkit-line-clamp: 2;
+    }
+    &3 {
+      -webkit-line-clamp: 3;
+    }
   }
 }
 

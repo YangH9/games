@@ -434,72 +434,67 @@ const typeOption = {
   appStore: {
     value: 'appStore',
     label: 'App',
-    dom: () => {
-      return (
-        <>
-          <a-col span={24}>
-            <a-form-item label="App名称" required>
-              <a-select
-                v-model:value={formData.appStoreName}
-                show-search
-                listHeight={440}
-                filterOption={() => true}
-                placeholder="App名称,输入内容搜索(暂时仅支持AppStore的App)"
-                class="grow"
-                onChange={async (val) => {
-                  formData.appStoreItem = formData.appStoreList.find((i) => i.trackName === val)
-                  let res = await Jsonp(appStoreUrl(val), callback)
-                  formData.appStoreList = res.results
-                  console.log('onChange', formData.appStoreList)
-                }}
-                onSearch={Debounce(async (val) => {
-                  let res = await Jsonp(appStoreUrl(val), callback)
-                  formData.appStoreList = res.results
-                }, 500)}
-              >
-                {formData.appStoreList.map((item) => (
-                  <a-select-option value={item.trackName}>
-                    <a-space size={20} class="ml_2">
-                      <a-avatar src={item.artworkUrl60} shape="square" />
-                      {item.trackName}
-                    </a-space>
-                  </a-select-option>
-                ))}
-              </a-select>
-            </a-form-item>
-          </a-col>
-          {formData.appStoreItem && (
-            <>
-              <a-col span={24}>
-                <a-space>
-                  <a-avatar src={formData.appStoreItem.artworkUrl60} shape="square" />
-                  {formData.appStoreItem.trackName}
-                </a-space>
-                <p class="textFlow_2">{formData.appStoreItem.description}</p>
-              </a-col>
-              <a-col span={24}>
-                <a-space size={20}>
-                  <a-qrcode
-                    value={`https://apps.apple.com/cn/app/${
-                      formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]
-                    }`}
-                  />
-                  <a-button
-                    href={`https://apps.apple.com/cn/app/${
-                      formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]
-                    }`}
-                    type="link"
-                    target="_blank"
-                  >
-                    点击跳转
-                  </a-button>
-                </a-space>
-              </a-col>
-            </>
-          )}
-        </>
-      )
-    }
+    dom: () => (
+      <>
+        <a-col span={24}>
+          <a-form-item label="App名称" required>
+            <a-select
+              v-model:value={formData.appStoreName}
+              show-search
+              listHeight={440}
+              filterOption={() => true}
+              placeholder="App名称,输入内容搜索(暂时仅支持AppStore的App)"
+              class="grow"
+              onChange={async (val) => {
+                formData.appStoreItem = formData.appStoreList.find((i) => i.trackName === val)
+                const res = await Jsonp(appStoreUrl(val), callback)
+                formData.appStoreList = res.results
+              }}
+              onSearch={Debounce(async (val) => {
+                const res = await Jsonp(appStoreUrl(val), callback)
+                formData.appStoreList = res.results
+              }, 500)}
+            >
+              {formData.appStoreList.map((item) => (
+                <a-select-option value={item.trackName}>
+                  <a-space size={20} class="ml_2">
+                    <a-avatar src={item.artworkUrl60} shape="square" />
+                    {item.trackName}
+                  </a-space>
+                </a-select-option>
+              ))}
+            </a-select>
+          </a-form-item>
+        </a-col>
+        {formData.appStoreItem && (
+          <>
+            <a-col span={24}>
+              <a-space>
+                <a-avatar src={formData.appStoreItem.artworkUrl60} shape="square" />
+                {formData.appStoreItem.trackName}
+              </a-space>
+              <p class="textFlow_2">{formData.appStoreItem.description}</p>
+            </a-col>
+            <a-col span={24}>
+              <a-space size={20}>
+                <a-qrcode
+                  value={`https://apps.apple.com/cn/app/${
+                    formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]
+                  }`}
+                />
+                <a-button
+                  href={`https://apps.apple.com/cn/app/${formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]}`}
+                  type="link"
+                  target="_blank"
+                >
+                  点击跳转
+                </a-button>
+              </a-space>
+            </a-col>
+          </>
+        )}
+      </>
+    )
   },
   telephone: {
     value: 'telephone',

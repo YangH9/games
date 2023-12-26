@@ -20,7 +20,7 @@ console.log(lunarToSolar(1998, 5, 10, true))
 
 // 判断当前年份是否是闰年(闰年2月份有29天，平年2月份只有28天)
 function isLeap(year) {
-  return year % 4 == 0 ? (year % 100 != 0 ? 1 : year % 400 == 0 ? 1 : 0) : 0
+  return year % 4 === 0 ? (year % 100 !== 0 ? 1 : year % 400 === 0 ? 1 : 0) : 0
 }
 const today = new Date() // 获取当前日期
 const y = today.getFullYear() // 获取日期中的年份
@@ -28,8 +28,8 @@ const m = today.getMonth() // 获取日期中的月份(需要注意的是：月�
 const d = today.getDate() // 获取日期中的日(方便在建立日期表格时高亮显示当天)
 const firstday = new Date(y, m, 1) // 获取当月的第一天
 const dayOfWeek = firstday.getDay() // 判断第一天是星期几(返回[0-6]中的一个，0代表星期天，1代表星期一，以此类推)
-const days_per_month = [31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 创建月份数组
-const str_nums = Math.ceil((dayOfWeek + days_per_month[m]) / 7) // 确定日期表格所需的行数
+const daysPerMonth = [31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 创建月份数组
+const strNums = Math.ceil((dayOfWeek + daysPerMonth[m]) / 7) // 确定日期表格所需的行数
 const data = solarToLunar(y, m + 1, d)
 
 const toDayRender = () => (
@@ -50,13 +50,13 @@ const toDayRender = () => (
           <th>{weekText[i]}</th>
         ))}
       </tr>
-      {Array.from({ length: str_nums }, (_, i) => (
+      {Array.from({ length: strNums }, (_, i) => (
         <tr>
           {Array.from({ length: 7 }, (_, j) => {
             const num = 7 * i + j - dayOfWeek + 1
             return (
               <td class={num === d ? 'ant-picker-calendar-date-today' : ''}>
-                {num <= 0 || num > days_per_month[m] ? '' : num}
+                {num <= 0 || num > daysPerMonth[m] ? '' : num}
               </td>
             )
           })}

@@ -210,9 +210,9 @@ const Calendar = {
       return -1
     } // 若参数错误 返回-1
     const ms = m - 1
-    if (ms == 1) {
+    if (ms === 1) {
       // 2月份的闰平规律测算后确认返回28或29
-      return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0 ? 29 : 28
+      return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0 ? 29 : 28
     }
     return Calendar.solarMonth[ms]
   },
@@ -226,11 +226,11 @@ const Calendar = {
     let ganKey = (lYear - 3) % 10
     let zhiKey = (lYear - 3) % 12
     // 如果余数为0则为最后一个天干
-    if (ganKey == 0) {
+    if (ganKey === 0) {
       ganKey = 10
     }
     // 如果余数为0则为最后一个地支
-    if (zhiKey == 0) {
+    if (zhiKey === 0) {
       zhiKey = 12
     }
     return Calendar.Gan[ganKey - 1] + Calendar.Zhi[zhiKey - 1]
@@ -335,7 +335,7 @@ const Calendar = {
     if (y < 1900 || y > 2100) {
       return -1
     } // 年份限定、上限
-    if (y == 1900 && m == 1 && d < 31) {
+    if (y === 1900 && m === 1 && d < 31) {
       return -1
     } // 下限
     let objDate = new Date() // 未传参 获得当天
@@ -360,14 +360,14 @@ const Calendar = {
     // 是否今天
     const isTodayObj = new Date()
     let isToday = false
-    if (isTodayObj.getFullYear() == y && isTodayObj.getMonth() + 1 == m && isTodayObj.getDate() == d) {
+    if (isTodayObj.getFullYear() === y && isTodayObj.getMonth() + 1 === m && isTodayObj.getDate() === d) {
       isToday = true
     }
     // 星期几
     let nWeek = objDate.getDay()
     const cWeek = Calendar.nStr1[nWeek]
     const fWeek = new Date(y, m - 1, 1).getDay()
-    if (nWeek == 0) {
+    if (nWeek === 0) {
       nWeek = 7
     } // 数字表示周几顺应天朝周一开始的惯例
     // 农历年
@@ -377,7 +377,7 @@ const Calendar = {
     // 效验闰月
     for (i = 1; i < 13 && offset > 0; i++) {
       // 闰月
-      if (leap > 0 && i == leap + 1 && isLeap == false) {
+      if (leap > 0 && i === leap + 1 && isLeap === false) {
         --i
         isLeap = true
         temp = Calendar.leapDays(year) // 计算农历闰月天数
@@ -385,12 +385,12 @@ const Calendar = {
         temp = Calendar.monthDays(year, i) // 计算农历普通月天数
       }
       // 解除闰月
-      if (isLeap == true && i == leap + 1) {
+      if (isLeap === true && i === leap + 1) {
         isLeap = false
       }
       offset -= temp
     }
-    if (offset == 0 && leap > 0 && i == leap + 1) {
+    if (offset === 0 && leap > 0 && i === leap + 1) {
       if (isLeap) {
         isLeap = false
       } else {
@@ -420,11 +420,11 @@ const Calendar = {
     // 传入的日期的节气与否
     let isTerm = false
     let Term = null
-    if (firstNode == d) {
+    if (firstNode === d) {
       isTerm = true
       Term = Calendar.solarTerm[m * 2 - 2]
     }
-    if (secondNode == d) {
+    if (secondNode === d) {
       isTerm = true
       Term = Calendar.solarTerm[m * 2 - 1]
     }
@@ -437,32 +437,32 @@ const Calendar = {
     let cFestival = ''
     for (const item of Calendar.nStr4) {
       // 公历节日
-      if (+item.substring(0, 2) == m) {
-        if (+item.substring(2, 4) == d) {
+      if (+item.substring(0, 2) === m) {
+        if (+item.substring(2, 4) === d) {
           cFestival = item.substring(5)
         }
       }
     }
-    if (m == 5) {
+    if (m === 5) {
       // 母亲节
-      if (fWeek == 0) {
-        if (d == 8) {
+      if (fWeek === 0) {
+        if (d === 8) {
           cFestival = '母亲节'
         }
       } else if (fWeek < 7) {
-        if (d == 7 - fWeek + 8) {
+        if (d === 7 - fWeek + 8) {
           cFestival = '母亲节'
         }
       }
     }
-    if (m == 6) {
+    if (m === 6) {
       // 父亲节
-      if (fWeek == 0) {
-        if (d == 15) {
+      if (fWeek === 0) {
+        if (d === 15) {
           cFestival = '父亲节'
         }
       } else if (fWeek < 7) {
-        if (d == 7 - fWeek + 15) {
+        if (d === 7 - fWeek + 15) {
           cFestival = '父亲节'
         }
       }
@@ -476,9 +476,9 @@ const Calendar = {
           lFestival = item.substring(5)
         }
       }
-      if (month == 12) {
+      if (month === 12) {
         // 判断是否为除夕
-        if (day == 30) {
+        if (day === 30) {
           lFestival = '除夕'
         }
       }
@@ -523,10 +523,10 @@ const Calendar = {
     const leapOffset = 0
     const leapMonth = Calendar.leapMonth(y)
     const leapDay = Calendar.leapDays(y)
-    if (isLeapMonth && leapMonth != m) {
+    if (isLeapMonth && leapMonth !== m) {
       return -1
     } // 传参要求计算该闰月公历 但该年得出的闰月与传参的月份并不同
-    if ((y == 2100 && m == 12 && d > 1) || (y == 1900 && m == 1 && d < 31)) {
+    if ((y === 2100 && m === 12 && d > 1) || (y === 1900 && m === 1 && d < 31)) {
       return -1
     } // 超出了最大极限值
     const day = Calendar.monthDays(y, m)

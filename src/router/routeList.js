@@ -272,6 +272,14 @@ export default [
             component: () => import('@/views/study/other/heart.vue')
           },
           {
+            path: '/study/other/timeWheel',
+            name: 'timeWheel',
+            meta: {
+              title: '时间轮盘'
+            },
+            component: () => import('@/views/study/other/timeWheel.vue')
+          },
+          {
             path: '/study/other/loading',
             name: 'loading',
             meta: {
