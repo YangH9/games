@@ -16,12 +16,13 @@ const Jsonp = inject('Jsonp')
 const callback = 'jsonp_appStore'
 const appStoreUrl = (key) =>
   `https://itunes.apple.com/search?term=${key}&country=cn&entity=software&limit=10&callback=${callback}`
+const emailOptions = ref([])
 
 const formData = reactive({
   type: '',
   emailName: null,
-  emailTitle: null,
-  emailBody: null,
+  emailTitle: '',
+  emailBody: '',
   eventName: null,
   eventLocation: null,
   eventAllDay: false,
@@ -64,7 +65,32 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="收件邮箱" required>
-            <a-input v-model:value={formData.emailName} type="email" placeholder="收件邮箱(格式错误无效)"></a-input>
+            {/* <a-input v-model:value={formData.emailName} type="email" placeholder="收件邮箱(格式错误无效)"></a-input> */}
+            <a-auto-complete
+              v-model:value={formData.emailName}
+              placeholder="收件邮箱(格式错误无效)"
+              options={emailOptions.value}
+              v-slots={{
+                option: ({ value }) => (
+                  <>
+                    {value.split('@')[0]} @ <span class="font_bold">{value.split('@')[1]}</span>
+                  </>
+                )
+              }}
+              onSearch={(val) => {
+                let res = []
+                if (!val || val.indexOf('@') >= 0) {
+                  res = []
+                } else {
+                  res = ['gmail.com', '163.com', '126.com', 'qq.com', 'msn.com', 'icloud.com', 'example.com'].map(
+                    (domain) => ({
+                      value: `${val}@${domain}`
+                    })
+                  )
+                }
+                emailOptions.value = res
+              }}
+            ></a-auto-complete>
           </a-form-item>
         </a-col>
         <a-col span={24}>
@@ -477,13 +503,9 @@ const typeOption = {
             </a-col>
             <a-col span={24}>
               <a-space size={20}>
-                <a-qrcode
-                  value={`https://apps.apple.com/cn/app/${
-                    formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]
-                  }`}
-                />
+                <a-qrcode value={`https://apps.apple.com/cn/app/id${formData.appStoreItem.trackId}`} />
                 <a-button
-                  href={`https://apps.apple.com/cn/app/${formData.appStoreItem.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]}`}
+                  href={`https://apps.apple.com/cn/app/id${formData.appStoreItem.trackId}`}
                   type="link"
                   target="_blank"
                 >
@@ -553,7 +575,7 @@ const typeOption = {
   }
 }
 const GenerateDom = () => (
-  <a-card title="二维码生成器" class="mb_2" hoverable={true}>
+  <a-card title="二维码生成器" hoverable={true}>
     <a-form model={formData} label-col={{ span: 3 }}>
       <a-row gutter={24}>
         <a-col span={24}>

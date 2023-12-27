@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="App Store信息" :hoverable="true">
+    <a-card title="" :hoverable="true">
       <mainDom></mainDom>
     </a-card>
   </div>
@@ -90,9 +90,10 @@ const mainDom = () => (
                     title: () => (
                       <div class="flex items_center wrap">
                         <a
-                          href={`https://apps.apple.com/cn/app/${item.trackViewUrl.match(/[^/]+(?=\?)/)?.[0]}`}
-                          class="text_xl font_bold mr_4 textFlow"
+                          href={`https://apps.apple.com/cn/app/id${item.trackId}`}
                           title={item.trackName}
+                          target="_blank"
+                          class="text_xl font_bold mr_4 textFlow"
                         >
                           {item.trackName}
                         </a>
@@ -100,25 +101,38 @@ const mainDom = () => (
                         <a-tag color="gold">
                           {option.entity[item.wrapperType]?.label}-{item.primaryGenreName}
                         </a-tag>
-                        <div class="grow"></div>
                         <a-tag>{sizeFilter(item.fileSizeBytes)}</a-tag>
+                        <a-tag>
+                          <el-rate
+                            v-model={item.averageUserRating}
+                            disabled
+                            show-score
+                            size="small"
+                            score-template={`${item.userRatingCount}`}
+                          />
+                        </a-tag>
                         <a-tag v-slots={{ icon: () => <APropertySafetyTwoTone /> }}>{item.formattedPrice}</a-tag>
                         <a-tag v-slots={{ icon: () => <AInfoCircleTwoTone /> }}>{item.version}</a-tag>
                       </div>
                     ),
                     description: () => (
-                      <div class="flex items_center wrap">
-                        <a href={item.artistViewUrl} class="text_no_wrap">
-                          {item.artistName}
-                        </a>
-                        <div class="grow"></div>
+                      <>
+                        <div class="mb_2">
+                          <a
+                            href={`https://apps.apple.com/cn/developer/id${item.artistId}`}
+                            title={item.artistName}
+                            target="_blank"
+                          >
+                            {item.artistName}
+                          </a>
+                        </div>
                         {item.genres.map((i) => (
                           <a-tag color="cyan">{i}</a-tag>
                         ))}
                         {item.advisories.map((i) => (
                           <a-tag color="blue">{i}</a-tag>
                         ))}
-                      </div>
+                      </>
                     ),
                     avatar: () => <a-avatar shape="square" size={64} src={item.artworkUrl100}></a-avatar>
                   }}

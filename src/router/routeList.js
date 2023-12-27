@@ -372,6 +372,14 @@ export default [
             component: () => import('@/views/study/componentDemo/table2.vue')
           },
           {
+            path: '/study/componentDemo/form1',
+            name: 'form1',
+            meta: {
+              title: '表单1'
+            },
+            component: () => import('@/views/study/componentDemo/form1.vue')
+          },
+          {
             path: '/study/componentDemo/form2',
             name: 'form2',
             meta: {

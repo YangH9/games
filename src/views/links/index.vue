@@ -248,7 +248,8 @@ const resoutcesList = [
       },
       { title: '开源中国', href: 'https://www.oschina.net/', favicon: '//static.oschina.net/new-osc/img/favicon.ico' },
       { title: '知乎', href: 'https://www.zhihu.com', favicon: '' },
-      { title: 'Prettier', href: 'https://prettier.io/', favicon: 'icon.png' }
+      { title: 'Prettier', href: 'https://prettier.io/', favicon: 'icon.png' },
+      { title: 'tiny富文本', href: 'https://www.tiny.cloud/', favicon: '' }
     ]
   },
   {
