@@ -5,28 +5,6 @@
       <Editor
         api-key="rwwsrynbk8cqoox4n5ixrwqlovmjwgcjm4ia30pf4pav74b8"
         :init="{
-          toolbar: false,
-          menubar: false,
-          inline: true,
-          branding: false,
-          language: 'zh_CN'
-        }"
-        initial-value="Welcome to TinyMCE!"
-      />
-      <Editor
-        api-key="rwwsrynbk8cqoox4n5ixrwqlovmjwgcjm4ia30pf4pav74b8"
-        :init="{
-          toolbar: false,
-          menubar: false,
-          branding: false,
-          toolbar_mode: 'sliding',
-          language: 'zh_CN'
-        }"
-        initial-value="Welcome to TinyMCE!"
-      />
-      <Editor
-        api-key="rwwsrynbk8cqoox4n5ixrwqlovmjwgcjm4ia30pf4pav74b8"
-        :init="{
           branding: false,
           plugins: [
             'advlist',
@@ -55,14 +33,16 @@
             'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
             'forecolor backcolor emoticons | help',
           menu: {
-            favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
+            favs: { title: '自定义', items: 'code visualaid | searchreplace | emoticons' }
           },
           menubar: 'favs file edit view insert format tools table help',
           toolbar_mode: 'sliding',
           language: 'zh_CN'
         }"
-        initial-value="Welcome to TinyMCE!"
+        placeholder="TinyMCE"
       />
+      <a-divider></a-divider>
+      <QuillEditor contentType="html" toolbar="full" placeholder="QuillEditor" />
     </a-card>
   </div>
 </template>
@@ -71,8 +51,13 @@
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref } from 'vue'
 import Editor from '@tinymce/tinymce-vue'
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.bubble.css'
 
 // https://www.tiny.cloud/
+
+// https://vueup.github.io/vue-quill/
+// https://quilljs.com/
 </script>
 
 <style lang="scss" scoped>
