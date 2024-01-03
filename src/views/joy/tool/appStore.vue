@@ -12,8 +12,12 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { sizeFilter } from '@/utils'
 import { debounce } from 'lodash'
 import { reactive, inject, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
+const Dayjs = inject('Dayjs')
 const Jsonp = inject('Jsonp')
+const route = useRoute()
+const router = useRouter()
 
 const callback = 'jsonp_appStore'
 
@@ -31,14 +35,16 @@ const option = {
 }
 
 const formData = reactive({
-  name: '',
+  name: route.query?.term || '',
   entity: 'software',
   contry: 'cn'
 })
 const appList = ref([])
+const detailData = ref({})
 // limit: 10
 
 const getData = async () => {
+  router.replace({ query: { term: formData.name } })
   const res = await Jsonp(
     `https://itunes.apple.com/search?term=${formData.name}&country=${formData.contry}&entity=${formData.entity}&callback=${callback}`,
     callback
@@ -46,7 +52,7 @@ const getData = async () => {
   appList.value = res.results
 }
 
-getData()
+route.query?.term && getData()
 
 const mainDom = () => (
   <>
@@ -84,7 +90,7 @@ const mainDom = () => (
             item-layout="vertical"
             data-source={appList.value}
             renderItem={({ item }) => (
-              <a-list-item>
+              <a-list-item onClick={() => (detailData.value = item)}>
                 <a-list-item-meta
                   v-slots={{
                     title: () => (
@@ -144,8 +150,138 @@ const mainDom = () => (
         </a-col>
       </a-row>
     </a-form>
+    <a-drawer
+      title="详情"
+      placement="bottom"
+      closable={false}
+      open={!!detailData.value?.trackId}
+      height="80vh"
+      class="drawer"
+      onClose={() => (detailData.value = {})}
+    >
+      <a-space size={20}>
+        <a-avatar shape="square" size={64} src={detailData.value.artworkUrl100}></a-avatar>
+        <a-space size={6} direction="vertical">
+          <a-space size={10}>
+            <div class="text_xl font_bold textFlow">{detailData.value.trackName}</div>
+            <a-tag>{detailData.value.contentAdvisoryRating}</a-tag>
+          </a-space>
+          <a-space size={0}>
+            <a-tag color="blue" v-slots={{ icon: () => <APropertySafetyTwoTone /> }}>
+              {detailData.value.formattedPrice}
+            </a-tag>
+            {detailData.value.genres?.map((i) => (
+              <a-tag color="cyan">{i}</a-tag>
+            ))}
+          </a-space>
+        </a-space>
+      </a-space>
+      <a-divider></a-divider>
+      <div class="scroll_x">
+        <a-space size={10}>
+          <a-space size={6} align="center" direction="vertical">
+            <span class="text_no_wrap">{detailData.value.userRatingCount} 个评分</span>
+            <el-rate v-model={detailData.value.averageUserRating} disabled show-score size="small" score-template="" />
+            <span>{detailData.value.averageUserRating?.toFixed(2)}</span>
+          </a-space>
+          <a-divider type="vertical" />
+          <a-space size={6} align="center" direction="vertical">
+            <span>开发者</span>
+            <a
+              href={`https://apps.apple.com/cn/developer/id${detailData.value.artistId}`}
+              title={detailData.value.artistName}
+              target="_blank"
+            >
+              {detailData.value.artistName}
+            </a>
+          </a-space>
+          <a-divider type="vertical" />
+          <a-space size={6} align="center" direction="vertical">
+            <span>年龄</span>
+            <span class="text_xl font_bold">{detailData.value.contentAdvisoryRating}</span>
+          </a-space>
+          <a-divider type="vertical" />
+          <a-space size={6} align="center" direction="vertical">
+            <span>语言</span>
+            <span class="text_xl font_bold">{detailData.value.languageCodesISO2A?.[0]}</span>
+            {detailData.value.languageCodesISO2A?.length > 0 ? (
+              <span class="text_no_wrap">+{detailData.value.languageCodesISO2A?.length}种语言</span>
+            ) : (
+              ''
+            )}
+          </a-space>
+          <a-divider type="vertical" />
+          <a-space size={6} align="center" direction="vertical">
+            <span>大小</span>
+            <span class="text_xl font_bold text_no_wrap">{sizeFilter(detailData.value.fileSizeBytes)}</span>
+          </a-space>
+        </a-space>
+      </div>
+      <a-divider></a-divider>
+      <div>
+        <div class="flex content_between mb_2">
+          <div class="text_xl font_bold textFlow">新内容</div>
+        </div>
+        <div class="flex content_between mb_1">
+          <div>版本：{detailData.value.version}</div>
+          <div>{Dayjs(detailData.value.currentVersionReleaseDate).format('YYYY/MM/DD')}</div>
+        </div>
+        <p class="ml_4" v-html={detailData.value.releaseNotes?.replaceAll('\n', '<br />')}></p>
+      </div>
+      <a-divider></a-divider>
+      <p class="px_2" v-html={detailData.value.description?.replaceAll('\n', '<br />')}></p>
+      <a-divider></a-divider>
+      <div>
+        <div class="text_xl font_bold textFlow mb_3">信息</div>
+        <div class="px_2">
+          <div class="mb_3">
+            <div>供应商</div>
+            <div>
+              {detailData.value.sellerUrl ? (
+                <a href={detailData.value.sellerUrl} title={detailData.value.sellerName} target="_blank">
+                  {detailData.value.sellerName}
+                </a>
+              ) : (
+                detailData.value.sellerName
+              )}
+            </div>
+          </div>
+          <div class="mb_3">
+            <div>类别</div>
+            <div>
+              {detailData.value.genres?.map((i, j) => (
+                <a
+                  href={` https://itunes.apple.com/cn/genre/id${detailData.value.genreIds?.[j]}`}
+                  target="_blank"
+                  class="mr_2"
+                >
+                  {i}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div class="mb_3">
+            <div>大小</div>
+            <div class="font_600">{sizeFilter(detailData.value.fileSizeBytes)}</div>
+          </div>
+          <div class="mb_3">
+            <div>年龄分级</div>
+            <div class="font_600">{detailData.value.contentAdvisoryRating}</div>
+            {detailData.value.advisories?.length > 0 ? <div>{detailData.value.advisories.map((i) => i)}</div> : ''}
+          </div>
+          <div>
+            <div>价格</div>
+            <div class="font_600">{detailData.value.formattedPrice}</div>
+          </div>
+        </div>
+      </div>
+    </a-drawer>
   </>
 )
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:global(.el-rate .el-rate__icon) {
+  margin-right: 0;
+}
+</style>
