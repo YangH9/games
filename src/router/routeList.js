@@ -617,6 +617,14 @@ export default [
             component: () => import('@/views/joy/tool/lifeTime.vue')
           },
           {
+            path: '/joy/tool/ceramicTileWall',
+            name: 'ceramicTileWall',
+            meta: {
+              title: '瓷砖墙'
+            },
+            component: () => import('@/views/joy/tool/ceramicTileWall.vue')
+          },
+          {
             path: '/joy/tool/skeuomorphism',
             name: 'Skeuomorphism',
             meta: {

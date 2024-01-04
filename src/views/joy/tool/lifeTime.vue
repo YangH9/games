@@ -10,11 +10,9 @@
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { computed, reactive, inject } from 'vue'
-import duration from 'dayjs/plugin/duration'
 import minMax from 'dayjs/plugin/minMax'
 
 const Dayjs = inject('Dayjs')
-Dayjs.extend(duration)
 Dayjs.extend(minMax)
 
 const formData = reactive({
@@ -58,16 +56,17 @@ const dayArray = computed(() => {
   const birthdayIdx = Math.abs(firstDay.value.diff(birthday, unitOption[unit].key))
   const arr = dayTypeList
     .filter((_, i) => i < 5 || degreeOption[degree]?.day.includes(i))
-    .reduce((total, item) => {
-      return [
+    .reduce(
+      (total, item) => [
         ...total,
         {
           ...item,
           start: total.at(-1)?.end + 1 || 0,
           end: (total.at(-1)?.end || -1) + item.year * unit
         }
-      ]
-    }, [])
+      ],
+      []
+    )
   arr.push({
     ...dayTypeList.at(-2),
     start: arr.at(-1).end,
@@ -183,9 +182,13 @@ const MainDom = () => (
             const date = firstDay.value?.add(index, unitOption[formData.unit].key)
             const attribute = {
               style: { backgroundColor: item?.color },
-              title: `${item?.label || ''}\n${date.format('YYYY年MM月DD日')}`
+              data: `${item?.label || ''} ${date.format('YYYY年MM月DD日')}`
             }
-            return <div class="square" {...attribute}></div>
+            return (
+              <a-tooltip v-slots={{ title: () => `${item?.label || ''} ${date.format('YYYY年MM月DD日')}` }}>
+                <div class="square" {...attribute}></div>
+              </a-tooltip>
+            )
           })}
         </a-space>
       </>
@@ -207,6 +210,6 @@ const MainDom = () => (
   border-radius: 0.25rem;
   border-width: 0;
   position: relative;
-  background-color: #e2e8f0;
+  background-color: #ebedf0;
 }
 </style>
