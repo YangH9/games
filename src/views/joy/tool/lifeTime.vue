@@ -9,11 +9,17 @@
 
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { computed, reactive } from 'vue'
+import { computed, reactive, inject } from 'vue'
+import duration from 'dayjs/plugin/duration'
+import minMax from 'dayjs/plugin/minMax'
+
+const Dayjs = inject('Dayjs')
+Dayjs.extend(duration)
+Dayjs.extend(minMax)
 
 const formData = reactive({
-  nowDay: new Date().toFormat('YYYY-MM-DD'),
-  birthday: '',
+  nowDay: Dayjs(),
+  birthday: null,
   maxYear: 80,
   degree: null,
   unit: 12
@@ -38,37 +44,54 @@ const degreeOption = {
   4: { value: 4, day: [6, 7, 8], label: '博士' }
 }
 const unitOption = {
-  1: { value: 1, day: 365, label: '年' },
-  12: { value: 12, day: 30, label: '月' },
-  52: { value: 52, day: 7, label: '周' },
-  365: { value: 365, day: 1, label: '日' }
+  1: { value: 1, day: 365, label: '年', key: 'year' },
+  12: { value: 12, day: 30, label: '月', key: 'month' },
+  52: { value: 52, day: 7, label: '周', key: 'week' },
+  365: { value: 365, day: 1, label: '日', key: 'day' }
 }
+// 校准 0 的日期，对比今天与生日日期
+const firstDay = computed(() => Dayjs.min(formData.nowDay, formData.birthday))
 const dayArray = computed(() => {
   const { nowDay, birthday, unit, degree } = formData
-  const toDay = birthday
-    ? ~~((new Date(nowDay) - new Date(birthday)) / (unitOption[unit].day * 24 * 60 * 60 * 1000))
-    : 0
+  // 今天
+  const toDayIdx = Math.abs(firstDay.value.diff(nowDay, unitOption[unit].key))
+  const birthdayIdx = Math.abs(firstDay.value.diff(birthday, unitOption[unit].key))
   const arr = dayTypeList
     .filter((_, i) => i < 5 || degreeOption[degree]?.day.includes(i))
     .reduce((total, item) => {
-      const data = total
-      data.push({
-        ...item,
-        start: total.at(-1)?.end + 1 || 0,
-        end: (total.at(-1)?.end || -1) + item.year * unit
-      })
-      return data
+      return [
+        ...total,
+        {
+          ...item,
+          start: total.at(-1)?.end + 1 || 0,
+          end: (total.at(-1)?.end || -1) + item.year * unit
+        }
+      ]
     }, [])
   arr.push({
     ...dayTypeList.at(-2),
     start: arr.at(-1).end,
-    end: toDay - 1
+    end: toDayIdx - 1
   })
   arr.push({
     ...dayTypeList.at(-1),
-    start: toDay,
-    end: toDay
+    start: toDayIdx,
+    end: toDayIdx
   })
+  if (birthdayIdx) {
+    arr.length = 0
+    arr[0] = {
+      ...dayTypeList.at(-1),
+      start: toDayIdx,
+      end: toDayIdx
+    }
+    arr[1] = {
+      ...dayTypeList[0],
+      start: birthdayIdx,
+      end: birthdayIdx
+    }
+  }
+  console.log(arr)
   return arr
 })
 
@@ -78,13 +101,7 @@ const MainDom = () => (
       <a-row gutter={24}>
         <a-col span={24} md={12}>
           <a-form-item label="生日">
-            <a-date-picker
-              v-model:value={formData.birthday}
-              disabled-date={(date) => date && date > Date.now()}
-              valueFormat="YYYY-MM-DD"
-              placeholder="生日"
-              class="w_100"
-            />
+            <a-date-picker v-model:value={formData.birthday} placeholder="生日" class="w_100" />
           </a-form-item>
         </a-col>
         <a-col span={24} md={12}>
@@ -125,29 +142,29 @@ const MainDom = () => (
       <>
         <a-divider class="my_4" />
         <a-space size={4} wrap>
-          <p>你的生日：{formData.birthday}</p>
+          <p>你的生日：{formData.birthday.format('YYYY-MM-DD')}</p>
           <p>预计寿命：{formData.maxYear}岁</p>
-          <p>
-            已经存活
-            {
-              ~~(
-                (new Date(formData.nowDay) - new Date(formData.birthday)) /
-                (unitOption[formData.unit].day * 24 * 60 * 60 * 1000)
-              )
-            }
-            {unitOption[formData.unit].label}
-          </p>
-          <p>
-            还剩
-            {
-              ~~(
-                formData.maxYear * formData.unit -
-                (new Date(formData.nowDay) - new Date(formData.birthday)) /
-                  (unitOption[formData.unit].day * 24 * 60 * 60 * 1000)
-              )
-            }
-            {unitOption[formData.unit].label}
-          </p>
+          {formData.nowDay.diff(formData.birthday, unitOption[formData.unit].key) > 0 ? (
+            <>
+              <p>
+                已经存活
+                {formData.nowDay.diff(formData.birthday, unitOption[formData.unit].key)}
+                {unitOption[formData.unit].label}
+              </p>
+              <p>
+                还剩
+                {formData.birthday.add(formData.maxYear, 'year').diff(formData.nowDay, unitOption[formData.unit].key)}
+                {unitOption[formData.unit].label}
+              </p>
+            </>
+          ) : (
+            <p>
+              还有
+              {formData.birthday.diff(formData.nowDay, unitOption[formData.unit].key)}
+              {unitOption[formData.unit].label}
+              出生
+            </p>
+          )}
           <p>祝大家长命百岁</p>
         </a-space>
       </>
@@ -158,14 +175,17 @@ const MainDom = () => (
         <a-space size={4} wrap>
           {Array.from({ length: formData.unit * formData.maxYear }, (_, index) => {
             const item =
-              index === dayArray.value.at(-1).end
+              (index === dayArray.value.at(-1).end
                 ? dayArray.value.at(-1)
                 : index < dayArray.value.at(-1).end
                   ? dayArray.value.find((i) => i.start <= index && i.end >= index)
-                  : { label: '', color: '' }
-            return (
-              <div style={{ backgroundColor: item.color }} class="square" title={`${item.label}\n${index + 1}`}></div>
-            )
+                  : null) || {}
+            const date = firstDay.value?.add(index, unitOption[formData.unit].key)
+            const attribute = {
+              style: { backgroundColor: item?.color },
+              title: `${item?.label || ''}\n${date.format('YYYY年MM月DD日')}`
+            }
+            return <div class="square" {...attribute}></div>
           })}
         </a-space>
       </>
