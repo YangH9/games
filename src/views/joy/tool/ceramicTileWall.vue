@@ -109,13 +109,6 @@ const MainDom = () => (
     <a-divider class="my_2" />
     {typeOption[formData.type].start.format('YYYY/MM/DD')} ~ {typeOption[formData.type].end.format('YYYY/MM/DD')}{' '}
     <a-divider class="my_2" />
-    <a-space align="center" class="mb_2">
-      <span>低</span>
-      {levelList.map((item) => (
-        <div style={{ backgroundColor: item.color }} class="square"></div>
-      ))}
-      <span>高</span>
-    </a-space>
     <div class="scroll_x " style={{ paddingBottom: `${formData.space + formData.space / 2}px` }}>
       <a-space
         size={formData.space}
@@ -123,20 +116,18 @@ const MainDom = () => (
         wrap
         style={{ maxHeight: `${formData.size * 7 + formData.space * 6}px` }}
       >
-        {Array.from({ length: 7 }, (_, index) => {
-          if ((index + 1) % 2 === 0) {
-            const attribute = {
-              style: {
-                display: 'inline-block',
-                height: `${formData.size}px`,
-                fontSize: `${formData.size}px`,
-                lineHeight: `${formData.size}px`
-              }
-            }
-            return <div {...attribute}>{['', 'Mon', '', 'Wed', '', 'Fri'][index]}</div>
-          }
-          return ''
-        })}
+        {Array.from({ length: 7 }, (_, index) => (
+          <div
+            style={{
+              width: `${(formData.size + 2) * 2}px`,
+              height: `${formData.size}px`,
+              fontSize: `${formData.size + 2}px`,
+              lineHeight: `${formData.size}px`
+            }}
+          >
+            {(index + 1) % 2 === 0 ? ['', '周一', '', '周三', '', '周五'][index] : ''}
+          </div>
+        ))}
         {Array.from({ length: typeOption[formData.type].start.day() }, () => (
           <div class="square"></div>
         ))}
@@ -156,6 +147,15 @@ const MainDom = () => (
             </a-tooltip>
           )
         })}
+      </a-space>
+    </div>
+    <div class="flex content_end mt_2">
+      <a-space align="center">
+        <span>低</span>
+        {levelList.map((item) => (
+          <div style={{ backgroundColor: item.color }} class="square"></div>
+        ))}
+        <span>高</span>
       </a-space>
     </div>
   </>
