@@ -65,7 +65,6 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="收件邮箱" required>
-            {/* <a-input v-model:value={formData.emailName} type="email" placeholder="收件邮箱(格式错误无效)"></a-input> */}
             <a-auto-complete
               v-model:value={formData.emailName}
               placeholder="收件邮箱(格式错误无效)"

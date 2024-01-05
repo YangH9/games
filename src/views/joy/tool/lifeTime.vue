@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="人生进度表" :hoverable="true">
+    <a-card title="人生进度表" :hoverable="true">
       <MainDom></MainDom>
     </a-card>
   </div>
@@ -200,10 +200,6 @@ const MainDom = () => (
 </script>
 
 <style lang="scss" scoped>
-.ant-card:deep(.ant-card-body) {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
 :deep(.square) {
   width: 1rem;
   height: 1rem;
