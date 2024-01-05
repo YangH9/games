@@ -121,7 +121,7 @@ const MainDom = () => (
             style={{
               width: `${(formData.size + 2) * 2}px`,
               height: `${formData.size}px`,
-              fontSize: `${formData.size + 2}px`,
+              fontSize: `${formData.size}px`,
               lineHeight: `${formData.size}px`
             }}
           >
