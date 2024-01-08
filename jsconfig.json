@@ -7,8 +7,8 @@
       "@/*": ["src/*"]
     }
   },
-  "vueCompilerOptions": {
-    "experimentalDisableTemplateSupport": true
-  },
+  // "vueCompilerOptions": {
+  //   "experimentalDisableTemplateSupport": true
+  // },
   "exclude": ["node_modules", "docs"]
 }

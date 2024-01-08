@@ -20,7 +20,7 @@ export default ({ mode }) => {
         }
       }),
       vueJsx(),
-      createHtmlPlugin({ minify: true, inject: { data: { title: env.VITE_TITLE } } }),
+      createHtmlPlugin({ viteNext: true, minify: true, inject: { data: { title: env.VITE_TITLE } } }),
       viteCompression({ threshold: 1024 * 1024 * 10 })
     ],
     root: env.VITE_ROOT_URL,
