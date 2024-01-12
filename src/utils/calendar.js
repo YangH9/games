@@ -571,8 +571,8 @@ const Calendar = {
   }
 }
 
-export const solarToLunar = (y, m, d) => Calendar.solar2lunar(y, m, d)
-export const lunarToSolar = (y, m, d, isLeapMonth) => Calendar.lunar2solar(y, m, d, isLeapMonth)
+export const solarToLunar = Calendar.solar2lunar
+export const lunarToSolar = Calendar.lunar2solar
 export const weekText = Calendar.nStr1
 
 export default Calendar

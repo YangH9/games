@@ -26,9 +26,7 @@ import '@/assets/main.scss'
 
 dayjs.locale('zh-cn')
 
-const app = createApp(App)
-
-app
+createApp(App)
   .use(AntDesign)
   .use(ElementPlus, { locale: zhCn })
   .use(VForm3)

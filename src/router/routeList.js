@@ -542,6 +542,14 @@ export default [
             component: () => import('@/views/joy/tool/calendar.vue')
           },
           {
+            path: '/joy/tool/solarLunar',
+            name: 'solarLunar',
+            meta: {
+              title: '公历农历转换器'
+            },
+            component: () => import('@/views/joy/tool/solarLunar.vue')
+          },
+          {
             path: '/joy/tool/listen',
             name: 'listen',
             meta: {

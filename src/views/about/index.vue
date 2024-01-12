@@ -56,6 +56,7 @@ const userList = [
   { label: 'GitHub站点', title: 'https://yangh9.github.io', href: 'https://yangh9.github.io' },
   { label: 'Gitee', title: 'https://gitee.com/YangH9', href: 'https://gitee.com/YangH9' },
   { label: 'Gitee站点', title: 'https://yangh9.gitee.io', href: 'https://yangh9.gitee.io' },
+  { label: '知乎', title: 'https://www.zhihu.com/people/yangh9', href: 'https://www.zhihu.com/people/yangh9' },
   { label: '抖音', title: 'https://v.douyin.com/3x5ty2', href: 'https://v.douyin.com/3x5ty2' },
   {
     label: '快手',
