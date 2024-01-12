@@ -53,8 +53,10 @@ const MainDom = () => (
               const birthdates = formData.birthdates
               const date = solarToLunar(birthdates.year(), birthdates.month() + 1, birthdates.date())
               const gzHour = `${
-                ganList[(ganList.findIndex((i) => i === date.gzDay.slice(0, 1)) * 2 + (birthdates.hour() + 1) / 2) % 10]
-              }${zhiList[(birthdates.hour() + 1) / 2]}`
+                ganList[
+                  (ganList.findIndex((i) => i === date.gzDay.slice(0, 1)) * 2 + ~~((birthdates.hour() + 1) / 2)) % 10
+                ]
+              }${zhiList[~~((birthdates.hour() + 1) / 2) % 12]}`
               console.log(formData.birthdates)
               data.birthdates = `${date.gzYear}年 ${date.gzMonth}月 ${date.gzDay}日 ${gzHour}时`
             }}
