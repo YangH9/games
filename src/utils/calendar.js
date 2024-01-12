@@ -574,5 +574,7 @@ const Calendar = {
 export const solarToLunar = Calendar.solar2lunar
 export const lunarToSolar = Calendar.lunar2solar
 export const weekText = Calendar.nStr1
+export const ganList = Calendar.Gan
+export const zhiList = Calendar.Zhi
 
 export default Calendar

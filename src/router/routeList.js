@@ -542,6 +542,14 @@ export default [
             component: () => import('@/views/joy/tool/calendar.vue')
           },
           {
+            path: '/joy/tool/birthdates',
+            name: 'birthdates',
+            meta: {
+              title: '生辰八字查询'
+            },
+            component: () => import('@/views/joy/tool/birthdates.vue')
+          },
+          {
             path: '/joy/tool/solarLunar',
             name: 'solarLunar',
             meta: {
