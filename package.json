@@ -13,6 +13,14 @@
     "commit": "git add . & git commit -m [update]自动提交",
     "push": "git push origin master"
   },
+  "scripts-info": {
+    "dev": "运行开发环境",
+    "build": "打包生产环境",
+    "preview": "预览生产环境",
+    "pull": "拉取github",
+    "commit": "暂存",
+    "push": "推送"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/YangH9/YangH9.github.io"
