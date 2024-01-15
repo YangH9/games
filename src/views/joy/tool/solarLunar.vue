@@ -31,7 +31,7 @@ const MainDom = () => (
             <a-button
               disabled={!formData.solar}
               onClick={() => {
-                const solar = formData.solar
+                const { solar } = formData
                 const date = solarToLunar(solar.year(), solar.month() + 1, solar.date())
                 data.solar = `${date.lYear}年${date.isLeap ? '闰' : ''}${date.lMonth}月${date.lDay}日（${
                   date.IMonthCn
@@ -54,7 +54,7 @@ const MainDom = () => (
             <a-button
               disabled={!formData.lunar}
               onClick={() => {
-                const lunar = formData.lunar
+                const { lunar } = formData
                 const date = lunarToSolar(lunar.year(), lunar.month() + 1, lunar.date(), formData.isLeap)
                 data.lunar = date + 1 ? `${date.cYear}年${date.cMonth}月${date.cDay}日` : '无效日期'
               }}

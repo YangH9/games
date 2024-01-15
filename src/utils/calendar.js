@@ -296,7 +296,7 @@ const Calendar = {
    */
   toChinaDay: (d) => {
     // 日 => \u65e5
-    let s
+    let s = `${Calendar.nStr2[Math.floor(d / 10)]}${Calendar.nStr1[d % 10]}`
     switch (d) {
       case 10:
         s = '\u521d\u5341'
@@ -307,9 +307,6 @@ const Calendar = {
       case 30:
         s = '\u4e09\u5341'
         break
-      default:
-        s = Calendar.nStr2[Math.floor(d / 10)]
-        s += Calendar.nStr1[d % 10]
     }
     return s
   },
@@ -346,7 +343,9 @@ const Calendar = {
     let leap = 0
     let temp = 0
     // 修正ymd参数
-    ;(y = objDate.getFullYear()), (m = objDate.getMonth() + 1), (d = objDate.getDate())
+    y = objDate.getFullYear()
+    m = objDate.getMonth() + 1
+    d = objDate.getDate()
     let offset =
       (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000
     for (i = 1900; i < 2101 && offset > 0; i++) {

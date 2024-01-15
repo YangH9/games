@@ -30,20 +30,20 @@ const firstday = new Date(y, m, 1) // 获取当月的第一天
 const dayOfWeek = firstday.getDay() // 判断第一天是星期几(返回[0-6]中的一个，0代表星期天，1代表星期一，以此类推)
 const daysPerMonth = [31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 创建月份数组
 const strNums = Math.ceil((dayOfWeek + daysPerMonth[m]) / 7) // 确定日期表格所需的行数
-const data = solarToLunar(y, m + 1, d)
+const date = solarToLunar(y, m + 1, d)
 
 const toDayRender = () => (
   <>
     <h3>
-      公历：{data.cYear}年 {data.cMonth}月 {data.cDay}日 {data.ncWeek}
+      公历：{date.cYear}年 {date.cMonth}月 {date.cDay}日 {date.ncWeek}
     </h3>
     <h3>
-      农历：{data.lYear}年 {data.IMonthCn} {data.IDayCn}
+      农历：{date.lYear}年 {date.IMonthCn} {date.IDayCn}
     </h3>
     <h3>
-      天干地支纪年：{data.gzYear} {data.Animal}年 {data.gzMonth}月 {data.gzDay}日
+      天干地支纪年：{date.gzYear} {date.Animal}年 {date.gzMonth}月 {date.gzDay}日
     </h3>
-    <h3>{data.astro}</h3>
+    <h3>{date.astro}</h3>
     <table cellspacing="0" class="text_center">
       <tr>
         {Array.from({ length: 7 }, (_, i) => (

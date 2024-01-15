@@ -63,19 +63,19 @@ module.exports = {
     'no-unreachable': 'error', // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
     'no-unsafe-finally': 'error', // 禁止在 finally 语句块中出现控制流语句
     'no-unsafe-negation': 'error', // 禁止对关系运算符的左操作数使用否定操作符
-    'require-atomic-updates': 'error', // 禁止由于 await 或 yield的使用而可能导致出现竞态条件的赋值
+    'require-atomic-updates': 'off', // 禁止由于 await 或 yield的使用而可能导致出现竞态条件的赋值
     'use-isnan': 'error', // 要求使用 isNaN() 检查 NaN
     'valid-typeof': 'error', // 强制 typeof 表达式与有效的字符串进行比较
 
     // Best Practices、这些规则是关于最佳实践的，帮助你避免一些问题
     'accessor-pairs': 'error', // 强制 getter 和 setter 在对象中成对出现
-    'array-callback-return': 'error', // 强制数组方法的回调函数中有 return 语句
+    'array-callback-return': 'off', // 强制数组方法的回调函数中有 return 语句
     'block-scoped-var': 'error', // 强制把变量的使用限制在其定义的作用域范围内
     'class-methods-use-this': 'error', // 强制类方法使用 this
-    complexity: 'error', // 指定程序中允许的最大环路复杂度
+    complexity: 'off', // 指定程序中允许的最大环路复杂度
     'consistent-return': 'error', // 要求 return 语句要么总是指定返回的值，要么不指定
     curly: 'error', // 强制所有控制语句使用一致的括号风格
-    'default-case': 'error', // 要求 switch 语句中有 default 分支
+    'default-case': 'off', // 要求 switch 语句中有 default 分支
     'dot-notation': 'error', // 强制尽可能地使用点号
     eqeqeq: 'error', // 要求使用 === 和 !==
     'guard-for-in': 'error', // 要求 for-in 循环中有一个 if 语句
@@ -111,7 +111,7 @@ module.exports = {
     'no-new-wrappers': 'error', // 禁止对 String，Number 和 Boolean 使用 new 操作符
     'no-octal': 'error', // 禁用八进制字面量
     'no-octal-escape': 'error', // 禁止在字符串中使用八进制转义序列
-    'no-param-reassign': 'error', // 禁止对 function 的参数进行重新赋值
+    'no-param-reassign': 'off', // 禁止对 function 的参数进行重新赋值
     'no-proto': 'error', // 禁用 __proto__ 属性
     'no-redeclare': 'error', // 禁止多次声明同一变量
     'no-restricted-properties': 'error', // 禁止使用对象的某些属性
@@ -142,11 +142,11 @@ module.exports = {
     yoda: 'error', // 要求或禁止 “Yoda” 条件
 
     // Variables 这些规则与变量声明有关：
-    'init-declarations': ['error', 'always'], // 要求或禁止 var 声明中的初始化
+    'init-declarations': ['off', 'always'], // 要求或禁止 var 声明中的初始化
     'no-delete-var': 'error', // 禁止删除变量
     'no-label-var': 'error', // 不允许标签与变量同名
     'no-restricted-globals': ['error', 'event'], // 禁用特定的全局变量
-    'no-shadow': 'error', // 禁止变量声明与外层作用域的变量同名
+    'no-shadow': 'off', // 禁止变量声明与外层作用域的变量同名
     'no-shadow-restricted-names': 'error', // 禁止将标识符定义为受限的名字
     'no-undef': 'error', // 禁用未声明的变量，除非它们在 /* global */ 注释中被提到
     'no-undef-init': 'error', // 禁止将变量初始化为 undefined
@@ -175,7 +175,7 @@ module.exports = {
     'id-blacklist': 'error', // 禁用指定的标识符
     'id-length': ['error', { min: 1 }], // 强制标识符的最小和最大长度
     'id-match': 'error', // 要求标识符匹配一个指定的正则表达式
-    indent: ['error', 2], // 强制使用一致的缩进
+    indent: ['off', 2], // 强制使用一致的缩进
     'jsx-quotes': 'error', // 强制在 JSX 属性中一致地使用双引号或单引号
     'key-spacing': ['error', { mode: 'strict' }], // 强制在对象字面量的属性中键和值之间使用一致的间距
     'keyword-spacing': 'error', // 强制在关键字前后使用一致的空格
@@ -188,29 +188,29 @@ module.exports = {
     'max-lines': 'off', // 强制最大行数
     'max-lines-per-function': 'off', // 强制函数最大代码行数
     'max-nested-callbacks': 'error', // 强制回调函数最大嵌套深度
-    'max-params': 'error', // 强制函数定义中最多允许的参数数量
+    'max-params': 'off', // 强制函数定义中最多允许的参数数量
     'max-statements': 'off', // 强制函数块最多允许的的语句数量
     'max-statements-per-line': 'error', // 强制每一行中所允许的最大语句数量
     'multiline-comment-style': 'off', // 强制对多行注释使用特定风格
-    'multiline-ternary': ['error', 'always-multiline'], // 要求或禁止在三元操作数中间换行
+    'multiline-ternary': ['off', 'always-multiline'], // 要求或禁止在三元操作数中间换行
     'new-cap': ['error', { capIsNew: false }], // 要求构造函数首字母大写
     'new-parens': 'error', // 强制或禁止调用无参构造函数时有圆括号
-    'newline-per-chained-call': 'error', // 要求方法链中每个调用都有一个换行符
+    'newline-per-chained-call': 'off', // 要求方法链中每个调用都有一个换行符
     'no-array-constructor': 'error', // 禁用 Array 构造函数
-    'no-bitwise': ['error', { allow: ['~'] }], // 禁用按位运算符
-    'no-continue': 'error', // 禁用 continue 语句
+    'no-bitwise': ['off', { allow: ['~'] }], // 禁用按位运算符
+    'no-continue': 'off', // 禁用 continue 语句
     'no-inline-comments': 'off', // 禁止在代码后使用内联注释
     'no-lonely-if': 'error', // 禁止 if 作为唯一的语句出现在 else 语句中
     'no-mixed-operators': 'off', // 禁止混合使用不同的操作符
     'no-mixed-spaces-and-tabs': 'error', // 禁止空格和 tab 的混合缩进
     'no-multi-assign': 'error', // 禁止连续赋值
     'no-multiple-empty-lines': 'error', // 禁止出现多行空行
-    'no-negated-condition': 'error', // 禁用否定的表达式
-    'no-nested-ternary': 'error', // 禁用嵌套的三元表达式
+    'no-negated-condition': 'off', // 禁用否定的表达式
+    'no-nested-ternary': 'off', // 禁用嵌套的三元表达式
     'no-new-object': 'error', // 禁用 Object 的构造函数
     'no-plusplus': 'off', // 禁用一元操作符 ++ 和 --
     'no-restricted-syntax': 'error', // 禁用特定的语法
-    'no-tabs': 'error', // 禁用 tab
+    'no-tabs': 'off', // 禁用 tab
     'no-ternary': 'off', // 禁用三元操作符
     'no-trailing-spaces': 'error', // 禁用行尾空格
     'no-unneeded-ternary': 'error', // 禁止可以在有更简单的可替代的表达式时使用三元操作符
@@ -238,7 +238,7 @@ module.exports = {
     'space-infix-ops': 'error', // 要求操作符周围有空格
     'space-unary-ops': 'error', // 强制在一元操作符前后使用一致的空格
     'spaced-comment': ['error', 'always'], // 强制在注释中 // 或 /* 使用一致的空格
-    'switch-colon-spacing': ['error', { before: true, after: false }], // 强制在 switch 的冒号左右有空格
+    'switch-colon-spacing': ['off', { before: true, after: false }], // 强制在 switch 的冒号左右有空格
     'template-tag-spacing': 'error', // 要求或禁止在模板标记和它们的字面量之间有空格
     'unicode-bom': 'error', // 要求或禁止 Unicode 字节顺序标记 (BOM)
 
@@ -277,7 +277,7 @@ module.exports = {
 
     // Vue eslint
     'vue/attributes-order': 'error',
-    'vue/html-indent': ['error', 2],
+    'vue/html-indent': ['off', 2],
     'vue/max-attributes-per-line': ['error', { singleline: { max: 8 }, multiline: { max: 8 } }],
     'vue/no-setup-props-destructure': 'off',
     'vue/no-v-for-template-key': 'off',

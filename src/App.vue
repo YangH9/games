@@ -6,7 +6,7 @@
 import Loading from '@/components/Loading.vue'
 import { inject, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import ant_zhCN from 'ant-design-vue/es/locale/zh_CN'
+import antZhCN from 'ant-design-vue/es/locale/zh_CN'
 import { theme } from 'ant-design-vue'
 import { usePreferredColorScheme } from '@vueuse/core'
 
@@ -29,7 +29,7 @@ watch(
 
 const mainDom = () => (
   <a-config-provider
-    locale={ant_zhCN}
+    locale={antZhCN}
     theme={{
       algorithm: themeColor.value === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm
     }}

@@ -47,7 +47,7 @@ const typeOption = [
     end: toDay
   },
   ...Array.from({ length: 5 }, (_, index) => {
-    let item = toDay.add(-index, 'year').startOf('year')
+    const item = toDay.add(-index, 'year').startOf('year')
     return {
       value: index + 1,
       label: `${item.year()}`,
@@ -73,7 +73,7 @@ const monthCount = computed(() => {
 const initDayValue = () => {
   const start = toDay.add(-4, 'year').startOf('year')
   Array.from({ length: toDay.diff(start, 'day') + 1 }, (_, index) => {
-    let item = start.add(index, 'day')
+    const item = start.add(index, 'day')
     switch (formData.model) {
       case 'work':
         dayValue[`${item.format('YYYY-MM-DD')}`] = item.day() % 6 === 0 ? +!random(0, 2) : random(1, 4)

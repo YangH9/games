@@ -40,7 +40,7 @@ const musicList = ref([])
 Jsonp('https://yangh9.github.io/public/audio/fileList.js', 'callback', (res) => {
   musicList.value = res.fhcqList
   nextTick(() => {
-    new Sortable(document.querySelector('.ant-list-items'), {
+    Sortable(document.querySelector('.ant-list-items'), {
       handle: '.handle',
       draggable: '.ant-list-item'
     })
