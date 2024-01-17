@@ -1,22 +1,22 @@
 <template>
   <a-breadcrumb style="margin: 16px 0">
     <a-breadcrumb-item>
-      <router-link to="/">
+      <RouterLink to="/">
         <home-outlined />
-      </router-link>
+      </RouterLink>
     </a-breadcrumb-item>
     <a-breadcrumb-item v-for="(item, index) in menuList" :key="index">
       <template v-if="index === menuList.length - 1">{{ item.meta.title }}</template>
-      <router-link v-if="index < menuList.length - 1" :to="item.path">
+      <RouterLink v-if="index < menuList.length - 1" :to="item.path">
         {{ item.meta.title }}
-      </router-link>
+      </RouterLink>
       <template v-if="overlayShow && index === menuList.length - 1 && menuList[index - 1]?.children?.length" #overlay>
         <a-menu>
           <template v-for="(ite, ind) in menuList[index - 1].children" :key="ind">
             <a-menu-item v-if="ite.path !== item.path">
-              <router-link :to="ite.path">
+              <RouterLink :to="ite.path">
                 {{ ite.meta.title }}
-              </router-link>
+              </RouterLink>
               <!-- <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">General</a> -->
             </a-menu-item>
           </template>

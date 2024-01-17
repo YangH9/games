@@ -57,8 +57,11 @@ const data = reactive({
   lunar: '',
   birthdates: '',
   wuXing: '',
+  riZhu: '',
   yinYang: '',
-  jiaZiWuXing: ''
+  jiaZiWuXing: '',
+  wangJi: '',
+  fangWei: ''
 })
 
 const MainDom = () => (
@@ -102,10 +105,11 @@ const MainDom = () => (
                     console.log(formData.birthdates, date)
                     obj.solar = `${date.cYear}年 ${date.cMonth}月 ${date.cDay}日 ${birthdates.hour()}时`
                     obj.lunar = `${date.lYear}年 ${date.IMonthCn} ${date.IDayCn} ${zhi}时`
-                    obj.birthdates = `${date.gzYear} ${date.gzMonth} ${date.gzDay} ${gzHour}`
+                    obj.birthdates = `${date.gzYear}年 ${date.gzMonth}月 ${date.gzDay}日 ${gzHour}时`
                     obj.wuXing = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
                       .map((key) => `${wuXing[key.split('')[0]]}${wuXing[key.split('')[1]]}`)
                       .join(' ')
+                    obj.riZhu = `${date.gzDay} ${date.gzDay.split('')[0]}${wuXing[date.gzDay.split('')[0]]}命`
                     obj.yinYang = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
                       .map((key) => yinYang[key.split('')[0]])
                       .join(' ')
@@ -125,6 +129,7 @@ const MainDom = () => (
                   data.lunar = obj.lunar || ''
                   data.birthdates = obj.birthdates || ''
                   data.wuXing = obj.wuXing || ''
+                  data.riZhu = obj.riZhu || ''
                   data.yinYang = obj.yinYang || ''
                   data.jiaZiWuXing = obj.jiaZiWuXing || ''
                   data.wangJi = obj.wangJi || ''
@@ -148,6 +153,9 @@ const MainDom = () => (
       </a-form-item>
       <a-form-item label="五行" class="mb_2">
         {data.wuXing}
+      </a-form-item>
+      <a-form-item label="日柱" class="mb_2">
+        {data.riZhu}
       </a-form-item>
       <a-form-item label="阴阳" class="mb_2">
         {data.yinYang}

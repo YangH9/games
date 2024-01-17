@@ -47,7 +47,7 @@ module.exports = {
     'no-ex-assign': 'error', // 禁止对 catch 子句的参数重新赋值
     'no-extra-boolean-cast': 'error', // 禁止不必要的布尔转换
     'no-extra-parens': 'off', // 禁止不必要的括号
-    'no-extra-semi': 'error', // 禁止不必要的分号
+    'no-extra-semi': 'off', // 禁止不必要的分号
     'no-func-assign': 'error', // 禁止对 function 声明重新赋值
     'no-inner-declarations': 'error', // 禁止在嵌套的块中出现变量声明或 function 声明
     'no-invalid-regexp': 'error', // 禁止 RegExp 构造函数中存在无效的正则表达式字符串
@@ -89,7 +89,7 @@ module.exports = {
     'no-empty-pattern': 'error', // 禁止使用空解构模式
     'no-eq-null': 'error', // 禁止在没有类型检查操作符的情况下与 null 进行比较
     'no-eval': 'error', // 禁用 eval()
-    'no-extend-native': 'error', // 禁止扩展原生类型
+    'no-extend-native': 'off', // 禁止扩展原生类型
     'no-extra-bind': 'error', // 禁止不必要的 .bind() 调用
     'no-extra-label': 'error', // 禁用不必要的标签
     'no-fallthrough': 'error', // 禁止 case 语句落空

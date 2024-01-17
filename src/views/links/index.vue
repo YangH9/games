@@ -2,9 +2,9 @@
   <a-layout>
     <Header></Header>
     <a-layout v-calcHeight="0" class="scroll_auto">
-      <RouterViewBox url="/links">
-        <div class="container">
-          <Breadcrumb />
+      <div class="container">
+        <Breadcrumb />
+        <RouterViewBox url="/links">
           <a-card
             v-for="(main, index) in resoutcesList"
             :key="index"
@@ -41,8 +41,8 @@
               {{ item.title }}
             </a-button>
           </a-card>
-        </div>
-      </RouterViewBox>
+        </RouterViewBox>
+      </div>
     </a-layout>
   </a-layout>
 </template>

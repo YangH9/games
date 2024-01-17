@@ -1,31 +1,27 @@
 <template>
-  <div class="container">
-    <Breadcrumb />
-    <a-card title="腾讯旗下游戏链接" class="card_button_list" :hoverable="true">
-      <a-button
-        v-for="(item, key, index) in dataList"
-        :key="index"
-        :href="`//${key}`"
-        :title="item.title"
-        size="large"
-        target="_blank"
-      >
-        <template #icon>
-          <img
-            v-lazy="`//${key}/favicon.ico`"
-            class="icon"
-            referrer="no-referrer"
-            @error="(e) => e.target.classList.add('hidden')"
-          />
-        </template>
-        {{ key }}
-      </a-button>
-    </a-card>
-  </div>
+  <a-card title="腾讯旗下游戏链接" class="card_button_list" :hoverable="true">
+    <a-button
+      v-for="(item, key, index) in dataList"
+      :key="index"
+      :href="`//${key}`"
+      :title="item.title"
+      size="large"
+      target="_blank"
+    >
+      <template #icon>
+        <img
+          v-lazy="`//${key}/favicon.ico`"
+          class="icon"
+          referrer="no-referrer"
+          @error="(e) => e.target.classList.add('hidden')"
+        />
+      </template>
+      {{ key }}
+    </a-button>
+  </a-card>
 </template>
 
 <script setup>
-import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref, inject } from 'vue'
 
 // 腾讯各类域名

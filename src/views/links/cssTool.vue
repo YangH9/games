@@ -1,38 +1,27 @@
 <template>
-  <div class="container">
-    <Breadcrumb />
-    <a-card
-      v-for="(main, index) in dataList"
-      :key="index"
-      :title="main.title"
-      class="card_button_list"
-      :hoverable="true"
+  <a-card v-for="(main, index) in dataList" :key="index" :title="main.title" class="card_button_list" :hoverable="true">
+    <a-button
+      v-for="(item, index1) in main.list"
+      :key="index1"
+      :href="item.href"
+      :title="item.title"
+      size="large"
+      target="_blank"
     >
-      <a-button
-        v-for="(item, index1) in main.list"
-        :key="index1"
-        :href="item.href"
-        :title="item.title"
-        size="large"
-        target="_blank"
-      >
-        <template #icon>
-          <img
-            v-lazy="filtterUrl(item)"
-            class="icon"
-            referrer="no-referrer"
-            @error="(e) => e.target.classList.add('hidden')"
-          />
-        </template>
-        {{ item.title }}
-      </a-button>
-    </a-card>
-  </div>
+      <template #icon>
+        <img
+          v-lazy="filtterUrl(item)"
+          class="icon"
+          referrer="no-referrer"
+          @error="(e) => e.target.classList.add('hidden')"
+        />
+      </template>
+      {{ item.title }}
+    </a-button>
+  </a-card>
 </template>
 
 <script setup>
-import Breadcrumb from '@/components/Breadcrumb.vue'
-
 const dataList = [
   {
     title: '属性生成器',

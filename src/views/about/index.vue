@@ -4,40 +4,45 @@
     <a-layout v-calcHeight="0" class="scroll_auto">
       <div class="container">
         <Breadcrumb />
-        <a-card title="关注我" class="mb_2" :hoverable="true">
-          <a-descriptions :column="1">
-            <a-descriptions-item v-for="(item, index) in userList" :key="index" :label="item.label">
-              <a-button :href="item.href" size="small" type="link" target="_blank">
-                {{ item.title }}
-              </a-button>
-            </a-descriptions-item>
-          </a-descriptions>
-        </a-card>
-        <a-card class="card_button_list" :hoverable="true">
-          <a-button
-            v-for="(item, index) in list"
-            :key="index"
-            :href="item.href"
-            :title="item.title"
-            size="large"
-            target="_blank"
-          >
-            {{ item.title }}
-          </a-button>
-        </a-card>
-        <a-card title="站点信息" class="mb_2" :hoverable="true">
-          <a-descriptions :column="2">
-            <a-descriptions-item label="网站运行时间" span="2">
-              {{ new Date(nowTime - startTime).toFormat('Y年MM月DD日hh时mm分ss秒') }}
-            </a-descriptions-item>
-            <a-descriptions-item label="建站时间">
-              {{ new Date(startTime).toFormat('YYYY年MM月DD日') }}
-            </a-descriptions-item>
-            <a-descriptions-item label="二次重构时间">
-              {{ new Date(1666137600000).toFormat('YYYY年MM月DD日') }}
-            </a-descriptions-item>
-          </a-descriptions>
-        </a-card>
+        <RouterViewBox url="/about">
+          <a-card title="关注我" class="mb_2" :hoverable="true">
+            <a-descriptions :column="{ xs: 1, sm: 1, md: 2 }">
+              <a-descriptions-item v-for="(item, index) in userList" :key="index" :label="item.label">
+                <a-button :href="item.href" size="small" type="link" target="_blank">
+                  {{ item.title }}
+                </a-button>
+              </a-descriptions-item>
+            </a-descriptions>
+          </a-card>
+          <a-card class="card_button_list" :hoverable="true">
+            <a-button
+              v-for="(item, index) in list"
+              :key="index"
+              :href="item.href"
+              :title="item.title"
+              size="large"
+              target="_blank"
+            >
+              {{ item.title }}
+            </a-button>
+          </a-card>
+          <a-card class="card_button_list" :hoverable="true">
+            <a-button :href="`${$router.options.history.base}/about/minimart`" size="large"> 杂货铺 </a-button>
+          </a-card>
+          <a-card title="站点信息" class="mb_2" :hoverable="true">
+            <a-descriptions :column="2">
+              <a-descriptions-item label="网站运行时间" span="2">
+                {{ Dayjs.duration(nowTime.diff(startTime)).format('Y年MM月DD日HH时mm分ss秒') }}
+              </a-descriptions-item>
+              <a-descriptions-item label="建站时间">
+                {{ startTime.format('YYYY年MM月DD日') }}
+              </a-descriptions-item>
+              <a-descriptions-item label="二次重构时间">
+                {{ time1.format('YYYY年MM月DD日') }}
+              </a-descriptions-item>
+            </a-descriptions>
+          </a-card>
+        </RouterViewBox>
       </div>
     </a-layout>
   </a-layout>
@@ -46,7 +51,12 @@
 <script setup>
 import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import RouterViewBox from '@/components/RouterViewBox.vue'
+import { inject, onBeforeUnmount, onMounted, ref } from 'vue'
+import duration from 'dayjs/plugin/duration'
+
+const Dayjs = inject('Dayjs')
+Dayjs.extend(duration)
 
 // QQ注册时间2011-01-30
 
@@ -75,8 +85,11 @@ const userList = [
   }
 ]
 
-const startTime = ref(1584864000000)
-const nowTime = ref(Date.now())
+// 建站时间
+const startTime = ref(Dayjs(1584864000000))
+// 重构时间
+const time1 = Dayjs(1666137600000)
+const nowTime = ref(Dayjs())
 
 const list = [
   { title: '自制日历订阅(节假日、24节气)', href: '/ChinaHolidayCalender/' },
@@ -91,7 +104,7 @@ const list = [
 let timer = ''
 
 const running = () => {
-  nowTime.value = Date.now()
+  nowTime.value = Dayjs()
   timer = requestAnimationFrame(running)
 }
 

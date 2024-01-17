@@ -1,7 +1,7 @@
 <template>
   <a-layout-header>
     <div class="header">
-      <RouterLink to="/" class="logo"> 木易 </RouterLink>
+      <a-button :href="`${$router.options.history.base}/`" class="logo" size="small" type="link"> 木易 </a-button>
       <a-menu :selectedKeys="[`/${$route.path.split('/')[1]}`]" mode="horizontal" @click="click">
         <a-menu-item key="/">首页</a-menu-item>
         <a-menu-item key="/study">学习</a-menu-item>
