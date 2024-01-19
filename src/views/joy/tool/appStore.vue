@@ -90,7 +90,7 @@ const mainDom = () => (
             item-layout="vertical"
             data-source={appList.value}
             renderItem={({ item }) => (
-              <a-list-item onClick={() => (detailData.value = item)}>
+              <a-list-item class="px_0" onClick={() => (detailData.value = item)}>
                 <a-list-item-meta
                   v-slots={{
                     title: () => (
@@ -276,6 +276,10 @@ const mainDom = () => (
           <div class="mb_3">
             <div>价格</div>
             <div class="font_600">{detailData.value.formattedPrice}</div>
+          </div>
+          <div class="mb_3">
+            <div>更新时间</div>
+            <div class="font_600">{Dayjs(detailData.value.currentVersionReleaseDate).format('YYYY/MM/DD')}</div>
           </div>
           <div>
             <div>上架时间</div>
