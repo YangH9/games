@@ -235,6 +235,10 @@ const mainDom = () => (
         <div class="text_xl font_bold textFlow mb_3">信息</div>
         <div class="px_2">
           <div class="mb_3">
+            <div>名称</div>
+            <div>{detailData.value.trackName}</div>
+          </div>
+          <div class="mb_3">
             <div>供应商</div>
             <div>
               {detailData.value.sellerUrl ? (
@@ -269,7 +273,7 @@ const mainDom = () => (
             <div class="font_600">{detailData.value.contentAdvisoryRating}</div>
             {detailData.value.advisories?.length > 0 ? <div>{detailData.value.advisories.map((i) => i)}</div> : ''}
           </div>
-          <div>
+          <div class="mb_3">
             <div>价格</div>
             <div class="font_600">{detailData.value.formattedPrice}</div>
           </div>
