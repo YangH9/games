@@ -11,7 +11,7 @@
       <span class="font_bold">80</span> /箱，果径 <span class="font_bold">80mm</span> 左右。
       每箱为10斤装，果径有大有小，体积不同可能会有空槽。
     </p>
-    <p><span class="font_bold">注：</span>包邮，部分偏远地区易丢件不发货</p>
+    <p><span class="font_bold">注：</span>包邮，部分偏远地区不发货</p>
   </a-card>
   <a-card title="全网话费慢充" class="mb_2" :hoverable="true">
     <p>
