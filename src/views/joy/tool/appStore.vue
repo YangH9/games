@@ -273,6 +273,10 @@ const mainDom = () => (
             <div>价格</div>
             <div class="font_600">{detailData.value.formattedPrice}</div>
           </div>
+          <div>
+            <div>上架时间</div>
+            <div class="font_600">{Dayjs(detailData.value.releaseDate).format('YYYY/MM/DD')}</div>
+          </div>
         </div>
       </div>
     </a-drawer>
