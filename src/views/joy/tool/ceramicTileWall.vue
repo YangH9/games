@@ -135,7 +135,7 @@ const MainDom = () => (
                   <el-color-picker v-model={formData.colorList[2]}></el-color-picker>
                   <el-color-picker v-model={formData.colorList[3]}></el-color-picker>
                   <el-color-picker v-model={formData.colorList[4]}></el-color-picker>
-                  <a-button onClick={() => (formData.colorList = levelList.map((i) => i.color))}>恢复默认</a-button>
+                  <a-button onClick={() => (formData.colorList = levelList.map(i => i.color))}>恢复默认</a-button>
                 </a-space>
               </a-form-item>
             </a-col>
@@ -217,7 +217,7 @@ const MainDom = () => (
     <div class="flex content_end mt_2">
       <a-space align="center">
         <span>低</span>
-        {formData.colorList.map((item) => (
+        {formData.colorList.map(item => (
           <div style={{ backgroundColor: item }} class="square"></div>
         ))}
         <span>高</span>

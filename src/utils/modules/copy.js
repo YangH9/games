@@ -4,7 +4,7 @@
  * 接收参数：string类型/Ref<string>类型/Reactive<string>类型
  */
 
-const handleClick = (that) => {
+const handleClick = that => {
   const input = document.createElement('input')
   input.style.opacity = '0'
   input.value = that.copyData.toLocaleString()

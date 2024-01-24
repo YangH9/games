@@ -19,7 +19,7 @@ const themeColor = usePreferredColorScheme()
 
 watch(
   () => themeColor.value,
-  (val) => {
+  val => {
     console.log(val)
     val === 'dark'
       ? document.querySelector('html').classList.add('dark')

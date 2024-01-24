@@ -47,7 +47,7 @@ if (!Date.prototype.toFormat) {
  * @description: 设置title
  * @param {Object} routerObject
  */
-export const setTitle = (to) => {
+export const setTitle = to => {
   const Title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
   let handleVisiableInit = ''
   const handleVisiable = () => {
@@ -76,7 +76,7 @@ export const setTitle = (to) => {
  * @param {Number} size 文件大小
  * @returns 文件大小
  */
-export const sizeFilter = (size) => {
+export const sizeFilter = size => {
   const bytes = size
   const aMultiples = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
   let sOutput = `${bytes} bytes`

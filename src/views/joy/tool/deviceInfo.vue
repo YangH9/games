@@ -81,7 +81,7 @@ const connection = reactive({
 
 // console.log(storage, geolocation, mediaSession)
 
-wakeLock?.request('screen').then((lock) => {
+wakeLock?.request('screen').then(lock => {
   setTimeout(() => lock.release(), 10 * 60 * 1000)
 })
 

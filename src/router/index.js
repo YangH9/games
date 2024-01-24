@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
 })
 
 // 当路由跳转结束后
-router.afterEach((to) => {
+router.afterEach(to => {
   routerLoading().hide()
   setTitle(to)
 })

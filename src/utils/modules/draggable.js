@@ -4,10 +4,10 @@ const draggable = {
   mounted(el) {
     el.style.cursor = 'move'
     el.style.position = 'absolute'
-    el.onmousedown = (e) => {
+    el.onmousedown = e => {
       const disX = e.pageX - el.offsetLeft
       const disY = e.pageY - el.offsetTop
-      document.onmousemove = (e) => {
+      document.onmousemove = e => {
         let x = e.pageX - disX
         let y = e.pageY - disY
         const maxX =

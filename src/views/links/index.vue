@@ -35,7 +35,7 @@
                   v-lazy="filtterUrl(item)"
                   class="icon"
                   referrer="no-referrer"
-                  @error="(e) => e.target.classList.add('hidden')"
+                  @error="e => e.target.classList.add('hidden')"
                 />
               </template>
               {{ item.title }}
@@ -487,7 +487,7 @@ const resoutcesList = [
   }
 ]
 
-const filtterUrl = (item) => {
+const filtterUrl = item => {
   const url =
     item.favicon.indexOf('//') >= 0
       ? item.favicon

@@ -7,10 +7,10 @@
           <a-collapse-panel key="1">
             <template #header>
               <span class="mr_2">{{ formData.quantity }}个</span>
-              <span class="mr_2">{{ optionData.unique.find((i) => i.value === formData.unique).label }}</span>
-              <span class="mr_2">{{ optionData.type.find((i) => i.value === formData.type).label }}</span>
+              <span class="mr_2">{{ optionData.unique.find(i => i.value === formData.unique).label }}</span>
+              <span class="mr_2">{{ optionData.type.find(i => i.value === formData.type).label }}</span>
               <span class="mr_2">（{{ formData.min }}，{{ formData.max }}）</span>
-              <span class="mr_2">{{ optionData.sort.find((i) => i.value === formData.sort).label }}</span>
+              <span class="mr_2">{{ optionData.sort.find(i => i.value === formData.sort).label }}</span>
             </template>
             <template #extra><a-button type="primary" @click.stop="generate">生成</a-button></template>
             <a-row :gutter="24">
@@ -136,9 +136,9 @@ const generate = () => {
       break
     case 'lowercase':
       for (let i = 0; i < quantity; i++) {
-        const randomItem = Array.from({ length: caseNum }, (_) =>
-          String.fromCharCode(~~(Math.random() * 25) + 97)
-        ).join('')
+        const randomItem = Array.from({ length: caseNum }, _ => String.fromCharCode(~~(Math.random() * 25) + 97)).join(
+          ''
+        )
         if (unique && array.includes(randomItem)) {
           i--
           continue
@@ -148,9 +148,9 @@ const generate = () => {
       break
     case 'uppercase':
       for (let i = 0; i < quantity; i++) {
-        const randomItem = Array.from({ length: caseNum }, (_) =>
-          String.fromCharCode(~~(Math.random() * 25) + 65)
-        ).join('')
+        const randomItem = Array.from({ length: caseNum }, _ => String.fromCharCode(~~(Math.random() * 25) + 65)).join(
+          ''
+        )
         if (unique && array.includes(randomItem)) {
           i--
           continue
@@ -160,7 +160,7 @@ const generate = () => {
       break
     case 'upperAndLower':
       for (let i = 0; i < quantity; i++) {
-        const randomItem = Array.from({ length: caseNum }, (_) =>
+        const randomItem = Array.from({ length: caseNum }, _ =>
           String.fromCharCode(~~(Math.random() * 25) + (Math.random() >= 0.5 ? 65 : 97))
         ).join('')
         if (unique && array.includes(randomItem)) {

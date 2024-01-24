@@ -30,14 +30,14 @@ const option = reactive({
 })
 
 const audioObj = new Audio('https://yangh9.github.io/public/audio/mp3/海底-凤凰传奇.mp3')
-audioObj.addEventListener('canplaythrough', (event) => {
+audioObj.addEventListener('canplaythrough', event => {
   console.log(event, audioObj.readyState, audioObj)
   audioObj.play()
 })
 
 const musicList = ref([])
 
-Jsonp('https://yangh9.github.io/public/audio/fileList.js', 'callback', (res) => {
+Jsonp('https://yangh9.github.io/public/audio/fileList.js', 'callback', res => {
   musicList.value = res.fhcqList
   nextTick(() => {
     Sortable(document.querySelector('.ant-list-items'), {

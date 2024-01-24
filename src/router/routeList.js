@@ -7,8 +7,8 @@ const modules = import.meta.glob(['@/views/*.vue', '@/views/*/*.vue', '@/views/*
  * { component: 'home/overview' } => { path: '/home/overview', name: '/home/overview', component: () => import('@/views/home/overview.vue') }
  * 过滤index路径，home/index => home
  */
-const createRoute = (list) => {
-  list.map((item) => {
+const createRoute = list => {
+  list.map(item => {
     // 添加path
     !Object.hasOwn(item, 'path') && (item.path = `/${item.component}`.replace(/(\/index)$/, ''))
     // 添加name

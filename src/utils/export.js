@@ -9,7 +9,7 @@ const imgObj = {
 }
 
 /* 初始化获取需要转换的dom */
-const init = async (dom) => {
+const init = async dom => {
   const canvas = await html2canvas(dom)
   const imgUrl = canvas.toDataURL('image/jpeg', 1.0)
   imgObj.width = canvas.width

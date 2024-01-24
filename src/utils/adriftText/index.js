@@ -56,7 +56,7 @@ const textLoop = () => {
 }
 
 // 创建文字元素
-const createEle = (e) => {
+const createEle = e => {
   const ele = document.createElement('div')
   ele.className = 'adriftText'
   ele.innerHTML = randomText()
@@ -74,7 +74,7 @@ const createEle = (e) => {
 
 // 添加事件
 const attachEvent = () => {
-  window.addEventListener('click', (e) => {
+  window.addEventListener('click', e => {
     createEle(e)
     textLoop()
   })

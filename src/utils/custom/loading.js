@@ -68,7 +68,7 @@ export class LoadingCircle extends HTMLElement {
   add = (n, dn) => (n + dn) % 360
   circle = (() => {
     let counter = 0
-    return (dt) => {
+    return dt => {
       counter += dt
       this.start = this.add(this.start, this.angularVelocity * dt)
       this.end = this.add(this.end, this.angularVelocity * dt)
@@ -90,7 +90,7 @@ export class LoadingCircle extends HTMLElement {
       }
       return counter * a
     }
-    return (dt) => {
+    return dt => {
       counter += dt
       this.start = this.add(this.start, this.angularVelocity * dt)
       this.end = this.add(this.end, (2 * v() + this.angularVelocity) * dt)
@@ -114,7 +114,7 @@ export class LoadingCircle extends HTMLElement {
       }
       return counter * a
     }
-    return (dt) => {
+    return dt => {
       counter += dt
       this.start = this.add(this.start, (2 * v() + this.angularVelocity) * dt)
       this.end = this.add(this.end, this.angularVelocity * dt)
@@ -128,7 +128,7 @@ export class LoadingCircle extends HTMLElement {
     }
   })()
   state = 0
-  f = (dt) => {
+  f = dt => {
     if (this.state == 0) {
       this.stretch(dt)
     }
@@ -145,7 +145,7 @@ export class LoadingCircle extends HTMLElement {
   radStart = 0
   radEnd = 0
   timeStamp
-  drawOneFrame = (timestamp) => {
+  drawOneFrame = timestamp => {
     if (!this.timeStamp) {
       this.timeStamp = timestamp
       requestAnimationFrame(this.drawOneFrame)
@@ -174,7 +174,7 @@ export class LoadingCircle extends HTMLElement {
     'strokeStyle'
   ]
   connectedCallback() {
-    this.watchedAttrs.map((v) => this.initAttr(v))
+    this.watchedAttrs.map(v => this.initAttr(v))
     requestAnimationFrame(this.drawOneFrame)
   }
   initAttr(name) {

@@ -40,7 +40,7 @@
           <a-col
             v-for="(item, index) in heroList
               .filter(
-                (i) => !heroTypeListActive || i.hero_type === heroTypeListActive || i.hero_type2 === heroTypeListActive
+                i => !heroTypeListActive || i.hero_type === heroTypeListActive || i.hero_type2 === heroTypeListActive
               )
               .slice(0, pageNum)"
             v-bind="colSpan"
@@ -68,7 +68,7 @@
         <template v-if="show && typeListActive === 'item'">
           <a-col
             v-for="(item, index) in itemList
-              .filter((i) => !itemTypeListActive || i.item_type === itemTypeListActive)
+              .filter(i => !itemTypeListActive || i.item_type === itemTypeListActive)
               .slice(0, pageNum)"
             v-bind="colSpan"
             :key="index"
@@ -120,7 +120,7 @@
     <a-image-preview-group
       :preview="{
         visible: previewUrl.length > 0,
-        onVisibleChange: (e) => !e && (previewUrl = [])
+        onVisibleChange: e => !e && (previewUrl = [])
       }"
     >
       <a-image v-for="item in previewUrl" :src="item" />
@@ -148,8 +148,8 @@ const birdUrl = (url, back) => `https://bird.ioliu.cn/v2?url=${url}&callback=${b
 const baseUrl = 'https://pvp.qq.com/web201605/js/'
 const imgBaseUrl = '//game.gtimg.cn/images/yxzj/img201606/'
 
-Jsonp(birdUrl(`${baseUrl}herolist.json`, 'pvp_hero'), 'pvp_hero', (data) => (heroList.value = JSON.parse(data)))
-Jsonp(birdUrl(`${baseUrl}item.json`, 'pvp_item'), 'pvp_item', (data) => (itemList.value = JSON.parse(data)))
+Jsonp(birdUrl(`${baseUrl}herolist.json`, 'pvp_hero'), 'pvp_hero', data => (heroList.value = JSON.parse(data)))
+Jsonp(birdUrl(`${baseUrl}item.json`, 'pvp_item'), 'pvp_item', data => (itemList.value = JSON.parse(data)))
 // Jsonp(
 //   birdUrl(`https://pvp.qq.com/zlkdatasys/data_zlk_bjtwitem.json`, 'pvp_bjtwitem'),
 //   'pvp_bjtwitem',
@@ -158,9 +158,9 @@ Jsonp(birdUrl(`${baseUrl}item.json`, 'pvp_item'), 'pvp_item', (data) => (itemLis
 Jsonp(
   birdUrl(`${baseUrl}summoner.json`, 'pvp_summoner'),
   'pvp_summoner',
-  (data) => (summonerList.value = JSON.parse(data))
+  data => (summonerList.value = JSON.parse(data))
 )
-Jsonp(birdUrl(`${baseUrl}ming.json`, 'pvp_ming'), 'pvp_ming', (data) => (mingList.value = JSON.parse(data)))
+Jsonp(birdUrl(`${baseUrl}ming.json`, 'pvp_ming'), 'pvp_ming', data => (mingList.value = JSON.parse(data)))
 
 const colSpan = { xs: 8, sm: 6, md: 3 }
 
@@ -171,8 +171,8 @@ const itemRef = ref([])
 const summonerRef = ref([])
 const mingRef = ref([])
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((item) => {
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(item => {
     if (item.isIntersecting) {
       pageNum.value += 10
       observer.unobserve(item.target)

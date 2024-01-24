@@ -15,7 +15,7 @@ export default ({ mode }) => {
         template: {
           compilerOptions: {
             // 将所有带短横线的标签名都视为自定义元素
-            isCustomElement: (tag) => tag.startsWith('my-')
+            isCustomElement: tag => tag.startsWith('my-')
           }
         }
       }),

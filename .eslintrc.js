@@ -244,7 +244,7 @@ module.exports = {
 
     // ECMAScript 6 、这些规则只与 ES6 有关, 即通常所说的 ES2015：
     'arrow-body-style': ['error', 'as-needed'], // 要求箭头函数体使用大括号
-    'arrow-parens': ['error', 'always'], // 要求箭头函数的参数使用圆括号
+    'arrow-parens': ['error', 'as-needed'], // 要求箭头函数的参数使用圆括号
     'arrow-spacing': ['error', { before: true, after: true }], // 强制箭头函数的箭头前后使用一致的空格
     'constructor-super': 'error', // 要求在构造函数中有 super() 的调用
     'generator-star-spacing': 'error', // 强制 generator 函数中 * 号周围使用一致的空格

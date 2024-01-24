@@ -17,7 +17,7 @@ const emit = defineEmits(['pageChange'])
 const attrs = useAttrs()
 
 // 创建列
-const getTableColumn = (column) => {
+const getTableColumn = column => {
   const { render, headerRender, ...data } = column
   // 处理自定义头部和自定义内容
   const slots = {}
@@ -34,10 +34,10 @@ const getTableColumn = (column) => {
   return <el-table-column key={column.prop ?? column.type ?? key} {...columnProps} v-slots={slots}></el-table-column>
 }
 
-const sizeChange = (e) => {
+const sizeChange = e => {
   emit('pageChange', { page: props.option.page ?? 1, pageSize: e })
 }
-const currentChange = (e) => {
+const currentChange = e => {
   emit('pageChange', { page: e, pageSize: props.option.pageSize ?? 10 })
 }
 

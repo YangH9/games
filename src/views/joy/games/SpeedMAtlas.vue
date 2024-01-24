@@ -48,7 +48,7 @@
           <a-col
             v-for="(item, index) in carsDataList
               .filter(
-                (i) =>
+                i =>
                   (i.ccmz_36 === carFactoryListActive || !carFactoryListActive) &&
                   (i.jb_43 === carGradeListActive || !carGradeListActive)
               )
@@ -80,7 +80,7 @@
         <template v-if="show && typeListActive === 'map'">
           <a-col
             v-for="(item, index) in mapsDataList
-              .filter((i) => i.jytg_a3 === mapGradeListActive || !mapGradeListActive)
+              .filter(i => i.jytg_a3 === mapGradeListActive || !mapGradeListActive)
               .slice(0, pageNum)"
             v-bind="colSpan"
             :key="index"
@@ -121,7 +121,7 @@
     <a-image-preview-group
       :preview="{
         visible: previewUrl.length > 0,
-        onVisibleChange: (e) => !e && (previewUrl = [])
+        onVisibleChange: e => !e && (previewUrl = [])
       }"
     >
       <a-image v-for="item in previewUrl" :src="item" />
@@ -143,8 +143,8 @@ const carRef = ref([])
 const mapRef = ref([])
 const petRef = ref([])
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((item) => {
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(item => {
     if (item.isIntersecting) {
       pageNum.value += 10
       observer.unobserve(item.target)
@@ -176,7 +176,7 @@ const carFactoryListActive = ref('')
 const carGradeListActive = ref('')
 const mapGradeListActive = ref('')
 
-const url = (i) => `https://speedm.qq.com/zlkdatasys/data/${i}/list.json`
+const url = i => `https://speedm.qq.com/zlkdatasys/data/${i}/list.json`
 
 const carUrl = url`car_list`
 const mapUrl = url`map_list`
@@ -234,8 +234,8 @@ watch([typeListActive, carFactoryListActive, carGradeListActive, mapGradeListAct
 })
 
 // 获取赛车数据
-Jsonp(carUrl, 'cars_data', (data) => {
-  carsDataList.value = data.scsy_ad.reverse().map((item) => {
+Jsonp(carUrl, 'cars_data', data => {
+  carsDataList.value = data.scsy_ad.reverse().map(item => {
     try {
       item.ccmz_36 = item.ccxgxx_48[0].ccmz_36
       item.cclogo_2a = item.ccxgxx_48[0].cclogo_2a
@@ -247,11 +247,11 @@ Jsonp(carUrl, 'cars_data', (data) => {
   })
 })
 // 获取地图数据
-Jsonp(mapUrl, 'maps_data', (data) => {
+Jsonp(mapUrl, 'maps_data', data => {
   mapsDataList.value = data.dtsy_1f.reverse()
 })
 // 获取宠物数据
-Jsonp(petUrl, 'pets_data', (data) => {
+Jsonp(petUrl, 'pets_data', data => {
   petsDataList.value = data.cwsy_80.reverse()
 })
 </script>

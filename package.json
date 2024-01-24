@@ -7,8 +7,8 @@
     "dev": "vite --mode development",
     "build": "vite build --mode production",
     "preview": "vite preview --port 4173",
-    "lint:eslint": "eslint . --ext .vue,.js,.jsx,.cjs --fix --ignore-path .eslintignore",
-    "lint:prettier": "prettier --w . --ignore-path .eslintignore",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .eslintignore",
+    "format": "prettier --w . --ignore-path .eslintignore",
     "pull": "git pull origin master",
     "commit": "git add . & git commit -m [update]自动提交",
     "push": "git push origin master"

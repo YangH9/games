@@ -30,7 +30,7 @@
     <a-image-preview-group
       :preview="{
         visible: !!previewUrl,
-        onVisibleChange: (e) => !e && (previewUrl = '')
+        onVisibleChange: e => !e && (previewUrl = '')
       }"
     >
       <template v-if="Array.isArray(previewUrl)">
@@ -56,8 +56,8 @@ const pageNum = ref(10)
 
 const cardRef = ref([])
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((item) => {
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(item => {
     if (item.isIntersecting) {
       pageNum.value += 10
       observer.unobserve(item.target)
@@ -80,8 +80,8 @@ const baseUrl = `https://apps.game.qq.com/cgi-bin/ams/module/ishow/V1.0/query/wo
 
 const dataList = ref([])
 
-Jsonp(baseUrl, dataKey, (res) => {
-  dataList.value = res.List.map((item) => {
+Jsonp(baseUrl, dataKey, res => {
+  dataList.value = res.List.map(item => {
     item.dtInputDT = decodeURIComponent(item.dtInputDT)
     item.sThumbURL = decodeURIComponent(item.sThumbURL)
     item.sProdImgNo_1 = decodeURIComponent(item.sProdImgNo_1).replace('thumb_', '')

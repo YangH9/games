@@ -6,14 +6,14 @@ axios.defaults.withCredentials = true
 
 // 请求拦截器
 axios.interceptors.request.use(
-  (config) => config,
-  (error) => Promise.reject(error)
+  config => config,
+  error => Promise.reject(error)
 )
 
 // 响应拦截器
 axios.interceptors.response.use(
-  (response) => response,
-  (error) => Promise.reject(error)
+  response => response,
+  error => Promise.reject(error)
 )
 
 // axios.defaults.headers.post[ "Content-Type" ] = "application/json;charset=UTF-8"

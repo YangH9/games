@@ -10,7 +10,7 @@ module.exports = {
   trailingComma: 'none', // 尾部逗号设置
   bracketSpacing: true, // object对象里面的key和value值和括号间的空格，效果：{ foo: bar }
   bracketSameLine: false, // 标签多行属性写法时，尖括号是否另起一行
-  arrowParens: 'always', // 箭头函数单个参数的情况是否省略括号
+  arrowParens: 'avoid', // 箭头函数单个参数的情况是否省略括号
   requirePragma: false,
   proseWrap: 'preserve',
   htmlWhitespaceSensitivity: 'css',

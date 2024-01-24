@@ -20,7 +20,7 @@ const directivesList = {
 
 export default {
   install(app) {
-    Object.keys(directivesList).forEach((key) => {
+    Object.keys(directivesList).forEach(key => {
       app.directive(key, directivesList[key])
     })
   }

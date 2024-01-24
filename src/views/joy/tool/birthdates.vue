@@ -100,27 +100,27 @@ const MainDom = () => (
                   if (date !== -1) {
                     const hour = ~~((birthdates.hour() + 1) / 2)
                     const zhi = zhiList[hour % 12]
-                    const gan = ganList[(ganList.findIndex((i) => i === date.gzDay.slice(0, 1)) * 2 + hour) % 10]
+                    const gan = ganList[(ganList.findIndex(i => i === date.gzDay.slice(0, 1)) * 2 + hour) % 10]
                     const gzHour = `${gan}${zhi}`
                     console.log(formData.birthdates, date)
                     obj.solar = `${date.cYear}年 ${date.cMonth}月 ${date.cDay}日 ${birthdates.hour()}时`
                     obj.lunar = `${date.lYear}年 ${date.IMonthCn} ${date.IDayCn} ${zhi}时`
                     obj.birthdates = `${date.gzYear}年 ${date.gzMonth}月 ${date.gzDay}日 ${gzHour}时`
                     obj.wuXing = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map((key) => `${wuXing[key.split('')[0]]}${wuXing[key.split('')[1]]}`)
+                      .map(key => `${wuXing[key.split('')[0]]}${wuXing[key.split('')[1]]}`)
                       .join(' ')
                     obj.riZhu = `${date.gzDay} ${date.gzDay.split('')[0]}${wuXing[date.gzDay.split('')[0]]}命`
                     obj.yinYang = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map((key) => yinYang[key.split('')[0]])
+                      .map(key => yinYang[key.split('')[0]])
                       .join(' ')
                     obj.jiaZiWuXing = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map((key) => jiaZiWuXing[key])
+                      .map(key => jiaZiWuXing[key])
                       .join(' ')
                     obj.wangJi = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map((key) => wangJi[key.split('')[0]])
+                      .map(key => wangJi[key.split('')[0]])
                       .join(' ')
                     obj.fangWei = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map((key) => fangWei[key.split('')[0]])
+                      .map(key => fangWei[key.split('')[0]])
                       .join(' ')
                   } else {
                     message.error('无效日期')

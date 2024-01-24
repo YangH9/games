@@ -41,7 +41,7 @@
       :preview="{
         visible: !!previewUrl,
         src: previewUrl,
-        onVisibleChange: (e) => !e && (previewUrl = '')
+        onVisibleChange: e => !e && (previewUrl = '')
       }"
     />
   </div>
@@ -62,8 +62,8 @@ const pageNum = ref(10)
 
 const cardRef = ref([])
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((item) => {
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(item => {
     if (item.isIntersecting) {
       pageNum.value += 10
       observer.unobserve(item.target)

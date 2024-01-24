@@ -132,10 +132,10 @@ const mainDom = () => (
                             {item.artistName}
                           </a>
                         </div>
-                        {item.genres.map((i) => (
+                        {item.genres.map(i => (
                           <a-tag color="cyan">{i}</a-tag>
                         ))}
-                        {item.advisories.map((i) => (
+                        {item.advisories.map(i => (
                           <a-tag color="blue">{i}</a-tag>
                         ))}
                       </>
@@ -170,7 +170,7 @@ const mainDom = () => (
             <a-tag color="blue" v-slots={{ icon: () => <APropertySafetyTwoTone /> }}>
               {detailData.value.formattedPrice}
             </a-tag>
-            {detailData.value.genres?.map((i) => (
+            {detailData.value.genres?.map(i => (
               <a-tag color="cyan">{i}</a-tag>
             ))}
           </a-space>
@@ -271,7 +271,7 @@ const mainDom = () => (
           <div class="mb_3">
             <div>年龄分级</div>
             <div class="font_600">{detailData.value.contentAdvisoryRating}</div>
-            {detailData.value.advisories?.length > 0 ? <div>{detailData.value.advisories.map((i) => i)}</div> : ''}
+            {detailData.value.advisories?.length > 0 ? <div>{detailData.value.advisories.map(i => i)}</div> : ''}
           </div>
           <div class="mb_3">
             <div>价格</div>

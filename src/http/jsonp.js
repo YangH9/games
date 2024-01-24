@@ -4,7 +4,7 @@ export default (src, callbackKey, callback) =>
     script.async = 'async'
     script.src = src
     typeof callbackKey !== 'function'
-      ? (window[callbackKey] = (data) => {
+      ? (window[callbackKey] = data => {
           callback && callback(data)
           resolve(data)
         })

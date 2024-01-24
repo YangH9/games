@@ -111,7 +111,7 @@ const MainDom = () => (
         <a-col span={24} md={12}>
           <a-form-item label="最高学历">
             <a-select v-model:value={formData.degree} allowClear placeholder="最高学历" class="grow">
-              {Object.values(degreeOption).map((item) => (
+              {Object.values(degreeOption).map(item => (
                 <a-select-option value={item.value}>{item.label}</a-select-option>
               ))}
             </a-select>
@@ -120,7 +120,7 @@ const MainDom = () => (
         <a-col span={24} md={12}>
           <a-form-item label="显示粒度" class="grow">
             <a-radio-group v-model:value={formData.unit}>
-              {Object.values(unitOption).map((item) => (
+              {Object.values(unitOption).map(item => (
                 <a-radio value={item.value}>{item.label}</a-radio>
               ))}
             </a-radio-group>
@@ -130,7 +130,7 @@ const MainDom = () => (
     </a-form>
     <a-divider class="my_4" />
     <a-space align="center" wrap>
-      {dayTypeList.map((item) => (
+      {dayTypeList.map(item => (
         <div class="flex center gap_1">
           <div style={{ backgroundColor: item.color }} class="square"></div>
           {item.label}
@@ -177,7 +177,7 @@ const MainDom = () => (
               (index === dayArray.value.at(-1).end
                 ? dayArray.value.at(-1)
                 : index < dayArray.value.at(-1).end
-                  ? dayArray.value.find((i) => i.start <= index && i.end >= index)
+                  ? dayArray.value.find(i => i.start <= index && i.end >= index)
                   : null) || {}
             const date = firstDay.value?.add(index, unitOption[formData.unit].key)
             const attribute = {

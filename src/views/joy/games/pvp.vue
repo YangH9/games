@@ -13,7 +13,7 @@
       :preview="{
         visible: !!previewUrl,
         src: previewUrl,
-        onVisibleChange: (e) => !e && (previewUrl = '')
+        onVisibleChange: e => !e && (previewUrl = '')
       }"
     />
   </div>

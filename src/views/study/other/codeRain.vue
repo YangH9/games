@@ -50,7 +50,7 @@ const init = () => {
 
 const running = () => {
   canvasConfig.content.clearRect(0, 0, canvasConfig.width, canvasConfig.height)
-  canvasConfig.codeRainArr.forEach((item) => {
+  canvasConfig.codeRainArr.forEach(item => {
     item.forEach((ite, i) => {
       if (ite.y > canvasConfig.height) {
         ite.y = 0

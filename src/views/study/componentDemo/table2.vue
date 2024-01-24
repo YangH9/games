@@ -27,14 +27,14 @@ import { ref } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { cloneDeep } from 'lodash'
 
-const ramdomStr = () => Array.from({ length: 8 }, (_) => String.fromCharCode(~~(Math.random() * 25) + 97)).join('')
+const ramdomStr = () => Array.from({ length: 8 }, _ => String.fromCharCode(~~(Math.random() * 25) + 97)).join('')
 
-const treeData = Array.from({ length: ~~(Math.random() * 4) + 1 }, (_) => {
+const treeData = Array.from({ length: ~~(Math.random() * 4) + 1 }, _ => {
   const str = ramdomStr()
   return {
     title: str,
     key: str,
-    children: Array.from({ length: ~~(Math.random() * 6) + 1 }, (_) => {
+    children: Array.from({ length: ~~(Math.random() * 6) + 1 }, _ => {
       const str = ramdomStr()
       return {
         title: str,
@@ -56,7 +56,7 @@ const tableCol = ref([
       if (tableData.value[rowIndex - 1]?.[key] === record[key]) {
         return { rowSpan: 0 }
       }
-      return { rowSpan: tableData.value.filter((i) => i[key] === record[key]).length || 1 }
+      return { rowSpan: tableData.value.filter(i => i[key] === record[key]).length || 1 }
     }
   },
   { title: '功能1', key: 'column2', dataIndex: 'column2', colSpan: 0 },
@@ -75,17 +75,17 @@ const defaultDataObj = () => ({
   column6: ramdomStr()
 })
 
-const checkTree = (keys) => {
+const checkTree = keys => {
   const oldData = cloneDeep(tableData.value)
   const tree = treeData
   const data = []
-  tree.forEach((i) =>
-    i.children.forEach((j) =>
+  tree.forEach(i =>
+    i.children.forEach(j =>
       keys.forEach(
-        (item) =>
+        item =>
           item === j.key &&
           data.push(
-            oldData.find((a) => a.column1 === i.title && a.column2 === j.title) ?? {
+            oldData.find(a => a.column1 === i.title && a.column2 === j.title) ?? {
               ...defaultDataObj(),
               column1: i.title,
               column2: j.title

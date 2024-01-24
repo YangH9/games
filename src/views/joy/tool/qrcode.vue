@@ -14,7 +14,7 @@ const Dayjs = inject('Dayjs')
 const Jsonp = inject('Jsonp')
 
 const callback = 'jsonp_appStore'
-const appStoreUrl = (key) =>
+const appStoreUrl = key =>
   `https://itunes.apple.com/search?term=${key}&country=cn&entity=software&limit=10&callback=${callback}`
 const emailOptions = ref([])
 
@@ -76,13 +76,13 @@ const typeOption = {
                   </>
                 )
               }}
-              onSearch={(val) => {
+              onSearch={val => {
                 let res = []
                 if (!val || val.indexOf('@') >= 0) {
                   res = []
                 } else {
                   res = ['gmail.com', '163.com', '126.com', 'qq.com', 'msn.com', 'icloud.com', 'example.com'].map(
-                    (domain) => ({
+                    domain => ({
                       value: `${val}@${domain}`
                     })
                   )
@@ -178,7 +178,7 @@ const typeOption = {
                     v-model:value={formData.eventValarmDate}
                     format="YYYY-MM-DD HH:mm"
                     showTime={{ format: 'HH:mm' }}
-                    disabled-date={(date) => date && date > Dayjs().endOf('day')}
+                    disabled-date={date => date && date > Dayjs().endOf('day')}
                     class="w_100"
                   ></a-date-picker>
                 </>
@@ -193,7 +193,7 @@ const typeOption = {
                         { value: 'S', label: '秒' },
                         { value: 'M', label: '分钟' },
                         { value: 'H', label: '小时' }
-                      ].map((item) => (
+                      ].map(item => (
                         <a-select-option value={item.value}>{item.label}</a-select-option>
                       ))}
                     </a-select>
@@ -470,17 +470,17 @@ const typeOption = {
               filterOption={() => true}
               placeholder="App名称,输入内容搜索(暂时仅支持AppStore的App)"
               class="grow"
-              onChange={async (val) => {
-                formData.appStoreItem = formData.appStoreList.find((i) => i.trackName === val)
+              onChange={async val => {
+                formData.appStoreItem = formData.appStoreList.find(i => i.trackName === val)
                 const res = await Jsonp(appStoreUrl(val), callback)
                 formData.appStoreList = res.results
               }}
-              onSearch={debounce(async (val) => {
+              onSearch={debounce(async val => {
                 const res = await Jsonp(appStoreUrl(val), callback)
                 formData.appStoreList = res.results
               }, 500)}
             >
-              {formData.appStoreList.map((item) => (
+              {formData.appStoreList.map(item => (
                 <a-select-option value={item.trackName}>
                   <a-space size={20} class="ml_2">
                     <a-avatar src={item.artworkUrl60} shape="square" />

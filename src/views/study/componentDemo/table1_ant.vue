@@ -4,7 +4,7 @@
     <a-layout-content>
       <a-table
         :dataSource="tableData"
-        :columns="columnData.filter((i) => i.active)"
+        :columns="columnData.filter(i => i.active)"
         :scroll="{ x: 900 }"
         :pagination="false"
         bordered
@@ -115,10 +115,10 @@ const init = async () => {
   } = await getData()
 
   const mapRes = matchInfoList
-    .flatMap((i) => i.subMatchList)
-    .filter((i) => i.matchStatus === 'Selling')
+    .flatMap(i => i.subMatchList)
+    .filter(i => i.matchStatus === 'Selling')
     .map(
-      (i) =>
+      i =>
         new Promise(async (resolve, reject) => {
           const obj = {
             matchId: i.matchId,
@@ -128,7 +128,7 @@ const init = async () => {
             leagueAllName: i.leagueAllName,
             backColor: i.backColor
           }
-          i.oddsList.forEach((j) => {
+          i.oddsList.forEach(j => {
             if (['HAD', 'HHAD'].includes(j.poolCode)) {
               obj[`${j.poolCode}a`] = { value: j.a, key: `${j.poolCode}a`, checked: false }
               obj[`${j.poolCode}d`] = { value: j.d, key: `${j.poolCode}d`, checked: false }
@@ -139,7 +139,7 @@ const init = async () => {
           const {
             value: { oddsHistory: detailData }
           } = await getData1(obj.matchId)
-          ;['crsList', 'hafuList', 'ttgList'].forEach((key) => {
+          ;['crsList', 'hafuList', 'ttgList'].forEach(key => {
             const detail = detailData[key]?.reduce(
               (total, item) =>
                 new Date(`${total.updateDate} ${total.updateTime}`) < new Date(`${item.updateDate} ${item.updateTime}`)
@@ -147,7 +147,7 @@ const init = async () => {
                   : total,
               { updateDate: '1970', updateTime: '0:0' }
             )
-            Object.keys(detail).forEach((key) => {
+            Object.keys(detail).forEach(key => {
               obj[key] = { value: detail[key], key, checked: false }
             })
           })
@@ -155,7 +155,7 @@ const init = async () => {
         })
     )
   const data = await Promise.all(mapRes)
-  columnData.value = defaultColumn.map((i) => ({
+  columnData.value = defaultColumn.map(i => ({
     ...i,
     title: i.label,
     key: i.prop,
@@ -178,18 +178,18 @@ const init = async () => {
 init()
 
 const setColumn = () => {
-  const column = ref(columnData.value.map((i) => ({ ...i, value: i.key })))
-  const defaultActiveList = column.value.filter((i) => i.disabled).map((i) => i.value)
-  const activeList = ref(column.value.filter((i) => i.active).map((i) => i.value))
+  const column = ref(columnData.value.map(i => ({ ...i, value: i.key })))
+  const defaultActiveList = column.value.filter(i => i.disabled).map(i => i.value)
+  const activeList = ref(column.value.filter(i => i.active).map(i => i.value))
   const checkAll = computed(() => activeList.value.length === column.value.length)
   const indeterminate = computed(() => activeList.value.length > 0 && activeList.value.length < column.value.length)
   const groupOption = computed(() => {
     const active = activeList.value
     const colum = column.value
     const obj = {}
-    Object.keys(columnObject).forEach((key) => {
-      const col = colum.filter((i) => i.group === key)
-      const act = active.filter((i) => col.find((a) => i === a.prop))
+    Object.keys(columnObject).forEach(key => {
+      const col = colum.filter(i => i.group === key)
+      const act = active.filter(i => col.find(a => i === a.prop))
       obj[key] = {
         checkAll: act.length === col.length,
         indeterminate: act.length > 0 && act.length < col.length
@@ -210,25 +210,22 @@ const setColumn = () => {
             onChange={() =>
               checkAll.value
                 ? (activeList.value = cloneDeep(defaultActiveList))
-                : (activeList.value = column.value.filter((i) => i.active).map((i) => i.value))
+                : (activeList.value = column.value.filter(i => i.active).map(i => i.value))
             }
           >
             全选
           </a-checkbox>
-          {Object.keys(columnObject).map((key) => (
+          {Object.keys(columnObject).map(key => (
             <a-checkbox
               v-model:checked={groupOption.value[key].checkAll}
               indeterminate={groupOption.value[key].indeterminate}
               onChange={() =>
                 groupOption.value[key].checkAll
                   ? (activeList.value = [
-                      ...new Set([
-                        ...activeList.value,
-                        ...column.value.filter((i) => i.group === key).map((i) => i.prop)
-                      ])
+                      ...new Set([...activeList.value, ...column.value.filter(i => i.group === key).map(i => i.prop)])
                     ])
                   : (activeList.value = activeList.value.filter(
-                      (i) => column.value.find((a) => a.prop === i)?.group !== key
+                      i => column.value.find(a => a.prop === i)?.group !== key
                     ))
               }
             >
@@ -243,7 +240,7 @@ const setColumn = () => {
     okText: '确认',
     onOk: () => {
       const list = activeList.value
-      columnData.value.forEach((i) => {
+      columnData.value.forEach(i => {
         i.active = list.includes(i.key)
       })
     }
@@ -253,32 +250,32 @@ const setColumn = () => {
 const getCheckData = () => {
   const column = cloneDeep(columnData.value)
   const data = tableData.value
-    .filter((i) => Object.values(i).find((i) => i?.checked && column.find((j) => j.key === i?.key)?.active))
-    .map((item) => ({
+    .filter(i => Object.values(i).find(i => i?.checked && column.find(j => j.key === i?.key)?.active))
+    .map(item => ({
       matchDate: item.matchDate,
       matchId: item.matchId,
       matchNumStr: item.matchNumStr,
-      checkList: column.filter((i) => item[i.key]?.checked && i?.active).map((i) => item[i.key])
+      checkList: column.filter(i => item[i.key]?.checked && i?.active).map(i => item[i.key])
     }))
   return data
 }
 
 const printData = () => {
   const data = getCheckData()
-  const test = data.map((item) => `${item.matchNumStr}：${item.checkList.map((i) => i.value).join('+')}`)
+  const test = data.map(item => `${item.matchNumStr}：${item.checkList.map(i => i.value).join('+')}`)
   checkD.value = test.join('，')
 }
 
 const tablePreview = () => {
   const checkData = getCheckData()
   const checkCol = cloneDeep(columnData.value)
-    .filter((i) =>
-      checkData.find((a) => ['matchNumStr', 'matchDate'].includes(i.key) || a.checkList.find((b) => b.key === i.key))
+    .filter(i =>
+      checkData.find(a => ['matchNumStr', 'matchDate'].includes(i.key) || a.checkList.find(b => b.key === i.key))
     )
-    .map((i) => ({
+    .map(i => ({
       ...i,
       customRender: ({ record, column }) =>
-        record[column.key] ? record[column.key] : record.checkList.find((i) => i.key === column.key)?.value
+        record[column.key] ? record[column.key] : record.checkList.find(i => i.key === column.key)?.value
     }))
   modal.info({
     width: '80%',
@@ -299,7 +296,7 @@ const printView = () => {
     Table: [
       {
         MemoBox3: checkData
-          .map((i) => [
+          .map(i => [
             i.matchNumStr,
             ...i.checkList.reduce((total, item, index) => {
               let list = total
@@ -356,7 +353,7 @@ const printView = () => {
             const printContentHtml = dom.outerHTML
             const iframe = document.createElement('iframe')
             document.body.appendChild(iframe)
-            iframe.contentDocument.write([...css].map((i) => i.outerHTML).join(''))
+            iframe.contentDocument.write([...css].map(i => i.outerHTML).join(''))
             iframe.contentDocument.write('<style media="print">@page{size:auto;margin:0;}</style>')
             iframe.contentDocument.write(printContentHtml)
             iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;')

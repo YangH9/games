@@ -1,7 +1,7 @@
 // lazy 懒加载 传入 src
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((item) => {
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(item => {
     if (item.isIntersecting) {
       item.target.src = item.target.__src__
     }

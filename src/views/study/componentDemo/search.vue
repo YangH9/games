@@ -12,7 +12,7 @@
           class="grow"
         ></a-select>
       </div>
-      <div>options数据：{{ selectOption1.options.map((i) => i.label).join('，') }}</div>
+      <div>options数据：{{ selectOption1.options.map(i => i.label).join('，') }}</div>
     </a-card>
   </div>
 </template>
@@ -28,7 +28,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 const selectOption1 = reactive({
   fieldNames: { label: 'label', value: 'value', options: 'children' },
   options: Array.from({ length: 20 }, (_, i) => ({
-    label: Array.from({ length: 8 }, (_) =>
+    label: Array.from({ length: 8 }, _ =>
       String.fromCharCode((Math.random() >= 0.5 ? 65 : 97) + ~~(Math.random() * 25))
     ).join(''),
     value: `value${i}`

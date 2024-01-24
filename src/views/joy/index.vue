@@ -46,7 +46,7 @@
                   v-lazy="filtterUrl(item)"
                   class="icon"
                   referrer="no-referrer"
-                  @error="(e) => e.target.classList.add('hidden')"
+                  @error="e => e.target.classList.add('hidden')"
                 />
               </template>
               {{ item.title }}
@@ -66,7 +66,7 @@
                   v-lazy="filtterUrl(item)"
                   class="icon"
                   referrer="no-referrer"
-                  @error="(e) => e.target.classList.add('hidden')"
+                  @error="e => e.target.classList.add('hidden')"
                 />
               </template>
               {{ item.title }}
@@ -164,7 +164,7 @@ const ysList = [
 
 const qqList = [{ title: '👨‍👦‍👦MC精彩无限 (778923681)', href: 'https://jq.qq.com/?_wv=1027&k=ikak0eLV' }]
 
-const filtterUrl = (item) => {
+const filtterUrl = item => {
   const url =
     item.favicon.indexOf('//') >= 0
       ? item.favicon
