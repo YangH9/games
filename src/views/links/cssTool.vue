@@ -150,4 +150,4 @@ const filtterUrl = item => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>

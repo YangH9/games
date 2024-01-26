@@ -150,7 +150,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 @import 'https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Work+Sans:wght@400;600&display=swap';
 </style>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 body {
   font-size: 11pt;
   font-family: 'Work Sans', sans-serif;

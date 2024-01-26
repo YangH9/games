@@ -9,4 +9,4 @@
 import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>

@@ -14,7 +14,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 // https://www.npmjs.com/package/vform3-builds
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .form-designer:deep() {
   .main-header {
     display: none;

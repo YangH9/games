@@ -199,7 +199,7 @@ const MainDom = () => (
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 :deep(.square) {
   width: 1rem;
   height: 1rem;

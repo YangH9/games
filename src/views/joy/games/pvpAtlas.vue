@@ -261,7 +261,7 @@ watch([typeListActive, heroTypeListActive, itemTypeListActive, bjtwItemTypeListA
 // https://apps.game.qq.com/cgi-bin/ams/module/ishow/V1.0/query/workList_inc.cgi?activityId=2735&sVerifyCode=ABCD&sDataType=JSON&iListNum=20&totalpage=0&page=0&iOrder=0&iSortNumClose=1&jsoncallback=jQuery111304377051446796667_1699868485422&iAMSActivityId=51991&_everyRead=true&iTypeId=2&iFlowId=267733&iActId=2735&iModuleId=2735&_=1699868485425
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-btn + .ant-btn {
   margin-left: 6px;
 }

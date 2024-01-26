@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 :deep(.ant-card-body) {
   --bgcolor: #272e38;
 }

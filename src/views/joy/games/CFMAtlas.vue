@@ -80,7 +80,7 @@ watch(
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-divider {
   margin-top: 8px;
   margin-bottom: 8px;

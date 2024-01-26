@@ -227,7 +227,7 @@ const MainDom = () => (
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 :deep(.square) {
   width: 10px;
   height: 10px;

@@ -101,4 +101,4 @@ window.addEventListener('offline', lineChange)
 // console.log(architecture, bitness, fullVersionList, platform, platformVersion)
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>

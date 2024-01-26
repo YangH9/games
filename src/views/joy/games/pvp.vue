@@ -26,7 +26,7 @@ import { ref } from 'vue'
 const previewUrl = ref('')
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-divider {
   margin-top: 8px;
   margin-bottom: 8px;

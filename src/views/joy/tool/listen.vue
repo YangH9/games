@@ -121,7 +121,7 @@ const musicListDom = () => (
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-card:deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;

@@ -70,7 +70,7 @@ const MainDom = () => (
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 :deep(.ant-picker) {
   width: 300px;
   max-width: 100%;

@@ -26,7 +26,7 @@ const Heart1 = () => (
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .pre {
   display: inline-block;
   line-height: 1em;

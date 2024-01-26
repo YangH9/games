@@ -27,4 +27,4 @@ const mode = GetEnv.MODE
 const title = GetEnv.VITE_TITLE
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>

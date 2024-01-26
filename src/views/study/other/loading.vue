@@ -19,7 +19,7 @@ import { LoadingCircle } from '@/utils/custom/loading'
 customElements.define('my-loading', LoadingCircle)
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .box {
   display: flex;
   align-items: center;

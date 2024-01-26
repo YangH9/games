@@ -93,7 +93,7 @@ Jsonp(baseUrl, dataKey, res => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-btn + .ant-btn {
   margin-left: 6px;
 }

@@ -46,7 +46,7 @@ const historyList = [
 ]
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-card-body {
   padding: 0 20px;
 }

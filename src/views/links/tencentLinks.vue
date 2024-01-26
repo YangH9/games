@@ -36,4 +36,4 @@ Jsonp('https://ossweb-img.qq.com/images/js/milo_config_server/milo_monitor_alldo
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>

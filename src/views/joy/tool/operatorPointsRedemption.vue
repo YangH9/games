@@ -53,7 +53,7 @@
 import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .operator_dom:deep() {
   .ant-card-body {
     text-align: center;

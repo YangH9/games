@@ -137,7 +137,7 @@
 // https://github.com/corestudi0/corestudi0.github.io/tree/main/newyear
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-layout-content {
   text-align: center;
 }

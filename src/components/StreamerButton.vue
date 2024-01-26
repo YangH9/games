@@ -6,7 +6,7 @@
 
 <script setup></script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .square_box {
   position: relative;
   border: 1px solid transparent;

@@ -12,7 +12,7 @@
 
 <script setup></script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .preloader {
   height: 100px;
 

@@ -60,7 +60,7 @@ import '@vueup/vue-quill/dist/vue-quill.bubble.css'
 // https://quilljs.com/
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-card:deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;

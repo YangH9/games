@@ -124,7 +124,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 // https://neumorphism.io/#e0e0e0
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-card:deep(.ant-card-body) {
   overflow-x: hidden;
   overflow-y: auto;

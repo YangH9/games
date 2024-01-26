@@ -317,7 +317,7 @@ const MyTable = ({ data, columns, cellStyle }) => (
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-layout-content {
   text-align: center;
 }

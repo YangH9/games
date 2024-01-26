@@ -38,7 +38,7 @@ const route = useRoute()
 const menuList = computed(() => route.matched)
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-dropdown-menu:deep(.ant-dropdown-menu-item) {
   padding: 0;
 

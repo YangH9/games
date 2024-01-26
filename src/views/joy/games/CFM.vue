@@ -51,7 +51,7 @@ const colSpan = { xs: 24, sm: 12, lg: 8 }
 const previewUrl = ref('')
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .ant-divider {
   margin-top: 8px;
   margin-bottom: 8px;

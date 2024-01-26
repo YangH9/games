@@ -292,7 +292,7 @@ const mainDom = () => (
 )
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 :global(.el-rate .el-rate__icon) {
   margin-right: 0;
 }

@@ -64,7 +64,7 @@
 
 <script setup></script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 div.ant-card:deep(.ant-card-body) {
   overflow: hidden;
   background-color: #000;

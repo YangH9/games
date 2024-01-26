@@ -36,4 +36,4 @@ import { inject } from 'vue'
 const Dayjs = inject('Dayjs')
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>
