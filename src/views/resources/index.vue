@@ -40,7 +40,7 @@ const resoutcesList = [
   { title: '办公软件', href: 'https://pan.baidu.com/s/157xdfx70rxioWPDaGBk64A', code: 've8n' },
   { title: '电子书', href: 'https://pan.baidu.com/s/1p_WeaOR5JTd5JkFiQuk61g', code: 'upsq' },
   { title: '其他软件', href: 'https://pan.baidu.com/s/1HlN_-UyeaCWoiMKBYaRixw', code: 'cyh9' },
-  { title: '各种安装包', href: 'https://pan.baidu.com/s/1X5vPznPtS_N2nxQ8ja8auA', code: 'f6ud' }
+  { title: '各种安装包', href: 'https://pan.baidu.com/s/1e4SeenwNZjuXhNuOY-ES8Q', code: '1qe3' }
 ]
 </script>
 

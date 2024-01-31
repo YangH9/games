@@ -63,7 +63,8 @@ const resoutcesList = [
       { title: 'RGB', href: 'https://rgb39.top/', favicon: '' },
       { title: '小白白AI', href: 'http://ai.kampe.top:8123/web', favicon: 'assets/logo.png' },
       { title: '小天的中国象棋', href: 'https://www.aixt.vip/', favicon: '' },
-      { title: '小天的视频解析器', href: 'https://www.aixt.vip/video/', favicon: '' }
+      { title: '小天的视频解析器', href: 'https://www.aixt.vip/video/', favicon: '' },
+      { title: 'imortals', href: 'https://imortals.cn/', favicon: '' }
     ]
   },
   {

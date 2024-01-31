@@ -81,8 +81,8 @@
 
 body {
   min-height: 100vh;
-  // color: var(--color-text);
-  // background: var(--color-background);
+  color: var(--el-text-color-primary);
+  background: var(--el-bg-color);
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -104,6 +104,21 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* 使用伪元素清除浮动 */
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: none;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
 }
 
 img {
@@ -381,6 +396,16 @@ p {
   }
 }
 
+.flow_ {
+  &hidden {
+    overflow: hidden;
+  }
+
+  &unset {
+    overflow: unset;
+  }
+}
+
 .inline {
   display: inline !important;
 }
@@ -408,11 +433,16 @@ p {
 .flex {
   display: flex !important;
 
-  &.vertical {
-    flex-direction: column;
+  &.nowrap {
+    flex-wrap: nowrap !important;
   }
+
   &.wrap {
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
+  }
+
+  &.vertical {
+    flex-direction: column !important;
   }
 
   &::after,
@@ -563,6 +593,10 @@ p {
     font-size: 1.5rem;
     line-height: 2rem;
   }
+
+  &danger {
+    color: var(--el-color-danger);
+  }
 }
 
 .font_ {
@@ -583,8 +617,14 @@ p {
   }
 }
 
-.cursor_pointer {
-  cursor: pointer;
+.cursor_ {
+  &unset {
+    cursor: unset !important;
+  }
+
+  &pointer {
+    cursor: pointer !important;
+  }
 }
 
 .border_ {
