@@ -6,12 +6,19 @@
         <div class="container">
           <Breadcrumb />
           <a-card title="网盘资源" class="mb_2" :hoverable="true">
-            <a-descriptions :column="1">
+            <a-descriptions :column="1" layout="vertical" bordered>
               <a-descriptions-item v-for="(item, index) in resoutcesList" :key="index" :label="item.title">
-                <a-button :href="item.href" :title="item.title" size="small" type="link" target="_blank">
+                <a-button
+                  :href="item.href"
+                  :title="item.title"
+                  size="small"
+                  type="link"
+                  target="_blank"
+                  class="text_wrap"
+                >
                   {{ item.href }}
                 </a-button>
-                提取码：{{ item.code }}
+                <span> 提取码：{{ item.code }} </span>
               </a-descriptions-item>
             </a-descriptions>
           </a-card>
