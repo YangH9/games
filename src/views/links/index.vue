@@ -192,7 +192,7 @@ const resoutcesList = [
       { title: 'Lodash', href: 'https://www.lodashjs.com/', favicon: 'img/favicon.ico' },
       { title: 'vxe-table', href: 'https://vxetable.cn/', favicon: '' },
       { title: 'Vueuse', href: 'https://vueuse.org/', favicon: '' },
-      { title: 'VueFlow', href: 'https://vueflow.dev/', favicon: '' },
+      { title: 'VueFlow', href: 'https://vueflow.dev/', favicon: '/favicons/apple-touch-icon.png' },
       { title: 'TortoiseGit', href: 'https://tortoisegit.org/', favicon: '' },
       {
         title: 'iconfont图标',
@@ -275,8 +275,17 @@ const resoutcesList = [
     ]
   },
   {
-    title: 'ECharts Demo',
+    title: '数据可视化、图表、流程图',
     list: [
+      { title: 'GoView', href: 'https://www.mtruning.club/', favicon: '/logo.svg' },
+      { title: 'DataV', href: 'http://datav.jiaminghi.com/', favicon: '' },
+      { title: 'DataV(阿里)', href: 'https://datav.aliyun.com/', favicon: '' },
+      {
+        title: 'AntV',
+        href: 'https://antv.antgroup.com/',
+        favicon: '//gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png'
+      },
+      { title: 'VueFlow', href: 'https://vueflow.dev/', favicon: '/favicons/apple-touch-icon.png' },
       { title: 'ECharts', href: 'https://echarts.apache.org/', favicon: '//echarts.apache.org/zh/images/favicon.png' },
       { title: 'MadeAPie', href: 'https://madeapie.com/', favicon: '' },
       { title: 'ISQQW', href: 'https://www.isqqw.com/', favicon: '' },
