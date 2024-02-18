@@ -63,7 +63,7 @@ const {
   pdfViewerEnabled = '',
   deviceMemory = '',
   userAgentData = {},
-  wakeLock = {}
+  wakeLock = null
   // ,storage = '',
   // geolocation = '',
   // mediaSession = ''
@@ -73,29 +73,32 @@ const onLine = ref(window.navigator.onLine)
 
 const connec = window.navigator.connection
 const connection = reactive({
-  effectiveType: connec.effectiveType,
-  downlink: connec.downlink,
-  rtt: connec.rtt,
-  saveData: connec.saveData
+  effectiveType: connec?.effectiveType,
+  downlink: connec?.downlink,
+  rtt: connec?.rtt,
+  saveData: connec?.saveData
 })
 
 // console.log(storage, geolocation, mediaSession)
+try {
+  wakeLock?.request('screen').then(lock => {
+    setTimeout(() => lock.release(), 10 * 60 * 1000)
+  })
 
-wakeLock?.request('screen').then(lock => {
-  setTimeout(() => lock.release(), 10 * 60 * 1000)
-})
+  const lineChange = () => {
+    onLine.value = window.navigator.onLine
+    const connect = window.navigator.connection
+    connection.effectiveType = connect?.effectiveType
+    connection.downlink = connect?.downlink
+    connection.rtt = connect?.rtt
+    connection.saveData = connect?.saveData
+  }
 
-const lineChange = () => {
-  onLine.value = window.navigator.onLine
-  const connect = window.navigator.connection
-  connection.effectiveType = connect.effectiveType
-  connection.downlink = connect.downlink
-  connection.rtt = connect.rtt
-  connection.saveData = connect.saveData
+  window.addEventListener('online', lineChange)
+  window.addEventListener('offline', lineChange)
+} catch (err) {
+  console.log(err)
 }
-
-window.addEventListener('online', lineChange)
-window.addEventListener('offline', lineChange)
 
 // const { architecture, bitness, fullVersionList, platform, platformVersion } = await userAgentData.getHighEntropyValues([ "architecture", "bitness", "model", "platformVersion", "fullVersionList" ])
 // console.log(architecture, bitness, fullVersionList, platform, platformVersion)
