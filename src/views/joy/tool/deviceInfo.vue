@@ -69,14 +69,13 @@ const {
   // mediaSession = ''
 } = window.navigator
 
-const onLine = ref(window.navigator.onLine)
+const onLine = ref(true)
 
-const connec = window.navigator.connection
 const connection = reactive({
-  effectiveType: connec?.effectiveType,
-  downlink: connec?.downlink,
-  rtt: connec?.rtt,
-  saveData: connec?.saveData
+  effectiveType: '',
+  downlink: '',
+  rtt: '',
+  saveData: ''
 })
 
 // console.log(storage, geolocation, mediaSession)
@@ -93,6 +92,7 @@ try {
     connection.rtt = connect?.rtt
     connection.saveData = connect?.saveData
   }
+  lineChange()
 
   window.addEventListener('online', lineChange)
   window.addEventListener('offline', lineChange)

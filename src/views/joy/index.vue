@@ -119,6 +119,7 @@ const joyList = [
       { title: '日历', href: '/joy/tool/calendar' },
       { title: '生辰八字查询', href: '/joy/tool/birthdates' },
       { title: '公历农历转换器', href: '/joy/tool/solarLunar' },
+      { title: '数字大小写转换器', href: '/joy/tool/toggleCase' },
       { title: '链接二维码生成器', href: '/joy/tool/qrcode' },
       { title: 'appStore应用搜索', href: '/joy/tool/appStore' },
       { title: '运营商积分兑换话费', href: '/joy/tool/operatorPointsRedemption' },

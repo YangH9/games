@@ -64,6 +64,45 @@ const data = reactive({
   fangWei: ''
 })
 
+// 生成信息
+const generate = () => {
+  const { birthdates, isLunar, isLeap } = formData
+  const { wuXing, yinYang, jiaZiWuXing, wangJi, fangWei } = mapTable
+  const date = isLunar
+    ? lunarToSolar(birthdates.year(), birthdates.month() + 1, birthdates.date(), isLeap)
+    : solarToLunar(birthdates.year(), birthdates.month() + 1, birthdates.date())
+  const obj = {}
+  if (date !== -1) {
+    const hour = ~~((birthdates.hour() + 1) / 2)
+    const zhi = zhiList[hour % 12]
+    const gan = ganList[(ganList.findIndex(i => i === date.gzDay.slice(0, 1)) * 2 + hour) % 10]
+    const gzHour = `${gan}${zhi}`
+    console.log(formData.birthdates, date)
+    obj.solar = `${date.cYear}年 ${date.cMonth}月 ${date.cDay}日 ${birthdates.hour()}时`
+    obj.lunar = `${date.lYear}年 ${date.IMonthCn} ${date.IDayCn} ${zhi}时`
+    obj.birthdates = `${date.gzYear}年 ${date.gzMonth}月 ${date.gzDay}日 ${gzHour}时`
+    obj.wuXing = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
+      .map(key => `${wuXing[key.split('')[0]]}${wuXing[key.split('')[1]]}`)
+      .join(' ')
+    obj.riZhu = `${date.gzDay} ${date.gzDay.split('')[0]}${wuXing[date.gzDay.split('')[0]]}命`
+    obj.yinYang = [date.gzYear, date.gzMonth, date.gzDay, gzHour].map(key => yinYang[key.split('')[0]]).join(' ')
+    obj.jiaZiWuXing = [date.gzYear, date.gzMonth, date.gzDay, gzHour].map(key => jiaZiWuXing[key]).join(' ')
+    obj.wangJi = [date.gzYear, date.gzMonth, date.gzDay, gzHour].map(key => wangJi[key.split('')[0]]).join(' ')
+    obj.fangWei = [date.gzYear, date.gzMonth, date.gzDay, gzHour].map(key => fangWei[key.split('')[0]]).join(' ')
+  } else {
+    message.error('无效日期')
+  }
+  data.solar = obj.solar || ''
+  data.lunar = obj.lunar || ''
+  data.birthdates = obj.birthdates || ''
+  data.wuXing = obj.wuXing || ''
+  data.riZhu = obj.riZhu || ''
+  data.yinYang = obj.yinYang || ''
+  data.jiaZiWuXing = obj.jiaZiWuXing || ''
+  data.wangJi = obj.wangJi || ''
+  data.fangWei = obj.fangWei || ''
+}
+
 const MainDom = () => (
   <>
     <a-form model={formData} label-col={{ style: { width: '100px' } }}>
@@ -88,54 +127,7 @@ const MainDom = () => (
               {formData.isLunar && (
                 <a-switch v-model:checked={formData.isLeap} checked-children="闰月" un-checked-children="平月" />
               )}
-              <a-button
-                disabled={!formData.birthdates}
-                onClick={() => {
-                  const { birthdates, isLunar, isLeap } = formData
-                  const { wuXing, yinYang, jiaZiWuXing, wangJi, fangWei } = mapTable
-                  const date = isLunar
-                    ? lunarToSolar(birthdates.year(), birthdates.month() + 1, birthdates.date(), isLeap)
-                    : solarToLunar(birthdates.year(), birthdates.month() + 1, birthdates.date())
-                  const obj = {}
-                  if (date !== -1) {
-                    const hour = ~~((birthdates.hour() + 1) / 2)
-                    const zhi = zhiList[hour % 12]
-                    const gan = ganList[(ganList.findIndex(i => i === date.gzDay.slice(0, 1)) * 2 + hour) % 10]
-                    const gzHour = `${gan}${zhi}`
-                    console.log(formData.birthdates, date)
-                    obj.solar = `${date.cYear}年 ${date.cMonth}月 ${date.cDay}日 ${birthdates.hour()}时`
-                    obj.lunar = `${date.lYear}年 ${date.IMonthCn} ${date.IDayCn} ${zhi}时`
-                    obj.birthdates = `${date.gzYear}年 ${date.gzMonth}月 ${date.gzDay}日 ${gzHour}时`
-                    obj.wuXing = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map(key => `${wuXing[key.split('')[0]]}${wuXing[key.split('')[1]]}`)
-                      .join(' ')
-                    obj.riZhu = `${date.gzDay} ${date.gzDay.split('')[0]}${wuXing[date.gzDay.split('')[0]]}命`
-                    obj.yinYang = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map(key => yinYang[key.split('')[0]])
-                      .join(' ')
-                    obj.jiaZiWuXing = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map(key => jiaZiWuXing[key])
-                      .join(' ')
-                    obj.wangJi = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map(key => wangJi[key.split('')[0]])
-                      .join(' ')
-                    obj.fangWei = [date.gzYear, date.gzMonth, date.gzDay, gzHour]
-                      .map(key => fangWei[key.split('')[0]])
-                      .join(' ')
-                  } else {
-                    message.error('无效日期')
-                  }
-                  data.solar = obj.solar || ''
-                  data.lunar = obj.lunar || ''
-                  data.birthdates = obj.birthdates || ''
-                  data.wuXing = obj.wuXing || ''
-                  data.riZhu = obj.riZhu || ''
-                  data.yinYang = obj.yinYang || ''
-                  data.jiaZiWuXing = obj.jiaZiWuXing || ''
-                  data.wangJi = obj.wangJi || ''
-                  data.fangWei = obj.fangWei || ''
-                }}
-              >
+              <a-button disabled={!formData.birthdates} onClick={generate}>
                 查询
               </a-button>
             </a-space>

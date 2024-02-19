@@ -427,6 +427,12 @@ export default [
             component: () => import('@/views/joy/tool/solarLunar.vue')
           },
           {
+            path: '/joy/tool/toggleCase',
+            name: 'toggleCase',
+            meta: { title: '数字大小写转换器' },
+            component: () => import('@/views/joy/tool/toggleCase.vue')
+          },
+          {
             path: '/joy/tool/listen',
             name: 'listen',
             meta: { dev: true, title: '音乐播放器' },
