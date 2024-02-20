@@ -12,11 +12,11 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { computed, reactive, inject } from 'vue'
 import minMax from 'dayjs/plugin/minMax'
 
-const Dayjs = inject('Dayjs')
-Dayjs.extend(minMax)
+const dayjs = inject('dayjs')
+dayjs.extend(minMax)
 
 const formData = reactive({
-  nowDay: Dayjs(),
+  nowDay: dayjs(),
   birthday: null,
   maxYear: 80,
   degree: null,
@@ -48,7 +48,7 @@ const unitOption = {
   365: { value: 365, day: 1, label: '日', key: 'day' }
 }
 // 校准 0 的日期，对比今天与生日日期
-const firstDay = computed(() => Dayjs.min(formData.nowDay, formData.birthday))
+const firstDay = computed(() => dayjs.min(formData.nowDay, formData.birthday))
 const dayArray = computed(() => {
   const { nowDay, birthday, unit, degree } = formData
   // 今天

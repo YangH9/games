@@ -21,32 +21,27 @@ const digitUppercase = num => {
     ['', '拾', '佰', '仟']
   ]
   const head = num < 0 ? '负' : ''
-  num = Math.abs(num)
-  const decimal =
-    fraction.map((i, j) => (digit[Math.floor(num * (10 * Math.pow(10, j))) % 10] + i).replace(/零./, '')).join('') ||
-    '整'
-  num = Math.floor(num)
+
+  const decNum = `${~~((num * 100) % 100)}`
+  const decimal = fraction.map((i, j) => `${digit[decNum[j] || 0]}${i}`.replace(/零./, '')).join('') || '整'
+
+  const intNum = [...`${Math.floor(Math.abs(num))}`].reverse()
   const integer = unit[0]
-    .map(i => {
-      const item =
-        num > 0
-          ? unit[1]
-              .map(j => {
-                const item = num > 0 ? `${digit[num % 10] + j}` : ''
-                num = Math.floor(num / 10)
-                return item
-              })
-              .reverse()
-              .join('')
-              .replace(/(零.)*零$/, '')
-              .replace(/^$/, '零') + i
-          : ''
-      return item
-    })
+    .map(
+      (i, ii) =>
+        `${unit[1]
+          .map((j, ji) =>
+            intNum.length > ii * unit[1].length + ji ? `${digit[intNum[ii * unit[1].length + ji] || 0]}${j}` : ''
+          )
+          .reverse()
+          .join('')
+          .replace(/(零.)*零$/, '')
+          .replace(/^$/, '零')}${i}`
+    )
     .reverse()
     .join('')
-
   return `${head}${integer}${decimal}`
+    .replace(/^(零.)+/, '')
     .replace(/(零.)*零圆/, '圆')
     .replace(/(零.)+/g, '零')
     .replace(/^整$/, '零圆整')
@@ -54,9 +49,10 @@ const digitUppercase = num => {
 
 const generate = () => {
   const num = number.value
+  console.log(num, Number.isNaN(num))
   if (!num) {
     result.value = '输入阿拉伯数字'
-  } else if (num < 10000000000 && num > -10000000000) {
+  } else if (num < 999999999999 && num > -999999999999) {
     result.value = digitUppercase(num)
   } else {
     result.value = '数字过大，无法计算'

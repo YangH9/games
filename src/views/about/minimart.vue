@@ -27,13 +27,9 @@
       手机副卡、虚拟卡不能参与，只有在网实体主卡可参与，排队充值期间不可再其他渠道进行充值。
     </p>
   </a-card>
-  <a-card class="mb_2" :hoverable="true"> 更新时间：{{ Dayjs(1705420800000).format('YYYY-MM-DD') }} </a-card>
+  <a-card class="mb_2" :hoverable="true"> 更新时间：2024-01-17 </a-card>
 </template>
 
-<script setup lang="jsx">
-import { inject } from 'vue'
-
-const Dayjs = inject('Dayjs')
-</script>
+<script setup lang="jsx"></script>
 
 <style scoped lang="scss"></style>

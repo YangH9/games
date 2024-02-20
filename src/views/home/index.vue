@@ -7,9 +7,13 @@
         <a-card title="首页" class="mb_2" :hoverable="true">
           <div>MODE：{{ mode }}</div>
           <div>TITLE：{{ title }}</div>
-          <!-- 18:00、19:40
-          1、20:00、21:00
-          2、20:30、21:30 -->
+        </a-card>
+        <a-card class="mb_2" :hoverable="true">
+          <a-statistic-countdown
+            :title="`${gaoKaoTime.year()}高考倒计时`"
+            :value="gaoKaoTime"
+            format="DD日HH时mm分ss秒"
+          />
         </a-card>
       </div>
     </a-layout>
@@ -19,12 +23,25 @@
 <script setup>
 import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { inject } from 'vue'
+import { inject, ref } from 'vue'
+import duration from 'dayjs/plugin/duration'
 
 const GetEnv = inject('GetEnv')
+const dayjs = inject('dayjs')
+dayjs.extend(duration)
 
 const mode = GetEnv.MODE
 const title = GetEnv.VITE_TITLE
+
+const gaoKaoTime = ref(null)
+
+const getNextGaoKaoTime = () => {
+  const nowTime = dayjs()
+  const thisYearGaoKao = dayjs([nowTime.year(), 6, 7])
+  const nextGaoKao = nowTime - thisYearGaoKao < 0 ? thisYearGaoKao : dayjs([thisYearGaoKao.year() + 1, 6, 7])
+  gaoKaoTime.value = nextGaoKao
+}
+getNextGaoKaoTime()
 </script>
 
 <style scoped lang="scss"></style>

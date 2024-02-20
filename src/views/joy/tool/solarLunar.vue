@@ -3,6 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card title="公历农历转换器" class="mb_2" :hoverable="true"></a-card>
     <MainDom></MainDom>
+    <a-card class="mb_2" :hoverable="true">农历月份有闰月，转公历时需注意</a-card>
   </div>
 </template>
 

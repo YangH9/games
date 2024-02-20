@@ -10,7 +10,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { reactive, inject, ref } from 'vue'
 import { debounce } from 'lodash'
 
-const Dayjs = inject('Dayjs')
+const dayjs = inject('dayjs')
 const Jsonp = inject('Jsonp')
 
 const callback = 'jsonp_appStore'
@@ -26,10 +26,10 @@ const formData = reactive({
   eventName: null,
   eventLocation: null,
   eventAllDay: false,
-  eventTime: [Dayjs(), Dayjs().add(2, 'hour')],
+  eventTime: [dayjs(), dayjs().add(2, 'hour')],
   eventDesc: null,
   eventValarm: false,
-  eventValarmDate: Dayjs().add(-1, 'day'),
+  eventValarmDate: dayjs().add(-1, 'day'),
   eventValarmTime: [1, 'H'],
   wifiName: null,
   wifiPassword: null,
@@ -178,7 +178,7 @@ const typeOption = {
                     v-model:value={formData.eventValarmDate}
                     format="YYYY-MM-DD HH:mm"
                     showTime={{ format: 'HH:mm' }}
-                    disabled-date={date => date && date > Dayjs().endOf('day')}
+                    disabled-date={date => date && date > dayjs().endOf('day')}
                     class="w_100"
                   ></a-date-picker>
                 </>

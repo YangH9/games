@@ -14,11 +14,11 @@ import { random } from 'lodash'
 import isLeapYear from 'dayjs/plugin/isLeapYear'
 import minMax from 'dayjs/plugin/minMax'
 
-const Dayjs = inject('Dayjs')
-Dayjs.extend(isLeapYear).extend(minMax)
+const dayjs = inject('dayjs')
+dayjs.extend(isLeapYear).extend(minMax)
 
 // 默认最后一个是今天
-const toDay = Dayjs()
+const toDay = dayjs()
 // 第一个是往前12个月
 const firstDay = toDay.add(-12, 'month')
 
@@ -53,7 +53,7 @@ const typeOption = [
       label: `${item.year()}`,
       length: 365 + item.isLeapYear(),
       start: item,
-      end: Dayjs.min(item.endOf('year'), toDay.endOf('day'))
+      end: dayjs.min(item.endOf('year'), toDay.endOf('day'))
     }
   })
 ]

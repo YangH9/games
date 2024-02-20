@@ -14,7 +14,7 @@ import { debounce } from 'lodash'
 import { reactive, inject, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-const Dayjs = inject('Dayjs')
+const dayjs = inject('dayjs')
 const Jsonp = inject('Jsonp')
 const route = useRoute()
 const router = useRouter()
@@ -224,7 +224,7 @@ const mainDom = () => (
         </div>
         <div class="flex content_between mb_1">
           <div>版本：{detailData.value.version}</div>
-          <div>{Dayjs(detailData.value.currentVersionReleaseDate).format('YYYY/MM/DD')}</div>
+          <div>{dayjs(detailData.value.currentVersionReleaseDate).format('YYYY/MM/DD')}</div>
         </div>
         <p class="ml_4" v-html={detailData.value.releaseNotes?.replaceAll('\n', '<br />')}></p>
       </div>
@@ -279,11 +279,11 @@ const mainDom = () => (
           </div>
           <div class="mb_3">
             <div>更新时间</div>
-            <div class="font_600">{Dayjs(detailData.value.currentVersionReleaseDate).format('YYYY/MM/DD')}</div>
+            <div class="font_600">{dayjs(detailData.value.currentVersionReleaseDate).format('YYYY/MM/DD')}</div>
           </div>
           <div>
             <div>上架时间</div>
-            <div class="font_600">{Dayjs(detailData.value.releaseDate).format('YYYY/MM/DD')}</div>
+            <div class="font_600">{dayjs(detailData.value.releaseDate).format('YYYY/MM/DD')}</div>
           </div>
         </div>
       </div>

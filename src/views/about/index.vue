@@ -32,7 +32,7 @@
           <a-card title="站点信息" class="mb_2" :hoverable="true">
             <a-descriptions :column="2">
               <a-descriptions-item label="网站运行时间" span="2">
-                {{ Dayjs.duration(nowTime.diff(startTime)).format('Y年MM月DD日HH时mm分ss秒') }}
+                {{ dayjs.duration(nowTime.diff(startTime)).format('Y年MM月DD日HH时mm分ss秒') }}
               </a-descriptions-item>
               <a-descriptions-item label="建站时间">
                 {{ startTime.format('YYYY年MM月DD日') }}
@@ -55,8 +55,8 @@ import RouterViewBox from '@/components/RouterViewBox.vue'
 import { inject, onBeforeUnmount, onMounted, ref } from 'vue'
 import duration from 'dayjs/plugin/duration'
 
-const Dayjs = inject('Dayjs')
-Dayjs.extend(duration)
+const dayjs = inject('dayjs')
+dayjs.extend(duration)
 
 // QQ注册时间2011-01-30
 
@@ -87,10 +87,10 @@ const userList = [
 ]
 
 // 建站时间
-const startTime = ref(Dayjs(1584864000000))
+const startTime = ref(dayjs('2020/03/22'))
 // 重构时间
-const time1 = Dayjs(1666137600000)
-const nowTime = ref(Dayjs())
+const time1 = dayjs('2022/10/19')
+const nowTime = ref(dayjs())
 
 const list = [
   { title: '自制日历订阅(节假日、24节气)', href: '/ChinaHolidayCalender/' },
@@ -105,7 +105,7 @@ const list = [
 let timer = ''
 
 const running = () => {
-  nowTime.value = Dayjs()
+  nowTime.value = dayjs()
   timer = requestAnimationFrame(running)
 }
 
