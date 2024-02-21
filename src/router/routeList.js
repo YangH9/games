@@ -253,6 +253,12 @@ export default [
             name: 'teleprompter',
             meta: { dev: true, title: '提词器' },
             component: () => import('@/views/study/other/teleprompter.vue')
+          },
+          {
+            path: '/study/other/2024SpringFestivalGala',
+            name: '2024SpringFestivalGala',
+            meta: { title: '2024春晚' },
+            component: () => import('@/views/study/other/2024SpringFestivalGala.vue')
           }
         ]
       },

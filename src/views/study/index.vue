@@ -88,7 +88,8 @@ const studyList = [
       { title: 'Apple新年logo', href: '/study/other/applelogo' },
       { title: '代码雨', href: '/study/other/codeRain' },
       { title: '画中画', href: '/study/other/pictureInPicture' },
-      { title: '提词器', href: '/study/other/teleprompter' }
+      { title: '提词器', href: '/study/other/teleprompter' },
+      { title: '2024春晚', href: '/study/other/2024SpringFestivalGala' }
     ]
   },
   {
