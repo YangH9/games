@@ -212,9 +212,9 @@ const typeOption = {
                   formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
                 )}\nDTEND:${formData.eventTime[1].format(
                   formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
-                )}\nSUMMARY:${formData.eventName}\nLOCATION:${
-                  formData.eventLocation
-                }\nDESCRIPTION:${formData.eventDesc?.replaceAll('\n', '\\n')}\n${
+                )}\nSUMMARY:${formData.eventName}\n${
+                  formData.eventLocation ? `LOCATION:${formData.eventLocation}\n` : ''
+                }${formData.eventDesc ? `DESCRIPTION:${formData.eventDesc?.replaceAll('\n', '\\n')}\n` : ''}${
                   formData.eventValarm
                     ? `BEGIN:VALARM\nTRIGGER:${
                         formData.eventAllDay
