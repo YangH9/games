@@ -34,9 +34,33 @@ const tableOption = reactive({
       render: ({ row }) => <el-avatar shape="square" size={50} icon="EUserFilled" style={{ background: row.avatar }} />
     },
     { label: '名称', prop: 'name', default: true, minWidth: 120 },
-    { label: '中文名称', prop: 'cname', default: true },
+    { label: '中文名称', prop: 'cname', default: true, minWidth: 100 },
     { label: '年龄', prop: 'age' },
-    { label: '性别', prop: 'sex', default: true, render: ({ row }) => (row.sex ? '男' : '女') },
+    {
+      label: '性别',
+      prop: 'sex',
+      default: true,
+      minWidth: 100,
+      render: ({ row }) =>
+        row.sex ? (
+          <el-button text icon="AManOutlined">
+            男
+          </el-button>
+        ) : (
+          <el-button text icon="AWomanOutlined">
+            女
+          </el-button>
+        )
+    },
+    { label: '邮箱', prop: 'email', default: true, minWidth: 200 },
+    {
+      label: '状态',
+      prop: 'status',
+      default: true,
+      render: ({ row }) => <el-tag type={row.status ? 'success' : 'danger'}>{row.status ? '启用' : '禁用'}</el-tag>
+    },
+    { label: '备注', prop: 'remark', minWidth: 200 },
+    { label: 'IP', prop: 'ip', default: true, minWidth: 130 },
     { label: '日期', prop: 'date', default: true, minWidth: 120 },
     {
       label: '时间戳',
@@ -69,6 +93,11 @@ const getData = () => {
           cname: '@cname',
           address: '@county(true)',
           age: '@integer(10, 50)',
+          email: '@email',
+          ip: '@ip',
+          guid: '@guid',
+          status: '@boolean',
+          remark: '@csentence(10, 20)',
           sex: '@boolean',
           city: '@city',
           zip: '@zip'
