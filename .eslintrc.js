@@ -155,7 +155,7 @@ module.exports = {
     'no-use-before-define': 'error', // 禁止在变量定义之前使用它们
 
     // Stylistic Issues、这些规则是关于风格指南的，而且是非常主观的：
-    'array-bracket-newline': 'error', // 在数组开括号后和闭括号前强制换行
+    'array-bracket-newline': 'off', // 在数组开括号后和闭括号前强制换行
     'array-bracket-spacing': 'off', // 强制数组方括号中使用一致的空格
     'array-element-newline': ['error', 'consistent'], // 强制数组元素间出现换行
     'block-spacing': ['error', 'always'], // 禁止或强制在代码块中开括号前和闭括号后有空格

@@ -119,6 +119,7 @@ const init = async () => {
     .filter(i => i.matchStatus === 'Selling')
     .map(
       i =>
+        // eslint-disable-next-line no-async-promise-executor
         new Promise(async (resolve, reject) => {
           const obj = {
             matchId: i.matchId,
@@ -139,6 +140,7 @@ const init = async () => {
           const {
             value: { oddsHistory: detailData }
           } = await getData1(obj.matchId)
+          // eslint-disable-next-line semi-style
           ;['crsList', 'hafuList', 'ttgList'].forEach(key => {
             const detail = detailData[key]?.reduce(
               (total, item) =>

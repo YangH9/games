@@ -96,9 +96,13 @@ const studyList = [
     title: '各种功能组件',
     list: [
       { title: '搜索', href: '/study/componentDemo/search' },
+      { title: '表格组件', href: '/study/componentDemo/tableCom' },
       { title: '表格1-ant', href: '/study/componentDemo/table1_ant' },
       { title: '表格1-el', href: '/study/componentDemo/table1_el' },
       { title: '表格2', href: '/study/componentDemo/table2' },
+      { title: '表格3', href: '/study/componentDemo/table3' },
+      { title: '表格4', href: '/study/componentDemo/table4' },
+      { title: '表格5', href: '/study/componentDemo/table5' },
       { title: '表单1', href: '/study/componentDemo/form1' },
       { title: '低代码表单', href: '/study/componentDemo/form2' }
     ]

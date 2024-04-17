@@ -50,16 +50,21 @@
 
       <div class="display">
         <template v-for="i of [0, 2, 4, 6, 8, 10, 12]">
-          <div v-if="[0, 2, 6, 8, 10].includes(i)" class="row" :style="{ marginBottom: i === 2 ? '0.2em' : '' }">
-            <div v-for="j of [0, 1]" class="col">
+          <div
+            v-if="[0, 2, 6, 8, 10].includes(i)"
+            :key="i"
+            class="row"
+            :style="{ marginBottom: i === 2 ? '0.2em' : '' }"
+          >
+            <div v-for="j of [0, 1]" :key="j" class="col">
               <div>8</div>
               <div>{{ timeStr[i + j] }}</div>
               <div>{{ timeStr[i + j] }}</div>
             </div>
           </div>
-          <div v-else class="small-row">
+          <div v-else :key="`${i}1`" class="small-row">
             <div class="row">
-              <div v-for="j of [0, 1]" class="col">
+              <div v-for="j of [0, 1]" :key="j" class="col">
                 <div>8</div>
                 <div>{{ timeStr[i + j] }}</div>
                 <div>{{ timeStr[i + j] }}</div>

@@ -54,7 +54,6 @@
   &::after {
     box-sizing: border-box;
     margin: 0;
-    position: relative;
     font-weight: normal;
   }
 
@@ -158,6 +157,7 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
   @mixin textFlow($line) {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -169,6 +169,7 @@ p {
   &_2 {
     @include textFlow(2);
   }
+
   &_3 {
     @include textFlow(3);
   }
@@ -375,6 +376,10 @@ p {
 }
 
 .h {
+  &_auto {
+    height: auto;
+    line-height: unset;
+  }
   &_100 {
     height: 100%;
   }
@@ -408,14 +413,18 @@ p {
 
 .inline {
   display: inline !important;
+
+  &_block {
+    display: inline-block !important;
+  }
+
+  &_flex {
+    display: inline-flex !important;
+  }
 }
 
 .block {
   display: block !important;
-}
-
-.inline-block {
-  display: inline-block !important;
 }
 
 .contents {
@@ -432,7 +441,10 @@ p {
 
 .flex {
   display: flex !important;
+}
 
+.flex,
+.inline_flex {
   &.nowrap {
     flex-wrap: nowrap !important;
   }
@@ -490,10 +502,12 @@ p {
       align-items: flex-end !important;
     }
   }
+
   &.gap_ {
     &1 {
       gap: 0.25rem;
     }
+
     &2 {
       gap: 0.5rem;
     }
@@ -506,22 +520,27 @@ p {
     flex-wrap: nowrap;
     display: block;
   }
+
   &_x {
     @extend %scroll;
     overflow-x: auto !important;
     overflow-y: hidden !important;
+
     &.show {
       overflow-x: scroll !important;
     }
   }
+
   &_y {
     @extend %scroll;
     overflow-x: hidden !important;
     overflow-y: auto !important;
+
     &.show {
       overflow-y: scroll !important;
     }
   }
+
   &_auto {
     overflow: auto !important;
   }
@@ -529,6 +548,17 @@ p {
 
 .grow {
   flex-grow: 1;
+}
+
+.float {
+  &,
+  &_left {
+    float: left;
+  }
+
+  &_right {
+    float: right;
+  }
 }
 
 .text_ {
@@ -544,6 +574,10 @@ p {
     text-align: center;
   }
 
+  &left {
+    text-align: left;
+  }
+
   &right {
     text-align: right;
   }
@@ -553,25 +587,19 @@ p {
   }
 
   &12 {
-    &px {
-      text-indent: 12px;
-    }
+    font-size: 12px;
   }
 
   &13 {
-    &px {
-      text-indent: 13px;
-    }
+    font-size: 13px;
   }
 
   &14 {
-    &px {
-      text-indent: 14px;
-    }
+    font-size: 14px;
   }
 
-  &4 {
-    text-indent: 1rem;
+  &20 {
+    font-size: 20px;
   }
 
   &sm {
@@ -630,21 +658,21 @@ p {
 .border_ {
   &all,
   &t {
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--el-border-color);
   }
 
   &all,
   &r {
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid var(--el-border-color);
   }
 
   &all,
   &l {
-    border-left: 1px solid var(--color-border);
+    border-left: 1px solid var(--el-border-color);
   }
 
   &all,
   &b {
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--el-border-color);
   }
 }

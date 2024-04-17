@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="jsx">
-import { useAttrs, computed } from 'vue'
+import { useAttrs } from 'vue'
 
 let key = 0
 
@@ -23,11 +23,11 @@ const currentChange = e => {
   emit('pageChange', { page: e, pageSize: props.option.pageSize ?? 10 })
 }
 
-const empty = () => <el-empty description="暂无数据" />
+const empty = () => <el-empty description="暂无数据"></el-empty>
 
 const mainDom = () => (
   <>
-    <el-table data={props.data} border stripe v-slots={{ empty }} {...attrs}>
+    <el-table data={props.data} border stripe v-slots={{ empty }} table-layout="fixed" {...attrs}>
       {props.columns.map(column => {
         const { render, headerRender, ...data } = column
         // 处理自定义头部和自定义内容

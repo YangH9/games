@@ -19,7 +19,9 @@
             </template>
             <template #extra>
               <template v-if="Array.isArray(item.wqlx_ba)">
-                <a-tag v-for="ite in item.wqlx_ba" color="blue" class="mr_0 ml_1">{{ ite?.bq_24 }}</a-tag>
+                <a-tag v-for="(ite, ind) in item.wqlx_ba" :key="ind" color="blue" class="mr_0 ml_1">{{
+                  ite?.bq_24
+                }}</a-tag>
               </template>
               <a-tag v-else color="blue" class="mr_0">{{ item.wqlx_ba?.bq_24 }}</a-tag>
             </template>

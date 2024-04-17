@@ -275,6 +275,12 @@ export default [
             component: () => import('@/views/study/componentDemo/search.vue')
           },
           {
+            path: '/study/componentDemo/tableCom',
+            name: 'tableCom',
+            meta: { title: '表格组件' },
+            component: () => import('@/views/study/componentDemo/tableCom.vue')
+          },
+          {
             path: '/study/componentDemo/table1_ant',
             name: 'table1_ant',
             meta: { title: '表格1-ant' },
@@ -291,6 +297,24 @@ export default [
             name: 'table2',
             meta: { title: '表格2' },
             component: () => import('@/views/study/componentDemo/table2.vue')
+          },
+          {
+            path: '/study/componentDemo/table3',
+            name: 'table3',
+            meta: { title: '表格3' },
+            component: () => import('@/views/study/componentDemo/table3.vue')
+          },
+          {
+            path: '/study/componentDemo/table4',
+            name: 'table4',
+            meta: { title: '表格4' },
+            component: () => import('@/views/study/componentDemo/table4.vue')
+          },
+          {
+            path: '/study/componentDemo/table5',
+            name: 'table5',
+            meta: { title: '表格5' },
+            component: () => import('@/views/study/componentDemo/table5.vue')
           },
           {
             path: '/study/componentDemo/form1',

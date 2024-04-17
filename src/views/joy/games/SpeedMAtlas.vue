@@ -124,7 +124,7 @@
         onVisibleChange: e => !e && (previewUrl = [])
       }"
     >
-      <a-image v-for="item in previewUrl" :src="item" />
+      <a-image v-for="(item, index) in previewUrl" :key="index" :src="item" />
     </a-image-preview-group>
   </div>
 </template>

@@ -41,9 +41,10 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "lodash": "^4.17.21",
+    "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
-    "sortablejs": "^1.15.1",
+    "sortablejs": "^1.15.2",
     "vform3-builds": "^3.0.10",
     "vue": "^3.4.5",
     "vue-router": "^4.2.5"
