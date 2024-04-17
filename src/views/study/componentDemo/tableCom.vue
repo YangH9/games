@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-layout-content>
       <SetColumn :colList="tableOption.column" @submit="val => (tableOption.column = val)"></SetColumn>
-      <el-divider>表格</el-divider>
+      <el-divider>表格--数据为Mockjs生成的随机数据</el-divider>
       <div v-loading="tableOption.loading">
         <MyTable :data="tableOption.data" :columns="tableOption.column.filter(i => i.active)"></MyTable>
       </div>

@@ -5,11 +5,12 @@
       <a-button type="link" href="https://codepen.io/yangh9/full/JjwbPRX">
         https://codepen.io/yangh9/full/JjwbPRX
       </a-button>
+      <el-divider>表格--数据为Mockjs生成的随机数据</el-divider>
       <el-table
         v-resize="tableData.length"
         :data="tableData"
         style="width: 100%"
-        height="calc(100vh - 166px)"
+        height="calc(100vh - 215px)"
         :cell-style="cellStyle"
       >
         <el-table-column fixed prop="date" label="Date"></el-table-column>

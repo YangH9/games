@@ -5,6 +5,7 @@
       <a-button type="link" href="https://codepen.io/yangh9/full/XWGajRw">
         https://codepen.io/yangh9/full/XWGajRw
       </a-button>
+      <el-divider>表格--数据为Mockjs生成的随机数据</el-divider>
       <el-table
         :data="[tableData[0]]"
         style="width: 100%"

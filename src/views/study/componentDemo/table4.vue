@@ -5,6 +5,7 @@
       <a-button type="link" href="https://codepen.io/yangh9/full/ExrWGGY">
         https://codepen.io/yangh9/full/ExrWGGY
       </a-button>
+      <el-divider>表格--数据为Mockjs生成的随机数据</el-divider>
       <el-table class="my_sortable" :data="tableData" style="width: 100%">
         <el-table-column type="index"></el-table-column>
         <el-table-column prop="date" label="Date"></el-table-column>
