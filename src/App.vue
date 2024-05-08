@@ -13,7 +13,9 @@ import { usePreferredColorScheme } from '@vueuse/core'
 const route = useRoute()
 const GetEnv = inject('GetEnv')
 
-const title = GetEnv.VITE_TITLE
+console.log(process.env.npm_package_version)
+
+const title = GetEnv.VITE_APP_TITLE
 
 const themeColor = usePreferredColorScheme()
 

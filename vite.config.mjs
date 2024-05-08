@@ -20,14 +20,15 @@ export default ({ mode }) => {
         }
       }),
       vueJsx(),
-      createHtmlPlugin({ viteNext: true, minify: true, inject: { data: { title: env.VITE_TITLE } } }),
+      createHtmlPlugin({ viteNext: true, minify: true, inject: { data: { title: env.VITE_APP_TITLE } } }),
       viteCompression({ threshold: 1024 * 1024 * 10 })
     ],
+    define: { 'process.env': process.env },
     root: env.VITE_ROOT_URL,
     base: env.VITE_BASE_URL,
     hmr: true,
     resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
-    server: { host: '0.0.0.0', port: 6600, strictPort: true },
+    server: { host: env.VITE_HOST, port: env.VITE_PORT, strictPort: true },
     build: {
       chunkSizeWarningLimit: 1024 * 1024 * 10,
       minify: 'terser',

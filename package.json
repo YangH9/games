@@ -4,6 +4,7 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run dev",
+    "test": "vite --mode testing",
     "dev": "vite --mode development",
     "build": "vite build --mode production",
     "preview": "vite preview --port 4173",
@@ -14,6 +15,8 @@
     "push": "git push origin master"
   },
   "scripts-info": {
+    "start": "开发环境",
+    "test": "测试环境",
     "dev": "运行开发环境",
     "build": "打包生产环境",
     "preview": "预览生产环境",

@@ -7,6 +7,7 @@
         <a-card title="首页" class="mb_2" :hoverable="true">
           <div>MODE：{{ mode }}</div>
           <div>TITLE：{{ title }}</div>
+          <div>VERSION：{{ version }}</div>
         </a-card>
         <a-card class="mb_2" :hoverable="true">
           <a-statistic-countdown
@@ -31,7 +32,8 @@ const dayjs = inject('dayjs')
 dayjs.extend(arraySupport)
 
 const mode = GetEnv.MODE
-const title = GetEnv.VITE_TITLE
+const title = GetEnv.VITE_APP_TITLE
+const version = process.env.npm_package_version
 
 const gaoKaoTime = ref(null)
 

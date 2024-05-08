@@ -48,7 +48,7 @@ if (!Date.prototype.toFormat) {
  * @param {Object} routerObject
  */
 export const setTitle = to => {
-  const Title = `${to.meta.title}—${import.meta.env.VITE_TITLE}`
+  const Title = `${to.meta.title}—${import.meta.env.VITE_APP_TITLE}`
   let handleVisiableInit = ''
   const handleVisiable = () => {
     if (document.visibilityState === 'visible') {
