@@ -36,7 +36,7 @@ const mainDom = () => (
       algorithm: themeColor.value === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm
     }}
   >
-    <a-watermark content={`${route.meta.title}-${title}-木易`} zIndex={100} gap={[200, 200]} offset={[50, 50]}>
+    <a-watermark content={`${route.meta.title}-${title}-木昜`} zIndex={100} gap={[200, 200]} offset={[50, 50]}>
       <Loading />
       <RouterView />
     </a-watermark>
