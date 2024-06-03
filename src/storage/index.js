@@ -1,5 +1,19 @@
-export const getStorage = key => localStorage.getItem(key) || ''
+export const Storage = (model = 'local') => {
+  const StorageMap = {
+    local: window.localStorage,
+    session: window.sessionStorage
+  }
 
-export const setStorage = (key, value) => localStorage.setItem(key, value)
-
-export const delStorage = key => localStorage.removeItem(key)
+  const StorageObj = StorageMap[model] || StorageMap.local
+  return {
+    get(key) {
+      return StorageObj.getItem(key)
+    },
+    set(key, value) {
+      return StorageObj.setItem(key, typeof value === 'string' ? value : JSON.stringify(value))
+    },
+    remove(key) {
+      return StorageObj.removeItem(key)
+    }
+  }
+}
