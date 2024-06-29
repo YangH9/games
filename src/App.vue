@@ -29,6 +29,8 @@ watch(
   }
 )
 
+document.querySelector('#app').style.backgroundImage = `url('${GetEnv.VITE_BASE_URL}src/assets/skyblue.jpg')`
+
 const mainDom = () => (
   <a-config-provider
     locale={antZhCN}
