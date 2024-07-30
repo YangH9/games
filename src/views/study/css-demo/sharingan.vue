@@ -62,6 +62,16 @@
   </a-card>
 </template>
 
+<!--
+佐助写轮眼进化史：
+单勾玉
+右双勾玉左单勾玉
+双勾玉
+三勾玉
+万花筒
+永恒万花筒
+左轮回眼
+  -->
 <script setup></script>
 
 <style scoped lang="scss">
