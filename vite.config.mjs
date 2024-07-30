@@ -26,9 +26,8 @@ export default ({ mode }) => {
     define: { 'process.env': process.env },
     root: env.VITE_ROOT_URL,
     base: env.VITE_BASE_URL,
-    hmr: true,
     resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
-    server: { host: env.VITE_HOST, port: env.VITE_PORT, strictPort: true },
+    server: { hmr: true, host: env.VITE_HOST, port: env.VITE_PORT },
     build: {
       chunkSizeWarningLimit: 1024 * 1024 * 10,
       minify: 'terser',

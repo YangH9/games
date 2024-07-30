@@ -8,6 +8,7 @@ import { useAttrs } from 'vue'
 let key = 0
 
 const props = defineProps({
+  loading: Boolean,
   data: Array,
   columns: Array,
   option: Object
@@ -27,7 +28,15 @@ const empty = () => <el-empty description="暂无数据"></el-empty>
 
 const mainDom = () => (
   <>
-    <el-table data={props.data} border stripe v-slots={{ empty }} table-layout="fixed" {...attrs}>
+    <el-table
+      v-loading={props.loading}
+      data={props.data}
+      border
+      stripe
+      v-slots={{ empty }}
+      table-layout="fixed"
+      {...attrs}
+    >
       {props.columns.map(column => {
         const { render, headerRender, ...data } = column
         // 处理自定义头部和自定义内容

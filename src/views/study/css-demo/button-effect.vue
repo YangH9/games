@@ -134,7 +134,7 @@
     <div class="button demo62">demo62</div>
     <!-- demo63 -->
     <div class="button demo63"><span data-text="demo63">demo63</span></div>
-    <svg class="hidden">
+    <svg class="d_hidden">
       <defs>
         <clipPath id="clipBox" clipPathUnits="objectBoundingBox">
           <polygon points="0,0 0,1 0.35,1 0.35,0.6 0.65,0.6 0.65,1 1,1 1,0" />

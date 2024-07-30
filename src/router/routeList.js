@@ -1,48 +1,21 @@
-// 只能使用字面量引入，一组/*为一层文件夹
-const modules = import.meta.glob(['@/views/*.vue', '@/views/*/*.vue', '@/views/*/*/*.vue', '@/views/*/*/*/*.vue'])
-console.log(modules)
-
-/**
- * @description: 辅助处理路由表信息，减少数据量
- * component：src/views/下的文件路径
- * { component: 'home/overview' } => { path: '/home/overview', name: '/home/overview', component1: () => import('@/views/home/overview.vue') }
- * 过滤index路径，home/index => home
- */
-const createRoute = list => {
-  list.map(item => {
-    // 添加path
-    !Object.hasOwn(item, 'path') && (item.path = `/${item.component}`.replace(/(\/index)$/, ''))
-    // 添加name
-    !Object.hasOwn(item, 'name') && (item.name = item.component?.replace(/\//g, '_'))
-    Object.hasOwn(item, 'component') &&
-      (item.component = modules[`/src/views/${item.component}.vue`] || modules['/src/views/errorPages/404.vue'])
-    // 添加是否有子元素选择、
-    !Object.hasOwn(item, 'has_children') && (item.has_children = Object.hasOwn(item, 'children'))
-    Object.hasOwn(item, 'children') && createRoute(item.children)
-    // 添加默认数据，防止空数据
-    !item.meta && (item.meta = { title: item.name, icon: 'Document' })
-  })
-  return list
-}
-
-export default createRoute([
+export default [
   {
     path: '/',
     name: 'home',
     meta: { title: '首页' },
-    component: 'home/index'
+    component: () => import('@/views/home/index.vue')
   },
   {
     path: '/about',
     name: 'about',
     meta: { title: '关于' },
-    component: 'about/index',
+    component: () => import('@/views/about/index.vue'),
     children: [
       {
         path: '/about/minimart',
-        name: 'aboutMinimart',
+        name: 'about-minimart',
         meta: { title: '杂货铺' },
-        component: 'about/minimart'
+        component: () => import('@/views/about/minimart.vue')
       }
     ]
   },
@@ -50,92 +23,92 @@ export default createRoute([
     path: '/study',
     name: 'study',
     meta: { title: '学习' },
-    component: 'study/index',
+    component: () => import('@/views/study/index.vue'),
     children: [
       {
-        path: '/study/cssDemo',
-        name: 'cssDemo',
+        path: '/study/css-demo',
+        name: 'css-demo',
         meta: { title: 'CSS特效' },
-        redirect: '/study/cssDemo/pikaqiu',
-        component: 'study/cssDemo/index',
+        redirect: '/study/css-demo/pikaqiu',
+        component: () => import('@/views/study/css-demo/index.vue'),
         children: [
           {
-            path: '/study/cssDemo/pikaqiu',
+            path: '/study/css-demo/pikaqiu',
             name: 'pikaqiu',
             meta: { title: 'CSS皮卡丘' },
-            component: 'study/cssDemo/pikaqiu'
+            component: () => import('@/views/study/css-demo/pikaqiu.vue')
           },
           {
-            path: '/study/cssDemo/huitailang',
+            path: '/study/css-demo/huitailang',
             name: 'huitailang',
             meta: { title: 'CSS灰太狼' },
-            component: 'study/cssDemo/huitailang'
+            component: () => import('@/views/study/css-demo/huitailang.vue')
           },
           {
-            path: '/study/cssDemo/lanpangzi',
+            path: '/study/css-demo/lanpangzi',
             name: 'lanpangzi',
             meta: { title: 'CSS蓝胖子' },
-            component: 'study/cssDemo/lanpangzi'
+            component: () => import('@/views/study/css-demo/lanpangzi.vue')
           },
           {
-            path: '/study/cssDemo/madara',
+            path: '/study/css-demo/madara',
             name: 'madara',
             meta: { title: 'CSS喵咪老师' },
-            component: 'study/cssDemo/madara'
+            component: () => import('@/views/study/css-demo/madara.vue')
           },
           {
-            path: '/study/cssDemo/regularPolygon',
-            name: 'regularPolygon',
+            path: '/study/css-demo/regular-polygon',
+            name: 'regular-polygon',
             meta: { title: 'CSS正多边形' },
-            component: 'study/cssDemo/regularPolygon'
+            component: () => import('@/views/study/css-demo/regular-polygon.vue')
           },
           {
-            path: '/study/cssDemo/borderEffect',
-            name: 'borderEffect',
+            path: '/study/css-demo/border-effect',
+            name: 'border-effect',
             meta: { title: 'CSS边框特效' },
-            component: 'study/cssDemo/borderEffect'
+            component: () => import('@/views/study/css-demo/border-effect.vue')
           },
           {
-            path: '/study/cssDemo/LCDDigital',
-            name: 'LCDDigital',
+            path: '/study/css-demo/lcd-digital',
+            name: 'lcd-digital',
             meta: { title: 'CSS液晶数字字体' },
-            component: 'study/cssDemo/LCDDigital'
+            component: () => import('@/views/study/css-demo/lcd-digital.vue')
           },
           {
-            path: '/study/cssDemo/menuEffect',
-            name: 'menuEffect',
+            path: '/study/css-demo/menu-effect',
+            name: 'menu-effect',
             meta: { title: 'CSS菜单特效' },
-            component: 'study/cssDemo/menuEffect'
+            component: () => import('@/views/study/css-demo/menu-effect.vue')
           },
           {
-            path: '/study/cssDemo/buttonEffect',
-            name: 'buttonEffect',
+            path: '/study/css-demo/button-effect',
+            name: 'button-effect',
             meta: { title: 'CSS按钮特效' },
-            component: 'study/cssDemo/buttonEffect'
+            component: () => import('@/views/study/css-demo/button-effect.vue')
           },
           {
-            path: '/study/cssDemo/icon',
+            path: '/study/css-demo/icon',
             name: 'icon',
             meta: { title: 'CSS动画图标' },
-            component: 'study/cssDemo/icon'
+            component: () => import('@/views/study/css-demo/icon.vue')
           },
           {
-            path: '/study/cssDemo/animationClock',
-            name: 'animationClock',
+            path: '/study/css-demo/animation-clock',
+            name: 'animation-clock',
             meta: { title: 'CSS动画时钟' },
-            component: 'study/cssDemo/animationClock'
+            component: () => import('@/views/study/css-demo/animation-clock.vue')
           },
           {
-            path: '/study/cssDemo/nixieTubeClock',
-            name: 'nixieTubeClock',
+            path: '/study/css-demo/nixie-tube-clock',
+            name: 'nixie-tube-clock',
             meta: { title: '数码管时钟' },
-            component: 'study/cssDemo/nixieTubeClock'
+            component: () => import('@/views/study/css-demo/nixie-tube-clock.vue')
           },
           {
-            path: '/study/cssDemo/sharingan',
+            path: '/study/css-demo/sharingan',
             name: 'sharingan',
             meta: { title: 'CSS写轮眼' },
-            component: 'study/cssDemo/sharingan'
+            component: () => import('@/views/study/css-demo/sharingan.vue')
           }
         ]
       },
@@ -148,56 +121,56 @@ export default createRoute([
           {
             path: '/study/note/basic',
             name: 'basic',
-            meta: { dev: true, title: '入门级基础知识' },
-            component: 'study/note/basic'
+            meta: { title: '入门级基础知识' },
+            component: () => import('@/views/study/note/basic.vue')
           },
           {
             path: '/study/note/html',
             name: 'html',
-            meta: { dev: true, title: 'HTML相关' },
-            component: 'study/note/html'
+            meta: { title: 'HTML相关' },
+            component: () => import('@/views/study/note/html.vue')
           },
           {
             path: '/study/note/css',
             name: 'css',
-            meta: { dev: true, title: 'CSS相关' },
-            component: 'study/note/css'
+            meta: { title: 'CSS相关' },
+            component: () => import('@/views/study/note/css.vue')
           },
           {
-            path: '/study/note/ecmascript',
-            name: 'ecmascript',
-            meta: { dev: true, title: 'ECMAScript' },
-            component: 'study/note/ECMAScript'
+            path: '/study/note/ecma-script',
+            name: 'ecma-script',
+            meta: { title: 'ECMAScript' },
+            component: () => import('@/views/study/note/ecma-script.vue')
           },
           {
             path: '/study/note/regular',
             name: 'regular',
-            meta: { dev: true, title: '正则基础知识' },
-            component: 'study/note/regular'
+            meta: { title: '正则基础知识' },
+            component: () => import('@/views/study/note/regular.vue')
           },
           {
             path: '/study/note/git',
             name: 'git',
-            meta: { dev: true, title: 'git常用命令' },
-            component: 'study/note/git'
+            meta: { title: 'git常用命令' },
+            component: () => import('@/views/study/note/git.vue')
           },
           {
             path: '/study/note/npm',
             name: 'npm',
-            meta: { dev: true, title: 'npm常用命令' },
-            component: 'study/note/npm'
+            meta: { title: 'npm常用命令' },
+            component: () => import('@/views/study/note/npm.vue')
           },
           {
             path: '/study/note/command',
             name: 'command',
-            meta: { dev: true, title: '计算机常用命令快捷键' },
-            component: 'study/note/command'
+            meta: { title: '计算机常用命令快捷键' },
+            component: () => import('@/views/study/note/command.vue')
           },
           {
             path: '/study/note/function',
             name: 'function',
-            meta: { dev: true, title: 'js常用方法封装' },
-            component: 'study/note/function'
+            meta: { title: 'js常用方法封装' },
+            component: () => import('@/views/study/note/function.vue')
           }
         ]
       },
@@ -211,123 +184,129 @@ export default createRoute([
             path: '/study/other/heart',
             name: 'heart',
             meta: { title: '心形图案' },
-            component: 'study/other/heart'
+            component: () => import('@/views/study/other/heart.vue')
           },
           {
-            path: '/study/other/timeWheel',
-            name: 'timeWheel',
+            path: '/study/other/meridian-flow-clock',
+            name: 'meridian-flow-clock',
+            meta: { title: '子午流注钟表' },
+            component: () => import('@/views/study/other/meridian-flow-clock.vue')
+          },
+          {
+            path: '/study/other/time-wheel',
+            name: 'time-wheel',
             meta: { title: '时间轮盘' },
-            component: 'study/other/timeWheel'
+            component: () => import('@/views/study/other/time-wheel.vue')
           },
           {
             path: '/study/other/loading',
             name: 'loading',
             meta: { title: '加载动画' },
-            component: 'study/other/loading'
+            component: () => import('@/views/study/other/loading.vue')
           },
           {
             path: '/study/other/progress',
             name: 'progress',
             meta: { title: '进度条' },
-            component: 'study/other/progress'
+            component: () => import('@/views/study/other/progress.vue')
           },
           {
-            path: '/study/other/applelogo',
-            name: 'applelogo',
+            path: '/study/other/apple-logo',
+            name: 'apple-logo',
             meta: { title: 'Apple新年logo' },
-            component: 'study/other/appleLogo'
+            component: () => import('@/views/study/other/apple-logo.vue')
           },
           {
-            path: '/study/other/codeRain',
-            name: 'codeRain',
+            path: '/study/other/code-rain',
+            name: 'code-rain',
             meta: { title: '代码雨' },
-            component: 'study/other/codeRain'
+            component: () => import('@/views/study/other/code-rain.vue')
           },
           {
-            path: '/study/other/pictureInPicture',
-            name: 'pictureInPicture',
+            path: '/study/other/picture-in-picture',
+            name: 'picture-in-picture',
             meta: { title: '画中画' },
-            component: 'study/other/pictureInPicture'
+            component: () => import('@/views/study/other/picture-in-picture.vue')
           },
           {
             path: '/study/other/teleprompter',
             name: 'teleprompter',
-            meta: { dev: true, title: '提词器' },
-            component: 'study/other/teleprompter'
+            meta: { title: '提词器' },
+            component: () => import('@/views/study/other/teleprompter.vue')
           },
           {
-            path: '/study/other/2024SpringFestivalGala',
-            name: '2024SpringFestivalGala',
+            path: '/study/other/2024-spring-festival-gala',
+            name: '2024-spring-festival-gala',
             meta: { title: '2024春晚' },
-            component: 'study/other/2024SpringFestivalGala'
+            component: () => import('@/views/study/other/2024-spring-festival-gala.vue')
           }
         ]
       },
       {
-        path: '/study/componentDemo',
-        name: 'componentDemo',
+        path: '/study/component-demo',
+        name: 'component-demo',
         meta: { title: '组件例子' },
         redirect: '/study',
         children: [
           {
-            path: '/study/componentDemo/search',
+            path: '/study/component-demo/search',
             name: 'search',
-            meta: { dev: true, title: '搜索' },
-            component: 'study/componentDemo/search'
+            meta: { title: '搜索' },
+            component: () => import('@/views/study/component-demo/search.vue')
           },
           {
-            path: '/study/componentDemo/tableCom',
-            name: 'tableCom',
+            path: '/study/component-demo/table-com',
+            name: 'table-com',
             meta: { title: '表格组件' },
-            component: 'study/componentDemo/tableCom'
+            component: () => import('@/views/study/component-demo/table-com.vue')
           },
           {
-            path: '/study/componentDemo/table1_ant',
-            name: 'table1_ant',
+            path: '/study/component-demo/table1-ant',
+            name: 'table1-ant',
             meta: { title: '表格1-ant' },
-            component: 'study/componentDemo/table1_ant'
+            component: () => import('@/views/study/component-demo/table1-ant.vue')
           },
           {
-            path: '/study/componentDemo/table1_el',
-            name: 'table1_el',
+            path: '/study/component-demo/table1-el',
+            name: 'table1-el',
             meta: { title: '表格1-el' },
-            component: 'study/componentDemo/table1_el'
+            component: () => import('@/views/study/component-demo/table1-el.vue')
           },
           {
-            path: '/study/componentDemo/table2',
+            path: '/study/component-demo/table2',
             name: 'table2',
             meta: { title: '表格2' },
-            component: 'study/componentDemo/table2'
+            component: () => import('@/views/study/component-demo/table2.vue')
           },
           {
-            path: '/study/componentDemo/table3',
+            path: '/study/component-demo/table3',
             name: 'table3',
             meta: { title: '表格3' },
-            component: 'study/componentDemo/table3'
+            component: () => import('@/views/study/component-demo/table3.vue')
           },
           {
-            path: '/study/componentDemo/table4',
+            path: '/study/component-demo/table4',
             name: 'table4',
             meta: { title: '表格4' },
-            component: 'study/componentDemo/table4'
+            component: () => import('@/views/study/component-demo/table4.vue')
           },
           {
-            path: '/study/componentDemo/table5',
+            path: '/study/component-demo/table5',
             name: 'table5',
             meta: { title: '表格5' },
-            component: 'study/componentDemo/table5'
+            component: () => import('@/views/study/component-demo/table5.vue')
           },
           {
-            path: '/study/componentDemo/form1',
+            path: '/study/component-demo/form1',
             name: 'form1',
             meta: { title: '表单1' },
-            component: 'study/componentDemo/form1'
+            component: () => import('@/views/study/component-demo/form1.vue')
           },
           {
-            path: '/study/componentDemo/form2',
+            path: '/study/component-demo/form2',
             name: 'form2',
             meta: { title: '低代码表单' },
-            component: 'study/componentDemo/form2'
+            component: () => import('@/views/study/component-demo/form2.vue')
           }
         ]
       }
@@ -337,7 +316,7 @@ export default createRoute([
     path: '/joy',
     name: 'joy',
     meta: { title: '娱乐' },
-    component: 'joy/index',
+    component: () => import('@/views/joy/index.vue'),
     children: [
       {
         path: '/joy/games',
@@ -346,82 +325,82 @@ export default createRoute([
         redirect: '/joy',
         children: [
           {
-            path: '/joy/games/gameHistory',
-            name: 'gameHistory',
+            path: '/joy/games/game-history',
+            name: 'game-history',
             meta: { title: '游戏历程时间轴' },
-            component: 'joy/games/gameHistory'
+            component: () => import('@/views/joy/games/game-history.vue')
           },
           {
-            path: '/joy/games/clashOfClans',
-            name: 'clashofclans',
+            path: '/joy/games/clash-of-clans',
+            name: 'clash-of-clans',
             meta: { title: '部落冲突' },
-            component: 'joy/games/clashOfClans'
+            component: () => import('@/views/joy/games/clash-of-clans.vue')
           },
           {
-            path: '/joy/games/catchTheCat',
-            name: 'catchTheCat',
+            path: '/joy/games/catch-the-cat',
+            name: 'catch-the-cat',
             meta: { title: '圈小猫' },
-            component: 'joy/games/catchTheCat'
+            component: () => import('@/views/joy/games/catch-the-cat.vue')
           },
           {
             path: '/joy/games/speed',
             name: 'speed',
             meta: { title: '飞车端游壁纸' },
-            component: 'joy/games/Speed'
+            component: () => import('@/views/joy/games/speed.vue')
           },
           {
             path: '/joy/games/speedm',
             name: 'speedm',
             meta: { title: '飞车手游壁纸' },
-            component: 'joy/games/SpeedM'
+            component: () => import('@/views/joy/games/speedm.vue')
           },
           {
             path: '/joy/games/speedm/atlas',
             name: 'speedmatlas',
             meta: { title: '飞车手游图鉴' },
-            component: 'joy/games/SpeedMAtlas'
+            component: () => import('@/views/joy/games/speedm-atlas.vue')
           },
           {
             path: '/joy/games/cfm',
             name: 'cfm',
             meta: { title: '穿越火线手游壁纸' },
-            component: 'joy/games/CFM'
+            component: () => import('@/views/joy/games/cfm.vue')
           },
           {
             path: '/joy/games/cfm/atlas',
             name: 'cfmatlas',
             meta: { title: '穿越火线手游图鉴' },
-            component: 'joy/games/CFMAtlas'
+            component: () => import('@/views/joy/games/cfm-atlas.vue')
           },
           {
             path: '/joy/games/pvp',
             name: 'pvp',
-            meta: { dev: true, title: '王者荣耀壁纸' },
-            component: 'joy/games/pvp'
+            meta: { title: '王者荣耀壁纸' },
+            component: () => import('@/views/joy/games/pvp.vue')
           },
           {
             path: '/joy/games/pvp/atlas',
             name: 'pvpatlas',
             meta: { title: '王者荣耀图鉴' },
-            component: 'joy/games/pvpAtlas'
+            component: () => import('@/views/joy/games/pvp-atlas.vue')
           },
           {
             path: '/joy/games/minesweeper',
             name: 'minesweeper',
-            meta: { dev: true, title: '扫雷' },
-            component: 'joy/games/minesweeper/index',
+            meta: { title: '扫雷' },
+            component: () => import('@/views/joy/games/minesweeper/index.vue'),
             children: [
               {
                 path: '/joy/games/minesweeper',
-                name: 'minesweeper_home',
+                name: 'minesweeper-home',
                 meta: { title: '扫雷home' },
-                component: 'joy/games/minesweeper/home'
+                component: () => import('@/views/joy/games/minesweeper/home.vue')
               },
               {
                 path: '/joy/games/minesweeper/setting',
-                name: 'minesweeper_setting',
+                name: 'minesweeper-setting',
                 meta: { title: '扫雷setting' },
-                component: 'joy/games/minesweeper/setting'
+                component: () => import('@/views/joy/games/minesweeper/setting.vue')
               }
             ]
           }
@@ -434,106 +413,106 @@ export default createRoute([
         redirect: '/joy',
         children: [
           {
-            path: '/joy/tool/deviceinfo',
-            name: 'deviceInfo',
+            path: '/joy/tool/device-info',
+            name: 'device-info',
             meta: { title: '设备信息' },
-            component: 'joy/tool/deviceInfo'
+            component: () => import('@/views/joy/tool/device-info.vue')
           },
           {
             path: '/joy/tool/calendar',
             name: 'calendar',
             meta: { title: '日历' },
-            component: 'joy/tool/calendar'
+            component: () => import('@/views/joy/tool/calendar.vue')
           },
           {
             path: '/joy/tool/birthdates',
             name: 'birthdates',
             meta: { title: '生辰八字查询' },
-            component: 'joy/tool/birthdates'
+            component: () => import('@/views/joy/tool/birthdates.vue')
           },
           {
-            path: '/joy/tool/solarLunar',
-            name: 'solarLunar',
+            path: '/joy/tool/solar-lunar',
+            name: 'solar-lunar',
             meta: { title: '公历农历转换器' },
-            component: 'joy/tool/solarLunar'
+            component: () => import('@/views/joy/tool/solar-lunar.vue')
           },
           {
-            path: '/joy/tool/toggleCase',
-            name: 'toggleCase',
+            path: '/joy/tool/toggle-case',
+            name: 'toggle-case',
             meta: { title: '数字大小写转换器' },
-            component: 'joy/tool/toggleCase'
+            component: () => import('@/views/joy/tool/toggle-case.vue')
           },
           {
             path: '/joy/tool/listen',
             name: 'listen',
-            meta: { dev: true, title: '音乐播放器' },
-            component: 'joy/tool/listen'
+            meta: { title: '音乐播放器' },
+            component: () => import('@/views/joy/tool/listen.vue')
           },
           {
             path: '/joy/tool/petpet',
             name: 'petpet',
             meta: { title: '摸头生成器' },
-            component: 'joy/tool/petpet/index'
+            component: () => import('@/views/joy/tool/petpet/index.vue')
           },
           {
             path: '/joy/tool/random',
             name: 'random',
             meta: { title: '随机数生成器' },
-            component: 'joy/tool/random'
+            component: () => import('@/views/joy/tool/random.vue')
           },
           {
-            path: '/joy/tool/grayhead',
-            name: 'grayhead',
-            meta: { dev: true, title: '灰色头像生成器' },
-            component: 'joy/tool/GrayHead'
+            path: '/joy/tool/gray-head',
+            name: 'gray-head',
+            meta: { title: '灰色头像生成器' },
+            component: () => import('@/views/joy/tool/gray-head.vue')
           },
           {
-            path: '/joy/tool/avatarEditor',
-            name: 'avatarEditor',
-            meta: { dev: true, title: '国庆红旗头像生成器' },
-            component: 'joy/tool/avatarEditor'
+            path: '/joy/tool/avatar-editor',
+            name: 'avatar-editor',
+            meta: { title: '国庆红旗头像生成器' },
+            component: () => import('@/views/joy/tool/avatar-editor.vue')
           },
           {
             path: '/joy/tool/qrcode',
             name: 'qrcode',
             meta: { title: '链接二维码生成器' },
-            component: 'joy/tool/qrcode'
+            component: () => import('@/views/joy/tool/qrcode.vue')
           },
           {
-            path: '/joy/tool/appStore',
-            name: 'appStore',
+            path: '/joy/tool/app-store',
+            name: 'app-store',
             meta: { title: 'appStore应用搜索' },
-            component: 'joy/tool/appStore'
+            component: () => import('@/views/joy/tool/app-store.vue')
           },
           {
-            path: '/joy/tool/operatorPointsRedemption',
-            name: 'operatorPointsRedemption',
+            path: '/joy/tool/operator-points-redemption',
+            name: 'operator-points-redemption',
             meta: { title: '运营商积分兑换话费' },
-            component: 'joy/tool/operatorPointsRedemption'
+            component: () => import('@/views/joy/tool/operator-points-redemption.vue')
           },
           {
-            path: '/joy/tool/lifeTime',
-            name: 'lifeTime',
+            path: '/joy/tool/life-time',
+            name: 'life-time',
             meta: { title: '人生进度表' },
-            component: 'joy/tool/lifeTime'
+            component: () => import('@/views/joy/tool/life-time.vue')
           },
           {
-            path: '/joy/tool/ceramicTileWall',
-            name: 'ceramicTileWall',
+            path: '/joy/tool/ceramic-tile-wall',
+            name: 'ceramic-tile-wall',
             meta: { title: '瓷砖墙' },
-            component: 'joy/tool/ceramicTileWall'
+            component: () => import('@/views/joy/tool/ceramic-tile-wall.vue')
           },
           {
             path: '/joy/tool/skeuomorphism',
-            name: 'Skeuomorphism',
-            meta: { dev: true, title: 'CSS新拟态设计风格生成器' },
-            component: 'joy/tool/Skeuomorphism'
+            name: 'skeuomorphism',
+            meta: { title: 'CSS新拟态设计风格生成器' },
+            component: () => import('@/views/joy/tool/skeuomorphism.vue')
           },
           {
             path: '/joy/tool/glassmorphism',
-            name: 'Glassmorphism',
-            meta: { dev: true, title: 'CSS玻璃拟物化风格生成器' },
-            component: 'joy/tool/Glassmorphism'
+            name: 'glassmorphism',
+            meta: { title: 'CSS玻璃拟物化风格生成器' },
+            component: () => import('@/views/joy/tool/glassmorphism.vue')
           }
         ]
       },
@@ -546,8 +525,8 @@ export default createRoute([
           {
             path: '/joy/festival/newyear',
             name: 'newyear',
-            meta: { dev: true, title: '新年烟花' },
-            component: 'joy/festival/newyear'
+            meta: { title: '新年烟花' },
+            component: () => import('@/views/joy/festival/newyear.vue')
           }
         ]
       }
@@ -557,31 +536,31 @@ export default createRoute([
     path: '/links',
     name: 'links',
     meta: { title: '链接' },
-    component: 'links/index',
+    component: () => import('@/views/links/index.vue'),
     children: [
       {
-        path: '/links/tencentLinks',
-        name: 'tencentLinks',
+        path: '/links/tencent-links',
+        name: 'tencent-links',
         meta: { title: '腾讯链接' },
-        component: 'links/tencentLinks'
+        component: () => import('@/views/links/tencent-links.vue')
       },
       {
-        path: '/links/minecraftBookmark',
-        name: 'minecraftBookmark',
+        path: '/links/minecraft-bookmark',
+        name: 'minecraft-bookmark',
         meta: { title: '我的世界书签收录' },
-        component: 'links/MinecraftBookmark'
+        component: () => import('@/views/links/minecraft-bookmark.vue')
       },
       {
-        path: '/links/cssTool',
-        name: 'cssTool',
+        path: '/links/css-tool',
+        name: 'css-tool',
         meta: { title: 'CSS工具收录' },
-        component: 'links/cssTool'
+        component: () => import('@/views/links/css-tool.vue')
       },
       {
-        path: '/links/chartGPT',
-        name: 'chartGPT',
+        path: '/links/chart-gpt',
+        name: 'chart-gpt',
         meta: { title: 'chartGPT' },
-        component: 'links/chartGPT'
+        component: () => import('@/views/links/chart-gpt.vue')
       }
     ]
   },
@@ -589,12 +568,12 @@ export default createRoute([
     path: '/resources',
     name: 'resources',
     meta: { title: '资源分享' },
-    component: 'resources/index'
+    component: () => import('@/views/resources/index.vue')
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     meta: { title: '404(NotFound)' },
-    component: 'errorPages/404'
+    component: () => import('@/views/error-pages/404.vue')
   }
-])
+]

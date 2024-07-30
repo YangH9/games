@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="搜索" :hoverable="true">
-      <div class="flex">
+      <div class="d_flex">
         <a-select
           v-model:value="selectOption1.value"
           :options="selectOption1.options"

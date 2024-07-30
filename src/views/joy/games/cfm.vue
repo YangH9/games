@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="flex items_center content_between">
+        <div class="d_flex items_center content_between">
           <h3>穿越火线手游壁纸</h3>
           <h6>
             数据内容来自<a href="//cfm.qq.com/main.shtml">穿越火线手游</a>官网，以下数据仅供参考，具体数据以游戏内为准

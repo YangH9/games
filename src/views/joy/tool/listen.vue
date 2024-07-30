@@ -55,13 +55,13 @@ const controlDom = () => (
           <ARetweetOutlined />
         </a-button>
       </a-col>
-      <a-col span={2} class="flex center">
+      <a-col span={2} class="d_flex center">
         00 : 00
       </a-col>
       <a-col span={12}>
         <a-slider />
       </a-col>
-      <a-col span={2} class="flex center">
+      <a-col span={2} class="d_flex center">
         00 : 00
       </a-col>
       <a-col span={2}>

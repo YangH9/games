@@ -35,7 +35,7 @@
                   v-lazy="filtterUrl(item)"
                   class="icon"
                   referrer="no-referrer"
-                  @error="e => e.target.classList.add('hidden')"
+                  @error="e => e.target.classList.add('d_hidden')"
                 />
               </template>
               {{ item.title }}
@@ -255,7 +255,7 @@ const resoutcesList = [
   },
   {
     title: 'CSS工具',
-    extra: '/links/cssTool',
+    extra: '/links/css-tool',
     list: [
       { title: '新拟态生成器', href: 'https://neumorphism.io/', favicon: '' },
       { title: '毛玻璃', href: 'https://hype4.academy/tools/glassmorphism-generator', favicon: '' },
@@ -427,7 +427,7 @@ const resoutcesList = [
   },
   {
     title: '腾讯',
-    extra: '/links/tencentLinks',
+    extra: '/links/tencent-links',
     list: [
       { title: 'QQ', href: 'https://im.qq.com/', favicon: '' },
       { title: '微信', href: 'https://weixin.qq.com/', favicon: '//res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico' },
@@ -462,7 +462,7 @@ const resoutcesList = [
   },
   {
     title: '我的世界',
-    extra: '/links/MinecraftBookmark',
+    extra: '/links/minecraft-bookmark',
     list: [
       {
         title: 'Minecraft',

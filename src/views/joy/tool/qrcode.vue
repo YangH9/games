@@ -198,7 +198,7 @@ const typeOption = {
                       ))}
                     </a-select>
                   </a-col>
-                  <a-col class="flex center">前</a-col>
+                  <a-col class="d_flex center">前</a-col>
                 </a-row>
               )}
             </a-form-item>

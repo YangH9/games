@@ -9,7 +9,7 @@
       target="_blank"
     >
       <template #icon>
-        <img v-lazy="item.favicon" class="icon" referrer="no-referrer" @error="e => e.target.classList.add('hidden')" />
+        <img v-lazy="item.favicon" class="icon" referrer="no-referrer" @error="e => e.target.classList.add('d_hidden')" />
       </template>
       {{ item.title }}
     </a-button>

@@ -13,7 +13,7 @@
           v-lazy="filtterUrl(item)"
           class="icon"
           referrer="no-referrer"
-          @error="e => e.target.classList.add('hidden')"
+          @error="e => e.target.classList.add('d_hidden')"
         />
       </template>
       {{ item.title }}

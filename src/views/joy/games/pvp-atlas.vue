@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="flex items_center content_between">
+        <div class="d_flex items_center content_between">
           <h3>王者荣耀图鉴</h3>
           <h6>数据内容来自<a href="https://pvp.qq.com/">王者荣耀</a>官网，以下数据仅供参考，具体数据以游戏内为准</h6>
         </div>
@@ -11,7 +11,7 @@
         <a-radio-group
           v-model:value="typeListActive"
           button-style="solid"
-          class="flex items_center content_around"
+          class="d_flex items_center content_around"
           @change="changeType"
         >
           <a-radio-button v-for="(item, index) in typeList" :key="index" :value="item.key"

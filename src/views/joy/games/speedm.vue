@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="flex items_center content_between">
+        <div class="d_flex items_center content_between">
           <div>
             <span class="mr_2">飞车手游壁纸</span>
             <a-radio-group v-model:value="directionListActive" button-style="solid">
@@ -21,7 +21,7 @@
           </div>
         </div>
         <a-divider />
-        <div class="flex items_center content_between">
+        <div class="d_flex items_center content_between">
           <div>
             <a-radio-group v-model:value="pagesListActive" button-style="solid">
               <a-radio-button v-for="(item, index) in pagesList" :key="index" :value="item.key">{{

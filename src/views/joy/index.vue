@@ -46,7 +46,7 @@
                   v-lazy="filtterUrl(item)"
                   class="icon"
                   referrer="no-referrer"
-                  @error="e => e.target.classList.add('hidden')"
+                  @error="e => e.target.classList.add('d_hidden')"
                 />
               </template>
               {{ item.title }}
@@ -66,7 +66,7 @@
                   v-lazy="filtterUrl(item)"
                   class="icon"
                   referrer="no-referrer"
-                  @error="e => e.target.classList.add('hidden')"
+                  @error="e => e.target.classList.add('d_hidden')"
                 />
               </template>
               {{ item.title }}
@@ -99,9 +99,9 @@ const joyList = [
   {
     title: '游戏',
     list: [
-      { title: '游戏历程时间轴', href: '/joy/games/gameHistory' },
-      { title: '部落冲突', href: '/joy/games/clashOfClans' },
-      { title: '圈小猫', href: '/joy/games/catchTheCat' },
+      { title: '游戏历程时间轴', href: '/joy/games/game-history' },
+      { title: '部落冲突', href: '/joy/games/clash-of-clans' },
+      { title: '圈小猫', href: '/joy/games/catch-the-cat' },
       { title: '扫雷', href: '/joy/games/minesweeper' },
       { title: '飞车手游壁纸', href: '/joy/games/speedm' },
       { title: '飞车手游图鉴', href: '/joy/games/speedm/atlas' },
@@ -115,24 +115,24 @@ const joyList = [
   {
     title: '工具',
     list: [
-      { title: '设备信息', href: '/joy/tool/deviceInfo' },
+      { title: '设备信息', href: '/joy/tool/device-info' },
       { title: '日历', href: '/joy/tool/calendar' },
       { title: '生辰八字查询', href: '/joy/tool/birthdates' },
-      { title: '公历农历转换器', href: '/joy/tool/solarLunar' },
-      { title: '数字大小写转换器', href: '/joy/tool/toggleCase' },
+      { title: '公历农历转换器', href: '/joy/tool/solar-lunar' },
+      { title: '数字大小写转换器', href: '/joy/tool/toggle-case' },
       { title: '链接二维码生成器', href: '/joy/tool/qrcode' },
-      { title: 'appStore应用搜索', href: '/joy/tool/appStore' },
-      { title: '运营商积分兑换话费', href: '/joy/tool/operatorPointsRedemption' },
+      { title: 'appStore应用搜索', href: '/joy/tool/app-store' },
+      { title: '运营商积分兑换话费', href: '/joy/tool/operator-points-redemption' },
       { title: '音乐播放器', href: '/joy/tool/listen' },
       { title: '摸头生成器', href: '/joy/tool/petpet' },
       { title: '随机数生成器', href: '/joy/tool/random' },
-      { title: '人生进度表', href: '/joy/tool/lifeTime' },
-      { title: '瓷砖墙', href: '/joy/tool/ceramicTileWall' },
+      { title: '人生进度表', href: '/joy/tool/life-time' },
+      { title: '瓷砖墙', href: '/joy/tool/ceramic-tile-wall' },
       { title: '灰色头像生成器', href: '/joy/tool/grayhead' },
-      { title: '国庆红旗头像生成器', href: '/joy/tool/avatarEditor' },
+      { title: '国庆红旗头像生成器', href: '/joy/tool/avatar-editor' },
       { title: 'CSS新拟态生成器', href: '/joy/tool/skeuomorphism' },
       { title: 'CSS玻璃拟物化生成器', href: '/joy/tool/glassmorphism' },
-      { title: 'ChartGPT', href: '/links/chartGPT' }
+      { title: 'ChartGPT', href: '/links/chart-gpt' }
     ]
   },
   {

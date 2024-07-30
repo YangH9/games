@@ -131,7 +131,7 @@ const MainDom = () => (
     <a-divider class="my_4" />
     <a-space align="center" wrap>
       {dayTypeList.map(item => (
-        <div class="flex center gap_1">
+        <div class="d_flex center gap_1">
           <div style={{ backgroundColor: item.color }} class="square"></div>
           {item.label}
         </div>

@@ -1,5 +1,15 @@
 <template>
-  <mainDom></mainDom>
+  <a-config-provider
+    :locale="antZhCN"
+    :theme="{
+      algorithm: themeColor === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm
+    }"
+  >
+    <a-watermark :content="`${route.meta.title}-${title}-木昜`" :zIndex="100" :gap="[200, 200]" :offset="[50, 50]">
+      <Loading />
+      <RouterView />
+    </a-watermark>
+  </a-config-provider>
 </template>
 
 <script setup lang="jsx">
@@ -29,19 +39,6 @@ watch(
   }
 )
 
-const mainDom = () => (
-  <a-config-provider
-    locale={antZhCN}
-    theme={{
-      algorithm: themeColor.value === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm
-    }}
-  >
-    <a-watermark content={`${route.meta.title}-${title}-木昜`} zIndex={100} gap={[200, 200]} offset={[50, 50]}>
-      <Loading />
-      <RouterView />
-    </a-watermark>
-  </a-config-provider>
-)
 </script>
 
 <style scoped lang="scss"></style>

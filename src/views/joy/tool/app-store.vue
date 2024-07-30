@@ -94,7 +94,7 @@ const mainDom = () => (
                 <a-list-item-meta
                   v-slots={{
                     title: () => (
-                      <div class="flex items_center wrap">
+                      <div class="d_flex items_center wrap">
                         <a
                           href={`https://apps.apple.com/cn/app/id${item.trackId}`}
                           title={item.trackName}
@@ -219,10 +219,10 @@ const mainDom = () => (
       </div>
       <a-divider></a-divider>
       <div>
-        <div class="flex content_between mb_2">
+        <div class="d_flex content_between mb_2">
           <div class="text_xl font_bold textFlow">新内容</div>
         </div>
-        <div class="flex content_between mb_1">
+        <div class="d_flex content_between mb_1">
           <div>版本：{detailData.value.version}</div>
           <div>{dayjs(detailData.value.currentVersionReleaseDate).format('YYYY/MM/DD')}</div>
         </div>

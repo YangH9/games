@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" :hoverable="true">
       <template #title>
-        <div class="flex items_center content_between">
+        <div class="d_flex items_center content_between">
           <h3>穿越火线手游武器图鉴</h3>
           <span>全部（{{ dataList.length }}）件</span>
           <h6>

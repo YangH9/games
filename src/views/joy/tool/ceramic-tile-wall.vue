@@ -214,7 +214,7 @@ const MainDom = () => (
         </a-space>
       </a-space>
     </div>
-    <div class="flex content_end mt_2">
+    <div class="d_flex content_end mt_2">
       <a-space align="center">
         <span>低</span>
         {formData.colorList.map(item => (
