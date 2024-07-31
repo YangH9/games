@@ -93,6 +93,7 @@ const time1 = dayjs('2022/10/19')
 const nowTime = ref(dayjs())
 
 const list = [
+  { title: '自制低代码表单设计器（开发中）', href: '/form-preview/' },
   { title: '自制日历订阅(节假日、24节气)', href: '/ChinaHolidayCalender/' },
   { title: '不会百度么', href: 'https://yangh9.github.io/baidu/' },
   { title: '国庆头像制作', href: 'https://yangh9.github.io/avatar-editor/' },
