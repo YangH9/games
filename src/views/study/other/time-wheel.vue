@@ -20,74 +20,56 @@
         <div class="year rotate_box">
           <div>{{ dateTime.year }}</div>
         </div>
-        <div
-          class="rotate_box"
-          :style="{ transform: `rotate(${dateTime.monthDeg}deg)`, transition: hasT ? `transform .5s` : 'none' }"
-        >
+        <div class="rotate_box" :style="transformBoxStyleFilter('monthDeg')">
           <div
             v-for="(item, index) in dateTimeList.monthList"
             :key="index"
-            :style="{ transform: transformItemFilter(index, 'month') }"
+            :style="transformItemStyleFilter(index, 'month')"
           >
             {{ item }}
           </div>
         </div>
-        <div
-          class="rotate_box"
-          :style="{ transform: `rotate(${dateTime.dateDeg}deg)`, transition: hasT ? `transform .5s` : 'none' }"
-        >
+        <div class="rotate_box" :style="transformBoxStyleFilter('dateDeg')">
           <div
             v-for="(item, index) in dateTimeList.dateList"
             :key="index"
-            :style="{ transform: transformItemFilter(index, 'date') }"
+            :style="transformItemStyleFilter(index, 'date')"
           >
             {{ item }}
           </div>
         </div>
-        <div
-          class="rotate_box"
-          :style="{ transform: `rotate(${dateTime.ampmDeg}deg)`, transition: hasT ? `transform .5s` : 'none' }"
-        >
+        <div class="rotate_box" :style="transformBoxStyleFilter('ampmDeg')">
           <div
             v-for="(item, index) in dateTimeList.ampmList"
             :key="index"
-            :style="{ transform: transformItemFilter(index, 'ampm') }"
+            :style="transformItemStyleFilter(index, 'ampm')"
           >
             {{ item }}
           </div>
         </div>
-        <div
-          class="rotate_box"
-          :style="{ transform: `rotate(${dateTime.hourDeg}deg)`, transition: hasT ? `transform .5s` : 'none' }"
-        >
+        <div class="rotate_box" :style="transformBoxStyleFilter('hourDeg')">
           <div
             v-for="(item, index) in dateTimeList.hourList"
             :key="index"
-            :style="{ transform: transformItemFilter(index, 'hour') }"
+            :style="transformItemStyleFilter(index, 'hour')"
           >
             {{ item }}
           </div>
         </div>
-        <div
-          class="rotate_box"
-          :style="{ transform: `rotate(${dateTime.minuteDeg}deg)`, transition: hasT ? `transform .5s` : 'none' }"
-        >
+        <div class="rotate_box" :style="transformBoxStyleFilter('minuteDeg')">
           <div
             v-for="(item, index) in dateTimeList.minuteList"
             :key="index"
-            :style="{ transform: transformItemFilter(index, 'minute') }"
+            :style="transformItemStyleFilter(index, 'minute')"
           >
             {{ item }}
           </div>
         </div>
-        <div
-          class="rotate_box"
-          :style="{ transform: `rotate(${dateTime.secondDeg}deg)`, transition: hasT ? `transform .5s` : 'none' }"
-        >
+        <div class="rotate_box" :style="transformBoxStyleFilter('secondDeg')">
           <div
             v-for="(item, index) in dateTimeList.secondList"
             :key="index"
-            :style="{ transform: transformItemFilter(index, 'second') }"
+            :style="transformItemStyleFilter(index, 'second')"
           >
             {{ item }}
           </div>
@@ -123,7 +105,12 @@ const dateTimeList = reactive({
 const dateLength = ref(0)
 const hasT = ref(false)
 
-const transformItemFilter = (index, key) => {
+const transformBoxStyleFilter = key => ({
+  transform: `rotate(${dateTime[key]}deg)`,
+  transition: hasT.value ? `transform .5s` : 'none'
+})
+
+const transformItemStyleFilter = (index, key) => {
   const degMap = {
     month: 30,
     date: 360 / dateLength.value,
@@ -134,13 +121,15 @@ const transformItemFilter = (index, key) => {
   }
   const itemWidth = 420 / dateListCheck.value.length
   const dateIndex = dateListCheck.value.findIndex(item => item === key)
-  return dateListCheck.value.includes(key)
-    ? key !== 'hour'
-      ? `rotate(${index * degMap[key]}deg) translateX(${dateIndex * itemWidth + 60}px)`
-      : dateListCheck.value.includes('ampm') && index > 12
-        ? 'scale(0)'
-        : `rotate(${index * degMap[key]}deg) translateX(${dateIndex * itemWidth + 60}px)`
-    : 'scale(0)'
+  return {
+    transform: dateListCheck.value.includes(key)
+      ? key !== 'hour'
+        ? `rotate(${index * degMap[key]}deg) translateX(${dateIndex * itemWidth + 60}px)`
+        : dateListCheck.value.includes('ampm') && index > 12
+          ? 'scale(0)'
+          : `rotate(${index * degMap[key]}deg) translateX(${dateIndex * itemWidth + 60}px)`
+      : 'scale(0)'
+  }
 }
 
 const filterNum = num => {
