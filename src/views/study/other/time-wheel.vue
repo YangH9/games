@@ -27,9 +27,7 @@
           <div
             v-for="(item, index) in dateTimeList.monthList"
             :key="index"
-            :style="{
-              transform: dateListCheck.includes('month') ? `rotate(${index * 30}deg) translateX(60px)` : 'scale(0)'
-            }"
+            :style="{ transform: transformItemFilter(index, 'month') }"
           >
             {{ item }}
           </div>
@@ -41,11 +39,7 @@
           <div
             v-for="(item, index) in dateTimeList.dateList"
             :key="index"
-            :style="{
-              transform: dateListCheck.includes('date')
-                ? `rotate(${index * (360 / dateLength)}deg) translateX(140px)`
-                : 'scale(0)'
-            }"
+            :style="{ transform: transformItemFilter(index, 'date') }"
           >
             {{ item }}
           </div>
@@ -57,9 +51,7 @@
           <div
             v-for="(item, index) in dateTimeList.ampmList"
             :key="index"
-            :style="{
-              transform: dateListCheck.includes('ampm') ? `rotate(${index * 180}deg) translateX(180px)` : 'scale(0)'
-            }"
+            :style="{ transform: transformItemFilter(index, 'ampm') }"
           >
             {{ item }}
           </div>
@@ -71,15 +63,7 @@
           <div
             v-for="(item, index) in dateTimeList.hourList"
             :key="index"
-            :style="{
-              transform: dateListCheck.includes('hour')
-                ? dateListCheck.includes('ampm')
-                  ? index < 12
-                    ? `rotate(${index * 30}deg) translateX(240px)`
-                    : 'scale(0)'
-                  : `rotate(${index * 15}deg) translateX(240px)`
-                : 'scale(0)'
-            }"
+            :style="{ transform: transformItemFilter(index, 'hour') }"
           >
             {{ item }}
           </div>
@@ -91,9 +75,7 @@
           <div
             v-for="(item, index) in dateTimeList.minuteList"
             :key="index"
-            :style="{
-              transform: dateListCheck.includes('minute') ? `rotate(${index * 6}deg) translateX(320px)` : 'scale(0)'
-            }"
+            :style="{ transform: transformItemFilter(index, 'minute') }"
           >
             {{ item }}
           </div>
@@ -105,9 +87,7 @@
           <div
             v-for="(item, index) in dateTimeList.secondList"
             :key="index"
-            :style="{
-              transform: dateListCheck.includes('second') ? `rotate(${index * 6}deg) translateX(390px)` : 'scale(0)'
-            }"
+            :style="{ transform: transformItemFilter(index, 'second') }"
           >
             {{ item }}
           </div>
@@ -142,6 +122,26 @@ const dateTimeList = reactive({
 })
 const dateLength = ref(0)
 const hasT = ref(false)
+
+const transformItemFilter = (index, key) => {
+  const degMap = {
+    month: 30,
+    date: 360 / dateLength.value,
+    hour: dateListCheck.value.includes('ampm') ? 30 : 15,
+    minute: 6,
+    second: 6,
+    ampm: 180
+  }
+  const itemWidth = 420 / dateListCheck.value.length
+  const dateIndex = dateListCheck.value.findIndex(item => item === key)
+  return dateListCheck.value.includes(key)
+    ? key !== 'hour'
+      ? `rotate(${index * degMap[key]}deg) translateX(${dateIndex * itemWidth + 60}px)`
+      : dateListCheck.value.includes('ampm') && index > 12
+        ? 'scale(0)'
+        : `rotate(${index * degMap[key]}deg) translateX(${dateIndex * itemWidth + 60}px)`
+    : 'scale(0)'
+}
 
 const filterNum = num => {
   const chineseNumbers = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九']
@@ -264,14 +264,14 @@ document.addEventListener('visibilitychange', e => {
 }
 .rotate_box {
   position: absolute;
-  left: -40px;
+  left: -35px;
   top: -10px;
-  transform-origin: 40px 10px;
+  transform-origin: 35px 10px;
   margin: 0;
 }
 .rotate_box div {
   position: absolute;
-  width: 80px;
+  width: 70px;
   height: 20px;
 }
 
