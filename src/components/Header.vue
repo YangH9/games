@@ -14,7 +14,7 @@
   </a-layout-header>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { useRouter } from 'vue-router'
 const router = useRouter()
 

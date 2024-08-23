@@ -2,7 +2,7 @@
   <div></div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 const videoLineList = [
   // 测试没问题的
   // { name: '线路1(推荐)', subTitle: 'm3u8解析', url: 'https://jx.jsonplayer.com/player/?url=' },

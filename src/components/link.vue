@@ -4,7 +4,7 @@
   </RouterLink>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { ref } from 'vue'
 </script>
 

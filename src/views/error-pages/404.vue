@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import router from '@/router'
 
 const back = () => {

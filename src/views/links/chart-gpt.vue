@@ -21,7 +21,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 // https://github.com/LiLittleCat/awesome-free-chatgpt
 
 const dataList = [

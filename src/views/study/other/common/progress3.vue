@@ -35,7 +35,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 const props = defineProps({
   width: { type: Number, default: 100 },
   value: { type: Number, default: 0 },

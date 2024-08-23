@@ -21,7 +21,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 const dataList = [
   {
     title: '属性生成器',

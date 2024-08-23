@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref, onMounted, nextTick, watch } from 'vue'
 

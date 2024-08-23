@@ -26,7 +26,7 @@
   </a-breadcrumb>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { HomeOutlined } from '@ant-design/icons-vue'

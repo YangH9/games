@@ -33,7 +33,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { ref } from 'vue'
 
 const min = ref(20)

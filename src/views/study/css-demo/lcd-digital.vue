@@ -17,7 +17,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const numList = {
@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped lang="scss">
-:deep(.ant-card-body) {
+.ant-card :deep(.ant-card-body) {
   --bgcolor: #272e38;
 }
 

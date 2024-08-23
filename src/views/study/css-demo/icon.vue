@@ -108,7 +108,7 @@
   </a-card>
 </template>
 
-<script setup></script>
+<script setup lang="jsx"></script>
 
 <style scoped lang="scss">
 .ant-card :deep(.ant-card-body) {

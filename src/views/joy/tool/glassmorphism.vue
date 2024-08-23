@@ -44,7 +44,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 
 // https://www.fly63.com/tool/glassmorphism/

@@ -45,7 +45,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { CheckCircleTwoTone, ExclamationCircleTwoTone } from '@ant-design/icons-vue'
 import { ref, reactive } from 'vue'

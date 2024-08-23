@@ -23,7 +23,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 const d = new Date()
 const h = d.getHours()
 const m = d.getMinutes()

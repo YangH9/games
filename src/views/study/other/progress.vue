@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Progress1 from './common/progress1.vue'

@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="jsx"></script>
 
 <style scoped lang="scss">
 .square_box {

@@ -21,7 +21,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { ref, inject } from 'vue'
 
 // 腾讯各类域名

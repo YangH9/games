@@ -64,7 +64,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { computed, reactive, ref } from 'vue'
 
 const props = defineProps({

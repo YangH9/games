@@ -21,7 +21,7 @@
   </a-layout>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { inject, ref } from 'vue'

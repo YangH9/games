@@ -85,7 +85,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 const menuData = {
   title: '菜单',
   children: [

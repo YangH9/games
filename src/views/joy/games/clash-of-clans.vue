@@ -76,7 +76,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 
 const downloadList = [

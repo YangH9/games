@@ -72,7 +72,7 @@
 永恒万花筒
 左轮回眼
   -->
-<script setup></script>
+<script setup lang="jsx"></script>
 
 <style scoped lang="scss">
 div.ant-card:deep(.ant-card-body) {

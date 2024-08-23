@@ -10,7 +10,7 @@
   </a-layout-sider>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 

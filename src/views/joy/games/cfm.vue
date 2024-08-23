@@ -39,7 +39,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { ref } from 'vue'
 import { dataList } from '@/utils/tencentGame/cfm.json'

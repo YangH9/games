@@ -128,7 +128,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { computed, nextTick, ref, watch, inject } from 'vue'
 const Jsonp = inject('Jsonp')

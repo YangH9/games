@@ -101,7 +101,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 let timer = ''

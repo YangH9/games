@@ -6,7 +6,7 @@
   </a-layout>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Menu from '@/components/Menu.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>

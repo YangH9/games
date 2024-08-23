@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import 'phaser'
 import '@/utils/catch-the-cat'
 import Breadcrumb from '@/components/Breadcrumb.vue'

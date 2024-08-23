@@ -133,7 +133,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 // https://github.com/corestudi0/corestudi0.github.io/tree/main/newyear
 </script>
 

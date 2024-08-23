@@ -129,7 +129,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { nextTick, ref, watch, inject, computed } from 'vue'
 

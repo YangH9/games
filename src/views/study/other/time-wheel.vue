@@ -229,7 +229,7 @@ document.addEventListener('visibilitychange', e => {
 </script>
 
 <style scoped lang="scss">
-:deep(.ant-card-body) {
+.ant-card :deep(.ant-card-body) {
   position: relative;
   overflow: hidden;
   font-size: 14px;
@@ -245,14 +245,7 @@ document.addEventListener('visibilitychange', e => {
   text-align: right;
   transform: translate(-50%, -50%);
 }
-.year.rotate_box div {
-  background: skyblue;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  line-height: 80px;
-  text-align: center;
-}
+
 .rotate_box {
   position: absolute;
   width: 100%;
@@ -267,6 +260,14 @@ document.addEventListener('visibilitychange', e => {
   width: 70px;
   height: 20px;
   transform: translate(-50%, -50%);
+}
+.year.rotate_box div {
+  background: skyblue;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  line-height: 80px;
+  text-align: center;
 }
 
 .shade {

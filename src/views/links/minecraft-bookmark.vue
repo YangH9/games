@@ -16,7 +16,7 @@
   </a-card>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 const dataList = [
   {
     title: '组包',

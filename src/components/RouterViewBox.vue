@@ -7,7 +7,7 @@
   </template>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 const props = defineProps({ url: String })
 </script>
 

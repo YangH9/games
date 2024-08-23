@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { routerLoading } from '@/stores'
 import { onMounted } from 'vue'
