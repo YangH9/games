@@ -214,7 +214,9 @@ const init = () => {
   dateTimeList.minuteList = Array.from({ length: 60 }, (_, i) => `${filterNum(i)}分`)
   dateTimeList.secondList = Array.from({ length: 60 }, (_, i) => `${filterNum(i)}秒`)
   dateTimeList.ampmList = ['上午', '下午']
-  hasT.value = true
+  setTimeout(() => {
+    hasT.value = true
+  }, 10)
 }
 init()
 

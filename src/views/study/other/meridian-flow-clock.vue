@@ -24,14 +24,12 @@
         <div class="clock_face">
           <div class="rotate_box meridian_bg">
             <svg
-              v-for="(item, index) in 12"
+              v-for="(item, index) in meridianList"
               :key="index"
-              class="rotate_item"
+              :class="['rotate_item', item.startTime <= nowHour && item.endTime > nowHour ? 'active' : '']"
               viewBox="0 0 500 500"
               xmlns="http://www.w3.org/2000/svg"
               :style="meridianBgStyle(index, (clockWidth - 10) / 2)"
-              :fill="index >= 6 ? (index % 2 ? '#8CC7B5' : '#D1BA74') : index % 2 ? '#A0EEE1' : '#D6D5B7'"
-              stroke-width="6"
             >
               <path d="M 0,250 A 340,340 0 0,1 250,0 L 340,340 L 0,250 Z" />
             </svg>
@@ -44,7 +42,7 @@
               :style="meridianTextStyle(index, (clockWidth - 10) / 2)"
             >
               <div>{{ item.desc }}</div>
-              <!-- <div>{{ item.name }}</div> -->
+              <div>{{ item.name }}</div>
             </div>
           </div>
           <div class="rotate_box hour">
@@ -54,7 +52,7 @@
               class="rotate_item"
               :style="hourNumStyle(index, (clockWidth - 10) / 2)"
             >
-              {{ item }}
+              {{ item <= 6 ? item + 12 : item > 12 && item <= 18 ? item - 12 : item }}
             </div>
           </div>
         </div>
@@ -81,13 +79,18 @@ const meridianBgStyle = (index, width) => {
   return {
     width: `${num}px`,
     height: `${num}px`,
-    transform: `translate(-50%, -50%) rotate(${index * 60 + 45}deg) translate(-${num * 0.18}px, -${num * 0.18}px)`
+    color: index >= 6 ? 'white' : 'black',
+    transform: `translate(-50%, -50%) rotate(${index * 60 + 45}deg) translate(-${num * 0.18}px, -${num * 0.18}px)`,
+    // fill: index >= 6 ? (index % 2 ? '#8CC7B5' : '#D1BA74') : index % 2 ? '#A0EEE1' : '#D6D5B7',
+    fill: index >= 6 ? (index % 2 ? '#88aea2' : '#baa078') : index % 2 ? '#c2f4ec' : '#e4e4d0',
+    stroke: '#9dff00'
   }
 }
 const meridianTextStyle = (index, width) => {
   const rotate = index * 60 - 90
   const translate = index >= 6 ? width * 0.25 : width * 0.75
   return {
+    color: index >= 6 ? 'white' : 'black',
     transform: `translate(-50%, -50%) rotate(${rotate}deg) translateX(${translate}px) rotate(${-rotate}deg)`
   }
 }
@@ -96,27 +99,30 @@ const hourNumStyle = (index, width) => {
   const rotate = index * 30 - 60
   const translate = index >= 12 ? width * 0.5 : width - 20
   return {
+    color: index >= 12 ? 'white' : 'black',
+    backgroundColor: index >= 12 ? '#2f2f2f' : '#f2f2f2',
     transform: `translate(-50%, -50%) rotate(${rotate}deg) translateX(${translate}px) rotate(${-rotate}deg)`
   }
 }
 
 const meridianList = [
-  { name: '子时', time: '23:00-01:00', desc: '胆经' },
-  { name: '丑时', time: '01:00-03:00', desc: '肝经' },
-  { name: '寅时', time: '03:00-05:00', desc: '肺经' },
-  { name: '卯时', time: '05:00-07:00', desc: '大肠经' },
-  { name: '辰时', time: '07:00-09:00', desc: '胃经' },
-  { name: '巳时', time: '09:00-11:00', desc: '脾经' },
-  { name: '午时', time: '11:00-13:00', desc: '心经' },
-  { name: '未时', time: '13:00-15:00', desc: '小肠经' },
-  { name: '申时', time: '15:00-17:00', desc: '膀胱经' },
-  { name: '酉时', time: '17:00-19:00', desc: '肾经' },
-  { name: '戌时', time: '19:00-21:00', desc: '心包经' },
-  { name: '亥时', time: '21:00-23:00', desc: '三焦经' }
+  { name: '午', startTime: 11, endTime: 13, desc: '心经' },
+  { name: '未', startTime: 13, endTime: 15, desc: '小肠经' },
+  { name: '申', startTime: 15, endTime: 17, desc: '膀胱经' },
+  { name: '酉', startTime: 17, endTime: 19, desc: '肾经' },
+  { name: '辰', startTime: 7, endTime: 9, desc: '胃经' },
+  { name: '巳', startTime: 9, endTime: 11, desc: '脾经' },
+  { name: '子', startTime: 23, endTime: 1, desc: '胆经' },
+  { name: '丑', startTime: 1, endTime: 3, desc: '肝经' },
+  { name: '寅', startTime: 3, endTime: 5, desc: '肺经' },
+  { name: '卯', startTime: 5, endTime: 7, desc: '大肠经' },
+  { name: '戌', startTime: 19, endTime: 21, desc: '心包经' },
+  { name: '亥', startTime: 21, endTime: 23, desc: '三焦经' }
 ]
 
 let animationFrame = null
 const hasT = ref(false)
+const nowHour = ref(0)
 
 const degData = reactive({
   hour: 0,
@@ -159,22 +165,22 @@ const animation = () => {
   const hour = dateT.getHours()
   const minute = dateT.getMinutes()
   const second = dateT.getSeconds()
-
-  degData.hour = -(hour % 12) * 30
-  degData.minute = -minute * 6
-  degData.second = -second * 6
+  nowHour.value = hour
+  degData.hour = (hour % 12) * 30 + minute * 0.5
+  degData.minute = minute * 6
+  degData.second = second * 6
 
   const transitionend = () => {
     removeEventListener('transitionend', transitionend)
     hasT.value = false
     setTimeout(() => {
       if ((minute + 1) * 6 >= 360) {
-        degData.minute = 360 - minute * 6
+        degData.minute = -6
       }
-      if (~~((hour + 1) / 12) * 180 >= 360) {
-        degData.ampm = 360 - ~~(hour / 12) * 180
+      if (((hour + 1) % 12) * 30 >= 360) {
+        degData.hourDeg = -30
       }
-      degData.second = 360 - second * 6
+      degData.second = -6
       setTimeout(
         () => {
           hasT.value = true
@@ -185,16 +191,18 @@ const animation = () => {
     }, 10)
   }
 
-  // if ((second + 1) * 6 >= 360) {
-  //   addEventListener('transitionend', transitionend)
-  // } else {
-  //   animationFrame = requestAnimationFrame(animation)
-  // }
+  if ((second + 1) * 6 >= 360) {
+    addEventListener('transitionend', transitionend)
+  } else {
+    animationFrame = requestAnimationFrame(animation)
+  }
 }
 
 const init = () => {
   animation()
-  hasT.value = true
+  setTimeout(() => {
+    hasT.value = true
+  }, 10)
 }
 init()
 
@@ -243,7 +251,6 @@ document.addEventListener('visibilitychange', e => {
   display: flex;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: rgba(255, 134, 36, 0.3);
   border: 6px solid #000;
 }
 
@@ -265,6 +272,7 @@ document.addEventListener('visibilitychange', e => {
   }
 }
 .rotate_box.hour {
+  z-index: 3;
   .rotate_item {
     font-size: 30px;
     width: 40px;
@@ -273,15 +281,22 @@ document.addEventListener('visibilitychange', e => {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ecad9e;
+    // background-color: #ecad9e;
   }
 }
 .rotate_box.meridian_bg {
   .rotate_item {
     // opacity: 0.5;
+    stroke-width: 0;
+    &.active {
+      stroke-width: 6;
+      z-index: 1;
+      // opacity: 1;
+    }
   }
 }
 .rotate_box.meridian_text {
+  z-index: 3;
   .rotate_item {
     // opacity: 0.5;
     font-size: 24px;
@@ -295,6 +310,7 @@ document.addEventListener('visibilitychange', e => {
   left: 50%;
   display: flex;
   transform: translate(-50%, -50%);
+  z-index: 5;
   .clock_hand {
     position: absolute;
     left: 50%;
@@ -302,7 +318,7 @@ document.addEventListener('visibilitychange', e => {
     transform: translate(-50%, 0);
     transform-origin: center bottom;
     border-radius: 6px;
-    background: #f4606c;
+    background: #777777;
     opacity: 0.5;
     &.hour {
       width: 18px;
@@ -310,11 +326,11 @@ document.addEventListener('visibilitychange', e => {
     }
     &.minute {
       width: 12px;
-      height: 250px;
+      height: 230px;
     }
     &.second {
       width: 6px;
-      height: 350px;
+      height: 300px;
     }
     &.center {
       position: absolute;
