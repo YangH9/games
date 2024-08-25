@@ -4,42 +4,53 @@
     <a-card
       v-calcHeight="{ height: 21, dom: '.ant-card-body' }"
       class="flow_hidden"
-      title="子午流注钟表"
+      title="子午流注钟表V1"
       :hoverable="true"
     >
+      <!-- <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#3498db">
+          <path d="M 50,10 A 40,40 0 0,1 90,50 L 50,50 L 50,10 Z" />
+        </g>
+      </svg>
+      <div class="circle">
+        <div class="sector" style="transform: rotate(15deg) translate(-50%, -50%)"></div>
+        <div class="sector" style="transform: rotate(45deg) translate(-50%, -50%)"></div>
+        <div class="sector" style="transform: rotate(75deg) translate(-50%, -50%)"></div>
+      </div> -->
       <div class="clock">
         <div class="clock_face">
           <div class="rotate_box meridian_bg">
-            <svg
-              v-for="(item, index) in meridianList"
-              :key="index"
-              :class="['rotate_item', item.startTime <= nowHour && item.endTime > nowHour ? 'active' : '']"
-              viewBox="0 0 500 500"
-              xmlns="http://www.w3.org/2000/svg"
-              :style="meridianBgStyle(index, (clockWidth - 10) / 2)"
-            >
-              <path d="M 0,250 A 340,340 0 0,1 250,0 L 340,340 L 0,250 Z" />
-            </svg>
+            <svgDom v-for="(item, index) in meridianList" :key="index" :index="index" :item="item"></svgDom>
           </div>
           <div class="rotate_box meridian_text">
             <div
               v-for="(item, index) in meridianList"
               :key="index"
               class="rotate_item"
-              :style="meridianTextStyle(index, (clockWidth - 10) / 2)"
+              :style="meridianTextStyle(index, clockWidth / 2 - 5)"
             >
               <div>{{ item.desc }}</div>
               <div>{{ item.name }}</div>
             </div>
           </div>
-          <div class="rotate_box hour">
+          <div class="rotate_box meridian_hour">
             <div
               v-for="(item, index) in 24"
               :key="index"
               class="rotate_item"
-              :style="hourNumStyle(index, (clockWidth - 10) / 2)"
+              :style="meridianNumStyle(index, clockWidth / 2 - 5)"
             >
-              {{ item <= 6 ? item + 12 : item > 12 && item <= 18 ? item - 12 : item }}
+              {{ item }}
+            </div>
+          </div>
+          <div class="rotate_box hour">
+            <div
+              v-for="(item, index) in 12"
+              :key="index"
+              class="rotate_item"
+              :style="hourNumStyle(index, clockWidth / 2 - 5)"
+            >
+              {{ item }}
             </div>
           </div>
         </div>
@@ -57,51 +68,63 @@
 <script setup lang="jsx">
 import { ref, reactive } from 'vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
+// https://baike.baidu.com/item/%E5%AD%90%E5%8D%88%E6%B5%81%E6%B3%A8%E5%9B%BE/10859969
 
 const clockWidth = 700
 
 const meridianBgStyle = (index, width) => {
-  const num = width * (index >= 6 ? 1.1 : 2) * 0.71
+  const num = (width * Math.sqrt(3)) / 2
   return {
     width: `${num}px`,
     height: `${num}px`,
     color: index >= 6 ? 'white' : 'black',
-    transform: `translate(-50%, -50%) rotate(${index * 60 + 45}deg) translate(-${num * 0.18}px, -${num * 0.18}px)`,
+    transform: `translate(-50%, -50%) rotate(${index * 30 + 45}deg) translate(-50%, -50%)`,
     // fill: index >= 6 ? (index % 2 ? '#8CC7B5' : '#D1BA74') : index % 2 ? '#A0EEE1' : '#D6D5B7',
-    fill: index >= 6 ? (index % 2 ? '#88aea2' : '#baa078') : index % 2 ? '#c2f4ec' : '#e4e4d0',
+    // fill: index >= 6 ? (index % 2 ? '#88aea2' : '#baa078') : index % 2 ? '#c2f4ec' : '#e4e4d0',
+    fill: index % 2 ? '#88aea2' : '#baa078',
     stroke: '#9dff00'
   }
 }
 const meridianTextStyle = (index, width) => {
-  const rotate = index * 60 - 90
-  const translate = index >= 6 ? width * 0.25 : width * 0.75
+  const rotate = index * 30 - 90
+  const translate = width * 0.75
   return {
-    color: index >= 6 ? 'white' : 'black',
+    color: 'black',
+    transform: `translate(-50%, -50%) rotate(${rotate}deg) translateX(${translate}px) rotate(${-rotate}deg)`
+  }
+}
+
+const meridianNumStyle = (index, width) => {
+  const rotate = index * 15 - 75
+  const translate = width - 20
+  return {
+    color: 'black',
+    backgroundColor: '#f2f2f2',
     transform: `translate(-50%, -50%) rotate(${rotate}deg) translateX(${translate}px) rotate(${-rotate}deg)`
   }
 }
 
 const hourNumStyle = (index, width) => {
   const rotate = index * 30 - 60
-  const translate = index >= 12 ? width * 0.5 : width - 20
+  const translate = width * 0.5
   return {
-    color: index >= 12 ? 'white' : 'black',
-    backgroundColor: index >= 12 ? '#2f2f2f' : '#f2f2f2',
+    color: 'white',
+    backgroundColor: '#2f2f2f',
     transform: `translate(-50%, -50%) rotate(${rotate}deg) translateX(${translate}px) rotate(${-rotate}deg)`
   }
 }
 
 const meridianList = [
-  { name: '午', startTime: 11, endTime: 13, desc: '心经' },
-  { name: '未', startTime: 13, endTime: 15, desc: '小肠经' },
-  { name: '申', startTime: 15, endTime: 17, desc: '膀胱经' },
-  { name: '酉', startTime: 17, endTime: 19, desc: '肾经' },
-  { name: '辰', startTime: 7, endTime: 9, desc: '胃经' },
-  { name: '巳', startTime: 9, endTime: 11, desc: '脾经' },
   { name: '子', startTime: 23, endTime: 1, desc: '胆经' },
   { name: '丑', startTime: 1, endTime: 3, desc: '肝经' },
   { name: '寅', startTime: 3, endTime: 5, desc: '肺经' },
   { name: '卯', startTime: 5, endTime: 7, desc: '大肠经' },
+  { name: '辰', startTime: 7, endTime: 9, desc: '胃经' },
+  { name: '巳', startTime: 9, endTime: 11, desc: '脾经' },
+  { name: '午', startTime: 11, endTime: 13, desc: '心经' },
+  { name: '未', startTime: 13, endTime: 15, desc: '小肠经' },
+  { name: '申', startTime: 15, endTime: 17, desc: '膀胱经' },
+  { name: '酉', startTime: 17, endTime: 19, desc: '肾经' },
   { name: '戌', startTime: 19, endTime: 21, desc: '心包经' },
   { name: '亥', startTime: 21, endTime: 23, desc: '三焦经' }
 ]
@@ -120,6 +143,28 @@ const transformBoxStyle = key => ({
   transform: `translate(-50%, 0) rotate(${degData[key]}deg)`,
   transition: hasT.value ? `transform .5s` : 'none'
 })
+
+const svgDom = ({ item, index }) => {
+  const width = 1000
+  const inner = 0.6
+  const point1 = (1 - Math.sqrt(3) / 3) * width
+  const point2 = width - (Math.sqrt(3) / 3) * width * inner
+  const point3 = width * (1 - inner)
+  const path = `M 0 ${point1} A ${width} ${width} 0 0 1 ${point1} 0 L ${point2} ${point3} A ${width * inner} ${
+    width * inner
+  } 0 0 0 ${point3} ${point2}  L 0 ${point1} Z`
+  console.log(item, item.startTime <= nowHour.value && item.endTime > nowHour.value)
+  return (
+    <svg
+      class={['rotate_item', item.startTime <= nowHour.value && item.endTime > nowHour.value ? 'active' : '']}
+      viewBox={`0 0 ${width} ${width}`}
+      xmlns="http://www.w3.org/2000/svg"
+      style={meridianBgStyle(index, (clockWidth - 10) / 2)}
+    >
+      <path d={path} />
+    </svg>
+  )
+}
 
 // 子时 (23点至1点)，胆经最旺。
 // 胆汁需要新陈代谢，人在子时入眠，胆方能完成代谢。“胆有多清，脑有多清。”凡在子时前入睡者，晨醒后头脑清新、气色红润。反之，日久子时不入睡者面色青白，易生肝炎、胆囊炎、结石一类病症，其中一部分人还会因此“胆怯”。这个时辰养肝血（阴）最好。
@@ -209,6 +254,27 @@ document.addEventListener('visibilitychange', e => {
   font-size: 14px;
 }
 
+.circle {
+  position: relative;
+  width: 100px; /* 圆的直径 */
+  height: 100px;
+  margin: 100px 20px;
+}
+
+.sector {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: skyblue;
+  clip-path: path('M 0 43 A 100 100 0 0 1 43 0 L 71 50 A 100 100 0 0 0 50 71  L 0 43 Z');
+  // clip-path: path('M 0 43 A 100 100 0 0,1 43 0 L 100 100 Z');
+  transform-origin: center center;
+  // opacity: 0.5;
+  &:nth-child(odd) {
+    background-color: orange;
+  }
+}
+
 .clock {
   position: absolute;
   width: 700px;
@@ -218,7 +284,7 @@ document.addEventListener('visibilitychange', e => {
   display: flex;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 6px solid #000;
+  border: 5px solid #000;
 }
 
 .clock_face {
@@ -237,36 +303,37 @@ document.addEventListener('visibilitychange', e => {
     text-align: center;
     transform: translate(-50%, -50%);
   }
-}
-.rotate_box.hour {
-  z-index: 3;
-  .rotate_item {
-    font-size: 30px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // background-color: #ecad9e;
-  }
-}
-.rotate_box.meridian_bg {
-  .rotate_item {
-    // opacity: 0.5;
-    stroke-width: 0;
-    z-index: 1;
-    &.active {
-      stroke-width: 6;
-      // opacity: 1;
+  &.hour,
+  &.meridian_hour {
+    z-index: 3;
+    .rotate_item {
+      font-size: 30px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
-}
-.rotate_box.meridian_text {
-  z-index: 3;
-  .rotate_item {
-    // opacity: 0.5;
-    font-size: 24px;
+  &.meridian_bg {
+    .rotate_item {
+      // opacity: 0.5;
+      stroke-width: 0;
+      z-index: 1;
+      &.active {
+        stroke-width: 20;
+        // opacity: 1;
+      }
+    }
+  }
+
+  &.meridian_text {
+    z-index: 3;
+    .rotate_item {
+      // opacity: 0.5;
+      font-size: 24px;
+    }
   }
 }
 .clock_hand_box {

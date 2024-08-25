@@ -193,6 +193,12 @@ export default [
             component: () => import('@/views/study/other/meridian-flow-clock.vue')
           },
           {
+            path: '/study/other/meridian-flow-clock-v1',
+            name: 'meridian-flow-clock-v1',
+            meta: { title: '子午流注钟表V1' },
+            component: () => import('@/views/study/other/meridian-flow-clock-v1.vue')
+          },
+          {
             path: '/study/other/time-wheel',
             name: 'time-wheel',
             meta: { title: '时间轮盘' },
