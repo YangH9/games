@@ -236,6 +236,14 @@ document.addEventListener('visibilitychange', e => {
   overflow: hidden;
   font-size: 14px;
 }
+.ant-card :deep(.ant-card-head) {
+  .ant-card-head-wrapper {
+    flex-wrap: wrap;
+    & > div {
+      flex: unset;
+    }
+  }
+}
 
 .clock {
   position: absolute;
@@ -279,5 +287,20 @@ document.addEventListener('visibilitychange', e => {
   height: 30px;
   top: 50%;
   transform: translate(0, -50%);
+}
+@media (max-width: 1024px) {
+  .clock {
+    left: 25%;
+  }
+}
+@media (max-width: 768px) {
+  .clock {
+    left: 20px;
+  }
+}
+@media (max-width: 450px) {
+  .clock {
+    transform: scale(0.75);
+  }
 }
 </style>
