@@ -288,6 +288,7 @@ document.addEventListener('visibilitychange', e => {
   top: 50%;
   transform: translate(0, -50%);
 }
+
 @media (max-width: 1024px) {
   .clock {
     left: 25%;
@@ -300,7 +301,7 @@ document.addEventListener('visibilitychange', e => {
 }
 @media (max-width: 450px) {
   .clock {
-    transform: scale(0.75);
+    transform: translate(-50%, -50%) scale(0.75);
   }
 }
 </style>

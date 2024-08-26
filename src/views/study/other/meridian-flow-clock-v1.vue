@@ -125,6 +125,12 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 
 const radius = 750 / 2
 
+if (window.innerWidth < 750) {
+  setTimeout(() => {
+    document.querySelector('.clock').style.transform = `translate(-50%, -50%) scale(${window.innerWidth / 750})`
+  }, 10)
+}
+
 // prettier-ignore
 const meridianList = [
   { startTime: 23, endTime: 1, branch: '子', meridian: '胆', color: '#0a0', tips1: '睡觉', tips2: '养胆排毒，应入睡', desc: '胆汁需要新陈代谢，人在子时入眠，胆方能完成代谢。“胆有多清，脑有多清。”凡在子时前入睡者，晨醒后头脑清新、气色红润。反之，日久子时不入睡者面色青白，易生肝炎、胆囊炎、结石一类病症，其中一部分人还会因此“胆怯”。这个时辰养肝血（阴）最好。' },
@@ -379,4 +385,20 @@ document.addEventListener('visibilitychange', e => {
     }
   }
 }
+
+// @media (max-width: 1024px) {
+//   .clock {
+//     transform: translate(-50%, -50%) scale(0.9);
+//   }
+// }
+// @media (max-width: 768px) {
+//   .clock {
+//     transform: translate(-50%, -50%) scale(0.75);
+//   }
+// }
+// @media (max-width: 450px) {
+//   .clock {
+//     transform: translate(-50%, -50%) scale(0.6);
+//   }
+// }
 </style>

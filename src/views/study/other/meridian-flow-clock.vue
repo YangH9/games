@@ -60,6 +60,12 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 
 const clockWidth = 700
 
+if (window.innerWidth < 750) {
+  setTimeout(() => {
+    document.querySelector('.clock').style.transform = `translate(-50%, -50%) scale(${window.innerWidth / 750})`
+  }, 10)
+}
+
 const meridianBgStyle = (index, width) => {
   const num = width * (index >= 6 ? 1.1 : 2) * 0.71
   return {
