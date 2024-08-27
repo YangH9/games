@@ -84,7 +84,6 @@ const studyList = [
       { title: '各种心形图案', href: '/study/other/heart' },
       { title: '时间轮盘', href: '/study/other/time-wheel' },
       { title: '子午流注钟表', href: '/study/other/meridian-flow-clock' },
-      { title: '子午流注钟表V1', href: '/study/other/meridian-flow-clock-v1' },
       { title: '加载动画', href: '/study/other/loading' },
       { title: '进度条', href: '/study/other/progress' },
       { title: 'Apple新年logo', href: '/study/other/apple-logo' },
