@@ -4,7 +4,7 @@
     <a-card
       v-calcHeight="{ height: 21, dom: '.ant-card-body' }"
       class="flow_hidden"
-      title="子午流注钟表V1"
+      title="子午流注钟表"
       :hoverable="true"
     >
       <div class="clock" :style="{ width: `${radius * 2}px`, height: `${radius * 2}px` }">
