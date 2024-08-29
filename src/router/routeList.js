@@ -388,21 +388,13 @@ export default [
             path: '/joy/games/minesweeper',
             name: 'minesweeper',
             meta: { title: '扫雷' },
-            component: () => import('@/views/joy/games/minesweeper/index.vue'),
-            children: [
-              {
-                path: '/joy/games/minesweeper',
-                name: 'minesweeper-home',
-                meta: { title: '扫雷home' },
-                component: () => import('@/views/joy/games/minesweeper/home.vue')
-              },
-              {
-                path: '/joy/games/minesweeper/setting',
-                name: 'minesweeper-setting',
-                meta: { title: '扫雷setting' },
-                component: () => import('@/views/joy/games/minesweeper/setting.vue')
-              }
-            ]
+            component: () => import('@/views/joy/games/minesweeper.vue')
+          },
+          {
+            path: '/joy/games/sudoku',
+            name: 'sudoku',
+            meta: { title: '数独' },
+            component: () => import('@/views/joy/games/sudoku.vue')
           }
         ]
       },
