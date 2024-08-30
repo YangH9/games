@@ -105,6 +105,12 @@ export default [
             component: () => import('@/views/study/css-demo/nixie-tube-clock.vue')
           },
           {
+            path: '/study/css-demo/css-stopwatch',
+            name: 'css-stopwatch',
+            meta: { title: 'CSS秒表' },
+            component: () => import('@/views/study/css-demo/css-stopwatch.vue')
+          },
+          {
             path: '/study/css-demo/sharingan',
             name: 'sharingan',
             meta: { title: 'CSS写轮眼' },

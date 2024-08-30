@@ -49,8 +49,15 @@
         <div class="mines_body">
           <div v-for="(row, ri) in mineMapData" :key="ri" class="mines_row">
             <div v-for="(col, ci) in row" :key="ci" class="mines_col">
-              <div class="mines_item" :style="{ color: numColor(col) }" @click="clickMap([ri, ci])">
-                {{ col ? col : '' }}
+              <div
+                :class="['mines_item', col.isOpen ? 'open' : '']"
+                :style="{ color: numColor(col.num) }"
+                @click="clickMap([ri, ci])"
+              >
+                <template v-if="col.isOpen">
+                  <!-- {{ col.text }} -->
+                  <component :is="col.text"></component>
+                </template>
               </div>
             </div>
           </div>
@@ -94,18 +101,20 @@ const initMinesData = () => {
     let y1 = ~~(Math.random() * colCount)
     let x2 = ~~(Math.random() * rowCount)
     let y2 = ~~(Math.random() * colCount)
-    ;[mineMapArr[x1][y1], mineMapArr[x2][y2]] = [mineMapArr[x2][y2], mineMapArr[x1][y1]]
+    ;[mineMapArr[x1][y1].num, mineMapArr[x2][y2].num] = [mineMapArr[x2][y2].num, mineMapArr[x1][y1].num]
+    ;[mineMapArr[x1][y1].text, mineMapArr[x2][y2].text] = [mineMapArr[x2][y2].text, mineMapArr[x1][y1].text]
   })
 
   // 点击位置雷移走
-  if (mineMapArr[fistXY[0]][fistXY[1]] === 9) {
+  if (mineMapArr[fistXY[0]][fistXY[1]].num === 9) {
     const [a, b] = fistXY
     // 找一个空地
     Array.from({ length: rowCount * colCount }, () => 1).some((_, i) => {
       const x = ~~(i / colCount)
       const y = ~~(i % colCount)
-      if (mineMapArr[x][y] === 0 && mineMapArr[a][b] === 9) {
-        ;[mineMapArr[a][b], mineMapArr[x][y]] = [mineMapArr[x][y], mineMapArr[a][b]]
+      if (mineMapArr[x][y].num === 0 && mineMapArr[a][b].num === 9) {
+        ;[mineMapArr[a][b].num, mineMapArr[x][y].num] = [mineMapArr[x][y].num, mineMapArr[a][b].num]
+        ;[mineMapArr[a][b].text, mineMapArr[x][y].text] = [mineMapArr[x][y].text, mineMapArr[a][b].text]
         return true
       }
       return false
@@ -115,21 +124,21 @@ const initMinesData = () => {
   // 计算周围雷数
   Array.from({ length: rowCount }, (_, i) => {
     Array.from({ length: colCount }, (_, j) => {
-      if (mineMapArr[i][j] === 9) {
+      if (mineMapArr[i][j].num === 9) {
         bombs.push([i, j])
         // 遍历周围格子，如果为雷，则加一
         Array.from({ length: 9 }, (_, k) => {
           const x = i + ((k % 3) - 1)
           const y = j + (~~(k / 3) - 1)
-          if (x >= 0 && x < rowCount && y >= 0 && y < colCount && mineMapArr[x][y] !== 9) {
-            mineMapArr[x][y]++
+          if (x >= 0 && x < rowCount && y >= 0 && y < colCount && mineMapArr[x][y].num !== 9) {
+            mineMapArr[x][y].num++
+            mineMapArr[x][y].text = () => mineMapArr[x][y].num
           }
         })
       }
     })
   })
 
-  // console.log(mineMapArr, bombs)
   mineMapData.value = mineMapArr
   bombList.value = bombs
 }
@@ -138,18 +147,22 @@ const initMinesData = () => {
 const resetMap = () => {
   const { rowCount, colCount, mCount } = minesOption
   // 创建基础雷区数据
-  const mineMapArr = Array.from({ length: rowCount }, () => Array.from({ length: colCount }, () => 0))
+  const mineMapArr = Array.from({ length: rowCount }, () =>
+    Array.from({ length: colCount }, () => ({ num: 0, text: () => '', isOpen: false }))
+  )
   // 雷子坐标
   const bombs = []
-  // 生成雷
+  // 生成雷子
   Array.from(
     { length: mCount },
-    (_, i) => ~~(i / colCount) < mineMapArr.length && (mineMapArr[~~(i / colCount)][~~(i % colCount)] = 9)
+    (_, i) =>
+      ~~(i / colCount) < mineMapArr.length &&
+      (mineMapArr[~~(i / colCount)][~~(i % colCount)] = { num: 9, text: () => <AThunderboltFilled />, isOpen: false })
   )
-  // 计算周围雷数
+  // 存雷子坐标
   Array.from({ length: rowCount }, (_, i) => {
     Array.from({ length: colCount }, (_, j) => {
-      if (mineMapArr[i][j] === 9) {
+      if (mineMapArr[i][j].num === 9) {
         bombs.push([i, j])
       }
     })
@@ -197,6 +210,29 @@ init()
 // 首次点击，开始计时，左键生成雷区，右键无操作
 // 左键点开区块，再次点击提示周围，右键放置取消旗子，
 
+// 翻开地块
+const openItem = xy => {
+  const { rowCount, colCount } = minesOption
+  const [x, y] = xy
+  mineMapData.value[x][y].isOpen = true
+  // 找周围空格
+  Array.from({ length: 9 }, (_, k) => {
+    const x1 = x + ((k % 3) - 1)
+    const y1 = y + (~~(k / 3) - 1)
+    if (
+      x1 >= 0 &&
+      x1 < rowCount &&
+      y1 >= 0 &&
+      y1 < colCount &&
+      !mineMapData.value[x1][y1].isOpen &&
+      mineMapData.value[x1][y1].num !== 9 &&
+      mineMapData.value[x][y].num === 0
+    ) {
+      openItem([x1, y1])
+    }
+  })
+}
+
 // 点击地图，生成雷区数据，开始计时
 const clickMap = xy => {
   console.log(xy)
@@ -208,6 +244,7 @@ const clickMap = xy => {
     // 开始计时
     startTimer()
   }
+  openItem(xy)
 }
 
 const numColor = num => {
@@ -273,8 +310,6 @@ const numColor = num => {
         .mines_item {
           width: 30px;
           height: 30px;
-          border: 1px solid #828282;
-          // background: #c0c0c0;
           background: #bebebe;
           font-size: 26px;
           font-weight: bold;
@@ -282,6 +317,13 @@ const numColor = num => {
           display: flex;
           align-items: center;
           justify-content: center;
+          border: 4px solid #f0f0f0;
+          border-right-color: #828282;
+          border-bottom-color: #828282;
+          &.open {
+            background: #bebebe;
+            border: 1px solid #828282;
+          }
         }
       }
     }
