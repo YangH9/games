@@ -40,13 +40,16 @@
       <div class="mines_box">
         <div class="mines_title">
           <div>{{ bombList.length }}</div>
-          <div @click="init">开关</div>
+          <div @click="init">
+            <ASmileOutlined :style="{ background: '#ffff00', borderRadius: '50%' }" />
+            <!-- <AFrownOutlined :style="{ background: '#ffff00', borderRadius: '50%' }" /> -->
+          </div>
           <div>计时</div>
         </div>
         <div class="mines_body">
-          <div v-for="(row, index) in mineMapData" :key="index" class="mines_row">
-            <div v-for="(col, index) in row" :key="index" class="mines_col">
-              <div class="mines_item" :style="{ color: numColor(col) }">
+          <div v-for="(row, ri) in mineMapData" :key="ri" class="mines_row">
+            <div v-for="(col, ci) in row" :key="ci" class="mines_col">
+              <div class="mines_item" :style="{ color: numColor(col) }" @click="clickMap([ri, ci])">
                 {{ col ? col : '' }}
               </div>
             </div>
@@ -60,6 +63,7 @@
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { reactive, ref } from 'vue'
+import { cloneDeep } from 'lodash'
 
 const type = ref('level2')
 const typeOption = reactive({
@@ -73,44 +77,40 @@ const minesOption = reactive({ rowCount: 0, colCount: 0, mCount: 0 })
 const mineMapData = ref([])
 const bombList = ref([])
 const flagList = ref([])
-
-// 点击事件，
-// 首次点击，开始计时，左键生成雷区，右键无操作
-// 左键点开区块，再次点击提示周围，右键放置取消旗子，
-
-// 第一次点击，生成雷区数据，开始计时
-const fistClick = () => {
-  // 生成雷区
-  initMinesData()
-  // 开始计时
-  // startTimer()
-}
+const clickTime = reactive({ start: 0, end: 0, fistXY: [], timer: null })
 
 // 第一次点击后生成雷区数据，点击的区域无雷
 const initMinesData = () => {
-  const { rowCount, colCount, mCount } = minesOption
+  const { fistXY } = clickTime
+  const { rowCount, colCount } = minesOption
   // 创建基础雷区数据
-  // let mineMapArr = Array.from({ length: rowCount }, (_, i) =>
-  //   Array.from({ length: colCount }, (_, j) => i * colCount + j + 1)
-  // )
-  let mineMapArr = Array.from({ length: rowCount }, () => Array.from({ length: colCount }, () => 0))
+  const mineMapArr = cloneDeep(mineMapData.value)
   // 雷子坐标
-  let bombs = []
-
-  // 生成雷
-  Array.from(
-    { length: mCount },
-    (_, i) => ~~(i / colCount) < mineMapArr.length && (mineMapArr[~~(i / colCount)][~~(i % colCount)] = 9)
-  )
+  const bombs = []
 
   // 雷打乱顺序
-  Array.from({ length: rowCount * colCount }, (_, i) => {
+  Array.from({ length: rowCount * colCount }, () => {
     let x1 = ~~(Math.random() * rowCount)
     let y1 = ~~(Math.random() * colCount)
     let x2 = ~~(Math.random() * rowCount)
     let y2 = ~~(Math.random() * colCount)
     ;[mineMapArr[x1][y1], mineMapArr[x2][y2]] = [mineMapArr[x2][y2], mineMapArr[x1][y1]]
   })
+
+  // 点击位置雷移走
+  if (mineMapArr[fistXY[0]][fistXY[1]] === 9) {
+    const [a, b] = fistXY
+    // 找一个空地
+    Array.from({ length: rowCount * colCount }, () => 1).some((_, i) => {
+      const x = ~~(i / colCount)
+      const y = ~~(i % colCount)
+      if (mineMapArr[x][y] === 0 && mineMapArr[a][b] === 9) {
+        ;[mineMapArr[a][b], mineMapArr[x][y]] = [mineMapArr[x][y], mineMapArr[a][b]]
+        return true
+      }
+      return false
+    })
+  }
 
   // 计算周围雷数
   Array.from({ length: rowCount }, (_, i) => {
@@ -129,9 +129,52 @@ const initMinesData = () => {
     })
   })
 
-  console.log(mineMapArr, bombs)
+  // console.log(mineMapArr, bombs)
   mineMapData.value = mineMapArr
   bombList.value = bombs
+}
+
+// 重置地图
+const resetMap = () => {
+  const { rowCount, colCount, mCount } = minesOption
+  // 创建基础雷区数据
+  const mineMapArr = Array.from({ length: rowCount }, () => Array.from({ length: colCount }, () => 0))
+  // 雷子坐标
+  const bombs = []
+  // 生成雷
+  Array.from(
+    { length: mCount },
+    (_, i) => ~~(i / colCount) < mineMapArr.length && (mineMapArr[~~(i / colCount)][~~(i % colCount)] = 9)
+  )
+  // 计算周围雷数
+  Array.from({ length: rowCount }, (_, i) => {
+    Array.from({ length: colCount }, (_, j) => {
+      if (mineMapArr[i][j] === 9) {
+        bombs.push([i, j])
+      }
+    })
+  })
+  mineMapData.value = mineMapArr
+  bombList.value = bombs
+  flagList.value = []
+}
+
+// 开始计时
+const startTimer = () => {
+  clickTime.start = Date.now()
+}
+
+// 重置计时
+const resetTimer = () => {
+  // clear(clickTime.timer)
+  clickTime.start = 0
+  clickTime.end = 0
+  clickTime.fistXY = []
+}
+
+// 停止计时
+const stopTimer = () => {
+  clickTime.start = Date.now()
 }
 
 // 初始化地图
@@ -141,13 +184,31 @@ const init = () => {
   minesOption.rowCount = rowCount
   minesOption.colCount = colCount
   minesOption.mCount = mCount
+
   // 重置雷区
-  // resetMap()
+  resetMap()
   // 重置计时
-  // resetTimer()
-  fistClick()
+  resetTimer()
+  // clickMap()
 }
 init()
+
+// 点击事件，
+// 首次点击，开始计时，左键生成雷区，右键无操作
+// 左键点开区块，再次点击提示周围，右键放置取消旗子，
+
+// 点击地图，生成雷区数据，开始计时
+const clickMap = xy => {
+  console.log(xy)
+  if (clickTime.start === 0) {
+    // 鼠标按下时，记录坐标
+    clickTime.fistXY = xy
+    // 生成雷区
+    initMinesData()
+    // 开始计时
+    startTimer()
+  }
+}
 
 const numColor = num => {
   switch (num) {
@@ -203,6 +264,7 @@ const numColor = num => {
     background: #c0c0c0;
     border: 1px solid #828282;
     padding: 4px;
+    font-size: 30px;
   }
   .mines_body {
     .mines_row {
@@ -216,6 +278,7 @@ const numColor = num => {
           background: #bebebe;
           font-size: 26px;
           font-weight: bold;
+          overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
