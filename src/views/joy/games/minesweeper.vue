@@ -39,24 +39,32 @@
       </template>
       <div class="mines_box">
         <div class="mines_title">
-          <div>{{ bombList.length }}</div>
-          <div @click="init">
-            <ASmileOutlined :style="{ background: '#ffff00', borderRadius: '50%' }" />
-            <!-- <AFrownOutlined :style="{ background: '#ffff00', borderRadius: '50%' }" /> -->
+          <div class="mines_title_bomb">{{ bombList.length }}</div>
+          <div class="mines_title_icon" @click="init">
+            <AFrownOutlined v-if="clickTime.lastXY.length" :style="{ background: '#ffff00', borderRadius: '50%' }" />
+            <ASmileOutlined v-else :style="{ background: '#ffff00', borderRadius: '50%' }" />
           </div>
-          <div>计时</div>
+          <div class="mines_title_time">计时</div>
         </div>
         <div class="mines_body">
           <div v-for="(row, ri) in mineMapData" :key="ri" class="mines_row">
             <div v-for="(col, ci) in row" :key="ci" class="mines_col">
               <div
-                :class="['mines_item', col.isOpen ? 'open' : '']"
-                :style="{ color: numColor(col.num) }"
+                :class="[
+                  'mines_item',
+                  col.open ? '' : 'close',
+                  clickTime.end ? 'over' : '',
+                  clickTime.lastXY.join('-') === `${ri}-${ci}` ? 'fail' : ''
+                ]"
+                :style="{ color: col.flag ? '#000' : numColor(col.num) }"
                 @click="clickMap([ri, ci])"
+                @contextmenu.prevent.stop="rightClickMap([ri, ci])"
               >
-                <template v-if="col.isOpen">
-                  <!-- {{ col.text }} -->
+                <template v-if="col.open">
                   <component :is="col.text"></component>
+                </template>
+                <template v-if="col.flag">
+                  <AFlagTwoTone two-tone-color="#dd0c0c" />
                 </template>
               </div>
             </div>
@@ -84,7 +92,7 @@ const minesOption = reactive({ rowCount: 0, colCount: 0, mCount: 0 })
 const mineMapData = ref([])
 const bombList = ref([])
 const flagList = ref([])
-const clickTime = reactive({ start: 0, end: 0, fistXY: [], timer: null })
+const clickTime = reactive({ start: 0, end: 0, fistXY: [], lastXY: [], timer: null })
 
 // 第一次点击后生成雷区数据，点击的区域无雷
 const initMinesData = () => {
@@ -146,9 +154,10 @@ const initMinesData = () => {
 // 重置地图
 const resetMap = () => {
   const { rowCount, colCount, mCount } = minesOption
+  const defObj = { open: false, flag: false }
   // 创建基础雷区数据
   const mineMapArr = Array.from({ length: rowCount }, () =>
-    Array.from({ length: colCount }, () => ({ num: 0, text: () => '', isOpen: false }))
+    Array.from({ length: colCount }, () => ({ num: 0, text: () => '', ...defObj }))
   )
   // 雷子坐标
   const bombs = []
@@ -157,7 +166,7 @@ const resetMap = () => {
     { length: mCount },
     (_, i) =>
       ~~(i / colCount) < mineMapArr.length &&
-      (mineMapArr[~~(i / colCount)][~~(i % colCount)] = { num: 9, text: () => <AThunderboltFilled />, isOpen: false })
+      (mineMapArr[~~(i / colCount)][~~(i % colCount)] = { num: 9, text: () => <AThunderboltFilled />, ...defObj })
   )
   // 存雷子坐标
   Array.from({ length: rowCount }, (_, i) => {
@@ -179,15 +188,15 @@ const startTimer = () => {
 
 // 重置计时
 const resetTimer = () => {
-  // clear(clickTime.timer)
   clickTime.start = 0
   clickTime.end = 0
   clickTime.fistXY = []
+  clickTime.lastXY = []
 }
 
 // 停止计时
 const stopTimer = () => {
-  clickTime.start = Date.now()
+  clickTime.end = Date.now()
 }
 
 // 初始化地图
@@ -197,7 +206,6 @@ const init = () => {
   minesOption.rowCount = rowCount
   minesOption.colCount = colCount
   minesOption.mCount = mCount
-
   // 重置雷区
   resetMap()
   // 重置计时
@@ -205,6 +213,15 @@ const init = () => {
   // clickMap()
 }
 init()
+
+// 游戏结束
+const gameOver = () => {
+  stopTimer()
+  // 亮起所有雷子
+  bombList.value.forEach(xy => {
+    openItem(xy)
+  })
+}
 
 // 点击事件，
 // 首次点击，开始计时，左键生成雷区，右键无操作
@@ -214,23 +231,31 @@ init()
 const openItem = xy => {
   const { rowCount, colCount } = minesOption
   const [x, y] = xy
-  mineMapData.value[x][y].isOpen = true
-  // 找周围空格
-  Array.from({ length: 9 }, (_, k) => {
-    const x1 = x + ((k % 3) - 1)
-    const y1 = y + (~~(k / 3) - 1)
-    if (
-      x1 >= 0 &&
-      x1 < rowCount &&
-      y1 >= 0 &&
-      y1 < colCount &&
-      !mineMapData.value[x1][y1].isOpen &&
-      mineMapData.value[x1][y1].num !== 9 &&
-      mineMapData.value[x][y].num === 0
-    ) {
-      openItem([x1, y1])
+  if (mineMapData.value[x][y].flag) {
+    mineMapData.value[x][y].flag = false
+  } else if (!mineMapData.value[x][y].open) {
+    mineMapData.value[x][y].open = true
+    if (mineMapData.value[x][y].num === 9 && !clickTime.end) {
+      gameOver()
+      clickTime.lastXY = xy
+    } else {
+      // 找周围空格
+      Array.from({ length: 9 }, (_, k) => {
+        const x1 = x + ((k % 3) - 1)
+        const y1 = y + (~~(k / 3) - 1)
+        if (
+          x1 >= 0 &&
+          x1 < rowCount &&
+          y1 >= 0 &&
+          y1 < colCount &&
+          (mineMapData.value[x][y].num === 0 || mineMapData.value[x1][y1].num === 0) &&
+          !mineMapData.value[x1][y1].flag
+        ) {
+          openItem([x1, y1])
+        }
+      })
     }
-  })
+  }
 }
 
 // 点击地图，生成雷区数据，开始计时
@@ -244,7 +269,18 @@ const clickMap = xy => {
     // 开始计时
     startTimer()
   }
-  openItem(xy)
+  if (!clickTime.end) {
+    openItem(xy)
+  }
+}
+
+// 插旗子
+const rightClickMap = xy => {
+  console.log('flag', xy)
+  if (!clickTime.end) {
+    const [x, y] = xy
+    mineMapData.value[x][y].flag = true
+  }
 }
 
 const numColor = num => {
@@ -301,7 +337,22 @@ const numColor = num => {
     background: #c0c0c0;
     border: 1px solid #828282;
     padding: 4px;
-    font-size: 30px;
+    font-size: 18px;
+    .mines_title_icon {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid #f0f0f0;
+      border-right-color: #828282;
+      border-bottom-color: #828282;
+      &:active {
+        border: 4px solid #f0f0f0;
+        border-top-color: #828282;
+        border-left-color: #828282;
+      }
+    }
   }
   .mines_body {
     .mines_row {
@@ -310,18 +361,31 @@ const numColor = num => {
         .mines_item {
           width: 30px;
           height: 30px;
-          background: #bebebe;
-          font-size: 26px;
+          font-size: 20px;
           font-weight: bold;
           overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 4px solid #f0f0f0;
-          border-right-color: #828282;
-          border-bottom-color: #828282;
-          &.open {
-            background: #bebebe;
+          background: #bebebe;
+          border: 1px solid #828282;
+          &.close {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #f0f0f0;
+            border-right-color: #828282;
+            border-bottom-color: #828282;
+            &:not(.over):active {
+              border: 4px solid #f0f0f0;
+              border-top-color: #828282;
+              border-left-color: #828282;
+            }
+          }
+          &.fail {
+            background: #dd0c0c;
             border: 1px solid #828282;
           }
         }
