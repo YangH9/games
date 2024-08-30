@@ -65,6 +65,7 @@
                 </template>
                 <template v-if="col.flag">
                   <AFlagTwoTone two-tone-color="#dd0c0c" />
+                  <!-- <QuestionOutlined /> -->
                 </template>
               </div>
             </div>
@@ -233,6 +234,7 @@ const openItem = xy => {
   const [x, y] = xy
   if (mineMapData.value[x][y].flag) {
     mineMapData.value[x][y].flag = false
+    flagList.value = flagList.value.filter(item => item.join('-') !== xy.join('-'))
   } else if (!mineMapData.value[x][y].open) {
     mineMapData.value[x][y].open = true
     if (mineMapData.value[x][y].num === 9 && !clickTime.end) {
@@ -279,7 +281,10 @@ const rightClickMap = xy => {
   console.log('flag', xy)
   if (!clickTime.end) {
     const [x, y] = xy
-    mineMapData.value[x][y].flag = true
+    if (!mineMapData.value[x][y].flag) {
+      mineMapData.value[x][y].flag = true
+      flagList.value.push(xy)
+    }
   }
 }
 
@@ -305,6 +310,12 @@ const numColor = num => {
       return 'black'
   }
 }
+
+/**
+ * 开地、标记功能
+ * 左键：开地、取消标记、提示9*9范围
+ * 右键：放置标记、切换标记类型（旗子、问号）
+ */
 
 // 第一次点击不会是雷。格子里的数字表示它周围有几个雷。游戏目标是找出所有雷。“触雷”则输。点击表情重新开始。
 // 二选一留到最后，可任选，需先清完其他方块。
