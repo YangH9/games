@@ -133,7 +133,7 @@ const joyList = [
       { title: '国庆红旗头像生成器', href: '/joy/tool/avatar-editor' },
       { title: 'CSS新拟态生成器', href: '/joy/tool/skeuomorphism' },
       { title: 'CSS玻璃拟物化生成器', href: '/joy/tool/glassmorphism' },
-      { title: 'ChartGPT', href: '/links/chart-gpt' }
+      { title: 'ChartGPT免费链接', href: '/links/chart-gpt-free' }
     ]
   },
   {

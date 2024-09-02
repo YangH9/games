@@ -105,12 +105,6 @@ export default [
             component: () => import('@/views/study/css-demo/nixie-tube-clock.vue')
           },
           {
-            path: '/study/css-demo/css-stopwatch',
-            name: 'css-stopwatch',
-            meta: { title: 'CSS秒表' },
-            component: () => import('@/views/study/css-demo/css-stopwatch.vue')
-          },
-          {
             path: '/study/css-demo/sharingan',
             name: 'sharingan',
             meta: { title: 'CSS写轮眼' },
@@ -186,6 +180,12 @@ export default [
         meta: { title: '其他' },
         redirect: '/study',
         children: [
+          {
+            path: '/study/other/langchain',
+            name: 'langchain',
+            meta: { title: 'langchain' },
+            component: () => import('@/views/study/other/langchain.vue')
+          },
           {
             path: '/study/other/heart',
             name: 'heart',
@@ -555,10 +555,10 @@ export default [
         component: () => import('@/views/links/css-tool.vue')
       },
       {
-        path: '/links/chart-gpt',
-        name: 'chart-gpt',
-        meta: { title: 'chartGPT' },
-        component: () => import('@/views/links/chart-gpt.vue')
+        path: '/links/chart-gpt-free',
+        name: 'chart-gpt-free',
+        meta: { title: 'ChartGPT免费链接' },
+        component: () => import('@/views/links/chart-gpt-free.vue')
       }
     ]
   },

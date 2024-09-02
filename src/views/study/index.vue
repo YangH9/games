@@ -61,7 +61,6 @@ const studyList = [
       { title: '动画图标', href: '/study/css-demo/icon' },
       { title: '动画时钟', href: '/study/css-demo/animation-clock' },
       { title: '数码管时钟', href: '/study/css-demo/nixie-tube-clock' },
-      { title: 'CSS秒表', href: '/study/css-demo/css-stopwatch' },
       { title: '写轮眼', href: '/study/css-demo/sharingan' }
     ]
   },
@@ -82,6 +81,7 @@ const studyList = [
   {
     title: '其他',
     list: [
+      { title: 'LangChain-ChartGPT', href: '/study/other/langchain' },
       { title: '各种心形图案', href: '/study/other/heart' },
       { title: '时间轮盘', href: '/study/other/time-wheel' },
       { title: '子午流注钟表', href: '/study/other/meridian-flow-clock' },

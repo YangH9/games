@@ -202,8 +202,8 @@
       border: 4px solid #000;
       background: #ffe100;
       border-radius: 80% 20% 80% 10%;
-      top: 356px;
-      left: 164px;
+      top: 406px;
+      left: 214px;
     }
 
     // 右腿
@@ -214,8 +214,8 @@
       border: 4px solid #000;
       background: #ffe100;
       border-radius: 20% 80% 10% 80%;
-      top: 356px;
-      left: 293px;
+      top: 406px;
+      left: 343px;
     }
   }
 

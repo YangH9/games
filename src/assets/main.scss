@@ -1,3 +1,12 @@
+@font-face {
+  font-family: digitalism;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('Digitalism'),
+    url(@/assets/woff/digitalism.woff) format('woff');
+}
+
 #app {
   min-height: 100vh;
   // background: var(--color-background);
