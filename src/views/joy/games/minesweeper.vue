@@ -39,7 +39,12 @@
       </template>
       <div class="mines_box">
         <div class="mines_title">
-          <div class="mines_title_num">{{ bombList.length - flagList.length }}</div>
+          <div class="mines_title_num">
+            <div class="mines_title_num_bg">888</div>
+            <div class="mines_title_num_text">
+              {{ bombList.length - flagList.length }}
+            </div>
+          </div>
           <div class="mines_title_icon" @click="init">
             <AFrownOutlined
               v-if="operateOption.lastXY.length"
@@ -47,7 +52,12 @@
             />
             <ASmileOutlined v-else :style="{ background: '#ffff00', borderRadius: '50%' }" />
           </div>
-          <div class="mines_title_time">{{ timerNum }}</div>
+          <div class="mines_title_time">
+            <div class="mines_title_num_bg">888</div>
+            <div class="mines_title_num_text">
+              {{ timerNum }}
+            </div>
+          </div>
         </div>
         <div class="mines_body">
           <div v-for="(row, ri) in mineMapData" :key="ri" class="mines_row">
@@ -383,15 +393,27 @@ const numColor = num => {
     border: 1px solid #828282;
     padding: 4px;
     font-size: 18px;
+    color: #000;
 
     .mines_title_num,
     .mines_title_time {
       height: 30px;
-      font-weight: bold;
       font-family: 'Digitalism', sans-serif;
       font-size: 40px;
       line-height: 40px;
       vertical-align: middle;
+      position: relative;
+      &_bg {
+        position: relative;
+        opacity: 0.4;
+        font-weight: bold;
+      }
+      &_text {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-weight: bold;
+      }
     }
     .mines_title_icon {
       width: 30px;
