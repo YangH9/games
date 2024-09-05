@@ -301,18 +301,36 @@ export default [
             name: 'table5',
             meta: { title: '表格5' },
             component: () => import('@/views/study/component-demo/table5.vue')
+      
           },
           {
-            path: '/study/component-demo/form1',
-            name: 'form1',
-            meta: { title: '表单1' },
-            component: () => import('@/views/study/component-demo/form1.vue')
+            path: '/study/component-demo/form-vform',
+            name: 'form-vform',
+            meta: { title: '低代码表单-vform' },
+            component: () => import('@/views/study/component-demo/form-vform.vue')
           },
           {
-            path: '/study/component-demo/form2',
-            name: 'form2',
-            meta: { title: '低代码表单' },
-            component: () => import('@/views/study/component-demo/form2.vue')
+            path: '/study/component-demo/form-formmaking',
+            name: 'form-formmaking',
+            meta: { title: '低代码表单-formmaking' },
+            component: () => import('@/views/study/component-demo/form-formmaking.vue')    },
+          {
+            path: '/study/component-demo/richtext-tinymce',
+            name: 'richtext-tinymce',
+            meta: { title: '富文本-tinymce' },
+            component: () => import('@/views/study/component-demo/richtext-tinymce.vue')
+          },
+          {
+            path: '/study/component-demo/richtext-quill',
+            name: 'richtext-quill',
+            meta: { title: '富文本-quill' },
+            component: () => import('@/views/study/component-demo/richtext-quill.vue')
+          },
+          {
+            path: '/study/component-demo/richtext-canvaseditor',
+            name: 'richtext-canvas-editor',
+            meta: { title: '富文本-canvaseditor' },
+            component: () => import('@/views/study/component-demo/richtext-canvaseditor.vue')
           }
         ]
       }

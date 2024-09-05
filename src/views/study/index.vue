@@ -105,8 +105,11 @@ const studyList = [
       { title: '表格3', href: '/study/component-demo/table3' },
       { title: '表格4', href: '/study/component-demo/table4' },
       { title: '表格5', href: '/study/component-demo/table5' },
-      { title: '表单1', href: '/study/component-demo/form1' },
-      { title: '低代码表单', href: '/study/component-demo/form2' }
+      { title: '低代码表单-vform', href: '/study/component-demo/form-vform' },
+      { title: '低代码表单-formmaking', href: '/study/component-demo/form-formmaking' },
+      { title: '富文本-tinymce', href: '/study/component-demo/richtext-tinymce' },
+      { title: '富文本-quill', href: '/study/component-demo/richtext-quill' },
+      { title: '富文本-canvaseditor', href: '/study/component-demo/richtext-canvaseditor' }
     ]
   }
 ]
