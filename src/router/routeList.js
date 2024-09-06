@@ -181,6 +181,12 @@ export default [
         redirect: '/study',
         children: [
           {
+            path: '/study/other/three',
+            name: 'three',
+            meta: { title: 'three' },
+            component: () => import('@/views/study/other/three.vue')
+          },
+          {
             path: '/study/other/langchain',
             name: 'langchain',
             meta: { title: 'langchain' },

@@ -81,6 +81,7 @@ const studyList = [
   {
     title: '其他',
     list: [
+      { title: 'threejs', href: '/study/other/three' },
       { title: 'LangChain-ChartGPT', href: '/study/other/langchain' },
       { title: '各种心形图案', href: '/study/other/heart' },
       { title: '时间轮盘', href: '/study/other/time-wheel' },

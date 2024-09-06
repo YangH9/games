@@ -131,6 +131,14 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped lang="scss">
+@font-face {
+  font-family: digitalism;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('Digitalism'),
+    url(@/assets/woff/digitalism.woff) format('woff');
+}
 :deep().ant-card-body {
   display: flex;
   flex-direction: row;

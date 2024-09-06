@@ -49,6 +49,7 @@
     "nprogress": "0.2.0",
     "pinia": "^2.1.7",
     "sortablejs": "1.15.2",
+    "three": "^0.168.0",
     "vform3-builds": "3.0.10",
     "vue": "^3.4.38",
     "vue-router": "^4.4.3"
