@@ -40,10 +40,7 @@
       <div class="mines_box">
         <div class="mines_title">
           <div class="mines_title_num">
-            <div class="mines_title_num_bg"><DigitalTubeNumbers :num="888"></DigitalTubeNumbers></div>
-            <div class="mines_title_num_text">
-              <DigitalTubeNumbers :num="bombList.length - flagList.length"></DigitalTubeNumbers>
-            </div>
+            <DigitalTubeNumbers :num="`   ${bombList.length - flagList.length}`.slice(-3)" shadow></DigitalTubeNumbers>
           </div>
           <div class="mines_title_icon" @click="init">
             <AFrownOutlined
@@ -53,10 +50,7 @@
             <ASmileOutlined v-else :style="{ background: '#ffff00', borderRadius: '50%' }" />
           </div>
           <div class="mines_title_time">
-            <div class="mines_title_num_bg"><DigitalTubeNumbers :num="888"></DigitalTubeNumbers></div>
-            <div class="mines_title_num_text">
-              <DigitalTubeNumbers :num="timerNum"></DigitalTubeNumbers>
-            </div>
+            <DigitalTubeNumbers :num="`   ${timerNum}`.slice(-3)" shadow></DigitalTubeNumbers>
           </div>
         </div>
         <div class="mines_body">
@@ -374,7 +368,9 @@ const numColor = num => {
 // 标记模式下的打开方法，长按，快点三次
 
 // svg数码管数字
-const DigitalTubeNumbers = ({ num }) => {
+const DigitalTubeNumbers = ({ num, shadow }) => {
+  console.log(num)
+  shadow !== undefined && (shadow = true)
   const svgItem = path => (
     <svg viewBox="0 0 667 1024" xmlns="http://www.w3.org/2000/svg" width="0.651em" height="1em">
       {path}
@@ -396,34 +392,29 @@ const DigitalTubeNumbers = ({ num }) => {
     // 右下
     'M497.44941714 592.68455098l67.14670315-60.32961931 33.21362655 34.69085796c9.96025483 10.56569365 15.6785065 24.12418146 17.00437821 39.23558052 0.79611273 9.01278239 0.07567985 18.1022275-0.53074182 28.668904l-19.69248724 223.2919296c-0.45506196 12.08125641-2.68909188 21.13237015-3.82527254 25.63876135-2.23402992 9.0520966-7.57486521 16.62597895-22.98898369 30.18348391l-37.72001774 34.72918931-58.47398865-64.91267322 25.86678377-291.19641412z'
   ]
-  // const svgItem1 = path => (
-  //   <svg viewBox="0 0 598 1024" xmlns="http://www.w3.org/2000/svg" width="0.584em" height="1em">
-  //     {path}
-  //   </svg>
-  // )
-  // const pathList1 = [
-  //   'M19.04640003 108.10405925v352.11440989l41.4252247 41.42522469 41.42522469-41.42522469V108.10405925l-41.42522469-41.42522468z', // 左上
-  //   'M19.04640003 563.78153086v352.11440989l41.4252247 41.42522468 41.42522469-41.42522468V563.78153086l-41.42522469-41.42522469z', // 左下
-  //   'M112.25315559 14.8973037l-41.4252247 41.42522469 41.4252247 41.4252247h372.82702222l41.4252247-41.4252247-41.4252247-41.42522469z', // 上
-  //   'M112.25315559 470.57477531l-41.4252247 41.42522469 41.4252247 41.42522469h372.82702222l41.4252247-41.42522469-41.4252247-41.42522469z', // 中
-  //   'M112.25315559 926.25224691l-41.4252247 41.4252247 41.4252247 41.42522469h372.82702222l41.4252247-41.42522469-41.4252247-41.4252247z', // 下
-  //   'M495.43648398 108.10405925v352.11440989l41.42522469 41.42522469 41.4252247-41.42522469V108.10405925l-41.4252247-41.42522468z', // 右上
-  //   'M495.43648398 563.78153086v352.11440989l41.42522469 41.42522468 41.4252247-41.42522468V563.78153086l-41.4252247-41.42522469z' // 右下
-  // ]
+  let numPathInd = {
+    '-': [3],
+    0: [0, 1, 2, 4, 5, 6],
+    1: [5, 6],
+    2: [1, 2, 3, 4, 5],
+    3: [2, 3, 4, 5, 6],
+    4: [0, 3, 5, 6],
+    5: [0, 2, 3, 4, 6],
+    6: [0, 1, 2, 3, 4, 6],
+    7: [2, 5, 6],
+    8: [0, 1, 2, 3, 4, 5, 6],
+    9: [0, 2, 3, 4, 5, 6]
+  }
   const numPath = num => {
-    let obj = {
-      0: [0, 1, 2, 4, 5, 6],
-      1: [5, 6],
-      2: [1, 2, 3, 4, 5],
-      3: [2, 3, 4, 5, 6],
-      4: [0, 3, 5, 6],
-      5: [0, 2, 3, 4, 6],
-      6: [0, 1, 2, 3, 4, 6],
-      7: [2, 5, 6],
-      8: [0, 1, 2, 3, 4, 5, 6],
-      9: [0, 2, 3, 4, 5, 6]
+    if (shadow) {
+      return (
+        <>
+          <path d={pathList.join(' ')} opacity="0.4" />
+          <path d={(numPathInd[num] || []).map(i => pathList[i]).join(' ')} />
+        </>
+      )
     }
-    return <path d={(obj[num] || obj[8]).map(i => pathList[i]).join(' ')} />
+    return <path d={(numPathInd[num] || []).map(i => pathList[i]).join(' ')} />
   }
   return `${num}`.split('').map(i => svgItem(numPath(i)))
 }
@@ -460,15 +451,6 @@ const DigitalTubeNumbers = ({ num }) => {
       background: #000;
       :deep()svg {
         fill: #f00;
-      }
-      &_bg {
-        position: relative;
-        opacity: 0.4;
-      }
-      &_text {
-        position: absolute;
-        top: 0;
-        right: 0;
       }
     }
     .mines_title_icon {

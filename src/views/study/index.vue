@@ -56,11 +56,12 @@ const studyList = [
       { title: '正多边形', href: '/study/css-demo/regular-polygon' },
       { title: '边框特效', href: '/study/css-demo/border-effect' },
       { title: '液晶数字字体', href: '/study/css-demo/lcd-digital' },
+      { title: '液晶数字字体（SVG）', href: '/study/css-demo/lcd-digital-svg' },
       { title: '菜单特效', href: '/study/css-demo/menu-effect' },
       { title: '按钮特效', href: '/study/css-demo/button-effect' },
       { title: '动画图标', href: '/study/css-demo/icon' },
       { title: '动画时钟', href: '/study/css-demo/animation-clock' },
-      { title: '数码管时钟', href: '/study/css-demo/nixie-tube-clock' },
+      { title: '液晶数字时钟', href: '/study/css-demo/nixie-tube-clock' },
       { title: '写轮眼', href: '/study/css-demo/sharingan' }
     ]
   },

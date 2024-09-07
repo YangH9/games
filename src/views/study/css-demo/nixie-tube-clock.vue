@@ -1,5 +1,5 @@
 <template>
-  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" class="flow_hidden" title="数码管时钟">
+  <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" class="flow_hidden" title="液晶数字时钟">
     <svg id="noise-svg">
       <!-- gives background a bit of texture -->
       <filter id="noiseFilter">

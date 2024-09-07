@@ -75,6 +75,12 @@ export default [
             component: () => import('@/views/study/css-demo/lcd-digital.vue')
           },
           {
+            path: '/study/css-demo/lcd-digital-svg',
+            name: 'lcd-digital-svg',
+            meta: { title: 'SVG液晶数字字体' },
+            component: () => import('@/views/study/css-demo/lcd-digital-svg.vue')
+          },
+          {
             path: '/study/css-demo/menu-effect',
             name: 'menu-effect',
             meta: { title: 'CSS菜单特效' },
