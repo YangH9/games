@@ -10,6 +10,8 @@
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 
+// https://js.langchain.com.cn/docs/
+
 </script>
 
 <style scoped lang="scss">

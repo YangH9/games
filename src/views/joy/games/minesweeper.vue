@@ -418,6 +418,8 @@ const DigitalTubeNumbers = ({ num, shadow }) => {
   }
   return `${num}`.split('').map(i => svgItem(numPath(i)))
 }
+
+// https://www.minesweeper.cn/
 </script>
 
 <style scoped lang="scss">

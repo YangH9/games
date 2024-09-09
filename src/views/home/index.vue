@@ -16,6 +16,29 @@
             format="DD日HH时mm分ss秒"
           />
         </a-card>
+        <a-card title="仓库" class="mb_2" :hoverable="true">
+          <a-list item-layout="horizontal" size="small" bordered :data-source="storeList">
+            <template #renderItem="{ item }">
+              <a-list-item>
+                <a :href="`https://github.com/YangH9/${item}`" target="_blank">
+                  <img
+                    :src="`https://img.shields.io/badge/${item.replaceAll('-', '%E2%80%93')}-fff?logo=Github&logoColor=000`"
+                    alt="store"
+                  />
+                </a>
+                <a :href="`https://github.com/YangH9/${item}/stargazers`" target="_blank">
+                  <img :src="`https://img.shields.io/github/stars/YangH9/${item}`" alt="stargazers" />
+                </a>
+                <a :href="`https://YangH9.github.io/${item}`" target="_blank">
+                  <img
+                    src="https://img.shields.io/badge/github%20pages-white?logo=github&amp;logoColor=black"
+                    alt="GithubPages"
+                  />
+                </a>
+              </a-list-item>
+            </template>
+          </a-list>
+        </a-card>
       </div>
     </a-layout>
   </a-layout>
@@ -45,6 +68,19 @@ const getNextGaoKaoTime = () => {
   gaoKaoTime.value = nextGaoKao
 }
 getNextGaoKaoTime()
+
+const storeList = [
+  'YangH9',
+  'YangH9.github.io',
+  'y',
+  'ChinaHolidayCalender',
+  'China_area',
+  'form-preview',
+  'linecounter',
+  'avatar-editor',
+  'baidu',
+  'BitwardenPackage'
+]
 </script>
 
 <style scoped lang="scss"></style>
