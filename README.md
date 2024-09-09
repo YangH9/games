@@ -11,9 +11,11 @@
 [![](https://img.shields.io/badge/Vite-4.4-a750fe?logo=Vite&logoColor=a750fe)](https://cn.vitejs.dev/)
 [![](https://img.shields.io/badge/Pinia-2.1-ffd34f?logo=Pinia&logoColor=ffd34f)](https://pinia.vuejs.org/zh/)
 
-[![](https://github-readme-stats.vercel.app/api?username=yangh9&title_color=ff69b4&text_color=718096&bg_color=ffffff00&icon_color=87ceeb&show_icons=true)](https://github.com/yangh9)
+[![](https://github-readme-stats.vercel.app/api?username=YangH9&title_color=ff69b4&text_color=718096&bg_color=ffffff00&icon_color=87ceeb&show_icons=true)](https://github.com/YangH9)
 
-[![](https://github-readme-stats.vercel.app/api/top-langs/?username=yangh9&title_color=ff69b4&text_color=718096&icon_color=87ceeb&bg_color=ffffff00)](https://github.com/yangh9)
+[![](https://github-readme-stats.vercel.app/api/top-langs/?username=YangH9&title_color=ff69b4&text_color=718096&icon_color=87ceeb&bg_color=ffffff00)](https://github.com/YangH9)
+
+[![](https://github-readme-stats.vercel.app/api/pin/?username=YangH9&repo=YangH9.github.io&title_color=ff69b4&text_color=718096&icon_color=87ceeb&bg_color=ffffff00)](https://github.com/YangH9/YangH9.github.io)
 
 [Vue](https://cn.vuejs.org/)、
 [Vite](https://cn.vitejs.dev/)、
