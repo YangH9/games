@@ -14,7 +14,6 @@
               <meridianBgPathDom :inner="[1, 0.8]" :width="radius - 5"></meridianBgPathDom>
               <meridianBgPathDom :inner="[0.8, 0.56]" :width="radius - 5"></meridianBgPathDom>
               <meridianBgPathDom :inner="[0.45, 0.35]" :width="radius - 5"></meridianBgPathDom>
-              <meridianBgPathDom :inner="[0.35, 0]" :width="radius - 5"></meridianBgPathDom>
             </svgBoxDom>
             <meridianTextDom class="meridian_text" :item="item" :index="index" :translate="0.4">
               {{ item.branch }}
@@ -25,6 +24,10 @@
             <meridianTextDom class="meridian_text" :item="item" :index="index" :translate="0.92">
               <span style="font-size: 16px">{{ item.tips2 }}</span>
             </meridianTextDom>
+          </template>
+          <meridianTaijiDom :inner="0.25" :width="radius - 5"></meridianTaijiDom>
+          <template v-for="(item, index) in 8" :key="index">
+            <meridianBaguaDom :index="index" :inner="[0.35, 0.25]" :width="radius - 5"></meridianBaguaDom>
           </template>
           <template v-for="item in 24" :key="item">
             <hourNumDom class="meridian_hour" :item="item" :step="15" :translate="0.8"></hourNumDom>
@@ -115,10 +118,10 @@ const svgBoxDom = ({ item, index, width }, { slots }) => {
 const meridianBgPathDom = ({ width, inner }) => {
   const width1 = width * inner[0]
   const width2 = width * inner[1]
-  const point1 = width - width * inner[0]
-  const point2 = width - (Math.sqrt(3) / 3) * width * inner[0]
-  const point3 = width - width * inner[1]
-  const point4 = width - (Math.sqrt(3) / 3) * width * inner[1]
+  const point1 = width - width1
+  const point2 = width - (Math.sqrt(3) / 3) * width1
+  const point3 = width - width2
+  const point4 = width - (Math.sqrt(3) / 3) * width2
   return (
     <path
       d={`M ${point1} ${point2} A ${width1} ${width1} 0 0 1 ${point2} ${point1} L ${point4} ${point3} A ${width2} ${width2} 0 0 0 ${point3} ${point4} L ${point3} ${point4} Z`}
@@ -160,6 +163,69 @@ const hourNumDom = ({ item, step, translate }) => (
     {item}
   </div>
 )
+
+const meridianTaijiDom = ({ width, inner }) => {
+  const boxWidth = width * inner * 2
+  const point = boxWidth * 0.5
+  const point1 = point * 0.5
+  const point2 = point1 * 0.3
+  return (
+    <svg
+      class="clock_face_item"
+      viewBox={`0 0 ${boxWidth} ${boxWidth}`}
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        width: `${boxWidth}px`,
+        height: `${boxWidth}px`,
+        transform: `translate(-50%, -50%)`,
+        zIndex: 1
+      }}
+    >
+      <path
+        d={`M ${point} 0 A ${point} ${point} 0 1 0 ${point} ${boxWidth} A ${point1} ${point1} 0 0 1 ${point} ${point} A ${point1} ${point1} 0 0 0 ${point} 0 Z `}
+        strokeWidth={boxWidth * 0.005}
+        fill="#0f0f0f"
+        stroke=""
+      />
+      <path
+        d={`M ${point} 0 A ${point} ${point} 0 1 1 ${point} ${boxWidth} A ${point1} ${point1} 0 0 1 ${point} ${point} A ${point1} ${point1} 0 0 0 ${point} 0 Z`}
+        strokeWidth={boxWidth * 0.005}
+        fill="#f0f0f0"
+        stroke=""
+      />
+      <circle cx={point} cy={point1} r={point2} fill="#f0f0f0" />
+      <circle cx={point} cy={boxWidth - point1} r={point2} fill="#0f0f0f" />
+    </svg>
+  )
+}
+const meridianBaguaDom = ({ index, width, inner }) => {
+  const num = width * (Math.sqrt(2 + Math.sqrt(2)) / 2)
+  const width1 = width * inner[0]
+  const width2 = width * inner[1]
+  const point1 = width - width1
+  const point2 = width - (Math.sqrt(2) - 1) * width1
+  const point3 = width - width2
+  const point4 = width - (Math.sqrt(2) - 1) * width2
+  return (
+    <svg
+      class="clock_face_item"
+      viewBox={`0 0 ${width} ${width}`}
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        width: `${num}px`,
+        height: `${num}px`,
+        transform: `translate(-50%, -50%) rotate(${index * 45 + 45}deg) translate(-50%, -50%)`,
+        fill: '#f4f4f4'
+      }}
+    >
+      <path
+        d={`M ${point1} ${point2} A ${width1} ${width1} 0 0 1 ${point2} ${point1} L ${point4} ${point3} A ${width2} ${width2} 0 0 0 ${point3} ${point4} L ${point3} ${point4} Z`}
+        strokeWidth={width * 0.005}
+        stroke="#2f2f2f"
+      />
+    </svg>
+  )
+}
 
 const animation = () => {
   const dateT = new Date()
