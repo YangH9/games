@@ -424,7 +424,8 @@ const resoutcesList = [
       { title: 'VFX资源网', href: 'https://www.vfxzy.com/', favicon: '' },
       { title: '佛系软件', href: 'https://www.foxirj.com/', favicon: '' },
       { title: 'XXMac', href: 'https://www.xxmac.com/', favicon: '' },
-      { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: '' }
+      { title: 'MC百科', href: 'https://www.mcmod.cn/', favicon: '' },
+      { title: '食用手册', href: 'https://cook.yunyoujun.cn/', favicon: '' }
     ]
   },
   {

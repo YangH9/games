@@ -103,8 +103,6 @@ const svgBoxDom = ({ item, index, width }, { slots }) => {
         width: `${num}px`,
         height: `${num}px`,
         transform: `translate(-50%, -50%) rotate(${index * 30 + 45}deg) translate(-50%, -50%)`,
-        // fill: index >= 6 ? (index % 2 ? '#8CC7B5' : '#D1BA74') : index % 2 ? '#A0EEE1' : '#D6D5B7',
-        // fill: index >= 6 ? (index % 2 ? '#88aea2' : '#baa078') : index % 2 ? '#c2f4ec' : '#e4e4d0',
         fill: isActive ? item.color : '#f4f4f4',
         zIndex: isActive ? 2 : 1
       }}
@@ -182,19 +180,19 @@ const meridianTaijiDom = ({ width, inner }) => {
       }}
     >
       <path
-        d={`M ${point} 0 A ${point} ${point} 0 1 0 ${point} ${boxWidth} A ${point1} ${point1} 0 0 1 ${point} ${point} A ${point1} ${point1} 0 0 0 ${point} 0 Z `}
-        strokeWidth={boxWidth * 0.005}
-        fill="#0f0f0f"
-        stroke=""
-      />
-      <path
-        d={`M ${point} 0 A ${point} ${point} 0 1 1 ${point} ${boxWidth} A ${point1} ${point1} 0 0 1 ${point} ${point} A ${point1} ${point1} 0 0 0 ${point} 0 Z`}
+        d={`M ${boxWidth} ${point} a ${point} ${point} 0 1 0 -${boxWidth} 0 a ${point1} ${point1} 0 0 1 ${point} 0 a ${point1} ${point1} 0 0 0 ${point} 0 z`}
         strokeWidth={boxWidth * 0.005}
         fill="#f0f0f0"
         stroke=""
       />
-      <circle cx={point} cy={point1} r={point2} fill="#f0f0f0" />
-      <circle cx={point} cy={boxWidth - point1} r={point2} fill="#0f0f0f" />
+      <path
+        d={`M 0 ${point} a ${point} ${point} 0 1 0 ${boxWidth} 0 a ${point1} ${point1} 0 0 1 -${point} 0 a ${point1} ${point1} 0 0 0 -${point} 0 z`}
+        strokeWidth={boxWidth * 0.005}
+        fill="#0f0f0f"
+        stroke=""
+      />
+      <circle cx={point1} cy={point} r={point2} fill="#f0f0f0" />
+      <circle cx={boxWidth - point1} cy={point} r={point2} fill="#0f0f0f" />
     </svg>
   )
 }
@@ -206,6 +204,32 @@ const meridianBaguaDom = ({ index, width, inner }) => {
   const point2 = width - (Math.sqrt(2) - 1) * width1
   const point3 = width - width2
   const point4 = width - (Math.sqrt(2) - 1) * width2
+
+  const icon = width - width * Math.sqrt(2 - Math.sqrt(2)) * ((inner[0] + inner[1]) / 2)
+  const sin45 = Math.sqrt(2) / 2
+  const lineW = ((width * 28) / 100) * ((inner[0] + inner[1]) / 2) * sin45
+  const lineW1 = lineW / 2
+  const lineH = ((width * 4) / 100) * ((inner[0] + inner[1]) / 2) * sin45
+  const lineH1 = lineH / 2
+  const lineH2 = lineH * 2
+
+  let linet1 = `M${icon - lineH2} ${icon - lineH2}  l-${lineH1} -${lineH1} ${lineW1} -${lineW1} ${lineH} ${lineH} -${lineW} ${lineW} -${lineH} -${lineH} ${lineW1} -${lineW1}z`
+  let linet2 = `M${icon - lineH1 - lineH2} ${icon + lineH1 - lineH2} l-${lineH1} -${lineH1} -${lineW1 - lineH1} ${lineW1 - lineH1} ${lineH} ${lineH} ${lineW1 - lineH1} -${lineW1 - lineH1}z M${icon + lineH1 - lineH2} ${icon - lineH1 - lineH2} l-${lineH1} -${lineH1} ${lineW1 - lineH1} -${lineW1 - lineH1} ${lineH} ${lineH} -${lineW1 - lineH1} ${lineW1 - lineH1}z`
+  let linec1 = `M${icon} ${icon}  l-${lineH1} -${lineH1} ${lineW1} -${lineW1} ${lineH} ${lineH} -${lineW} ${lineW} -${lineH} -${lineH} ${lineW1} -${lineW1}z`
+  let linec2 = `M${icon - lineH1} ${icon + 2} l-${lineH1} -${lineH1} -${lineW1 - lineH1} ${lineW1 - lineH1} ${lineH} ${lineH} ${lineW1 - lineH1} -${lineW1 - lineH1}z M${icon + lineH1} ${icon - 2} l-${lineH1} -${lineH1} ${lineW1 - lineH1} -${lineW1 - lineH1} ${lineH} ${lineH} -${lineW1 - lineH1} ${lineW1 - lineH1}z`
+  let lineb1 = `M${icon + lineH2} ${icon + lineH2}  l-${lineH1} -${lineH1} ${lineW1} -${lineW1} ${lineH} ${lineH} -${lineW} ${lineW} -${lineH} -${lineH} ${lineW1} -${lineW1}z`
+  let lineb2 = `M${icon - lineH1 + lineH2} ${icon + lineH1 + lineH2} l-${lineH1} -${lineH1} -${lineW1 - lineH1} ${lineW1 - lineH1} ${lineH} ${lineH} ${lineW1 - lineH1} -${lineW1 - lineH1}z M${icon + lineH1 + lineH2} ${icon - lineH1 + lineH2} l-${lineH1} -${lineH1} ${lineW1 - lineH1} -${lineW1 - lineH1} ${lineH} ${lineH} -${lineW1 - lineH1} ${lineW1 - lineH1}z`
+
+  const baguaPath = [
+    `${linet1} ${linec1} ${lineb1}`,
+    `${linet1} ${linec1} ${lineb2}`,
+    `${linet2} ${linec1} ${lineb2}`,
+    `${linet1} ${linec2} ${lineb2}`,
+    `${linet2} ${linec2} ${lineb2}`,
+    `${linet2} ${linec2} ${lineb1}`,
+    `${linet1} ${linec2} ${lineb1}`,
+    `${linet2} ${linec1} ${lineb1}`
+  ]
   return (
     <svg
       class="clock_face_item"
@@ -223,6 +247,7 @@ const meridianBaguaDom = ({ index, width, inner }) => {
         strokeWidth={width * 0.005}
         stroke="#2f2f2f"
       />
+      <path d={baguaPath[index]} strokeWidth={0} fill="#000" />
     </svg>
   )
 }
@@ -335,7 +360,6 @@ document.addEventListener('visibilitychange', e => {
 
   .meridian_text {
     z-index: 3;
-    // opacity: 0.5;
     font-size: 24px;
     font-weight: bold;
   }
