@@ -2,6 +2,7 @@
   <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" :style="{ '--width': `${width}px` }">
     <template #title>
       <a-row justify="center">
+        <a-col :span="2"> 边长 </a-col>
         <a-col :span="6">
           <a-slider v-model:value="width" :min="min" :max="max" />
         </a-col>
@@ -225,7 +226,7 @@ const width = ref(100)
     position: absolute;
     width: 120%;
     height: 100%;
-    background: pink;
+    background: var(--bgc);
     left: -100%;
     right: -100%;
     margin: 0 auto;

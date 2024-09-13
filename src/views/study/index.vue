@@ -54,6 +54,7 @@ const studyList = [
       { title: '蓝胖子', href: '/study/css-demo/lanpangzi' },
       { title: '喵咪老师', href: '/study/css-demo/madara' },
       { title: '正多边形', href: '/study/css-demo/regular-polygon' },
+      { title: '正多边形（SVG）', href: '/study/css-demo/regular-polygon-svg' },
       { title: '边框特效', href: '/study/css-demo/border-effect' },
       { title: '液晶数字字体', href: '/study/css-demo/lcd-digital' },
       { title: '液晶数字字体（SVG）', href: '/study/css-demo/lcd-digital-svg' },

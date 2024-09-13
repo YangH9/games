@@ -63,6 +63,12 @@ export default [
             component: () => import('@/views/study/css-demo/regular-polygon.vue')
           },
           {
+            path: '/study/css-demo/regular-polygon-svg',
+            name: 'regular-polygon-svg',
+            meta: { title: 'SVG正多边形' },
+            component: () => import('@/views/study/css-demo/regular-polygon-svg.vue')
+          },
+          {
             path: '/study/css-demo/border-effect',
             name: 'border-effect',
             meta: { title: 'CSS边框特效' },
