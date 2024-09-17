@@ -537,6 +537,12 @@ export default [
             component: () => import('@/views/joy/tool/ceramic-tile-wall.vue')
           },
           {
+            path: '/joy/tool/curriculum',
+            name: 'curriculum',
+            meta: { title: '课程表日程生成器' },
+            component: () => import('@/views/joy/tool/curriculum.vue')
+          },
+          {
             path: '/joy/tool/skeuomorphism',
             name: 'skeuomorphism',
             meta: { title: 'CSS新拟态设计风格生成器' },

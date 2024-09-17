@@ -54,7 +54,8 @@
     "three": "^0.168.0",
     "vform3-builds": "3.0.10",
     "vue": "^3.4.38",
-    "vue-router": "^4.4.3"
+    "vue-router": "^4.4.3",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.10.4",

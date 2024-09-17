@@ -129,6 +129,7 @@ const joyList = [
       { title: '随机数生成器', href: '/joy/tool/random' },
       { title: '人生进度表', href: '/joy/tool/life-time' },
       { title: '瓷砖墙', href: '/joy/tool/ceramic-tile-wall' },
+      { title: '课程表日程生成器', href: '/joy/tool/curriculum' },
       { title: '灰色头像生成器', href: '/joy/tool/grayhead' },
       { title: '国庆红旗头像生成器', href: '/joy/tool/avatar-editor' },
       { title: 'CSS新拟态生成器', href: '/joy/tool/skeuomorphism' },
