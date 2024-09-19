@@ -4,10 +4,10 @@
     <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="扫雷" :hoverable="true">
       <template #extra>
         <a-radio-group v-model:value="type" button-style="solid" @change="init">
-          <a-radio-button label="基础" value="level1">基础</a-radio-button>
-          <a-radio-button label="中级" value="level2">中级</a-radio-button>
-          <a-radio-button label="专家" value="level3">专家</a-radio-button>
-          <a-radio-button label="自定义" value="custom">自定义</a-radio-button>
+          <a-radio-button value="level1">基础</a-radio-button>
+          <a-radio-button value="level2">中级</a-radio-button>
+          <a-radio-button value="level3">专家</a-radio-button>
+          <a-radio-button value="custom">自定义</a-radio-button>
         </a-radio-group>
         <div v-if="type === 'custom'" class="d_inline ml_2">
           <a-input-number
@@ -37,6 +37,10 @@
           <a-button type="primary" @click="init">确定</a-button>
         </div>
       </template>
+      <div class="w_100 d_flex content_between">
+        <a-checkbox value="flag">插旗</a-checkbox>
+        <a-checkbox value="mark">标记</a-checkbox>
+      </div>
       <div class="mines_box">
         <div class="mines_title">
           <div class="mines_title_num">
@@ -81,7 +85,13 @@
           </div>
         </div>
       </div>
-      {{ clickHistory }}
+      <div class="w_100 text_left">
+        <p>规则</p>
+        <p>电脑：左键开地，右键放旗子</p>
+        <p>手机：点击开地，插旗模式级</p>
+        <!-- <p>单击开始，右键放置旗子</p> -->
+      </div>
+      <!-- {{ clickHistory }} -->
     </a-card>
   </div>
 </template>
@@ -369,7 +379,6 @@ const numColor = num => {
 
 // svg数码管数字
 const DigitalTubeNumbers = ({ num, shadow }) => {
-  console.log(num)
   shadow !== undefined && (shadow = true)
   const svgItem = path => (
     <svg viewBox="0 0 667 1024" xmlns="http://www.w3.org/2000/svg" width="0.651em" height="1em">

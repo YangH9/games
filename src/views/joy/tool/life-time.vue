@@ -10,10 +10,8 @@
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { computed, reactive, inject } from 'vue'
-import minMax from 'dayjs/plugin/minMax'
 
 const dayjs = inject('dayjs')
-dayjs.extend(minMax)
 
 const formData = reactive({
   nowDay: dayjs(),

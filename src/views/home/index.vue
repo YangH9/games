@@ -48,11 +48,9 @@
 import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { inject, ref } from 'vue'
-import arraySupport from 'dayjs/plugin/arraySupport'
 
 const GetEnv = inject('GetEnv')
 const dayjs = inject('dayjs')
-dayjs.extend(arraySupport)
 
 const mode = GetEnv.MODE
 const title = GetEnv.VITE_APP_TITLE
@@ -73,7 +71,7 @@ const storeList = [
   'YangH9',
   'YangH9.github.io',
   'y',
-  'ChinaHolidayCalender',
+  'ChinaCalendar',
   'China_area',
   'form-preview',
   'linecounter',

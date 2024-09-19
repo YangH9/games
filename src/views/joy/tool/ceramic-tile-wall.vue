@@ -11,11 +11,8 @@
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { reactive, inject, computed } from 'vue'
 import { random } from 'lodash'
-import isLeapYear from 'dayjs/plugin/isLeapYear'
-import minMax from 'dayjs/plugin/minMax'
 
 const dayjs = inject('dayjs')
-dayjs.extend(isLeapYear).extend(minMax)
 
 // 默认最后一个是今天
 const toDay = dayjs()

@@ -53,10 +53,8 @@ import Header from '@/components/Header.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import RouterViewBox from '@/components/RouterViewBox.vue'
 import { inject, onBeforeUnmount, onMounted, ref } from 'vue'
-import duration from 'dayjs/plugin/duration'
 
 const dayjs = inject('dayjs')
-dayjs.extend(duration)
 
 // QQ注册时间2011-01-30
 
@@ -94,7 +92,7 @@ const nowTime = ref(dayjs())
 
 const list = [
   { title: '自制低代码表单设计器（开发中）', href: '/form-preview/' },
-  { title: '自制日历订阅(节假日、24节气)', href: '/ChinaHolidayCalender/' },
+  { title: '自制日历订阅(节假日、24节气)', href: '/ChinaCalendar/' },
   { title: '不会百度么', href: 'https://yangh9.github.io/baidu/' },
   { title: '国庆头像制作', href: 'https://yangh9.github.io/avatar-editor/' },
   { title: '摸摸头', href: 'https://yangh9.github.io/petpet/' },
