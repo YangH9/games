@@ -1,14 +1,32 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <GenerateDom />
+    <a-card title="二维码生成器" :hoverable="true">
+      <template #extra>
+        <a-button @click="() => (formData = cloneDeep(defaultData))">
+          <aUndoOutlined />
+          重置
+        </a-button>
+      </template>
+      <a-form :model="formData" :label-col="{ span: 3 }">
+        <a-row :gutter="24">
+          <a-col :span="24">
+            <a-form-item label="二维码类型" required>
+              <a-radio-group v-model:value="formData.type" :options="Object.values(typeOption)"></a-radio-group>
+            </a-form-item>
+          </a-col>
+          <typeOptionDom></typeOptionDom>
+        </a-row>
+      </a-form>
+    </a-card>
   </div>
 </template>
 
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import { reactive, inject, ref } from 'vue'
-import { debounce } from 'lodash'
+import {  inject, ref } from 'vue'
+import { cloneDeep, debounce } from 'lodash'
+import { useStorage } from '@vueuse/core'
 
 const dayjs = inject('dayjs')
 const Jsonp = inject('Jsonp')
@@ -18,7 +36,7 @@ const appStoreUrl = key =>
   `https://itunes.apple.com/search?term=${key}&country=cn&entity=software&limit=10&callback=${callback}`
 const emailOptions = ref([])
 
-const formData = reactive({
+const defaultData = {
   type: '',
   emailName: null,
   emailTitle: '',
@@ -26,10 +44,10 @@ const formData = reactive({
   eventName: null,
   eventLocation: null,
   eventAllDay: false,
-  eventTime: [dayjs(), dayjs().add(2, 'hour')],
+  eventTime: [dayjs().format('YYYY-MM-DD HH:mm'), dayjs().add(2, 'hour').format('YYYY-MM-DD HH:mm')],
   eventDesc: null,
   eventValarm: false,
-  eventValarmDate: dayjs().add(-1, 'day'),
+  eventValarmDate: dayjs().add(-1, 'day').format('YYYY-MM-DD HH:mm'),
   eventValarmTime: [1, 'H'],
   wifiName: null,
   wifiPassword: null,
@@ -56,7 +74,10 @@ const formData = reactive({
   telephone: null,
   smsName: null,
   smsBody: null
-})
+}
+
+const formData = useStorage('joy-qrcode', cloneDeep(defaultData))
+
 const typeOption = {
   email: {
     value: 'email',
@@ -66,7 +87,7 @@ const typeOption = {
         <a-col span={24}>
           <a-form-item label="收件邮箱" required>
             <a-auto-complete
-              v-model:value={formData.emailName}
+              v-model:value={formData.value.emailName}
               placeholder="收件邮箱(格式错误无效)"
               options={emailOptions.value}
               v-slots={{
@@ -94,26 +115,26 @@ const typeOption = {
         </a-col>
         <a-col span={24}>
           <a-form-item label="邮件标题">
-            <a-input v-model:value={formData.emailTitle} placeholder="邮件标题"></a-input>
+            <a-input v-model:value={formData.value.emailTitle} placeholder="邮件标题"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="邮件内容">
             <a-textarea
-              v-model:value={formData.emailBody}
+              v-model:value={formData.value.emailBody}
               auto-size={{ minRows: 2, maxRows: 5 }}
               placeholder="邮件内容"
             ></a-textarea>
           </a-form-item>
         </a-col>
-        {formData.emailName && (
+        {formData.value.emailName && (
           <a-col span={24}>
             <a-space size={20} wrap>
               <a-qrcode
-                value={`MATMSG:TO:${formData.emailName};SUB:${formData.emailTitle};BODY:${formData.emailBody};;`}
+                value={`MATMSG:TO:${formData.value.emailName};SUB:${formData.value.emailTitle};BODY:${formData.value.emailBody};;`}
               />
               <a-button
-                href={`mailto:${formData.emailName}?subject=${formData.emailTitle}&body=${formData.emailBody}`}
+                href={`mailto:${formData.value.emailName}?subject=${formData.value.emailTitle}&body=${formData.value.emailBody}`}
                 type="link"
                 target="_blank"
               >
@@ -132,25 +153,25 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="日程名称" required>
-            <a-input v-model:value={formData.eventName} placeholder="日程名称"></a-input>
+            <a-input v-model:value={formData.value.eventName} placeholder="日程名称"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="位置">
-            <a-input v-model:value={formData.eventLocation} placeholder="位置"></a-input>
+            <a-input v-model:value={formData.value.eventLocation} placeholder="位置"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="全天">
-            <a-switch v-model:checked={formData.eventAllDay} />
+            <a-switch v-model:checked={formData.value.eventAllDay} />
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="起止时间">
             <a-range-picker
-              v-model:value={formData.eventTime}
-              format={formData.eventAllDay ? 'YYYY-MM-DD' : 'YYYY-MM-DD HH:mm'}
-              showTime={formData.eventAllDay ? false : { format: 'HH:mm' }}
+              v-model:value={formData.value.eventTime}
+              valueFormat="YYYY-MM-DD HH:mm"
+              showTime={formData.value.eventAllDay ? false : { format: 'HH:mm' }}
               class="w_100"
             ></a-range-picker>
           </a-form-item>
@@ -158,7 +179,7 @@ const typeOption = {
         <a-col span={24}>
           <a-form-item label="日程备注">
             <a-textarea
-              v-model:value={formData.eventDesc}
+              v-model:value={formData.value.eventDesc}
               auto-size={{ minRows: 2, maxRows: 5 }}
               placeholder="日程备注"
             ></a-textarea>
@@ -166,17 +187,17 @@ const typeOption = {
         </a-col>
         <a-col span={24}>
           <a-form-item label="提醒">
-            <a-switch v-model:checked={formData.eventValarm} />
+            <a-switch v-model:checked={formData.value.eventValarm} />
           </a-form-item>
         </a-col>
-        {formData.eventValarm && (
+        {formData.value.eventValarm && (
           <a-col span={24}>
             <a-form-item label="提醒时间">
-              {formData.eventAllDay ? (
+              {formData.value.eventAllDay ? (
                 <>
                   <a-date-picker
-                    v-model:value={formData.eventValarmDate}
-                    format="YYYY-MM-DD HH:mm"
+                    v-model:value={formData.value.eventValarmDate}
+                    valueFormat="YYYY-MM-DD HH:mm"
                     showTime={{ format: 'HH:mm' }}
                     disabled-date={date => date && date > dayjs().endOf('day')}
                     class="w_100"
@@ -185,10 +206,10 @@ const typeOption = {
               ) : (
                 <a-row gutter={10}>
                   <a-col span={10}>
-                    <a-input-number v-model:value={formData.eventValarmTime[0]} class="w_100"></a-input-number>
+                    <a-input-number v-model:value={formData.value.eventValarmTime[0]} class="w_100"></a-input-number>
                   </a-col>
                   <a-col span={10}>
-                    <a-select v-model:value={formData.eventValarmTime[1]} class="grow">
+                    <a-select v-model:value={formData.value.eventValarmTime[1]} class="grow">
                       {[
                         { value: 'S', label: '秒' },
                         { value: 'M', label: '分钟' },
@@ -204,22 +225,22 @@ const typeOption = {
             </a-form-item>
           </a-col>
         )}
-        {formData.eventName && (
+        {formData.value.eventName && (
           <a-col span={24}>
             <a-space size={20} wrap>
               <a-qrcode
-                value={`BEGIN:VEVENT\nDTSTART:${formData.eventTime[0].format(
-                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
-                )}\nDTEND:${formData.eventTime[1].format(
-                  formData.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
-                )}\nSUMMARY:${formData.eventName}\n${
-                  formData.eventLocation ? `LOCATION:${formData.eventLocation}\n` : ''
-                }${formData.eventDesc ? `DESCRIPTION:${formData.eventDesc?.replaceAll('\n', '\\n')}\n` : ''}${
-                  formData.eventValarm
+                value={`BEGIN:VEVENT\nDTSTART:${dayjs(formData.value.eventTime[0], 'YYYY-MM-DD HH:mm').format(
+                  formData.value.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
+                )}\nDTEND:${dayjs(formData.value.eventTime[1], 'YYYY-MM-DD HH:mm').format(
+                  formData.value.eventAllDay ? 'YYYYMMDD' : 'YYYYMMDDTHHmm00'
+                )}\nSUMMARY:${formData.value.eventName}\n${
+                  formData.value.eventLocation ? `LOCATION:${formData.value.eventLocation}\n` : ''
+                }${formData.value.eventDesc ? `DESCRIPTION:${formData.value.eventDesc?.replaceAll('\n', '\\n')}\n` : ''}${
+                  formData.value.eventValarm
                     ? `BEGIN:VALARM\nTRIGGER:${
-                        formData.eventAllDay
-                          ? formData.eventValarmDate.format('YYYYMMDDTHHmm00')
-                          : `-PT${formData.eventValarmTime.join('')}`
+                        formData.value.eventAllDay
+                          ? dayjs(formData.value.eventValarmDate, 'YYYY-MM-DD HH:mm').format('YYYYMMDDTHHmm00')
+                          : `-PT${formData.value.eventValarmTime.join('')}`
                       }\nACTION:DISPLAY\nEND:VALARM\n`
                     : ''
                 }END:VEVENT`}
@@ -237,18 +258,18 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="WiFi名称" required>
-            <a-input v-model:value={formData.wifiName} placeholder="WiFi名称"></a-input>
+            <a-input v-model:value={formData.value.wifiName} placeholder="WiFi名称"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="WiFi密码">
-            <a-input v-model:value={formData.wifiPassword} placeholder="WiFi密码(最小8位)"></a-input>
+            <a-input v-model:value={formData.value.wifiPassword} placeholder="WiFi密码(最小8位)"></a-input>
           </a-form-item>
         </a-col>
-        {formData.wifiName && (
+        {formData.value.wifiName && (
           <a-col span={24}>
             <a-space size={20} wrap>
-              <a-qrcode value={`WIFI:T:WPA;S:${formData.wifiName};P:${formData.wifiPassword};;`} />
+              <a-qrcode value={`WIFI:T:WPA;S:${formData.value.wifiName};P:${formData.value.wifiPassword};;`} />
             </a-space>
           </a-col>
         )}
@@ -262,14 +283,14 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="链接" required>
-            <a-input v-model:value={formData.linkUrl} placeholder="链接"></a-input>
+            <a-input v-model:value={formData.value.linkUrl} placeholder="链接"></a-input>
           </a-form-item>
         </a-col>
-        {formData.linkUrl && (
+        {formData.value.linkUrl && (
           <a-col span={24}>
             <a-space size={20} wrap>
-              <a-qrcode value={formData.linkUrl} />
-              <a-button href={formData.linkUrl} type="link" target="_blank">
+              <a-qrcode value={formData.value.linkUrl} />
+              <a-button href={formData.value.linkUrl} type="link" target="_blank">
                 点击跳转
               </a-button>
             </a-space>
@@ -286,7 +307,7 @@ const typeOption = {
         <a-col span={24}>
           <a-form-item label="纬度" required>
             <a-input-number
-              v-model:value={formData.geographyLatitude}
+              v-model:value={formData.value.geographyLatitude}
               min={-90}
               max={90}
               step="0.000000001"
@@ -299,7 +320,7 @@ const typeOption = {
         <a-col span={24}>
           <a-form-item label="经度" required>
             <a-input-number
-              v-model:value={formData.geographyLongitude}
+              v-model:value={formData.value.geographyLongitude}
               min={-180}
               max={180}
               step="0.000000001"
@@ -312,7 +333,7 @@ const typeOption = {
         <a-col span={24}>
           <a-form-item label="精度">
             <a-input-number
-              v-model:value={formData.geographyAccuracy}
+              v-model:value={formData.value.geographyAccuracy}
               min={0}
               max={1000}
               placeholder="精度"
@@ -320,11 +341,11 @@ const typeOption = {
             ></a-input-number>
           </a-form-item>
         </a-col>
-        {formData.geographyLatitude && formData.geographyLongitude && (
+        {formData.value.geographyLatitude && formData.value.geographyLongitude && (
           <a-col span={24}>
             <a-space size={20} wrap>
               <a-qrcode
-                value={`GEO:${formData.geographyLatitude},${formData.geographyLongitude},${formData.geographyAccuracy}`}
+                value={`GEO:${formData.value.geographyLatitude},${formData.value.geographyLongitude},${formData.value.geographyAccuracy}`}
               />
             </a-space>
           </a-col>
@@ -340,16 +361,16 @@ const typeOption = {
         <a-col span={24}>
           <a-form-item label="文本内容" required>
             <a-textarea
-              v-model:value={formData.text}
+              v-model:value={formData.value.text}
               auto-size={{ minRows: 2, maxRows: 5 }}
               placeholder="文本内容"
             ></a-textarea>
           </a-form-item>
         </a-col>
-        {formData.text && (
+        {formData.value.text && (
           <a-col span={24}>
             <a-space size={20} wrap>
-              <a-qrcode value={formData.text} />
+              <a-qrcode value={formData.value.text} />
             </a-space>
           </a-col>
         )}
@@ -365,28 +386,28 @@ const typeOption = {
           <a-form-item label="姓名" required>
             <a-row gutter={10}>
               <a-col span={12}>
-                <a-input v-model:value={formData.contactSurname} placeholder="姓"></a-input>
+                <a-input v-model:value={formData.value.contactSurname} placeholder="姓"></a-input>
               </a-col>
               <a-col span={12}>
-                <a-input v-model:value={formData.contactName} placeholder="名"></a-input>
+                <a-input v-model:value={formData.value.contactName} placeholder="名"></a-input>
               </a-col>
             </a-row>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="电话号码" required>
-            <a-input v-model:value={formData.contactTel} placeholder="电话号码"></a-input>
+            <a-input v-model:value={formData.value.contactTel} placeholder="电话号码"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="电子邮件">
-            <a-input v-model:value={formData.contactEmail} placeholder="电子邮件"></a-input>
+            <a-input v-model:value={formData.value.contactEmail} placeholder="电子邮件"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="生日">
             <a-date-picker
-              v-model:value={formData.contactBirthday}
+              v-model:value={formData.value.contactBirthday}
               format="YYYY-MM-DD"
               placeholder="生日"
               class="w_100"
@@ -395,59 +416,59 @@ const typeOption = {
         </a-col>
         <a-col span={24}>
           <a-form-item label="地址">
-            <a-input v-model:value={formData.contactAdr} placeholder="地址"></a-input>
+            <a-input v-model:value={formData.value.contactAdr} placeholder="地址"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="个人主页">
-            <a-input v-model:value={formData.contactUrl} placeholder="个人主页"></a-input>
+            <a-input v-model:value={formData.value.contactUrl} placeholder="个人主页"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="QQ">
-            <a-input v-model:value={formData.contactQQ} placeholder="QQ"></a-input>
+            <a-input v-model:value={formData.value.contactQQ} placeholder="QQ"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="组织">
-            <a-input v-model:value={formData.contactOrg} placeholder="组织"></a-input>
+            <a-input v-model:value={formData.value.contactOrg} placeholder="组织"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="职位">
-            <a-input v-model:value={formData.contactTitle} placeholder="职位"></a-input>
+            <a-input v-model:value={formData.value.contactTitle} placeholder="职位"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="工作电话">
-            <a-input v-model:value={formData.contactWorkTel} placeholder="工作电话"></a-input>
+            <a-input v-model:value={formData.value.contactWorkTel} placeholder="工作电话"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="备注">
             <a-textarea
-              v-model:value={formData.contactNote}
+              v-model:value={formData.value.contactNote}
               auto-size={{ minRows: 2, maxRows: 5 }}
               placeholder="备注"
             ></a-textarea>
           </a-form-item>
         </a-col>
-        {formData.contactSurname && formData.contactName && formData.contactTel && (
+        {formData.value.contactSurname && formData.value.contactName && formData.value.contactTel && (
           <a-col span={24}>
             <a-space size={20} wrap>
               <a-qrcode
-                value={`BEGIN:VCARD\nVERSION:3.0\nN:${formData.contactSurname}${
-                  formData.contactName
-                }\nTEL;TYPE=HOME,VOICE:${formData.contactTel}\n${
-                  formData.contactEmail ? `EMAIL:${formData.contactEmail}\n` : ''
-                }${formData.contactBirthday ? `BDAY:${formData.contactBirthday.format('YYYYMMDD')}\n` : ''}${
-                  formData.contactAdr ? `ADR:${formData.contactAdr}\n` : ''
-                }${formData.contactUrl ? `URL:${formData.contactUrl}\n` : ''}${
-                  formData.contactQQ ? `X-QQ:${formData.contactQQ}\n` : ''
-                }${formData.contactOrg ? `ORG:${formData.contactOrg}\n` : ''}${
-                  formData.contactTitle ? `TITLE:${formData.contactTitle}\n` : ''
-                }${formData.contactWorkTel ? `TEL;TYPE=WORK,VOICE:${formData.contactWorkTel}\n` : ''}${
-                  formData.contactNote ? `NOTE:${formData.contactNote?.replaceAll('\n', '\\n')}\n` : ''
+                value={`BEGIN:VCARD\nVERSION:3.0\nN:${formData.value.contactSurname}${
+                  formData.value.contactName
+                }\nTEL;TYPE=HOME,VOICE:${formData.value.contactTel}\n${
+                  formData.value.contactEmail ? `EMAIL:${formData.value.contactEmail}\n` : ''
+                }${formData.value.contactBirthday ? `BDAY:${formData.value.contactBirthday.format('YYYYMMDD')}\n` : ''}${
+                  formData.value.contactAdr ? `ADR:${formData.value.contactAdr}\n` : ''
+                }${formData.value.contactUrl ? `URL:${formData.value.contactUrl}\n` : ''}${
+                  formData.value.contactQQ ? `X-QQ:${formData.value.contactQQ}\n` : ''
+                }${formData.value.contactOrg ? `ORG:${formData.value.contactOrg}\n` : ''}${
+                  formData.value.contactTitle ? `TITLE:${formData.value.contactTitle}\n` : ''
+                }${formData.value.contactWorkTel ? `TEL;TYPE=WORK,VOICE:${formData.value.contactWorkTel}\n` : ''}${
+                  formData.value.contactNote ? `NOTE:${formData.value.contactNote?.replaceAll('\n', '\\n')}\n` : ''
                 }END:VCARD`}
               />
             </a-space>
@@ -464,23 +485,23 @@ const typeOption = {
         <a-col span={24}>
           <a-form-item label="App名称" required>
             <a-select
-              v-model:value={formData.appStoreName}
+              v-model:value={formData.value.appStoreName}
               show-search
               listHeight={440}
               filterOption={() => true}
               placeholder="App名称,输入内容搜索(暂时仅支持AppStore的App)"
               class="grow"
               onChange={async val => {
-                formData.appStoreItem = formData.appStoreList.find(i => i.trackName === val)
+                formData.value.appStoreItem = formData.value.appStoreList.find(i => i.trackName === val)
                 const res = await Jsonp(appStoreUrl(val), callback)
-                formData.appStoreList = res.results
+                formData.value.appStoreList = res.results
               }}
               onSearch={debounce(async val => {
                 const res = await Jsonp(appStoreUrl(val), callback)
-                formData.appStoreList = res.results
+                formData.value.appStoreList = res.results
               }, 500)}
             >
-              {formData.appStoreList.map(item => (
+              {formData.value.appStoreList.map(item => (
                 <a-select-option value={item.trackName}>
                   <a-space size={20} class="ml_2">
                     <a-avatar src={item.artworkUrl60} shape="square" />
@@ -491,20 +512,20 @@ const typeOption = {
             </a-select>
           </a-form-item>
         </a-col>
-        {formData.appStoreItem && (
+        {formData.value.appStoreItem && (
           <>
             <a-col span={24}>
               <a-space>
-                <a-avatar src={formData.appStoreItem.artworkUrl60} shape="square" />
-                {formData.appStoreItem.trackName}
+                <a-avatar src={formData.value.appStoreItem.artworkUrl60} shape="square" />
+                {formData.value.appStoreItem.trackName}
               </a-space>
-              <p class="textFlow_2">{formData.appStoreItem.description}</p>
+              <p class="textFlow_2">{formData.value.appStoreItem.description}</p>
             </a-col>
             <a-col span={24}>
               <a-space size={20}>
-                <a-qrcode value={`https://apps.apple.com/cn/app/id${formData.appStoreItem.trackId}`} />
+                <a-qrcode value={`https://apps.apple.com/cn/app/id${formData.value.appStoreItem.trackId}`} />
                 <a-button
-                  href={`https://apps.apple.com/cn/app/id${formData.appStoreItem.trackId}`}
+                  href={`https://apps.apple.com/cn/app/id${formData.value.appStoreItem.trackId}`}
                   type="link"
                   target="_blank"
                 >
@@ -524,14 +545,14 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="电话号码" required>
-            <a-input v-model:value={formData.telephone} placeholder="电话号码"></a-input>
+            <a-input v-model:value={formData.value.telephone} placeholder="电话号码"></a-input>
           </a-form-item>
         </a-col>
-        {formData.telephone && (
+        {formData.value.telephone && (
           <a-col span={24}>
             <a-space size={20} wrap>
-              <a-qrcode value={`TEL:${formData.telephone}`} />
-              <a-button href={`tel:${formData.telephone}`} type="link" target="_blank">
+              <a-qrcode value={`TEL:${formData.value.telephone}`} />
+              <a-button href={`tel:${formData.value.telephone}`} type="link" target="_blank">
                 点击跳转
               </a-button>
             </a-space>
@@ -547,23 +568,27 @@ const typeOption = {
       <>
         <a-col span={24}>
           <a-form-item label="收信人" required>
-            <a-input v-model:value={formData.smsName} placeholder="收信人"></a-input>
+            <a-input v-model:value={formData.value.smsName} placeholder="收信人"></a-input>
           </a-form-item>
         </a-col>
         <a-col span={24}>
           <a-form-item label="短信内容">
             <a-textarea
-              v-model:value={formData.smsBody}
+              v-model:value={formData.value.smsBody}
               auto-size={{ minRows: 2, maxRows: 5 }}
               placeholder="短信内容"
             ></a-textarea>
           </a-form-item>
         </a-col>
-        {formData.smsName && (
+        {formData.value.smsName && (
           <a-col span={24}>
             <a-space size={20} wrap>
-              <a-qrcode value={`SMSTO:${formData.smsName}:${formData.smsBody}`} />
-              <a-button href={`sms:${formData.smsName}?body=${formData.smsBody}`} type="link" target="_blank">
+              <a-qrcode value={`SMSTO:${formData.value.smsName}:${formData.value.smsBody}`} />
+              <a-button
+                href={`sms:${formData.value.smsName}?body=${formData.value.smsBody}`}
+                type="link"
+                target="_blank"
+              >
                 点击跳转发送
               </a-button>
             </a-space>
@@ -573,20 +598,7 @@ const typeOption = {
     )
   }
 }
-const GenerateDom = () => (
-  <a-card title="二维码生成器" hoverable={true}>
-    <a-form model={formData} label-col={{ span: 3 }}>
-      <a-row gutter={24}>
-        <a-col span={24}>
-          <a-form-item label="二维码类型" required>
-            <a-radio-group v-model:value={formData.type} options={Object.values(typeOption)}></a-radio-group>
-          </a-form-item>
-        </a-col>
-        {typeOption[formData.type]?.dom()}
-      </a-row>
-    </a-form>
-  </a-card>
-)
+const typeOptionDom = () => typeOption[formData.value.type]?.dom()
 </script>
 
 <style scoped lang="scss"></style>

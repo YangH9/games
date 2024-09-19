@@ -15,16 +15,16 @@
           picker="week"
           class="mr_2"
         />
-        <a-button class="mr_2">
+        <!-- <a-button class="mr_2" @click="setClassTimeList">
           <aSettingOutlined />
           每日课程时间
-        </a-button>
-        <a-upload accept=".xls,.xlsx" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="false">
+        </a-button> -->
+        <!-- <a-upload accept=".xls,.xlsx" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="false">
           <a-button class="mr_2">
             <aUploadOutlined />
             {{ fileList[0]?.name || '导入文件' }}
           </a-button>
-        </a-upload>
+        </a-upload> -->
         <a-button type="primary" @click="generateSchedule">
           <aDownloadOutlined />
           生成日程
@@ -37,14 +37,21 @@
               type="link"
               class="mr_2"
               @Click.stop="
-                () => curriculumList.push(cloneDeep(curriculumDefault)) & collapseActive.push(curriculumList.length - 1)
+                () =>
+                  curriculumList.splice(index + 1, 0, cloneDeep(curriculumDefault)) &
+                  collapseActive.push(curriculumList.length - 1)
               "
             >
               <template #icon>
                 <aPlusOutlined />
               </template>
             </a-button>
-            <a-button type="link" danger @Click.stop="() => curriculumList.splice(index, 1)">
+            <a-button
+              v-if="curriculumList.length > 1"
+              type="link"
+              danger
+              @Click.stop="() => curriculumList.splice(index, 1)"
+            >
               <template #icon>
                 <aDeleteOutlined />
               </template>
@@ -67,7 +74,7 @@
               </a-form-item>
             </a-descriptions-item>
             <a-descriptions-item>
-              <a-form-item label="时间" class="mb_0 grow">
+              <a-form-item label="时间" required class="mb_0 grow">
                 <a-cascader
                   v-model:value="item.classTime"
                   :options="classTimeOption"
@@ -104,8 +111,7 @@
           </a-descriptions>
         </a-collapse-panel>
       </a-collapse>
-      <p>{{ curriculumList }}</p>
-      <p>{{ calendarText }}</p>
+      <!-- <p>{{ curriculumList }}</p> -->
       <!-- <div>{{ textxml }}</div> -->
       <!-- <table border>
         <thead>
@@ -132,6 +138,7 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import { read, utils } from 'xlsx'
 import { computed, inject, ref } from 'vue'
 import { cloneDeep } from 'lodash'
+import { useStorage } from '@vueuse/core'
 
 const dayjs = inject('dayjs')
 
@@ -145,6 +152,8 @@ const curriculumDefault = {
   room: '',
   alarm: 30
 }
+
+const curriculumList = useStorage('joy-curriculum', [cloneDeep(curriculumDefault)])
 
 const weeksList = Array.from({ length: 53 }, (_, i) => ({ label: `第${i + 1}周`, value: i + 1 }))
 const alarmList = [
@@ -162,7 +171,10 @@ const classTimeList = ref([
   { name: '第二节', startTime: '10:05', endTime: '11:40' },
   { name: '第三节', startTime: '14:00', endTime: '15:35' },
   { name: '第四节', startTime: '16:05', endTime: '17:40' },
-  { name: '第五节', startTime: '19:00', endTime: '20:35' }
+  { name: '第五节', startTime: '19:00', endTime: '20:35' },
+  { name: '第六节', startTime: '20:45', endTime: '22:20' },
+  { name: '午间', startTime: '12:00', endTime: '13:35' },
+  { name: '晚间', startTime: '18:00', endTime: '18:45' }
 ])
 
 const classTimeOption = computed(() =>
@@ -176,58 +188,50 @@ const classTimeOption = computed(() =>
   }))
 )
 
-const curriculumList = ref([
-  {
-    course: '高等数学',
-    room: '西5-217c',
-    teacher: '王老师',
-    weeks: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-    classTime: [0, 2],
-    alarm: 30
-  },
-  { teacher: '王老师', course: '计算机网络', weeks: [4], classTime: [1, 2], room: '1-2', alarm: 30 },
-  { teacher: '', course: '', weeks: [4], classTime: [], room: '', alarm: 30 }
-])
-
 const collapseActive = ref(curriculumList.value.map((_, i) => i))
-
-const calendarText = ref('')
 
 const calendarObj = {
   head: () =>
-    `BEGIN:VCALENDAR\nPRODID:-//YangH9//China Calendar//CN\nVERSION:2.0\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:课程表日历\nX-WR-TIMEZONE:Asia/Shanghai\nX-WR-CALDESC:${fistWeek.value}周课程表日历\nBEGIN:VTIMEZONE\nTZID:Asia/Shanghai\nX-LIC-LOCATION:Asia/Shanghai\nBEGIN:STANDARD\nTZOFFSETFROM:+0800\nTZOFFSETTO:+0800\nTZNAME:CST\nDTSTART:19700101T000000\nEND:STANDARD\nEND:VTIMEZONE`,
-  body: () =>
-    `BEGIN:VEVENT\nDTSTART:20200119T090000\nDTEND:20200119T180000\nUID:20200119T000001_1@YangH9\nCREATED:20200119T000001\nLAST-MODIFIED:20240909T105531\nSUMMARY:课程名称\nDESCRIPTION:课程名称\nSTATUS:TENTATIVE\nTRANSP:OPAQUE\nSEQUENCE:1\nBEGIN:VALARM\nTRIGGER:-PT60M\nACTION:DISPLAY\nEND:VALARM\nEND:VEVENT`,
-  aaa: () =>
-    `BEGIN:VEVENT\nDTSTART:YYYYMMDDTHHmm00\nDTEND:YYYYMMDDTHHmm00\nSUMMARY:课程名称\nLOCATION:地点\nDESCRIPTION:描述\nBEGIN:VALARM\nTRIGGER:-PT30M\nACTION:DISPLAY\nEND:VALARM\nEND:VEVENT`,
+    `BEGIN:VCALENDAR\nPRODID:-//YangH9//China Calendar//CN\nVERSION:2.0\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:课程表日历\nX-WR-TIMEZONE:Asia/Shanghai\nX-WR-CALDESC:${fistWeek.value}周课程表日历\nBEGIN:VTIMEZONE\nTZID:Asia/Shanghai\nX-LIC-LOCATION:Asia/Shanghai\nBEGIN:STANDARD\nTZOFFSETFROM:+0800\nTZOFFSETTO:+0800\nTZNAME:CST\nDTSTART:19700101T000000\nEND:STANDARD\nEND:VTIMEZONE\n`,
+  body: ({ start, end, UID, create, modify, summary, location, description, alarm }) =>
+    `BEGIN:VEVENT\n${start}${end}${UID}${create}${modify}${summary}${location}${description}${alarm}END:VEVENT\n`,
   foot: () => 'END:VCALENDAR'
 }
 
 // 生成日程模板
 const generateSchedule = () => {
-  console.log(calendarObj.aaa())
-  // console.log(calendarObj.head())
-  console.log(calendarObj.body())
-  // console.log(calendarObj.foot())
-  curriculumList.value.map((item, index) => {
-    const startTime = classTimeList.value[item.classTime[1]]?.startTime
-    const endTime = classTimeList.value[item.classTime[1]]?.endTime
-    const weekday = item.classTime[0]
-    item.weeks.map(week => {
-      const dayTime = dayjs(dayjs(fistWeek.value, 'YYYY-ww').diff(dayjs.duration({ weeks: -week, days: -weekday })))
-      const obj = {
-        start: dayjs(`${dayTime.format('YYYY-MM-DD')} ${startTime}`).format('YYYYMMDDTHHmm00'),
-        end: dayjs(`${dayTime.format('YYYY-MM-DD')} ${endTime}`).format('YYYYMMDDTHHmm00'),
-        UID: `${dayTime.format('YYYYMMDDTHHmm01')}_${index + 1}@YangH9`,
-        create: dayTime.format('YYYYMMDDTHHmm01'),
-        modify: dayjs().format('YYYYMMDDTHHmmss')
-      }
-      console.log(obj, dayjs(fistWeek.value, 'YYYY-ww').format('YYYY-MM-DD'), dayTime.format('YYYY-MM-DD'))
-      // console.log(item, week, dayTime.format('YYYY-MM-DD'))
+  const body = curriculumList.value
+    .filter(item => item.classTime.length === 2)
+    .map((item, index) => {
+      const { name: className, startTime, endTime } = classTimeList.value[item.classTime[1]] || {}
+      const weekday = item.classTime[0]
+      return item.weeks
+        .map(week => {
+          const dayTime = dayjs(dayjs(fistWeek.value, 'YYYY-ww').diff(dayjs.duration({ weeks: -week, days: -weekday })))
+          const obj = {
+            start: `DTSTART:${dayjs(`${dayTime.format('YYYY-MM-DD')} ${startTime}`).format('YYYYMMDDTHHmm00')}\n`,
+            end: `DTEND:${dayjs(`${dayTime.format('YYYY-MM-DD')} ${endTime}`).format('YYYYMMDDTHHmm00')}\n`,
+            UID: `UID:${dayTime.format('YYYYMMDDTHHmm01')}_${index + 1}@YangH9\n`,
+            create: `CREATED:${dayTime.format('YYYYMMDDTHHmm01')}\n`,
+            modify: `LAST-MODIFIED:${dayjs().format('YYYYMMDDTHHmmss')}\n`,
+            summary: `SUMMARY:『${item.course}』${weeksList[week - 1].label}\n`,
+            location: `LOCATION:${item.room}\n`,
+            description: `DESCRIPTION:课程名称：『${item.course}』${weeksList[week - 1].label}\\n上课时间：${weekList[weekday]} ${className}(${startTime}-${endTime})\\n授课老师：${item.teacher}\\n教室位置：${item.room}\n`,
+            alarm: item.alarm ? `BEGIN:VALARM\nTRIGGER:-PT${item.alarm}M\nACTION:DISPLAY\nEND:VALARM\n` : ''
+          }
+          return calendarObj.body(obj)
+        })
+        .join('')
     })
-
-    // console.log(item, startTime, endTime)
-  })
+    .join('')
+  const fileName = `${fistWeek.value}周课程表.ics`
+  const content = `${calendarObj.head()}${body}${calendarObj.foot()}`
+  const aTag = document.createElement('a')
+  const blob = new Blob([content])
+  aTag.download = fileName
+  aTag.href = URL.createObjectURL(blob)
+  aTag.click()
+  URL.revokeObjectURL(blob)
 }
 
 const fileList = ref([])
@@ -273,6 +277,8 @@ const beforeUploadXml = file => {
   reader.readAsText(file, 'GB2312')
   return false
 }
+
+const setClassTimeList = () => {}
 </script>
 
 <style scoped lang="scss">
