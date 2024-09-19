@@ -15,10 +15,18 @@
           picker="week"
           class="mr_2"
         />
-        <!-- <a-button class="mr_2" @click="setClassTimeList">
+        <a-button
+          class="mr_2"
+          @click="
+            () => {
+              classTimeModal.visible = true
+              classTimeModal.list = cloneDeep(classTimeList)
+            }
+          "
+        >
           <aSettingOutlined />
-          每日课程时间
-        </a-button> -->
+          课程时间
+        </a-button>
         <!-- <a-upload accept=".xls,.xlsx" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="false">
           <a-button class="mr_2">
             <aUploadOutlined />
@@ -57,58 +65,60 @@
               </template>
             </a-button>
           </template>
-          <a-descriptions>
-            <a-descriptions-item>
-              <a-form-item label="课程" class="mb_0 grow">
-                <a-input v-model:value="item.course" placeholder="课程" />
-              </a-form-item>
-            </a-descriptions-item>
-            <a-descriptions-item>
-              <a-form-item label="教室" class="mb_0 grow">
-                <a-input v-model:value="item.room" placeholder="教室" />
-              </a-form-item>
-            </a-descriptions-item>
-            <a-descriptions-item>
-              <a-form-item label="老师" class="mb_0 grow">
-                <a-input v-model:value="item.teacher" placeholder="老师" />
-              </a-form-item>
-            </a-descriptions-item>
-            <a-descriptions-item>
-              <a-form-item label="时间" required class="mb_0 grow">
-                <a-cascader
-                  v-model:value="item.classTime"
-                  :options="classTimeOption"
-                  expand-trigger="hover"
-                  placeholder="上课时间"
-                  popupClassName="h240"
-                />
-              </a-form-item>
-            </a-descriptions-item>
-            <a-descriptions-item>
-              <a-form-item label="上课周" class="mb_0 grow">
-                <a-select
-                  v-model:value="item.weeks"
-                  mode="multiple"
-                  allowClear
-                  max-tag-count="responsive"
-                  placeholder="上课周"
-                >
-                  <a-select-option v-for="(item, index) in weeksList" :key="index" :value="item.value">
-                    {{ item.label }}
-                  </a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-descriptions-item>
-            <a-descriptions-item>
-              <a-form-item label="提醒" class="mb_0 grow">
-                <a-select v-model:value="item.alarm" placeholder="提醒时间">
-                  <a-select-option v-for="(item, index) in alarmList" :key="index" :value="item.value">
-                    {{ item.label }}
-                  </a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-descriptions-item>
-          </a-descriptions>
+          <a-form>
+            <a-descriptions class="mb_2">
+              <a-descriptions-item>
+                <a-form-item label="课程" class="mb_0 grow">
+                  <a-input v-model:value="item.course" placeholder="课程" />
+                </a-form-item>
+              </a-descriptions-item>
+              <a-descriptions-item>
+                <a-form-item label="教室" class="mb_0 grow">
+                  <a-input v-model:value="item.room" placeholder="教室" />
+                </a-form-item>
+              </a-descriptions-item>
+              <a-descriptions-item>
+                <a-form-item label="老师" class="mb_0 grow">
+                  <a-input v-model:value="item.teacher" placeholder="老师" />
+                </a-form-item>
+              </a-descriptions-item>
+              <a-descriptions-item>
+                <a-form-item label="时间" required class="mb_0 grow">
+                  <a-cascader
+                    v-model:value="item.classTime"
+                    :options="classTimeOption"
+                    expand-trigger="hover"
+                    placeholder="上课时间"
+                    popupClassName="h240"
+                  />
+                </a-form-item>
+              </a-descriptions-item>
+              <a-descriptions-item>
+                <a-form-item label="上课周" class="mb_0 grow">
+                  <a-select
+                    v-model:value="item.weeks"
+                    mode="multiple"
+                    allowClear
+                    max-tag-count="responsive"
+                    placeholder="上课周"
+                  >
+                    <a-select-option v-for="(item, index) in weeksList" :key="index" :value="item.value">
+                      {{ item.label }}
+                    </a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-descriptions-item>
+              <a-descriptions-item>
+                <a-form-item label="提醒" class="mb_0 grow">
+                  <a-select v-model:value="item.alarm" placeholder="提醒时间">
+                    <a-select-option v-for="(item, index) in alarmList" :key="index" :value="item.value">
+                      {{ item.label }}
+                    </a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-descriptions-item>
+            </a-descriptions>
+          </a-form>
         </a-collapse-panel>
       </a-collapse>
       <!-- <p>{{ curriculumList }}</p> -->
@@ -130,13 +140,78 @@
         </tbody>
       </table> -->
     </a-card>
+    <a-modal
+      v-model:open="classTimeModal.visible"
+      width="1000px"
+      :closable="false"
+      :bodyStyle="{ maxHeight: 'calc(100vh - 300px)', overflowY: 'auto' }"
+      @ok="
+        () => {
+          classTimeModal.visible = false
+          classTimeList = cloneDeep(classTimeModal.list)
+        }
+      "
+    >
+      <template #title>
+        <div class="d_flex content_between">
+          课程时间
+          <a-button type="link" @click="() => (classTimeModal.list = cloneDeep(classTimeDefaultList))">
+            <aUndoOutlined />
+            重置
+          </a-button>
+        </div>
+      </template>
+      <a-descriptions v-for="(item, index) in classTimeModal.list" :key="index" :column="4" class="mb_2">
+        <a-descriptions-item>
+          <a-input v-model:value="item.name" placeholder="名称" />
+        </a-descriptions-item>
+        <a-descriptions-item>
+          <a-time-picker
+            v-model:value="item.startTime"
+            format="HH:mm"
+            value-format="HH:mm"
+            class="w_100"
+            placeholder="上课时间"
+          />
+        </a-descriptions-item>
+        <a-descriptions-item>
+          <a-time-picker
+            v-model:value="item.endTime"
+            format="HH:mm"
+            value-format="HH:mm"
+            class="w_100"
+            placeholder="上课时间"
+          />
+        </a-descriptions-item>
+        <a-descriptions-item>
+          <a-button
+            type="link"
+            @Click.stop="() => classTimeModal.list.splice(index + 1, 0, cloneDeep(classTimeDefaultItem))"
+          >
+            <template #icon>
+              <aPlusOutlined />
+            </template>
+          </a-button>
+          <a-button
+            v-if="classTimeModal.list.length > 1"
+            type="link"
+            danger
+            @Click.stop="() => classTimeModal.list.splice(index, 1)"
+          >
+            <template #icon>
+              <aDeleteOutlined />
+            </template>
+          </a-button>
+        </a-descriptions-item>
+      </a-descriptions>
+    </a-modal>
   </div>
 </template>
 
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import { read, utils } from 'xlsx'
-import { computed, inject, ref } from 'vue'
+import { computed, inject, reactive, ref } from 'vue'
 import { cloneDeep } from 'lodash'
 import { useStorage } from '@vueuse/core'
 
@@ -144,16 +219,21 @@ const dayjs = inject('dayjs')
 
 const fistWeek = ref('2024-34')
 
-const curriculumDefault = {
-  teacher: '',
-  course: '',
-  weeks: [],
-  classTime: [],
-  room: '',
-  alarm: 30
-}
+const curriculumDefault = { teacher: '', course: '', weeks: [], classTime: [], room: '', alarm: 30 }
+const classTimeDefaultItem = { name: '', startTime: '08:00', endTime: '09:00' }
+const classTimeDefaultList = [
+  { name: '第一节', startTime: '08:00', endTime: '09:35' },
+  { name: '第二节', startTime: '10:05', endTime: '11:40' },
+  { name: '第三节', startTime: '14:00', endTime: '15:35' },
+  { name: '第四节', startTime: '16:05', endTime: '17:40' },
+  { name: '第五节', startTime: '19:00', endTime: '20:35' },
+  { name: '第六节', startTime: '20:45', endTime: '22:20' },
+  { name: '午间', startTime: '12:00', endTime: '13:35' },
+  { name: '晚间', startTime: '18:00', endTime: '18:45' }
+]
 
-const curriculumList = useStorage('joy-curriculum', [cloneDeep(curriculumDefault)])
+const curriculumList = useStorage('joy-curriculum-list', [cloneDeep(curriculumDefault)])
+const classTimeList = useStorage('joy-curriculum-class', cloneDeep(classTimeDefaultList))
 
 const weeksList = Array.from({ length: 53 }, (_, i) => ({ label: `第${i + 1}周`, value: i + 1 }))
 const alarmList = [
@@ -166,16 +246,6 @@ const alarmList = [
   { label: '一小时前', value: 60 }
 ]
 const weekList = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-const classTimeList = ref([
-  { name: '第一节', startTime: '08:00', endTime: '09:35' },
-  { name: '第二节', startTime: '10:05', endTime: '11:40' },
-  { name: '第三节', startTime: '14:00', endTime: '15:35' },
-  { name: '第四节', startTime: '16:05', endTime: '17:40' },
-  { name: '第五节', startTime: '19:00', endTime: '20:35' },
-  { name: '第六节', startTime: '20:45', endTime: '22:20' },
-  { name: '午间', startTime: '12:00', endTime: '13:35' },
-  { name: '晚间', startTime: '18:00', endTime: '18:45' }
-])
 
 const classTimeOption = computed(() =>
   weekList.map((week, index) => ({
@@ -187,6 +257,11 @@ const classTimeOption = computed(() =>
     }))
   }))
 )
+
+const classTimeModal = reactive({
+  visible: false,
+  list: []
+})
 
 const collapseActive = ref(curriculumList.value.map((_, i) => i))
 
@@ -277,8 +352,6 @@ const beforeUploadXml = file => {
   reader.readAsText(file, 'GB2312')
   return false
 }
-
-const setClassTimeList = () => {}
 </script>
 
 <style scoped lang="scss">
