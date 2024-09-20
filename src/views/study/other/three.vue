@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 21, dom: '.ant-card-body' }" title="three Demo" :hoverable="true">
-      <canvas id="threeDom3"></canvas>
+      <!-- <canvas id="threeDom3"></canvas> -->
       <canvas id="threeDom2"></canvas>
       <canvas id="threeDom1"></canvas>
     </a-card>
@@ -423,7 +423,7 @@ const main2 = () => {
 onMounted(() => {
   main1()
   main2()
-  main3()
+  // main3()
 })
 </script>
 

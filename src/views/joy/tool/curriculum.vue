@@ -27,12 +27,34 @@
           <aSettingOutlined />
           课程时间
         </a-button>
-        <!-- <a-upload accept=".xls,.xlsx" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="false">
+        <!-- <a-dropdown :overlayStyle="{ zIndex: 1000 }">
+          <template #overlay>
+            <a-menu>
+              <a-button
+                class="d_block mb_2"
+                @click="
+                  () => {
+                    classTimeModal.visible = true
+                    classTimeModal.list = cloneDeep(classTimeList)
+                  }
+                "
+              >
+                <aSettingOutlined />
+                课程时间
+              </a-button>
+              <a-upload accept=".xls,.xlsx" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="false">
+                <a-button class="d_block">
+                  <aUploadOutlined />
+                  {{ fileList[0]?.name || '导入文件' }}
+                </a-button>
+              </a-upload>
+            </a-menu>
+          </template>
           <a-button class="mr_2">
-            <aUploadOutlined />
-            {{ fileList[0]?.name || '导入文件' }}
+            更多操作
+            <aDownOutlined />
           </a-button>
-        </a-upload> -->
+        </a-dropdown> -->
         <a-button type="primary" @click="generateSchedule">
           <aDownloadOutlined />
           生成日程
