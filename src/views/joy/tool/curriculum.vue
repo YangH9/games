@@ -15,46 +15,43 @@
           picker="week"
           class="mr_2"
         />
-        <a-button
-          class="mr_2"
-          @click="
-            () => {
-              classTimeModal.visible = true
-              classTimeModal.list = cloneDeep(classTimeList)
-            }
-          "
-        >
-          <aSettingOutlined />
-          课程时间
-        </a-button>
-        <!-- <a-dropdown :overlayStyle="{ zIndex: 1000 }">
+        <a-dropdown :overlayStyle="{ zIndex: 1000 }">
           <template #overlay>
-            <a-menu>
-              <a-button
-                class="d_block mb_2"
-                @click="
-                  () => {
-                    classTimeModal.visible = true
-                    classTimeModal.list = cloneDeep(classTimeList)
-                  }
-                "
-              >
-                <aSettingOutlined />
-                课程时间
-              </a-button>
-              <a-upload accept=".xls,.xlsx" :file-list="fileList" :before-upload="beforeUpload" :showUploadList="false">
-                <a-button class="d_block">
-                  <aUploadOutlined />
-                  {{ fileList[0]?.name || '导入文件' }}
+            <a-menu class="p_2">
+              <div class="mb_2">
+                <a-button
+                  block
+                  @click="
+                    () => {
+                      classTimeModal.visible = true
+                      classTimeModal.list = cloneDeep(classTimeList)
+                    }
+                  "
+                >
+                  <aSettingOutlined />
+                  课程时间
                 </a-button>
-              </a-upload>
+              </div>
+              <div class="mb_2">
+                <a-upload
+                  accept=".xls,.xlsx"
+                  :file-list="fileList"
+                  :before-upload="beforeUpload"
+                  :showUploadList="false"
+                >
+                  <a-button block>
+                    <aUploadOutlined />
+                    {{ fileList[0]?.name || '导入文件' }}
+                  </a-button>
+                </a-upload>
+              </div>
             </a-menu>
           </template>
           <a-button class="mr_2">
             更多操作
             <aDownOutlined />
           </a-button>
-        </a-dropdown> -->
+        </a-dropdown>
         <a-button type="primary" @click="generateSchedule">
           <aDownloadOutlined />
           生成日程
@@ -74,6 +71,15 @@
             >
               <template #icon>
                 <aPlusOutlined />
+              </template>
+            </a-button>
+            <a-button
+              type="link"
+              class="mr_2"
+              @Click.stop="() => curriculumList.splice(index, 1, cloneDeep(curriculumDefault))"
+            >
+              <template #icon>
+                <aUndoOutlined />
               </template>
             </a-button>
             <a-button
@@ -144,7 +150,6 @@
         </a-collapse-panel>
       </a-collapse>
       <!-- <p>{{ curriculumList }}</p> -->
-      <!-- <div>{{ textxml }}</div> -->
       <!-- <table border>
         <thead>
           <tr>
@@ -336,43 +341,93 @@ const fileList = ref([])
 const pres = ref([])
 const columnList = ref([])
 
-const textxml = ref('')
-
+// 读取文件，多种类型处理方法，读取失败就换一种
 const beforeUpload = file => {
   fileList.value = [file]
-  console.log(file)
-  const reader = new FileReader()
-  reader.onload = e => {
-    console.log(11111111, e)
-    const arrayBuffer = e.target.result
-    const workbook = read(arrayBuffer)
-    const worksheet = workbook.Sheets[workbook.SheetNames[0]]
-    const merges = worksheet['!merges']
-    const data = utils.sheet_to_json(worksheet)
-    console.log(workbook, worksheet, merges)
 
-    const newData = Array.from({ length: data.at(-1).__rowNum__ }, () => {})
-    let list = []
-    data.forEach(item => {
-      newData[item.__rowNum__ - 1] = item
-      Object.keys(item).forEach(key => !list.includes(key) && list.push(key))
-    })
-    columnList.value = list
+  dispose1(file).catch(err => {
+    dispose2(file).catch(err => {})
+  })
 
-    pres.value = newData
-  }
-  reader.readAsArrayBuffer(file)
   return false
 }
-const beforeUploadXml = file => {
-  fileList.value = [file]
-  const reader = new FileReader()
-  reader.onload = e => {
-    console.log(11111111, e)
-    textxml.value = e.target.result
-  }
-  reader.readAsText(file, 'GB2312')
-  return false
+// 处理方法
+const dispose1 = file => {
+  return new Promise((reactive, reject) => {
+    const reader = new FileReader()
+    reader.onload = e => {
+      const htmlText = e.target.result
+      console.clear()
+      if (!htmlText.startsWith('<html')) {
+        reject('不支持该文件类型')
+        return
+      }
+      const curList = []
+      // curriculumDefault = { teacher: '', course: '', weeks: [], classTime: [], room: '', alarm: 30 }
+      const domparser = new DOMParser()
+      const htmlDocument = domparser.parseFromString(htmlText, 'text/html')
+      const classDocument = htmlDocument.querySelector('table tbody')
+      const trDocument = classDocument.querySelectorAll('tr')
+      trDocument.forEach((tr, classIndex) => {
+        const tdDocument = tr.querySelectorAll('td')
+        tdDocument.forEach((td, weekIndex) => {
+          if (td.innerText && weekIndex) {
+            const regex = /([\u4e00-\u9fa5\w（）]+?)\(.*?\).*?\((.*?)\).*?\(([\u4e00-\u9fa5]?)(\d+)-(\d+),.*?(.*?)\)/g
+            const curText = td.innerText
+            const matches = [...curText.matchAll(regex)]
+            matches.forEach(item => {
+              curList.push({
+                teacher: item[2],
+                course: item[1],
+                weeks: weeksList
+                  .slice(item[4] - 1, item[5])
+                  .filter(i =>
+                    item[3] ? (item[3] === '双' && !(i.value % 2)) || (item[3] === '单' && i.value % 2) : !item[3]
+                  )
+                  .map(i => i.value),
+                classTime: [weekIndex - 1, classIndex],
+                room: item[6],
+                alarm: 30
+              })
+            })
+          }
+        })
+      })
+      curriculumList.value = curList.sort((a, b) =>
+        a.classTime[0] === b.classTime[0] ? a.classTime[1] - b.classTime[1] : a.classTime[0] - b.classTime[0]
+      )
+      collapseActive.value = curList.map((_, i) => i)
+      reactive()
+    }
+    reader.readAsText(file, 'GB2312')
+  })
+}
+
+const dispose2 = file => {
+  return new Promise((reactive, reject) => {
+    const reader = new FileReader()
+    reader.onload = e => {
+      console.clear()
+      console.log(11111111, 'dispose2', e)
+      const arrayBuffer = e.target.result
+      const workbook = read(arrayBuffer)
+      const worksheet = workbook.Sheets[workbook.SheetNames[0]]
+      const merges = worksheet['!merges']
+      const data = utils.sheet_to_json(worksheet)
+      console.log(workbook, worksheet, merges)
+
+      const newData = Array.from({ length: data.at(-1).__rowNum__ }, () => {})
+      let list = []
+      data.forEach(item => {
+        newData[item.__rowNum__ - 1] = item
+        Object.keys(item).forEach(key => !list.includes(key) && list.push(key))
+      })
+      columnList.value = list
+
+      pres.value = newData
+    }
+    reader.readAsArrayBuffer(file)
+  })
 }
 </script>
 
