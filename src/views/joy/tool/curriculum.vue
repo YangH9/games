@@ -241,6 +241,7 @@ import { read, utils } from 'xlsx'
 import { computed, inject, reactive, ref } from 'vue'
 import { cloneDeep } from 'lodash'
 import { useStorage } from '@vueuse/core'
+import { message } from 'ant-design-vue'
 
 const dayjs = inject('dayjs')
 
@@ -346,7 +347,8 @@ const beforeUpload = file => {
   fileList.value = [file]
 
   dispose1(file).catch(err => {
-    dispose2(file).catch(err => {})
+    // dispose2(file).catch(err => {})
+    message.warning('文件数据异常')
   })
 
   return false
@@ -357,13 +359,11 @@ const dispose1 = file => {
     const reader = new FileReader()
     reader.onload = e => {
       const htmlText = e.target.result
-      console.clear()
       if (!htmlText.startsWith('<html')) {
         reject('不支持该文件类型')
         return
       }
       const curList = []
-      // curriculumDefault = { teacher: '', course: '', weeks: [], classTime: [], room: '', alarm: 30 }
       const domparser = new DOMParser()
       const htmlDocument = domparser.parseFromString(htmlText, 'text/html')
       const classDocument = htmlDocument.querySelector('table tbody')
@@ -408,23 +408,25 @@ const dispose2 = file => {
     const reader = new FileReader()
     reader.onload = e => {
       console.clear()
-      console.log(11111111, 'dispose2', e)
       const arrayBuffer = e.target.result
+      console.log(11111111, 'dispose2', arrayBuffer)
       const workbook = read(arrayBuffer)
       const worksheet = workbook.Sheets[workbook.SheetNames[0]]
       const merges = worksheet['!merges']
-      const data = utils.sheet_to_json(worksheet)
-      console.log(workbook, worksheet, merges)
+      const jsonData = utils.sheet_to_json(worksheet)
 
-      const newData = Array.from({ length: data.at(-1).__rowNum__ }, () => {})
-      let list = []
-      data.forEach(item => {
-        newData[item.__rowNum__ - 1] = item
-        Object.keys(item).forEach(key => !list.includes(key) && list.push(key))
-      })
-      columnList.value = list
-
-      pres.value = newData
+      const curList = []
+      let weekKeyList = []
+      let startIndex = 0
+      jsonData.reduce((total, item, index) => {
+        const row = item.__rowNum__
+        if (item[Object.keys(item)[0]] === '节次/周次') {
+          weekKeyList = Object.keys(item)
+          startIndex = index
+          console.log(weekKeyList)
+          return row
+        }
+      }, undefined)
     }
     reader.readAsArrayBuffer(file)
   })
