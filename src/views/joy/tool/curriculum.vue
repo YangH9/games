@@ -10,7 +10,7 @@
       <template #extra>
         <a-date-picker
           v-model:value="fistWeek"
-          valueFormat="YYYY-ww"
+          :valueFormat="dateFormatKey"
           placeholder="第一周时间"
           picker="week"
           class="mr_2"
@@ -149,23 +149,6 @@
           </a-form>
         </a-collapse-panel>
       </a-collapse>
-      <!-- <p>{{ curriculumList }}</p> -->
-      <!-- <table border>
-        <thead>
-          <tr>
-            <th v-for="(item, index) in columnList" :key="index">{{ item }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, idx) in pres" :key="idx">
-            <th
-              v-for="(item, index) in columnList"
-              :key="index"
-              v-html="`${row?.[item] || ''}`.replaceAll('\n', '<br/>')"
-            ></th>
-          </tr>
-        </tbody>
-      </table> -->
     </a-card>
     <a-modal
       v-model:open="classTimeModal.visible"
@@ -245,7 +228,9 @@ import { message } from 'ant-design-vue'
 
 const dayjs = inject('dayjs')
 
-const fistWeek = ref('2024-34')
+const dateFormatKey = 'YYYY-ww'
+
+const fistWeek = ref(`${dayjs().year()}-34`)
 
 const curriculumDefault = { teacher: '', course: '', weeks: [], classTime: [], room: '', alarm: 30 }
 const classTimeDefaultItem = { name: '', startTime: '08:00', endTime: '09:00' }
@@ -310,7 +295,9 @@ const generateSchedule = () => {
       const weekday = item.classTime[0]
       return item.weeks
         .map(week => {
-          const dayTime = dayjs(dayjs(fistWeek.value, 'YYYY-ww').diff(dayjs.duration({ weeks: -week, days: -weekday })))
+          const dayTime = dayjs(
+            dayjs(fistWeek.value, dateFormatKey).diff(dayjs.duration({ weeks: -week, days: -weekday }))
+          )
           const obj = {
             start: `DTSTART:${dayjs(`${dayTime.format('YYYY-MM-DD')} ${startTime}`).format('YYYYMMDDTHHmm00')}\n`,
             end: `DTEND:${dayjs(`${dayTime.format('YYYY-MM-DD')} ${endTime}`).format('YYYYMMDDTHHmm00')}\n`,
@@ -338,9 +325,6 @@ const generateSchedule = () => {
 }
 
 const fileList = ref([])
-
-const pres = ref([])
-const columnList = ref([])
 
 // 读取文件，多种类型处理方法，读取失败就换一种
 const beforeUpload = file => {
