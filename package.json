@@ -10,9 +10,10 @@
     "preview": "vite preview --port 4173",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .eslintignore",
     "format": "prettier --w . --ignore-path .eslintignore",
-    "pull": "git pull origin master",
+    "pull": "git pull & cd dist & git pull",
     "commit": "git add . & git commit -m [update]自动提交",
-    "push": "git push origin master"
+    "push": "git push",
+    "push:dist": "cd dist & git add . & git commit -m [update]dist & git push"
   },
   "scripts-info": {
     "start": "开发环境",
