@@ -9,7 +9,7 @@ lerna-debug.log*
 
 .DS_Store
 node_modules
-/dist
+/branch-pages
 coverage
 *.local
 
