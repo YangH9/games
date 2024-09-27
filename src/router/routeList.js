@@ -373,6 +373,12 @@ export default [
             component: () => import('@/views/joy/games/game-history.vue')
           },
           {
+            path: '/joy/games/leitingzhanji',
+            name: 'leitingzhanji',
+            meta: { title: '雷霆战机图鉴' },
+            component: () => import('@/views/joy/games/leitingzhanji.vue')
+          },
+          {
             path: '/joy/games/clash-of-clans',
             name: 'clash-of-clans',
             meta: { title: '部落冲突' },

@@ -100,6 +100,7 @@ const joyList = [
     title: '游戏',
     list: [
       { title: '游戏历程时间轴', href: '/joy/games/game-history' },
+      { title: '雷霆战机', href: '/joy/games/leitingzhanji' },
       { title: '部落冲突', href: '/joy/games/clash-of-clans' },
       { title: '圈小猫', href: '/joy/games/catch-the-cat' },
       { title: '扫雷', href: '/joy/games/minesweeper' },
