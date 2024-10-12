@@ -263,6 +263,12 @@ export default [
             name: '2024-spring-festival-gala',
             meta: { title: '2024春晚' },
             component: () => import('@/views/study/other/2024-spring-festival-gala.vue')
+          },
+          {
+            path: '/study/other/virtual-joystick',
+            name: 'virtual-joystick',
+            meta: { title: '虚拟摇杆' },
+            component: () => import('@/views/study/other/virtual-joystick.vue')
           }
         ]
       },

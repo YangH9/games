@@ -94,7 +94,8 @@ const studyList = [
       { title: '代码雨', href: '/study/other/code-rain' },
       { title: '画中画', href: '/study/other/picture-in-picture' },
       { title: '提词器', href: '/study/other/teleprompter' },
-      { title: '2024春晚', href: '/study/other/2024-spring-festival-gala' }
+      { title: '2024春晚', href: '/study/other/2024-spring-festival-gala' },
+      { title: '虚拟摇杆', href: '/study/other/virtual-joystick' }
     ]
   },
   {
