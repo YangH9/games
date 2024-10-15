@@ -267,7 +267,7 @@ export default [
           {
             path: '/study/other/virtual-joystick',
             name: 'virtual-joystick',
-            meta: { title: '虚拟摇杆' },
+            meta: { title: '虚拟摇杆', dev: true },
             component: () => import('@/views/study/other/virtual-joystick.vue')
           }
         ]
@@ -325,7 +325,6 @@ export default [
             name: 'table5',
             meta: { title: '表格5' },
             component: () => import('@/views/study/component-demo/table5.vue')
-      
           },
           {
             path: '/study/component-demo/form-vform',
@@ -337,7 +336,8 @@ export default [
             path: '/study/component-demo/form-formmaking',
             name: 'form-formmaking',
             meta: { title: '低代码表单-formmaking' },
-            component: () => import('@/views/study/component-demo/form-formmaking.vue')    },
+            component: () => import('@/views/study/component-demo/form-formmaking.vue')
+          },
           {
             path: '/study/component-demo/richtext-tinymce',
             name: 'richtext-tinymce',
@@ -381,7 +381,7 @@ export default [
           {
             path: '/joy/games/leitingzhanji',
             name: 'leitingzhanji',
-            meta: { title: '雷霆战机图鉴' },
+            meta: { title: '雷霆战机数据', dev: true },
             component: () => import('@/views/joy/games/leitingzhanji.vue')
           },
           {
