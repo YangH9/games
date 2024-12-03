@@ -252,7 +252,8 @@ const resoutcesList = [
       { title: '知乎', href: 'https://www.zhihu.com', favicon: '' },
       { title: 'Prettier', href: 'https://prettier.io/', favicon: 'icon.png' },
       { title: 'tiny富文本', href: 'https://www.tiny.cloud/', favicon: '' },
-      { title: '各类颜色生成器', href: 'https://gradients.app/', favicon: '' }
+      { title: '各类颜色生成器', href: 'https://gradients.app/', favicon: '' },
+      { title: '雪碧图定位器', href: 'http://www.spritecow.com/', favicon: 'assets/9/favicon.ico' },
     ]
   },
   {
