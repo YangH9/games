@@ -10,19 +10,19 @@
           <a-qrcode value="SMSTO:10010:JFJF#Q" />
         </a-card>
         <a-card title="中国电信">
-          <a-qrcode value="SMSTO:10001:1068" />
+          <a-qrcode value="SMSTO:10001:JFDH" />
         </a-card>
       </a-space>
     </a-card>
     <a-card title="方法2: 手机浏览器点击链接跳转发送短信" class="mb_2" :hoverable="true">
       <a-button href="sms:10658999?body=HF" size="small" type="link" target="_blank">中国移动</a-button>
       <a-button href="sms:10010?body=JFJF#Q" size="small" type="link" target="_blank">中国联通</a-button>
-      <a-button href="sms:10001?body=1068" size="small" type="link" target="_blank">中国电信</a-button>
+      <a-button href="sms:10001?body=JFDH" size="small" type="link" target="_blank">中国电信</a-button>
     </a-card>
     <a-card title="方法3: 手动编辑短信发送" class="mb_2" :hoverable="true">
       <p><strong>中国移动</strong> 编辑短信 <strong>HF</strong> 发送至 <strong>10658999</strong></p>
       <p><strong>中国联通</strong> 编辑短信 <strong>JFJF#Q</strong> 发送至 <strong>10010</strong></p>
-      <p><strong>中国电信</strong> 编辑短信 <strong>1068</strong> 发送至 <strong>10001</strong></p>
+      <p><strong>中国电信</strong> 编辑短信 <strong>JFDH</strong> 发送至 <strong>10001</strong></p>
     </a-card>
     <a-card title="短信发送成功后等待运营商回信，按提示操作即可" class="mb_2" :hoverable="true"></a-card>
     <a-card title="以上方法都无法使用" :hoverable="true">
