@@ -6,9 +6,7 @@
         <img src="@/assets/loading.svg" width="100" />
         <my-loading size="100" lineWidth="10" strokeStyle="#359dda"></my-loading>
         <Loading1></Loading1>
-        <div class="ltzj-loading">
-
-        </div>
+        <div class="ltzj-loading"></div>
       </div>
     </a-card>
   </div>

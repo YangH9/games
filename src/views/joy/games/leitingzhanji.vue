@@ -86,7 +86,7 @@ const atlasData = {
   fighter: [
     { name: '突击零式1级', series: '雷霆突击', battleValue: 180, type: 'fighter' },
     { name: '突击零式', series: '雷霆突击', battleValue: 396, type: 'fighter' },
-    { name: '迅雷突击', series: '雷霆突击', battleValue: 515, type: 'fighter' },
+    { name: '迅雷突击', series: '雷霆突击', battleValue: 515, type: 'fighter' }
   ],
   armor: [],
   wingman: [],

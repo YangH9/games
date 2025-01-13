@@ -49,7 +49,7 @@ onMounted(() => {
 .canvas-editor:deep() {
   & > div {
     margin: 0 auto;
-    canvas{
+    canvas {
       border: 1px solid #ccc;
     }
   }

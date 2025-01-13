@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb overlayShow />
-    <a-card title="LangChain-ChartGPT" class="mb_2" :hoverable="true">
-
-    </a-card>
+    <a-card title="LangChain-ChartGPT" class="mb_2" :hoverable="true"> </a-card>
   </div>
 </template>
 
@@ -11,9 +9,6 @@
 import Breadcrumb from '@/components/Breadcrumb.vue'
 
 // https://js.langchain.com.cn/docs/
-
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

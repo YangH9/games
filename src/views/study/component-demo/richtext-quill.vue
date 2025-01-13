@@ -2,7 +2,7 @@
   <div class="container">
     <Breadcrumb overlayShow />
     <a-card v-calcHeight="{ height: 18, dom: '.ant-card-body' }" title="富文本-quill" :hoverable="true">
-      <QuillEditor contentType="html" toolbar="full" style="height: 500px;" placeholder="QuillEditor" />
+      <QuillEditor contentType="html" toolbar="full" style="height: 500px" placeholder="QuillEditor" />
     </a-card>
   </div>
 </template>

@@ -19,7 +19,7 @@ import { useRoute } from 'vue-router'
 import antZhCN from 'ant-design-vue/es/locale/zh_CN'
 import { theme } from 'ant-design-vue'
 import { usePreferredColorScheme } from '@vueuse/core'
-import back from "@/assets/skyblue.jpg"
+import back from '@/assets/skyblue.jpg'
 
 const route = useRoute()
 const GetEnv = inject('GetEnv')
@@ -41,7 +41,6 @@ watch(
 )
 
 document.querySelector('#app').style.backgroundImage = `url(${back})`
-
 </script>
 
 <style scoped lang="scss"></style>

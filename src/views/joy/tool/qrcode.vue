@@ -24,7 +24,7 @@
 
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import {  inject, ref } from 'vue'
+import { inject, ref } from 'vue'
 import { cloneDeep, debounce } from 'lodash'
 import { useStorage } from '@vueuse/core'
 

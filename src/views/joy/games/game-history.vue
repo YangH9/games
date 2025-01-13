@@ -3,7 +3,7 @@
     <Breadcrumb overlayShow />
     <a-layout-content>
       <div class="ant-card-body">
-        <a-timeline mode="alternate">
+        <a-timeline :mode="mode">
           <a-timeline-item v-for="(item, i) in historyList" :key="i">
             <a-card :title="item.title" :hoverable="true">
               {{ item.text }}
@@ -17,6 +17,15 @@
 
 <script setup lang="jsx">
 import Breadcrumb from '@/components/Breadcrumb.vue'
+import { ref } from 'vue'
+
+const mode = ref('')
+
+if (document.documentElement.clientWidth < 768) {
+  mode.value = 'left'
+} else {
+  mode.value = 'alternate'
+}
 
 const historyList = [
   { title: '2024年8月20日', text: '黑神话：悟空' },
@@ -29,6 +38,7 @@ const historyList = [
   { title: '2020年12月25日', text: '使命召唤手游（简称CODM）' },
   { title: '2020年6月9日', text: '荒野乱斗（国服）发行，2018年12月12日（全球上线）' },
   { title: '2019年5月8日', text: '和平精英发行（绝地求生：刺激战场的发布时间2018年2月9日）' },
+  { title: '2018年4月7日', text: '星河战神发行（2020年11月16日11点正式停止在中国大陆地区的运营）' },
   { title: '2018年2月9日', text: '绝地求生：刺激战场发行（2019年5月8日更名为和平精英）' },
   { title: '2018年2月9日', text: '绝地求生：全军出击发行（2019年5月8日停服）' },
   { title: '2017年12月27日', text: 'QQ飞车手游发行，注册时间2017年12月27日' },
@@ -42,9 +52,9 @@ const historyList = [
   { title: '2014年10月26日', text: '天天风之旅发行（2018年1月22日停服）' },
   { title: '2014年3月12日', text: '雷霆战机发行（2021年10月11日11点正式停止在中国大陆地区的运营）' },
   { title: '2014年1月10日', text: '全民飞机大战' },
-  { title: '2013年9月16日', text: '天天酷跑发行' },
   { title: '2013年12月1日', text: '天天飞车发行（2020年12月15日停服）' },
-  { title: '2012年8月2日', text: '部落冲突发行' },
+  { title: '2013年9月16日', text: '天天酷跑发行' },
+  { title: '2012年8月2日', text: '部落冲突发行(2022年12月9日中国大陆地区代理换为腾讯)' },
   { title: '2012年7月26日', text: '神庙逃亡发行（2018年6月13日下架）' }
 ]
 </script>
@@ -66,18 +76,23 @@ const historyList = [
       height: 24px;
     }
 
-    .ant-timeline-item-content {
-      width: calc(50% - 20px);
-    }
-
-    &.ant-timeline-item-left {
-      .ant-timeline-item-content {
-        left: calc(50% - 0px);
-      }
-    }
-
     .ant-timeline-item-tail {
       border-left: 2px solid #1890ff80;
+    }
+  }
+  &.ant-timeline-alternate {
+    :deep(.ant-timeline-item) {
+      &.ant-timeline-item-right,
+      &.ant-timeline-item-left {
+        .ant-timeline-item-content {
+          width: calc(50% - 20px);
+        }
+      }
+      &.ant-timeline-item-left {
+        .ant-timeline-item-content {
+          left: calc(50% - 0px);
+        }
+      }
     }
   }
 }
